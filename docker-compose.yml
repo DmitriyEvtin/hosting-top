@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: rolled-metal-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: rolled_metal
+      POSTGRES_USER: rolled_metal_user
+      POSTGRES_PASSWORD: rolled_metal_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d
+    networks:
+      - rolled-metal-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: rolled-metal-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - rolled-metal-network
+
+  adminer:
+    image: adminer:4.8.1
+    container_name: rolled-metal-adminer
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    networks:
+      - rolled-metal-network
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  rolled-metal-network:
+    driver: bridge

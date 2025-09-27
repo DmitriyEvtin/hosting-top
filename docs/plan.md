@@ -35,7 +35,7 @@
 
 #### 1.3 Настройка базы данных
 
-- [ ] Установка PostgreSQL
+- [ ] Установка PostgreSQL через docker compose
 - [ ] Настройка Prisma ORM
 - [ ] Создание базовой схемы БД (User, Category, Product модели)
 - [ ] Настройка миграций
