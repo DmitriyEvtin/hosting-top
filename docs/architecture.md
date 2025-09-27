@@ -32,6 +32,8 @@
 - **AWS S3** - Хранение изображений
 - **CloudFront** - CDN
 - **Docker** - Контейнеризация
+- **Docker Registry** - Хранение Docker образов
+- **Traefik** - Reverse proxy и load balancer
 - **GitHub Actions** - CI/CD
 
 ## Структура проекта (FSD)
@@ -372,6 +374,23 @@ make health
 make clean
 ```
 
+### Docker Registry
+
+```bash
+# Управление Registry
+make registry-up          # Запуск Registry
+make registry-down        # Остановка Registry
+make registry-logs        # Просмотр логов
+make registry-status      # Проверка статуса
+
+# Работа с образами
+make registry-login       # Логин в Registry
+make registry-push        # Отправка образов
+make registry-pull        # Загрузка образов
+```
+
+Registry доступен по адресу: `https://registry.evtin.ru`
+
 ### Environment Variables
 
 См. [Environment Variables Documentation](./deployment/environment-variables.md) для полного списка переменных окружения.
@@ -390,3 +409,5 @@ make clean
 - [FSD структура](./architecture/fsd-structure.md)
 - [API дизайн](./architecture/api-design.md)
 - [Схема базы данных](./architecture/database-schema.md)
+- [Docker Registry](./deployment/docker-registry.md)
+- [Traefik Configuration](./deployment/traefik.md)

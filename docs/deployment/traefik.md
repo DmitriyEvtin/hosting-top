@@ -81,6 +81,55 @@ services:
       - traefik-public
 ```
 
+### 2. Docker Registry через Traefik
+
+Docker Registry настроен для работы через Traefik с доменом `registry.evtin.ru`:
+
+```yaml
+services:
+  registry:
+    image: registry:3
+    container_name: docker-registry
+    restart: unless-stopped
+    environment:
+      REGISTRY_HTTP_HOST: registry.evtin.ru
+      REGISTRY_HTTP_ADDR: 0.0.0.0:5000
+    networks:
+      - traefik-public
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.registry.rule=Host(`registry.evtin.ru`)
+      - traefik.http.routers.registry.entrypoints=https
+      - traefik.http.routers.registry.tls.certresolver=letsencrypt
+      - traefik.http.services.registry.loadbalancer.server.port=5000
+```
+
+#### Настройка аутентификации для Registry
+
+Для защиты Docker Registry добавьте переменную окружения:
+
+```bash
+# Генерация пароля для аутентификации
+echo $(htpasswd -nb admin password) | sed -e s/\\$/\\$\\$/g
+
+# Добавьте в .env файл
+REGISTRY_AUTH_USERS=admin:$$2y$$10$$...
+```
+
+#### Использование Registry
+
+```bash
+# Логин в registry
+docker login registry.evtin.ru
+
+# Тегирование и пуш образа
+docker tag myapp:latest registry.evtin.ru/myapp:latest
+docker push registry.evtin.ru/myapp:latest
+
+# Пул образа
+docker pull registry.evtin.ru/myapp:latest
+```
+
 ### 2. Middleware для безопасности
 
 Доступные middleware:

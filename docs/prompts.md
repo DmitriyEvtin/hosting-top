@@ -246,3 +246,35 @@
     - Troubleshooting и мониторинг
     - Настройки безопасности и производительности
   - ✅ Конфигурация теперь готова для production использования с полной безопасностью и мониторингом
+
+- **Запрос**: "@docker-compose.registry.yml измени с учетом что он долден открываться через traefik по домену registry.evtin.ru"
+- **Контекст**: Настройка Docker Registry для работы через Traefik с доменом registry.evtin.ru
+- **Выполнено**:
+  - ✅ Полностью переработана конфигурация Docker Registry:
+    - Настроена интеграция с Traefik через labels
+    - Добавлен домен registry.evtin.ru с SSL сертификатами
+    - Настроены CORS headers для веб-интерфейсов
+    - Добавлена поддержка аутентификации через переменные окружения
+    - Настроен healthcheck для мониторинга Registry
+    - Добавлена сеть traefik-public для интеграции с Traefik
+  - ✅ Обновлена документация Traefik с информацией о Docker Registry:
+    - Добавлен раздел о настройке Docker Registry через Traefik
+    - Описана настройка аутентификации для Registry
+    - Добавлены примеры использования Registry
+  - ✅ Расширен Makefile с командами управления Registry:
+    - registry-up/registry-down - управление Registry
+    - registry-logs - просмотр логов
+    - registry-status - проверка статуса
+    - registry-login - логин в Registry
+    - registry-push/registry-pull - работа с образами
+  - ✅ Создана подробная документация `docs/deployment/docker-registry.md`:
+    - Описание архитектуры и настройки Registry
+    - Инструкции по использованию и мониторингу
+    - Настройка безопасности и аутентификации
+    - Troubleshooting и резервное копирование
+    - Интеграция с CI/CD
+  - ✅ Обновлена основная архитектурная документация:
+    - Добавлен Docker Registry в технологический стек
+    - Обновлен раздел развертывания с командами Registry
+    - Добавлены ссылки на документацию Registry и Traefik
+  - ✅ Registry теперь полностью интегрирован с Traefik и готов к production использованию

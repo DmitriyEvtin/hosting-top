@@ -121,6 +121,36 @@ db-seed:
 db-reset:
 	docker compose -f docker-compose.prod.yml exec app npx prisma migrate reset --force
 
+# Docker Registry
+registry-up:
+	docker compose -f docker-compose.registry.yml up -d
+
+registry-down:
+	docker compose -f docker-compose.registry.yml down
+
+registry-logs:
+	docker compose -f docker-compose.registry.yml logs -f
+
+registry-status:
+	@echo "Проверка статуса Docker Registry..."
+	@curl -f http://localhost/v2/ -H "Host: registry.evtin.ru" || echo "Registry недоступен"
+
+registry-login:
+	@echo "Логин в Docker Registry..."
+	@docker login registry.evtin.ru
+
+registry-push: build
+	@echo "Отправка образов в Registry..."
+	@docker tag ${REGISTRY}/${IMAGE_NAME}-app:${TAG} registry.evtin.ru/${IMAGE_NAME}-app:${TAG}
+	@docker tag ${REGISTRY}/${IMAGE_NAME}-nginx:${TAG} registry.evtin.ru/${IMAGE_NAME}-nginx:${TAG}
+	@docker push registry.evtin.ru/${IMAGE_NAME}-app:${TAG}
+	@docker push registry.evtin.ru/${IMAGE_NAME}-nginx:${TAG}
+
+registry-pull:
+	@echo "Загрузка образов из Registry..."
+	@docker pull registry.evtin.ru/${IMAGE_NAME}-app:${TAG}
+	@docker pull registry.evtin.ru/${IMAGE_NAME}-nginx:${TAG}
+
 # Помощь
 help:
 	@echo "Доступные команды:"
@@ -142,4 +172,11 @@ help:
 	@echo "  health      - Проверка здоровья системы"
 	@echo "  db-migrate   - Применение миграций"
 	@echo "  db-seed      - Заполнение базы данных"
+	@echo "  registry-up  - Запуск Docker Registry"
+	@echo "  registry-down - Остановка Docker Registry"
+	@echo "  registry-logs - Просмотр логов Registry"
+	@echo "  registry-status - Проверка статуса Registry"
+	@echo "  registry-login - Логин в Registry"
+	@echo "  registry-push - Отправка образов в Registry"
+	@echo "  registry-pull - Загрузка образов из Registry"
 	@echo "  db-reset     - Сброс базы данных"

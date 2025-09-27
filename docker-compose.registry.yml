@@ -1,0 +1,61 @@
+services:
+  registry:
+    image: registry:3
+    container_name: docker-registry
+    restart: unless-stopped
+    environment:
+      REGISTRY_HTTP_HOST: registry.evtin.ru
+      REGISTRY_HTTP_ADDR: 0.0.0.0:5000
+      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
+    volumes:
+      - registry:/var/lib/registry
+    networks:
+      - traefik-public
+    labels:
+      # Включение Traefik
+      - "traefik.enable=true"
+
+      # HTTP роутер
+      - "traefik.http.routers.registry.rule=Host(`registry.evtin.ru`)"
+      - "traefik.http.routers.registry.entrypoints=https"
+      - "traefik.http.routers.registry.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.registry.service=registry"
+
+      # HTTP сервис
+      - "traefik.http.services.registry.loadbalancer.server.port=5000"
+
+      # Middleware для CORS
+      - "traefik.http.middlewares.registry-cors.headers.accesscontrolallowmethods=GET,OPTIONS,HEAD,POST,PUT,DELETE"
+      - "traefik.http.middlewares.registry-cors.headers.accesscontrolallowheaders=*"
+      - "traefik.http.middlewares.registry-cors.headers.accesscontrolalloworiginlist=*"
+      - "traefik.http.middlewares.registry-cors.headers.accesscontrolmaxage=100"
+      - "traefik.http.middlewares.registry-cors.headers.addvaryheader=true"
+
+      # Применение middleware
+      - "traefik.http.routers.registry.middlewares=registry-cors"
+
+      # Безопасность
+      - "traefik.http.middlewares.registry-auth.basicauth.users=${REGISTRY_AUTH_USERS:-}"
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--no-verbose",
+          "--tries=1",
+          "--spider",
+          "http://localhost:5000/v2/",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+volumes:
+  registry:
+    external: true
+
+networks:
+  traefik-public:
+    external: true
