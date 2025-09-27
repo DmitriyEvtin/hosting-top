@@ -1,3 +1,7 @@
+---
+alwaysApply: true
+---
+
 # Prisma Development Rules
 
 Follow Prisma best practices and conventions for building modern database-driven applications with Next.js and FSD architecture.

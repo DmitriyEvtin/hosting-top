@@ -1,3 +1,7 @@
+---
+alwaysApply: true
+---
+
 # Testing Rules
 
 Comprehensive testing strategy for React/Next.js applications following FSD architecture principles.
