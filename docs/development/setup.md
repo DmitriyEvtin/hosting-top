@@ -246,6 +246,15 @@ npm test
 npm run lint
 ```
 
+### 5. Проверка FSD архитектуры
+```bash
+# Проверка соблюдения правил FSD
+npx steiger ./src
+
+# Или через npm script
+npm run lint:fsd
+```
+
 ## Устранение проблем
 
 ### Частые проблемы
@@ -298,6 +307,18 @@ npm run format
 
 # Проверка FSD архитектуры
 npm run lint:fsd
+```
+
+### 6. Проверка FSD архитектуры с Steiger
+```bash
+# Прямой запуск Steiger
+npx steiger ./src
+
+# Проверка с подробным выводом
+npx steiger ./src --verbose
+
+# Проверка только определенных слоев
+npx steiger ./src/pages ./src/widgets
 ```
 
 ### Полезные расширения

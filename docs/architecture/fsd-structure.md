@@ -182,6 +182,51 @@ src/shared/
 - Константы
 - Конфигурация
 
+## Проверка FSD архитектуры
+
+### Steiger - инструмент валидации FSD
+
+В проекте настроен **Steiger** - специализированный линтер для проверки соблюдения правил Feature-Sliced Design архитектуры.
+
+#### Запуск проверки
+```bash
+npx steiger ./src
+```
+
+#### Что проверяет Steiger
+- **Правила импортов**: Соблюдение иерархии слоев FSD
+- **Циклические зависимости**: Отсутствие циклических импортов
+- **Структуру сегментов**: Корректность организации кода внутри слоев
+- **Публичные API**: Правильность экспортов из index.ts файлов
+
+#### Интеграция в CI/CD
+```bash
+# В package.json
+{
+  "scripts": {
+    "lint:fsd": "steiger ./src",
+    "lint": "eslint . && steiger ./src"
+  }
+}
+```
+
+#### Автоматическая проверка
+- **Pre-commit hooks**: Проверка перед каждым коммитом
+- **CI/CD pipeline**: Автоматическая проверка в GitHub Actions
+- **IDE интеграция**: Подсветка ошибок в редакторе
+
+#### Примеры ошибок Steiger
+```bash
+❌ src/pages/home/ui/HomePage.tsx
+   Import from higher layer: shared → entities
+   
+❌ src/features/search/model/store.ts  
+   Circular dependency detected
+   
+❌ src/widgets/product-card/ui/ProductCard.tsx
+   Missing index.ts export
+```
+
 ## Преимущества FSD
 
 ### Масштабируемость
