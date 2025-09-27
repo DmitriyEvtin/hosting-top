@@ -7,11 +7,13 @@
 ### Ошибка подключения к PostgreSQL
 
 #### Симптомы
+
 ```
 Error: connect ECONNREFUSED 127.0.0.1:5432
 ```
 
 #### Решения
+
 ```bash
 # Проверка статуса PostgreSQL
 brew services list | grep postgresql
@@ -24,6 +26,7 @@ psql -U postgres -h localhost -p 5432
 ```
 
 #### Диагностика
+
 ```bash
 # Проверка портов
 lsof -i :5432
@@ -35,12 +38,14 @@ cat /usr/local/var/postgresql/postgresql.conf | grep port
 ### Ошибки миграций Prisma
 
 #### Симптомы
+
 ```
 Error: P3001: Database does not exist
 Error: P3002: The database schema is not empty
 ```
 
 #### Решения
+
 ```bash
 # Сброс базы данных
 npx prisma migrate reset
@@ -53,6 +58,7 @@ npx prisma generate
 ```
 
 #### Диагностика
+
 ```bash
 # Проверка статуса миграций
 npx prisma migrate status
@@ -66,12 +72,14 @@ npx prisma db pull
 ### Ошибки Puppeteer
 
 #### Симптомы
+
 ```
 Error: Failed to launch the browser process
 Error: Navigation timeout
 ```
 
 #### Решения
+
 ```bash
 # Установка зависимостей для Puppeteer
 sudo apt-get update
@@ -87,6 +95,7 @@ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 ```
 
 #### Конфигурация Docker
+
 ```dockerfile
 # Установка Chrome в Docker
 RUN apt-get update && apt-get install -y \
@@ -102,12 +111,14 @@ RUN apt-get update && apt-get install -y \
 ### Ошибки загрузки изображений
 
 #### Симптомы
+
 ```
 Error: Request failed with status code 403
 Error: ECONNRESET
 ```
 
 #### Решения
+
 ```typescript
 // Настройка retry логики
 const downloadWithRetry = async (url: string, maxRetries = 3) => {
@@ -116,8 +127,9 @@ const downloadWithRetry = async (url: string, maxRetries = 3) => {
       const response = await axios.get(url, {
         timeout: 30000,
         headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        }
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        },
       });
       return response.data;
     } catch (error) {
@@ -133,12 +145,14 @@ const downloadWithRetry = async (url: string, maxRetries = 3) => {
 ### Ошибки доступа к S3
 
 #### Симптомы
+
 ```
 Error: Access Denied
 Error: The specified bucket does not exist
 ```
 
 #### Решения
+
 ```bash
 # Проверка конфигурации AWS
 aws configure list
@@ -151,6 +165,7 @@ aws s3api put-bucket-cors --bucket your-bucket-name --cors-configuration file://
 ```
 
 #### CORS конфигурация
+
 ```json
 {
   "CORSRules": [
@@ -167,12 +182,14 @@ aws s3api put-bucket-cors --bucket your-bucket-name --cors-configuration file://
 ### Ошибки загрузки в S3
 
 #### Симптомы
+
 ```
 Error: Request Entity Too Large
 Error: SignatureDoesNotMatch
 ```
 
 #### Решения
+
 ```typescript
 // Настройка multipart upload
 const uploadToS3 = async (file: Buffer, key: string) => {
@@ -180,15 +197,15 @@ const uploadToS3 = async (file: Buffer, key: string) => {
     Bucket: process.env.AWS_S3_BUCKET,
     Key: key,
     Body: file,
-    ContentType: 'image/jpeg',
-    ACL: 'public-read'
+    ContentType: "image/jpeg",
+    ACL: "public-read",
   };
-  
+
   try {
     const result = await s3.upload(uploadParams).promise();
     return result.Location;
   } catch (error) {
-    console.error('S3 upload error:', error);
+    console.error("S3 upload error:", error);
     throw error;
   }
 };
@@ -199,6 +216,7 @@ const uploadToS3 = async (file: Buffer, key: string) => {
 ### Медленная загрузка страниц
 
 #### Диагностика
+
 ```bash
 # Анализ bundle
 npm run build
@@ -209,13 +227,14 @@ find public -name "*.jpg" -exec ls -lh {} \;
 ```
 
 #### Решения
+
 ```typescript
 // Оптимизация изображений
-import sharp from 'sharp';
+import sharp from "sharp";
 
 const optimizeImage = async (buffer: Buffer) => {
   return sharp(buffer)
-    .resize(800, 600, { fit: 'inside' })
+    .resize(800, 600, { fit: "inside" })
     .jpeg({ quality: 80 })
     .toBuffer();
 };
@@ -224,11 +243,13 @@ const optimizeImage = async (buffer: Buffer) => {
 ### Проблемы с памятью
 
 #### Симптомы
+
 ```
 Error: JavaScript heap out of memory
 ```
 
 #### Решения
+
 ```bash
 # Увеличение лимита памяти
 export NODE_OPTIONS="--max-old-space-size=4096"
@@ -244,11 +265,13 @@ export NODE_OPTIONS="--max-old-space-size=4096"
 ### Ошибки сборки Docker
 
 #### Симптомы
+
 ```
 Error: failed to solve: failed to compute cache key
 ```
 
 #### Решения
+
 ```bash
 # Очистка Docker кэша
 docker system prune -a
@@ -263,12 +286,14 @@ docker volume prune
 ### Проблемы с Docker Compose
 
 #### Симптомы
+
 ```
 Error: network not found
 Error: service not found
 ```
 
 #### Решения
+
 ```bash
 # Остановка и удаление контейнеров
 docker-compose down -v
@@ -285,12 +310,14 @@ docker-compose up -d
 ### Ошибки сборки
 
 #### Симптомы
+
 ```
 Error: Module not found
 Error: Cannot resolve module
 ```
 
 #### Решения
+
 ```bash
 # Очистка кэша Next.js
 rm -rf .next
@@ -306,11 +333,13 @@ npm run type-check
 ### Ошибки импортов
 
 #### Симптомы
+
 ```
 Error: Cannot resolve '@/' in '/src/app/page.tsx'
 ```
 
 #### Решения
+
 ```json
 // tsconfig.json
 {
@@ -328,12 +357,14 @@ Error: Cannot resolve '@/' in '/src/app/page.tsx'
 ### Ошибки Jest
 
 #### Симптомы
+
 ```
 Error: Cannot find module
 Error: Test environment setup failed
 ```
 
 #### Решения
+
 ```bash
 # Очистка кэша Jest
 npm test -- --clearCache
@@ -345,12 +376,14 @@ npm install --save-dev jest @testing-library/react
 ### Ошибки Playwright
 
 #### Симптомы
+
 ```
 Error: Browser not found
 Error: Test timeout
 ```
 
 #### Решения
+
 ```bash
 # Установка браузеров
 npx playwright install
@@ -364,12 +397,14 @@ npx playwright install-deps
 ### Ошибки CI/CD
 
 #### Симптомы
+
 ```
 Error: Build failed
 Error: Test failed
 ```
 
 #### Решения
+
 ```yaml
 # .github/workflows/ci.yml
 name: CI
@@ -383,8 +418,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: "18"
+          cache: "npm"
       - name: Install dependencies
         run: npm ci
       - name: Run tests
@@ -394,12 +429,14 @@ jobs:
 ### Ошибки production
 
 #### Симптомы
+
 ```
 Error: 500 Internal Server Error
 Error: Database connection failed
 ```
 
 #### Решения
+
 ```bash
 # Проверка логов
 docker logs rolled-metal_app
@@ -433,18 +470,18 @@ docker-compose exec postgres psql -U user -d rolled_metal_dev
 
 ```typescript
 // Настройка логирования
-import winston from 'winston';
+import winston from "winston";
 
 const logger = winston.createLogger({
-  level: 'info',
+  level: "info",
   format: winston.format.combine(
     winston.format.timestamp(),
     winston.format.errors({ stack: true }),
     winston.format.json()
   ),
   transports: [
-    new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log' })
-  ]
+    new winston.transports.File({ filename: "error.log", level: "error" }),
+    new winston.transports.File({ filename: "combined.log" }),
+  ],
 });
 ```

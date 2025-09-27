@@ -1,0 +1,18 @@
+{
+  "src": "src",
+  "ignore": [
+    "**/*.test.{js,jsx,ts,tsx}",
+    "**/*.spec.{js,jsx,ts,tsx}",
+    "**/*.stories.{js,jsx,ts,tsx}",
+    "**/node_modules/**",
+    "**/.next/**",
+    "**/out/**",
+    "**/build/**",
+    "**/dist/**"
+  ],
+  "rules": {
+    "layer-imports": "error",
+    "public-api": "error",
+    "relative-path": "error"
+  }
+}

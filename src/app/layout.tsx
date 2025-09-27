@@ -3,7 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Каталог металлопроката",
-  description: "Автоматический каталог товаров с парсингом данных с bvb-alyans.ru",
+  description:
+    "Автоматический каталог товаров с парсингом данных с bvb-alyans.ru",
 };
 
 export default function RootLayout({
@@ -13,9 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

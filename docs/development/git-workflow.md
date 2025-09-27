@@ -76,9 +76,10 @@ Scope указывает на конкретную часть кодовой б�
 Breaking changes могут быть обозначены двумя способами:
 
 1. **В footer секции:**
+
    ```
    feat: allow provided config object to extend other configs
-   
+
    BREAKING CHANGE: `extends` key in config file is now used for extending other config files
    ```
 
@@ -234,11 +235,13 @@ module.exports = {
 ### Процесс разработки
 
 1. **Создание feature branch**
+
    ```bash
    git checkout -b feat/product-search
    ```
 
 2. **Коммиты в процессе разработки**
+
    ```bash
    feat(entities): add product search model
    feat(api): implement search endpoint
@@ -247,6 +250,7 @@ module.exports = {
    ```
 
 3. **Squash коммитов перед merge**
+
    ```bash
    git rebase -i HEAD~3
    # Выбрать squash для объединения коммитов
@@ -296,7 +300,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
       - name: Install dependencies
         run: npm ci
       - name: Lint commit messages
@@ -308,28 +312,31 @@ jobs:
 ### Частые ошибки
 
 1. **Неправильный type**
+
    ```bash
    # Неправильно
    git commit -m "added new feature"
-   
+
    # Правильно
    git commit -m "feat: add new feature"
    ```
 
 2. **Заглавная буква в description**
+
    ```bash
    # Неправильно
    git commit -m "feat: Add new feature"
-   
+
    # Правильно
    git commit -m "feat: add new feature"
    ```
 
 3. **Отсутствие scope для FSD**
+
    ```bash
    # Неправильно
    git commit -m "feat: add product component"
-   
+
    # Правильно
    git commit -m "feat(entities): add product component"
    ```
@@ -356,4 +363,4 @@ git push --force-with-lease origin feature-branch
 
 ---
 
-*Последнее обновление: $(date)*
+_Последнее обновление: $(date)_

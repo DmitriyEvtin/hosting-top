@@ -1,4 +1,10 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/shared/ui";
 
 export function HomePage() {
   return (
@@ -9,7 +15,7 @@ export function HomePage() {
           Автоматический каталог товаров с парсингом данных
         </p>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Card>
           <CardHeader>
@@ -20,11 +26,12 @@ export function HomePage() {
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground">
-              Система автоматически парсит данные о товарах, категориях и изображениях
+              Система автоматически парсит данные о товарах, категориях и
+              изображениях
             </p>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>Управление товарами</CardTitle>
@@ -38,7 +45,7 @@ export function HomePage() {
             </p>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>Облачное хранение</CardTitle>

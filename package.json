@@ -6,7 +6,13 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "steiger": "steiger",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -27,7 +33,12 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
     "postcss": "^8.5.6",
+    "prettier": "^3.4.2",
     "steiger": "^0.5.11",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"

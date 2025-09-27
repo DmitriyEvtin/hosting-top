@@ -27,6 +27,7 @@ docker/
 ## Production Dockerfile
 
 ### Node.js приложение
+
 ```dockerfile
 # docker/production/node/Dockerfile
 FROM node:18-alpine AS base
@@ -81,6 +82,7 @@ CMD ["node", "server.js"]
 ```
 
 ### Nginx конфигурация
+
 ```dockerfile
 # docker/production/nginx/Dockerfile
 FROM nginx:alpine
@@ -102,6 +104,7 @@ CMD ["nginx", "-g", "daemon off;"]
 ## Nginx конфигурация
 
 ### Основная конфигурация
+
 ```nginx
 # docker/common/nginx/conf.d/default.conf
 upstream app {
@@ -111,37 +114,37 @@ upstream app {
 server {
     listen 80;
     server_name _;
-    
+
     # Логирование
     access_log /var/log/nginx/access.log;
     error_log /var/log/nginx/error.log;
-    
+
     # Сжатие
     gzip on;
     gzip_vary on;
     gzip_min_length 1024;
     gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json;
-    
+
     # Безопасность
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header X-XSS-Protection "1; mode=block" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-    
+
     # Статические файлы
     location /_next/static/ {
         alias /app/.next/static/;
         expires 1y;
         add_header Cache-Control "public, immutable";
     }
-    
+
     # Изображения
     location /images/ {
         proxy_pass https://s3.amazonaws.com/your-bucket/;
         expires 1y;
         add_header Cache-Control "public, immutable";
     }
-    
+
     # API routes
     location /api/ {
         proxy_pass http://app;
@@ -154,7 +157,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_cache_bypass $http_upgrade;
     }
-    
+
     # Основное приложение
     location / {
         proxy_pass http://app;
@@ -173,8 +176,9 @@ server {
 ## Development Docker Compose
 
 ### docker-compose.dev.yml
+
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   app:
@@ -241,8 +245,9 @@ volumes:
 ## Production Docker Compose
 
 ### docker-compose.prod.yml
+
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   app:
@@ -319,6 +324,7 @@ volumes:
 ## Multi-stage сборка
 
 ### Оптимизированный Dockerfile
+
 ```dockerfile
 # Multi-stage build для оптимизации размера образа
 FROM node:18-alpine AS base
@@ -375,6 +381,7 @@ CMD ["npm", "start"]
 ## Health Checks
 
 ### Конфигурация health checks
+
 ```dockerfile
 # Добавление health check в Dockerfile
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
@@ -382,31 +389,35 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 ```
 
 ### Health check endpoint
+
 ```typescript
 // src/app/api/health/route.ts
-import { NextResponse } from 'next/server';
-import { prisma } from '@/shared/api/database/prisma';
+import { NextResponse } from "next/server";
+import { prisma } from "@/shared/api/database/prisma";
 
 export async function GET() {
   try {
     // Проверка подключения к БД
     await prisma.$queryRaw`SELECT 1`;
-    
+
     return NextResponse.json({
-      status: 'healthy',
+      status: "healthy",
       timestamp: new Date().toISOString(),
       services: {
-        database: 'connected',
-        redis: 'connected',
-        s3: 'connected'
-      }
+        database: "connected",
+        redis: "connected",
+        s3: "connected",
+      },
     });
   } catch (error) {
-    return NextResponse.json({
-      status: 'unhealthy',
-      timestamp: new Date().toISOString(),
-      error: error.message
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        status: "unhealthy",
+        timestamp: new Date().toISOString(),
+        error: error.message,
+      },
+      { status: 500 }
+    );
   }
 }
 ```
@@ -414,6 +425,7 @@ export async function GET() {
 ## Оптимизация образов
 
 ### .dockerignore
+
 ```dockerignore
 node_modules
 npm-debug.log
@@ -435,6 +447,7 @@ tests
 ```
 
 ### Оптимизация размера
+
 ```dockerfile
 # Использование Alpine Linux для меньшего размера
 FROM node:18-alpine
@@ -456,6 +469,7 @@ RUN npm prune --production
 ## Мониторинг контейнеров
 
 ### Логирование
+
 ```yaml
 # docker-compose.yml
 services:
@@ -468,6 +482,7 @@ services:
 ```
 
 ### Метрики
+
 ```dockerfile
 # Добавление метрик в Dockerfile
 EXPOSE 9090
@@ -479,6 +494,7 @@ ENV PROMETHEUS_METRICS=true
 ## Безопасность
 
 ### Безопасный Dockerfile
+
 ```dockerfile
 # Использование non-root пользователя
 RUN adduser --disabled-password --gecos '' appuser
@@ -500,6 +516,7 @@ ENV NPM_CONFIG_PRODUCTION=true
 ```
 
 ### Сканирование уязвимостей
+
 ```bash
 # Сканирование образа на уязвимости
 docker scan rolled-metal:latest
@@ -512,6 +529,7 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
 ## Развертывание
 
 ### Docker Swarm
+
 ```bash
 # Инициализация Swarm
 docker swarm init
@@ -524,9 +542,10 @@ docker service scale rolled-metal_app=3
 ```
 
 ### Portainer
+
 ```yaml
 # portainer-stack.yml
-version: '3.8'
+version: "3.8"
 services:
   portainer:
     image: portainer/portainer-ce:latest

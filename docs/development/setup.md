@@ -5,6 +5,7 @@
 ## Требования к системе
 
 ### Минимальные требования
+
 - **Node.js**: 18.17.0 или выше
 - **npm**: 9.0.0 или выше
 - **PostgreSQL**: 14.0 или выше
@@ -12,6 +13,7 @@
 - **Docker**: 20.10 или выше (для контейнеризации)
 
 ### Рекомендуемые требования
+
 - **Node.js**: 20.0.0 или выше
 - **RAM**: 8GB или больше
 - **CPU**: 4 ядра или больше
@@ -20,17 +22,20 @@
 ## Установка зависимостей
 
 ### 1. Клонирование репозитория
+
 ```bash
 git clone <repository-url>
 cd rolled-metal
 ```
 
 ### 2. Установка Node.js зависимостей
+
 ```bash
 npm install
 ```
 
 ### 3. Установка глобальных зависимостей
+
 ```bash
 # Prisma CLI
 npm install -g prisma
@@ -44,12 +49,14 @@ npm install -g prisma
 ### 1. Установка PostgreSQL
 
 #### macOS (с Homebrew)
+
 ```bash
 brew install postgresql
 brew services start postgresql
 ```
 
 #### Ubuntu/Debian
+
 ```bash
 sudo apt update
 sudo apt install postgresql postgresql-contrib
@@ -58,9 +65,11 @@ sudo systemctl enable postgresql
 ```
 
 #### Windows
+
 Скачайте и установите с официального сайта: https://www.postgresql.org/download/windows/
 
 ### 2. Создание базы данных
+
 ```bash
 # Подключение к PostgreSQL
 psql -U postgres
@@ -76,6 +85,7 @@ GRANT ALL PRIVILEGES ON DATABASE rolled_metal_test TO rolled_metal_user;
 ```
 
 ### 3. Настройка Prisma
+
 ```bash
 # Генерация Prisma клиента
 npx prisma generate
@@ -90,11 +100,13 @@ npx prisma db seed
 ## Настройка переменных окружения
 
 ### 1. Создание .env файла
+
 ```bash
 cp .env.example .env
 ```
 
 ### 2. Настройка переменных
+
 ```env
 # База данных
 DATABASE_URL="postgresql://rolled_metal_user:your_password@localhost:5432/rolled_metal_dev"
@@ -122,6 +134,7 @@ MAX_CONCURRENT_REQUESTS="5"
 ## Настройка AWS S3
 
 ### 1. Создание S3 bucket
+
 ```bash
 # Установка AWS CLI
 npm install -g aws-cli
@@ -134,6 +147,7 @@ aws s3 mb s3://your-bucket-name --region us-east-1
 ```
 
 ### 2. Настройка CORS для S3
+
 ```json
 {
   "CORSRules": [
@@ -150,9 +164,10 @@ aws s3 mb s3://your-bucket-name --region us-east-1
 ## Настройка Docker (опционально)
 
 ### 1. Docker Compose для разработки
+
 ```yaml
 # docker-compose.dev.yml
-version: '3.8'
+version: "3.8"
 services:
   postgres:
     image: postgres:14
@@ -188,6 +203,7 @@ volumes:
 ```
 
 ### 2. Запуск сервисов
+
 ```bash
 docker-compose -f docker-compose.dev.yml up -d
 ```
@@ -195,6 +211,7 @@ docker-compose -f docker-compose.dev.yml up -d
 ## Настройка IDE
 
 ### VS Code расширения
+
 ```json
 {
   "recommendations": [
@@ -209,6 +226,7 @@ docker-compose -f docker-compose.dev.yml up -d
 ```
 
 ### Настройки VS Code
+
 ```json
 {
   "editor.formatOnSave": true,
@@ -227,26 +245,31 @@ docker-compose -f docker-compose.dev.yml up -d
 ## Проверка установки
 
 ### 1. Запуск приложения
+
 ```bash
 npm run dev
 ```
 
 ### 2. Проверка базы данных
+
 ```bash
 npx prisma studio
 ```
 
 ### 3. Запуск тестов
+
 ```bash
 npm test
 ```
 
 ### 4. Проверка линтинга
+
 ```bash
 npm run lint
 ```
 
 ### 5. Проверка FSD архитектуры
+
 ```bash
 # Проверка соблюдения правил FSD
 npx steiger ./src
@@ -260,6 +283,7 @@ npm run lint:fsd
 ### Частые проблемы
 
 #### Ошибка подключения к БД
+
 ```bash
 # Проверка статуса PostgreSQL
 brew services list | grep postgresql
@@ -269,6 +293,7 @@ brew services restart postgresql
 ```
 
 #### Ошибки Prisma
+
 ```bash
 # Очистка и перегенерация
 npx prisma generate
@@ -276,6 +301,7 @@ npx prisma db push
 ```
 
 #### Проблемы с Node.js
+
 ```bash
 # Очистка кэша
 npm cache clean --force
@@ -284,6 +310,7 @@ npm install
 ```
 
 #### Проблемы с Docker
+
 ```bash
 # Очистка Docker
 docker system prune -a
@@ -294,6 +321,7 @@ docker-compose up -d
 ## Дополнительные инструменты
 
 ### Полезные команды
+
 ```bash
 # Анализ bundle
 npm run build
@@ -310,6 +338,7 @@ npm run lint:fsd
 ```
 
 ### 6. Проверка FSD архитектуры с Steiger
+
 ```bash
 # Прямой запуск Steiger
 npx steiger ./src
@@ -322,6 +351,7 @@ npx steiger ./src/pages ./src/widgets
 ```
 
 ### Полезные расширения
+
 - **Thunder Client** - Тестирование API
 - **REST Client** - HTTP запросы
 - **GitLens** - Git интеграция
