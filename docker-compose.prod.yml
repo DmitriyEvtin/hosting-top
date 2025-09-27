@@ -7,11 +7,12 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-rolled_metal}
       POSTGRES_USER: ${POSTGRES_USER:-rolled_metal_user}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rolled_metal_password}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./docker/postgres/init:/docker-entrypoint-initdb.d
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
     networks:
       - rolled-metal-network
     healthcheck:
@@ -23,6 +24,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+      start_period: 30s
 
   redis:
     image: redis:7-alpine
@@ -34,16 +36,16 @@ services:
       - redis_data:/data
     networks:
       - rolled-metal-network
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 30s
       timeout: 10s
       retries: 3
+      start_period: 30s
 
   app:
-    build:
-      context: .
-      dockerfile: ./docker/production/node/Dockerfile
+    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-rolled_metal}-app:${IMAGE_TAG:-latest}
     container_name: rolled-metal-app-prod
     restart: unless-stopped
     environment:
@@ -74,9 +76,7 @@ services:
       start_period: 40s
 
   nginx:
-    build:
-      context: .
-      dockerfile: ./docker/production/nginx/Dockerfile
+    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-rolled_metal}-nginx:${IMAGE_TAG:-latest}
     container_name: rolled-metal-nginx-prod
     restart: unless-stopped
     ports:
@@ -87,20 +87,30 @@ services:
     depends_on:
       app:
         condition: service_healthy
-    # healthcheck настроен в Dockerfile, но можно переопределить при необходимости
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost/health"]
-    #   interval: 5s
-    #   timeout: 3s
-    #   retries: 3
-    #   start_period: 1s
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 1s
 
 volumes:
   postgres_data:
     driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/lib/docker/volumes/rolled-metal-postgres-data
   redis_data:
     driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/lib/docker/volumes/rolled-metal-redis-data
 
 networks:
   rolled-metal-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
