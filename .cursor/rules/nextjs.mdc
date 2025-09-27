@@ -45,6 +45,12 @@ Follow Next.js best practices and conventions for building modern React applicat
 └── src/                          # FSD layers
     ├── app/                      #Next.js App Router + FSD App layer
     ├── pages/                    # FSD Pages layer
+    │   └── home/                 # Home page slice
+    │       ├── ui/
+    │       │    └── ComponentName/         
+    │       │       └── ComponentName.tsx
+    │       │       └── index.ts
+    │       └── index.ts
     ├── widgets/                  # Widgets layer
     ├── features/                 # Features layer
     ├── entities/                 # Entities layer

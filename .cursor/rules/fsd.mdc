@@ -45,6 +45,9 @@ Organize code within slices/layers by technical purpose:
     ├── pages/                    # FSD Pages layer
     │   └── home/                 # Home page slice
     │       ├── ui/
+    │       │    └── ComponentName/         
+    │       │       └── ComponentName.tsx
+    │       │       └── index.ts
     │       └── index.ts
     └── shared/                   # Shared layer (create when needed)
         ├── ui/                   # Shared UI components
