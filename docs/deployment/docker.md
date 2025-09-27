@@ -4,102 +4,131 @@
 
 ## Архитектура контейнеризации
 
-Проект использует Docker для контейнеризации приложения с поддержкой как development, так и production окружений.
+Проект использует Docker для контейнеризации приложения с поддержкой как development, так и production окружений. Используется многоэтапная сборка для оптимизации размера образов и безопасности.
 
 ## Структура Docker файлов
 
 ```
 docker/
-├── production/
+├── production/           # Production Dockerfile'ы
 │   ├── nginx/
-│   │   └── Dockerfile
+│   │   └── Dockerfile    # Nginx reverse proxy
 │   └── node/
-│       └── Dockerfile
-├── common/
+│       └── Dockerfile    # Next.js приложение
+├── common/               # Общие конфигурации
 │   └── nginx/
 │       └── conf.d/
-│           └── default.conf
-└── development/
-    └── nginx/
-        └── Dockerfile
+│           └── default.conf  # Nginx конфигурация
+└── postgres/            # PostgreSQL инициализация
+    └── init/
+        └── 01-init.sql  # SQL скрипты инициализации
 ```
+
+## Makefile команды
+
+Проект использует Makefile для автоматизации сборки и развертывания Docker образов:
+
+```makefile
+# Основные команды
+try-build    # Тестовая сборка с локальными тегами
+build        # Сборка всех образов (frontend + nextjs)
+build-frontend  # Сборка Nginx образа
+build-nextjs    # Сборка Next.js образа
+push         # Отправка образов в registry
+down         # Остановка и удаление контейнеров
+```
+
+### Переменные окружения для сборки
+
+- `REGISTRY` - Docker registry (по умолчанию localhost)
+- `FRONT_IMAGE_NAME` - Имя образа для frontend (по умолчанию front-image)
+- `FRONT_IMAGE_TAG` - Тег образа для frontend (по умолчанию 0)
+- `NEXT_IMAGE_NAME` - Имя образа для Next.js (по умолчанию next-image)
+- `NEXT_IMAGE_TAG` - Тег образа для Next.js (по умолчанию 0)
 
 ## Production Dockerfile
 
-### Node.js приложение
+### Node.js приложение (Next.js)
 
 ```dockerfile
 # docker/production/node/Dockerfile
-FROM node:18-alpine AS base
+# Базовый образ для всех стадий
+FROM node:24-alpine AS base
 
-# Установка зависимостей только для production
+# Стадия установки зависимостей
 FROM base AS deps
+# Установка libc6-compat для совместимости
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production && npm cache clean --force
 
-# Сборка приложения
+# Копируем файлы зависимостей
+COPY package*.json ./
+COPY yarn.lock* ./
+COPY pnpm-lock.yaml* ./
+COPY .npmrc* ./
+
+# Устанавливаем зависимости
+RUN npm install --force
+
+# Стадия сборки
 FROM base AS builder
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
+# Собираем приложение
 RUN npm run build
 
-# Production образ
+# Стадия запуска
 FROM base AS runner
 WORKDIR /app
 
-# Создание пользователя для безопасности
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+# Создаем non-root пользователя для безопасности
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
 
-# Копирование файлов
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Копируем собранное приложение
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 
-# Установка Puppeteer зависимостей
-RUN apk add --no-cache \
-    chromium \
-    nss \
-    freetype \
-    freetype-dev \
-    harfbuzz \
-    ca-certificates \
-    ttf-freefont
-
-# Настройка Puppeteer
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-
+# Переключаемся на non-root пользователя
 USER nextjs
-EXPOSE 3000
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
 
-CMD ["node", "server.js"]
+# Открываем порт
+EXPOSE 3000
+
+# Запускаем приложение
+CMD ["node_modules/.bin/next", "start"]
 ```
+
+**Особенности реализации:**
+
+- **Multi-stage сборка**: Оптимизация размера образа через отдельные стадии
+- **Безопасность**: Использование non-root пользователя `nextjs`
+- **Совместимость**: Установка `libc6-compat` для Alpine Linux
+- **Гибкость**: Поддержка различных менеджеров пакетов (npm, yarn, pnpm)
 
 ### Nginx конфигурация
 
 ```dockerfile
 # docker/production/nginx/Dockerfile
-FROM nginx:alpine
+FROM nginx:1.22-alpine
 
-# Копирование конфигурации
-COPY docker/common/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+RUN apk add --no-cache curl
 
-# Создание директорий для логов
-RUN mkdir -p /var/log/nginx
+COPY ./docker/common/nginx/conf.d /etc/nginx/conf.d
 
-# Установка прав
-RUN chown -R nginx:nginx /var/log/nginx
+WORKDIR /app
 
-EXPOSE 80 443
-
-CMD ["nginx", "-g", "daemon off;"]
+HEALTHCHECK --interval=5s --timeout=3s --start-period=1s CMD curl --fail http://127.0.0.1/health || exit 1
 ```
+
+**Особенности реализации:**
+
+- **Health Check**: Встроенная проверка здоровья контейнера
+- **Curl**: Установка curl для health check
+- **Конфигурация**: Использование общей конфигурации из `docker/common/nginx/conf.d`
 
 ## Nginx конфигурация
 
@@ -107,139 +136,224 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ```nginx
 # docker/common/nginx/conf.d/default.conf
-upstream app {
-    server app:3000;
-}
-
 server {
     listen 80;
-    server_name _;
+    charset utf-8;
+    root /app/public;
+    server_tokens off;
 
-    # Логирование
-    access_log /var/log/nginx/access.log;
-    error_log /var/log/nginx/error.log;
+    resolver 127.0.0.11 ipv6=off;
 
-    # Сжатие
-    gzip on;
-    gzip_vary on;
-    gzip_min_length 1024;
-    gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json;
+    add_header X-Frame-Options "SAMEORIGIN";
 
-    # Безопасность
-    add_header X-Frame-Options "SAMEORIGIN" always;
-    add_header X-Content-Type-Options "nosniff" always;
-    add_header X-XSS-Protection "1; mode=block" always;
-    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-
-    # Статические файлы
-    location /_next/static/ {
-        alias /app/.next/static/;
-        expires 1y;
-        add_header Cache-Control "public, immutable";
+    location /health {
+        add_header Content-Type text/plain;
+        return 200 'alive';
     }
 
-    # Изображения
-    location /images/ {
-        proxy_pass https://s3.amazonaws.com/your-bucket/;
-        expires 1y;
-        add_header Cache-Control "public, immutable";
+    location /_next/webpack-hmr {
+        set $upstream http://frontend-node:3000;
+        proxy_set_header  Host $host;
+        proxy_set_header  Upgrade $http_upgrade;
+        proxy_set_header  Connection "Upgrade";
+        proxy_pass        $upstream;
+        proxy_redirect    off;
     }
 
-    # API routes
-    location /api/ {
-        proxy_pass http://app;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_cache_bypass $http_upgrade;
+    location /sockjs-node {
+        set $upstream http://frontend-node:3000;
+        proxy_set_header  Host $host;
+        proxy_set_header  Upgrade $http_upgrade;
+        proxy_set_header  Connection "Upgrade";
+        proxy_pass        $upstream;
+        proxy_redirect    off;
     }
 
-    # Основное приложение
     location / {
-        proxy_pass http://app;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_cache_bypass $http_upgrade;
+        set $upstream http://frontend-node:3000;
+        proxy_set_header  Host $host;
+        proxy_pass        $upstream;
+        proxy_redirect    off;
     }
 }
 ```
 
-## Development Docker Compose
+**Особенности конфигурации:**
 
-### docker-compose.dev.yml
+- **Health Check**: Эндпоинт `/health` для проверки состояния
+- **Hot Reload**: Поддержка Webpack HMR для разработки
+- **WebSocket**: Поддержка WebSocket соединений через `/sockjs-node`
+- **Upstream**: Проксирование на `frontend-node:3000`
+- **Безопасность**: Отключение server tokens и настройка заголовков
+
+## Docker Compose конфигурация
+
+### Основной docker-compose.yml
 
 ```yaml
+# docker-compose.yml
 version: "3.8"
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: docker/development/Dockerfile
-    ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=development
-      - DATABASE_URL=postgresql://user:password@postgres:5432/rolled_metal_dev
-      - REDIS_URL=redis://redis:6379
-    volumes:
-      - .:/app
-      - /app/node_modules
-    depends_on:
-      - postgres
-      - redis
-    command: npm run dev
-
   postgres:
-    image: postgres:14-alpine
+    image: postgres:15-alpine
+    container_name: rolled-metal-postgres
+    restart: unless-stopped
     environment:
-      POSTGRES_DB: rolled_metal_dev
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: rolled_metal
+      POSTGRES_USER: rolled_metal_user
+      POSTGRES_PASSWORD: rolled_metal_password
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d
+    networks:
+      - rolled-metal-network
 
   redis:
-    image: redis:6-alpine
+    image: redis:7-alpine
+    container_name: rolled-metal-redis
+    restart: unless-stopped
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data
+    networks:
+      - rolled-metal-network
 
-  minio:
-    image: minio/minio:latest
-    command: server /data --console-address ":9001"
-    environment:
-      MINIO_ACCESS_KEY: minioadmin
-      MINIO_SECRET_KEY: minioadmin
+  adminer:
+    image: adminer:4.8.1
+    container_name: rolled-metal-adminer
+    restart: unless-stopped
     ports:
-      - "9000:9000"
-      - "9001:9001"
-    volumes:
-      - minio_data:/data
-
-  mailhog:
-    image: mailhog/mailhog:latest
-    ports:
-      - "1025:1025"
-      - "8025:8025"
+      - "8080:8080"
+    networks:
+      - rolled-metal-network
+    depends_on:
+      - postgres
 
 volumes:
   postgres_data:
   redis_data:
-  minio_data:
+
+networks:
+  rolled-metal-network:
+    driver: bridge
+```
+
+**Особенности конфигурации:**
+
+- **PostgreSQL 15**: Последняя стабильная версия с Alpine Linux
+- **Redis 7**: Последняя версия Redis для кэширования
+- **Adminer**: Веб-интерфейс для управления базой данных
+- **Сеть**: Изолированная сеть `rolled-metal-network`
+- **Инициализация**: Автоматическая инициализация БД через SQL скрипты
+
+## PostgreSQL инициализация
+
+### SQL скрипт инициализации
+
+```sql
+-- docker/postgres/init/01-init.sql
+-- Инициализация базы данных для проекта "Каталог металлопроката"
+-- Создание расширений для работы с JSON и полнотекстовым поиском
+
+-- Включаем расширения для работы с JSON
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "pg_trgm";
+
+-- Создаем схему для приложения (опционально, можно использовать public)
+-- CREATE SCHEMA IF NOT EXISTS rolled_metal;
+
+-- Настройки для оптимизации производительности
+ALTER SYSTEM SET shared_preload_libraries = 'pg_stat_statements';
+ALTER SYSTEM SET track_activity_query_size = 2048;
+ALTER SYSTEM SET pg_stat_statements.track = 'all';
+
+-- Перезагружаем конфигурацию
+SELECT pg_reload_conf();
+```
+
+**Особенности инициализации:**
+
+- **UUID поддержка**: Расширение `uuid-ossp` для генерации UUID
+- **Полнотекстовый поиск**: Расширение `pg_trgm` для триграммного поиска
+- **Мониторинг**: Настройка `pg_stat_statements` для отслеживания производительности
+- **Производительность**: Оптимизация настроек PostgreSQL
+
+## Команды сборки и развертывания
+
+### Основные команды Makefile
+
+```bash
+# Тестовая сборка с локальными тегами
+make try-build
+
+# Сборка всех образов
+make build
+
+# Сборка отдельных образов
+make build-frontend  # Nginx образ
+make build-nextjs    # Next.js образ
+
+# Отправка образов в registry
+make push
+
+# Остановка контейнеров
+make down
+```
+
+### Переменные окружения
+
+```bash
+# Настройка registry и тегов
+export REGISTRY=your-registry.com
+export FRONT_IMAGE_NAME=rolled-metal-frontend
+export FRONT_IMAGE_TAG=latest
+export NEXT_IMAGE_NAME=rolled-metal-app
+export NEXT_IMAGE_TAG=latest
+
+# Сборка с кастомными параметрами
+REGISTRY=your-registry.com FRONT_IMAGE_TAG=v1.0.0 make build
+```
+
+### Docker Compose команды
+
+```bash
+# Запуск всех сервисов
+docker compose up -d
+
+# Запуск с пересборкой
+docker compose up --build -d
+
+# Просмотр логов
+docker compose logs -f
+
+# Остановка сервисов
+docker compose down
+
+# Остановка с удалением volumes
+docker compose down -v
+```
+
+### Полезные команды
+
+```bash
+# Просмотр статуса контейнеров
+docker compose ps
+
+# Подключение к базе данных
+docker compose exec postgres psql -U rolled_metal_user -d rolled_metal
+
+# Подключение к Redis
+docker compose exec redis redis-cli
+
+# Просмотр логов конкретного сервиса
+docker compose logs -f postgres
+
+# Перезапуск сервиса
+docker compose restart postgres
 ```
 
 ## Production Docker Compose
