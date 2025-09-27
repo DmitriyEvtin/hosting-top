@@ -48,6 +48,13 @@ test-docker:
 	docker compose -f docker-compose.prod.yml up -d
 	sleep 30
 	curl -f http://localhost/health || exit 1
+
+# Проверка конфигурации
+check-sentry:
+	node scripts/check-sentry.js
+
+check-config:
+	node scripts/check-config.js
 	docker compose -f docker-compose.prod.yml down
 
 # Очистка

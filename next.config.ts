@@ -1,3 +1,4 @@
+import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -32,4 +33,23 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Конфигурация Sentry
+const sentryWebpackPluginOptions = {
+  // Дополнительные настройки для Sentry
+  silent: true, // Отключаем логирование в консоль
+  org: process.env.SENTRY_ORG || "your-org",
+  project: process.env.SENTRY_PROJECT || "your-project",
+  
+  // Настройки для production
+  widenClientFileUpload: true,
+  hideSourceMaps: true,
+  disableLogger: true,
+  
+  // Настройки для мониторинга
+  tunnelRoute: "/monitoring",
+  tunnelRouteOptions: {
+    // Настройки для туннелирования
+  },
+};
+
+export default withSentryConfig(nextConfig, sentryWebpackPluginOptions);
