@@ -398,6 +398,90 @@ console.log("Sentry Debug:", process.env.SENTRY_DEBUG);
 4. **Performance мониторинг**: Отслеживайте критические метрики производительности
 5. **Регулярный анализ**: Анализируйте данные для улучшения системы
 
+## Docker Compose для мониторинга
+
+### Обзор стека мониторинга
+
+Проект включает полный стек мониторинга с использованием Docker Compose:
+
+- **Grafana Loki** - Сбор и хранение логов
+- **Promtail** - Агент для отправки логов в Loki (временно отключен)
+- **Grafana** - Визуализация и дашборды
+- **GoAccess** - Анализ access логов в реальном времени (временно отключен)
+
+**Важно**: Вся конфигурация встроена в `docker-compose.monitoring.yml` и не требует внешних файлов из папки `monitoring/`.
+
+### Запуск мониторинга
+
+```bash
+# Запуск стека мониторинга
+docker-compose -f docker-compose.monitoring.yml up -d
+
+# Проверка статуса
+docker-compose -f docker-compose.monitoring.yml ps
+
+# Просмотр логов
+docker-compose -f docker-compose.monitoring.yml logs -f
+```
+
+### Доступ к сервисам
+
+- **Grafana**: http://localhost:3001 (admin/admin123)
+- **Loki**: http://localhost:3100
+- **Promtail**: Временно отключен (проблемы с конфигурацией)
+- **GoAccess**: Временно отключен (проблемы с конфигурацией)
+
+### Конфигурация GoAccess
+
+GoAccess настроен для анализа логов Traefik с поддержкой:
+
+- Real-time HTML отчетов
+- WebSocket соединений
+- Формат логов COMBINED
+- Автоматическое обновление данных
+
+### Интеграция с Traefik
+
+Мониторинг интегрирован с Traefik через общий volume `traefik-logs`:
+
+- Автоматический сбор access логов
+- Real-time анализ трафика
+- Визуализация метрик производительности
+
+### Troubleshooting мониторинга
+
+#### Проблемы с образами Docker
+
+Если возникают ошибки с загрузкой образов:
+
+```bash
+# Проверка доступности образов
+docker pull grafana/loki:2.9.0
+docker pull grafana/promtail:2.9.0
+docker pull grafana/grafana:10.2.0
+docker pull allinurl/goaccess:latest
+```
+
+#### Проблемы с volumes
+
+```bash
+# Создание внешнего volume для логов Traefik
+docker volume create traefik-logs
+
+# Проверка volumes
+docker volume ls
+```
+
+#### Проблемы с сетью
+
+```bash
+# Создание сети мониторинга
+docker network create monitoring
+
+# Проверка сетей
+docker network ls
+```
+
 ---
 
 _Документация по мониторингу и логированию обновлена: $(date)_

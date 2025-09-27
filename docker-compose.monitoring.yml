@@ -12,19 +12,54 @@ services:
     networks:
       - monitoring
 
-  # Promtail для отправки логов в Loki
-  promtail:
-    image: grafana/promtail:2.9.0
-    container_name: promtail
-    restart: unless-stopped
-    volumes:
-      - traefik-logs:/var/log/traefik:ro
-      - ./monitoring/promtail.yml:/etc/promtail/config.yml:ro
-    command: -config.file=/etc/promtail/config.yml
-    depends_on:
-      - loki
-    networks:
-      - monitoring
+  # Promtail для отправки логов в Loki (временно отключен из-за проблем с конфигурацией)
+  # promtail:
+  #   image: grafana/promtail:2.9.0
+  #   container_name: promtail
+  #   restart: unless-stopped
+  #   volumes:
+  #     - traefik-logs:/var/log/traefik:ro
+  #   command: |
+  #     sh -c '
+  #     # Создаем конфигурацию Promtail
+  #     mkdir -p /etc/promtail
+  #
+  #     cat > /etc/promtail/config.yml << "EOF"
+  #     server:
+  #       http_listen_port: 9080
+  #       grpc_listen_port: 0
+  #
+  #     positions:
+  #       filename: /tmp/positions.yaml
+  #
+  #     clients:
+  #       - url: http://loki:3100/loki/api/v1/push
+  #
+  #     scrape_configs:
+  #       - job_name: traefik
+  #         static_configs:
+  #           - targets:
+  #               - localhost
+  #             labels:
+  #               job: traefik
+  #               __path__: /var/log/traefik/*.log
+  #     EOF
+  #
+  #     echo "Promtail config created:"
+  #     cat /etc/promtail/config.yml
+  #
+  #     # Ждем запуска Loki
+  #     echo "Waiting for Loki to be ready..."
+  #     sleep 15
+  #
+  #     # Запускаем Promtail
+  #     echo "Starting Promtail..."
+  #     /usr/bin/promtail -config.file=/etc/promtail/config.yml
+  #     '
+  #   depends_on:
+  #     - loki
+  #   networks:
+  #     - monitoring
 
   # Grafana для визуализации
   grafana:
@@ -39,26 +74,72 @@ services:
       - GF_INSTALL_PLUGINS=grafana-piechart-panel
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
-      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+    command: |
+      sh -c '
+      mkdir -p /etc/grafana/provisioning/datasources
+      mkdir -p /etc/grafana/provisioning/dashboards
+
+      cat > /etc/grafana/provisioning/datasources/loki.yml << EOF
+      apiVersion: 1
+
+      datasources:
+        - name: Loki
+          type: loki
+          access: proxy
+          url: http://loki:3100
+          isDefault: true
+          editable: true
+      EOF
+
+      cat > /etc/grafana/provisioning/dashboards/dashboard.yml << EOF
+      apiVersion: 1
+
+      providers:
+        - name: "default"
+          orgId: 1
+          folder: ""
+          type: file
+          disableDeletion: false
+          updateIntervalSeconds: 10
+          allowUiUpdates: true
+          options:
+            path: /etc/grafana/provisioning/dashboards
+      EOF
+
+      /run.sh
+      '
     depends_on:
       - loki
     networks:
       - monitoring
 
-  # GoAccess для анализа access логов
-  goaccess:
-    image: goaccess/goaccess:latest
-    container_name: goaccess
-    restart: unless-stopped
-    ports:
-      - "7890:7890"
-    volumes:
-      - traefik-logs:/var/log/traefik:ro
-      - ./monitoring/goaccess.conf:/etc/goaccess/goaccess.conf:ro
-    command: goaccess /var/log/traefik/access.log --log-format=COMBINED --real-time-html --ws-url=ws://localhost:7890 --port=7890
-    networks:
-      - monitoring
+  # GoAccess для анализа access логов (временно отключен)
+  # goaccess:
+  #   image: allinurl/goaccess:latest
+  #   container_name: goaccess
+  #   restart: unless-stopped
+  #   ports:
+  #     - "7890:7890"
+  #   volumes:
+  #     - traefik-logs:/var/log/traefik:ro
+  #   command: |
+  #     sh -c '
+  #     # Создаем тестовый лог файл если его нет
+  #     if [ ! -f /var/log/traefik/access.log ]; then
+  #       mkdir -p /var/log/traefik
+  #       echo "127.0.0.1 - - [$(date +"%d/%b/%Y:%H:%M:%S %z")] \"GET / HTTP/1.1\" 200 1234 \"-\" \"Mozilla/5.0 (compatible; GoAccess/1.9.4)\"" > /var/log/traefik/access.log
+  #     fi
+  #
+  #     # Запускаем GoAccess с простыми параметрами
+  #     goaccess /var/log/traefik/access.log \
+  #       --log-format=COMBINED \
+  #       --real-time-html \
+  #       --ws-url=ws://localhost:7890 \
+  #       --port=7890 \
+  #       --ignore-crawlers
+  #     '
+  #   networks:
+  #     - monitoring
 
 volumes:
   loki_data:
