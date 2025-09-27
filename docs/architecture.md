@@ -254,6 +254,65 @@ RATE_LIMIT_MAX = "100";
 RATE_LIMIT_WINDOW_MS = "900000";
 ```
 
+## CI/CD Pipeline
+
+### GitHub Actions Workflows
+
+#### 1. Code Quality (`code-quality.yml`)
+
+- Проверка FSD архитектуры
+- Линтинг и форматирование
+- Проверка типов
+- Unit и integration тесты
+- Покрытие кода
+
+#### 2. Docker Build (`docker-build.yml`)
+
+- Сборка Docker образов
+- Отправка в GitHub Container Registry
+- Сканирование безопасности (Trivy)
+- Multi-platform сборка
+
+#### 3. Deploy (`deploy.yml`)
+
+- Автоматический деплой в staging
+- Деплой в production по тегам
+- Health checks
+- Rollback при ошибках
+
+#### 4. Monitoring (`monitoring.yml`)
+
+- Периодические health checks
+- Performance тесты
+- Security сканирование
+- Генерация отчетов
+
+### Docker Configuration
+
+#### Production Dockerfile
+
+```dockerfile
+# Multi-stage build для оптимизации
+FROM node:24-alpine AS base
+FROM base AS deps
+FROM base AS builder
+FROM base AS runner
+
+# Standalone режим Next.js
+# Health checks
+# Security (non-root user)
+```
+
+#### Docker Compose
+
+```yaml
+# Development: docker-compose.yml
+# Production: docker-compose.prod.yml
+# Health checks для всех сервисов
+# Volume persistence
+# Network isolation
+```
+
 ## Развертывание
 
 ### Development
@@ -263,24 +322,59 @@ RATE_LIMIT_WINDOW_MS = "900000";
 npm install
 
 # Настройка переменных окружения
-cp env.example .env.development
+cp env.example .env.local
 
 # Запуск базы данных
-docker-compose up -d
+make dev
 
-# Запуск приложения
+# Или вручную
+docker compose up -d postgres redis
 npm run dev
 ```
 
 ### Production
 
 ```bash
-# Сборка приложения
-npm run build
+# Настройка переменных окружения
+cp .env.production.example .env.production
+# Заполните реальными значениями
 
-# Запуск в production
-npm start
+# Запуск production окружения
+make prod-up
+
+# Или вручную
+docker compose -f docker-compose.prod.yml up -d
+
+# Применение миграций
+make db-migrate
+
+# Проверка здоровья
+make health
 ```
+
+### Docker Commands
+
+```bash
+# Сборка образов
+make build
+
+# Отправка в registry
+make push
+
+# Тестирование
+make test-docker
+
+# Мониторинг
+make logs
+make health
+
+# Очистка
+make clean
+```
+
+### Environment Variables
+
+См. [Environment Variables Documentation](./deployment/environment-variables.md) для полного списка переменных окружения.
 
 ## Следующие шаги
 

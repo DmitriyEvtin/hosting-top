@@ -28,7 +28,9 @@
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:headed": "playwright test --headed",
     "test:all": "npm run test:ci && npm run test:e2e",
-    "test:setup": "playwright install"
+    "test:setup": "playwright install",
+    "config:check": "node scripts/check-config.js",
+    "config:validate": "npm run config:check && npm run type-check && npm run lint"
   },
   "dependencies": {
     "@aws-sdk/client-cloudfront": "^3.896.0",

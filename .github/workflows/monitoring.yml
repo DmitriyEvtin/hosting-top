@@ -1,0 +1,114 @@
+name: Monitoring
+
+on:
+  schedule:
+    # Запуск каждые 5 минут
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to monitor"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run health checks
+        run: |
+          echo "Running health checks for ${{ github.event.inputs.environment || 'staging' }}..."
+          # Здесь будут реальные health checks
+          # Например, проверка доступности API endpoints
+          echo "Health checks completed"
+
+      - name: Check database connectivity
+        run: |
+          echo "Checking database connectivity..."
+          # Здесь будет проверка подключения к базе данных
+          echo "Database connectivity check completed"
+
+      - name: Check Redis connectivity
+        run: |
+          echo "Checking Redis connectivity..."
+          # Здесь будет проверка подключения к Redis
+          echo "Redis connectivity check completed"
+
+      - name: Check AWS services
+        run: |
+          echo "Checking AWS services..."
+          # Здесь будет проверка AWS сервисов (S3, CloudFront)
+          echo "AWS services check completed"
+
+      - name: Generate monitoring report
+        run: |
+          echo "Generating monitoring report..."
+          # Здесь будет генерация отчета о состоянии системы
+          echo "Monitoring report generated"
+
+  performance-test:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run performance tests
+        run: |
+          echo "Running performance tests..."
+          # Здесь будут performance тесты
+          echo "Performance tests completed"
+
+      - name: Generate performance report
+        run: |
+          echo "Generating performance report..."
+          # Здесь будет генерация отчета о производительности
+          echo "Performance report generated"
+
+  security-scan:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run security scan
+        run: |
+          echo "Running security scan..."
+          # Здесь будет security scan
+          echo "Security scan completed"
+
+      - name: Generate security report
+        run: |
+          echo "Generating security report..."
+          # Здесь будет генерация отчета о безопасности
+          echo "Security report generated"

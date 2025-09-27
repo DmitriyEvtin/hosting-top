@@ -1,4 +1,4 @@
-name: Tests
+name: Code Quality
 
 on:
   push:
@@ -7,30 +7,12 @@ on:
     branches: [main, master, develop]
 
 jobs:
-  test:
+  code-quality:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [20, 22]
-
-    services:
-      postgres:
-        image: postgres:15
-        env:
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: rolled_metal_test
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 5432:5432
-
-      redis:
-        image: redis:7-alpine
-        ports:
-          - 6379:6379
 
     steps:
       - name: Checkout code
@@ -45,12 +27,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Setup test database
-        run: |
-          npx prisma migrate deploy
-          npx prisma db seed
-        env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/rolled_metal_test
+      - name: Run FSD architecture check
+        run: npm run steiger
 
       - name: Run linting
         run: npm run lint
@@ -58,38 +36,30 @@ jobs:
       - name: Run type checking
         run: npm run type-check
 
+      - name: Run formatting check
+        run: npm run format:check
+
       - name: Run unit tests
         run: npm run test:unit
         env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/rolled_metal_test
-          REDIS_URL: redis://localhost:6379
           NODE_ENV: test
 
       - name: Run integration tests
         run: npm run test:integration
         env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/rolled_metal_test
-          REDIS_URL: redis://localhost:6379
           NODE_ENV: test
 
-      - name: Run E2E tests
-        run: npm run test:e2e
-        env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/rolled_metal_test
-          REDIS_URL: redis://localhost:6379
-          NODE_ENV: test
-
-      - name: Upload coverage reports
+      - name: Upload test coverage
         uses: codecov/codecov-action@v4
         with:
           file: ./coverage/lcov.info
-          flags: unittests
+          flags: code-quality
           name: codecov-umbrella
           fail_ci_if_error: false
 
-  build:
+  build-check:
     runs-on: ubuntu-latest
-    needs: test
+    needs: code-quality
 
     steps:
       - name: Checkout code

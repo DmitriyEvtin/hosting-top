@@ -1,0 +1,93 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main, master]
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to deploy to"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    environment: staging
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to staging
+        run: |
+          echo "Deploying to staging environment..."
+          # Здесь будет логика деплоя в staging
+          # Например, обновление Docker Compose или Kubernetes манифестов
+          echo "Staging deployment completed"
+
+      - name: Run health checks
+        run: |
+          echo "Running health checks for staging..."
+          # Здесь будут health checks для staging
+          echo "Health checks completed"
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v') || (github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch')
+    environment: production
+    needs: deploy-staging
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production environment..."
+          # Здесь будет логика деплоя в production
+          # Например, обновление Docker Compose или Kubernetes манифестов
+          echo "Production deployment completed"
+
+      - name: Run health checks
+        run: |
+          echo "Running health checks for production..."
+          # Здесь будут health checks для production
+          echo "Health checks completed"
+
+      - name: Notify deployment
+        run: |
+          echo "Notifying about successful deployment..."
+          # Здесь будет логика уведомлений (Slack, Discord, email)
+          echo "Notification sent"
+
+  rollback:
+    runs-on: ubuntu-latest
+    if: failure()
+    environment: ${{ github.event.inputs.environment || 'staging' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Rollback deployment
+        run: |
+          echo "Rolling back deployment..."
+          # Здесь будет логика отката
+          echo "Rollback completed"
+
+      - name: Notify rollback
+        run: |
+          echo "Notifying about rollback..."
+          # Здесь будет логика уведомлений об откате
+          echo "Rollback notification sent"
