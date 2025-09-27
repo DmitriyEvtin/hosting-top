@@ -14,728 +14,148 @@
 ## Технический стек
 
 - **Frontend**: Next.js 15, React 19, TypeScript
-- **Styling**: Tailwind CSS 4
+- **Styling**: Tailwind CSS 4, shadcn/ui
 - **Database**: PostgreSQL, Prisma ORM
 - **Cloud Storage**: AWS S3
 - **Architecture**: Feature-Sliced Design (FSD)
 - **Parsing**: Puppeteer, Cheerio
 - **Testing**: Jest, React Testing Library, Playwright
 
-## Высокоуровневая архитектура
-
-```mermaid
-graph TB
-    A[Пользователь] --> B[Next.js Frontend]
-    B --> C[API Routes]
-    C --> D[Prisma ORM]
-    D --> E[PostgreSQL Database]
-    
-    F[Парсер данных] --> G[bvb-alyans.ru]
-    F --> H[AWS S3]
-    F --> D
-    
-    I[Админ-панель] --> C
-    J[Каталог товаров] --> C
-    
-    K[AWS S3] --> L[Изображения товаров]
-    
-    subgraph "FSD Architecture"
-        M[App Layer]
-        N[Pages Layer]
-        O[Widgets Layer]
-        P[Features Layer]
-        Q[Entities Layer]
-        R[Shared Layer]
-    end
-```
-
-## Структура базы данных
-
-### Prisma Schema
-
-```prisma
-// prisma/schema.prisma
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-model Category {
-  id          String   @id @default(cuid())
-  name        String
-  slug        String   @unique
-  description String?
-  parentId    String?
-  parent      Category? @relation("CategoryHierarchy", fields: [parentId], references: [id])
-  children    Category[] @relation("CategoryHierarchy")
-  products    Product[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  deletedAt   DateTime?
-
-  @@map("categories")
-}
-
-model Product {
-  id          String   @id @default(cuid())
-  name        String
-  slug        String   @unique
-  description String?
-  price       Decimal?
-  currency    String   @default("RUB")
-  sku         String?
-  title       String?
-  metaDescription String?
-  categoryId  String
-  category    Category @relation(fields: [categoryId], references: [id])
-  images      ProductImage[]
-  specifications ProductSpecification[]
-  isActive    Boolean  @default(true)
-  isParsed    Boolean  @default(false)
-  sourceUrl   String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  deletedAt   DateTime?
-
-  @@map("products")
-}
-
-model ProductImage {
-  id        String   @id @default(cuid())
-  productId String
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-  url       String
-  s3Key     String
-  alt       String?
-  isPrimary Boolean  @default(false)
-  order     Int      @default(0)
-  createdAt DateTime @default(now())
-
-  @@map("product_images")
-}
-
-model ProductSpecification {
-  id        String   @id @default(cuid())
-  productId String
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-  name      String
-  value     String
-  unit      String?
-  order     Int      @default(0)
-  createdAt DateTime @default(now())
-
-  @@map("product_specifications")
-}
-
-model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  role      UserRole @default(USER)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("users")
-}
-
-enum UserRole {
-  USER
-  ADMIN
-  SUPER_ADMIN
-}
-```
-
-## FSD Архитектура проекта
-
-### Структура папок
-
-Компоненты называются по правилу ui\ComponentName\ComponentName.tsx + index.ts 
-
-```
-src/
-├── app/                          # Next.js App Router + FSD App layer
-│   ├── layout.tsx               # Root layout
-│   ├── page.tsx                 # Home page
-│   ├── globals.css              # Global styles
-│   ├── admin/                   # Admin routes
-│   │   ├── layout.tsx
-│   │   ├── page.tsx
-│   │   ├── products/
-│   │   └── categories/
-│   └── api/                     # API routes
-│       ├── products/
-│       ├── categories/
-│       ├── images/
-│       └── parsing/
-├── pages/                       # FSD Pages layer
-│   ├── home/                    # Home page slice
-│   │   ├── ui/
-│   │   └── index.ts
-│   ├── catalog/                 # Catalog page slice
-│   │   ├── ui/
-│   │   └── index.ts
-│   ├── product/                 # Product detail page slice
-│   │   ├── ui/
-│   │   └── index.ts
-│   └── admin/                   # Admin pages slice
-│       ├── ui/
-│       └── index.ts
-├── widgets/                     # Widgets layer
-│   ├── product-card/            # Product card widget
-│   │   ├── ui/
-│   │   └── index.ts
-│   ├── product-grid/            # Product grid widget
-│   │   ├── ui/
-│   │   └── index.ts
-│   ├── category-tree/           # Category tree widget
-│   │   ├── ui/
-│   │   └── index.ts
-│   ├── search-filters/          # Search filters widget
-│   │   ├── ui/
-│   │   └── index.ts
-│   └── admin-sidebar/           # Admin sidebar widget
-│       ├── ui/
-│       └── index.ts
-├── features/                    # Features layer
-│   ├── search/                  # Search feature
-│   │   ├── ui/
-│   │   ├── model/
-│   │   └── api/
-│   ├── filtering/               # Product filtering feature
-│   │   ├── ui/
-│   │   ├── model/
-│   │   └── api/
-│   ├── pagination/              # Pagination feature
-│   │   ├── ui/
-│   │   ├── model/
-│   │   └── api/
-│   ├── image-upload/            # Image upload feature
-│   │   ├── ui/
-│   │   ├── model/
-│   │   └── api/
-│   └── data-parsing/            # Data parsing feature
-│       ├── ui/
-│       ├── model/
-│       └── api/
-├── entities/                    # Entities layer
-│   ├── product/                 # Product entity
-│   │   ├── ui/
-│   │   ├── model/
-│   │   └── api/
-│   ├── category/                # Category entity
-│   │   ├── ui/
-│   │   ├── model/
-│   │   └── api/
-│   ├── image/                   # Image entity
-│   │   ├── ui/
-│   │   ├── model/
-│   │   └── api/
-│   └── user/                    # User entity
-│       ├── ui/
-│       ├── model/
-│       └── api/
-└── shared/                      # Shared layer
-    ├── ui/                      # Shared UI components
-    │   ├── Button/
-    │   ├── Input/
-    │   ├── Modal/
-    │   ├── Table/
-    │   └── Layout/
-    ├── api/                     # Shared API utilities
-    │   ├── database/
-    │   ├── aws-s3/
-    │   └── parsing/
-    ├── lib/                     # Shared utilities
-    │   ├── prisma/
-    │   ├── aws/
-    │   ├── parsing/
-    │   └── validation/
-    └── config/                  # Shared configuration
-        ├── database.ts
-        ├── aws.ts
-        └── parsing.ts
-```
-
-## API Endpoints
-
-### Каталог товаров
-
-```typescript
-// GET /api/products
-// Query parameters: page, limit, category, search, sort, filters
-interface ProductsResponse {
-  products: Product[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-  };
-  filters: FilterOption[];
-}
-
-// GET /api/products/[id]
-interface ProductResponse {
-  product: Product;
-  relatedProducts: Product[];
-}
-
-// GET /api/categories
-interface CategoriesResponse {
-  categories: Category[];
-}
-
-// GET /api/categories/[id]/products
-interface CategoryProductsResponse {
-  products: Product[];
-  category: Category;
-  pagination: PaginationInfo;
-}
-```
-
-### Админ-панель
-
-```typescript
-// POST /api/admin/products
-interface CreateProductRequest {
-  name: string;
-  description?: string;
-  price?: number;
-  categoryId: string;
-  specifications: ProductSpecification[];
-  images: File[];
-}
-
-// PUT /api/admin/products/[id]
-interface UpdateProductRequest {
-  name?: string;
-  description?: string;
-  price?: number;
-  categoryId?: string;
-  specifications?: ProductSpecification[];
-  images?: File[];
-}
-
-// DELETE /api/admin/products/[id]
-// POST /api/admin/categories
-// PUT /api/admin/categories/[id]
-// DELETE /api/admin/categories/[id]
-
-// POST /api/admin/parsing/start
-interface ParsingRequest {
-  categories?: string[];
-  maxProducts?: number;
-  updateExisting?: boolean;
-}
-
-// GET /api/admin/parsing/status
-interface ParsingStatusResponse {
-  status: 'idle' | 'running' | 'completed' | 'error';
-  progress: number;
-  currentCategory?: string;
-  processedProducts: number;
-  totalProducts: number;
-  errors: string[];
-}
-```
-
-## Компоненты UI/UX
-
-### Каталог товаров
-
-```typescript
-// src/widgets/product-grid/ui/product-grid.tsx
-interface ProductGridProps {
-  products: Product[];
-  loading?: boolean;
-  onProductClick: (product: Product) => void;
-}
-
-// src/widgets/product-card/ui/product-card.tsx
-interface ProductCardProps {
-  product: Product;
-  onClick: () => void;
-  showPrice?: boolean;
-  showSpecifications?: boolean;
-}
-
-// src/widgets/search-filters/ui/search-filters.tsx
-interface SearchFiltersProps {
-  categories: Category[];
-  onFiltersChange: (filters: FilterState) => void;
-  initialFilters?: FilterState;
-}
-```
-
-### Админ-панель
-
-```typescript
-// src/pages/admin/ui/admin-layout.tsx
-interface AdminLayoutProps {
-  children: React.ReactNode;
-  currentPage: string;
-}
-
-// src/widgets/admin-sidebar/ui/admin-sidebar.tsx
-interface AdminSidebarProps {
-  currentPage: string;
-  onNavigate: (page: string) => void;
-}
-
-// src/features/image-upload/ui/image-upload.tsx
-interface ImageUploadProps {
-  onUpload: (files: File[]) => Promise<string[]>;
-  maxFiles?: number;
-  acceptedTypes?: string[];
-}
-```
-
 ## Система парсинга данных
 
 ### Архитектура парсера
-
-```typescript
-// src/shared/lib/parsing/parser.ts
-export class BvbAlyansParser {
-  private browser: Browser;
-  private page: Page;
-
-  async initialize(): Promise<void> {
-    this.browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
-    this.page = await this.browser.newPage();
-  }
-
-  async parseCategories(): Promise<CategoryData[]> {
-    // Парсинг категорий с главной страницы
-  }
-
-  async parseProducts(categoryUrl: string): Promise<ProductData[]> {
-    // Парсинг товаров из категории
-  }
-
-  async parseProductDetails(productUrl: string): Promise<ProductDetails> {
-    // Парсинг детальной информации о товаре
-  }
-
-  async downloadImage(imageUrl: string): Promise<Buffer> {
-    // Скачивание изображения
-  }
-}
-```
+- **BvbAlyansParser** - Основной класс для парсинга данных с сайта bvb-alyans.ru
+- **CategoryParser** - Парсинг категорий товаров
+- **ProductParser** - Парсинг списка товаров из категории
+- **ProductDetailsParser** - Парсинг детальной информации о товаре
+- **ImageDownloader** - Скачивание и обработка изображений
 
 ### Обработка изображений
-
-```typescript
-// src/shared/lib/aws/s3-client.ts
-export class S3ImageService {
-  private s3: AWS.S3;
-
-  async uploadImage(
-    buffer: Buffer,
-    key: string,
-    contentType: string
-  ): Promise<string> {
-    const params = {
-      Bucket: process.env.AWS_S3_BUCKET,
-      Key: key,
-      Body: buffer,
-      ContentType: contentType,
-      ACL: 'public-read'
-    };
-
-    const result = await this.s3.upload(params).promise();
-    return result.Location;
-  }
-
-  async deleteImage(key: string): Promise<void> {
-    await this.s3.deleteObject({
-      Bucket: process.env.AWS_S3_BUCKET,
-      Key: key
-    }).promise();
-  }
-}
-```
+- **S3ImageService** - Загрузка изображений в AWS S3
+- **ImageOptimizer** - Оптимизация изображений перед загрузкой
+- **ThumbnailGenerator** - Генерация миниатюр разных размеров
 
 ## Конфигурация сервисов
 
 ### Environment Variables
-
-```bash
-# .env.local
-DATABASE_URL="postgresql://username:password@localhost:5432/rolled_metal"
-NEXTAUTH_SECRET="your-secret-key"
-NEXTAUTH_URL="http://localhost:3000"
-
-# AWS S3 Configuration
-AWS_ACCESS_KEY_ID="your-access-key"
-AWS_SECRET_ACCESS_KEY="your-secret-key"
-AWS_S3_BUCKET="rolled-metal-images"
-AWS_REGION="us-east-1"
-
-# Parsing Configuration
-PARSING_BATCH_SIZE=50
-PARSING_DELAY_MS=1000
-MAX_CONCURRENT_REQUESTS=5
-```
+- **DATABASE_URL** - Строка подключения к PostgreSQL
+- **NEXTAUTH_SECRET** - Секретный ключ для аутентификации
+- **NEXTAUTH_URL** - URL приложения
+- **AWS_ACCESS_KEY_ID** - AWS ключ доступа
+- **AWS_SECRET_ACCESS_KEY** - AWS секретный ключ
+- **AWS_S3_BUCKET** - Имя S3 bucket для изображений
+- **AWS_REGION** - Регион AWS
+- **PARSING_BATCH_SIZE** - Размер батча для парсинга
+- **PARSING_DELAY_MS** - Задержка между запросами
+- **MAX_CONCURRENT_REQUESTS** - Максимальное количество одновременных запросов
 
 ### Next.js Configuration
-
-```typescript
-// next.config.ts
-import type { NextConfig } from 'next'
-
-const nextConfig: NextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ['puppeteer']
-  },
-  images: {
-    domains: ['your-s3-bucket.s3.amazonaws.com'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'bvb-alyans.ru',
-        pathname: '/**'
-      }
-    ]
-  },
-  webpack: (config) => {
-    config.externals.push({
-      'puppeteer': 'commonjs puppeteer'
-    });
-    return config;
-  }
-}
-
-export default nextConfig
-```
+- Настройка для работы с Puppeteer
+- Конфигурация доменов для изображений
+- Webpack конфигурация для внешних пакетов
 
 ### Prisma Configuration
-
-```typescript
-// src/shared/api/database/prisma-client.ts
-import { PrismaClient } from '@prisma/client'
-
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined
-}
-
-export const prisma = globalForPrisma.prisma ?? new PrismaClient({
-  log: ['query', 'error', 'warn'],
-  errorFormat: 'pretty',
-})
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
-```
+- Singleton паттерн для Prisma клиента
+- Логирование запросов в development
+- Глобальная конфигурация для разных окружений
 
 ## Мониторинг и логирование
 
 ### Система логирования
-
-```typescript
-// src/shared/lib/logger.ts
-export class Logger {
-  static info(message: string, data?: any): void {
-    console.log(`[INFO] ${message}`, data);
-  }
-
-  static error(message: string, error?: Error): void {
-    console.error(`[ERROR] ${message}`, error);
-  }
-
-  static parsing(message: string, data?: any): void {
-    console.log(`[PARSING] ${message}`, data);
-  }
-}
-```
+- **Logger** - Централизованная система логирования
+- **ParsingLogger** - Специализированное логирование для парсинга
+- **ErrorLogger** - Логирование ошибок и исключений
 
 ### Мониторинг парсинга
-
-```typescript
-// src/features/data-parsing/model/parsing-store.ts
-export class ParsingStore {
-  private status: ParsingStatus = 'idle';
-  private progress: number = 0;
-  private errors: string[] = [];
-
-  getStatus(): ParsingStatus {
-    return this.status;
-  }
-
-  getProgress(): number {
-    return this.progress;
-  }
-
-  getErrors(): string[] {
-    return this.errors;
-  }
-}
-```
+- **ParsingStore** - Хранение состояния процесса парсинга
+- **ProgressTracker** - Отслеживание прогресса парсинга
+- **ErrorCollector** - Сбор и анализ ошибок парсинга
 
 ## Безопасность
 
 ### Аутентификация
-
-```typescript
-// src/shared/lib/auth/auth-config.ts
-export const authConfig = {
-  providers: [
-    CredentialsProvider({
-      name: 'credentials',
-      credentials: {
-        email: { label: 'Email', type: 'email' },
-        password: { label: 'Password', type: 'password' }
-      },
-      async authorize(credentials) {
-        // Проверка учетных данных
-      }
-    })
-  ],
-  pages: {
-    signIn: '/admin/login'
-  }
-}
-```
+- **NextAuth.js** - Система аутентификации
+- **CredentialsProvider** - Аутентификация по email/password
+- **Session Management** - Управление сессиями пользователей
+- **Role-based Access** - Контроль доступа на основе ролей
 
 ### Валидация данных
-
-```typescript
-// src/shared/lib/validation/product-schema.ts
-export const productSchema = z.object({
-  name: z.string().min(1, 'Название обязательно'),
-  description: z.string().optional(),
-  price: z.number().positive().optional(),
-  categoryId: z.string().cuid(),
-  specifications: z.array(z.object({
-    name: z.string(),
-    value: z.string(),
-    unit: z.string().optional()
-  })).optional()
-});
-```
+- **Zod Schemas** - Схемы валидации для всех форм
+- **Input Sanitization** - Очистка пользовательского ввода
+- **Type Safety** - Строгая типизация для предотвращения ошибок
 
 ## Производительность
 
 ### Оптимизация изображений
-
-```typescript
-// src/shared/lib/image-optimization.ts
-export class ImageOptimizer {
-  static async optimizeImage(buffer: Buffer): Promise<Buffer> {
-    // Оптимизация изображения с помощью sharp
-  }
-
-  static async generateThumbnails(buffer: Buffer): Promise<{
-    thumbnail: Buffer;
-    medium: Buffer;
-    large: Buffer;
-  }> {
-    // Генерация миниатюр разных размеров
-  }
-}
-```
+- **ImageOptimizer** - Оптимизация изображений с помощью Sharp
+- **ThumbnailGenerator** - Генерация миниатюр разных размеров
+- **WebP Conversion** - Конвертация в современные форматы
+- **Lazy Loading** - Ленивая загрузка изображений
 
 ### Кэширование
-
-```typescript
-// src/shared/lib/cache/redis-client.ts
-export class CacheService {
-  private redis: Redis;
-
-  async get<T>(key: string): Promise<T | null> {
-    const data = await this.redis.get(key);
-    return data ? JSON.parse(data) : null;
-  }
-
-  async set(key: string, value: any, ttl: number = 3600): Promise<void> {
-    await this.redis.setex(key, ttl, JSON.stringify(value));
-  }
-}
-```
+- **Redis Cache** - Кэширование часто запрашиваемых данных
+- **Query Caching** - Кэширование результатов запросов к БД
+- **Static Generation** - Статическая генерация страниц каталога
+- **CDN Integration** - Интеграция с CDN для статических ресурсов
 
 ## Тестирование
 
 ### Unit тесты
-
-```typescript
-// src/entities/product/api/__tests__/product-repository.test.ts
-describe('ProductRepository', () => {
-  it('should create a product', async () => {
-    const productData = {
-      name: 'Test Product',
-      categoryId: 'category-id'
-    };
-
-    const product = await ProductRepository.create(productData);
-    expect(product).toBeDefined();
-    expect(product.name).toBe(productData.name);
-  });
-});
-```
+- **Jest** - Фреймворк для unit тестирования
+- **React Testing Library** - Тестирование React компонентов
+- **Prisma Testing** - Тестирование работы с базой данных
+- **API Testing** - Тестирование API endpoints
 
 ### E2E тесты
-
-```typescript
-// tests/e2e/catalog.spec.ts
-test('user can browse products', async ({ page }) => {
-  await page.goto('/catalog');
-  await expect(page.locator('[data-testid="product-grid"]')).toBeVisible();
-  await page.click('[data-testid="product-card"]');
-  await expect(page.locator('[data-testid="product-details"]')).toBeVisible();
-});
-```
+- **Playwright** - End-to-end тестирование пользовательских сценариев
+- **Catalog Navigation** - Тестирование навигации по каталогу
+- **Admin Panel** - Тестирование функциональности админ-панели
+- **Parsing Workflow** - Тестирование процесса парсинга данных
 
 ## Деплой и CI/CD
 
 ### Docker Configuration
+- **Multi-stage Build** - Оптимизированная сборка Docker образа
+- **Node.js Alpine** - Легковесный базовый образ
+- **Production Dependencies** - Установка только production зависимостей
+- **Health Checks** - Проверка состояния контейнера
 
-```dockerfile
-# Dockerfile
-FROM node:18-alpine
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm ci --only=production
-
-COPY . .
-RUN npm run build
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
+### Docker Structure
+```
+docker/
+├── production/
+│   ├── nginx/
+│   │   └── Dockerfile
+│   └── node/
+│       └── Dockerfile
+├── common/
+│   └── nginx/
+│       └── conf.d/
+│           └── default.conf
+└── development/
+    └── nginx/
+        └── Dockerfile
 ```
 
 ### GitHub Actions
+- **Automated Testing** - Автоматический запуск тестов
+- **Build Process** - Автоматическая сборка приложения
+- **Docker Hub Push** - Пуш Docker образа в Docker Hub после успешных тестов
 
-```yaml
-# .github/workflows/deploy.yml
-name: Deploy
-on:
-  push:
-    branches: [main]
+### Makefile
+- **Deploy Commands** - Команды для деплоя будут реализованы в Makefile
+- **Environment Management** - Управление различными окружениями
+- **Database Operations** - Команды для работы с базой данных
+- **Service Management** - Управление сервисами приложения
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - run: npm ci
-      - run: npm run test
-      - run: npm run build
-      - run: npx prisma migrate deploy
-      - run: npm run start
-```
+### Docker Compose для разработки
+- **PostgreSQL Database** - Локальная база данных для разработки
+- **MinIO/MinIO** - S3-совместимое хранилище файлов для разработки
+- **MailHog/MailHog** - Локальный SMTP сервер для тестирования почты
+- **Development Environment** - Полная среда разработки в Docker
 
-## Заключение
-
-Данная документация предоставляет полное техническое описание для разработки каталога металлопроката с автоматическим парсингом данных, админ-панелью и интеграцией с AWS S3. Архитектура основана на современных технологиях и лучших практиках разработки, обеспечивая масштабируемость, производительность и удобство сопровождения.
-
-Система готова к разработке в Cursor AI с четкой структурой, детальными спецификациями и готовыми к использованию компонентами.
+### Production Deployment
+- **Portainer CE** - Развертывание на production через Portainer CE
+- **Traefik** - Основной прокси-сервер для маршрутизации и SSL
+- **Docker Stack** - Управление сервисами через Docker Swarm
+- **Load Balancing** - Балансировка нагрузки между инстансами
