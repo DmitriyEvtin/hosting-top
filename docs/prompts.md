@@ -31,3 +31,13 @@
   - Удален домен `bvb-alyans.ru` из Docker Compose конфигурации
   - Обновлен массив `allowedDomains` в настройках Caravaggio
   - Добавлен TODO комментарий для добавления домена проекта в будущем
+
+- **Запрос**: "@docs/ опиши правило работы с git учитывая @https://www.conventionalcommits.org/en/v1.0.0/"
+- **Контекст**: Создание документации по правилам работы с Git на основе Conventional Commits спецификации
+- **Выполнено**:
+  - Создан файл `docs/development/git-workflow.md` с подробным описанием правил работы с Git
+  - Описана структура коммитов согласно Conventional Commits спецификации
+  - Добавлены примеры коммитов для FSD архитектуры с правильными scope
+  - Описаны инструменты автоматизации (commitlint, semantic-release, conventional-changelog)
+  - Добавлены правила для команды и troubleshooting
+  - Обновлен `docs/README.md` с ссылкой на новую документацию
