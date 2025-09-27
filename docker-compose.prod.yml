@@ -68,49 +68,37 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 40s
 
   nginx:
     image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-rolled_metal}-nginx:${IMAGE_TAG:-latest}
     container_name: rolled-metal-nginx-prod
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
+      - "8081:80"
+      - "8444:443"
     networks:
       - rolled-metal-network
     depends_on:
-      app:
-        condition: service_healthy
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/health"]
-      interval: 5s
-      timeout: 3s
-      retries: 3
-      start_period: 1s
+      - app
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost/health"]
+    #   interval: 5s
+    #   timeout: 3s
+    #   retries: 3
+    #   start_period: 1s
 
 volumes:
   postgres_data:
     driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /var/lib/docker/volumes/rolled-metal-postgres-data
   redis_data:
     driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /var/lib/docker/volumes/rolled-metal-redis-data
 
 networks:
   rolled-metal-network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
+    external: true
