@@ -30,7 +30,9 @@
     "test:all": "npm run test:ci && npm run test:e2e",
     "test:setup": "playwright install",
     "config:check": "node scripts/check-config.js",
-    "config:validate": "npm run config:check && npm run type-check && npm run lint"
+    "config:validate": "npm run config:check && npm run type-check && npm run lint",
+    "env:check": "node scripts/check-production-env.js",
+    "env:validate": "npm run env:check"
   },
   "dependencies": {
     "@aws-sdk/client-cloudfront": "^3.896.0",

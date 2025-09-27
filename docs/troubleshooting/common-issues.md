@@ -2,6 +2,66 @@
 
 [← Назад к документации](../README.md)
 
+## Проблемы с переменными окружения
+
+### Ошибка "NEXTAUTH_URL не должен содержать localhost для production"
+
+#### Симптомы
+
+```
+Error: NEXTAUTH_URL не должен содержать localhost для production
+```
+
+#### Причины
+
+1. Переменная `NEXTAUTH_URL` не установлена в production окружении
+2. Используется fallback значение `http://localhost:3000`
+3. Неправильная конфигурация Docker Compose
+
+#### Решения
+
+**1. Установка переменной в production окружении:**
+
+```bash
+# Для Docker Compose
+export NEXTAUTH_URL=https://your-domain.com
+
+# Или в .env файле
+echo "NEXTAUTH_URL=https://your-domain.com" >> .env
+```
+
+**2. Проверка конфигурации:**
+
+```bash
+# Проверка переменных окружения
+make check-env
+
+# Полная проверка конфигурации
+make check-all
+```
+
+**3. Для GitHub Actions:**
+
+Добавьте в Secrets:
+
+- `NEXTAUTH_URL` = `https://your-domain.com`
+
+**4. Диагностика:**
+
+```bash
+# Проверка текущих переменных
+env | grep NEXTAUTH
+
+# Проверка Docker переменных
+docker-compose config
+```
+
+#### Профилактика
+
+1. Всегда устанавливайте `NEXTAUTH_URL` в production
+2. Используйте HTTPS для production доменов
+3. Регулярно проверяйте конфигурацию с помощью `make check-env`
+
 ## Проблемы с базой данных
 
 ### Ошибка подключения к PostgreSQL

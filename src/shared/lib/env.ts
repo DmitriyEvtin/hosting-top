@@ -173,7 +173,7 @@ export function validateProductionEnv(): void {
 
     if (missingVars.length > 0) {
       throw new Error(
-        `Критические переменные окружения не установлены для production: ${missingVars.join(", ")}`
+        `Критические переменные окружения не установлены для production: ${missingVars.join(", ")}. Установите эти переменные в вашем production окружении.`
       );
     }
 
@@ -184,7 +184,7 @@ export function validateProductionEnv(): void {
 
     if (env.NEXTAUTH_URL.includes("localhost")) {
       throw new Error(
-        "NEXTAUTH_URL не должен содержать localhost для production"
+        `NEXTAUTH_URL не должен содержать localhost для production. Текущее значение: ${env.NEXTAUTH_URL}. Установите правильный URL для production окружения.`
       );
     }
   }

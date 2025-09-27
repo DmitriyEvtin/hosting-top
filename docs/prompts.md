@@ -304,3 +304,24 @@
     - Обновлен раздел развертывания с командами Registry
     - Добавлены ссылки на документацию Registry и Traefik
   - ✅ Registry теперь полностью интегрирован с Traefik и готов к production использованию
+
+- **Запрос**: "на проде лог ⨯ Error: NEXTAUTH_URL не должен содержать localhost для production"
+- **Контекст**: Ошибка в production окружении из-за неправильной конфигурации NEXTAUTH_URL
+- **Проблемы найдены**:
+  1. В docker-compose.prod.yml использовался fallback на localhost:3000
+  2. Переменная NEXTAUTH_URL не была установлена в production окружении
+  3. Валидация в env.ts не была достаточно информативной
+  4. Отсутствовали инструменты для диагностики проблем с переменными окружения
+- **Решение**:
+  1. ✅ Удален fallback на localhost из docker-compose.prod.yml
+  2. ✅ Улучшена валидация в env.ts с более информативными сообщениями об ошибках
+  3. ✅ Создан скрипт check-production-env.js для диагностики переменных окружения
+  4. ✅ Добавлены команды в package.json и Makefile для проверки конфигурации
+  5. ✅ Обновлена документация по переменным окружения с инструкциями по устранению проблемы
+  6. ✅ Добавлен раздел в troubleshooting с подробным описанием решения
+- **Следующие шаги для пользователя**:
+  1. Установить переменную NEXTAUTH_URL в production окружении: `export NEXTAUTH_URL=https://your-domain.com`
+  2. Для Docker Compose добавить в .env файл: `NEXTAUTH_URL=https://your-domain.com`
+  3. Для GitHub Actions добавить в Secrets: `NEXTAUTH_URL` = `https://your-domain.com`
+  4. Проверить конфигурацию: `make check-env`
+  5. Перезапустить production окружение: `make prod-restart`

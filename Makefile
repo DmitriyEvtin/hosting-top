@@ -57,6 +57,13 @@ check-config:
 	node scripts/check-config.js
 	docker compose -f docker-compose.prod.yml down
 
+check-env:
+	node scripts/check-production-env.js
+
+check-all:
+	npm run config:validate
+	npm run env:validate
+
 # Очистка
 clean:
 	docker system prune -f
@@ -170,6 +177,9 @@ help:
 	@echo "  push         - Отправка образов в registry"
 	@echo "  test         - Запуск тестов"
 	@echo "  test-docker  - Тестирование Docker окружения"
+	@echo "  check-config - Проверка конфигурации"
+	@echo "  check-env    - Проверка переменных окружения"
+	@echo "  check-all    - Полная проверка конфигурации"
 	@echo "  clean        - Очистка Docker системы"
 	@echo "  logs         - Просмотр логов"
 	@echo "  traefik-logs - Просмотр логов Traefik"

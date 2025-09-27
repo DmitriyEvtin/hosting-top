@@ -24,6 +24,8 @@ NEXTAUTH_SECRET=your_nextauth_secret_here
 NEXTAUTH_URL=https://your-domain.com
 ```
 
+**⚠️ ВАЖНО**: `NEXTAUTH_URL` должен быть установлен в production окружении и не должен содержать `localhost`. Используйте полный URL вашего домена (например, `https://your-domain.com`).
+
 ### AWS Configuration
 
 ```bash
@@ -86,6 +88,32 @@ API_URL=https://your-domain.com/api
 1. Создайте `.env.production` файл
 2. Заполните все переменные реальными значениями
 3. Запустите `make prod-up` для production окружения
+
+## Устранение проблем
+
+### Ошибка "NEXTAUTH_URL не должен содержать localhost для production"
+
+Эта ошибка возникает, когда:
+
+1. Переменная `NEXTAUTH_URL` не установлена в production окружении
+2. В качестве fallback используется `http://localhost:3000`
+
+**Решение:**
+
+1. Установите переменную `NEXTAUTH_URL` в вашем production окружении:
+
+   ```bash
+   export NEXTAUTH_URL=https://your-domain.com
+   ```
+
+2. Для Docker Compose добавьте в `.env` файл:
+
+   ```bash
+   NEXTAUTH_URL=https://your-domain.com
+   ```
+
+3. Для GitHub Actions добавьте в Secrets:
+   - `NEXTAUTH_URL` = `https://your-domain.com`
 
 ## Безопасность
 
