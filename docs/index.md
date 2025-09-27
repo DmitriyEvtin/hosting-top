@@ -8,7 +8,7 @@
 - **Пост-MVP**: личный кабинет, интеграции CRM/1С, прайс-выгрузки, уведомления менеджерам, многоязычие.
 
 ### 2. Технологический стек
-- **Frontend**: Next.js 15 (App Router), TypeScript, CSS Modules / Bootstrap, React Server Components.
+- **Frontend**: Next.js 15 (App Router), TypeScript, CSS Modules / Tilewidn Css, React Server Components.
 - **Состояние**: React Query (данные), Form validation (React Final Form, Yup).
 - **Бэкенд**: Next.js Route Handlers (API), при необходимости внешний BFF.
 - **БД (по мере необходимости)**: PostgreSQL/MySQL через Prisma

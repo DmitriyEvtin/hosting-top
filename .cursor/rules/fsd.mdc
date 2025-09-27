@@ -1,0 +1,200 @@
+---
+alwaysApply: true
+---
+
+# Feature-Sliced Design (FSD) Architecture Rules
+
+You MUST follow Feature-Sliced Design methodology for all frontend architecture decisions. FSD is a standardized architectural methodology for organizing frontend applications that ensures maintainability, scalability, and team collaboration.
+
+## Core FSD Principles
+
+### Layer Hierarchy (Strict Import Rules)
+Follow the 7-layer hierarchy from top to bottom:
+1. **App** — Application initialization, routing, global providers, entry points
+2. **Pages** — Complete pages or large page sections
+3. **Widgets** — Large self-contained UI blocks implementing user scenarios
+4. **Features** — Reusable business features that provide user value
+5. **Entities** — Business entities (user, product, order, etc.)
+6. **Shared** — Reusable code, especially when separated from business logic
+
+**CRITICAL RULE:** Modules can ONLY import from layers BELOW them in the hierarchy. Never import from the same layer or higher layers.
+
+### Slice Organization
+- **Pages, Widgets, Features, Entities** layers MUST be organized into slices by business domain
+- **App and Shared** layers consist directly of segments (no slices)
+- Slices within the same layer CANNOT import from each other
+- Use business domain terminology for slice naming (e.g., `user`, `product`, `order`)
+
+### Segment Structure
+Organize code within slices/layers by technical purpose:
+- `ui` — UI components, formatters, styles, display logic
+- `api` — Backend interaction, request functions, data types, mappers
+- `model` — Data models, validation schemas, interfaces, stores, business logic
+- `lib` — Library code needed by other modules in the slice
+- `config` — Configuration files and feature flags
+
+## FSD Implementation Guidelines
+
+### Project Structure
+
+**IMPORTANT**: Only create folders when you actually need them. Don't create empty directories for layers or slices that aren't being used yet. Start with the minimal structure and grow it organically as your project develops.
+
+#### Minimal Starting Structure
+```
+└── src/                          # FSD layers
+    ├── pages/                    # FSD Pages layer
+    │   └── home/                 # Home page slice
+    │       ├── ui/
+    │       └── index.ts
+    └── shared/                   # Shared layer (create when needed)
+        ├── ui/                   # Shared UI components
+        └── lib/                  # Shared utilities
+```
+
+#### Full Structure (Only when needed)
+```
+└── src/                          # FSD layers
+    ├── app/                      # FSD App layer
+    ├── pages/                    # FSD Pages layer
+    │   ├── home/                 # Home page slice
+    │   │   ├── ui/
+    │   │   └── index.ts
+    │   └── products/             # Products page slice
+    │       ├── ui/
+    │       └── index.ts
+    ├── widgets/                  # Widgets layer
+    │   └── product-card/          # Product card widget slice
+    │       ├── ui/
+    │       └── index.ts
+    ├── features/                 # Features layer
+    │   └── search/               # Search feature slice
+    │       ├── ui/
+    │       ├── model/
+    │       └── api/    
+    ├── entities/                 # Entities layer
+    │   └── order/                # Order entity slice
+    │       ├── ui/
+    │       ├── model/
+    │       └── api/
+    └── shared/                   # Shared layer
+        ├── ui/                   # Shared UI components
+        ├── api/                  # Shared API utilities
+        ├── lib/                  # Shared utilities
+        └── config/               # Shared configuration
+```
+
+### Import Rules Enforcement
+- **NEVER** import from the same layer
+- **NEVER** import from higher layers
+- **ALWAYS** use relative imports within the same slice
+- **ALWAYS** use absolute imports for cross-layer dependencies
+- **VALIDATE** import paths follow FSD hierarchy
+
+### Naming Conventions
+- **Slices:** Use business domain names (kebab-case)
+- **Segments:** Use standard segment names (`ui`, `api`, `model`, `lib`, `config`)
+- **Files:** Use kebab-case for file names
+- **Folders:** Use kebab-case for folder names
+
+### Component Organization
+- Place components in appropriate segments based on their purpose
+- Keep UI components in `ui` segments
+- Keep business logic in `model` segments
+- Keep API calls in `api` segments
+- Use index files for clean public APIs
+
+### State Management
+- **Entities:** Store business data and domain logic
+- **Features:** Store feature-specific state and actions
+- **Widgets:** Store widget-specific UI state
+- **Pages:** Store page-specific state and routing logic
+- **App:** Store global application state
+
+### API Integration
+- Place API functions in `api` segments
+- Use typed interfaces for API responses
+- Implement proper error handling and loading states
+- Keep API logic separate from UI components
+
+## FSD Migration Strategy
+
+### Gradual Adoption
+1. **Start with App and Shared layers** — Create foundation
+   - Create `shared/` layer with common utilities and components
+2. **Distribute existing UI code** — Move to widgets and pages (temporary violations allowed)
+   - Move page components to `pages/` layer
+   - Move reusable UI blocks to `widgets/` layer
+3. **Gradually fix import violations** — Refactor dependencies
+   - Fix import paths to follow FSD hierarchy
+4. **Extract entities and features** — Identify and extract business logic
+   - Extract business entities to `entities/` layer
+   - Extract user features to `features/` layer
+
+### Folder Creation Guidelines
+- **Don't create empty folders** — Only create directories when you have actual code to put in them
+- **Start minimal** — Begin with just `shared/` if that's all you need
+- **Create on demand** — Add new layers/slices only when you have components to place there
+- **Avoid premature structure** — Don't create `entities/`, `features/`, `widgets/` folders until you actually need them
+- **Grow organically** — Let the project structure evolve naturally as features are added
+
+### Refactoring Guidelines
+- **Avoid adding new major entities** during refactoring
+- **Refactor incrementally** — One slice at a time
+- **Maintain functionality** — Never break existing features
+- **Test thoroughly** — Ensure no regressions
+
+## FSD Quality Assurance
+
+### Architecture Validation
+- **Lint FSD rules** — Use FSD linter to validate architecture
+- **Review imports** — Ensure no circular dependencies
+- **Check layer boundaries** — Verify proper layer separation
+- **Validate slice isolation** — Ensure slices don't depend on each other
+
+### Code Review Checklist
+- [ ] Imports follow FSD hierarchy
+- [ ] Components are in correct segments
+- [ ] Business logic is properly separated
+- [ ] No circular dependencies
+- [ ] Proper naming conventions
+- [ ] Clean public APIs
+
+## FSD Benefits Realization
+
+### Maintainability
+- **Isolated changes** — Modify one slice without affecting others
+- **Clear boundaries** — Easy to understand component responsibilities
+- **Reduced coupling** — Loose coupling between modules
+
+### Scalability
+- **Team collaboration** — Multiple developers can work on different slices
+- **Feature development** — Add new features without affecting existing code
+- **Code reuse** — Shared components and utilities
+
+### Business Alignment
+- **Domain-driven** — Code structure matches business domains
+- **User-focused** — Features align with user scenarios
+- **Value delivery** — Clear path from business requirements to code
+
+## FSD Enforcement
+
+### Development Workflow
+1. **Plan architecture** — Design slice and segment structure before coding
+2. **Validate imports** — Check import paths during development
+3. **Review changes** — Ensure FSD compliance in code reviews
+4. **Refactor regularly** — Continuously improve architecture
+
+### Folder Management Rules
+- **Create folders only when needed** — Don't create empty directories
+- **Start with minimal structure** — Begin with just `shared/` and add layers as needed
+- **One component at a time** — Create folders when you have actual code to place
+- **Avoid empty placeholders** — Don't create `entities/`, `features/`, `widgets/` until you have components
+- **Grow incrementally** — Add new slices only when you have business logic to extract
+
+### Tooling Integration
+- Use FSD linter for automatic validation
+- Configure IDE for FSD structure
+- Set up pre-commit hooks for architecture validation
+- Use FSD CLI for scaffolding new slices
+
+Remember: FSD is not just about folder structure—it's about creating a maintainable, scalable, and team-friendly architecture that grows with your business needs.

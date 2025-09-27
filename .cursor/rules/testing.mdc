@@ -1,0 +1,479 @@
+# Testing Rules
+
+Comprehensive testing strategy for React/Next.js applications following FSD architecture principles.
+
+## Testing Philosophy & Principles
+
+### Testing Pyramid Strategy
+- **Unit Tests (70%)**: Test individual components, functions, and utilities in isolation
+- **Integration Tests (20%)**: Test component interactions and data flow
+- **E2E Tests (10%)**: Test complete user journeys and critical business flows
+
+### Testing Library Philosophy
+- **Test from User's Perspective**: Test what users see and do, not implementation details
+- **Accessibility-First Testing**: Ensure components work for all users, including those using assistive technologies
+- **Behavior-Driven Testing**: Focus on component behavior rather than internal implementation
+- **Confidence in Refactoring**: Tests should give confidence to refactor without breaking functionality
+
+## Testing Framework Setup
+
+### Core Testing Tools
+- **Jest**: JavaScript testing framework for unit and integration tests
+- **React Testing Library**: Simple and complete testing utilities for React components
+- **Playwright**: End-to-end testing for complete user journeys
+- **MSW (Mock Service Worker)**: API mocking for integration tests
+- **Testing Library User Event**: Simulate user interactions
+
+### Testing Configuration
+```typescript
+// jest.config.js
+module.exports = {
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/src/test/setup.ts'],
+  moduleNameMapping: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
+  collectCoverageFrom: [
+    'src/**/*.{ts,tsx}',
+    '!src/**/*.d.ts',
+    '!src/**/*.stories.{ts,tsx}',
+    '!src/**/index.{ts,tsx}',
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80,
+    },
+  },
+};
+```
+
+## FSD Testing Strategy
+
+### Layer-Specific Testing Approaches
+
+#### App Layer Testing
+- **Route Testing**: Test routing and navigation
+- **Layout Testing**: Test global layouts and providers
+- **Metadata Testing**: Test SEO and page metadata
+- **Error Boundary Testing**: Test global error handling
+
+#### Pages Layer Testing
+- **Page Component Testing**: Test complete page functionality
+- **Page Integration Testing**: Test page with real data and user interactions
+- **Page Accessibility Testing**: Ensure pages are accessible
+- **Page Performance Testing**: Test page load times and performance
+
+#### Widgets Layer Testing
+- **Widget Integration Testing**: Test widget functionality with real data
+- **Widget Interaction Testing**: Test user interactions within widgets
+- **Widget State Testing**: Test widget state management
+- **Widget Error Handling**: Test widget error states
+
+#### Features Layer Testing
+- **Feature Logic Testing**: Test business logic and feature functionality
+- **Feature Integration Testing**: Test feature with external dependencies
+- **Feature State Testing**: Test feature state management
+- **Feature API Testing**: Test feature API interactions
+
+#### Entities Layer Testing
+- **Entity Model Testing**: Test data models and business logic
+- **Entity API Testing**: Test API interactions and data transformation
+- **Entity Validation Testing**: Test data validation and error handling
+- **Entity State Testing**: Test entity state management
+
+#### Shared Layer Testing
+- **Utility Testing**: Test shared utilities and helpers
+- **Component Testing**: Test shared UI components
+- **Hook Testing**: Test shared custom hooks
+- **API Testing**: Test shared API utilities
+
+## Component Testing Guidelines
+
+### Component Test Structure
+```typescript
+// Component.test.tsx
+import { render, screen, userEvent } from '@testing-library/react';
+import { Component } from './component';
+
+describe('Component', () => {
+  it('should render correctly', () => {
+    render(<Component />);
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
+
+  it('should handle user interactions', async () => {
+    const user = userEvent.setup();
+    render(<Component />);
+    
+    await user.click(screen.getByRole('button'));
+    expect(screen.getByText('Clicked!')).toBeInTheDocument();
+  });
+});
+```
+
+### Testing Best Practices
+- **Test Behavior, Not Implementation**: Focus on what the component does, not how it does it
+- **Use Semantic Queries**: Prefer `getByRole`, `getByLabelText`, `getByText` over `getByTestId`
+- **Test Accessibility**: Ensure components are accessible to all users
+- **Test Error States**: Test component behavior when things go wrong
+- **Test Loading States**: Test component behavior during async operations
+
+### Component Testing Patterns
+
+#### Basic Component Testing
+```typescript
+describe('Button', () => {
+  it('should render with correct text', () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole('button', { name: 'Click me' })).toBeInTheDocument();
+  });
+
+  it('should call onClick when clicked', async () => {
+    const handleClick = jest.fn();
+    const user = userEvent.setup();
+    
+    render(<Button onClick={handleClick}>Click me</Button>);
+    await user.click(screen.getByRole('button'));
+    
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
+```
+
+#### Form Component Testing
+```typescript
+describe('ContactForm', () => {
+  it('should submit form with valid data', async () => {
+    const user = userEvent.setup();
+    render(<ContactForm />);
+    
+    await user.type(screen.getByLabelText(/name/i), 'John Doe');
+    await user.type(screen.getByLabelText(/email/i), 'john@example.com');
+    await user.click(screen.getByRole('button', { name: /submit/i }));
+    
+    expect(screen.getByText('Form submitted!')).toBeInTheDocument();
+  });
+
+  it('should show validation errors for invalid data', async () => {
+    const user = userEvent.setup();
+    render(<ContactForm />);
+    
+    await user.click(screen.getByRole('button', { name: /submit/i }));
+    
+    expect(screen.getByText('Name is required')).toBeInTheDocument();
+    expect(screen.getByText('Email is required')).toBeInTheDocument();
+  });
+});
+```
+
+#### Async Component Testing
+```typescript
+describe('UserProfile', () => {
+  it('should display user data after loading', async () => {
+    render(<UserProfile userId="123" />);
+    
+    expect(screen.getByText('Loading...')).toBeInTheDocument();
+    
+    await waitFor(() => {
+      expect(screen.getByText('John Doe')).toBeInTheDocument();
+    });
+  });
+
+  it('should handle loading errors', async () => {
+    render(<UserProfile userId="invalid" />);
+    
+    await waitFor(() => {
+      expect(screen.getByText('Failed to load user')).toBeInTheDocument();
+    });
+  });
+});
+```
+
+## API Testing Strategy
+
+### API Mocking with MSW
+```typescript
+// src/test/mocks/handlers.ts
+import { rest } from 'msw';
+
+export const handlers = [
+  rest.get('/api/users/:id', (req, res, ctx) => {
+    return res(
+      ctx.json({
+        id: '123',
+        name: 'John Doe',
+        email: 'john@example.com',
+      })
+    );
+  }),
+];
+```
+
+### API Integration Testing
+```typescript
+describe('UserService', () => {
+  it('should fetch user data', async () => {
+    const user = await UserService.getUser('123');
+    
+    expect(user).toEqual({
+      id: '123',
+      name: 'John Doe',
+      email: 'john@example.com',
+    });
+  });
+
+  it('should handle API errors', async () => {
+    server.use(
+      rest.get('/api/users/:id', (req, res, ctx) => {
+        return res(ctx.status(500));
+      })
+    );
+    
+    await expect(UserService.getUser('123')).rejects.toThrow('Failed to fetch user');
+  });
+});
+```
+
+## Custom Hooks Testing
+
+### Hook Testing with renderHook
+```typescript
+import { renderHook, act } from '@testing-library/react';
+import { useCounter } from './useCounter';
+
+describe('useCounter', () => {
+  it('should initialize with default value', () => {
+    const { result } = renderHook(() => useCounter());
+    
+    expect(result.current.count).toBe(0);
+  });
+
+  it('should increment count', () => {
+    const { result } = renderHook(() => useCounter());
+    
+    act(() => {
+      result.current.increment();
+    });
+    
+    expect(result.current.count).toBe(1);
+  });
+});
+```
+
+## E2E Testing with Playwright
+
+### E2E Test Structure
+```typescript
+// tests/e2e/user-journey.spec.ts
+import { test, expect } from '@playwright/test';
+
+test('user can complete purchase flow', async ({ page }) => {
+  await page.goto('/products');
+  
+  await page.click('[data-testid="product-card"]');
+  await page.click('[data-testid="add-to-cart"]');
+  await page.click('[data-testid="cart-icon"]');
+  
+  await expect(page.locator('[data-testid="cart-item"]')).toBeVisible();
+  
+  await page.click('[data-testid="checkout-button"]');
+  await page.fill('[data-testid="email-input"]', 'user@example.com');
+  await page.click('[data-testid="place-order"]');
+  
+  await expect(page.locator('[data-testid="success-message"]')).toBeVisible();
+});
+```
+
+## Testing Utilities
+
+### Custom Testing Utilities
+```typescript
+// src/test/utils/test-utils.tsx
+import { render, RenderOptions } from '@testing-library/react';
+import { ReactElement } from 'react';
+import { ThemeProvider } from '@/shared/ui/theme-provider';
+
+const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <ThemeProvider>
+      {children}
+    </ThemeProvider>
+  );
+};
+
+const customRender = (
+  ui: ReactElement,
+  options?: Omit<RenderOptions, 'wrapper'>
+) => render(ui, { wrapper: AllTheProviders, ...options });
+
+export * from '@testing-library/react';
+export { customRender as render };
+```
+
+### Test Data Factories
+```typescript
+// src/test/factories/user-factory.ts
+export const createUser = (overrides: Partial<User> = {}): User => ({
+  id: '123',
+  name: 'John Doe',
+  email: 'john@example.com',
+  ...overrides,
+});
+
+export const createUserList = (count: number): User[] => {
+  return Array.from({ length: count }, (_, index) => 
+    createUser({ id: `user-${index}` })
+  );
+};
+```
+
+## Performance Testing
+
+### Component Performance Testing
+```typescript
+describe('Performance', () => {
+  it('should render large lists efficiently', () => {
+    const start = performance.now();
+    render(<ProductList products={createProductList(1000)} />);
+    const end = performance.now();
+    
+    expect(end - start).toBeLessThan(100); // Should render in less than 100ms
+  });
+});
+```
+
+### Bundle Size Testing
+```typescript
+// tests/bundle-size.test.ts
+import { getBundleSize } from '@testing-library/bundle-size';
+
+test('bundle size should be under limit', () => {
+  const size = getBundleSize('src/app/page.tsx');
+  expect(size).toBeLessThan(100000); // 100KB limit
+});
+```
+
+## Accessibility Testing
+
+### Accessibility Test Setup
+```typescript
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
+
+describe('Accessibility', () => {
+  it('should not have accessibility violations', async () => {
+    const { container } = render(<Component />);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+});
+```
+
+### Keyboard Navigation Testing
+```typescript
+describe('Keyboard Navigation', () => {
+  it('should navigate with keyboard', async () => {
+    const user = userEvent.setup();
+    render(<Navigation />);
+    
+    await user.tab();
+    expect(screen.getByRole('button', { name: /home/i })).toHaveFocus();
+    
+    await user.tab();
+    expect(screen.getByRole('button', { name: /about/i })).toHaveFocus();
+  });
+});
+```
+
+## Testing Best Practices
+
+### Test Organization
+- **Group Related Tests**: Use `describe` blocks to group related tests
+- **Clear Test Names**: Use descriptive test names that explain what is being tested
+- **One Assertion Per Test**: Each test should verify one specific behavior
+- **Arrange-Act-Assert**: Structure tests with clear setup, execution, and verification
+
+### Test Data Management
+- **Use Factories**: Create test data using factory functions
+- **Avoid Hardcoded Data**: Use dynamic test data generation
+- **Clean Up After Tests**: Ensure tests don't affect each other
+- **Mock External Dependencies**: Mock APIs, timers, and external services
+
+### Test Maintenance
+- **Keep Tests Simple**: Avoid complex test logic
+- **Update Tests with Code**: Update tests when changing functionality
+- **Remove Obsolete Tests**: Delete tests for removed functionality
+- **Regular Test Reviews**: Review and refactor tests regularly
+
+### Coverage and Quality
+- **Meaningful Coverage**: Aim for meaningful test coverage, not just high numbers
+- **Test Edge Cases**: Test boundary conditions and error scenarios
+- **Test User Scenarios**: Focus on testing real user scenarios
+- **Continuous Integration**: Run tests on every commit and PR
+
+## Testing Commands
+
+### Package.json Scripts
+```json
+{
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:all": "npm run test && npm run test:e2e"
+  }
+}
+```
+
+### CI/CD Testing Pipeline
+```yaml
+# .github/workflows/test.yml
+name: Tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm ci
+      - run: npm run test:coverage
+      - run: npm run test:e2e
+```
+
+## Testing Anti-Patterns to Avoid
+
+### Common Testing Mistakes
+- **Testing Implementation Details**: Don't test internal component state or methods
+- **Over-Mocking**: Don't mock everything; test real integrations when possible
+- **Brittle Tests**: Avoid tests that break when implementation changes
+- **Slow Tests**: Don't write tests that are unnecessarily slow
+- **Testing Third-Party Code**: Don't test library functionality
+
+### What Not to Test
+- **Third-party libraries**: Don't test React, Next.js, or other library functionality
+- **Generated code**: Don't test auto-generated code
+- **Simple getters/setters**: Don't test simple property accessors
+- **Configuration files**: Don't test static configuration
+
+## Testing Documentation
+
+### Test Documentation
+- **Test README**: Document testing strategy and setup
+- **Test Examples**: Provide examples of common testing patterns
+- **Testing Guidelines**: Document team testing standards
+- **Test Reviews**: Regular reviews of test quality and coverage
+
+### Testing Metrics
+- **Coverage Reports**: Track test coverage metrics
+- **Test Performance**: Monitor test execution time
+- **Test Reliability**: Track flaky tests and failures
+- **Test Maintenance**: Monitor test maintenance overhead
+
+Remember: Good tests are a safety net that enables confident refactoring and feature development. Focus on testing behavior that matters to users and business requirements.

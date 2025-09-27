@@ -1,0 +1,695 @@
+# Prisma Development Rules
+
+Follow Prisma best practices and conventions for building modern database-driven applications with Next.js and FSD architecture.
+
+## Prisma Integration with FSD Architecture
+
+### Database Layer Organization
+- **`shared/api/database/`** — Prisma client configuration and database utilities
+- **`shared/lib/prisma/`** — Prisma-specific utilities and helpers
+- **`entities/*/api/`** — Entity-specific database operations
+- **`features/*/api/`** — Feature-specific database operations
+
+### Project Structure (Prisma + FSD + Next.js)
+
+**IMPORTANT**: Only create folders when you actually need them. Don't create empty directories for layers or slices that aren't being used yet. Start with the minimal structure and grow it organically as your project develops.
+
+#### Minimal Starting Structure (Prisma + Next.js App Router + FSD)
+```
+├── prisma/                       # Prisma configuration
+│   ├── schema.prisma             # Database schema
+│   ├── migrations/              # Database migrations
+│   └── seed.ts                  # Database seeding
+├── pages/                        # Empty pages folder (Next.js requirement)
+│   └── README.md                 # Explanation why this folder exists
+└── src/                          # FSD layers
+    ├── app/                      # Next.js App Router + FSD App layer
+    │   ├── layout.tsx                # Root layout
+    │   ├── page.tsx                  # Home page
+    │   └── globals.css               # Global styles
+    ├── pages/                    # FSD Pages layer
+    ├── shared/                   # Shared layer
+    │   ├── api/                  # Shared API utilities
+    │   │   └── database/          # Prisma client and database utilities
+    │   └── lib/                  # Shared utilities
+    │       └── prisma/           # Prisma-specific utilities
+    └── entities/                 # Entities layer (create when needed)
+        └── user/                 # User entity slice
+            ├── api/              # User database operations
+            └── model/            # User data models
+```
+
+#### Full Structure (Only when needed)
+```
+├── prisma/                       # Prisma configuration
+│   ├── schema.prisma             # Database schema
+│   ├── migrations/              # Database migrations
+│   └── seed.ts                  # Database seeding
+├── pages/                        # Empty pages folder (Next.js requirement)
+│   └── README.md                 # Explanation why this folder exists
+└── src/                          # FSD layers
+    ├── app/                      # Next.js App Router + FSD App layer
+    ├── pages/                    # FSD Pages layer
+    ├── widgets/                  # Widgets layer
+    ├── features/                 # Features layer
+    ├── entities/                 # Entities layer
+    │   └── user/                 # User entity slice
+    │       ├── api/              # User database operations
+    │       └── model/            # User data models
+    └── shared/                   # Shared layer
+        ├── api/                  # Shared API utilities
+        │   └── database/         # Prisma client and database utilities
+        └── lib/                  # Shared utilities
+            └── prisma/           # Prisma-specific utilities
+```
+
+## Prisma Schema Design
+
+### Schema Organization
+- **Single schema file** — Keep all models in `prisma/schema.prisma`
+- **Logical grouping** — Group related models together
+- **Clear naming** — Use descriptive, consistent model and field names
+- **Proper relationships** — Define clear relationships between models
+
+### Model Design Principles
+- **Primary keys** — Always define explicit primary keys
+- **Timestamps** — Include `createdAt` and `updatedAt` for audit trails
+- **Soft deletes** — Use `deletedAt` for soft delete functionality
+- **Indexes** — Add indexes for frequently queried fields
+- **Constraints** — Use database constraints for data integrity
+
+### Example Schema Structure
+```prisma
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+
+  // Relationships
+  posts     Post[]
+  profile   Profile?
+
+  @@map("users")
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   String?
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+
+  // Relationships
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  comments  Comment[]
+
+  @@map("posts")
+}
+```
+
+## Prisma Client Configuration
+
+### Client Setup
+- **Singleton pattern** — Use singleton pattern for Prisma client
+- **Connection pooling** — Configure proper connection pooling
+- **Error handling** — Implement comprehensive error handling
+- **Type safety** — Leverage Prisma's generated types
+
+### Client Configuration Example
+```typescript
+// src/shared/api/database/prisma-client.ts
+import { PrismaClient } from '@prisma/client'
+
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined
+}
+
+export const prisma = globalForPrisma.prisma ?? new PrismaClient({
+  log: ['query', 'error', 'warn'],
+  errorFormat: 'pretty',
+})
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+```
+
+### Database Utilities
+```typescript
+// src/shared/lib/prisma/database-utils.ts
+import { prisma } from '../api/database/prisma-client'
+
+export class DatabaseUtils {
+  static async connect() {
+    try {
+      await prisma.$connect()
+      console.log('Database connected successfully')
+    } catch (error) {
+      console.error('Database connection failed:', error)
+      throw error
+    }
+  }
+
+  static async disconnect() {
+    await prisma.$disconnect()
+  }
+
+  static async healthCheck() {
+    try {
+      await prisma.$queryRaw`SELECT 1`
+      return { status: 'healthy' }
+    } catch (error) {
+      return { status: 'unhealthy', error }
+    }
+  }
+}
+```
+
+## Entity-Specific Database Operations
+
+### Entity API Structure
+- **CRUD operations** — Create, Read, Update, Delete operations
+- **Query builders** — Reusable query building functions
+- **Validation** — Input validation and sanitization
+- **Error handling** — Proper error handling and logging
+
+### Example Entity API
+```typescript
+// src/entities/user/api/user-repository.ts
+import { prisma } from '@/shared/api/database/prisma-client'
+import { User, Prisma } from '@prisma/client'
+
+export class UserRepository {
+  static async create(data: Prisma.UserCreateInput): Promise<User> {
+    try {
+      return await prisma.user.create({
+        data,
+        include: {
+          profile: true,
+          posts: true
+        }
+      })
+    } catch (error) {
+      console.error('User creation failed:', error)
+      throw new Error('Failed to create user')
+    }
+  }
+
+  static async findById(id: string): Promise<User | null> {
+    try {
+      return await prisma.user.findUnique({
+        where: { id },
+        include: {
+          profile: true,
+          posts: true
+        }
+      })
+    } catch (error) {
+      console.error('User fetch failed:', error)
+      throw new Error('Failed to fetch user')
+    }
+  }
+
+  static async findByEmail(email: string): Promise<User | null> {
+    try {
+      return await prisma.user.findUnique({
+        where: { email },
+        include: {
+          profile: true,
+          posts: true
+        }
+      })
+    } catch (error) {
+      console.error('User fetch by email failed:', error)
+      throw new Error('Failed to fetch user by email')
+    }
+  }
+
+  static async update(id: string, data: Prisma.UserUpdateInput): Promise<User> {
+    try {
+      return await prisma.user.update({
+        where: { id },
+        data,
+        include: {
+          profile: true,
+          posts: true
+        }
+      })
+    } catch (error) {
+      console.error('User update failed:', error)
+      throw new Error('Failed to update user')
+    }
+  }
+
+  static async delete(id: string): Promise<User> {
+    try {
+      return await prisma.user.update({
+        where: { id },
+        data: { deletedAt: new Date() }
+      })
+    } catch (error) {
+      console.error('User deletion failed:', error)
+      throw new Error('Failed to delete user')
+    }
+  }
+
+  static async findMany(options: {
+    skip?: number
+    take?: number
+    where?: Prisma.UserWhereInput
+    orderBy?: Prisma.UserOrderByWithRelationInput
+  }): Promise<User[]> {
+    try {
+      return await prisma.user.findMany({
+        ...options,
+        include: {
+          profile: true,
+          posts: true
+        }
+      })
+    } catch (error) {
+      console.error('Users fetch failed:', error)
+      throw new Error('Failed to fetch users')
+    }
+  }
+}
+```
+
+## Feature-Specific Database Operations
+
+### Feature API Structure
+- **Business logic** — Feature-specific database operations
+- **Complex queries** — Multi-table queries and aggregations
+- **Transactions** — Database transactions for complex operations
+- **Caching** — Query result caching strategies
+
+### Example Feature API
+```typescript
+// src/features/authentication/api/auth-repository.ts
+import { prisma } from '@/shared/api/database/prisma-client'
+import { User } from '@prisma/client'
+
+export class AuthRepository {
+  static async authenticateUser(email: string, password: string): Promise<User | null> {
+    try {
+      const user = await prisma.user.findUnique({
+        where: { email },
+        include: {
+          profile: true
+        }
+      })
+
+      if (!user || user.deletedAt) {
+        return null
+      }
+
+      // Add password verification logic here
+      // const isValidPassword = await bcrypt.compare(password, user.password)
+      // if (!isValidPassword) return null
+
+      return user
+    } catch (error) {
+      console.error('User authentication failed:', error)
+      throw new Error('Authentication failed')
+    }
+  }
+
+  static async createUserSession(userId: string, sessionData: any): Promise<any> {
+    try {
+      return await prisma.$transaction(async (tx) => {
+        // Create session logic here
+        const session = await tx.session.create({
+          data: {
+            userId,
+            ...sessionData
+          }
+        })
+
+        return session
+      })
+    } catch (error) {
+      console.error('Session creation failed:', error)
+      throw new Error('Failed to create session')
+    }
+  }
+}
+```
+
+## Database Migrations
+
+### Migration Strategy
+- **Incremental migrations** — Small, incremental database changes
+- **Backward compatibility** — Maintain backward compatibility when possible
+- **Data migration** — Handle data transformations in migrations
+- **Rollback strategy** — Plan for migration rollbacks
+
+### Migration Best Practices
+- **Review migrations** — Always review generated migrations
+- **Test migrations** — Test migrations on development data
+- **Backup strategy** — Backup database before major migrations
+- **Documentation** — Document complex migrations
+
+### Example Migration
+```typescript
+// prisma/migrations/20240101000000_add_user_profile/migration.sql
+-- CreateTable
+CREATE TABLE "profiles" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "firstName" TEXT,
+    "lastName" TEXT,
+    "bio" TEXT,
+    "avatar" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "profiles_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "profiles_userId_key" ON "profiles"("userId");
+
+-- AddForeignKey
+ALTER TABLE "profiles" ADD CONSTRAINT "profiles_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+```
+
+## Database Seeding
+
+### Seed Strategy
+- **Development data** — Create realistic development data
+- **Test data** — Generate test data for different scenarios
+- **Production data** — Handle production data seeding carefully
+- **Data relationships** — Maintain proper data relationships
+
+### Example Seed File
+```typescript
+// prisma/seed.ts
+import { PrismaClient } from '@prisma/client'
+import { hash } from 'bcryptjs'
+
+const prisma = new PrismaClient()
+
+async function main() {
+  console.log('Starting database seeding...')
+
+  // Create users
+  const users = await Promise.all([
+    prisma.user.create({
+      data: {
+        email: 'admin@example.com',
+        name: 'Admin User',
+        profile: {
+          create: {
+            firstName: 'Admin',
+            lastName: 'User',
+            bio: 'System administrator'
+          }
+        }
+      }
+    }),
+    prisma.user.create({
+      data: {
+        email: 'user@example.com',
+        name: 'Regular User',
+        profile: {
+          create: {
+            firstName: 'Regular',
+            lastName: 'User',
+            bio: 'Regular user account'
+          }
+        }
+      }
+    })
+  ])
+
+  // Create posts
+  const posts = await Promise.all([
+    prisma.post.create({
+      data: {
+        title: 'Welcome to our platform',
+        content: 'This is the first post on our platform.',
+        published: true,
+        authorId: users[0].id
+      }
+    }),
+    prisma.post.create({
+      data: {
+        title: 'Getting started guide',
+        content: 'Here is how to get started with our platform.',
+        published: true,
+        authorId: users[1].id
+      }
+    })
+  ])
+
+  console.log('Database seeding completed!')
+  console.log(`Created ${users.length} users and ${posts.length} posts`)
+}
+
+main()
+  .catch((e) => {
+    console.error(e)
+    process.exit(1)
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
+```
+
+## Error Handling and Logging
+
+### Error Handling Strategy
+- **Database errors** — Handle Prisma-specific errors
+- **Connection errors** — Handle database connection issues
+- **Validation errors** — Handle data validation errors
+- **Transaction errors** — Handle transaction rollbacks
+
+### Error Handling Example
+```typescript
+// src/shared/lib/prisma/error-handler.ts
+import { Prisma } from '@prisma/client'
+
+export class PrismaErrorHandler {
+  static handle(error: unknown): never {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      switch (error.code) {
+        case 'P2002':
+          throw new Error('Unique constraint violation')
+        case 'P2025':
+          throw new Error('Record not found')
+        case 'P2003':
+          throw new Error('Foreign key constraint violation')
+        default:
+          throw new Error('Database operation failed')
+      }
+    }
+
+    if (error instanceof Prisma.PrismaClientUnknownRequestError) {
+      throw new Error('Unknown database error')
+    }
+
+    if (error instanceof Prisma.PrismaClientRustPanicError) {
+      throw new Error('Database engine error')
+    }
+
+    if (error instanceof Prisma.PrismaClientInitializationError) {
+      throw new Error('Database connection failed')
+    }
+
+    if (error instanceof Prisma.PrismaClientValidationError) {
+      throw new Error('Invalid data provided')
+    }
+
+    throw new Error('An unexpected error occurred')
+  }
+}
+```
+
+## Performance Optimization
+
+### Query Optimization
+- **Select specific fields** — Only select needed fields
+- **Use includes wisely** — Be selective with includes
+- **Pagination** — Implement proper pagination
+- **Indexes** — Add database indexes for performance
+
+### Caching Strategy
+- **Query result caching** — Cache frequently accessed data
+- **Connection pooling** — Use connection pooling
+- **Query optimization** — Optimize complex queries
+- **Database monitoring** — Monitor database performance
+
+### Performance Example
+```typescript
+// src/entities/user/api/user-repository.ts
+export class UserRepository {
+  static async findManyOptimized(options: {
+    skip?: number
+    take?: number
+    where?: Prisma.UserWhereInput
+  }): Promise<{ users: User[]; total: number }> {
+    try {
+      const [users, total] = await Promise.all([
+        prisma.user.findMany({
+          ...options,
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            createdAt: true,
+            profile: {
+              select: {
+                firstName: true,
+                lastName: true,
+                avatar: true
+              }
+            }
+          }
+        }),
+        prisma.user.count({ where: options.where })
+      ])
+
+      return { users, total }
+    } catch (error) {
+      console.error('Optimized users fetch failed:', error)
+      throw new Error('Failed to fetch users')
+    }
+  }
+}
+```
+
+## Testing Database Operations
+
+### Testing Strategy
+- **Unit tests** — Test individual database operations
+- **Integration tests** — Test database operations with real database
+- **Test data** — Use test-specific data
+- **Database cleanup** — Clean up test data after tests
+
+### Testing Example
+```typescript
+// src/entities/user/api/__tests__/user-repository.test.ts
+import { UserRepository } from '../user-repository'
+import { prisma } from '@/shared/api/database/prisma-client'
+
+describe('UserRepository', () => {
+  beforeEach(async () => {
+    // Clean up test data
+    await prisma.user.deleteMany()
+  })
+
+  afterAll(async () => {
+    await prisma.$disconnect()
+  })
+
+  it('should create a user', async () => {
+    const userData = {
+      email: 'test@example.com',
+      name: 'Test User'
+    }
+
+    const user = await UserRepository.create(userData)
+
+    expect(user).toBeDefined()
+    expect(user.email).toBe(userData.email)
+    expect(user.name).toBe(userData.name)
+  })
+
+  it('should find user by id', async () => {
+    const user = await UserRepository.create({
+      email: 'test@example.com',
+      name: 'Test User'
+    })
+
+    const foundUser = await UserRepository.findById(user.id)
+
+    expect(foundUser).toBeDefined()
+    expect(foundUser?.id).toBe(user.id)
+  })
+})
+```
+
+## Environment Configuration
+
+### Environment Variables
+- **Database URL** — Configure database connection
+- **Environment-specific settings** — Different settings for different environments
+- **Security** — Secure sensitive database credentials
+- **Validation** — Validate environment variables
+
+### Environment Configuration Example
+```typescript
+// src/shared/config/database.ts
+import { z } from 'zod'
+
+const databaseSchema = z.object({
+  DATABASE_URL: z.string().url(),
+  DATABASE_POOL_SIZE: z.string().transform(Number).default('10'),
+  DATABASE_TIMEOUT: z.string().transform(Number).default('10000'),
+  DATABASE_SSL: z.string().transform(val => val === 'true').default('false')
+})
+
+export const databaseConfig = databaseSchema.parse(process.env)
+```
+
+## Prisma Code Review Checklist
+
+### Architecture Validation
+- [ ] Database operations follow FSD hierarchy
+- [ ] Entity APIs are properly organized
+- [ ] Feature APIs contain business logic
+- [ ] Shared database utilities are reusable
+- [ ] Proper error handling implemented
+
+### Performance Checklist
+- [ ] Queries are optimized
+- [ ] Proper pagination implemented
+- [ ] Database indexes are appropriate
+- [ ] Connection pooling configured
+- [ ] Caching strategy implemented
+
+### Security Checklist
+- [ ] Input validation implemented
+- [ ] SQL injection prevention
+- [ ] Proper error handling
+- [ ] Sensitive data protection
+- [ ] Access control implemented
+
+### Testing Checklist
+- [ ] Unit tests for database operations
+- [ ] Integration tests with real database
+- [ ] Test data cleanup
+- [ ] Error scenario testing
+- [ ] Performance testing
+
+## Prisma Best Practices
+
+### Development Workflow
+1. **Design schema** — Plan database schema before implementation
+2. **Generate migrations** — Use Prisma migrations for schema changes
+3. **Test locally** — Test changes in development environment
+4. **Review changes** — Review migrations before applying
+5. **Deploy carefully** — Deploy migrations with proper monitoring
+
+### Maintenance Guidelines
+- **Regular backups** — Backup database regularly
+- **Monitor performance** — Monitor database performance
+- **Update dependencies** — Keep Prisma and database drivers updated
+- **Documentation** — Document complex database operations
+- **Security updates** — Apply security updates promptly
+
+Remember: Prisma provides powerful database access capabilities. Use these features appropriately within the FSD architecture to create maintainable, scalable, and secure database-driven applications.

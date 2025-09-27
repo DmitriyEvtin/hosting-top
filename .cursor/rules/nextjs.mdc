@@ -1,0 +1,124 @@
+---
+alwaysApply: true
+---
+
+# Next.js Development Rules
+
+Follow Next.js best practices and conventions for building modern React applications with the App Router.
+
+## Next.js App Router Integration
+
+### App Directory Structure
+- **`app/` directory** serves as both Next.js App Router and FSD App layer
+- **Route groups** `(group-name)` for organizing related routes
+- **Dynamic routes** `[param]` for parameterized pages
+- **Special files**: `layout.tsx`, `page.tsx`, `loading.tsx`, `error.tsx`, `not-found.tsx`
+
+### App Layer Responsibilities
+- **Routing**: Next.js file-based routing in `app/` directory
+- **Layouts**: Root and nested layouts for UI structure
+- **Providers**: Global providers (theme, query, auth) in `app/providers/`
+- **Global styles**: CSS imports and global styles
+- **Metadata**: SEO and page metadata configuration
+
+### Project Structure (Next.js App Router)
+
+**IMPORTANT**: Only create folders when you actually need them. Don't create empty directories for layers or slices that aren't being used yet. Start with the minimal structure and grow it organically as your project develops.
+
+#### Minimal Starting Structure (Next.js App Router + FSD)
+```
+├── pages/                        # Empty pages folder (Next.js requirement)
+│   └── README.md                 # Explanation why this folder exists
+└── src/                          # FSD layers
+    ├── app/                      # Next.js App Router + FSD App layer
+    │   ├── layout.tsx                # Root layout
+    │   ├── page.tsx                  # Home page
+    │   └── globals.css               # Global styles
+    ├── pages/                    # FSD Pages layer
+    └── shared/                   # Shared layer (create when needed)
+```
+
+#### Full Structure (Only when needed)
+```
+├── pages/                        # Empty pages folder (Next.js requirement)
+│   └── README.md                 # Explanation why this folder exists
+└── src/                          # FSD layers
+    ├── app/                      #Next.js App Router + FSD App layer
+    ├── pages/                    # FSD Pages layer
+    ├── widgets/                  # Widgets layer
+    ├── features/                 # Features layer
+    ├── entities/                 # Entities layer
+    └── shared/                   # Shared layer
+```
+
+## Next.js Specific Guidelines
+
+### Server Components vs Client Components
+- **Server Components** (default): Use for data fetching, SEO, performance
+- **Client Components** (`"use client"`): Use for interactivity, state, browser APIs
+- **App Router files** are Server Components by default
+- **FSD components** can be either Server or Client Components
+
+### Import Rules for Next.js
+- **Next.js pages** can import from all FSD layers (they are entry points)
+- **App Router files** (layout.tsx, page.tsx) should primarily import from widgets and pages layers
+- **Use absolute imports** for cross-layer dependencies
+- **Configure path mapping** with `@/` alias for clean imports
+
+### Next.js Special Files
+- **Middleware**: Must be in project root (`middleware.ts`) alongside Next.js folders
+- **Instrumentation**: Must be in project root (`instrumentation.js`) for performance tracking
+- **Empty pages folder**: Required by Next.js even when using App Router (prevents build errors)
+- **API Routes**: Use `src/app/api-routes/` for logic, re-export in `app/api/`
+
+### Next.js Migration Strategy
+1. **Preserve Next.js App Router structure** in `app/` directory
+2. **Create FSD layers** alongside Next.js structure
+3. **Gradually move logic** from `app/` to appropriate FSD layers
+4. **Keep Next.js special files** (layout.tsx, page.tsx) as thin wrappers
+5. **Use Server/Client Components** appropriately within FSD structure
+
+### Next.js Code Review Checklist
+- [ ] Next.js pages are thin wrappers
+- [ ] Server/Client Components used appropriately
+- [ ] Metadata and SEO properly configured
+- [ ] API routes follow FSD structure
+- [ ] Proper use of Next.js special files
+- [ ] App Router conventions followed
+
+### Next.js Specific Tooling
+- **TypeScript**: Enable strict mode for better type safety
+- **ESLint**: Configure for Next.js and FSD rules
+- **Prettier**: Consistent code formatting
+- **Next.js DevTools**: Use for performance monitoring
+- **Bundle Analyzer**: Monitor bundle size and dependencies
+- **FSD Linter**: Validate FSD architecture rules
+- **Path Mapping**: Configure `@/` alias for clean imports
+
+## Next.js Performance Optimization
+
+### Server Components
+- Use Server Components for data fetching and SEO
+- Minimize client-side JavaScript bundle
+- Leverage server-side rendering for better performance
+- Use streaming for better user experience
+
+### Client Components
+- Use `"use client"` directive only when necessary
+- Minimize client-side state and effects
+- Use React Server Components for static content
+- Optimize client-side JavaScript bundle
+
+### Data Fetching
+- Use Server Components for data fetching when possible
+- Implement proper loading and error states
+- Use Next.js caching mechanisms
+- Optimize API calls and data fetching patterns
+
+### SEO and Metadata
+- Configure proper metadata for each page
+- Use Next.js metadata API for dynamic metadata
+- Implement structured data for better SEO
+- Optimize images and assets for performance
+
+Remember: Next.js App Router provides powerful features for building modern React applications. Use these features appropriately within the FSD architecture to create maintainable and scalable applications.
