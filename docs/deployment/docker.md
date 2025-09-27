@@ -188,12 +188,12 @@ server {
 
 ## Docker Compose конфигурация
 
+**Примечание**: В современных версиях Docker Compose (v2.0+) версия больше не требуется и считается устаревшей. Docker Compose автоматически использует последнюю версию формата.
+
 ### Основной docker-compose.yml
 
 ```yaml
 # docker-compose.yml
-version: "3.8"
-
 services:
   postgres:
     image: postgres:15-alpine
@@ -361,8 +361,6 @@ docker compose restart postgres
 ### docker-compose.prod.yml
 
 ```yaml
-version: "3.8"
-
 services:
   app:
     build:
@@ -494,13 +492,62 @@ CMD ["npm", "start"]
 
 ## Health Checks
 
-### Конфигурация health checks
+### Стратегия health checks
+
+В проекте используется **двухуровневая стратегия** health checks:
+
+#### 1. **Dockerfile HEALTHCHECK** (уровень образа)
+
+- **Назначение**: Определяет healthcheck на уровне **образа**
+- **Применение**: Работает для **любого контейнера**, созданного из этого образа
+- **Конфигурация**: Жестко задана в образе
 
 ```dockerfile
-# Добавление health check в Dockerfile
+# docker/production/node/Dockerfile
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:3000/api/health || exit 1
+  CMD curl --fail http://localhost:3000/api/health || exit 1
+
+# docker/production/nginx/Dockerfile
+HEALTHCHECK --interval=5s --timeout=3s --start-period=1s \
+  CMD curl --fail http://127.0.0.1/health || exit 1
 ```
+
+#### 2. **docker-compose.yml healthcheck** (уровень сервиса)
+
+- **Назначение**: Определяет healthcheck на уровне **сервиса**
+- **Применение**: Работает только для **конкретного сервиса** в compose
+- **Конфигурация**: Можно переопределить настройки из Dockerfile
+
+```yaml
+# docker-compose.prod.yml
+services:
+  app:
+    # healthcheck настроен в Dockerfile, но можно переопределить
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+    #   interval: 30s
+    #   timeout: 3s
+    #   retries: 3
+    #   start_period: 5s
+
+  nginx:
+    # healthcheck настроен в Dockerfile, но можно переопределить при необходимости
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost/health"]
+    #   interval: 5s
+    #   timeout: 3s
+    #   retries: 3
+    #   start_period: 1s
+```
+
+### Преимущества двухуровневой стратегии
+
+1. **Гибкость**: Можно переопределить настройки для конкретного окружения
+2. **Портативность**: Образы работают с healthcheck независимо от compose
+3. **Консистентность**: Единые настройки по умолчанию для всех контейнеров
+4. **Переопределение**: Возможность кастомизации для production/staging
+
+### Конфигурация health checks
 
 ### Health check endpoint
 
