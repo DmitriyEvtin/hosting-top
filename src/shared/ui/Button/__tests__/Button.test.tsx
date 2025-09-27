@@ -78,4 +78,90 @@ describe("Button Component", () => {
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute("href", "/test");
   });
+
+  it("supports all variant combinations", () => {
+    const variants = [
+      "default",
+      "destructive",
+      "outline",
+      "secondary",
+      "ghost",
+      "link",
+    ] as const;
+    const sizes = ["default", "sm", "lg", "icon"] as const;
+
+    variants.forEach(variant => {
+      sizes.forEach(size => {
+        const { unmount } = render(
+          <Button variant={variant} size={size}>
+            {variant} {size}
+          </Button>
+        );
+
+        const button = screen.getByRole("button");
+        expect(button).toBeInTheDocument();
+        unmount();
+      });
+    });
+  });
+
+  it("handles keyboard navigation", async () => {
+    const user = userEvent.setup();
+    const handleClick = jest.fn();
+
+    render(<Button onClick={handleClick}>Keyboard accessible</Button>);
+
+    const button = screen.getByRole("button", { name: /keyboard accessible/i });
+
+    // Tab to button
+    await user.tab();
+    expect(button).toHaveFocus();
+
+    // Press Enter
+    await user.keyboard("{Enter}");
+    expect(handleClick).toHaveBeenCalledTimes(1);
+
+    // Press Space
+    await user.keyboard(" ");
+    expect(handleClick).toHaveBeenCalledTimes(2);
+  });
+
+  it("has proper ARIA attributes", () => {
+    render(
+      <Button aria-label="Custom label" aria-describedby="description">
+        Button
+      </Button>
+    );
+
+    const button = screen.getByRole("button");
+    expect(button).toHaveAttribute("aria-label", "Custom label");
+    expect(button).toHaveAttribute("aria-describedby", "description");
+  });
+
+  it("handles loading state", () => {
+    render(<Button disabled>Loading...</Button>);
+
+    const button = screen.getByRole("button", { name: /loading/i });
+    expect(button).toBeDisabled();
+    expect(button).toHaveClass("disabled:pointer-events-none");
+  });
+
+  it("forwards all HTML button attributes", () => {
+    render(
+      <Button
+        type="submit"
+        form="test-form"
+        data-testid="test-button"
+        id="unique-id"
+      >
+        Submit
+      </Button>
+    );
+
+    const button = screen.getByRole("button", { name: /submit/i });
+    expect(button).toHaveAttribute("type", "submit");
+    expect(button).toHaveAttribute("form", "test-form");
+    expect(button).toHaveAttribute("data-testid", "test-button");
+    expect(button).toHaveAttribute("id", "unique-id");
+  });
 });
