@@ -31,6 +31,7 @@
 ### 🚀 Деплой
 
 - [Docker конфигурация](./deployment/docker.md) - Контейнеризация
+- [Миграции базы данных](./deployment/database-migrations.md) - Сервис миграций
 - [CI/CD](./deployment/ci-cd.md) - Автоматизация развертывания
 - [Production](./deployment/production.md) - Production окружение
 

@@ -102,9 +102,12 @@ cat /usr/local/var/postgresql/postgresql.conf | grep port
 ```
 Error: P3001: Database does not exist
 Error: P3002: The database schema is not empty
+Invalid `prisma.user.count()` invocation: The table `public.users` does not exist in the current database
 ```
 
 #### Решения
+
+**Для development:**
 
 ```bash
 # Сброс базы данных
@@ -117,6 +120,28 @@ npx prisma migrate dev
 npx prisma generate
 ```
 
+**Для production:**
+
+```bash
+# Запуск сервиса миграций (рекомендуется)
+make db-migrate
+
+# Только применение миграций
+make db-migrate-only
+
+# Проверка и исправление миграций
+make db-check
+
+# Проверка статуса
+make db-status
+
+# Просмотр логов миграций
+make db-logs
+
+# Или вручную через Docker
+docker compose -f docker-compose.prod.yml exec app npx prisma migrate deploy
+```
+
 #### Диагностика
 
 ```bash
@@ -125,6 +150,63 @@ npx prisma migrate status
 
 # Просмотр схемы
 npx prisma db pull
+
+# Проверка подключения к базе данных
+npx prisma db execute --stdin
+# Введите: SELECT 1;
+```
+
+### Отсутствующие таблицы в production
+
+#### Симптомы
+
+```
+Invalid `prisma.user.count()` invocation: The table `public.users` does not exist in the current database
+```
+
+#### Причины
+
+1. Миграции не были применены к продакшн базе данных
+2. База данных была создана без применения миграций
+3. Проблемы с правами доступа к базе данных
+
+#### Решения
+
+**Автоматическое исправление:**
+
+```bash
+# Проверка и автоматическое исправление
+make db-fix
+
+# Или проверка состояния
+make db-check
+```
+
+**Ручное исправление:**
+
+```bash
+# 1. Проверка статуса миграций
+docker compose -f docker-compose.prod.yml exec app npx prisma migrate status
+
+# 2. Применение миграций
+docker compose -f docker-compose.prod.yml exec app npx prisma migrate deploy
+
+# 3. Генерация Prisma клиента
+docker compose -f docker-compose.prod.yml exec app npx prisma generate
+
+# 4. Проверка таблиц
+docker compose -f docker-compose.prod.yml exec app npx prisma db execute --stdin
+# Введите: SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';
+```
+
+**Если миграции не применяются:**
+
+```bash
+# Сброс и пересоздание базы данных (ОСТОРОЖНО!)
+docker compose -f docker-compose.prod.yml exec app npx prisma migrate reset --force
+
+# Или создание новой миграции
+docker compose -f docker-compose.prod.yml exec app npx prisma migrate dev --name init
 ```
 
 ## Проблемы с парсингом

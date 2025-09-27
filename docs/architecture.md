@@ -347,8 +347,23 @@ make prod-up
 # Или вручную
 docker compose -f docker-compose.prod.yml up -d
 
-# Применение миграций
+# Запуск сервиса миграций
 make db-migrate
+
+# Только применение миграций
+make db-migrate-only
+
+# Проверка состояния базы данных
+make db-check
+
+# Исправление проблем с базой данных
+make db-fix
+
+# Статус миграций
+make db-status
+
+# Логи миграций
+make db-logs
 
 # Проверка здоровья
 make health

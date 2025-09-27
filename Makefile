@@ -127,13 +127,28 @@ health-api:
 
 # База данных
 db-migrate:
-	docker compose -f docker-compose.prod.yml exec app npx prisma migrate deploy
+	docker compose -f docker-compose.prod.yml up migrations
+
+db-migrate-only:
+	docker compose -f docker-compose.prod.yml run --rm migrations npx prisma migrate deploy
 
 db-seed:
 	docker compose -f docker-compose.prod.yml exec app npx prisma db seed
 
 db-reset:
 	docker compose -f docker-compose.prod.yml exec app npx prisma migrate reset --force
+
+db-check:
+	docker compose -f docker-compose.prod.yml exec app node scripts/check-database-migrations.js
+
+db-fix:
+	docker compose -f docker-compose.prod.yml exec app node scripts/check-database-migrations.js
+
+db-status:
+	docker compose -f docker-compose.prod.yml exec app npx prisma migrate status
+
+db-logs:
+	docker compose -f docker-compose.prod.yml logs migrations
 
 # Docker Registry
 registry-up:
@@ -187,8 +202,13 @@ help:
 	@echo "  grafana      - Информация о Grafana"
 	@echo "  goaccess     - Информация о GoAccess"
 	@echo "  health      - Проверка здоровья системы"
-	@echo "  db-migrate   - Применение миграций"
+	@echo "  db-migrate   - Запуск сервиса миграций"
+	@echo "  db-migrate-only - Только применение миграций"
 	@echo "  db-seed      - Заполнение базы данных"
+	@echo "  db-check     - Проверка состояния базы данных"
+	@echo "  db-fix      - Исправление проблем с базой данных"
+	@echo "  db-status    - Статус миграций"
+	@echo "  db-logs      - Логи миграций"
 	@echo "  registry-up  - Запуск Docker Registry"
 	@echo "  registry-down - Остановка Docker Registry"
 	@echo "  registry-logs - Просмотр логов Registry"

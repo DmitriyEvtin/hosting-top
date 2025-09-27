@@ -130,9 +130,14 @@ make health-api   # Проверка API health check
 #### ✅ Database Commands
 
 ```bash
-make db-migrate   # Применение миграций
-make db-seed      # Заполнение базы данных
-make db-reset     # Сброс базы данных
+make db-migrate       # Запуск сервиса миграций
+make db-migrate-only  # Только применение миграций
+make db-seed          # Заполнение базы данных
+make db-reset         # Сброс базы данных
+make db-check         # Проверка состояния базы данных
+make db-fix           # Исправление проблем с базой данных
+make db-status        # Статус миграций
+make db-logs          # Логи миграций
 ```
 
 ### 5. Configuration Scripts
