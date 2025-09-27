@@ -153,6 +153,8 @@ enum UserRole {
 
 ### Структура папок
 
+Компоненты называются по правилу ui\ComponentName\ComponentName.tsx + index.ts 
+
 ```
 src/
 ├── app/                          # Next.js App Router + FSD App layer
@@ -238,11 +240,11 @@ src/
 │       └── api/
 └── shared/                      # Shared layer
     ├── ui/                      # Shared UI components
-    │   ├── button/
-    │   ├── input/
-    │   ├── modal/
-    │   ├── table/
-    │   └── layout/
+    │   ├── Button/
+    │   ├── Input/
+    │   ├── Modal/
+    │   ├── Table/
+    │   └── Layout/
     ├── api/                     # Shared API utilities
     │   ├── database/
     │   ├── aws-s3/
