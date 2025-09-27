@@ -38,6 +38,23 @@ npm install --save-dev jest @testing-library/react @testing-library/jest-dom
 npm install --save-dev @testing-library/user-event
 npm install --save-dev playwright
 npm install --save-dev msw
+npm install --save-dev @faker-js/faker next-intl
+```
+
+### Структура тестов
+
+```
+tests/
+├── unit/                    # Unit тесты
+├── integration/             # Integration тесты
+└── e2e/                    # E2E тесты
+
+src/shared/lib/test-utils/  # Тестовые утилиты
+├── index.ts                # Экспорт всех утилит
+├── render.tsx              # Кастомный render с провайдерами
+├── mocks.ts                # Моки для тестов
+├── data-factories.ts       # Фабрики тестовых данных
+└── api-mocks.ts            # MSW хендлеры для API
 ```
 
 ### Конфигурация Jest
@@ -494,6 +511,25 @@ module.exports = {
 
 ```bash
 npm run test:coverage
+```
+
+### Доступные команды тестирования
+
+```bash
+# Unit тесты
+npm run test                 # Запуск всех unit тестов
+npm run test:watch          # Запуск в watch режиме
+npm run test:coverage       # Запуск с покрытием кода
+npm run test:ci             # Запуск для CI/CD
+
+# E2E тесты
+npm run test:e2e            # Запуск E2E тестов
+npm run test:e2e:ui         # Запуск с UI
+npm run test:e2e:headed     # Запуск в видимом браузере
+npm run test:setup          # Установка браузеров для Playwright
+
+# Все тесты
+npm run test:all            # Запуск всех тестов
 ```
 
 ## CI/CD интеграция
