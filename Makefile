@@ -1,6 +1,6 @@
 # Переменные окружения
-REGISTRY ?= ghcr.io
-IMAGE_NAME ?= rolled-metal
+REGISTRY ?= localhost
+IMAGE_NAME ?= rolled_metal
 TAG ?= latest
 ENVIRONMENT ?= development
 
