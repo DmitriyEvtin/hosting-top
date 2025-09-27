@@ -1,0 +1,30 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 70%
+        threshold: 5%
+    patch:
+      default:
+        target: 60%
+        threshold: 5%
+
+comment:
+  layout: "header,diff,files,footer"
+  behavior: default
+  require_changes: false
+  require_base: no
+  require_head: yes
+
+github_checks:
+  annotations: true
+
+ignore:
+  - "src/app/**/route.ts"
+  - "src/app/**/layout.tsx"
+  - "src/app/**/page.tsx"
+  - "src/**/__tests__/**"
+  - "src/**/test-utils/**"
+  - "src/**/*.d.ts"
+  - "src/**/*.stories.{js,jsx,ts,tsx}"
+  - "src/**/index.{js,jsx,ts,tsx}"
