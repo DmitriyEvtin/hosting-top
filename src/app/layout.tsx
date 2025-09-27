@@ -3,8 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Каталог металлопроката",
-  description:
-    "Автоматический каталог товаров с парсингом данных с bvb-alyans.ru",
+  description: "Автоматический каталог товаров с парсингом данных",
 };
 
 export default function RootLayout({

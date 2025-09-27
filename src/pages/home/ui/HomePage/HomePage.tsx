@@ -29,7 +29,7 @@ export function HomePage() {
           <CardHeader>
             <CardTitle>Автоматический парсинг</CardTitle>
             <CardDescription>
-              Автоматическое обновление каталога с сайта bvb-alyans.ru
+              Автоматическое обновление каталога с сайта
             </CardDescription>
           </CardHeader>
           <CardContent>
