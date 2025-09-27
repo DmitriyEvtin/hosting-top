@@ -65,6 +65,18 @@ Follow Next.js best practices and conventions for building modern React applicat
 - **Use absolute imports** for cross-layer dependencies
 - **Configure path mapping** with `@/` alias for clean imports
 
+### Component Naming and Structure
+- **Component Structure**: Each component must be created in its own folder following the pattern `ComponentName/ComponentName.tsx + index.ts`
+- **Folder Structure**: Create a dedicated folder for each component with the same name as the component
+- **Main Component File**: The main component file should be named exactly like the component (e.g., `Button.tsx` for `Button` component)
+- **Index File**: Always include an `index.ts` file for clean imports and public API
+- **Example Structure**:
+  ```
+  src/shared/ui/Button/
+  ├── Button.tsx          # Main component file
+  └── index.ts            # Export file for clean imports
+  ```
+
 ### Next.js Special Files
 - **Middleware**: Must be in project root (`middleware.ts`) alongside Next.js folders
 - **Instrumentation**: Must be in project root (`instrumentation.js`) for performance tracking

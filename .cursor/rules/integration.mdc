@@ -41,7 +41,7 @@ Comprehensive integration guidelines for Next.js, FSD, Prisma, and Testing worki
 │   ├── features/                 # Features layer
 │   ├── entities/                 # Entities layer
 │   └── shared/                   # Shared layer
-│       ├── ui/                   # Shared UI components
+│       ├── ui/                   # Shared UI components (Button/, Input/, etc.)
 │       ├── api/                  # Shared API utilities
 │       │   └── database/          # Prisma client and database utilities
 │       ├── lib/                  # Shared utilities

@@ -95,6 +95,7 @@ Organize code within slices/layers by technical purpose:
 - **Segments:** Use standard segment names (`ui`, `api`, `model`, `lib`, `config`)
 - **Files:** Use kebab-case for file names
 - **Folders:** Use kebab-case for folder names
+- **Component Folders:** Use PascalCase for component folders (e.g., `Button/`, `UserCard/`)
 
 ### Component Organization
 - Place components in appropriate segments based on their purpose

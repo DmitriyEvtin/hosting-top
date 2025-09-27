@@ -298,7 +298,7 @@ test('user can complete purchase flow', async ({ page }) => {
 // src/test/utils/test-utils.tsx
 import { render, RenderOptions } from '@testing-library/react';
 import { ReactElement } from 'react';
-import { ThemeProvider } from '@/shared/ui/theme-provider';
+import { ThemeProvider } from '@/shared/ui/ThemeProvider';
 
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
   return (
