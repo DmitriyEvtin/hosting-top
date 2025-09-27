@@ -1,0 +1,73 @@
+services:
+  # Grafana Loki для сбора логов
+  loki:
+    image: grafana/loki:2.9.0
+    container_name: loki
+    restart: unless-stopped
+    ports:
+      - "3100:3100"
+    volumes:
+      - loki_data:/loki
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - monitoring
+
+  # Promtail для отправки логов в Loki
+  promtail:
+    image: grafana/promtail:2.9.0
+    container_name: promtail
+    restart: unless-stopped
+    volumes:
+      - traefik-logs:/var/log/traefik:ro
+      - ./monitoring/promtail.yml:/etc/promtail/config.yml:ro
+    command: -config.file=/etc/promtail/config.yml
+    depends_on:
+      - loki
+    networks:
+      - monitoring
+
+  # Grafana для визуализации
+  grafana:
+    image: grafana/grafana:10.2.0
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3001:3000" # 3001 чтобы не конфликтовать с приложением
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+    depends_on:
+      - loki
+    networks:
+      - monitoring
+
+  # GoAccess для анализа access логов
+  goaccess:
+    image: goaccess/goaccess:latest
+    container_name: goaccess
+    restart: unless-stopped
+    ports:
+      - "7890:7890"
+    volumes:
+      - traefik-logs:/var/log/traefik:ro
+      - ./monitoring/goaccess.conf:/etc/goaccess/goaccess.conf:ro
+    command: goaccess /var/log/traefik/access.log --log-format=COMBINED --real-time-html --ws-url=ws://localhost:7890 --port=7890
+    networks:
+      - monitoring
+
+volumes:
+  loki_data:
+    driver: local
+  grafana_data:
+    driver: local
+  traefik-logs:
+    external: true
+
+networks:
+  monitoring:
+    driver: bridge

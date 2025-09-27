@@ -69,6 +69,41 @@ logs-app:
 logs-nginx:
 	docker compose -f docker-compose.prod.yml logs -f nginx
 
+# Traefik логи
+traefik-logs:
+	./scripts/traefik-logs.sh --access --tail 50
+
+traefik-logs-follow:
+	./scripts/traefik-logs.sh --access --follow
+
+traefik-logs-error:
+	./scripts/traefik-logs.sh --error --tail 100
+
+traefik-logs-stats:
+	./scripts/traefik-logs.sh --stats
+
+traefik-logs-clear:
+	./scripts/traefik-logs.sh --clear
+
+# Мониторинг стек
+monitoring-up:
+	docker compose -f docker-compose.monitoring.yml up -d
+
+monitoring-down:
+	docker compose -f docker-compose.monitoring.yml down
+
+monitoring-logs:
+	docker compose -f docker-compose.monitoring.yml logs -f
+
+# Grafana
+grafana:
+	@echo "Grafana доступен по адресу: http://localhost:3001"
+	@echo "Логин: admin, Пароль: admin123"
+
+# GoAccess
+goaccess:
+	@echo "GoAccess доступен по адресу: http://localhost:7890"
+
 # Health checks
 health:
 	curl -f http://localhost/health
@@ -100,7 +135,11 @@ help:
 	@echo "  test-docker  - Тестирование Docker окружения"
 	@echo "  clean        - Очистка Docker системы"
 	@echo "  logs         - Просмотр логов"
-	@echo "  health       - Проверка здоровья системы"
+	@echo "  traefik-logs - Просмотр логов Traefik"
+	@echo "  monitoring-up - Запуск мониторинг стека"
+	@echo "  grafana      - Информация о Grafana"
+	@echo "  goaccess     - Информация о GoAccess"
+	@echo "  health      - Проверка здоровья системы"
 	@echo "  db-migrate   - Применение миграций"
 	@echo "  db-seed      - Заполнение базы данных"
 	@echo "  db-reset     - Сброс базы данных"
