@@ -160,7 +160,7 @@ export const checkAwsAvailability = async (): Promise<boolean> => {
 
   try {
     // Простая проверка доступности S3
-    await s3Client.send({} as any);
+    await s3Client.send({} as unknown);
     return true;
   } catch (error) {
     console.error("AWS S3 недоступен:", error);

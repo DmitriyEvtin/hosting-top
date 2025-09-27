@@ -38,6 +38,12 @@ COPY . .
 # Генерируем Prisma клиент
 RUN npx prisma generate
 
+# Устанавливаем переменные окружения для сборки
+ENV NEXTAUTH_SECRET="docker-build-secret-key-for-production-build-32-chars"
+ENV NEXTAUTH_URL="https://rolled-metal.example.com"
+ENV DATABASE_URL="postgresql://user:password@localhost:5432/rolled_metal"
+ENV NODE_ENV="production"
+
 # Собираем приложение
 RUN npm run build
 

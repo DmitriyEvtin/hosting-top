@@ -140,12 +140,14 @@ export const handlers = [
 
 // Mock server setup for tests
 export const setupMockServer = () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { setupServer } = require("msw/node");
   return setupServer(...handlers);
 };
 
 // Mock server setup for browser tests
 export const setupMockServerBrowser = () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { setupWorker } = require("msw/browser");
   return setupWorker(...handlers);
 };
