@@ -1,0 +1,17 @@
+name: Deploy frontend
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: docker build
+        run: |
+          REGISTRY=${{ secrets.REGISTRY_URL }} IMAGE_NAME=${{ secrets.IMAGE_NAME }} TAG=master-1 make build
+      - name: docker push
+        run: |
+          REGISTRY=${{ secrets.REGISTRY_URL }} IMAGE_NAME=${{ secrets.IMAGE_NAME }} TAG=master-1 make push

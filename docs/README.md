@@ -34,6 +34,11 @@
 - [CI/CD](./deployment/ci-cd.md) - Автоматизация развертывания
 - [Production](./deployment/production.md) - Production окружение
 
+### 🔄 CI/CD и GitHub Actions
+
+- [GitHub Actions Workflows](./ci-cd/github-actions.md) - Описание всех workflows
+- [Архитектура CI/CD](./ci-cd/architecture.md) - Диаграммы и потоки выполнения
+
 ### 🔒 Безопасность
 
 - [Аутентификация](./security/authentication.md) - Система авторизации
