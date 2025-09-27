@@ -1,0 +1,198 @@
+# FSD структура
+
+## Feature-Sliced Design архитектура
+
+Проект построен на основе методологии Feature-Sliced Design (FSD), которая обеспечивает масштабируемость, поддерживаемость и четкое разделение ответственности.
+
+## Структура слоев
+
+### App Layer (Слой приложения)
+```
+src/app/
+├── layout.tsx              # Корневой layout
+├── page.tsx                # Главная страница
+├── globals.css             # Глобальные стили
+├── providers/              # Глобальные провайдеры
+│   ├── theme-provider.tsx
+│   ├── query-provider.tsx
+│   └── auth-provider.tsx
+└── api/                    # API routes
+    ├── auth/
+    ├── products/
+    └── parsing/
+```
+
+### Pages Layer (Слой страниц)
+```
+src/pages/
+├── home/                   # Главная страница
+│   ├── ui/
+│   │   ├── HomePage/
+│   │   └── index.ts
+│   └── index.ts
+├── catalog/                # Каталог товаров
+│   ├── ui/
+│   │   ├── CatalogPage/
+│   │   └── index.ts
+│   └── index.ts
+├── product/                # Страница товара
+│   ├── ui/
+│   │   ├── ProductPage/
+│   │   └── index.ts
+│   └── index.ts
+└── admin/                  # Админ-панель
+    ├── ui/
+    │   ├── AdminPage/
+    │   └── index.ts
+    └── index.ts
+```
+
+### Widgets Layer (Слой виджетов)
+```
+src/widgets/
+├── product-card/           # Карточка товара
+│   ├── ui/
+│   │   ├── ProductCard/
+│   │   └── index.ts
+│   └── index.ts
+├── product-list/           # Список товаров
+│   ├── ui/
+│   │   ├── ProductList/
+│   │   └── index.ts
+│   └── index.ts
+├── search/                 # Поиск
+│   ├── ui/
+│   │   ├── SearchWidget/
+│   │   └── index.ts
+│   └── index.ts
+└── filters/                # Фильтры
+    ├── ui/
+    │   ├── FiltersWidget/
+    │   └── index.ts
+    └── index.ts
+```
+
+### Features Layer (Слой функций)
+```
+src/features/
+├── product-search/         # Поиск товаров
+│   ├── ui/
+│   ├── model/
+│   └── api/
+├── product-filters/       # Фильтрация товаров
+│   ├── ui/
+│   ├── model/
+│   └── api/
+├── product-favorites/      # Избранные товары
+│   ├── ui/
+│   ├── model/
+│   └── api/
+└── parsing-control/        # Управление парсингом
+    ├── ui/
+    ├── model/
+    └── api/
+```
+
+### Entities Layer (Слой сущностей)
+```
+src/entities/
+├── product/                # Сущность товара
+│   ├── ui/
+│   │   ├── ProductCard/
+│   │   ├── ProductList/
+│   │   └── ProductDetails/
+│   ├── model/
+│   │   ├── types.ts
+│   │   ├── store.ts
+│   │   └── hooks.ts
+│   └── api/
+│       ├── product-api.ts
+│       └── types.ts
+├── category/               # Сущность категории
+│   ├── ui/
+│   ├── model/
+│   └── api/
+├── user/                   # Сущность пользователя
+│   ├── ui/
+│   ├── model/
+│   └── api/
+└── parsing/                # Сущность парсинга
+    ├── ui/
+    ├── model/
+    └── api/
+```
+
+### Shared Layer (Слой общих ресурсов)
+```
+src/shared/
+├── ui/                     # Общие UI компоненты
+│   ├── Button/
+│   ├── Input/
+│   ├── Modal/
+│   └── Layout/
+├── lib/                    # Общие утилиты
+│   ├── utils.ts
+│   ├── constants.ts
+│   └── helpers.ts
+├── api/                    # API утилиты
+│   ├── base-api.ts
+│   ├── http-client.ts
+│   └── types.ts
+└── config/                 # Конфигурация
+    ├── env.ts
+    └── constants.ts
+```
+
+## Правила импортов
+
+### Разрешенные импорты
+- **App** → все слои
+- **Pages** → Widgets, Features, Entities, Shared
+- **Widgets** → Features, Entities, Shared
+- **Features** → Entities, Shared
+- **Entities** → Shared
+- **Shared** → только внешние библиотеки
+
+### Запрещенные импорты
+- ❌ Импорт из того же слоя
+- ❌ Импорт из вышестоящих слоев
+- ❌ Циклические зависимости
+
+## Сегменты внутри слоев
+
+### UI сегмент
+- React компоненты
+- Стили и темы
+- Форматирование данных
+
+### Model сегмент
+- Бизнес-логика
+- Состояние (stores, hooks)
+- Типы и интерфейсы
+
+### API сегмент
+- HTTP запросы
+- Типы API
+- Обработка ошибок
+
+### Lib сегмент
+- Утилиты и хелперы
+- Константы
+- Конфигурация
+
+## Преимущества FSD
+
+### Масштабируемость
+- Легкое добавление новых функций
+- Изолированная разработка
+- Минимальное влияние изменений
+
+### Поддерживаемость
+- Четкая структура кода
+- Понятные зависимости
+- Легкое тестирование
+
+### Командная работа
+- Параллельная разработка
+- Четкое разделение ответственности
+- Минимальные конфликты
