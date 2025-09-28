@@ -75,8 +75,9 @@ services:
       AWS_REGION: ${AWS_REGION:-us-east-1}
       AWS_S3_BUCKET: ${AWS_S3_BUCKET}
       SENTRY_DSN: ${SENTRY_DSN}
-    ports:
-      - "3000:3000"
+    # Порт 3000 отключен для production - доступ только через nginx
+    # ports:
+    #   - "3000:3000"
     networks:
       - rolled-metal-network
     depends_on:
