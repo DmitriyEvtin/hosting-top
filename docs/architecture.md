@@ -2,7 +2,7 @@
 
 ## Обзор
 
-Проект построен на основе Feature-Sliced Design (FSD) архитектуры с использованием Next.js 15, React 19, TypeScript 5, Tailwind CSS 4 и shadcn/ui компонентов.
+Проект построен на основе Feature-Sliced Design (FSD) архитектуры версии 2.1+ с использованием Next.js 15, React 19, TypeScript 5, Tailwind CSS 4 и shadcn/ui компонентов.
 
 ## Технологический стек
 
