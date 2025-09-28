@@ -205,7 +205,7 @@ export function ConfigStatus() {
                 <span
                   className={`text-sm ${getStatusColor(configData.environment.database.status)}`}
                 >
-                  {configData.environment.database.status === "connected"
+                  {configData.environment.database.status === "configured"
                     ? "Подключена"
                     : configData.environment.database.status === "error"
                       ? "Ошибка"
