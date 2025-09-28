@@ -117,7 +117,6 @@ services:
       - "traefik.http.routers.nginx-https.rule=Host(`metal-works.pro`)"
       - "traefik.http.routers.nginx-https.entrypoints=https"
       - "traefik.http.routers.nginx-https.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.nginx-https.middlewares=secure-headers@docker"
 
       # HTTPS router для www с редиректом
       - "traefik.http.routers.nginx-www-https.rule=Host(`www.metal-works.pro`)"
