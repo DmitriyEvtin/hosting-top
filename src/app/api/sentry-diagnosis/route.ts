@@ -1,6 +1,18 @@
 import * as Sentry from "@sentry/nextjs";
 import { NextRequest, NextResponse } from "next/server";
 
+// Принудительная инициализация Sentry для API routes
+if (!Sentry.getClient()) {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    environment: process.env.NODE_ENV,
+    tracesSampleRate: process.env.NODE_ENV === "production" ? 0.1 : 1.0,
+    debug:
+      process.env.NODE_ENV === "development" ||
+      process.env.SENTRY_DEBUG === "true",
+  });
+}
+
 /**
  * API endpoint для диагностики Sentry
  * GET /api/sentry-diagnosis - проверка конфигурации Sentry
@@ -21,7 +33,16 @@ export async function GET(request: NextRequest) {
       sentry: {
         isInitialized: Sentry.getCurrentScope() !== undefined,
         client: Sentry.getClient() !== undefined,
-        dsn: Sentry.getClient()?.getDsn()?.toString() || "не настроен",
+        dsn: Sentry.getClient()?.getDsn() ? "настроен" : "не настроен",
+        // Дополнительная диагностика
+        scope: Sentry.getCurrentScope() !== undefined,
+        clientInfo: Sentry.getClient()
+          ? {
+              enabled: Sentry.getClient()?.getOptions()?.enabled,
+              dsn: "настроен",
+              environment: Sentry.getClient()?.getOptions()?.environment,
+            }
+          : null,
       },
       // Информация о запросе
       request: {
