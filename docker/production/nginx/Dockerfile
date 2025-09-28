@@ -6,4 +6,5 @@ COPY ./docker/common/nginx/conf.d /etc/nginx/conf.d
 
 WORKDIR /app
 
-HEALTHCHECK --interval=5s --timeout=3s --start-period=1s CMD curl --fail http://127.0.0.1/health || exit 1
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD curl --fail http://127.0.0.1/health || exit 1

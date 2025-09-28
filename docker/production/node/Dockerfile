@@ -91,8 +91,8 @@ USER nextjs
 EXPOSE 3000
 
 # Настраиваем health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl --fail http://localhost:3000/api/health || exit 1
+HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
+  CMD curl --fail http://127.0.0.1:3000/api/health || exit 1
 
 # Запускаем приложение с dumb-init для правильной обработки сигналов
 ENTRYPOINT ["dumb-init", "--"]

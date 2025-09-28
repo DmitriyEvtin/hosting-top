@@ -84,12 +84,7 @@ services:
         condition: service_healthy
       migrations:
         condition: service_completed_successfully
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
-    #   interval: 30s
-    #   timeout: 10s
-    #   retries: 3
-    #   start_period: 40s
+    # healthcheck настроен в Dockerfile
 
   nginx:
     image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-rolled_metal}-nginx:${IMAGE_TAG:-latest}
@@ -102,12 +97,7 @@ services:
       - rolled-metal-network
     depends_on:
       - app
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost/health"]
-    #   interval: 5s
-    #   timeout: 3s
-    #   retries: 3
-    #   start_period: 1s
+    # healthcheck настроен в Dockerfile
 
 volumes:
   postgres_data:
