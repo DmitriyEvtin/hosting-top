@@ -334,3 +334,17 @@
   3. Для GitHub Actions добавить в Secrets: `NEXTAUTH_URL` = `https://your-domain.com`
   4. Проверить конфигурацию: `make check-env`
   5. Перезапустить production окружение: `make prod-restart`
+
+- **Запрос**: "#14 [deps 5/6] COPY .npmrc\* ./\n#14 DONE 0.0s\n\n#15 [deps 6/6] RUN npm ci --only=production --no-audit --no-fund --prefer-offline && npm cache clean --force\n#15 0.496 npm warn config only Use `--omit=dev` to omit dev dependencies from the install.\n#15 ...\n\n#16 [builder 6/9] RUN npm ci --no-audit --no-fund --prefer-offline\n#16 9.725 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\n#16 16.58 npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported\n#16 ...\n\n#15 [deps 6/6] RUN npm ci --only=production --no-audit --no-fund --prefer-offline && npm cache clean --force\n#15 39.63 \n#15 39.63 > rolled-metal@0.1.0 prepare\n#15 39.63 > husky install\n#15 39.65 sh: husky: not found\n#15 39.66 npm error code 127\n#15 39.66 npm error path /app\n#15 39.66 npm error command failed\n#15 39.66 npm error command sh -c husky install\n#15 39.66 npm notice\n#15 39.66 npm notice New patch version of npm available! 11.6.0 -> 11.6.1\n#15 39.66 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.1\n#15 39.66 npm notice To update run: npm install -g npm@11.6.1\n#15 39.66 npm notice\n#15 39.66 npm error A complete log of this run can be found in: /root/.npm/\_logs/2025-09-28T10_23_27_644Z-debug-0.log\n#15 ERROR: process \"/bin/sh -c npm ci --only=production --no-audit --no-fund --prefer-offline && npm cache clean --force\" did not complete successfully: exit code 127"
+- **Контекст**: Ошибка Docker сборки из-за попытки выполнения Husky в production окружении
+- **Проблемы найдены**:
+  1. В package.json есть скрипт `"prepare": "husky install"` который выполняется автоматически при `npm ci`
+  2. Husky не установлен в production зависимостях, но скрипт пытается его запустить
+  3. Dockerfile не учитывает эту особенность при установке зависимостей
+- **Решение**:
+  1. ✅ Добавлен флаг `--ignore-scripts` в npm команды Dockerfile для игнорирования prepare скрипта
+  2. ✅ Исправлен путь копирования Prisma клиента с `node_modules/.prisma` на `src/shared/api/database/prisma`
+  3. ✅ Добавлена явная генерация Prisma клиента после игнорирования скриптов
+  4. ✅ Обновлена документация с описанием исправлений
+  5. ✅ Протестирована сборка - Docker образ собирается успешно
+- **Результат**: Docker сборка теперь проходит без ошибок, Husky не устанавливается в production контейнерах

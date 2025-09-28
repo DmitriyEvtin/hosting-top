@@ -24,7 +24,8 @@ COPY pnpm-lock.yaml* ./
 COPY .npmrc* ./
 
 # Устанавливаем production зависимости с оптимизацией
-RUN npm ci --only=production --no-audit --no-fund --prefer-offline && \
+# Игнорируем prepare скрипт (husky) в production
+RUN npm ci --only=production --no-audit --no-fund --prefer-offline --ignore-scripts && \
     npm cache clean --force
 
 # Стадия сборки
@@ -38,12 +39,13 @@ COPY pnpm-lock.yaml* ./
 COPY .npmrc* ./
 
 # Устанавливаем все зависимости с оптимизацией
-RUN npm ci --no-audit --no-fund --prefer-offline
+# Игнорируем prepare скрипт (husky) в production сборке
+RUN npm ci --no-audit --no-fund --prefer-offline --ignore-scripts
 
 # Копируем исходный код
 COPY . .
 
-# Генерируем Prisma клиент
+# Генерируем Prisma клиент (необходимо после игнорирования скриптов)
 RUN npx prisma generate
 
 # Устанавливаем переменные окружения для сборки
@@ -74,7 +76,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder /app/src/shared/api/database/prisma ./src/shared/api/database/prisma
 
 # Копируем только production зависимости
 COPY --from=deps /app/node_modules ./node_modules
