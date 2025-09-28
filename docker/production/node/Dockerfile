@@ -1,8 +1,16 @@
+# Оптимизированный Dockerfile для production
+# Использует лучшие практики для Next.js приложений
+
 # Базовый образ для всех стадий
 FROM node:24-alpine AS base
 
 # Установка системных зависимостей
-RUN apk add --no-cache libc6-compat curl
+RUN apk add --no-cache \
+    libc6-compat \
+    curl \
+    dumb-init \
+    && rm -rf /var/cache/apk/*
+
 WORKDIR /app
 
 # Стадия установки зависимостей
@@ -15,8 +23,9 @@ COPY yarn.lock* ./
 COPY pnpm-lock.yaml* ./
 COPY .npmrc* ./
 
-# Устанавливаем зависимости
-RUN npm ci --only=production && npm cache clean --force
+# Устанавливаем production зависимости с оптимизацией
+RUN npm ci --only=production --no-audit --no-fund --prefer-offline && \
+    npm cache clean --force
 
 # Стадия сборки
 FROM base AS builder
@@ -25,12 +34,11 @@ WORKDIR /app
 # Копируем файлы зависимостей
 COPY package*.json ./
 COPY yarn.lock* ./
-COPY yarn.lock* ./
 COPY pnpm-lock.yaml* ./
 COPY .npmrc* ./
 
-# Устанавливаем все зависимости (включая dev)
-RUN npm ci
+# Устанавливаем все зависимости с оптимизацией
+RUN npm ci --no-audit --no-fund --prefer-offline
 
 # Копируем исходный код
 COPY . .
@@ -43,6 +51,7 @@ ENV NEXTAUTH_SECRET="docker-build-secret-key-for-production-build-32-chars"
 ENV NEXTAUTH_URL="https://rolled-metal.example.com"
 ENV DATABASE_URL="postgresql://user:password@localhost:5432/rolled_metal"
 ENV NODE_ENV="production"
+ENV NEXT_TELEMETRY_DISABLED=1
 
 # Собираем приложение
 RUN npm run build
@@ -58,6 +67,7 @@ RUN addgroup --system --gid 1001 nodejs && \
 # Устанавливаем переменные окружения
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=3000
 
 # Копируем необходимые файлы
 COPY --from=builder /app/public ./public
@@ -65,6 +75,9 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+
+# Копируем только production зависимости
+COPY --from=deps /app/node_modules ./node_modules
 
 # Устанавливаем права доступа
 RUN chown -R nextjs:nodejs /app
@@ -79,5 +92,6 @@ EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl --fail http://localhost:3000/api/health || exit 1
 
-# Запускаем приложение
+# Запускаем приложение с dumb-init для правильной обработки сигналов
+ENTRYPOINT ["dumb-init", "--"]
 CMD ["node", "server.js"]
