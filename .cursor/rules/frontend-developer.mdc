@@ -39,13 +39,28 @@ You are a Senior Front-End Developer and an Expert in ReactJS, NextJS, JavaScrip
 ## React Component Guidelines
 
 ### Component Structure
+
 - **Functional Components:** Use functional components with hooks as the primary pattern
 - **Component Composition:** Prefer composition over inheritance
 - **Single Responsibility:** Each component should have one clear purpose
 - **Props Interface:** Define clear, typed interfaces for component props
 - **Default Props:** Use default parameters instead of defaultProps for better TypeScript support
 
+### Component Organization (FSD)
+
+- **Component Structure**: Each component must be created in its own folder following the pattern `ComponentName/ComponentName.tsx + index.ts`
+- **Folder Structure**: Create a dedicated folder for each component with the same name as the component
+- **Main Component File**: The main component file should be named exactly like the component (e.g., `Button.tsx` for `Button` component)
+- **Index File**: Always include an `index.ts` file for clean imports and public API
+- **Example Structure**:
+  ```
+  src/shared/ui/Button/
+  ├── Button.tsx          # Main component file
+  └── index.ts            # Export file for clean imports
+  ```
+
 ### State Management
+
 - **Local State:** Use useState for component-specific state
 - **Complex State:** Use useReducer for complex state logic
 - **Global State:** Use Context API or external state management for global state
@@ -53,18 +68,21 @@ You are a Senior Front-End Developer and an Expert in ReactJS, NextJS, JavaScrip
 - **State Immutability:** Always update state immutably
 
 ### Hooks Best Practices
+
 - **Custom Hooks:** Extract reusable logic into custom hooks
 - **Hook Dependencies:** Always include all dependencies in useEffect dependency arrays
 - **Hook Rules:** Follow the Rules of Hooks (only call hooks at the top level)
 - **Performance:** Use useMemo and useCallback judiciously for performance optimization
 
 ### Event Handling
+
 - **Synthetic Events:** Use React's synthetic event system
 - **Event Delegation:** Leverage event bubbling for performance
 - **Event Cleanup:** Always clean up event listeners and subscriptions
 - **Form Handling:** Use controlled components for form inputs
 
 ### Performance Optimization
+
 - **React.memo:** Use for components that receive the same props frequently
 - **useMemo:** Memoize expensive calculations
 - **useCallback:** Memoize event handlers passed to child components
@@ -72,12 +90,14 @@ You are a Senior Front-End Developer and an Expert in ReactJS, NextJS, JavaScrip
 - **Bundle Analysis:** Monitor bundle size and optimize imports
 
 ### Error Handling
+
 - **Error Boundaries:** Implement error boundaries for graceful error handling
 - **Try-Catch:** Use try-catch blocks for async operations
 - **Fallback UI:** Provide meaningful fallback UI for error states
 - **Error Logging:** Implement proper error logging and monitoring
 
 ### Accessibility (a11y)
+
 - **Semantic HTML:** Use proper HTML elements for their intended purpose
 - **ARIA Attributes:** Add ARIA attributes when necessary for screen readers
 - **Keyboard Navigation:** Ensure all interactive elements are keyboard accessible
@@ -85,6 +105,7 @@ You are a Senior Front-End Developer and an Expert in ReactJS, NextJS, JavaScrip
 - **Color Contrast:** Ensure sufficient color contrast for text and UI elements
 
 ### Testing React Components
+
 - **Component Testing:** Test component behavior, not implementation details
 - **User Interactions:** Test user interactions like clicks, form submissions, etc.
 - **Props Testing:** Test component behavior with different prop combinations

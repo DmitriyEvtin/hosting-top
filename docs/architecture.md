@@ -49,7 +49,19 @@ src/
 ├── pages/                       # FSD Pages layer
 │   └── home/                    # Home page slice
 │       ├── ui/
-│       │   └── HomePage/        # Home page components
+│       │   ├── HomePage/         # Main page component
+│       │   │   ├── HomePage.tsx
+│       │   │   └── index.ts
+│       │   ├── ConfigStatus/     # Status components
+│       │   │   ├── ConfigStatus.tsx
+│       │   │   └── index.ts
+│       │   ├── DatabaseStatus/
+│       │   │   ├── DatabaseStatus.tsx
+│       │   │   └── index.ts
+│       │   ├── SentryStatus/
+│       │   │   ├── SentryStatus.tsx
+│       │   │   └── index.ts
+│       │   └── index.ts          # Exports only HomePage
 │       └── index.ts
 ├── widgets/                     # FSD Widgets layer (будущее)
 ├── features/                    # FSD Features layer (будущее)
@@ -57,7 +69,11 @@ src/
 └── shared/                      # FSD Shared layer
     ├── ui/                      # Shared UI components
     │   ├── Button/
+    │   │   ├── Button.tsx
+    │   │   └── index.ts
     │   ├── Card/
+    │   │   ├── Card.tsx
+    │   │   └── index.ts
     │   └── index.ts
     ├── api/                     # Shared API utilities
     │   └── database/            # Database configuration
@@ -70,6 +86,49 @@ src/
         ├── utils.ts            # General utilities
         └── index.ts            # Exports
 ```
+
+## Структура компонентов
+
+### Правила организации компонентов
+
+Каждый компонент должен быть организован в отдельной папке со следующей структурой:
+
+```
+ComponentName/
+├── ComponentName.tsx    # Основной файл компонента
+└── index.ts            # Экспорт для чистых импортов
+```
+
+### Примеры структуры
+
+**Shared UI компоненты:**
+
+```
+src/shared/ui/Button/
+├── Button.tsx          # export function Button() { ... }
+└── index.ts            # export { Button } from "./Button";
+```
+
+**Page компоненты:**
+
+```
+src/pages/home/ui/HomePage/
+├── HomePage.tsx        # export function HomePage() { ... }
+└── index.ts            # export { HomePage } from "./HomePage";
+```
+
+### Правила экспорта
+
+- **Pages layer**: `index.ts` экспортирует только основной компонент страницы
+- **Shared layer**: `index.ts` экспортирует все доступные компоненты
+- **Компоненты**: Импортируются напрямую из своих папок в родительских компонентах
+
+### Преимущества такой структуры
+
+1. **Модульность** - каждый компонент изолирован в своей папке
+2. **Чистые импорты** - использование index.ts для упрощения импортов
+3. **Масштабируемость** - легко добавлять новые компоненты
+4. **FSD соответствие** - структура соответствует принципам Feature-Sliced Design
 
 ## Переменные окружения
 

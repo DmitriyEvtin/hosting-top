@@ -176,6 +176,47 @@ src/shared/
 - Стили и темы
 - Форматирование данных
 
+#### Структура компонентов
+
+Каждый компонент должен быть организован в отдельной папке со следующей структурой:
+
+```
+ComponentName/
+├── ComponentName.tsx    # Основной файл компонента
+└── index.ts            # Экспорт для чистых импортов
+```
+
+**Пример:**
+
+```
+src/shared/ui/Button/
+├── Button.tsx          # export function Button() { ... }
+└── index.ts            # export { Button } from "./Button";
+```
+
+**Правила организации компонентов:**
+
+1. **Папка компонента** - имя папки должно совпадать с именем компонента
+2. **Основной файл** - `ComponentName.tsx` содержит реализацию компонента
+3. **Index файл** - `index.ts` экспортирует компонент для чистых импортов
+4. **Импорты** - используйте относительные импорты внутри папки компонента
+5. **Экспорты** - экспортируйте только основной компонент через index.ts
+
+**Примеры правильной структуры:**
+
+```typescript
+// src/shared/ui/Button/Button.tsx
+export function Button({ children, ...props }) {
+  return <button {...props}>{children}</button>;
+}
+
+// src/shared/ui/Button/index.ts
+export { Button } from "./Button";
+
+// Использование в других компонентах
+import { Button } from "@/shared/ui/Button";
+```
+
 ### Model сегмент
 
 - Бизнес-логика

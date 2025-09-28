@@ -65,7 +65,7 @@ test.describe("Homepage", () => {
 
     // Check that the page has proper semantic structure
     await expect(page.locator("h1")).toBeVisible();
-    await expect(page.locator("h2, h3")).toHaveCount(5);
+    await expect(page.locator("h2, h3")).toHaveCount(6);
   });
 });
 

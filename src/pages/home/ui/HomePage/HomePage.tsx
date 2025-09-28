@@ -5,9 +5,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui";
-import { ConfigStatus } from "./ConfigStatus";
-import { DatabaseStatus } from "./DatabaseStatus";
-import { SentryStatus } from "./SentryStatus";
+import { ConfigStatus } from "../ConfigStatus";
+import { DatabaseStatus } from "../DatabaseStatus";
+import { SentryStatus } from "../SentryStatus";
 
 export function HomePage() {
   return (

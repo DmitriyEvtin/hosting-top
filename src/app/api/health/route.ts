@@ -1,4 +1,4 @@
-import { prisma } from "@/shared/api/database";
+import { prisma } from "@/shared/api";
 import { NextResponse } from "next/server";
 
 export async function GET() {
