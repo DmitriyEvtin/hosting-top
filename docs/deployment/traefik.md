@@ -33,31 +33,85 @@ Traefik - это современный reverse proxy и load balancer, кото
 
 ```bash
 docker network create traefik-public
+docker network create rolled-metal-network
 ```
 
 ### 2. Настройка переменных окружения
 
-Скопируйте `env.traefik.example` в `.env.traefik` и настройте:
+Скопируйте `env.traefik.example` в `env.traefik.prod` и настройте:
 
 ```bash
-cp env.traefik.example .env.traefik
+cp env.traefik.example env.traefik.prod
 ```
 
-Отредактируйте `.env.traefik`:
+Отредактируйте `env.traefik.prod`:
 
 ```env
-ACME_EMAIL=your-email@example.com
-DOMAIN=yourdomain.com
+ACME_EMAIL=evtin@yandex.ru
+DOMAIN=metal-works.pro
 ```
 
-### 3. Запуск Traefik
+### 3. Быстрое развертывание с доменом metal-works.pro
+
+Используйте готовый скрипт для развертывания:
+
+```bash
+# Запуск автоматического развертывания
+./scripts/deploy-traefik.sh
+```
+
+### 4. Ручной запуск
 
 ```bash
 # Загрузка переменных окружения
-export $(cat .env.traefik | xargs)
+export $(cat env.traefik.prod | xargs)
 
-# Запуск Traefik
-docker-compose -f docker-compose.traefik.yml up -d
+# Запуск полного стека с Traefik
+docker-compose -f docker-compose.traefik.prod.yml up -d
+```
+
+### 5. Проверка развертывания
+
+```bash
+# Проверка статуса сервисов
+docker-compose -f docker-compose.traefik.prod.yml ps
+
+# Проверка логов
+docker-compose -f docker-compose.traefik.prod.yml logs -f
+
+# Проверка доступности
+curl -I https://metal-works.pro
+```
+
+### 6. Настройка DNS для metal-works.pro
+
+Для корректной работы с доменом metal-works.pro необходимо настроить DNS записи:
+
+#### A-записи
+
+```
+metal-works.pro        A    YOUR_SERVER_IP
+traefik.metal-works.pro A   YOUR_SERVER_IP
+```
+
+#### CNAME-записи (альтернативно)
+
+```
+metal-works.pro        CNAME   your-server.example.com
+traefik.metal-works.pro CNAME  your-server.example.com
+```
+
+#### Проверка DNS
+
+```bash
+# Проверка A-записи
+nslookup metal-works.pro
+
+# Проверка с помощью dig
+dig metal-works.pro
+
+# Проверка доступности
+ping metal-works.pro
 ```
 
 ## Использование с приложением

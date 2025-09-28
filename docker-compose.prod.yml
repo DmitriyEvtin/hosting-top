@@ -93,13 +93,33 @@ services:
     image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-rolled_metal}-nginx:${IMAGE_TAG:-latest}
     container_name: rolled-metal-nginx-prod
     restart: unless-stopped
-    ports:
-      - "8081:80"
-      - "8444:443"
     networks:
       - rolled-metal-network
+      - traefik-public
     depends_on:
       - app
+    labels:
+      # Traefik конфигурация
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-public"
+
+      # HTTP router
+      - "traefik.http.routers.nginx-http.rule=Host(`metal-works.pro`)"
+      - "traefik.http.routers.nginx-http.entrypoints=http"
+      - "traefik.http.routers.nginx-http.middlewares=redirect-to-https"
+
+      # HTTPS router
+      - "traefik.http.routers.nginx-https.rule=Host(`metal-works.pro`)"
+      - "traefik.http.routers.nginx-https.entrypoints=https"
+      - "traefik.http.routers.nginx-https.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.nginx-https.middlewares=secure-headers@docker"
+
+      # Service
+      - "traefik.http.services.nginx.loadbalancer.server.port=80"
+
+      # Middleware для редиректа на HTTPS
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
     # healthcheck настроен в Dockerfile
 
 volumes:
@@ -110,4 +130,6 @@ volumes:
 
 networks:
   rolled-metal-network:
+    external: true
+  traefik-public:
     external: true
