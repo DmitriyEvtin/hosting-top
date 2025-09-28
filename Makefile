@@ -49,6 +49,29 @@ test-docker:
 	sleep 30
 	curl -f http://localhost/health || exit 1
 
+# Sentry диагностика
+sentry-check:
+	@echo "🔍 Проверка конфигурации Sentry..."
+	@node scripts/check-sentry-connection.js
+
+sentry-test:
+	@echo "🧪 Тестирование Sentry API..."
+	@curl -X GET http://localhost:3000/api/sentry-diagnosis || echo "❌ API недоступен"
+
+sentry-test-error:
+	@echo "🚨 Тестирование отправки ошибки в Sentry..."
+	@curl -X GET http://localhost:3000/api/sentry-test || echo "❌ API недоступен"
+
+sentry-test-message:
+	@echo "📝 Тестирование отправки сообщения в Sentry..."
+	@curl -X POST http://localhost:3000/api/sentry-diagnosis \
+		-H "Content-Type: application/json" \
+		-d '{"message": "Тестовое сообщение из Makefile"}' || echo "❌ API недоступен"
+
+sentry-test-full:
+	@echo "🧪 Полное тестирование Sentry..."
+	@node scripts/test-sentry.js
+
 # Проверка конфигурации
 check-sentry:
 	node scripts/check-sentry.js
