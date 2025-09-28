@@ -65,6 +65,6 @@ Makefile
 
 # Конфигурация разработки
 tsconfig.tsbuildinfo
-postcss.config.mjs
-tailwind.config.ts
-components.json
+# postcss.config.mjs - НЕ исключаем, нужен для сборки стилей
+# tailwind.config.ts - НЕ исключаем, нужен для Tailwind CSS
+# components.json - НЕ исключаем, может быть нужен для UI компонентов
