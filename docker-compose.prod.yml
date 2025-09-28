@@ -108,11 +108,22 @@ services:
       - "traefik.http.routers.nginx-http.entrypoints=http"
       - "traefik.http.routers.nginx-http.middlewares=redirect-to-https"
 
+      # HTTP router для www
+      - "traefik.http.routers.nginx-www-http.rule=Host(`www.metal-works.pro`)"
+      - "traefik.http.routers.nginx-www-http.entrypoints=http"
+      - "traefik.http.routers.nginx-www-http.middlewares=redirect-to-https"
+
       # HTTPS router
       - "traefik.http.routers.nginx-https.rule=Host(`metal-works.pro`)"
       - "traefik.http.routers.nginx-https.entrypoints=https"
       - "traefik.http.routers.nginx-https.tls.certresolver=letsencrypt"
       - "traefik.http.routers.nginx-https.middlewares=secure-headers@docker"
+
+      # HTTPS router для www с редиректом
+      - "traefik.http.routers.nginx-www-https.rule=Host(`www.metal-works.pro`)"
+      - "traefik.http.routers.nginx-www-https.entrypoints=https"
+      - "traefik.http.routers.nginx-www-https.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.nginx-www-https.middlewares=redirect-www-to-non-www"
 
       # Service
       - "traefik.http.services.nginx.loadbalancer.server.port=80"
@@ -120,6 +131,11 @@ services:
       # Middleware для редиректа на HTTPS
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+
+      # Middleware для редиректа с www на основной домен
+      - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.regex=^https://www\\.metal-works\\.pro/(.*)"
+      - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.replacement=https://metal-works.pro/$${1}"
+      - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.permanent=true"
     # healthcheck настроен в Dockerfile
 
 volumes:
