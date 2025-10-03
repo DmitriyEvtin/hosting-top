@@ -37,7 +37,7 @@ export function SignInForm({ callbackUrl = "/" }: SignInFormProps) {
         router.push(callbackUrl);
         router.refresh();
       }
-    } catch (error) {
+    } catch {
       setError("Произошла ошибка при входе");
     } finally {
       setIsLoading(false);
@@ -48,7 +48,7 @@ export function SignInForm({ callbackUrl = "/" }: SignInFormProps) {
     setIsLoading(true);
     try {
       await signIn("google", { callbackUrl });
-    } catch (error) {
+    } catch {
       setError("Ошибка входа через Google");
     } finally {
       setIsLoading(false);
@@ -59,7 +59,7 @@ export function SignInForm({ callbackUrl = "/" }: SignInFormProps) {
     setIsLoading(true);
     try {
       await signIn("github", { callbackUrl });
-    } catch (error) {
+    } catch {
       setError("Ошибка входа через GitHub");
     } finally {
       setIsLoading(false);

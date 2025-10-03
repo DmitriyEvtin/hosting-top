@@ -26,83 +26,83 @@ const securityChecks = [
 ];
 
 function checkProductionEnv() {
-  console.log("🔍 Проверка переменных окружения для production...\n");
+  console.warn("🔍 Проверка переменных окружения для production...\n");
 
   const isProduction = process.env.NODE_ENV === "production";
 
   if (!isProduction) {
-    console.log(
+    console.warn(
       "⚠️  NODE_ENV не установлен в production. Пропускаем проверки."
     );
     return;
   }
 
-  console.log("✅ NODE_ENV = production\n");
+  console.warn("✅ NODE_ENV = production\n");
 
   // Проверка обязательных переменных
-  console.log("📋 Проверка обязательных переменных:");
+  console.warn("📋 Проверка обязательных переменных:");
   const missingVars = [];
 
   requiredVars.forEach(varName => {
     const value = process.env[varName];
     if (!value) {
       missingVars.push(varName);
-      console.log(`❌ ${varName}: НЕ УСТАНОВЛЕНА`);
+      console.warn(`❌ ${varName}: НЕ УСТАНОВЛЕНА`);
     } else {
       // Скрываем чувствительные данные
       const displayValue =
         varName.includes("SECRET") || varName.includes("PASSWORD")
           ? "***скрыто***"
           : value;
-      console.log(`✅ ${varName}: ${displayValue}`);
+      console.warn(`✅ ${varName}: ${displayValue}`);
     }
   });
 
   if (missingVars.length > 0) {
-    console.log(
+    console.warn(
       `\n❌ Ошибка: Отсутствуют обязательные переменные: ${missingVars.join(", ")}`
     );
-    console.log("\n💡 Решение:");
-    console.log("1. Установите переменные в вашем production окружении");
-    console.log("2. Для Docker Compose добавьте в .env файл");
-    console.log("3. Для GitHub Actions добавьте в Secrets");
+    console.warn("\n💡 Решение:");
+    console.warn("1. Установите переменные в вашем production окружении");
+    console.warn("2. Для Docker Compose добавьте в .env файл");
+    console.warn("3. Для GitHub Actions добавьте в Secrets");
     process.exit(1);
   }
 
-  console.log("\n✅ Все обязательные переменные установлены\n");
+  console.warn("\n✅ Все обязательные переменные установлены\n");
 
   // Проверка безопасности
-  console.log("🔒 Проверка безопасности:");
+  console.warn("🔒 Проверка безопасности:");
   let hasErrors = false;
 
   securityChecks.forEach(check => {
     const value = process.env[check.name];
     if (value && !check.check(value)) {
-      console.log(`❌ ${check.name}: ${check.message}`);
-      console.log(`   Текущее значение: ${value}`);
+      console.warn(`❌ ${check.name}: ${check.message}`);
+      console.warn(`   Текущее значение: ${value}`);
       hasErrors = true;
     } else {
-      console.log(`✅ ${check.name}: OK`);
+      console.warn(`✅ ${check.name}: OK`);
     }
   });
 
   if (hasErrors) {
-    console.log("\n❌ Обнаружены проблемы безопасности");
-    console.log("\n💡 Решение:");
-    console.log("1. Измените NEXTAUTH_SECRET на уникальное значение");
-    console.log(
+    console.warn("\n❌ Обнаружены проблемы безопасности");
+    console.warn("\n💡 Решение:");
+    console.warn("1. Измените NEXTAUTH_SECRET на уникальное значение");
+    console.warn(
       "2. Установите NEXTAUTH_URL на ваш production домен (например, https://your-domain.com)"
     );
     process.exit(1);
   }
 
-  console.log("\n✅ Все проверки пройдены успешно!");
-  console.log("🚀 Приложение готово к запуску в production");
+  console.warn("\n✅ Все проверки пройдены успешно!");
+  console.warn("🚀 Приложение готово к запуску в production");
 }
 
 // Запуск проверки
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   checkProductionEnv();
 }
 
-module.exports = { checkProductionEnv };
+export { checkProductionEnv };

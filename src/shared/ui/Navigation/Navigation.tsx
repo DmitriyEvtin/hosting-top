@@ -1,6 +1,7 @@
 "use client";
 
 import { UserMenu } from "@/shared/ui/UserMenu";
+import Link from "next/link";
 
 export function Navigation() {
   return (
@@ -8,12 +9,12 @@ export function Navigation() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-4">
-            <a
+            <Link
               href="/"
               className="text-xl font-bold text-gray-900 hover:text-gray-700"
             >
               Каталог металлопроката
-            </a>
+            </Link>
           </div>
           <UserMenu />
         </div>

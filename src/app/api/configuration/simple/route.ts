@@ -3,9 +3,9 @@
  * GET /api/config/simple
  */
 
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Простая проверка переменных окружения без сложной валидации
     const basicConfig = {
@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
       databaseStatus = process.env.DATABASE_URL
         ? "configured"
         : "not_configured";
-    } catch (error) {
+    } catch {
       databaseStatus = "error";
     }
 

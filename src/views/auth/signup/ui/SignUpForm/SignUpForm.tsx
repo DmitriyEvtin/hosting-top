@@ -93,7 +93,7 @@ export function SignUpForm({ callbackUrl = "/" }: SignUpFormProps) {
     setIsLoading(true);
     try {
       await signIn("google", { callbackUrl });
-    } catch (error) {
+    } catch {
       setError("Ошибка регистрации через Google");
     } finally {
       setIsLoading(false);
@@ -104,7 +104,7 @@ export function SignUpForm({ callbackUrl = "/" }: SignUpFormProps) {
     setIsLoading(true);
     try {
       await signIn("github", { callbackUrl });
-    } catch (error) {
+    } catch {
       setError("Ошибка регистрации через GitHub");
     } finally {
       setIsLoading(false);

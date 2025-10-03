@@ -13,9 +13,9 @@ import {
   hasSmtp,
   isDevelopment,
 } from "@/shared/lib/env-simple";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Проверка базовых переменных окружения
     const basicConfig = {
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
     try {
       const dbTest = await testDatabaseConnection();
       databaseStatus = dbTest.success ? "connected" : "error";
-    } catch (error) {
+    } catch {
       databaseStatus = "error";
     }
 
@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
       try {
         const awsAvailable = await checkAwsAvailability();
         awsStatus = awsAvailable ? "available" : "unavailable";
-      } catch (error) {
+      } catch {
         awsStatus = "error";
       }
     }
@@ -117,7 +117,7 @@ export async function GET(request: NextRequest) {
 
     // Логирование для development
     if (isDevelopment) {
-      console.log("Configuration check:", {
+      console.warn("Configuration check:", {
         status: overallStatus,
         database: databaseStatus,
         redis: redisStatus,
@@ -160,7 +160,7 @@ export async function GET(request: NextRequest) {
 }
 
 // Health check endpoint
-export async function HEAD(request: NextRequest) {
+export async function HEAD() {
   try {
     // Быстрая проверка только критических сервисов
     const dbTest = await testDatabaseConnection();
@@ -170,7 +170,7 @@ export async function HEAD(request: NextRequest) {
     }
 
     return new NextResponse(null, { status: 200 });
-  } catch (error) {
+  } catch {
     return new NextResponse(null, { status: 503 });
   }
 }

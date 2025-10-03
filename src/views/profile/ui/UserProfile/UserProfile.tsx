@@ -13,7 +13,7 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 export function UserProfile() {
-  const { data: session, update } = useSession();
+  const { data: session } = useSession();
   const [showChangePassword, setShowChangePassword] = useState(false);
 
   if (!session?.user) {

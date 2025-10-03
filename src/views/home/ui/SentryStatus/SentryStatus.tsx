@@ -58,7 +58,7 @@ export function SentryStatus() {
       } else {
         setError(data.error || "Ошибка диагностики Sentry");
       }
-    } catch (err) {
+    } catch {
       setError("Не удалось подключиться к API диагностики");
     } finally {
       setLoading(false);
@@ -67,16 +67,16 @@ export function SentryStatus() {
 
   const testError = async () => {
     try {
-      const response = await fetch("/api/sentry-test");
+      await fetch("/api/sentry-test");
       setTestResults(prev => ({ ...prev, error: true }));
-    } catch (err) {
-      console.error("Ошибка тестирования:", err);
+    } catch {
+      console.error("Ошибка тестирования");
     }
   };
 
   const testMessage = async () => {
     try {
-      const response = await fetch("/api/sentry-diagnosis", {
+      await fetch("/api/sentry-diagnosis", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,8 +86,8 @@ export function SentryStatus() {
         }),
       });
       setTestResults(prev => ({ ...prev, message: true }));
-    } catch (err) {
-      console.error("Ошибка тестирования:", err);
+    } catch {
+      console.error("Ошибка тестирования");
     }
   };
 

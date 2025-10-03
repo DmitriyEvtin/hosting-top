@@ -7,23 +7,23 @@ export async function testDatabaseConnection() {
   try {
     // Проверяем подключение к базе данных
     await prisma.$connect();
-    console.log("✅ Подключение к базе данных успешно");
+    console.warn("✅ Подключение к базе данных успешно");
 
     // Проверяем количество пользователей
     const userCount = await prisma.user.count();
-    console.log(`📊 Количество пользователей: ${userCount}`);
+    console.warn(`📊 Количество пользователей: ${userCount}`);
 
     // Проверяем количество категорий
     const categoryCount = await prisma.category.count();
-    console.log(`📊 Количество категорий: ${categoryCount}`);
+    console.warn(`📊 Количество категорий: ${categoryCount}`);
 
     // Проверяем количество товаров
     const productCount = await prisma.product.count();
-    console.log(`📊 Количество товаров: ${productCount}`);
+    console.warn(`📊 Количество товаров: ${productCount}`);
 
     // Проверяем количество сессий парсинга
     const sessionCount = await prisma.parsingSession.count();
-    console.log(`📊 Количество сессий парсинга: ${sessionCount}`);
+    console.warn(`📊 Количество сессий парсинга: ${sessionCount}`);
 
     return {
       success: true,

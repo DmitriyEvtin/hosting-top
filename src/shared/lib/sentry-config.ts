@@ -12,7 +12,7 @@ export const initSentry = () => {
       enabled: !!process.env.SENTRY_DSN,
       tracesSampleRate: 0.1,
       debug: false,
-      beforeSend(event) {
+      beforeSend() {
         // В тестах не отправляем события в Sentry
         return null;
       },

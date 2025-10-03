@@ -79,7 +79,7 @@ export function ConfigStatus() {
       } else {
         setError(data.error?.message || "Ошибка загрузки конфигурации");
       }
-    } catch (err) {
+    } catch {
       setError("Не удалось загрузить статус конфигурации");
     } finally {
       setLoading(false);

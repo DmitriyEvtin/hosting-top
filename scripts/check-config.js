@@ -5,9 +5,8 @@
  * Проверяет переменные окружения, подключения к сервисам и готовность к деплою
  */
 
-const { execSync } = require("child_process");
-const fs = require("fs");
-const path = require("path");
+import { execSync } from "child_process";
+import fs from "fs";
 
 // Цвета для консоли
 const colors = {
@@ -22,7 +21,7 @@ const colors = {
 };
 
 function log(message, color = "reset") {
-  console.log(`${colors[color]}${message}${colors.reset}`);
+  console.warn(`${colors[color]}${message}${colors.reset}`);
 }
 
 function checkFile(filePath, description) {
@@ -34,8 +33,8 @@ function checkFile(filePath, description) {
       log(`✗ ${description} - файл не найден`, "red");
       return false;
     }
-  } catch (error) {
-    log(`✗ ${description} - ошибка: ${error.message}`, "red");
+  } catch {
+    log(`✗ ${description} - ошибка`, "red");
     return false;
   }
 }
@@ -99,7 +98,7 @@ function checkDocker() {
     log("✓ Docker Compose установлен", "green");
 
     return true;
-  } catch (error) {
+  } catch {
     log("✗ Docker не установлен или не работает", "red");
     return false;
   }
@@ -123,8 +122,8 @@ function checkDatabase() {
 
     log("✓ Подключение к базе данных успешно", "green");
     return true;
-  } catch (error) {
-    log(`✗ Ошибка подключения к базе данных: ${error.message}`, "red");
+  } catch {
+    log(`✗ Ошибка подключения к базе данных`, "red");
     return false;
   }
 }
@@ -136,8 +135,8 @@ function checkBuild() {
     execSync("npm run build", { stdio: "pipe" });
     log("✓ Сборка приложения успешна", "green");
     return true;
-  } catch (error) {
-    log(`✗ Ошибка сборки: ${error.message}`, "red");
+  } catch {
+    log(`✗ Ошибка сборки`, "red");
     return false;
   }
 }
@@ -153,8 +152,8 @@ function checkTests() {
     log("✓ Integration тесты прошли успешно", "green");
 
     return true;
-  } catch (error) {
-    log(`✗ Ошибка в тестах: ${error.message}`, "red");
+  } catch {
+    log(`✗ Ошибка в тестах`, "red");
     return false;
   }
 }
@@ -172,7 +171,7 @@ function checkDockerCompose() {
       try {
         execSync(`docker compose -f ${file} config`, { stdio: "pipe" });
         log(`✓ ${file} - синтаксис корректен`, "green");
-      } catch (error) {
+      } catch {
         log(`✗ ${file} - ошибка синтаксиса`, "red");
         allFilesExist = false;
       }
@@ -303,11 +302,11 @@ async function main() {
 }
 
 // Запуск скрипта
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   main().catch(error => {
     log(`❌ Критическая ошибка: ${error.message}`, "red");
     process.exit(1);
   });
 }
 
-module.exports = { main };
+export { main };

@@ -4,11 +4,11 @@
  * Скрипт для проверки подключения к Sentry серверу
  */
 
-const https = require("https");
-const http = require("http");
-const { URL } = require("url");
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import http from "http";
+import https from "https";
+import path from "path";
+import { URL } from "url";
 
 // Загружаем переменные окружения из .env файла если он существует
 function loadEnvFile() {
@@ -17,7 +17,7 @@ function loadEnvFile() {
   for (const envFile of envFiles) {
     const envPath = path.join(process.cwd(), envFile);
     if (fs.existsSync(envPath)) {
-      console.log(`📁 Загружаем переменные из ${envFile}...`);
+      console.warn(`📁 Загружаем переменные из ${envFile}...`);
       const envContent = fs.readFileSync(envPath, "utf8");
       const envLines = envContent.split("\n");
 
@@ -47,8 +47,8 @@ if (!sentryDsn) {
   process.exit(1);
 }
 
-console.log("🔍 Проверка подключения к Sentry...");
-console.log(`DSN: ${sentryDsn.replace(/\/\d+$/, "/***")}`);
+console.warn("🔍 Проверка подключения к Sentry...");
+console.warn(`DSN: ${sentryDsn.replace(/\/\d+$/, "/***")}`);
 
 // Парсим DSN
 try {
@@ -57,9 +57,9 @@ try {
   const port = dsnUrl.port || (dsnUrl.protocol === "https:" ? 443 : 80);
   const protocol = dsnUrl.protocol === "https:" ? https : http;
 
-  console.log(`🌐 Хост: ${hostname}`);
-  console.log(`🔌 Порт: ${port}`);
-  console.log(`🔒 Протокол: ${dsnUrl.protocol}`);
+  console.warn(`🌐 Хост: ${hostname}`);
+  console.warn(`🔌 Порт: ${port}`);
+  console.warn(`🔒 Протокол: ${dsnUrl.protocol}`);
 
   // Проверяем доступность сервера
   const options = {
@@ -71,8 +71,8 @@ try {
   };
 
   const req = protocol.request(options, res => {
-    console.log(`✅ Сервер доступен! Статус: ${res.statusCode}`);
-    console.log(`📊 Заголовки ответа:`, res.headers);
+    console.warn(`✅ Сервер доступен! Статус: ${res.statusCode}`);
+    console.warn(`📊 Заголовки ответа:`, res.headers);
 
     let data = "";
     res.on("data", chunk => {
@@ -80,19 +80,19 @@ try {
     });
 
     res.on("end", () => {
-      console.log(`📝 Ответ сервера (первые 200 символов):`);
-      console.log(data.substring(0, 200));
+      console.warn(`📝 Ответ сервера (первые 200 символов):`);
+      console.warn(data.substring(0, 200));
 
       if (res.statusCode >= 200 && res.statusCode < 400) {
-        console.log("✅ Sentry сервер отвечает корректно");
+        console.warn("✅ Sentry сервер отвечает корректно");
         if (res.statusCode === 302) {
-          console.log(
+          console.warn(
             "ℹ️  Сервер перенаправляет на аутентификацию (это нормально для Sentry)"
           );
         }
         process.exit(0);
       } else {
-        console.log(
+        console.warn(
           `⚠️  Сервер отвечает с неожиданным статусом: ${res.statusCode}`
         );
         process.exit(1);

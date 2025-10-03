@@ -4,10 +4,9 @@
  * Скрипт для проверки конфигурации Sentry
  */
 
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
 
-console.log("🔍 Проверка конфигурации Sentry...\n");
+console.warn("🔍 Проверка конфигурации Sentry...\n");
 
 // Проверяем наличие файлов конфигурации
 const configFiles = [
@@ -16,14 +15,14 @@ const configFiles = [
   "next.config.ts",
 ];
 
-console.log("📁 Проверка файлов конфигурации:");
+console.warn("📁 Проверка файлов конфигурации:");
 configFiles.forEach(file => {
   const exists = fs.existsSync(file);
-  console.log(`  ${exists ? "✅" : "❌"} ${file}`);
+  console.warn(`  ${exists ? "✅" : "❌"} ${file}`);
 });
 
 // Проверяем переменные окружения
-console.log("\n🔧 Проверка переменных окружения:");
+console.warn("\n🔧 Проверка переменных окружения:");
 
 const requiredEnvVars = ["SENTRY_DSN", "NEXT_PUBLIC_SENTRY_DSN"];
 
@@ -46,9 +45,9 @@ if (fs.existsSync(envFile)) {
   requiredEnvVars.forEach(varName => {
     const value = envVars[varName];
     if (value && value !== "") {
-      console.log(`  ✅ ${varName}: ${value.substring(0, 20)}...`);
+      console.warn(`  ✅ ${varName}: ${value.substring(0, 20)}...`);
     } else {
-      console.log(`  ❌ ${varName}: не установлена`);
+      console.warn(`  ❌ ${varName}: не установлена`);
     }
   });
 
@@ -56,18 +55,18 @@ if (fs.existsSync(envFile)) {
   optionalEnvVars.forEach(varName => {
     const value = envVars[varName];
     if (value && value !== "") {
-      console.log(`  ✅ ${varName}: ${value}`);
+      console.warn(`  ✅ ${varName}: ${value}`);
     } else {
-      console.log(`  ⚠️  ${varName}: не установлена (опционально)`);
+      console.warn(`  ⚠️  ${varName}: не установлена (опционально)`);
     }
   });
 } else {
-  console.log("  ⚠️  Файл .env.local не найден");
-  console.log("  💡 Создайте .env.local на основе .env.example");
+  console.warn("  ⚠️  Файл .env.local не найден");
+  console.warn("  💡 Создайте .env.local на основе .env.example");
 }
 
 // Проверяем формат DSN
-console.log("\n🔗 Проверка формата DSN:");
+console.warn("\n🔗 Проверка формата DSN:");
 if (process.env.SENTRY_DSN) {
   const dsn = process.env.SENTRY_DSN;
   if (
@@ -75,32 +74,32 @@ if (process.env.SENTRY_DSN) {
     dsn.includes("@") &&
     dsn.includes("ingest.sentry.io")
   ) {
-    console.log("  ✅ SENTRY_DSN имеет правильный формат");
+    console.warn("  ✅ SENTRY_DSN имеет правильный формат");
   } else {
-    console.log("  ❌ SENTRY_DSN имеет неправильный формат");
-    console.log(
+    console.warn("  ❌ SENTRY_DSN имеет неправильный формат");
+    console.warn(
       "  💡 Правильный формат: https://key@org.ingest.sentry.io/project"
     );
   }
 } else {
-  console.log("  ⚠️  SENTRY_DSN не установлена");
+  console.warn("  ⚠️  SENTRY_DSN не установлена");
 }
 
 // Проверяем API endpoint
-console.log("\n🧪 Проверка тестового API:");
+console.warn("\n🧪 Проверка тестового API:");
 const apiFile = "src/app/api/sentry-test/route.ts";
 if (fs.existsSync(apiFile)) {
-  console.log("  ✅ Тестовый API endpoint создан");
-  console.log("  💡 Тест: GET http://localhost:3000/api/sentry-test");
+  console.warn("  ✅ Тестовый API endpoint создан");
+  console.warn("  💡 Тест: GET http://localhost:3000/api/sentry-test");
 } else {
-  console.log("  ❌ Тестовый API endpoint не найден");
+  console.warn("  ❌ Тестовый API endpoint не найден");
 }
 
-console.log("\n📋 Следующие шаги:");
-console.log("1. Установите правильные переменные окружения в .env.local");
-console.log("2. Получите DSN из вашего проекта Sentry");
-console.log("3. Запустите приложение: npm run dev");
-console.log("4. Протестируйте: http://localhost:3000/api/sentry-test");
-console.log("5. Проверьте события в Sentry Dashboard");
+console.warn("\n📋 Следующие шаги:");
+console.warn("1. Установите правильные переменные окружения в .env.local");
+console.warn("2. Получите DSN из вашего проекта Sentry");
+console.warn("3. Запустите приложение: npm run dev");
+console.warn("4. Протестируйте: http://localhost:3000/api/sentry-test");
+console.warn("5. Проверьте события в Sentry Dashboard");
 
-console.log("\n✨ Проверка завершена!");
+console.warn("\n✨ Проверка завершена!");

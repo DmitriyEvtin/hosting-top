@@ -3,6 +3,8 @@
 import { Button } from "@/shared/ui/Button";
 import { Card } from "@/shared/ui/Card";
 import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 interface UserMenuProps {
@@ -50,10 +52,10 @@ export function UserMenu({ className }: UserMenuProps) {
     return (
       <div className={`flex space-x-2 ${className}`}>
         <Button asChild variant="outline" size="sm">
-          <a href="/auth/signin">Войти</a>
+          <Link href="/auth/signin">Войти</Link>
         </Button>
         <Button asChild size="sm">
-          <a href="/auth/signup">Регистрация</a>
+          <Link href="/auth/signup">Регистрация</Link>
         </Button>
       </div>
     );
@@ -66,9 +68,11 @@ export function UserMenu({ className }: UserMenuProps) {
         className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md p-2"
       >
         {session.user.image ? (
-          <img
+          <Image
             src={session.user.image}
             alt={session.user.name || "Пользователь"}
+            width={32}
+            height={32}
             className="h-8 w-8 rounded-full"
           />
         ) : (
@@ -105,22 +109,22 @@ export function UserMenu({ className }: UserMenuProps) {
             </div>
 
             <div className="mt-2 space-y-1">
-              <a
+              <Link
                 href="/profile"
                 onClick={() => setIsOpen(false)}
                 className="block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
               >
                 Профиль
-              </a>
+              </Link>
 
               {session.user.role === "ADMIN" && (
-                <a
+                <Link
                   href="/admin"
                   className="block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
                   onClick={() => setIsOpen(false)}
                 >
                   Админ-панель
-                </a>
+                </Link>
               )}
 
               <button
