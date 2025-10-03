@@ -17,6 +17,8 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
+    "db:seed-test": "tsx prisma/seed-test.ts",
+    "db:seed-all": "npm run db:seed && npm run db:seed-test",
     "db:reset": "prisma migrate reset --force",
     "db:studio": "prisma studio",
     "test": "jest",

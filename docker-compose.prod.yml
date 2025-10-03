@@ -58,6 +58,25 @@ services:
     command: ["sh", "-c", "npx prisma migrate deploy && npx prisma generate"]
     restart: "no"
 
+  seed:
+    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-rolled_metal}-app:${IMAGE_TAG:-latest}
+    container_name: rolled-metal-seed-prod
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER:-rolled_metal_user}:${POSTGRES_PASSWORD:-rolled_metal_password}@postgres:5432/${POSTGRES_DB:-rolled_metal}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@rolled-metal.ru}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ADMIN_NAME: ${ADMIN_NAME:-Администратор}
+    networks:
+      - rolled-metal-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrations:
+        condition: service_completed_successfully
+    command: ["sh", "-c", "npm run db:seed"]
+    restart: "no"
+
   app:
     image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-rolled_metal}-app:${IMAGE_TAG:-latest}
     restart: unless-stopped
@@ -93,6 +112,8 @@ services:
       redis:
         condition: service_healthy
       migrations:
+        condition: service_completed_successfully
+      seed:
         condition: service_completed_successfully
     # healthcheck настроен в Dockerfile
 

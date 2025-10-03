@@ -1,4 +1,5 @@
 import { AuthProvider } from "@/shared/ui/AuthProvider";
+import { Navigation } from "@/shared/ui/Navigation";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -15,7 +16,12 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <div className="min-h-screen bg-gray-50">
+            <Navigation />
+            <main>{children}</main>
+          </div>
+        </AuthProvider>
       </body>
     </html>
   );

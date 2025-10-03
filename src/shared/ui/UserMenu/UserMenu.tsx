@@ -105,15 +105,13 @@ export function UserMenu({ className }: UserMenuProps) {
             </div>
 
             <div className="mt-2 space-y-1">
-              <button
-                onClick={() => {
-                  setIsOpen(false);
-                  // Здесь можно добавить переход к профилю
-                }}
-                className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
+              <a
+                href="/profile"
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
               >
                 Профиль
-              </button>
+              </a>
 
               {session.user.role === "ADMIN" && (
                 <a
