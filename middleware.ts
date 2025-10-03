@@ -1,14 +1,9 @@
 import { NextRequest } from "next/server";
 import { authMiddleware } from "./src/shared/lib/auth-middleware";
+import { UserRole } from "./src/shared/lib/types";
 
 export async function middleware(request: NextRequest) {
-  // Определяем защищенные маршруты
-  const protectedRoutes = [
-    "/admin",
-    "/dashboard",
-    "/api/admin",
-    "/api/protected",
-  ];
+  const { pathname } = request.nextUrl;
 
   // Определяем публичные маршруты
   const publicRoutes = [
@@ -19,6 +14,29 @@ export async function middleware(request: NextRequest) {
     "/api/configuration",
     "/api/database/test",
     "/api/sentry",
+  ];
+
+  // Проверяем, является ли маршрут публичным
+  if (publicRoutes.some(route => pathname.startsWith(route))) {
+    return authMiddleware(request, {
+      publicRoutes,
+    });
+  }
+
+  // Специальная защита для админ-панели
+  if (pathname.startsWith("/admin")) {
+    return authMiddleware(request, {
+      requiredRole: UserRole.ADMIN,
+      publicRoutes,
+    });
+  }
+
+  // Обычная защита для других маршрутов
+  const protectedRoutes = [
+    "/profile",
+    "/dashboard",
+    "/api/admin",
+    "/api/protected",
   ];
 
   return authMiddleware(request, {

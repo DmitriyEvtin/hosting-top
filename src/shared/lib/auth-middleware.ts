@@ -48,6 +48,11 @@ export async function authMiddleware(
       const allowedRoles = roleHierarchy[requiredRole] || [];
 
       if (!allowedRoles.includes(token.role as UserRole)) {
+        // Для админ-панели возвращаем 404 вместо 403
+        if (requiredRole === UserRole.ADMIN) {
+          return new NextResponse(null, { status: 404 });
+        }
+
         return NextResponse.json(
           { error: "Недостаточно прав доступа" },
           { status: 403 }
