@@ -28,7 +28,7 @@ src/app/
 ### Pages Layer (Слой страниц)
 
 ```
-src/pages/
+src/views/
 ├── home/                   # Главная страница
 │   ├── ui/
 │   │   ├── HomePage/
@@ -275,7 +275,7 @@ npx steiger ./src
 #### Примеры ошибок Steiger
 
 ```bash
-❌ src/pages/home/ui/HomePage.tsx
+❌ src/views/home/ui/HomePage.tsx
    Import from higher layer: shared → entities
 
 ❌ src/features/search/model/store.ts

@@ -48,7 +48,7 @@ Organize code within slices/layers by technical purpose:
 
 ```
 └── src/                          # FSD layers
-    ├── pages/                    # FSD Pages layer
+    ├── views/                    # FSD Views layer
     │   └── home/                 # Home page slice
     │       ├── ui/
     │       │    └── ComponentName/
@@ -65,7 +65,7 @@ Organize code within slices/layers by technical purpose:
 ```
 └── src/                          # FSD layers
     ├── app/                      # FSD App layer
-    ├── pages/                    # FSD Pages layer
+    ├── views/                    # FSD Views layer
     │   ├── home/                 # Home page slice
     │   │   ├── ui/
     │   │   └── index.ts
@@ -139,7 +139,7 @@ Organize code within slices/layers by technical purpose:
 1. **Start with App and Shared layers** — Create foundation
    - Create `shared/` layer with common utilities and components
 2. **Distribute existing UI code** — Move to widgets and pages (temporary violations allowed)
-   - Move page components to `pages/` layer
+   - Move page components to `views/` layer
    - Move reusable UI blocks to `widgets/` layer
 3. **Gradually fix import violations** — Refactor dependencies
    - Fix import paths to follow FSD hierarchy

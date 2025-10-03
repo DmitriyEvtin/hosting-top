@@ -46,7 +46,7 @@ src/
 │   ├── globals.css              # Global styles
 │   └── api/                     # API routes
 │       └── config/              # Configuration endpoints
-├── pages/                       # FSD Pages layer
+├── views/                       # FSD Views layer (переименован из pages для избежания конфликтов с Next.js)
 │   └── home/                    # Home page slice
 │       ├── ui/
 │       │   ├── HomePage/         # Main page component
@@ -112,7 +112,7 @@ src/shared/ui/Button/
 **Page компоненты:**
 
 ```
-src/pages/home/ui/HomePage/
+src/views/home/ui/HomePage/
 ├── HomePage.tsx        # export function HomePage() { ... }
 └── index.ts            # export { HomePage } from "./HomePage";
 ```

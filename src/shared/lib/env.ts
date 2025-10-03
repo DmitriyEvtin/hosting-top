@@ -146,6 +146,14 @@ export const isDevelopment = env.NODE_ENV === "development";
 export const isStaging = env.NODE_ENV === "staging";
 export const isProduction = env.NODE_ENV === "production";
 
+// Проверка реального production окружения (не только сборки)
+// Для development сборки отключаем строгие проверки
+export const isRealProduction =
+  isProduction &&
+  process.env.NODE_ENV === "production" &&
+  !process.env.NEXT_PUBLIC_DEV_MODE &&
+  !process.env.DEV_BUILD;
+
 // Утилиты для проверки доступности сервисов
 export const hasRedis = !!env.REDIS_URL;
 export const hasAws = !!(
@@ -162,7 +170,7 @@ export const shouldDebug = isDevelopment && !!env.DEBUG;
 
 // Валидация критических переменных для production
 export function validateProductionEnv(): void {
-  if (isProduction) {
+  if (isRealProduction) {
     const criticalVars = [
       "DATABASE_URL",
       "NEXTAUTH_SECRET",
