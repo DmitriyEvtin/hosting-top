@@ -1,13 +1,7 @@
 import bcrypt from "bcryptjs";
 import { NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import GitHubProvider from "next-auth/providers/github";
-import GoogleProvider from "next-auth/providers/google";
 import { prisma } from "../api/database";
-import MailProvider from "./auth-providers/mail-provider";
-import OKProvider from "./auth-providers/ok-provider";
-import VKProvider from "./auth-providers/vk-provider";
-import YandexProvider from "./auth-providers/yandex-provider";
 import "./auth-types";
 import { UserRole } from "./types";
 
@@ -58,41 +52,42 @@ export const authOptions: NextAuthOptions = {
       },
     }),
 
+    // Временно отключены OAuth провайдеры
     // Google Provider
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_CLIENT_ID!,
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    // }),
 
     // GitHub Provider
-    GitHubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID!,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
-    }),
+    // GitHubProvider({
+    //   clientId: process.env.GITHUB_CLIENT_ID!,
+    //   clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+    // }),
 
     // VK Provider
-    VKProvider({
-      clientId: process.env.VK_CLIENT_ID!,
-      clientSecret: process.env.VK_CLIENT_SECRET!,
-    }),
+    // VKProvider({
+    //   clientId: process.env.VK_CLIENT_ID!,
+    //   clientSecret: process.env.VK_CLIENT_SECRET!,
+    // }),
 
     // Одноклассники Provider
-    OKProvider({
-      clientId: process.env.OK_CLIENT_ID!,
-      clientSecret: process.env.OK_CLIENT_SECRET!,
-    }),
+    // OKProvider({
+    //   clientId: process.env.OK_CLIENT_ID!,
+    //   clientSecret: process.env.OK_CLIENT_SECRET!,
+    // }),
 
     // Mail.ru Provider
-    MailProvider({
-      clientId: process.env.MAIL_CLIENT_ID!,
-      clientSecret: process.env.MAIL_CLIENT_SECRET!,
-    }),
+    // MailProvider({
+    //   clientId: process.env.MAIL_CLIENT_ID!,
+    //   clientSecret: process.env.MAIL_CLIENT_SECRET!,
+    // }),
 
     // Yandex Provider
-    YandexProvider({
-      clientId: process.env.YANDEX_CLIENT_ID!,
-      clientSecret: process.env.YANDEX_CLIENT_SECRET!,
-    }),
+    // YandexProvider({
+    //   clientId: process.env.YANDEX_CLIENT_ID!,
+    //   clientSecret: process.env.YANDEX_CLIENT_SECRET!,
+    // }),
   ],
 
   session: {
@@ -162,28 +157,29 @@ export const authOptions: NextAuthOptions = {
         return true;
       }
 
+      // OAuth провайдеры временно отключены
       // Для OAuth провайдеров проверяем, есть ли пользователь в БД
-      if (
-        ["google", "github", "vk", "ok", "mail", "yandex"].includes(
-          account?.provider || ""
-        )
-      ) {
-        const existingUser = await prisma.user.findUnique({
-          where: { email: user.email! },
-        });
+      // if (
+      //   ["google", "github", "vk", "ok", "mail", "yandex"].includes(
+      //     account?.provider || ""
+      //   )
+      // ) {
+      //   const existingUser = await prisma.user.findUnique({
+      //     where: { email: user.email! },
+      //   });
 
-        if (!existingUser) {
-          // Создаем нового пользователя при первом входе через OAuth
-          await prisma.user.create({
-            data: {
-              email: user.email!,
-              name: user.name,
-              image: user.image,
-              role: UserRole.USER,
-            },
-          });
-        }
-      }
+      //   if (!existingUser) {
+      //     // Создаем нового пользователя при первом входе через OAuth
+      //     await prisma.user.create({
+      //       data: {
+      //         email: user.email!,
+      //         name: user.name,
+      //         image: user.image,
+      //         role: UserRole.USER,
+      //       },
+      //     });
+      //   }
+      // }
 
       return true;
     },

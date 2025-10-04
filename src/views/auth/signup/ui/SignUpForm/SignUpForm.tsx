@@ -2,7 +2,6 @@
 
 import { Button } from "@/shared/ui/Button";
 import { Card } from "@/shared/ui/Card";
-import { SocialAuthButtons } from "@/shared/ui/SocialAuthButtons";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -177,7 +176,8 @@ export function SignUpForm({ callbackUrl = "/" }: SignUpFormProps) {
           </Button>
         </form>
 
-        <div className="mt-6">
+        {/* Временно отключены кнопки социальной авторизации */}
+        {/* <div className="mt-6">
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-300" />
@@ -194,7 +194,7 @@ export function SignUpForm({ callbackUrl = "/" }: SignUpFormProps) {
               actionType="register"
             />
           </div>
-        </div>
+        </div> */}
 
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
