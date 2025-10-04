@@ -1,6 +1,14 @@
 "use client";
 
 import { SocialAuthButton } from "@/shared/ui/SocialAuthButton";
+import {
+  GitHubIcon,
+  GoogleIcon,
+  MailIcon,
+  OKIcon,
+  VKIcon,
+  YandexIcon,
+} from "@/shared/ui/SocialIcons";
 
 interface SocialAuthButtonsProps {
   callbackUrl?: string;
@@ -19,32 +27,32 @@ export function SocialAuthButtons({
     {
       id: "google",
       name: "Google",
-      icon: "🔍",
+      icon: GoogleIcon,
     },
     {
       id: "github",
       name: "GitHub",
-      icon: "🐙",
+      icon: GitHubIcon,
     },
     {
       id: "vk",
       name: "VKontakte",
-      icon: "🔵",
+      icon: VKIcon,
     },
     {
       id: "ok",
       name: "Одноклассники",
-      icon: "🟠",
+      icon: OKIcon,
     },
     {
       id: "mail",
       name: "Mail.ru",
-      icon: "📧",
+      icon: MailIcon,
     },
     {
       id: "yandex",
       name: "Yandex",
-      icon: "🔴",
+      icon: YandexIcon,
     },
   ];
 
@@ -59,7 +67,7 @@ export function SocialAuthButtons({
           className="w-full justify-start"
           actionType={actionType}
         >
-          <span className="mr-2">{provider.icon}</span>
+          <provider.icon className="mr-2 h-4 w-4" />
           {actionType === "register"
             ? "Зарегистрироваться через"
             : "Войти через"}{" "}
