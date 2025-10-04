@@ -6,7 +6,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Паркет CRM",
-  description: "Автоматический каталог товаров с парсингом данных",
+  description: "CRM для работы оптовой базы паркета",
 };
 
 export default function RootLayout({
