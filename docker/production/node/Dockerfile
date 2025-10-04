@@ -55,6 +55,14 @@ ENV DATABASE_URL="postgresql://user:password@localhost:5432/rolled_metal"
 ENV NODE_ENV="production"
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# AWS переменные для сборки (используются в aws-config.ts)
+ENV AWS_ACCESS_KEY_ID="docker-build-aws-access-key"
+ENV AWS_SECRET_ACCESS_KEY="docker-build-aws-secret-key"
+ENV AWS_REGION="us-east-1"
+ENV AWS_S3_BUCKET="docker-build-bucket"
+ENV AWS_S3_ENDPOINT=""
+ENV AWS_S3_FORCE_PATH_STYLE="false"
+
 # Собираем приложение
 RUN npm run build
 

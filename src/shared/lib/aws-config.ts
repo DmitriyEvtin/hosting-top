@@ -24,87 +24,123 @@ const validateAwsConfig = () => {
   }
 };
 
-// Валидация конфигурации при инициализации
-validateAwsConfig();
+// Ленивая валидация - выполняется только при первом использовании
+let isAwsConfigValidated = false;
+const lazyValidateAwsConfig = () => {
+  if (!isAwsConfigValidated) {
+    validateAwsConfig();
+    isAwsConfigValidated = true;
+  }
+};
 
 /**
  * AWS S3 Client Configuration
+ * Создается с ленивой валидацией
  */
-export const s3Client = new S3Client({
-  region: process.env.AWS_REGION!,
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-  },
-  // MinIO endpoint для локальной разработки
-  ...(process.env.AWS_S3_ENDPOINT && {
-    endpoint: process.env.AWS_S3_ENDPOINT,
-    forcePathStyle: process.env.AWS_S3_FORCE_PATH_STYLE === "true",
-  }),
-  // Настройки для оптимизации производительности
-  maxAttempts: 3,
-  retryMode: "adaptive",
-});
+const createS3Client = () => {
+  lazyValidateAwsConfig();
+  return new S3Client({
+    region: process.env.AWS_REGION!,
+    credentials: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+    },
+    // MinIO endpoint для локальной разработки
+    ...(process.env.AWS_S3_ENDPOINT && {
+      endpoint: process.env.AWS_S3_ENDPOINT,
+      forcePathStyle: process.env.AWS_S3_FORCE_PATH_STYLE === "true",
+    }),
+    // Настройки для оптимизации производительности
+    maxAttempts: 3,
+    retryMode: "adaptive",
+  });
+};
+
+export const s3Client = createS3Client();
 
 /**
  * AWS CloudFront Client Configuration
+ * Создается с ленивой валидацией
  */
-export const cloudFrontClient = new CloudFrontClient({
-  region: process.env.AWS_REGION!,
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-  },
-  // MinIO endpoint для локальной разработки (CloudFront не поддерживается в MinIO)
-  ...(process.env.AWS_S3_ENDPOINT && {
-    endpoint: process.env.AWS_S3_ENDPOINT,
-  }),
-  maxAttempts: 3,
-  retryMode: "adaptive",
-});
+const createCloudFrontClient = () => {
+  lazyValidateAwsConfig();
+  return new CloudFrontClient({
+    region: process.env.AWS_REGION!,
+    credentials: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+    },
+    // MinIO endpoint для локальной разработки (CloudFront не поддерживается в MinIO)
+    ...(process.env.AWS_S3_ENDPOINT && {
+      endpoint: process.env.AWS_S3_ENDPOINT,
+    }),
+    maxAttempts: 3,
+    retryMode: "adaptive",
+  });
+};
+
+export const cloudFrontClient = createCloudFrontClient();
 
 /**
  * AWS Configuration Constants
+ * Создается с ленивой валидацией
  */
-export const AWS_CONFIG = {
-  S3_BUCKET: process.env.AWS_S3_BUCKET!,
-  REGION: process.env.AWS_REGION!,
-  CLOUDFRONT_DOMAIN: process.env.CLOUDFRONT_DOMAIN || "",
-} as const;
+const createAwsConfig = () => {
+  lazyValidateAwsConfig();
+  return {
+    S3_BUCKET: process.env.AWS_S3_BUCKET!,
+    REGION: process.env.AWS_REGION!,
+    CLOUDFRONT_DOMAIN: process.env.CLOUDFRONT_DOMAIN || "",
+  } as const;
+};
+
+export const AWS_CONFIG = createAwsConfig();
 
 /**
  * S3 Bucket Configuration
+ * Создается с ленивой валидацией
  */
-export const S3_BUCKET_CONFIG = {
-  // Основные настройки bucket
-  bucket: AWS_CONFIG.S3_BUCKET,
-  region: AWS_CONFIG.REGION,
+const createS3BucketConfig = () => {
+  lazyValidateAwsConfig();
+  return {
+    // Основные настройки bucket
+    bucket: process.env.AWS_S3_BUCKET!,
+    region: process.env.AWS_REGION!,
 
-  // Настройки для изображений
-  images: {
-    folder: "images",
-    maxSize: 10 * 1024 * 1024, // 10MB
-    allowedTypes: ["image/jpeg", "image/png", "image/webp", "image/avif"],
-    thumbnailSizes: [150, 300, 600, 1200], // Размеры миниатюр
-  },
+    // Настройки для изображений
+    images: {
+      folder: "images",
+      maxSize: 10 * 1024 * 1024, // 10MB
+      allowedTypes: ["image/jpeg", "image/png", "image/webp", "image/avif"],
+      thumbnailSizes: [150, 300, 600, 1200], // Размеры миниатюр
+    },
 
-  // Настройки для других файлов
-  files: {
-    folder: "files",
-    maxSize: 50 * 1024 * 1024, // 50MB
-  },
-} as const;
+    // Настройки для других файлов
+    files: {
+      folder: "files",
+      maxSize: 50 * 1024 * 1024, // 50MB
+    },
+  } as const;
+};
+
+export const S3_BUCKET_CONFIG = createS3BucketConfig();
 
 /**
  * CloudFront Configuration
+ * Создается с ленивой валидацией
  */
-export const CLOUDFRONT_CONFIG = {
-  domain: AWS_CONFIG.CLOUDFRONT_DOMAIN,
-  cacheTtl: 31536000, // 1 год в секундах
-  headers: {
-    "Cache-Control": "public, max-age=31536000, immutable",
-  },
-} as const;
+const createCloudFrontConfig = () => {
+  lazyValidateAwsConfig();
+  return {
+    domain: process.env.CLOUDFRONT_DOMAIN || "",
+    cacheTtl: 31536000, // 1 год в секундах
+    headers: {
+      "Cache-Control": "public, max-age=31536000, immutable",
+    },
+  } as const;
+};
+
+export const CLOUDFRONT_CONFIG = createCloudFrontConfig();
 
 /**
  * Типы для AWS операций
@@ -126,11 +162,14 @@ export interface AwsConfig {
 /**
  * Получение текущей AWS конфигурации
  */
-export const getAwsConfig = (): AwsConfig => ({
-  region: AWS_CONFIG.REGION,
-  bucket: AWS_CONFIG.S3_BUCKET,
-  cloudFrontDomain: AWS_CONFIG.CLOUDFRONT_DOMAIN || undefined,
-});
+export const getAwsConfig = (): AwsConfig => {
+  lazyValidateAwsConfig();
+  return {
+    region: process.env.AWS_REGION!,
+    bucket: process.env.AWS_S3_BUCKET!,
+    cloudFrontDomain: process.env.CLOUDFRONT_DOMAIN || undefined,
+  };
+};
 
 /**
  * Проверка доступности AWS сервисов
