@@ -82,6 +82,12 @@ services:
       AWS_S3_BUCKET: ${AWS_S3_BUCKET}
       SENTRY_DSN: ${SENTRY_DSN}
       NEXT_PUBLIC_SENTRY_DSN: ${NEXT_PUBLIC_SENTRY_DSN}
+      # Email настройки (обязательно для production)
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_FROM: ${SMTP_FROM:-noreply@metal-works.pro}
     # Порт 3000 отключен для production - доступ только через nginx
     # ports:
     #   - "3000:3000"

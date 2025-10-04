@@ -281,6 +281,51 @@ export default async function AdminPage() {
               </div>
             </div>
           </div>
+
+          {/* Карточка тестирования email */}
+          <div className="bg-white overflow-hidden shadow rounded-lg">
+            <div className="p-5">
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <div className="w-8 h-8 bg-teal-500 rounded-md flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div className="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt className="text-sm font-medium text-gray-500 truncate">
+                      Тестирование Email
+                    </dt>
+                    <dd className="text-lg font-medium text-gray-900">
+                      Проверка работы email сервиса
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gray-50 px-5 py-3">
+              <div className="text-sm">
+                <a
+                  href="/admin/email"
+                  className="font-medium text-teal-600 hover:text-teal-500"
+                >
+                  Перейти к тестированию
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Информация о системе */}

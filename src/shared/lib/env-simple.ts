@@ -75,7 +75,7 @@ export const hasAws = !!(
   env.AWS_SECRET_ACCESS_KEY &&
   env.AWS_S3_BUCKET
 );
-export const hasSmtp = !!(env.SMTP_HOST && env.SMTP_USER && env.SMTP_PASSWORD);
+export const hasSmtp = !!env.SMTP_HOST;
 export const hasSentry = !!env.SENTRY_DSN;
 
 // Утилиты для логирования

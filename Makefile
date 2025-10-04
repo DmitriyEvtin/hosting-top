@@ -6,11 +6,36 @@ ENVIRONMENT ?= development
 
 # Development команды
 dev:
-	docker compose up -d postgres redis
+	docker compose up -d postgres redis mailer
 	npm run dev
 
 dev-down:
 	docker compose down
+
+# MailHog команды
+mailhog-up:
+	docker compose up -d mailer
+
+mailhog-down:
+	docker compose stop mailer
+
+mailhog-logs:
+	docker logs rolled-metal-mailhog -f
+
+mailhog-clear:
+	curl -X DELETE http://localhost:8025/api/v1/messages
+
+mailhog-status:
+	curl -s http://localhost:8025/api/v1/stats | jq .
+
+# Email тестирование
+test-email:
+	curl -X POST http://localhost:3000/api/email/send \
+		-H "Content-Type: application/json" \
+		-d '{"to":"test@example.com","subject":"Test","text":"Test message"}'
+
+test-email-status:
+	curl http://localhost:3000/api/email/status
 
 # Production команды
 prod-up:

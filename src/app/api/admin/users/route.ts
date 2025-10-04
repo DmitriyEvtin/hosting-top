@@ -1,5 +1,11 @@
 import { prisma } from "@/shared/api/database";
+import {
+  emailService,
+  emailTemplates,
+  renderTemplate,
+} from "@/shared/api/email";
 import { authOptions } from "@/shared/lib/auth-config";
+import { hasSmtp } from "@/shared/lib/env-simple";
 import { UserRole } from "@/shared/lib/types";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
@@ -144,6 +150,24 @@ export async function POST(request: NextRequest) {
         updatedAt: true,
       },
     });
+
+    // Отправляем приветственное письмо, если email сервис настроен
+    if (hasSmtp) {
+      try {
+        const welcomeTemplate = renderTemplate(emailTemplates.welcome, {
+          userName: user.name,
+          loginUrl: `${process.env.NEXTAUTH_URL || "http://localhost:3000"}/auth/signin`,
+        });
+
+        await emailService.sendEmail({
+          to: user.email,
+          ...welcomeTemplate,
+        });
+      } catch (emailError) {
+        console.error("Failed to send welcome email:", emailError);
+        // Не прерываем создание пользователя из-за ошибки email
+      }
+    }
 
     return NextResponse.json(
       {

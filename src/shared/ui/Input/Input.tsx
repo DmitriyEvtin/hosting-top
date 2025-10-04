@@ -1,8 +1,11 @@
+import { cn } from "@/shared/lib/utils";
 import * as React from "react";
 
-import { cn } from "@/shared/lib/utils";
-
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  // Дополнительные пропсы можно добавить здесь при необходимости
+  variant?: "default" | "error";
+}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {

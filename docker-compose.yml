@@ -37,6 +37,16 @@ services:
     depends_on:
       - postgres
 
+  mailer:
+    image: mailhog/mailhog
+    container_name: rolled-metal-mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025" # SMTP порт
+      - "8025:8025" # Web UI порт
+    networks:
+      - rolled-metal-network
+
 volumes:
   postgres_data:
   redis_data:
