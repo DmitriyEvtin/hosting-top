@@ -17,7 +17,7 @@ import React, { useCallback, useRef, useState } from "react";
  */
 interface ProfileLogoUploadProps {
   currentLogoUrl?: string;
-  onUploadComplete?: (logoUrl: string) => void;
+  onUploadComplete?: (imageUrl: string) => void;
   onUploadError?: (error: string) => void;
   onRemoveLogo?: () => void;
   className?: string;

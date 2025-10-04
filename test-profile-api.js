@@ -8,18 +8,18 @@ async function testProfileAPI() {
     // Проверяем пользователя
     const user = await prisma.user.findUnique({
       where: { email: "test@example.com" },
-      select: { id: true, email: true, name: true, logoUrl: true },
+      select: { id: true, email: true, name: true, image: true },
     });
 
     console.warn("Пользователь:", user);
 
-    // Обновляем logoUrl
+    // Обновляем image
     const updatedUser = await prisma.user.update({
       where: { id: user.id },
       data: {
-        logoUrl: "http://localhost:9000/rolled-metal-images/test-logo.jpg",
+        image: "http://localhost:9000/rolled-metal-images/test-logo.jpg",
       },
-      select: { id: true, email: true, name: true, logoUrl: true },
+      select: { id: true, email: true, name: true, image: true },
     });
 
     console.warn("Обновленный пользователь:", updatedUser);

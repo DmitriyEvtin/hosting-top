@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/shared/api/database/prisma"
@@ -11,25 +8,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// ============================================
-// USER MANAGEMENT & AUTHENTICATION
-// ============================================
-
 model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
-  name          String?
-  password      String? // Для входа по email/password
-  role          UserRole  @default(USER)
-  emailVerified DateTime?
-  image         String?
-  logoUrl       String? // URL логотипа пользователя
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-
-  // Relations
-  parsingSessions ParsingSession[]
+  id              String           @id @default(cuid())
+  email           String           @unique
+  name            String?
+  role            UserRole         @default(USER)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  emailVerified   DateTime?
+  image           String?
+  password        String?
   accounts        Account[]
+  parsingSessions ParsingSession[]
   sessions        Session[]
 
   @@map("users")
@@ -41,15 +31,14 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
   @@map("accounts")
@@ -74,57 +63,39 @@ model VerificationToken {
   @@map("verification_tokens")
 }
 
-enum UserRole {
-  ADMIN
-  MODERATOR
-  USER
-}
-
-// ============================================
-// CATEGORY MANAGEMENT
-// ============================================
-
 model Category {
-  id          String   @id @default(cuid())
+  id          String     @id @default(cuid())
   name        String
-  slug        String   @unique
+  slug        String     @unique
   description String?
   parentId    String?
-  sortOrder   Int      @default(0)
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  // Relations
-  parent   Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
-  children Category[] @relation("CategoryHierarchy")
-  products Product[]
+  sortOrder   Int        @default(0)
+  isActive    Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  parent      Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryHierarchy")
+  products    Product[]
 
   @@map("categories")
 }
 
-// ============================================
-// PRODUCT MANAGEMENT
-// ============================================
-
 model Product {
-  id          String   @id @default(cuid())
+  id          String             @id @default(cuid())
   name        String
-  slug        String   @unique
+  slug        String             @unique
   description String?
   price       Decimal?
-  currency    String   @default("RUB")
-  sku         String?  @unique
-  stock       Int      @default(0)
-  isActive    Boolean  @default(true)
+  currency    String             @default("RUB")
+  sku         String?            @unique
+  stock       Int                @default(0)
+  isActive    Boolean            @default(true)
   categoryId  String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  // Relations
-  category   Category           @relation(fields: [categoryId], references: [id])
-  images     ProductImage[]
-  attributes ProductAttribute[]
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  attributes  ProductAttribute[]
+  images      ProductImage[]
+  category    Category           @relation(fields: [categoryId], references: [id])
 
   @@map("products")
 }
@@ -137,9 +108,7 @@ model ProductImage {
   sortOrder Int      @default(0)
   isMain    Boolean  @default(false)
   createdAt DateTime @default(now())
-
-  // Relations
-  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@map("product_images")
 }
@@ -151,16 +120,10 @@ model ProductAttribute {
   value     String
   sortOrder Int      @default(0)
   createdAt DateTime @default(now())
-
-  // Relations
-  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@map("product_attributes")
 }
-
-// ============================================
-// PARSING MANAGEMENT
-// ============================================
 
 model ParsingSession {
   id             String        @id @default(cuid())
@@ -173,12 +136,28 @@ model ParsingSession {
   errors         Int           @default(0)
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
-
-  // Relations
-  user User         @relation(fields: [userId], references: [id])
-  logs ParsingLog[]
+  logs           ParsingLog[]
+  user           User          @relation(fields: [userId], references: [id])
 
   @@map("parsing_sessions")
+}
+
+model ParsingLog {
+  id        String         @id @default(cuid())
+  sessionId String
+  level     LogLevel       @default(INFO)
+  message   String
+  data      Json?
+  createdAt DateTime       @default(now())
+  session   ParsingSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("parsing_logs")
+}
+
+enum UserRole {
+  ADMIN
+  USER
+  MODERATOR
 }
 
 enum ParsingStatus {
@@ -187,20 +166,6 @@ enum ParsingStatus {
   COMPLETED
   FAILED
   CANCELLED
-}
-
-model ParsingLog {
-  id        String   @id @default(cuid())
-  sessionId String
-  level     LogLevel @default(INFO)
-  message   String
-  data      Json?
-  createdAt DateTime @default(now())
-
-  // Relations
-  session ParsingSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
-
-  @@map("parsing_logs")
 }
 
 enum LogLevel {

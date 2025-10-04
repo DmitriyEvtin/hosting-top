@@ -70,8 +70,8 @@ export type ParsingLog = $Result.DefaultSelection<Prisma.$ParsingLogPayload>
 export namespace $Enums {
   export const UserRole: {
   ADMIN: 'ADMIN',
-  MODERATOR: 'MODERATOR',
-  USER: 'USER'
+  USER: 'USER',
+  MODERATOR: 'MODERATOR'
 };
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
@@ -1726,14 +1726,14 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    parsingSessions: number
     accounts: number
+    parsingSessions: number
     sessions: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    parsingSessions?: boolean | UserCountOutputTypeCountParsingSessionsArgs
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
+    parsingSessions?: boolean | UserCountOutputTypeCountParsingSessionsArgs
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
   }
 
@@ -1751,15 +1751,15 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountParsingSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ParsingSessionWhereInput
+  export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AccountWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AccountWhereInput
+  export type UserCountOutputTypeCountParsingSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ParsingSessionWhereInput
   }
 
   /**
@@ -1815,13 +1815,13 @@ export namespace Prisma {
    */
 
   export type ProductCountOutputType = {
-    images: number
     attributes: number
+    images: number
   }
 
   export type ProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    images?: boolean | ProductCountOutputTypeCountImagesArgs
     attributes?: boolean | ProductCountOutputTypeCountAttributesArgs
+    images?: boolean | ProductCountOutputTypeCountImagesArgs
   }
 
   // Custom InputTypes
@@ -1838,15 +1838,15 @@ export namespace Prisma {
   /**
    * ProductCountOutputType without action
    */
-  export type ProductCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProductImageWhereInput
+  export type ProductCountOutputTypeCountAttributesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProductAttributeWhereInput
   }
 
   /**
    * ProductCountOutputType without action
    */
-  export type ProductCountOutputTypeCountAttributesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProductAttributeWhereInput
+  export type ProductCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProductImageWhereInput
   }
 
 
@@ -1899,39 +1899,36 @@ export namespace Prisma {
     id: string | null
     email: string | null
     name: string | null
-    password: string | null
     role: $Enums.UserRole | null
-    emailVerified: Date | null
-    image: string | null
-    logoUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    emailVerified: Date | null
+    image: string | null
+    password: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
     email: string | null
     name: string | null
-    password: string | null
     role: $Enums.UserRole | null
-    emailVerified: Date | null
-    image: string | null
-    logoUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    emailVerified: Date | null
+    image: string | null
+    password: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     email: number
     name: number
-    password: number
     role: number
-    emailVerified: number
-    image: number
-    logoUrl: number
     createdAt: number
     updatedAt: number
+    emailVerified: number
+    image: number
+    password: number
     _all: number
   }
 
@@ -1940,39 +1937,36 @@ export namespace Prisma {
     id?: true
     email?: true
     name?: true
-    password?: true
     role?: true
-    emailVerified?: true
-    image?: true
-    logoUrl?: true
     createdAt?: true
     updatedAt?: true
+    emailVerified?: true
+    image?: true
+    password?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     email?: true
     name?: true
-    password?: true
     role?: true
-    emailVerified?: true
-    image?: true
-    logoUrl?: true
     createdAt?: true
     updatedAt?: true
+    emailVerified?: true
+    image?: true
+    password?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     email?: true
     name?: true
-    password?: true
     role?: true
-    emailVerified?: true
-    image?: true
-    logoUrl?: true
     createdAt?: true
     updatedAt?: true
+    emailVerified?: true
+    image?: true
+    password?: true
     _all?: true
   }
 
@@ -2052,13 +2046,12 @@ export namespace Prisma {
     id: string
     email: string
     name: string | null
-    password: string | null
     role: $Enums.UserRole
-    emailVerified: Date | null
-    image: string | null
-    logoUrl: string | null
     createdAt: Date
     updatedAt: Date
+    emailVerified: Date | null
+    image: string | null
+    password: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -2082,15 +2075,14 @@ export namespace Prisma {
     id?: boolean
     email?: boolean
     name?: boolean
-    password?: boolean
     role?: boolean
-    emailVerified?: boolean
-    image?: boolean
-    logoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    parsingSessions?: boolean | User$parsingSessionsArgs<ExtArgs>
+    emailVerified?: boolean
+    image?: boolean
+    password?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
+    parsingSessions?: boolean | User$parsingSessionsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -2099,45 +2091,42 @@ export namespace Prisma {
     id?: boolean
     email?: boolean
     name?: boolean
-    password?: boolean
     role?: boolean
-    emailVerified?: boolean
-    image?: boolean
-    logoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    emailVerified?: boolean
+    image?: boolean
+    password?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
     name?: boolean
-    password?: boolean
     role?: boolean
-    emailVerified?: boolean
-    image?: boolean
-    logoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    emailVerified?: boolean
+    image?: boolean
+    password?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     email?: boolean
     name?: boolean
-    password?: boolean
     role?: boolean
-    emailVerified?: boolean
-    image?: boolean
-    logoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    emailVerified?: boolean
+    image?: boolean
+    password?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "role" | "emailVerified" | "image" | "logoUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "role" | "createdAt" | "updatedAt" | "emailVerified" | "image" | "password", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    parsingSessions?: boolean | User$parsingSessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
+    parsingSessions?: boolean | User$parsingSessionsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -2147,21 +2136,20 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      parsingSessions: Prisma.$ParsingSessionPayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
+      parsingSessions: Prisma.$ParsingSessionPayload<ExtArgs>[]
       sessions: Prisma.$SessionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       email: string
       name: string | null
-      password: string | null
       role: $Enums.UserRole
-      emailVerified: Date | null
-      image: string | null
-      logoUrl: string | null
       createdAt: Date
       updatedAt: Date
+      emailVerified: Date | null
+      image: string | null
+      password: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2556,8 +2544,8 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    parsingSessions<T extends User$parsingSessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$parsingSessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParsingSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    parsingSessions<T extends User$parsingSessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$parsingSessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParsingSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2591,13 +2579,12 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
-    readonly password: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'UserRole'>
-    readonly emailVerified: FieldRef<"User", 'DateTime'>
-    readonly image: FieldRef<"User", 'String'>
-    readonly logoUrl: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly emailVerified: FieldRef<"User", 'DateTime'>
+    readonly image: FieldRef<"User", 'String'>
+    readonly password: FieldRef<"User", 'String'>
   }
     
 
@@ -2986,30 +2973,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.parsingSessions
-   */
-  export type User$parsingSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ParsingSession
-     */
-    select?: ParsingSessionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ParsingSession
-     */
-    omit?: ParsingSessionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ParsingSessionInclude<ExtArgs> | null
-    where?: ParsingSessionWhereInput
-    orderBy?: ParsingSessionOrderByWithRelationInput | ParsingSessionOrderByWithRelationInput[]
-    cursor?: ParsingSessionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ParsingSessionScalarFieldEnum | ParsingSessionScalarFieldEnum[]
-  }
-
-  /**
    * User.accounts
    */
   export type User$accountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3031,6 +2994,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+  }
+
+  /**
+   * User.parsingSessions
+   */
+  export type User$parsingSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParsingSession
+     */
+    select?: ParsingSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ParsingSession
+     */
+    omit?: ParsingSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParsingSessionInclude<ExtArgs> | null
+    where?: ParsingSessionWhereInput
+    orderBy?: ParsingSessionOrderByWithRelationInput | ParsingSessionOrderByWithRelationInput[]
+    cursor?: ParsingSessionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ParsingSessionScalarFieldEnum | ParsingSessionScalarFieldEnum[]
   }
 
   /**
@@ -7752,9 +7739,9 @@ export namespace Prisma {
     categoryId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    category?: boolean | CategoryDefaultArgs<ExtArgs>
-    images?: boolean | Product$imagesArgs<ExtArgs>
     attributes?: boolean | Product$attributesArgs<ExtArgs>
+    images?: boolean | Product$imagesArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["product"]>
 
@@ -7807,9 +7794,9 @@ export namespace Prisma {
 
   export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "price" | "currency" | "sku" | "stock" | "isActive" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    category?: boolean | CategoryDefaultArgs<ExtArgs>
-    images?: boolean | Product$imagesArgs<ExtArgs>
     attributes?: boolean | Product$attributesArgs<ExtArgs>
+    images?: boolean | Product$imagesArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProductIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7822,9 +7809,9 @@ export namespace Prisma {
   export type $ProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Product"
     objects: {
-      category: Prisma.$CategoryPayload<ExtArgs>
-      images: Prisma.$ProductImagePayload<ExtArgs>[]
       attributes: Prisma.$ProductAttributePayload<ExtArgs>[]
+      images: Prisma.$ProductImagePayload<ExtArgs>[]
+      category: Prisma.$CategoryPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8233,9 +8220,9 @@ export namespace Prisma {
    */
   export interface Prisma__ProductClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    images<T extends Product$imagesArgs<ExtArgs> = {}>(args?: Subset<T, Product$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attributes<T extends Product$attributesArgs<ExtArgs> = {}>(args?: Subset<T, Product$attributesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductAttributePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    images<T extends Product$imagesArgs<ExtArgs> = {}>(args?: Subset<T, Product$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8673,30 +8660,6 @@ export namespace Prisma {
   }
 
   /**
-   * Product.images
-   */
-  export type Product$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProductImage
-     */
-    select?: ProductImageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProductImage
-     */
-    omit?: ProductImageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProductImageInclude<ExtArgs> | null
-    where?: ProductImageWhereInput
-    orderBy?: ProductImageOrderByWithRelationInput | ProductImageOrderByWithRelationInput[]
-    cursor?: ProductImageWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ProductImageScalarFieldEnum | ProductImageScalarFieldEnum[]
-  }
-
-  /**
    * Product.attributes
    */
   export type Product$attributesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8718,6 +8681,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProductAttributeScalarFieldEnum | ProductAttributeScalarFieldEnum[]
+  }
+
+  /**
+   * Product.images
+   */
+  export type Product$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductImage
+     */
+    select?: ProductImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductImage
+     */
+    omit?: ProductImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductImageInclude<ExtArgs> | null
+    where?: ProductImageWhereInput
+    orderBy?: ProductImageOrderByWithRelationInput | ProductImageOrderByWithRelationInput[]
+    cursor?: ProductImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProductImageScalarFieldEnum | ProductImageScalarFieldEnum[]
   }
 
   /**
@@ -11208,8 +11195,8 @@ export namespace Prisma {
     errors?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     logs?: boolean | ParsingSession$logsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | ParsingSessionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["parsingSession"]>
 
@@ -11256,8 +11243,8 @@ export namespace Prisma {
 
   export type ParsingSessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "status" | "startedAt" | "completedAt" | "totalItems" | "processedItems" | "errors" | "createdAt" | "updatedAt", ExtArgs["result"]["parsingSession"]>
   export type ParsingSessionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     logs?: boolean | ParsingSession$logsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | ParsingSessionCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ParsingSessionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11270,8 +11257,8 @@ export namespace Prisma {
   export type $ParsingSessionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ParsingSession"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
       logs: Prisma.$ParsingLogPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -11678,8 +11665,8 @@ export namespace Prisma {
    */
   export interface Prisma__ParsingSessionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     logs<T extends ParsingSession$logsArgs<ExtArgs> = {}>(args?: Subset<T, ParsingSession$logsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParsingLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13242,13 +13229,12 @@ export namespace Prisma {
     id: 'id',
     email: 'email',
     name: 'name',
-    password: 'password',
     role: 'role',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
     emailVerified: 'emailVerified',
     image: 'image',
-    logoUrl: 'logoUrl',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    password: 'password'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -13566,15 +13552,14 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
-    password?: StringNullableFilter<"User"> | string | null
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
-    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
-    image?: StringNullableFilter<"User"> | string | null
-    logoUrl?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    parsingSessions?: ParsingSessionListRelationFilter
+    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
+    image?: StringNullableFilter<"User"> | string | null
+    password?: StringNullableFilter<"User"> | string | null
     accounts?: AccountListRelationFilter
+    parsingSessions?: ParsingSessionListRelationFilter
     sessions?: SessionListRelationFilter
   }
 
@@ -13582,15 +13567,14 @@ export namespace Prisma {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrderInput | SortOrder
-    password?: SortOrderInput | SortOrder
     role?: SortOrder
-    emailVerified?: SortOrderInput | SortOrder
-    image?: SortOrderInput | SortOrder
-    logoUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    parsingSessions?: ParsingSessionOrderByRelationAggregateInput
+    emailVerified?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
+    password?: SortOrderInput | SortOrder
     accounts?: AccountOrderByRelationAggregateInput
+    parsingSessions?: ParsingSessionOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
   }
 
@@ -13601,15 +13585,14 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
-    password?: StringNullableFilter<"User"> | string | null
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
-    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
-    image?: StringNullableFilter<"User"> | string | null
-    logoUrl?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    parsingSessions?: ParsingSessionListRelationFilter
+    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
+    image?: StringNullableFilter<"User"> | string | null
+    password?: StringNullableFilter<"User"> | string | null
     accounts?: AccountListRelationFilter
+    parsingSessions?: ParsingSessionListRelationFilter
     sessions?: SessionListRelationFilter
   }, "id" | "email">
 
@@ -13617,13 +13600,12 @@ export namespace Prisma {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrderInput | SortOrder
-    password?: SortOrderInput | SortOrder
     role?: SortOrder
-    emailVerified?: SortOrderInput | SortOrder
-    image?: SortOrderInput | SortOrder
-    logoUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    emailVerified?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
+    password?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -13636,13 +13618,12 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
-    password?: StringNullableWithAggregatesFilter<"User"> | string | null
     role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
-    emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-    image?: StringNullableWithAggregatesFilter<"User"> | string | null
-    logoUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    image?: StringNullableWithAggregatesFilter<"User"> | string | null
+    password?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type AccountWhereInput = {
@@ -13930,9 +13911,9 @@ export namespace Prisma {
     categoryId?: StringFilter<"Product"> | string
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
-    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
-    images?: ProductImageListRelationFilter
     attributes?: ProductAttributeListRelationFilter
+    images?: ProductImageListRelationFilter
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
   }
 
   export type ProductOrderByWithRelationInput = {
@@ -13948,9 +13929,9 @@ export namespace Prisma {
     categoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    category?: CategoryOrderByWithRelationInput
-    images?: ProductImageOrderByRelationAggregateInput
     attributes?: ProductAttributeOrderByRelationAggregateInput
+    images?: ProductImageOrderByRelationAggregateInput
+    category?: CategoryOrderByWithRelationInput
   }
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -13969,9 +13950,9 @@ export namespace Prisma {
     categoryId?: StringFilter<"Product"> | string
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
-    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
-    images?: ProductImageListRelationFilter
     attributes?: ProductAttributeListRelationFilter
+    images?: ProductImageListRelationFilter
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
   }, "id" | "slug" | "sku">
 
   export type ProductOrderByWithAggregationInput = {
@@ -14155,8 +14136,8 @@ export namespace Prisma {
     errors?: IntFilter<"ParsingSession"> | number
     createdAt?: DateTimeFilter<"ParsingSession"> | Date | string
     updatedAt?: DateTimeFilter<"ParsingSession"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     logs?: ParsingLogListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ParsingSessionOrderByWithRelationInput = {
@@ -14170,8 +14151,8 @@ export namespace Prisma {
     errors?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
     logs?: ParsingLogOrderByRelationAggregateInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type ParsingSessionWhereUniqueInput = Prisma.AtLeast<{
@@ -14188,8 +14169,8 @@ export namespace Prisma {
     errors?: IntFilter<"ParsingSession"> | number
     createdAt?: DateTimeFilter<"ParsingSession"> | Date | string
     updatedAt?: DateTimeFilter<"ParsingSession"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     logs?: ParsingLogListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type ParsingSessionOrderByWithAggregationInput = {
@@ -14290,15 +14271,14 @@ export namespace Prisma {
     id?: string
     email: string
     name?: string | null
-    password?: string | null
     role?: $Enums.UserRole
-    emailVerified?: Date | string | null
-    image?: string | null
-    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    parsingSessions?: ParsingSessionCreateNestedManyWithoutUserInput
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
+    parsingSessions?: ParsingSessionCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
@@ -14306,15 +14286,14 @@ export namespace Prisma {
     id?: string
     email: string
     name?: string | null
-    password?: string | null
     role?: $Enums.UserRole
-    emailVerified?: Date | string | null
-    image?: string | null
-    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    parsingSessions?: ParsingSessionUncheckedCreateNestedManyWithoutUserInput
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    parsingSessions?: ParsingSessionUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -14322,15 +14301,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parsingSessions?: ParsingSessionUpdateManyWithoutUserNestedInput
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    parsingSessions?: ParsingSessionUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
@@ -14338,15 +14316,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parsingSessions?: ParsingSessionUncheckedUpdateManyWithoutUserNestedInput
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    parsingSessions?: ParsingSessionUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -14354,39 +14331,36 @@ export namespace Prisma {
     id?: string
     email: string
     name?: string | null
-    password?: string | null
     role?: $Enums.UserRole
-    emailVerified?: Date | string | null
-    image?: string | null
-    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AccountCreateInput = {
@@ -14686,9 +14660,9 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    category: CategoryCreateNestedOneWithoutProductsInput
-    images?: ProductImageCreateNestedManyWithoutProductInput
     attributes?: ProductAttributeCreateNestedManyWithoutProductInput
+    images?: ProductImageCreateNestedManyWithoutProductInput
+    category: CategoryCreateNestedOneWithoutProductsInput
   }
 
   export type ProductUncheckedCreateInput = {
@@ -14704,8 +14678,8 @@ export namespace Prisma {
     categoryId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    images?: ProductImageUncheckedCreateNestedManyWithoutProductInput
     attributes?: ProductAttributeUncheckedCreateNestedManyWithoutProductInput
+    images?: ProductImageUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductUpdateInput = {
@@ -14720,9 +14694,9 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
-    images?: ProductImageUpdateManyWithoutProductNestedInput
     attributes?: ProductAttributeUpdateManyWithoutProductNestedInput
+    images?: ProductImageUpdateManyWithoutProductNestedInput
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
   }
 
   export type ProductUncheckedUpdateInput = {
@@ -14738,8 +14712,8 @@ export namespace Prisma {
     categoryId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    images?: ProductImageUncheckedUpdateManyWithoutProductNestedInput
     attributes?: ProductAttributeUncheckedUpdateManyWithoutProductNestedInput
+    images?: ProductImageUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductCreateManyInput = {
@@ -14927,8 +14901,8 @@ export namespace Prisma {
     errors?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutParsingSessionsInput
     logs?: ParsingLogCreateNestedManyWithoutSessionInput
+    user: UserCreateNestedOneWithoutParsingSessionsInput
   }
 
   export type ParsingSessionUncheckedCreateInput = {
@@ -14955,8 +14929,8 @@ export namespace Prisma {
     errors?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutParsingSessionsNestedInput
     logs?: ParsingLogUpdateManyWithoutSessionNestedInput
+    user?: UserUpdateOneRequiredWithoutParsingSessionsNestedInput
   }
 
   export type ParsingSessionUncheckedUpdateInput = {
@@ -15110,17 +15084,6 @@ export namespace Prisma {
     not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -15132,16 +15095,27 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type ParsingSessionListRelationFilter = {
-    every?: ParsingSessionWhereInput
-    some?: ParsingSessionWhereInput
-    none?: ParsingSessionWhereInput
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type AccountListRelationFilter = {
     every?: AccountWhereInput
     some?: AccountWhereInput
     none?: AccountWhereInput
+  }
+
+  export type ParsingSessionListRelationFilter = {
+    every?: ParsingSessionWhereInput
+    some?: ParsingSessionWhereInput
+    none?: ParsingSessionWhereInput
   }
 
   export type SessionListRelationFilter = {
@@ -15155,11 +15129,11 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type ParsingSessionOrderByRelationAggregateInput = {
+  export type AccountOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type AccountOrderByRelationAggregateInput = {
+  export type ParsingSessionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -15171,39 +15145,36 @@ export namespace Prisma {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrder
-    password?: SortOrder
     role?: SortOrder
-    emailVerified?: SortOrder
-    image?: SortOrder
-    logoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    emailVerified?: SortOrder
+    image?: SortOrder
+    password?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrder
-    password?: SortOrder
     role?: SortOrder
-    emailVerified?: SortOrder
-    image?: SortOrder
-    logoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    emailVerified?: SortOrder
+    image?: SortOrder
+    password?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrder
-    password?: SortOrder
     role?: SortOrder
-    emailVerified?: SortOrder
-    image?: SortOrder
-    logoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    emailVerified?: SortOrder
+    image?: SortOrder
+    password?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -15252,20 +15223,6 @@ export namespace Prisma {
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -15278,6 +15235,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -15534,9 +15505,10 @@ export namespace Prisma {
     not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
-  export type CategoryScalarRelationFilter = {
-    is?: CategoryWhereInput
-    isNot?: CategoryWhereInput
+  export type ProductAttributeListRelationFilter = {
+    every?: ProductAttributeWhereInput
+    some?: ProductAttributeWhereInput
+    none?: ProductAttributeWhereInput
   }
 
   export type ProductImageListRelationFilter = {
@@ -15545,17 +15517,16 @@ export namespace Prisma {
     none?: ProductImageWhereInput
   }
 
-  export type ProductAttributeListRelationFilter = {
-    every?: ProductAttributeWhereInput
-    some?: ProductAttributeWhereInput
-    none?: ProductAttributeWhereInput
-  }
-
-  export type ProductImageOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type CategoryScalarRelationFilter = {
+    is?: CategoryWhereInput
+    isNot?: CategoryWhereInput
   }
 
   export type ProductAttributeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProductImageOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -15882,18 +15853,18 @@ export namespace Prisma {
     _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
-  export type ParsingSessionCreateNestedManyWithoutUserInput = {
-    create?: XOR<ParsingSessionCreateWithoutUserInput, ParsingSessionUncheckedCreateWithoutUserInput> | ParsingSessionCreateWithoutUserInput[] | ParsingSessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ParsingSessionCreateOrConnectWithoutUserInput | ParsingSessionCreateOrConnectWithoutUserInput[]
-    createMany?: ParsingSessionCreateManyUserInputEnvelope
-    connect?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
-  }
-
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
     createMany?: AccountCreateManyUserInputEnvelope
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  }
+
+  export type ParsingSessionCreateNestedManyWithoutUserInput = {
+    create?: XOR<ParsingSessionCreateWithoutUserInput, ParsingSessionUncheckedCreateWithoutUserInput> | ParsingSessionCreateWithoutUserInput[] | ParsingSessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ParsingSessionCreateOrConnectWithoutUserInput | ParsingSessionCreateOrConnectWithoutUserInput[]
+    createMany?: ParsingSessionCreateManyUserInputEnvelope
+    connect?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
   }
 
   export type SessionCreateNestedManyWithoutUserInput = {
@@ -15903,18 +15874,18 @@ export namespace Prisma {
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
-  export type ParsingSessionUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<ParsingSessionCreateWithoutUserInput, ParsingSessionUncheckedCreateWithoutUserInput> | ParsingSessionCreateWithoutUserInput[] | ParsingSessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ParsingSessionCreateOrConnectWithoutUserInput | ParsingSessionCreateOrConnectWithoutUserInput[]
-    createMany?: ParsingSessionCreateManyUserInputEnvelope
-    connect?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
-  }
-
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
     createMany?: AccountCreateManyUserInputEnvelope
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  }
+
+  export type ParsingSessionUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ParsingSessionCreateWithoutUserInput, ParsingSessionUncheckedCreateWithoutUserInput> | ParsingSessionCreateWithoutUserInput[] | ParsingSessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ParsingSessionCreateOrConnectWithoutUserInput | ParsingSessionCreateOrConnectWithoutUserInput[]
+    createMany?: ParsingSessionCreateManyUserInputEnvelope
+    connect?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
   }
 
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
@@ -15936,26 +15907,12 @@ export namespace Prisma {
     set?: $Enums.UserRole
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
-  export type ParsingSessionUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ParsingSessionCreateWithoutUserInput, ParsingSessionUncheckedCreateWithoutUserInput> | ParsingSessionCreateWithoutUserInput[] | ParsingSessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ParsingSessionCreateOrConnectWithoutUserInput | ParsingSessionCreateOrConnectWithoutUserInput[]
-    upsert?: ParsingSessionUpsertWithWhereUniqueWithoutUserInput | ParsingSessionUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ParsingSessionCreateManyUserInputEnvelope
-    set?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
-    disconnect?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
-    delete?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
-    connect?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
-    update?: ParsingSessionUpdateWithWhereUniqueWithoutUserInput | ParsingSessionUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ParsingSessionUpdateManyWithWhereWithoutUserInput | ParsingSessionUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ParsingSessionScalarWhereInput | ParsingSessionScalarWhereInput[]
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type AccountUpdateManyWithoutUserNestedInput = {
@@ -15972,6 +15929,20 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
+  export type ParsingSessionUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ParsingSessionCreateWithoutUserInput, ParsingSessionUncheckedCreateWithoutUserInput> | ParsingSessionCreateWithoutUserInput[] | ParsingSessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ParsingSessionCreateOrConnectWithoutUserInput | ParsingSessionCreateOrConnectWithoutUserInput[]
+    upsert?: ParsingSessionUpsertWithWhereUniqueWithoutUserInput | ParsingSessionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ParsingSessionCreateManyUserInputEnvelope
+    set?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
+    disconnect?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
+    delete?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
+    connect?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
+    update?: ParsingSessionUpdateWithWhereUniqueWithoutUserInput | ParsingSessionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ParsingSessionUpdateManyWithWhereWithoutUserInput | ParsingSessionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ParsingSessionScalarWhereInput | ParsingSessionScalarWhereInput[]
+  }
+
   export type SessionUpdateManyWithoutUserNestedInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -15986,20 +15957,6 @@ export namespace Prisma {
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
-  export type ParsingSessionUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ParsingSessionCreateWithoutUserInput, ParsingSessionUncheckedCreateWithoutUserInput> | ParsingSessionCreateWithoutUserInput[] | ParsingSessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ParsingSessionCreateOrConnectWithoutUserInput | ParsingSessionCreateOrConnectWithoutUserInput[]
-    upsert?: ParsingSessionUpsertWithWhereUniqueWithoutUserInput | ParsingSessionUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ParsingSessionCreateManyUserInputEnvelope
-    set?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
-    disconnect?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
-    delete?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
-    connect?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
-    update?: ParsingSessionUpdateWithWhereUniqueWithoutUserInput | ParsingSessionUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ParsingSessionUpdateManyWithWhereWithoutUserInput | ParsingSessionUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ParsingSessionScalarWhereInput | ParsingSessionScalarWhereInput[]
-  }
-
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -16012,6 +15969,20 @@ export namespace Prisma {
     update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  }
+
+  export type ParsingSessionUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ParsingSessionCreateWithoutUserInput, ParsingSessionUncheckedCreateWithoutUserInput> | ParsingSessionCreateWithoutUserInput[] | ParsingSessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ParsingSessionCreateOrConnectWithoutUserInput | ParsingSessionCreateOrConnectWithoutUserInput[]
+    upsert?: ParsingSessionUpsertWithWhereUniqueWithoutUserInput | ParsingSessionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ParsingSessionCreateManyUserInputEnvelope
+    set?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
+    disconnect?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
+    delete?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
+    connect?: ParsingSessionWhereUniqueInput | ParsingSessionWhereUniqueInput[]
+    update?: ParsingSessionUpdateWithWhereUniqueWithoutUserInput | ParsingSessionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ParsingSessionUpdateManyWithWhereWithoutUserInput | ParsingSessionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ParsingSessionScalarWhereInput | ParsingSessionScalarWhereInput[]
   }
 
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
@@ -16176,10 +16147,11 @@ export namespace Prisma {
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
   }
 
-  export type CategoryCreateNestedOneWithoutProductsInput = {
-    create?: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
-    connectOrCreate?: CategoryCreateOrConnectWithoutProductsInput
-    connect?: CategoryWhereUniqueInput
+  export type ProductAttributeCreateNestedManyWithoutProductInput = {
+    create?: XOR<ProductAttributeCreateWithoutProductInput, ProductAttributeUncheckedCreateWithoutProductInput> | ProductAttributeCreateWithoutProductInput[] | ProductAttributeUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: ProductAttributeCreateOrConnectWithoutProductInput | ProductAttributeCreateOrConnectWithoutProductInput[]
+    createMany?: ProductAttributeCreateManyProductInputEnvelope
+    connect?: ProductAttributeWhereUniqueInput | ProductAttributeWhereUniqueInput[]
   }
 
   export type ProductImageCreateNestedManyWithoutProductInput = {
@@ -16189,7 +16161,13 @@ export namespace Prisma {
     connect?: ProductImageWhereUniqueInput | ProductImageWhereUniqueInput[]
   }
 
-  export type ProductAttributeCreateNestedManyWithoutProductInput = {
+  export type CategoryCreateNestedOneWithoutProductsInput = {
+    create?: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutProductsInput
+    connect?: CategoryWhereUniqueInput
+  }
+
+  export type ProductAttributeUncheckedCreateNestedManyWithoutProductInput = {
     create?: XOR<ProductAttributeCreateWithoutProductInput, ProductAttributeUncheckedCreateWithoutProductInput> | ProductAttributeCreateWithoutProductInput[] | ProductAttributeUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductAttributeCreateOrConnectWithoutProductInput | ProductAttributeCreateOrConnectWithoutProductInput[]
     createMany?: ProductAttributeCreateManyProductInputEnvelope
@@ -16203,13 +16181,6 @@ export namespace Prisma {
     connect?: ProductImageWhereUniqueInput | ProductImageWhereUniqueInput[]
   }
 
-  export type ProductAttributeUncheckedCreateNestedManyWithoutProductInput = {
-    create?: XOR<ProductAttributeCreateWithoutProductInput, ProductAttributeUncheckedCreateWithoutProductInput> | ProductAttributeCreateWithoutProductInput[] | ProductAttributeUncheckedCreateWithoutProductInput[]
-    connectOrCreate?: ProductAttributeCreateOrConnectWithoutProductInput | ProductAttributeCreateOrConnectWithoutProductInput[]
-    createMany?: ProductAttributeCreateManyProductInputEnvelope
-    connect?: ProductAttributeWhereUniqueInput | ProductAttributeWhereUniqueInput[]
-  }
-
   export type NullableDecimalFieldUpdateOperationsInput = {
     set?: Decimal | DecimalJsLike | number | string | null
     increment?: Decimal | DecimalJsLike | number | string
@@ -16218,12 +16189,18 @@ export namespace Prisma {
     divide?: Decimal | DecimalJsLike | number | string
   }
 
-  export type CategoryUpdateOneRequiredWithoutProductsNestedInput = {
-    create?: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
-    connectOrCreate?: CategoryCreateOrConnectWithoutProductsInput
-    upsert?: CategoryUpsertWithoutProductsInput
-    connect?: CategoryWhereUniqueInput
-    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutProductsInput, CategoryUpdateWithoutProductsInput>, CategoryUncheckedUpdateWithoutProductsInput>
+  export type ProductAttributeUpdateManyWithoutProductNestedInput = {
+    create?: XOR<ProductAttributeCreateWithoutProductInput, ProductAttributeUncheckedCreateWithoutProductInput> | ProductAttributeCreateWithoutProductInput[] | ProductAttributeUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: ProductAttributeCreateOrConnectWithoutProductInput | ProductAttributeCreateOrConnectWithoutProductInput[]
+    upsert?: ProductAttributeUpsertWithWhereUniqueWithoutProductInput | ProductAttributeUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: ProductAttributeCreateManyProductInputEnvelope
+    set?: ProductAttributeWhereUniqueInput | ProductAttributeWhereUniqueInput[]
+    disconnect?: ProductAttributeWhereUniqueInput | ProductAttributeWhereUniqueInput[]
+    delete?: ProductAttributeWhereUniqueInput | ProductAttributeWhereUniqueInput[]
+    connect?: ProductAttributeWhereUniqueInput | ProductAttributeWhereUniqueInput[]
+    update?: ProductAttributeUpdateWithWhereUniqueWithoutProductInput | ProductAttributeUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: ProductAttributeUpdateManyWithWhereWithoutProductInput | ProductAttributeUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: ProductAttributeScalarWhereInput | ProductAttributeScalarWhereInput[]
   }
 
   export type ProductImageUpdateManyWithoutProductNestedInput = {
@@ -16240,7 +16217,15 @@ export namespace Prisma {
     deleteMany?: ProductImageScalarWhereInput | ProductImageScalarWhereInput[]
   }
 
-  export type ProductAttributeUpdateManyWithoutProductNestedInput = {
+  export type CategoryUpdateOneRequiredWithoutProductsNestedInput = {
+    create?: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutProductsInput
+    upsert?: CategoryUpsertWithoutProductsInput
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutProductsInput, CategoryUpdateWithoutProductsInput>, CategoryUncheckedUpdateWithoutProductsInput>
+  }
+
+  export type ProductAttributeUncheckedUpdateManyWithoutProductNestedInput = {
     create?: XOR<ProductAttributeCreateWithoutProductInput, ProductAttributeUncheckedCreateWithoutProductInput> | ProductAttributeCreateWithoutProductInput[] | ProductAttributeUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductAttributeCreateOrConnectWithoutProductInput | ProductAttributeCreateOrConnectWithoutProductInput[]
     upsert?: ProductAttributeUpsertWithWhereUniqueWithoutProductInput | ProductAttributeUpsertWithWhereUniqueWithoutProductInput[]
@@ -16266,20 +16251,6 @@ export namespace Prisma {
     update?: ProductImageUpdateWithWhereUniqueWithoutProductInput | ProductImageUpdateWithWhereUniqueWithoutProductInput[]
     updateMany?: ProductImageUpdateManyWithWhereWithoutProductInput | ProductImageUpdateManyWithWhereWithoutProductInput[]
     deleteMany?: ProductImageScalarWhereInput | ProductImageScalarWhereInput[]
-  }
-
-  export type ProductAttributeUncheckedUpdateManyWithoutProductNestedInput = {
-    create?: XOR<ProductAttributeCreateWithoutProductInput, ProductAttributeUncheckedCreateWithoutProductInput> | ProductAttributeCreateWithoutProductInput[] | ProductAttributeUncheckedCreateWithoutProductInput[]
-    connectOrCreate?: ProductAttributeCreateOrConnectWithoutProductInput | ProductAttributeCreateOrConnectWithoutProductInput[]
-    upsert?: ProductAttributeUpsertWithWhereUniqueWithoutProductInput | ProductAttributeUpsertWithWhereUniqueWithoutProductInput[]
-    createMany?: ProductAttributeCreateManyProductInputEnvelope
-    set?: ProductAttributeWhereUniqueInput | ProductAttributeWhereUniqueInput[]
-    disconnect?: ProductAttributeWhereUniqueInput | ProductAttributeWhereUniqueInput[]
-    delete?: ProductAttributeWhereUniqueInput | ProductAttributeWhereUniqueInput[]
-    connect?: ProductAttributeWhereUniqueInput | ProductAttributeWhereUniqueInput[]
-    update?: ProductAttributeUpdateWithWhereUniqueWithoutProductInput | ProductAttributeUpdateWithWhereUniqueWithoutProductInput[]
-    updateMany?: ProductAttributeUpdateManyWithWhereWithoutProductInput | ProductAttributeUpdateManyWithWhereWithoutProductInput[]
-    deleteMany?: ProductAttributeScalarWhereInput | ProductAttributeScalarWhereInput[]
   }
 
   export type ProductCreateNestedOneWithoutImagesInput = {
@@ -16310,17 +16281,17 @@ export namespace Prisma {
     update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutAttributesInput, ProductUpdateWithoutAttributesInput>, ProductUncheckedUpdateWithoutAttributesInput>
   }
 
-  export type UserCreateNestedOneWithoutParsingSessionsInput = {
-    create?: XOR<UserCreateWithoutParsingSessionsInput, UserUncheckedCreateWithoutParsingSessionsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutParsingSessionsInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type ParsingLogCreateNestedManyWithoutSessionInput = {
     create?: XOR<ParsingLogCreateWithoutSessionInput, ParsingLogUncheckedCreateWithoutSessionInput> | ParsingLogCreateWithoutSessionInput[] | ParsingLogUncheckedCreateWithoutSessionInput[]
     connectOrCreate?: ParsingLogCreateOrConnectWithoutSessionInput | ParsingLogCreateOrConnectWithoutSessionInput[]
     createMany?: ParsingLogCreateManySessionInputEnvelope
     connect?: ParsingLogWhereUniqueInput | ParsingLogWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutParsingSessionsInput = {
+    create?: XOR<UserCreateWithoutParsingSessionsInput, UserUncheckedCreateWithoutParsingSessionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutParsingSessionsInput
+    connect?: UserWhereUniqueInput
   }
 
   export type ParsingLogUncheckedCreateNestedManyWithoutSessionInput = {
@@ -16332,14 +16303,6 @@ export namespace Prisma {
 
   export type EnumParsingStatusFieldUpdateOperationsInput = {
     set?: $Enums.ParsingStatus
-  }
-
-  export type UserUpdateOneRequiredWithoutParsingSessionsNestedInput = {
-    create?: XOR<UserCreateWithoutParsingSessionsInput, UserUncheckedCreateWithoutParsingSessionsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutParsingSessionsInput
-    upsert?: UserUpsertWithoutParsingSessionsInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutParsingSessionsInput, UserUpdateWithoutParsingSessionsInput>, UserUncheckedUpdateWithoutParsingSessionsInput>
   }
 
   export type ParsingLogUpdateManyWithoutSessionNestedInput = {
@@ -16354,6 +16317,14 @@ export namespace Prisma {
     update?: ParsingLogUpdateWithWhereUniqueWithoutSessionInput | ParsingLogUpdateWithWhereUniqueWithoutSessionInput[]
     updateMany?: ParsingLogUpdateManyWithWhereWithoutSessionInput | ParsingLogUpdateManyWithWhereWithoutSessionInput[]
     deleteMany?: ParsingLogScalarWhereInput | ParsingLogScalarWhereInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutParsingSessionsNestedInput = {
+    create?: XOR<UserCreateWithoutParsingSessionsInput, UserUncheckedCreateWithoutParsingSessionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutParsingSessionsInput
+    upsert?: UserUpsertWithoutParsingSessionsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutParsingSessionsInput, UserUpdateWithoutParsingSessionsInput>, UserUncheckedUpdateWithoutParsingSessionsInput>
   }
 
   export type ParsingLogUncheckedUpdateManyWithoutSessionNestedInput = {
@@ -16423,17 +16394,6 @@ export namespace Prisma {
     not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -16443,6 +16403,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -16511,20 +16482,6 @@ export namespace Prisma {
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -16537,6 +16494,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -16690,42 +16661,6 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type ParsingSessionCreateWithoutUserInput = {
-    id?: string
-    status?: $Enums.ParsingStatus
-    startedAt?: Date | string
-    completedAt?: Date | string | null
-    totalItems?: number
-    processedItems?: number
-    errors?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    logs?: ParsingLogCreateNestedManyWithoutSessionInput
-  }
-
-  export type ParsingSessionUncheckedCreateWithoutUserInput = {
-    id?: string
-    status?: $Enums.ParsingStatus
-    startedAt?: Date | string
-    completedAt?: Date | string | null
-    totalItems?: number
-    processedItems?: number
-    errors?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    logs?: ParsingLogUncheckedCreateNestedManyWithoutSessionInput
-  }
-
-  export type ParsingSessionCreateOrConnectWithoutUserInput = {
-    where: ParsingSessionWhereUniqueInput
-    create: XOR<ParsingSessionCreateWithoutUserInput, ParsingSessionUncheckedCreateWithoutUserInput>
-  }
-
-  export type ParsingSessionCreateManyUserInputEnvelope = {
-    data: ParsingSessionCreateManyUserInput | ParsingSessionCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
   export type AccountCreateWithoutUserInput = {
     id?: string
     type: string
@@ -16764,6 +16699,42 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ParsingSessionCreateWithoutUserInput = {
+    id?: string
+    status?: $Enums.ParsingStatus
+    startedAt?: Date | string
+    completedAt?: Date | string | null
+    totalItems?: number
+    processedItems?: number
+    errors?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    logs?: ParsingLogCreateNestedManyWithoutSessionInput
+  }
+
+  export type ParsingSessionUncheckedCreateWithoutUserInput = {
+    id?: string
+    status?: $Enums.ParsingStatus
+    startedAt?: Date | string
+    completedAt?: Date | string | null
+    totalItems?: number
+    processedItems?: number
+    errors?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    logs?: ParsingLogUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type ParsingSessionCreateOrConnectWithoutUserInput = {
+    where: ParsingSessionWhereUniqueInput
+    create: XOR<ParsingSessionCreateWithoutUserInput, ParsingSessionUncheckedCreateWithoutUserInput>
+  }
+
+  export type ParsingSessionCreateManyUserInputEnvelope = {
+    data: ParsingSessionCreateManyUserInput | ParsingSessionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type SessionCreateWithoutUserInput = {
     id?: string
     sessionToken: string
@@ -16784,38 +16755,6 @@ export namespace Prisma {
   export type SessionCreateManyUserInputEnvelope = {
     data: SessionCreateManyUserInput | SessionCreateManyUserInput[]
     skipDuplicates?: boolean
-  }
-
-  export type ParsingSessionUpsertWithWhereUniqueWithoutUserInput = {
-    where: ParsingSessionWhereUniqueInput
-    update: XOR<ParsingSessionUpdateWithoutUserInput, ParsingSessionUncheckedUpdateWithoutUserInput>
-    create: XOR<ParsingSessionCreateWithoutUserInput, ParsingSessionUncheckedCreateWithoutUserInput>
-  }
-
-  export type ParsingSessionUpdateWithWhereUniqueWithoutUserInput = {
-    where: ParsingSessionWhereUniqueInput
-    data: XOR<ParsingSessionUpdateWithoutUserInput, ParsingSessionUncheckedUpdateWithoutUserInput>
-  }
-
-  export type ParsingSessionUpdateManyWithWhereWithoutUserInput = {
-    where: ParsingSessionScalarWhereInput
-    data: XOR<ParsingSessionUpdateManyMutationInput, ParsingSessionUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type ParsingSessionScalarWhereInput = {
-    AND?: ParsingSessionScalarWhereInput | ParsingSessionScalarWhereInput[]
-    OR?: ParsingSessionScalarWhereInput[]
-    NOT?: ParsingSessionScalarWhereInput | ParsingSessionScalarWhereInput[]
-    id?: StringFilter<"ParsingSession"> | string
-    userId?: StringFilter<"ParsingSession"> | string
-    status?: EnumParsingStatusFilter<"ParsingSession"> | $Enums.ParsingStatus
-    startedAt?: DateTimeFilter<"ParsingSession"> | Date | string
-    completedAt?: DateTimeNullableFilter<"ParsingSession"> | Date | string | null
-    totalItems?: IntFilter<"ParsingSession"> | number
-    processedItems?: IntFilter<"ParsingSession"> | number
-    errors?: IntFilter<"ParsingSession"> | number
-    createdAt?: DateTimeFilter<"ParsingSession"> | Date | string
-    updatedAt?: DateTimeFilter<"ParsingSession"> | Date | string
   }
 
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
@@ -16852,6 +16791,38 @@ export namespace Prisma {
     session_state?: StringNullableFilter<"Account"> | string | null
   }
 
+  export type ParsingSessionUpsertWithWhereUniqueWithoutUserInput = {
+    where: ParsingSessionWhereUniqueInput
+    update: XOR<ParsingSessionUpdateWithoutUserInput, ParsingSessionUncheckedUpdateWithoutUserInput>
+    create: XOR<ParsingSessionCreateWithoutUserInput, ParsingSessionUncheckedCreateWithoutUserInput>
+  }
+
+  export type ParsingSessionUpdateWithWhereUniqueWithoutUserInput = {
+    where: ParsingSessionWhereUniqueInput
+    data: XOR<ParsingSessionUpdateWithoutUserInput, ParsingSessionUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ParsingSessionUpdateManyWithWhereWithoutUserInput = {
+    where: ParsingSessionScalarWhereInput
+    data: XOR<ParsingSessionUpdateManyMutationInput, ParsingSessionUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ParsingSessionScalarWhereInput = {
+    AND?: ParsingSessionScalarWhereInput | ParsingSessionScalarWhereInput[]
+    OR?: ParsingSessionScalarWhereInput[]
+    NOT?: ParsingSessionScalarWhereInput | ParsingSessionScalarWhereInput[]
+    id?: StringFilter<"ParsingSession"> | string
+    userId?: StringFilter<"ParsingSession"> | string
+    status?: EnumParsingStatusFilter<"ParsingSession"> | $Enums.ParsingStatus
+    startedAt?: DateTimeFilter<"ParsingSession"> | Date | string
+    completedAt?: DateTimeNullableFilter<"ParsingSession"> | Date | string | null
+    totalItems?: IntFilter<"ParsingSession"> | number
+    processedItems?: IntFilter<"ParsingSession"> | number
+    errors?: IntFilter<"ParsingSession"> | number
+    createdAt?: DateTimeFilter<"ParsingSession"> | Date | string
+    updatedAt?: DateTimeFilter<"ParsingSession"> | Date | string
+  }
+
   export type SessionUpsertWithWhereUniqueWithoutUserInput = {
     where: SessionWhereUniqueInput
     update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
@@ -16882,13 +16853,12 @@ export namespace Prisma {
     id?: string
     email: string
     name?: string | null
-    password?: string | null
     role?: $Enums.UserRole
-    emailVerified?: Date | string | null
-    image?: string | null
-    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
     parsingSessions?: ParsingSessionCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
   }
@@ -16897,13 +16867,12 @@ export namespace Prisma {
     id?: string
     email: string
     name?: string | null
-    password?: string | null
     role?: $Enums.UserRole
-    emailVerified?: Date | string | null
-    image?: string | null
-    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
     parsingSessions?: ParsingSessionUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
@@ -16928,13 +16897,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     parsingSessions?: ParsingSessionUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
   }
@@ -16943,13 +16911,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     parsingSessions?: ParsingSessionUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -16958,30 +16925,28 @@ export namespace Prisma {
     id?: string
     email: string
     name?: string | null
-    password?: string | null
     role?: $Enums.UserRole
-    emailVerified?: Date | string | null
-    image?: string | null
-    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    parsingSessions?: ParsingSessionCreateNestedManyWithoutUserInput
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
+    parsingSessions?: ParsingSessionCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
     id?: string
     email: string
     name?: string | null
-    password?: string | null
     role?: $Enums.UserRole
-    emailVerified?: Date | string | null
-    image?: string | null
-    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    parsingSessions?: ParsingSessionUncheckedCreateNestedManyWithoutUserInput
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    parsingSessions?: ParsingSessionUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -17004,30 +16969,28 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parsingSessions?: ParsingSessionUpdateManyWithoutUserNestedInput
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    parsingSessions?: ParsingSessionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parsingSessions?: ParsingSessionUncheckedUpdateManyWithoutUserNestedInput
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    parsingSessions?: ParsingSessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CategoryCreateWithoutChildrenInput = {
@@ -17109,8 +17072,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    images?: ProductImageCreateNestedManyWithoutProductInput
     attributes?: ProductAttributeCreateNestedManyWithoutProductInput
+    images?: ProductImageCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutCategoryInput = {
@@ -17125,8 +17088,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    images?: ProductImageUncheckedCreateNestedManyWithoutProductInput
     attributes?: ProductAttributeUncheckedCreateNestedManyWithoutProductInput
+    images?: ProductImageUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutCategoryInput = {
@@ -17241,6 +17204,60 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Product"> | Date | string
   }
 
+  export type ProductAttributeCreateWithoutProductInput = {
+    id?: string
+    name: string
+    value: string
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type ProductAttributeUncheckedCreateWithoutProductInput = {
+    id?: string
+    name: string
+    value: string
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
+  export type ProductAttributeCreateOrConnectWithoutProductInput = {
+    where: ProductAttributeWhereUniqueInput
+    create: XOR<ProductAttributeCreateWithoutProductInput, ProductAttributeUncheckedCreateWithoutProductInput>
+  }
+
+  export type ProductAttributeCreateManyProductInputEnvelope = {
+    data: ProductAttributeCreateManyProductInput | ProductAttributeCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProductImageCreateWithoutProductInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    sortOrder?: number
+    isMain?: boolean
+    createdAt?: Date | string
+  }
+
+  export type ProductImageUncheckedCreateWithoutProductInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    sortOrder?: number
+    isMain?: boolean
+    createdAt?: Date | string
+  }
+
+  export type ProductImageCreateOrConnectWithoutProductInput = {
+    where: ProductImageWhereUniqueInput
+    create: XOR<ProductImageCreateWithoutProductInput, ProductImageUncheckedCreateWithoutProductInput>
+  }
+
+  export type ProductImageCreateManyProductInputEnvelope = {
+    data: ProductImageCreateManyProductInput | ProductImageCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CategoryCreateWithoutProductsInput = {
     id?: string
     name: string
@@ -17272,58 +17289,61 @@ export namespace Prisma {
     create: XOR<CategoryCreateWithoutProductsInput, CategoryUncheckedCreateWithoutProductsInput>
   }
 
-  export type ProductImageCreateWithoutProductInput = {
-    id?: string
-    url: string
-    alt?: string | null
-    sortOrder?: number
-    isMain?: boolean
-    createdAt?: Date | string
-  }
-
-  export type ProductImageUncheckedCreateWithoutProductInput = {
-    id?: string
-    url: string
-    alt?: string | null
-    sortOrder?: number
-    isMain?: boolean
-    createdAt?: Date | string
-  }
-
-  export type ProductImageCreateOrConnectWithoutProductInput = {
-    where: ProductImageWhereUniqueInput
-    create: XOR<ProductImageCreateWithoutProductInput, ProductImageUncheckedCreateWithoutProductInput>
-  }
-
-  export type ProductImageCreateManyProductInputEnvelope = {
-    data: ProductImageCreateManyProductInput | ProductImageCreateManyProductInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ProductAttributeCreateWithoutProductInput = {
-    id?: string
-    name: string
-    value: string
-    sortOrder?: number
-    createdAt?: Date | string
-  }
-
-  export type ProductAttributeUncheckedCreateWithoutProductInput = {
-    id?: string
-    name: string
-    value: string
-    sortOrder?: number
-    createdAt?: Date | string
-  }
-
-  export type ProductAttributeCreateOrConnectWithoutProductInput = {
+  export type ProductAttributeUpsertWithWhereUniqueWithoutProductInput = {
     where: ProductAttributeWhereUniqueInput
+    update: XOR<ProductAttributeUpdateWithoutProductInput, ProductAttributeUncheckedUpdateWithoutProductInput>
     create: XOR<ProductAttributeCreateWithoutProductInput, ProductAttributeUncheckedCreateWithoutProductInput>
   }
 
-  export type ProductAttributeCreateManyProductInputEnvelope = {
-    data: ProductAttributeCreateManyProductInput | ProductAttributeCreateManyProductInput[]
-    skipDuplicates?: boolean
+  export type ProductAttributeUpdateWithWhereUniqueWithoutProductInput = {
+    where: ProductAttributeWhereUniqueInput
+    data: XOR<ProductAttributeUpdateWithoutProductInput, ProductAttributeUncheckedUpdateWithoutProductInput>
+  }
+
+  export type ProductAttributeUpdateManyWithWhereWithoutProductInput = {
+    where: ProductAttributeScalarWhereInput
+    data: XOR<ProductAttributeUpdateManyMutationInput, ProductAttributeUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type ProductAttributeScalarWhereInput = {
+    AND?: ProductAttributeScalarWhereInput | ProductAttributeScalarWhereInput[]
+    OR?: ProductAttributeScalarWhereInput[]
+    NOT?: ProductAttributeScalarWhereInput | ProductAttributeScalarWhereInput[]
+    id?: StringFilter<"ProductAttribute"> | string
+    productId?: StringFilter<"ProductAttribute"> | string
+    name?: StringFilter<"ProductAttribute"> | string
+    value?: StringFilter<"ProductAttribute"> | string
+    sortOrder?: IntFilter<"ProductAttribute"> | number
+    createdAt?: DateTimeFilter<"ProductAttribute"> | Date | string
+  }
+
+  export type ProductImageUpsertWithWhereUniqueWithoutProductInput = {
+    where: ProductImageWhereUniqueInput
+    update: XOR<ProductImageUpdateWithoutProductInput, ProductImageUncheckedUpdateWithoutProductInput>
+    create: XOR<ProductImageCreateWithoutProductInput, ProductImageUncheckedCreateWithoutProductInput>
+  }
+
+  export type ProductImageUpdateWithWhereUniqueWithoutProductInput = {
+    where: ProductImageWhereUniqueInput
+    data: XOR<ProductImageUpdateWithoutProductInput, ProductImageUncheckedUpdateWithoutProductInput>
+  }
+
+  export type ProductImageUpdateManyWithWhereWithoutProductInput = {
+    where: ProductImageScalarWhereInput
+    data: XOR<ProductImageUpdateManyMutationInput, ProductImageUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type ProductImageScalarWhereInput = {
+    AND?: ProductImageScalarWhereInput | ProductImageScalarWhereInput[]
+    OR?: ProductImageScalarWhereInput[]
+    NOT?: ProductImageScalarWhereInput | ProductImageScalarWhereInput[]
+    id?: StringFilter<"ProductImage"> | string
+    productId?: StringFilter<"ProductImage"> | string
+    url?: StringFilter<"ProductImage"> | string
+    alt?: StringNullableFilter<"ProductImage"> | string | null
+    sortOrder?: IntFilter<"ProductImage"> | number
+    isMain?: BoolFilter<"ProductImage"> | boolean
+    createdAt?: DateTimeFilter<"ProductImage"> | Date | string
   }
 
   export type CategoryUpsertWithoutProductsInput = {
@@ -17363,63 +17383,6 @@ export namespace Prisma {
     children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
   }
 
-  export type ProductImageUpsertWithWhereUniqueWithoutProductInput = {
-    where: ProductImageWhereUniqueInput
-    update: XOR<ProductImageUpdateWithoutProductInput, ProductImageUncheckedUpdateWithoutProductInput>
-    create: XOR<ProductImageCreateWithoutProductInput, ProductImageUncheckedCreateWithoutProductInput>
-  }
-
-  export type ProductImageUpdateWithWhereUniqueWithoutProductInput = {
-    where: ProductImageWhereUniqueInput
-    data: XOR<ProductImageUpdateWithoutProductInput, ProductImageUncheckedUpdateWithoutProductInput>
-  }
-
-  export type ProductImageUpdateManyWithWhereWithoutProductInput = {
-    where: ProductImageScalarWhereInput
-    data: XOR<ProductImageUpdateManyMutationInput, ProductImageUncheckedUpdateManyWithoutProductInput>
-  }
-
-  export type ProductImageScalarWhereInput = {
-    AND?: ProductImageScalarWhereInput | ProductImageScalarWhereInput[]
-    OR?: ProductImageScalarWhereInput[]
-    NOT?: ProductImageScalarWhereInput | ProductImageScalarWhereInput[]
-    id?: StringFilter<"ProductImage"> | string
-    productId?: StringFilter<"ProductImage"> | string
-    url?: StringFilter<"ProductImage"> | string
-    alt?: StringNullableFilter<"ProductImage"> | string | null
-    sortOrder?: IntFilter<"ProductImage"> | number
-    isMain?: BoolFilter<"ProductImage"> | boolean
-    createdAt?: DateTimeFilter<"ProductImage"> | Date | string
-  }
-
-  export type ProductAttributeUpsertWithWhereUniqueWithoutProductInput = {
-    where: ProductAttributeWhereUniqueInput
-    update: XOR<ProductAttributeUpdateWithoutProductInput, ProductAttributeUncheckedUpdateWithoutProductInput>
-    create: XOR<ProductAttributeCreateWithoutProductInput, ProductAttributeUncheckedCreateWithoutProductInput>
-  }
-
-  export type ProductAttributeUpdateWithWhereUniqueWithoutProductInput = {
-    where: ProductAttributeWhereUniqueInput
-    data: XOR<ProductAttributeUpdateWithoutProductInput, ProductAttributeUncheckedUpdateWithoutProductInput>
-  }
-
-  export type ProductAttributeUpdateManyWithWhereWithoutProductInput = {
-    where: ProductAttributeScalarWhereInput
-    data: XOR<ProductAttributeUpdateManyMutationInput, ProductAttributeUncheckedUpdateManyWithoutProductInput>
-  }
-
-  export type ProductAttributeScalarWhereInput = {
-    AND?: ProductAttributeScalarWhereInput | ProductAttributeScalarWhereInput[]
-    OR?: ProductAttributeScalarWhereInput[]
-    NOT?: ProductAttributeScalarWhereInput | ProductAttributeScalarWhereInput[]
-    id?: StringFilter<"ProductAttribute"> | string
-    productId?: StringFilter<"ProductAttribute"> | string
-    name?: StringFilter<"ProductAttribute"> | string
-    value?: StringFilter<"ProductAttribute"> | string
-    sortOrder?: IntFilter<"ProductAttribute"> | number
-    createdAt?: DateTimeFilter<"ProductAttribute"> | Date | string
-  }
-
   export type ProductCreateWithoutImagesInput = {
     id?: string
     name: string
@@ -17432,8 +17395,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    category: CategoryCreateNestedOneWithoutProductsInput
     attributes?: ProductAttributeCreateNestedManyWithoutProductInput
+    category: CategoryCreateNestedOneWithoutProductsInput
   }
 
   export type ProductUncheckedCreateWithoutImagesInput = {
@@ -17480,8 +17443,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
     attributes?: ProductAttributeUpdateManyWithoutProductNestedInput
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutImagesInput = {
@@ -17512,8 +17475,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    category: CategoryCreateNestedOneWithoutProductsInput
     images?: ProductImageCreateNestedManyWithoutProductInput
+    category: CategoryCreateNestedOneWithoutProductsInput
   }
 
   export type ProductUncheckedCreateWithoutAttributesInput = {
@@ -17560,8 +17523,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
     images?: ProductImageUpdateManyWithoutProductNestedInput
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutAttributesInput = {
@@ -17578,41 +17541,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     images?: ProductImageUncheckedUpdateManyWithoutProductNestedInput
-  }
-
-  export type UserCreateWithoutParsingSessionsInput = {
-    id?: string
-    email: string
-    name?: string | null
-    password?: string | null
-    role?: $Enums.UserRole
-    emailVerified?: Date | string | null
-    image?: string | null
-    logoUrl?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutParsingSessionsInput = {
-    id?: string
-    email: string
-    name?: string | null
-    password?: string | null
-    role?: $Enums.UserRole
-    emailVerified?: Date | string | null
-    image?: string | null
-    logoUrl?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutParsingSessionsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutParsingSessionsInput, UserUncheckedCreateWithoutParsingSessionsInput>
   }
 
   export type ParsingLogCreateWithoutSessionInput = {
@@ -17641,45 +17569,37 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserUpsertWithoutParsingSessionsInput = {
-    update: XOR<UserUpdateWithoutParsingSessionsInput, UserUncheckedUpdateWithoutParsingSessionsInput>
+  export type UserCreateWithoutParsingSessionsInput = {
+    id?: string
+    email: string
+    name?: string | null
+    role?: $Enums.UserRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutParsingSessionsInput = {
+    id?: string
+    email: string
+    name?: string | null
+    role?: $Enums.UserRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutParsingSessionsInput = {
+    where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutParsingSessionsInput, UserUncheckedCreateWithoutParsingSessionsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutParsingSessionsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutParsingSessionsInput, UserUncheckedUpdateWithoutParsingSessionsInput>
-  }
-
-  export type UserUpdateWithoutParsingSessionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutParsingSessionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ParsingLogUpsertWithWhereUniqueWithoutSessionInput = {
@@ -17708,6 +17628,45 @@ export namespace Prisma {
     message?: StringFilter<"ParsingLog"> | string
     data?: JsonNullableFilter<"ParsingLog">
     createdAt?: DateTimeFilter<"ParsingLog"> | Date | string
+  }
+
+  export type UserUpsertWithoutParsingSessionsInput = {
+    update: XOR<UserUpdateWithoutParsingSessionsInput, UserUncheckedUpdateWithoutParsingSessionsInput>
+    create: XOR<UserCreateWithoutParsingSessionsInput, UserUncheckedCreateWithoutParsingSessionsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutParsingSessionsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutParsingSessionsInput, UserUncheckedUpdateWithoutParsingSessionsInput>
+  }
+
+  export type UserUpdateWithoutParsingSessionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutParsingSessionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ParsingSessionCreateWithoutLogsInput = {
@@ -17778,18 +17737,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ParsingSessionCreateManyUserInput = {
-    id?: string
-    status?: $Enums.ParsingStatus
-    startedAt?: Date | string
-    completedAt?: Date | string | null
-    totalItems?: number
-    processedItems?: number
-    errors?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
   export type AccountCreateManyUserInput = {
     id?: string
     type: string
@@ -17804,48 +17751,22 @@ export namespace Prisma {
     session_state?: string | null
   }
 
+  export type ParsingSessionCreateManyUserInput = {
+    id?: string
+    status?: $Enums.ParsingStatus
+    startedAt?: Date | string
+    completedAt?: Date | string | null
+    totalItems?: number
+    processedItems?: number
+    errors?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type SessionCreateManyUserInput = {
     id?: string
     sessionToken: string
     expires: Date | string
-  }
-
-  export type ParsingSessionUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    status?: EnumParsingStatusFieldUpdateOperationsInput | $Enums.ParsingStatus
-    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    totalItems?: IntFieldUpdateOperationsInput | number
-    processedItems?: IntFieldUpdateOperationsInput | number
-    errors?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    logs?: ParsingLogUpdateManyWithoutSessionNestedInput
-  }
-
-  export type ParsingSessionUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    status?: EnumParsingStatusFieldUpdateOperationsInput | $Enums.ParsingStatus
-    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    totalItems?: IntFieldUpdateOperationsInput | number
-    processedItems?: IntFieldUpdateOperationsInput | number
-    errors?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    logs?: ParsingLogUncheckedUpdateManyWithoutSessionNestedInput
-  }
-
-  export type ParsingSessionUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    status?: EnumParsingStatusFieldUpdateOperationsInput | $Enums.ParsingStatus
-    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    totalItems?: IntFieldUpdateOperationsInput | number
-    processedItems?: IntFieldUpdateOperationsInput | number
-    errors?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -17888,6 +17809,44 @@ export namespace Prisma {
     scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
     session_state?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ParsingSessionUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumParsingStatusFieldUpdateOperationsInput | $Enums.ParsingStatus
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalItems?: IntFieldUpdateOperationsInput | number
+    processedItems?: IntFieldUpdateOperationsInput | number
+    errors?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    logs?: ParsingLogUpdateManyWithoutSessionNestedInput
+  }
+
+  export type ParsingSessionUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumParsingStatusFieldUpdateOperationsInput | $Enums.ParsingStatus
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalItems?: IntFieldUpdateOperationsInput | number
+    processedItems?: IntFieldUpdateOperationsInput | number
+    errors?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    logs?: ParsingLogUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type ParsingSessionUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumParsingStatusFieldUpdateOperationsInput | $Enums.ParsingStatus
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalItems?: IntFieldUpdateOperationsInput | number
+    processedItems?: IntFieldUpdateOperationsInput | number
+    errors?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SessionUpdateWithoutUserInput = {
@@ -17982,8 +17941,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    images?: ProductImageUpdateManyWithoutProductNestedInput
     attributes?: ProductAttributeUpdateManyWithoutProductNestedInput
+    images?: ProductImageUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutCategoryInput = {
@@ -17998,8 +17957,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    images?: ProductImageUncheckedUpdateManyWithoutProductNestedInput
     attributes?: ProductAttributeUncheckedUpdateManyWithoutProductNestedInput
+    images?: ProductImageUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutCategoryInput = {
@@ -18016,6 +17975,14 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ProductAttributeCreateManyProductInput = {
+    id?: string
+    name: string
+    value: string
+    sortOrder?: number
+    createdAt?: Date | string
+  }
+
   export type ProductImageCreateManyProductInput = {
     id?: string
     url: string
@@ -18025,12 +17992,28 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type ProductAttributeCreateManyProductInput = {
-    id?: string
-    name: string
-    value: string
-    sortOrder?: number
-    createdAt?: Date | string
+  export type ProductAttributeUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProductAttributeUncheckedUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProductAttributeUncheckedUpdateManyWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    value?: StringFieldUpdateOperationsInput | string
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProductImageUpdateWithoutProductInput = {
@@ -18057,30 +18040,6 @@ export namespace Prisma {
     alt?: NullableStringFieldUpdateOperationsInput | string | null
     sortOrder?: IntFieldUpdateOperationsInput | number
     isMain?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProductAttributeUpdateWithoutProductInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    value?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProductAttributeUncheckedUpdateWithoutProductInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    value?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProductAttributeUncheckedUpdateManyWithoutProductInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    value?: StringFieldUpdateOperationsInput | string
-    sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

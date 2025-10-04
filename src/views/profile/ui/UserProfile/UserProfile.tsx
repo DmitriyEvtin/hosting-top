@@ -28,10 +28,10 @@ export function UserProfile() {
   const currentUser = user || session?.user;
 
   // Обработчики для загрузки логотипа
-  const handleLogoUpload = async (logoUrl: string) => {
+  const handleLogoUpload = async (imageUrl: string) => {
     try {
       setUploadError(null);
-      await updateProfile({ image: logoUrl });
+      await updateProfile({ image: imageUrl });
       setUploadSuccess("Логотип успешно загружен");
       setTimeout(() => setUploadSuccess(null), 3000);
     } catch (error) {

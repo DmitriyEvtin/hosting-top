@@ -6,7 +6,7 @@ ENVIRONMENT ?= development
 
 # Development команды
 dev:
-	docker compose up -d postgres redis mailer minio
+	docker compose up -d
 	npm run dev
 
 dev-down:
