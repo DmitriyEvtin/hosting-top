@@ -1,7 +1,12 @@
+"use client";
+
 import { Button } from "@/shared/ui/Button";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 
 export default function NotFound() {
+  const { data: session, status } = useSession();
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full text-center">
@@ -21,11 +26,21 @@ export default function NotFound() {
             <Button className="w-full">Вернуться на главную</Button>
           </Link>
 
-          <Link href="/profile">
-            <Button variant="outline" className="w-full">
-              Перейти в профиль
-            </Button>
-          </Link>
+          {status === "loading" ? (
+            <div className="h-10 bg-gray-200 rounded animate-pulse"></div>
+          ) : session ? (
+            <Link href="/profile">
+              <Button variant="outline" className="w-full">
+                Перейти в профиль
+              </Button>
+            </Link>
+          ) : (
+            <Link href="/auth/signin">
+              <Button variant="outline" className="w-full">
+                Авторизоваться
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

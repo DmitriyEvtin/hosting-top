@@ -1,15 +1,11 @@
 import { authOptions } from "@/shared/lib/auth-config";
-import { UserRole } from "@/shared/lib/types";
 import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
 
 export default async function AdminPage() {
   const session = await getServerSession(authOptions);
 
-  // Дополнительная проверка на сервере
-  if (!session || session.user.role !== UserRole.ADMIN) {
-    redirect("/");
-  }
+  // session гарантированно не null благодаря проверке в лейауте
+  if (!session) return null;
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
