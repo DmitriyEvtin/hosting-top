@@ -23,7 +23,36 @@ const nextConfig: NextConfig = {
   
   // Настройки для изображений
   images: {
-    domains: ["localhost"],
+    domains: [
+      "localhost", 
+      "s3.ru1.storage.beget.cloud",
+    ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.s3.amazonaws.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https", 
+        hostname: "*.s3.*.amazonaws.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "*.cloudfront.net", 
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "s3.ru1.storage.beget.cloud",
+        port: "",
+        pathname: "/**",
+      },
+    ],
     formats: ["image/webp", "image/avif"],
   },
   

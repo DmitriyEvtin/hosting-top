@@ -37,6 +37,13 @@
 - **Traefik** - Reverse proxy и load balancer
 - **GitHub Actions** - CI/CD
 
+### Конфигурация изображений
+
+- **Next.js Image Optimization** - Автоматическая оптимизация изображений
+- **S3 Integration** - Поддержка внешних доменов для изображений
+- **Remote Patterns** - Гибкая настройка доменов с wildcards
+- **Format Support** - WebP и AVIF для лучшей производительности
+
 ## Структура проекта (FSD)
 
 ```
