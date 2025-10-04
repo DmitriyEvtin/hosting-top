@@ -24,12 +24,133 @@ export default async function AdminPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Карточка пользователей */}
+          {/* Карточка автоматического парсинга */}
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="p-5">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
                   <div className="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div className="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt className="text-sm font-medium text-gray-500 truncate">
+                      Автоматический парсинг
+                    </dt>
+                    <dd className="text-lg font-medium text-gray-900">
+                      Автоматическое обновление каталога с сайта
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gray-50 px-5 py-3">
+              <div className="text-sm text-gray-600">
+                Система автоматически парсит данные о товарах, категориях и
+                изображениях
+              </div>
+            </div>
+          </div>
+
+          {/* Карточка управления товарами */}
+          <div className="bg-white overflow-hidden shadow rounded-lg">
+            <div className="p-5">
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <div className="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div className="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt className="text-sm font-medium text-gray-500 truncate">
+                      Управление товарами
+                    </dt>
+                    <dd className="text-lg font-medium text-gray-900">
+                      Админ-панель для управления каталогом
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gray-50 px-5 py-3">
+              <div className="text-sm text-gray-600">
+                Полный контроль над товарами, категориями и настройками парсинга
+              </div>
+            </div>
+          </div>
+
+          {/* Карточка облачного хранения */}
+          <div className="bg-white overflow-hidden shadow rounded-lg">
+            <div className="p-5">
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <div className="w-8 h-8 bg-purple-500 rounded-md flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div className="ml-5 w-0 flex-1">
+                  <dl>
+                    <dt className="text-sm font-medium text-gray-500 truncate">
+                      Облачное хранение
+                    </dt>
+                    <dd className="text-lg font-medium text-gray-900">
+                      Интеграция с AWS S3 для хранения изображений
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gray-50 px-5 py-3">
+              <div className="text-sm text-gray-600">
+                Надежное хранение и быстрая доставка изображений через CDN
+              </div>
+            </div>
+          </div>
+
+          {/* Карточка пользователей */}
+          <div className="bg-white overflow-hidden shadow rounded-lg">
+            <div className="p-5">
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <div className="w-8 h-8 bg-indigo-500 rounded-md flex items-center justify-center">
                     <svg
                       className="w-5 h-5 text-white"
                       fill="none"
@@ -61,7 +182,7 @@ export default async function AdminPage() {
               <div className="text-sm">
                 <a
                   href="/admin/users"
-                  className="font-medium text-blue-600 hover:text-blue-500"
+                  className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Перейти к управлению
                 </a>
@@ -74,7 +195,7 @@ export default async function AdminPage() {
             <div className="p-5">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <div className="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+                  <div className="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center">
                     <svg
                       className="w-5 h-5 text-white"
                       fill="none"
@@ -112,7 +233,7 @@ export default async function AdminPage() {
               <div className="text-sm">
                 <a
                   href="/admin/settings"
-                  className="font-medium text-green-600 hover:text-green-500"
+                  className="font-medium text-yellow-600 hover:text-yellow-500"
                 >
                   Перейти к настройкам
                 </a>
@@ -125,7 +246,7 @@ export default async function AdminPage() {
             <div className="p-5">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <div className="w-8 h-8 bg-purple-500 rounded-md flex items-center justify-center">
+                  <div className="w-8 h-8 bg-red-500 rounded-md flex items-center justify-center">
                     <svg
                       className="w-5 h-5 text-white"
                       fill="none"
@@ -157,7 +278,7 @@ export default async function AdminPage() {
               <div className="text-sm">
                 <a
                   href="/admin/monitoring"
-                  className="font-medium text-purple-600 hover:text-purple-500"
+                  className="font-medium text-red-600 hover:text-red-500"
                 >
                   Перейти к мониторингу
                 </a>
