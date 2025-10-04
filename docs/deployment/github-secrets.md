@@ -44,7 +44,7 @@ AWS_SECRET_ACCESS_KEY
 
 AWS_S3_BUCKET
 Описание: Имя S3 bucket для хранения изображений
-Пример: rolled-metal-images
+Пример: parket-crm-images
 
 AWS_REGION
 Описание: AWS регион

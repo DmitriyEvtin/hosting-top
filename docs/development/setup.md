@@ -25,7 +25,7 @@
 
 ```bash
 git clone <repository-url>
-cd rolled-metal
+cd parket-crm
 ```
 
 ### 2. Установка Node.js зависимостей
@@ -75,13 +75,13 @@ sudo systemctl enable postgresql
 psql -U postgres
 
 # Создание базы данных
-CREATE DATABASE rolled_metal_dev;
-CREATE DATABASE rolled_metal_test;
+CREATE DATABASE parket_crm_dev;
+CREATE DATABASE parket_crm_test;
 
 # Создание пользователя
-CREATE USER rolled_metal_user WITH PASSWORD 'your_password';
-GRANT ALL PRIVILEGES ON DATABASE rolled_metal_dev TO rolled_metal_user;
-GRANT ALL PRIVILEGES ON DATABASE rolled_metal_test TO rolled_metal_user;
+CREATE USER parket_crm_user WITH PASSWORD 'your_password';
+GRANT ALL PRIVILEGES ON DATABASE parket_crm_dev TO parket_crm_user;
+GRANT ALL PRIVILEGES ON DATABASE parket_crm_test TO parket_crm_user;
 ```
 
 ### 3. Настройка Prisma
@@ -109,8 +109,8 @@ cp .env.example .env
 
 ```env
 # База данных
-DATABASE_URL="postgresql://rolled_metal_user:your_password@localhost:5432/rolled_metal_dev"
-TEST_DATABASE_URL="postgresql://rolled_metal_user:your_password@localhost:5432/rolled_metal_test"
+DATABASE_URL="postgresql://parket_crm_user:your_password@localhost:5432/parket_crm_dev"
+TEST_DATABASE_URL="postgresql://parket_crm_user:your_password@localhost:5432/parket_crm_test"
 
 # Next.js
 NEXTAUTH_SECRET="your-secret-key"
@@ -125,9 +125,6 @@ AWS_REGION="us-east-1"
 # Redis (опционально)
 REDIS_URL="redis://localhost:6379"
 
-# Парсинг
-PARSING_BATCH_SIZE="50"
-PARSING_DELAY_MS="1000"
 MAX_CONCURRENT_REQUESTS="5"
 ```
 
@@ -172,8 +169,8 @@ services:
   postgres:
     image: postgres:14
     environment:
-      POSTGRES_DB: rolled_metal_dev
-      POSTGRES_USER: rolled_metal_user
+      POSTGRES_DB: parket_crm_dev
+      POSTGRES_USER: parket_crm_user
       POSTGRES_PASSWORD: your_password
     ports:
       - "5432:5432"

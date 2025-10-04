@@ -23,14 +23,4 @@ export {
   shouldLogVerbose,
   validateProductionEnv,
 } from "./env";
-export {
-  environmentParsingConfig,
-  getCurrentParsingConfig,
-  imageProcessing,
-  monitoringConfig,
-  parsingConfig,
-  parsingTypes,
-  parsingUtils,
-  validationRules,
-} from "./parsing-config";
 export { cn } from "./utils";

@@ -22,7 +22,6 @@ src/app/
 └── api/                    # API routes
     ├── auth/
     ├── products/
-    └── parsing/
 ```
 
 ### Pages Layer (Слой страниц)
@@ -93,7 +92,6 @@ src/features/
 │   ├── ui/
 │   ├── model/
 │   └── api/
-└── parsing-control/        # Управление парсингом
     ├── ui/
     ├── model/
     └── api/
@@ -123,7 +121,6 @@ src/entities/
 │   ├── ui/
 │   ├── model/
 │   └── api/
-└── parsing/                # Сущность парсинга
     ├── ui/
     ├── model/
     └── api/

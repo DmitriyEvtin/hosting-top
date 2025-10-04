@@ -1,6 +1,6 @@
 # GitHub Actions Workflows
 
-Этот документ содержит описание текущих GitHub Actions workflows для проекта Rolled Metal.
+Этот документ содержит описание текущих GitHub Actions workflows для проекта P.
 
 ## 🚀 Текущие workflows
 
@@ -78,7 +78,7 @@ make push
 ```bash
 # Обязательные секреты
 REGISTRY_URL    # URL Docker registry (например: registry.example.com)
-IMAGE_NAME      # Имя образа (например: rolled-metal-frontend)
+IMAGE_NAME      # Имя образа (например: parket-crm-frontend)
 ```
 
 ### Настройка Makefile

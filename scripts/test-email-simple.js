@@ -10,7 +10,7 @@ const http = require("http");
 // Установка переменных окружения
 process.env.SMTP_HOST = "localhost";
 process.env.SMTP_PORT = "1025";
-process.env.SMTP_FROM = "noreply@rolled-metal.local";
+process.env.SMTP_FROM = "noreply@parket-crm.local";
 
 // Функция для отправки HTTP запроса
 function makeRequest(url, options = {}) {

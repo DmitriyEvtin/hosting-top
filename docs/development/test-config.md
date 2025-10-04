@@ -7,7 +7,7 @@
 ```env
 # Test environment variables
 NODE_ENV=test
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/rolled_metal_test"
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/parket_crm_test"
 NEXTAUTH_SECRET="test-secret-key-for-ci"
 NEXTAUTH_URL="http://localhost:3000"
 
@@ -38,7 +38,7 @@ docker-compose up -d postgres
 2. Создайте тестовую базу данных:
 
 ```bash
-createdb rolled_metal_test
+createdb parket_crm_test
 ```
 
 3. Запустите миграции:

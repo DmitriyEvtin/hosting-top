@@ -17,13 +17,13 @@
 
 ```yaml
 migrations:
-  image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-rolled_metal}-app:${IMAGE_TAG:-latest}
-  container_name: rolled-metal-migrations-prod
+  image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_crm}-app:${IMAGE_TAG:-latest}
+  container_name: parket-crm-migrations-prod
   environment:
     NODE_ENV: production
-    DATABASE_URL: postgresql://${POSTGRES_USER:-rolled_metal_user}:${POSTGRES_PASSWORD:-rolled_metal_password}@postgres:5432/${POSTGRES_DB:-rolled_metal}
+    DATABASE_URL: postgresql://${POSTGRES_USER:-parket_crm_user}:${POSTGRES_PASSWORD:-parket_crm_password}@postgres:5432/${POSTGRES_DB:-parket_crm}
   networks:
-    - rolled-metal-network
+    - parket-crm-network
   depends_on:
     postgres:
       condition: service_healthy

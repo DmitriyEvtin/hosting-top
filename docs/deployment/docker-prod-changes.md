@@ -16,13 +16,13 @@ Production конфигурация `docker-compose.prod.yml` была обно�
 
 ### 2. App Service
 
-- **Использует готовый образ**: `${DOCKER_HUB_USERNAME}/rolled-metal-app:latest`
+- **Использует готовый образ**: `${DOCKER_HUB_USERNAME}/parket-crm-app:latest`
 - **Улучшен healthcheck**: Добавлен `start_period: 40s` для корректного запуска
 - **Оптимизированы зависимости**: Правильная последовательность запуска сервисов
 
 ### 2. Nginx Service
 
-- **Использует готовый образ**: `${DOCKER_HUB_USERNAME}/rolled-metal-nginx:latest`
+- **Использует готовый образ**: `${DOCKER_HUB_USERNAME}/parket-crm-nginx:latest`
 - **Включен healthcheck**: Активирован healthcheck для мониторинга
 - **Убраны volume mapping**: Конфигурация уже включена в образ
 
@@ -78,8 +78,8 @@ docker-compose -f docker-compose.prod.yml down
 DOCKER_HUB_USERNAME=your-dockerhub-username
 
 # Database
-POSTGRES_DB=rolled_metal
-POSTGRES_USER=rolled_metal_user
+POSTGRES_DB=parket_crm
+POSTGRES_USER=parket_crm_user
 POSTGRES_PASSWORD=your-secure-password
 
 # Application
@@ -102,5 +102,5 @@ SENTRY_DSN=your-sentry-dsn
 - Минимум 2GB RAM для корректной работы
 - Настроенные переменные окружения в `.env` файле
 - Образы должны быть запушены в Docker Hub:
-  - `{DOCKER_HUB_USERNAME}/rolled-metal-app:latest`
-  - `{DOCKER_HUB_USERNAME}/rolled-metal-nginx:latest`
+  - `{DOCKER_HUB_USERNAME}/parket-crm-app:latest`
+  - `{DOCKER_HUB_USERNAME}/parket-crm-nginx:latest`

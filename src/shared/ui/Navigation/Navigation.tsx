@@ -14,7 +14,7 @@ export function Navigation() {
               href="/"
               className="text-xl font-bold text-foreground hover:text-foreground/80"
             >
-              Каталог металлопроката
+              Паркет CRM
             </Link>
           </div>
           <div className="flex items-center space-x-4">

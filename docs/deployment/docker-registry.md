@@ -33,7 +33,7 @@ docker volume create registry
 ```env
 # Docker Registry
 REGISTRY_URL=registry.evtin.ru
-IMAGE_NAME=rolled_metal
+IMAGE_NAME=parket_crm
 IMAGE_TAG=latest
 
 # Аутентификация Registry (опционально)
@@ -221,7 +221,7 @@ curl -u admin:password https://registry.evtin.ru/v2/
 
 - name: Push to Registry
   run: |
-    docker push registry.evtin.ru/rolled_metal-app:latest
+    docker push registry.evtin.ru/parket_crm-app:latest
 ```
 
 ### 2. Переменные окружения для CI/CD

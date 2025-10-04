@@ -12,7 +12,7 @@ function generateSecurePassword(): string {
 // Функция для создания администратора
 async function createAdminUser() {
   // Проверяем переменные окружения для переопределения
-  const adminEmail = process.env.ADMIN_EMAIL || "admin@rolled-metal.ru";
+  const adminEmail = process.env.ADMIN_EMAIL || "admin@parket-crm.ru";
   const adminPassword = process.env.ADMIN_PASSWORD || generateSecurePassword();
   const adminName = process.env.ADMIN_NAME || "Администратор";
 
@@ -66,9 +66,7 @@ async function main() {
   await createAdminUser();
 
   console.log("🎉 Инициализация базы данных завершена!");
-  console.log(
-    "💡 Для создания тестовых данных запустите: npm run db:seed-test"
-  );
+  console.log("💡 Система готова к работе с аутентификацией пользователей");
 }
 
 main()

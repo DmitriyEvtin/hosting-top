@@ -6,7 +6,7 @@
 // Базовые переменные окружения
 export const env = {
   NODE_ENV: process.env.NODE_ENV || "development",
-  APP_NAME: process.env.APP_NAME || "Каталог металлопроката",
+  APP_NAME: process.env.APP_NAME || "Паркет CRM",
   APP_VERSION: process.env.APP_VERSION || "1.0.0",
 
   // База данных
@@ -26,14 +26,6 @@ export const env = {
   AWS_S3_BUCKET: process.env.AWS_S3_BUCKET || "",
   CLOUDFRONT_DOMAIN: process.env.CLOUDFRONT_DOMAIN || "",
 
-  // Настройки парсинга
-  PARSING_BATCH_SIZE: parseInt(process.env.PARSING_BATCH_SIZE || "10"),
-  PARSING_DELAY_MS: parseInt(process.env.PARSING_DELAY_MS || "1000"),
-  PARSING_MAX_RETRIES: parseInt(process.env.PARSING_MAX_RETRIES || "3"),
-  PARSING_USER_AGENT:
-    process.env.PARSING_USER_AGENT ||
-    "Mozilla/5.0 (compatible; RolledMetalParser/1.0)",
-
   // Мониторинг
   SENTRY_DSN: process.env.SENTRY_DSN || "",
   LOG_LEVEL: process.env.LOG_LEVEL || "info",
@@ -43,7 +35,7 @@ export const env = {
   SMTP_PORT: parseInt(process.env.SMTP_PORT || "587"),
   SMTP_USER: process.env.SMTP_USER || "",
   SMTP_PASSWORD: process.env.SMTP_PASSWORD || "",
-  SMTP_FROM: process.env.SMTP_FROM || "noreply@rolled-metal.local",
+  SMTP_FROM: process.env.SMTP_FROM || "noreply@parket-crm.local",
 
   // Безопасность
   CORS_ORIGIN: process.env.CORS_ORIGIN || "http://localhost:3000",

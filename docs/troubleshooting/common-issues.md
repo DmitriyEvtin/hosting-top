@@ -209,8 +209,6 @@ docker compose -f docker-compose.prod.yml exec app npx prisma migrate reset --fo
 docker compose -f docker-compose.prod.yml exec app npx prisma migrate dev --name init
 ```
 
-## Проблемы с парсингом
-
 ### Ошибки Puppeteer
 
 #### Симптомы
@@ -419,7 +417,7 @@ Error: failed to solve: failed to compute cache key
 docker system prune -a
 
 # Пересборка без кэша
-docker build --no-cache -t rolled-metal .
+docker build --no-cache -t parket-crm .
 
 # Очистка volumes
 docker volume prune
@@ -581,7 +579,7 @@ Error: Database connection failed
 
 ```bash
 # Проверка логов
-docker logs rolled-metal_app
+docker logs parket-crm_app
 
 # Проверка статуса сервисов
 docker-compose ps
@@ -605,7 +603,7 @@ docker-compose logs -f app
 docker stats
 
 # Проверка подключения к БД
-docker-compose exec postgres psql -U user -d rolled_metal_dev
+docker-compose exec postgres psql -U user -d parket_crm_dev
 ```
 
 ### Логирование

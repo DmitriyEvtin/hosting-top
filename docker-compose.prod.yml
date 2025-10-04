@@ -1,12 +1,12 @@
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: rolled-metal-postgres-prod
+    container_name: parket-crm-postgres-prod
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-rolled_metal}
-      POSTGRES_USER: ${POSTGRES_USER:-rolled_metal_user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rolled_metal_password}
+      POSTGRES_DB: ${POSTGRES_DB:-parket_crm}
+      POSTGRES_USER: ${POSTGRES_USER:-parket_crm_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-parket_crm_password}
       POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
     ports:
       - "5432:5432"
@@ -14,12 +14,12 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
     networks:
-      - rolled-metal-network
+      - parket-crm-network
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "pg_isready -U ${POSTGRES_USER:-rolled_metal_user} -d ${POSTGRES_DB:-rolled_metal}",
+          "pg_isready -U ${POSTGRES_USER:-parket_crm_user} -d ${POSTGRES_DB:-parket_crm}",
         ]
       interval: 30s
       timeout: 10s
@@ -28,14 +28,14 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: rolled-metal-redis-prod
+    container_name: parket-crm-redis-prod
     restart: unless-stopped
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data
     networks:
-      - rolled-metal-network
+      - parket-crm-network
     command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
@@ -45,13 +45,13 @@ services:
       start_period: 30s
 
   migrations:
-    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-rolled_metal}-app:${IMAGE_TAG:-latest}
-    container_name: rolled-metal-migrations-prod
+    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_crm}-app:${IMAGE_TAG:-latest}
+    container_name: parket-crm-migrations-prod
     environment:
       NODE_ENV: production
-      DATABASE_URL: postgresql://${POSTGRES_USER:-rolled_metal_user}:${POSTGRES_PASSWORD:-rolled_metal_password}@postgres:5432/${POSTGRES_DB:-rolled_metal}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-parket_crm_user}:${POSTGRES_PASSWORD:-parket_crm_password}@postgres:5432/${POSTGRES_DB:-parket_crm}
     networks:
-      - rolled-metal-network
+      - parket-crm-network
     depends_on:
       postgres:
         condition: service_healthy
@@ -59,7 +59,7 @@ services:
     restart: "no"
 
   app:
-    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-rolled_metal}-app:${IMAGE_TAG:-latest}
+    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_crm}-app:${IMAGE_TAG:-latest}
     restart: unless-stopped
     deploy:
       replicas: 2
@@ -72,7 +72,7 @@ services:
       NODE_ENV: production
       HOSTNAME: "0.0.0.0"
       PORT: "3000"
-      DATABASE_URL: postgresql://${POSTGRES_USER:-rolled_metal_user}:${POSTGRES_PASSWORD:-rolled_metal_password}@postgres:5432/${POSTGRES_DB:-rolled_metal}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-parket_crm_user}:${POSTGRES_PASSWORD:-parket_crm_password}@postgres:5432/${POSTGRES_DB:-parket_crm}
       REDIS_URL: redis://redis:6379
       NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
       NEXTAUTH_URL: ${NEXTAUTH_URL}
@@ -103,12 +103,12 @@ services:
       SMTP_PORT: ${SMTP_PORT:-587}
       SMTP_USER: ${SMTP_USER}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
-      SMTP_FROM: ${SMTP_FROM:-noreply@metal-works.pro}
+      SMTP_FROM: ${SMTP_FROM:-noreply@parket-crm.ru}
     # Порт 3000 отключен для production - доступ только через nginx
     # ports:
     #   - "3000:3000"
     networks:
-      - rolled-metal-network
+      - parket-crm-network
     depends_on:
       postgres:
         condition: service_healthy
@@ -119,11 +119,11 @@ services:
     # healthcheck настроен в Dockerfile
 
   nginx:
-    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-rolled_metal}-nginx:${IMAGE_TAG:-latest}
-    container_name: rolled-metal-nginx-prod
+    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_crm}-nginx:${IMAGE_TAG:-latest}
+    container_name: parket-crm-nginx-prod
     restart: unless-stopped
     networks:
-      - rolled-metal-network
+      - parket-crm-network
       - traefik-public
     depends_on:
       - app
@@ -133,22 +133,22 @@ services:
       - "traefik.docker.network=traefik-public"
 
       # HTTP router
-      - "traefik.http.routers.nginx-http.rule=Host(`metal-works.pro`)"
+      - "traefik.http.routers.nginx-http.rule=Host(`parket-crm.ru`)"
       - "traefik.http.routers.nginx-http.entrypoints=http"
       - "traefik.http.routers.nginx-http.middlewares=redirect-to-https"
 
       # HTTP router для www
-      - "traefik.http.routers.nginx-www-http.rule=Host(`www.metal-works.pro`)"
+      - "traefik.http.routers.nginx-www-http.rule=Host(`www.parket-crm.ru`)"
       - "traefik.http.routers.nginx-www-http.entrypoints=http"
       - "traefik.http.routers.nginx-www-http.middlewares=redirect-to-https"
 
       # HTTPS router
-      - "traefik.http.routers.nginx-https.rule=Host(`metal-works.pro`)"
+      - "traefik.http.routers.nginx-https.rule=Host(`parket-crm.ru`)"
       - "traefik.http.routers.nginx-https.entrypoints=https"
       - "traefik.http.routers.nginx-https.tls.certresolver=letsencrypt"
 
       # HTTPS router для www с редиректом
-      - "traefik.http.routers.nginx-www-https.rule=Host(`www.metal-works.pro`)"
+      - "traefik.http.routers.nginx-www-https.rule=Host(`www.parket-crm.ru`)"
       - "traefik.http.routers.nginx-www-https.entrypoints=https"
       - "traefik.http.routers.nginx-www-https.tls.certresolver=letsencrypt"
       - "traefik.http.routers.nginx-www-https.middlewares=redirect-www-to-non-www"
@@ -161,8 +161,8 @@ services:
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
 
       # Middleware для редиректа с www на основной домен
-      - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.regex=^https://www\\.metal-works\\.pro/(.*)"
-      - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.replacement=https://metal-works.pro/$${1}"
+      - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.regex=^https://www\\.parket-crm\\.ru/(.*)"
+      - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.replacement=https://parket-crm.ru/$${1}"
       - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.permanent=true"
     # healthcheck настроен в Dockerfile
 
@@ -173,7 +173,7 @@ volumes:
     driver: local
 
 networks:
-  rolled-metal-network:
+  parket-crm-network:
     external: true
   traefik-public:
     external: true

@@ -197,39 +197,39 @@ server {
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: rolled-metal-postgres
+    container_name: parket-crm-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: rolled_metal
-      POSTGRES_USER: rolled_metal_user
-      POSTGRES_PASSWORD: rolled_metal_password
+      POSTGRES_DB: parket_crm
+      POSTGRES_USER: parket_crm_user
+      POSTGRES_PASSWORD: parket_crm_password
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./docker/postgres/init:/docker-entrypoint-initdb.d
     networks:
-      - rolled-metal-network
+      - parket-crm-network
 
   redis:
     image: redis:7-alpine
-    container_name: rolled-metal-redis
+    container_name: parket-crm-redis
     restart: unless-stopped
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data
     networks:
-      - rolled-metal-network
+      - parket-crm-network
 
   adminer:
     image: adminer:4.8.1
-    container_name: rolled-metal-adminer
+    container_name: parket-crm-adminer
     restart: unless-stopped
     ports:
       - "8080:8080"
     networks:
-      - rolled-metal-network
+      - parket-crm-network
     depends_on:
       - postgres
 
@@ -238,7 +238,7 @@ volumes:
   redis_data:
 
 networks:
-  rolled-metal-network:
+  parket-crm-network:
     driver: bridge
 ```
 
@@ -247,7 +247,7 @@ networks:
 - **PostgreSQL 15**: Последняя стабильная версия с Alpine Linux
 - **Redis 7**: Последняя версия Redis для кэширования
 - **Adminer**: Веб-интерфейс для управления базой данных
-- **Сеть**: Изолированная сеть `rolled-metal-network`
+- **Сеть**: Изолированная сеть `parket-crm-network`
 - **Инициализация**: Автоматическая инициализация БД через SQL скрипты
 
 ## PostgreSQL инициализация
@@ -256,7 +256,7 @@ networks:
 
 ```sql
 -- docker/postgres/init/01-init.sql
--- Инициализация базы данных для проекта "Каталог металлопроката"
+-- Инициализация базы данных для проекта "Паркет CRM"
 -- Создание расширений для работы с JSON и полнотекстовым поиском
 
 -- Включаем расширения для работы с JSON
@@ -264,7 +264,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";
 
 -- Создаем схему для приложения (опционально, можно использовать public)
--- CREATE SCHEMA IF NOT EXISTS rolled_metal;
+-- CREATE SCHEMA IF NOT EXISTS parket_crm;
 
 -- Настройки для оптимизации производительности
 ALTER SYSTEM SET shared_preload_libraries = 'pg_stat_statements';
@@ -309,9 +309,9 @@ make down
 ```bash
 # Настройка registry и тегов
 export REGISTRY=your-registry.com
-export FRONT_IMAGE_NAME=rolled-metal-frontend
+export FRONT_IMAGE_NAME=parket-crm-frontend
 export FRONT_IMAGE_TAG=latest
-export NEXT_IMAGE_NAME=rolled-metal-app
+export NEXT_IMAGE_NAME=parket-crm-app
 export NEXT_IMAGE_TAG=latest
 
 # Сборка с кастомными параметрами
@@ -344,7 +344,7 @@ docker compose down -v
 docker compose ps
 
 # Подключение к базе данных
-docker compose exec postgres psql -U rolled_metal_user -d rolled_metal
+docker compose exec postgres psql -U parket_crm_user -d parket_crm
 
 # Подключение к Redis
 docker compose exec redis redis-cli
@@ -680,11 +680,11 @@ ENV NPM_CONFIG_PRODUCTION=true
 
 ```bash
 # Сканирование образа на уязвимости
-docker scan rolled-metal:latest
+docker scan parket-crm:latest
 
 # Использование Trivy для сканирования
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  aquasec/trivy image rolled-metal:latest
+  aquasec/trivy image parket-crm:latest
 ```
 
 ## Развертывание
@@ -696,10 +696,10 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
 docker swarm init
 
 # Развертывание стека
-docker stack deploy -c docker-compose.prod.yml rolled-metal
+docker stack deploy -c docker-compose.prod.yml parket-crm
 
 # Масштабирование сервиса
-docker service scale rolled-metal_app=3
+docker service scale parket-crm_app=3
 ```
 
 ### Portainer

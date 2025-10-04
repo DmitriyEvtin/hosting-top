@@ -164,7 +164,7 @@ COPY . .
 # Добавление метрик
 LABEL maintainer="your-team@company.com"
 LABEL version="1.0.0"
-LABEL description="Rolled Metal Production App"
+LABEL description="P App"
 ```
 
 ## 🧪 Тестирование оптимизаций
@@ -173,13 +173,13 @@ LABEL description="Rolled Metal Production App"
 
 ```bash
 # Сборка образа
-docker build -t rolled-metal:optimized -f docker/production/node/Dockerfile.optimized .
+docker build -t parket-crm:optimized -f docker/production/node/Dockerfile.optimized .
 
 # Проверка размера
-docker images rolled-metal
+docker images parket-crm
 
 # Тестирование запуска
-docker run -p 3000:3000 rolled-metal:optimized
+docker run -p 3000:3000 parket-crm:optimized
 
 # Проверка health check
 curl http://localhost:3000/api/health

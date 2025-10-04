@@ -26,8 +26,8 @@ export function EmailTestSimple() {
         body: JSON.stringify({
           to: testEmail,
           subject: "Тестовое письмо",
-          text: "Это тестовое письмо из системы Каталог металлопроката.",
-          html: "<p>Это <strong>тестовое письмо</strong> из системы Каталог металлопроката.</p>",
+          text: "Это тестовое письмо из системы Паркет CRM.",
+          html: "<p>Это <strong>тестовое письмо</strong> из системы Паркет CRM.</p>",
         }),
       });
 

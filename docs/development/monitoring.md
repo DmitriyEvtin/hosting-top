@@ -69,13 +69,11 @@ export default withSentryConfig(nextConfig, {
 - Необработанные исключения
 - Ошибки в React компонентах
 - Ошибки в API роутах
-- Ошибки парсинга данных
 
 #### 2. Performance мониторинг
 
 - Время загрузки страниц
 - Медленные API запросы
-- Производительность парсинга
 - Время отклика базы данных
 
 #### 3. Пользовательские события
@@ -83,7 +81,6 @@ export default withSentryConfig(nextConfig, {
 - Ошибки аутентификации
 - Проблемы с загрузкой изображений
 - Ошибки валидации форм
-- Проблемы с парсингом данных
 
 ### Конфигурация окружений
 
@@ -125,50 +122,6 @@ Sentry.init({
 
 ### Кастомные события
 
-#### Логирование парсинга
-
-```typescript
-// src/shared/lib/sentry/parsing-logger.ts
-import * as Sentry from "@sentry/nextjs";
-
-export const logParsingError = (
-  error: Error,
-  context: {
-    url: string;
-    parserType: string;
-    timestamp: Date;
-  }
-) => {
-  Sentry.captureException(error, {
-    tags: {
-      component: "parser",
-      parserType: context.parserType,
-    },
-    extra: {
-      url: context.url,
-      timestamp: context.timestamp.toISOString(),
-    },
-  });
-};
-
-export const logParsingSuccess = (data: {
-  itemsCount: number;
-  parserType: string;
-  duration: number;
-}) => {
-  Sentry.addBreadcrumb({
-    message: "Parsing completed successfully",
-    category: "parser",
-    level: "info",
-    data: {
-      itemsCount: data.itemsCount,
-      parserType: data.parserType,
-      duration: data.duration,
-    },
-  });
-};
-```
-
 #### Логирование API ошибок
 
 ```typescript
@@ -204,7 +157,6 @@ export const logApiError = (
 
 ```typescript
 // src/shared/lib/sentry/index.ts
-export { logParsingError, logParsingSuccess } from "./parsing-logger";
 export { logApiError } from "./api-logger";
 export { captureException, addBreadcrumb } from "@sentry/nextjs";
 ```
@@ -232,42 +184,11 @@ export class ProductService {
 
 #### Features Layer
 
-```typescript
-// src/features/parsing/api/parser-service.ts
-import { logParsingError, logParsingSuccess } from "@/shared/lib/sentry";
-
-export class ParserService {
-  async parseData(url: string) {
-    const startTime = Date.now();
-    try {
-      // ... логика парсинга
-      const result = await this.parse(url);
-
-      logParsingSuccess({
-        itemsCount: result.length,
-        parserType: "metal-products",
-        duration: Date.now() - startTime,
-      });
-
-      return result;
-    } catch (error) {
-      logParsingError(error as Error, {
-        url,
-        parserType: "metal-products",
-        timestamp: new Date(),
-      });
-      throw error;
-    }
-  }
-}
-```
-
 ### Алерты и уведомления
 
 #### Настройка алертов
 
 - **Критические ошибки**: Немедленные уведомления
-- **Парсинг ошибки**: Уведомления каждые 15 минут
 - **Performance деградация**: Уведомления при превышении порогов
 - **Новые типы ошибок**: Еженедельные отчеты
 
@@ -356,7 +277,6 @@ export const sentryConfig = {
 
 - **Обзор ошибок**: Топ ошибок по частоте
 - **Performance метрики**: Время отклика и загрузки
-- **Парсинг статистика**: Успешность и ошибки парсинга
 - **Пользовательская активность**: Сессии и события
 
 #### Автоматические отчеты

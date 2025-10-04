@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Каталог металлопроката",
+  title: "Паркет CRM",
   description: "Автоматический каталог товаров с парсингом данных",
 };
 

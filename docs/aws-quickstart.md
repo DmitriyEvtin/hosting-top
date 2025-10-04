@@ -9,7 +9,7 @@
 1. Войдите в [AWS Console](https://console.aws.amazon.com/)
 2. Перейдите в S3 сервис
 3. Создайте новый bucket:
-   - Название: `rolled-metal-images` (уникальное)
+   - Название: `parket-crm-images` (уникальное)
    - Регион: `eu-west-1` (или другой)
    - Block Public Access: Отключите для публичного доступа к изображениям
    - Versioning: Включите (опционально)
@@ -34,7 +34,7 @@
 
 1. Перейдите в IAM → Users
 2. Создайте нового пользователя:
-   - Название: `rolled-metal-s3-user`
+   - Название: `parket-crm-s3-user`
    - Access type: Programmatic access
 3. Attach policy: `AmazonS3FullAccess`
 4. Сохраните Access Key ID и Secret Access Key
@@ -50,7 +50,7 @@
 AWS_ACCESS_KEY_ID="your-access-key-id"
 AWS_SECRET_ACCESS_KEY="your-secret-access-key"
 AWS_REGION="eu-west-1"
-AWS_S3_BUCKET="rolled-metal-images"
+AWS_S3_BUCKET="parket-crm-images"
 
 # CloudFront (опционально)
 CLOUDFRONT_DOMAIN=""

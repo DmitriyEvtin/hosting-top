@@ -33,7 +33,7 @@ Traefik - это современный reverse proxy и load balancer, кото
 
 ```bash
 docker network create traefik-public
-docker network create rolled-metal-network
+docker network create parket-crm-network
 ```
 
 ### 2. Настройка переменных окружения
@@ -48,10 +48,10 @@ cp env.traefik.example env.traefik.prod
 
 ```env
 ACME_EMAIL=evtin@yandex.ru
-DOMAIN=metal-works.pro
+DOMAIN=parket-crm.ru
 ```
 
-### 3. Быстрое развертывание с доменом metal-works.pro
+### 3. Быстрое развертывание с доменом parket-crm.ru
 
 Используйте готовый скрипт для развертывания:
 
@@ -80,38 +80,38 @@ docker-compose -f docker-compose.traefik.prod.yml ps
 docker-compose -f docker-compose.traefik.prod.yml logs -f
 
 # Проверка доступности
-curl -I https://metal-works.pro
+curl -I https://parket-crm.ru
 ```
 
-### 6. Настройка DNS для metal-works.pro
+### 6. Настройка DNS для parket-crm.ru
 
-Для корректной работы с доменом metal-works.pro необходимо настроить DNS записи:
+Для корректной работы с доменом parket-crm.ru необходимо настроить DNS записи:
 
 #### A-записи
 
 ```
-metal-works.pro        A    YOUR_SERVER_IP
-traefik.metal-works.pro A   YOUR_SERVER_IP
+parket-crm.ru        A    YOUR_SERVER_IP
+traefik.parket-crm.ru A   YOUR_SERVER_IP
 ```
 
 #### CNAME-записи (альтернативно)
 
 ```
-metal-works.pro        CNAME   your-server.example.com
-traefik.metal-works.pro CNAME  your-server.example.com
+parket-crm.ru        CNAME   your-server.example.com
+traefik.parket-crm.ru CNAME  your-server.example.com
 ```
 
 #### Проверка DNS
 
 ```bash
 # Проверка A-записи
-nslookup metal-works.pro
+nslookup parket-crm.ru
 
 # Проверка с помощью dig
-dig metal-works.pro
+dig parket-crm.ru
 
 # Проверка доступности
-ping metal-works.pro
+ping parket-crm.ru
 ```
 
 ## Использование с приложением

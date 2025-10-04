@@ -17,7 +17,7 @@ async function testProfileAPI() {
     const updatedUser = await prisma.user.update({
       where: { id: user.id },
       data: {
-        image: "http://localhost:9000/rolled-metal-images/test-logo.jpg",
+        image: "http://localhost:9000/parket-crm-images/test-logo.jpg",
       },
       select: { id: true, email: true, name: true, image: true },
     });

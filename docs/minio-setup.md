@@ -51,7 +51,7 @@ open http://localhost:9001
 AWS_ACCESS_KEY_ID="minioadmin"
 AWS_SECRET_ACCESS_KEY="minioadmin123"
 AWS_REGION="us-east-1"
-AWS_S3_BUCKET="rolled-metal-images"
+AWS_S3_BUCKET="parket-crm-images"
 
 # MinIO endpoint
 AWS_S3_ENDPOINT="http://localhost:9000"
@@ -66,7 +66,7 @@ CLOUDFRONT_DOMAIN=""
 ```yaml
 minio:
   image: minio/minio:latest
-  container_name: rolled-metal-minio
+  container_name: parket-crm-minio
   restart: unless-stopped
   ports:
     - "9000:9000" # API порт
@@ -98,7 +98,7 @@ minio:
 После инициализации создается следующая структура:
 
 ```
-rolled-metal-images/
+parket-crm-images/
 ├── images/
 │   ├── products/
 │   ├── categories/
@@ -135,7 +135,7 @@ npm run minio:setup
 
 # Ручная настройка через MinIO Console
 # 1. Откройте http://localhost:9001
-# 2. Создайте bucket "rolled-metal-images"
+# 2. Создайте bucket "parket-crm-images"
 # 3. Настройте CORS политику
 ```
 
@@ -234,7 +234,7 @@ echo $AWS_S3_ENDPOINT
 echo $AWS_S3_FORCE_PATH_STYLE
 
 # Проверьте bucket
-curl http://localhost:9000/rolled-metal-images/
+curl http://localhost:9000/parket-crm-images/
 ```
 
 ## Мониторинг

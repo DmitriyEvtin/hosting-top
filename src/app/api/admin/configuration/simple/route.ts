@@ -8,7 +8,7 @@ async function handler() {
       timestamp: new Date().toISOString(),
       environment: {
         nodeEnv: process.env.NODE_ENV || "development",
-        appName: process.env.APP_NAME || "Rolled Metal",
+        appName: process.env.APP_NAME || "Rolled parket-crm",
         appVersion: process.env.APP_VERSION || "1.0.0",
         isDevelopment: process.env.NODE_ENV === "development",
         database: {
@@ -43,11 +43,6 @@ async function handler() {
         monitoring: {
           sentry: process.env.SENTRY_DSN ? "configured" : "not_configured",
           logLevel: process.env.LOG_LEVEL || "info",
-        },
-        parsing: {
-          batchSize: parseInt(process.env.PARSING_BATCH_SIZE || "10"),
-          delayMs: parseInt(process.env.PARSING_DELAY_MS || "1000"),
-          maxRetries: parseInt(process.env.PARSING_MAX_RETRIES || "3"),
         },
         security: {
           corsOrigin: process.env.CORS_ORIGIN || "*",

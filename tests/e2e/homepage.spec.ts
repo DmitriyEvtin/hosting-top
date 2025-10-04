@@ -5,11 +5,11 @@ test.describe("Homepage", () => {
     await page.goto("/");
 
     // Check if the page loads without errors
-    await expect(page).toHaveTitle(/Каталог металлопроката/);
+    await expect(page).toHaveTitle(/Паркет CRM/);
 
     // Check if main content is visible
     await expect(
-      page.locator("h1:has-text('Каталог металлопроката')")
+      page.locator("h1:has-text('Паркет CRM')")
     ).toBeVisible();
   });
 
@@ -40,19 +40,19 @@ test.describe("Homepage", () => {
     // Test mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
     await expect(
-      page.locator("h1:has-text('Каталог металлопроката')")
+      page.locator("h1:has-text('Паркет CRM')")
     ).toBeVisible();
 
     // Test tablet viewport
     await page.setViewportSize({ width: 768, height: 1024 });
     await expect(
-      page.locator("h1:has-text('Каталог металлопроката')")
+      page.locator("h1:has-text('Паркет CRM')")
     ).toBeVisible();
 
     // Test desktop viewport
     await page.setViewportSize({ width: 1920, height: 1080 });
     await expect(
-      page.locator("h1:has-text('Каталог металлопроката')")
+      page.locator("h1:has-text('Паркет CRM')")
     ).toBeVisible();
   });
 
@@ -189,7 +189,7 @@ test.describe("Performance", () => {
 
     // Check for essential meta tags
     const title = await page.title();
-    expect(title).toContain("Каталог металлопроката");
+    expect(title).toContain("Паркет CRM");
 
     // Check for viewport meta tag
     const viewport = page.locator('meta[name="viewport"]');

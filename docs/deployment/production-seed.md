@@ -15,8 +15,8 @@ ADMIN_PASSWORD="your-secure-password-here"
 ADMIN_NAME="Администратор"
 
 # База данных
-POSTGRES_DB="rolled_metal"
-POSTGRES_USER="rolled_metal_user"
+POSTGRES_DB="parket_crm"
+POSTGRES_USER="parket_crm_user"
 POSTGRES_PASSWORD="your-secure-db-password"
 
 # NextAuth
@@ -39,7 +39,7 @@ NEXT_PUBLIC_SENTRY_DSN="your-public-sentry-dsn"
 ```bash
 # Docker Registry
 REGISTRY_URL="registry.evtin.ru"
-IMAGE_NAME="rolled_metal"
+IMAGE_NAME="parket_crm"
 IMAGE_TAG="latest"
 
 # Redis
@@ -74,10 +74,10 @@ docker-compose -f docker-compose.prod.yml ps
 
 ```bash
 # Проверка логов seed контейнера
-docker logs rolled-metal-seed-prod
+docker logs parket-crm-seed-prod
 
 # Проверка подключения к базе данных
-docker exec -it rolled-metal-postgres-prod psql -U rolled_metal_user -d rolled_metal -c "SELECT email, role FROM users WHERE role = 'ADMIN';"
+docker exec -it parket-crm-postgres-prod psql -U parket_crm_user -d parket_crm -c "SELECT email, role FROM users WHERE role = 'ADMIN';"
 ```
 
 ## Последовательность запуска
@@ -116,10 +116,10 @@ openssl rand -base64 16
 
 ```bash
 # Проверьте логи seed контейнера
-docker logs rolled-metal-seed-prod
+docker logs parket-crm-seed-prod
 
 # Проверьте переменные окружения
-docker exec rolled-metal-seed-prod env | grep ADMIN
+docker exec parket-crm-seed-prod env | grep ADMIN
 
 # Перезапустите seed контейнер
 docker-compose -f docker-compose.prod.yml restart seed
@@ -129,17 +129,17 @@ docker-compose -f docker-compose.prod.yml restart seed
 
 ```bash
 # Проверьте статус PostgreSQL
-docker logs rolled-metal-postgres-prod
+docker logs parket-crm-postgres-prod
 
 # Проверьте подключение
-docker exec -it rolled-metal-postgres-prod psql -U rolled_metal_user -d rolled_metal
+docker exec -it parket-crm-postgres-prod psql -U parket_crm_user -d parket_crm
 ```
 
 ### Проблема: Миграции не применяются
 
 ```bash
 # Проверьте логи migrations
-docker logs rolled-metal-migrations-prod
+docker logs parket-crm-migrations-prod
 
 # Принудительно запустите миграции
 docker-compose -f docker-compose.prod.yml run --rm migrations npx prisma migrate deploy
@@ -154,17 +154,17 @@ docker-compose -f docker-compose.prod.yml run --rm migrations npx prisma migrate
 docker-compose -f docker-compose.prod.yml ps
 
 # Логи приложения
-docker logs rolled-metal-app-prod
+docker logs parket-crm-app-prod
 
 # Логи nginx
-docker logs rolled-metal-nginx-prod
+docker logs parket-crm-nginx-prod
 ```
 
 ### Проверка базы данных
 
 ```bash
 # Подключение к БД
-docker exec -it rolled-metal-postgres-prod psql -U rolled_metal_user -d rolled_metal
+docker exec -it parket-crm-postgres-prod psql -U parket_crm_user -d parket_crm
 
 # Проверка пользователей
 SELECT id, email, role, created_at FROM users;
@@ -204,18 +204,18 @@ docker-compose -f docker-compose.prod.yml restart app
 
 ```bash
 # Создание бэкапа
-docker exec rolled-metal-postgres-prod pg_dump -U rolled_metal_user rolled_metal > backup_$(date +%Y%m%d_%H%M%S).sql
+docker exec parket-crm-postgres-prod pg_dump -U parket_crm_user parket_crm > backup_$(date +%Y%m%d_%H%M%S).sql
 
 # Восстановление из бэкапа
-docker exec -i rolled-metal-postgres-prod psql -U rolled_metal_user rolled_metal < backup_20240101_120000.sql
+docker exec -i parket-crm-postgres-prod psql -U parket_crm_user parket_crm < backup_20240101_120000.sql
 ```
 
 ### Бэкап volumes
 
 ```bash
 # Создание архива volumes
-docker run --rm -v rolled-metal_postgres_data:/data -v $(pwd):/backup alpine tar czf /backup/postgres_data_$(date +%Y%m%d_%H%M%S).tar.gz -C /data .
+docker run --rm -v parket-crm_postgres_data:/data -v $(pwd):/backup alpine tar czf /backup/postgres_data_$(date +%Y%m%d_%H%M%S).tar.gz -C /data .
 
 # Восстановление volumes
-docker run --rm -v rolled-metal_postgres_data:/data -v $(pwd):/backup alpine tar xzf /backup/postgres_data_20240101_120000.tar.gz -C /data
+docker run --rm -v parket-crm_postgres_data:/data -v $(pwd):/backup alpine tar xzf /backup/postgres_data_20240101_120000.tar.gz -C /data
 ```

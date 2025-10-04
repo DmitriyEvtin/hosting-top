@@ -11,7 +11,7 @@ const envSchema = z.object({
   NODE_ENV: z
     .enum(["development", "staging", "production"])
     .default("development"),
-  APP_NAME: z.string().default("Каталог металлопроката"),
+  APP_NAME: z.string().default("Паркет CRM"),
   APP_VERSION: z.string().default("1.0.0"),
 
   // База данных
@@ -32,26 +32,6 @@ const envSchema = z.object({
   AWS_REGION: z.string().default("eu-west-1"),
   AWS_S3_BUCKET: z.string().optional(),
   CLOUDFRONT_DOMAIN: z.string().optional(),
-
-  // Настройки парсинга
-  PARSING_BATCH_SIZE: z
-    .string()
-    .transform(Number)
-    .pipe(z.number().min(1).max(100))
-    .default("10"),
-  PARSING_DELAY_MS: z
-    .string()
-    .transform(Number)
-    .pipe(z.number().min(100).max(10000))
-    .default("1000"),
-  PARSING_MAX_RETRIES: z
-    .string()
-    .transform(Number)
-    .pipe(z.number().min(1).max(10))
-    .default("3"),
-  PARSING_USER_AGENT: z
-    .string()
-    .default("Mozilla/5.0 (compatible; RolledMetalParser/1.0)"),
 
   // Мониторинг
   SENTRY_DSN: z.string().url().optional().or(z.literal("")),

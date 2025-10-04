@@ -24,7 +24,7 @@
 ```yaml
 minio:
   image: minio/minio:latest
-  container_name: rolled-metal-minio
+  container_name: parket-crm-minio
   ports:
     - "9000:9000" # API порт
     - "9001:9001" # Console порт
@@ -47,7 +47,7 @@ minio:
 AWS_ACCESS_KEY_ID="minioadmin"
 AWS_SECRET_ACCESS_KEY="minioadmin123"
 AWS_REGION="us-east-1"
-AWS_S3_BUCKET="rolled-metal-images"
+AWS_S3_BUCKET="parket-crm-images"
 
 # MinIO endpoint
 AWS_S3_ENDPOINT="http://localhost:9000"
@@ -232,7 +232,7 @@ curl http://localhost:3000/api/upload/image
 ### Структура bucket
 
 ```
-rolled-metal-images/
+parket-crm-images/
 ├── images/
 │   ├── products/     # Изображения товаров
 │   ├── categories/   # Изображения категорий
@@ -299,7 +299,7 @@ make minio-status
 
 4. **Файлы не загружаются**
    - Проверьте endpoint: `echo $AWS_S3_ENDPOINT`
-   - Проверьте bucket: `curl http://localhost:9000/rolled-metal-images/`
+   - Проверьте bucket: `curl http://localhost:9000/parket-crm-images/`
 
 ## Миграция на AWS
 

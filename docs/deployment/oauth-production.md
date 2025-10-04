@@ -29,7 +29,7 @@ make prod-oauth-check
 #### Redirect URI для production
 
 ```
-https://metal-works.pro/api/auth/callback/{provider}
+https://parket-crm.ru/api/auth/callback/{provider}
 ```
 
 Где `{provider}` - это один из:
@@ -45,7 +45,7 @@ https://metal-works.pro/api/auth/callback/{provider}
 
 ```bash
 # В .env.production
-NEXTAUTH_URL=https://metal-works.pro
+NEXTAUTH_URL=https://parket-crm.ru
 
 # Google OAuth
 GOOGLE_CLIENT_ID=your-google-client-id
@@ -66,34 +66,34 @@ VK_CLIENT_SECRET=your-vk-client-secret
 2. Создайте новый проект или выберите существующий
 3. Включите Google+ API
 4. Создайте OAuth 2.0 credentials
-5. Добавьте Redirect URI: `https://metal-works.pro/api/auth/callback/google`
+5. Добавьте Redirect URI: `https://parket-crm.ru/api/auth/callback/google`
 
 ### VKontakte OAuth
 
 1. Перейдите на [VK Developers](https://vk.com/apps?act=manage)
 2. Создайте новое приложение
-3. В настройках укажите Redirect URI: `https://metal-works.pro/api/auth/callback/vk`
+3. В настройках укажите Redirect URI: `https://parket-crm.ru/api/auth/callback/vk`
 4. Включите доступ к email
 
 ### Одноклассники OAuth
 
 1. Перейдите на [OK Developers](https://ok.ru/devaccess)
 2. Создайте новое приложение
-3. Укажите Redirect URI: `https://metal-works.pro/api/auth/callback/ok`
+3. Укажите Redirect URI: `https://parket-crm.ru/api/auth/callback/ok`
 4. Включите права доступа VALUABLE_ACCESS
 
 ### Mail.ru OAuth
 
 1. Перейдите на [Mail.ru для разработчиков](https://o2.mail.ru/app/)
 2. Создайте новое приложение
-3. Укажите Redirect URI: `https://metal-works.pro/api/auth/callback/mail`
+3. Укажите Redirect URI: `https://parket-crm.ru/api/auth/callback/mail`
 4. Включите права доступа userinfo
 
 ### Yandex OAuth
 
 1. Перейдите на [Yandex OAuth](https://oauth.yandex.ru/)
 2. Создайте новое приложение
-3. Укажите Callback URI: `https://metal-works.pro/api/auth/callback/yandex`
+3. Укажите Callback URI: `https://parket-crm.ru/api/auth/callback/yandex`
 4. Включите доступ к email и базовой информации
 
 ## Проверка настройки
@@ -116,7 +116,7 @@ make prod-oauth-check
    make prod-up
    ```
 
-2. Перейдите на `https://metal-works.pro/auth/signin`
+2. Перейдите на `https://parket-crm.ru/auth/signin`
 
 3. Проверьте, что все OAuth кнопки отображаются
 
@@ -128,10 +128,10 @@ make prod-oauth-check
 
 ```bash
 # Логи приложения
-docker logs rolled-metal-app-prod -f
+docker logs parket-crm-app-prod -f
 
 # Логи nginx
-docker logs rolled-metal-nginx-prod -f
+docker logs parket-crm-nginx-prod -f
 ```
 
 ## Troubleshooting
@@ -161,7 +161,7 @@ DEBUG=next-auth*
 make prod-restart
 
 # Проверьте логи
-docker logs rolled-metal-app-prod -f
+docker logs parket-crm-app-prod -f
 ```
 
 ## Безопасность
@@ -178,8 +178,8 @@ docker logs rolled-metal-app-prod -f
 
 ```bash
 # Production
-https://metal-works.pro
-https://www.metal-works.pro
+https://parket-crm.ru
+https://www.parket-crm.ru
 ```
 
 ### 3. Мониторинг

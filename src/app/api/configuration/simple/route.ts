@@ -10,7 +10,7 @@ export async function GET() {
     // Простая проверка переменных окружения без сложной валидации
     const basicConfig = {
       nodeEnv: process.env.NODE_ENV || "development",
-      appName: process.env.APP_NAME || "Каталог металлопроката",
+      appName: process.env.APP_NAME || "Паркет CRM",
       appVersion: process.env.APP_VERSION || "1.0.0",
     };
 
@@ -87,16 +87,11 @@ export async function GET() {
         smtp: {
           status: smtpStatus,
           host: process.env.SMTP_HOST ? "configured" : "not_configured",
-          from: process.env.SMTP_FROM || "noreply@rolled-metal.local",
+          from: process.env.SMTP_FROM || "noreply@parket-crm.local",
         },
         monitoring: {
           sentry: sentryStatus,
           logLevel: process.env.LOG_LEVEL || "info",
-        },
-        parsing: {
-          batchSize: parseInt(process.env.PARSING_BATCH_SIZE || "10"),
-          delayMs: parseInt(process.env.PARSING_DELAY_MS || "1000"),
-          maxRetries: parseInt(process.env.PARSING_MAX_RETRIES || "3"),
         },
         security: {
           corsOrigin: process.env.CORS_ORIGIN || "http://localhost:3000",

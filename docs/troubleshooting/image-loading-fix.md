@@ -8,7 +8,7 @@
 "url" parameter is not allowed
 ```
 
-URL запроса: `https://metal-works.pro/_next/image?url=http%3A%2F%2Fs3.ru1.storage.beget.cloud%2F1974b310d475-rolled-metal%2Fimages%2Fprofile-logos%2Fqbz5nmkbr4mz7r633t6bamr1dl9otw27_1759574101215_15s952.jpeg&w=32&q=75`
+URL запроса: `https://parket-crm.ru/_next/image?url=http%3A%2F%2Fs3.ru1.storage.beget.cloud%2F1974b310d475-parket-crm%2Fimages%2Fprofile-logos%2Fqbz5nmkbr4mz7r633t6bamr1dl9otw27_1759574101215_15s952.jpeg&w=32&q=75`
 
 ## Причина
 

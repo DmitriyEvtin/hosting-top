@@ -429,8 +429,8 @@ import QRCode from "qrcode";
 
 export function generateSecret(userEmail: string) {
   const secret = speakeasy.generateSecret({
-    name: `Rolled Metal (${userEmail})`,
-    issuer: "Rolled Metal",
+    name: `Rolled parket-crm (${userEmail})`,
+    issuer: "Rolled parket-crm",
   });
 
   return secret;

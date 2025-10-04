@@ -1,6 +1,6 @@
 # Переменные окружения
 REGISTRY ?= localhost
-IMAGE_NAME ?= rolled_metal
+IMAGE_NAME ?= parket_crm
 TAG ?= latest
 ENVIRONMENT ?= development
 
@@ -49,7 +49,7 @@ mailhog-down:
 	docker compose stop mailer
 
 mailhog-logs:
-	docker logs rolled-metal-mailhog -f
+	docker logs parket-crm-mailhog -f
 
 mailhog-clear:
 	curl -X DELETE http://localhost:8025/api/v1/messages

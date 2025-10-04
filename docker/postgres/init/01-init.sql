@@ -1,4 +1,4 @@
--- Инициализация базы данных для проекта "Каталог металлопроката"
+-- Инициализация базы данных для проекта "Паркет CRM"
 -- Создание расширений для работы с JSON и полнотекстовым поиском
 
 -- Включаем расширения для работы с JSON
@@ -6,7 +6,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";
 
 -- Создаем схему для приложения (опционально, можно использовать public)
--- CREATE SCHEMA IF NOT EXISTS rolled_metal;
+-- CREATE SCHEMA IF NOT EXISTS parket_crm;
 
 -- Настройки для оптимизации производительности
 ALTER SYSTEM SET shared_preload_libraries = 'pg_stat_statements';

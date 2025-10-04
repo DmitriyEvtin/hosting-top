@@ -1,4 +1,4 @@
-# Архитектура проекта "Каталог металлопроката"
+# Архитектура проекта "Паркет CRM"
 
 ## Обзор
 
@@ -21,12 +21,6 @@
 - **Prisma ORM** - Работа с базой данных
 - **Redis** - Кэширование и сессии
 - **NextAuth.js** - Аутентификация с поддержкой OAuth провайдеров
-
-### Парсинг и обработка данных
-
-- **Puppeteer** - Автоматизация браузера
-- **Cheerio** - Парсинг HTML
-- **Axios** - HTTP клиент
 
 ### Cloud и DevOps
 
@@ -97,7 +91,6 @@ src/
         │   ├── mail-provider.ts # Mail.ru OAuth
         │   └── yandex-provider.ts # Yandex OAuth
         ├── aws-config.ts       # AWS S3 configuration
-        ├── parsing-config.ts    # Parsing configuration
         ├── database-test.ts    # Database testing utilities
         ├── theme-context.tsx    # Theme management context
         ├── utils.ts            # General utilities
@@ -154,7 +147,7 @@ src/views/home/ui/HomePage/
 ```bash
 # Основные настройки
 NODE_ENV="development"
-APP_NAME="Каталог металлопроката"
+APP_NAME="Паркет CRM"
 APP_VERSION="1.0.0"
 
 # База данных
@@ -190,10 +183,6 @@ AWS_REGION="eu-west-1"
 AWS_S3_BUCKET=""
 CLOUDFRONT_DOMAIN=""
 
-# Парсинг
-PARSING_BATCH_SIZE="10"
-PARSING_DELAY_MS="1000"
-PARSING_MAX_RETRIES="3"
 
 # Мониторинг
 SENTRY_DSN=""
@@ -204,7 +193,7 @@ SMTP_HOST=""
 SMTP_PORT="587"
 SMTP_USER=""
 SMTP_PASSWORD=""
-SMTP_FROM="noreply@rolled-metal.local"
+SMTP_FROM="noreply@parket-crm.local"
 
 # Безопасность
 CORS_ORIGIN="http://localhost:3000"
@@ -307,24 +296,6 @@ export const s3Config: S3ClientConfig = {
   credentials: {
     accessKeyId: env.AWS_ACCESS_KEY_ID!,
     secretAccessKey: env.AWS_SECRET_ACCESS_KEY!,
-  },
-};
-```
-
-### 4. Парсинг данных
-
-```typescript
-// src/shared/lib/parsing-config.ts
-export const parsingConfig = {
-  baseUrl: "https://bvb-alyans.ru",
-  batch: {
-    size: env.PARSING_BATCH_SIZE,
-    delay: env.PARSING_DELAY_MS,
-    maxRetries: env.PARSING_MAX_RETRIES,
-  },
-  browser: {
-    userAgent: env.PARSING_USER_AGENT,
-    headless: true,
   },
 };
 ```
@@ -574,8 +545,7 @@ Registry доступен по адресу: `https://registry.evtin.ru`
 
 1. **Этап 2**: Настройка тестирования
 2. **Этап 3**: Настройка CI/CD
-3. **Этап 4**: Разработка парсера
-4. **Этап 5**: Расширение схемы БД
+3. **Этап 5**: Расширение схемы БД
 
 ## Документация
 

@@ -22,7 +22,7 @@ const minioConfig = {
   forcePathStyle: true,
 };
 
-const bucketName = process.env.AWS_S3_BUCKET || "rolled-metal-images";
+const bucketName = process.env.AWS_S3_BUCKET || "parket-crm-images";
 
 async function setupMinIO() {
   console.log("🚀 Настройка MinIO...");

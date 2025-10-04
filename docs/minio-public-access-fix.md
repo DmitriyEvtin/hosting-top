@@ -2,7 +2,7 @@
 
 ## Проблема
 
-При загрузке логотипа профиля файл загружается в MinIO, но доступ к нему по URL `http://localhost:9000/rolled-metal-images/images/images/profile-logos/filename.jpg` невозможен.
+При загрузке логотипа профиля файл загружается в MinIO, но доступ к нему по URL `http://localhost:9000/parket-crm-images/images/images/profile-logos/filename.jpg` невозможен.
 
 ## Причины проблемы
 
@@ -75,7 +75,7 @@ AWS_S3_ENDPOINT="http://localhost:9000" \
 AWS_ACCESS_KEY_ID="minioadmin" \
 AWS_SECRET_ACCESS_KEY="minioadmin123" \
 AWS_REGION="us-east-1" \
-AWS_S3_BUCKET="rolled-metal-images" \
+AWS_S3_BUCKET="parket-crm-images" \
 node scripts/setup-minio.cjs
 ```
 
@@ -83,22 +83,22 @@ node scripts/setup-minio.cjs
 
 ```bash
 # Проверка доступности файла
-curl -I "http://localhost:9000/rolled-metal-images/images/profile-logos/filename.jpg"
+curl -I "http://localhost:9000/parket-crm-images/images/profile-logos/filename.jpg"
 ```
 
 ## Результат
 
 После применения исправлений:
 
-1. ✅ Bucket `rolled-metal-images` имеет публичную политику доступа
+1. ✅ Bucket `parket-crm-images` имеет публичную политику доступа
 2. ✅ Файлы загружаются в правильную структуру папок: `images/profile-logos/`
-3. ✅ Файлы доступны публично по URL: `http://localhost:9000/rolled-metal-images/images/profile-logos/filename.jpg`
+3. ✅ Файлы доступны публично по URL: `http://localhost:9000/parket-crm-images/images/profile-logos/filename.jpg`
 4. ✅ Настроены CORS политики для веб-доступа
 
 ## Структура папок в MinIO
 
 ```
-rolled-metal-images/
+parket-crm-images/
 ├── images/
 │   ├── products/
 │   ├── categories/
@@ -111,7 +111,7 @@ rolled-metal-images/
 
 - **MinIO Console**: http://localhost:9001
 - **MinIO API**: http://localhost:9000
-- **Bucket**: rolled-metal-images
+- **Bucket**: parket-crm-images
 
 ## Дополнительные настройки
 

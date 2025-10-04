@@ -21,7 +21,7 @@ SMTP_HOST="localhost"                # MailHog хост
 SMTP_PORT="1025"                     # MailHog порт
 SMTP_USER=""                         # Не требуется для MailHog
 SMTP_PASSWORD=""                     # Не требуется для MailHog
-SMTP_FROM="noreply@rolled-metal.local"  # Email отправителя
+SMTP_FROM="noreply@parket-crm.local"  # Email отправителя
 ```
 
 ### Production (реальный SMTP)

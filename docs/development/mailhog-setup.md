@@ -13,13 +13,13 @@ MailHog уже настроен в `docker-compose.yml`:
 ```yaml
 mailer:
   image: mailhog/mailhog
-  container_name: rolled-metal-mailhog
+  container_name: parket-crm-mailhog
   restart: unless-stopped
   ports:
     - "1025:1025" # SMTP порт
     - "8025:8025" # Web UI порт
   networks:
-    - rolled-metal-network
+    - parket-crm-network
 ```
 
 Запустите MailHog:
@@ -42,7 +42,7 @@ SMTP_HOST="localhost"
 SMTP_PORT="1025"
 SMTP_USER=""
 SMTP_PASSWORD=""
-SMTP_FROM="noreply@rolled-metal.local"
+SMTP_FROM="noreply@parket-crm.local"
 ```
 
 ### 3. Проверка работы
@@ -180,7 +180,7 @@ curl http://localhost:3000/api/email/status
 docker ps | grep mailhog
 
 # Посмотрите логи
-docker logs rolled-metal-mailhog
+docker logs parket-crm-mailhog
 
 # Перезапустите контейнер
 docker-compose restart mailer
@@ -243,7 +243,7 @@ docker-compose stop mailer
 docker-compose restart mailer
 
 # Просмотр логов MailHog
-docker logs rolled-metal-mailhog -f
+docker logs parket-crm-mailhog -f
 
 # Очистка писем в MailHog
 curl -X DELETE http://localhost:8025/api/v1/messages
@@ -300,10 +300,10 @@ curl http://localhost:3000/api/email/status
 
 ```bash
 # Просмотр логов в реальном времени
-docker logs rolled-metal-mailhog -f
+docker logs parket-crm-mailhog -f
 
 # Просмотр последних 100 строк
-docker logs rolled-metal-mailhog --tail 100
+docker logs parket-crm-mailhog --tail 100
 ```
 
 ### Метрики

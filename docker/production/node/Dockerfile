@@ -50,8 +50,8 @@ RUN npx prisma generate
 
 # Устанавливаем переменные окружения для сборки
 ENV NEXTAUTH_SECRET="docker-build-secret-key-for-production-build-32-chars"
-ENV NEXTAUTH_URL="https://rolled-metal.example.com"
-ENV DATABASE_URL="postgresql://user:password@localhost:5432/rolled_metal"
+ENV NEXTAUTH_URL="https://parket-crm.example.com"
+ENV DATABASE_URL="postgresql://user:password@localhost:5432/parket_crm"
 ENV NODE_ENV="production"
 ENV NEXT_TELEMETRY_DISABLED=1
 

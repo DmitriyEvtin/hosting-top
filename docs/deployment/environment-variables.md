@@ -5,8 +5,8 @@
 ### База данных
 
 ```bash
-POSTGRES_DB=rolled_metal
-POSTGRES_USER=rolled_metal_user
+POSTGRES_DB=parket_crm
+POSTGRES_USER=parket_crm_user
 POSTGRES_PASSWORD=your_secure_password_here
 ```
 

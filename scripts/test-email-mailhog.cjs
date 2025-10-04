@@ -72,7 +72,7 @@ async function testEmail() {
       );
       console.log('      SMTP_HOST="localhost"');
       console.log('      SMTP_PORT="1025"');
-      console.log('      SMTP_FROM="noreply@rolled-metal.local"');
+      console.log('      SMTP_FROM="noreply@parket-crm.local"');
       return;
     }
 

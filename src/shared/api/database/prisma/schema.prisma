@@ -9,18 +9,17 @@ datasource db {
 }
 
 model User {
-  id              String           @id @default(cuid())
-  email           String           @unique
-  name            String?
-  role            UserRole         @default(USER)
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  emailVerified   DateTime?
-  image           String?
-  password        String?
-  accounts        Account[]
-  parsingSessions ParsingSession[]
-  sessions        Session[]
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  role          UserRole  @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  accounts      Account[]
+  sessions      Session[]
 
   @@map("users")
 }
@@ -63,114 +62,8 @@ model VerificationToken {
   @@map("verification_tokens")
 }
 
-model Category {
-  id          String     @id @default(cuid())
-  name        String
-  slug        String     @unique
-  description String?
-  parentId    String?
-  sortOrder   Int        @default(0)
-  isActive    Boolean    @default(true)
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  parent      Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
-  children    Category[] @relation("CategoryHierarchy")
-  products    Product[]
-
-  @@map("categories")
-}
-
-model Product {
-  id          String             @id @default(cuid())
-  name        String
-  slug        String             @unique
-  description String?
-  price       Decimal?
-  currency    String             @default("RUB")
-  sku         String?            @unique
-  stock       Int                @default(0)
-  isActive    Boolean            @default(true)
-  categoryId  String
-  createdAt   DateTime           @default(now())
-  updatedAt   DateTime           @updatedAt
-  attributes  ProductAttribute[]
-  images      ProductImage[]
-  category    Category           @relation(fields: [categoryId], references: [id])
-
-  @@map("products")
-}
-
-model ProductImage {
-  id        String   @id @default(cuid())
-  productId String
-  url       String
-  alt       String?
-  sortOrder Int      @default(0)
-  isMain    Boolean  @default(false)
-  createdAt DateTime @default(now())
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  @@map("product_images")
-}
-
-model ProductAttribute {
-  id        String   @id @default(cuid())
-  productId String
-  name      String
-  value     String
-  sortOrder Int      @default(0)
-  createdAt DateTime @default(now())
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  @@map("product_attributes")
-}
-
-model ParsingSession {
-  id             String        @id @default(cuid())
-  userId         String
-  status         ParsingStatus @default(PENDING)
-  startedAt      DateTime      @default(now())
-  completedAt    DateTime?
-  totalItems     Int           @default(0)
-  processedItems Int           @default(0)
-  errors         Int           @default(0)
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
-  logs           ParsingLog[]
-  user           User          @relation(fields: [userId], references: [id])
-
-  @@map("parsing_sessions")
-}
-
-model ParsingLog {
-  id        String         @id @default(cuid())
-  sessionId String
-  level     LogLevel       @default(INFO)
-  message   String
-  data      Json?
-  createdAt DateTime       @default(now())
-  session   ParsingSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
-
-  @@map("parsing_logs")
-}
-
 enum UserRole {
   ADMIN
   USER
   MODERATOR
-}
-
-enum ParsingStatus {
-  PENDING
-  RUNNING
-  COMPLETED
-  FAILED
-  CANCELLED
-}
-
-enum LogLevel {
-  DEBUG
-  INFO
-  WARN
-  ERROR
 }

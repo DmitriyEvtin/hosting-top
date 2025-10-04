@@ -65,7 +65,6 @@ Scope указывает на конкретную часть кодовой б�
 - **`database`** - изменения в базе данных
 - **`ui`** - изменения в пользовательском интерфейсе
 - **`auth`** - изменения в аутентификации
-- **`parsing`** - изменения в парсинге данных
 - **`docker`** - изменения в Docker конфигурации
 - **`config`** - изменения в конфигурации
 
@@ -95,7 +94,7 @@ Breaking changes могут быть обозначены двумя спосо�
 
 ```bash
 # Исправление бага
-fix: resolve parsing error for empty product descriptions
+fix: resolve error for empty product descriptions
 
 # Новая функциональность
 feat: add product image optimization
@@ -104,7 +103,7 @@ feat: add product image optimization
 docs: update API documentation for product endpoints
 
 # Тесты
-test: add unit tests for product parser
+test: add unit tests for product service
 ```
 
 ### Коммиты с scope
@@ -124,7 +123,7 @@ chore(docker): update Node.js version in Dockerfile
 ### Коммиты с body
 
 ```bash
-feat(parsing): implement image processing pipeline
+feat(images): implement image processing pipeline
 
 Add comprehensive image processing pipeline using Caravaggio:
 - Image resizing and optimization

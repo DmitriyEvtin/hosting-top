@@ -22,7 +22,7 @@ SMTP_HOST="localhost"
 SMTP_PORT="1025"
 SMTP_USER=""
 SMTP_PASSWORD=""
-SMTP_FROM="noreply@rolled-metal.local"
+SMTP_FROM="noreply@parket-crm.local"
 ```
 
 ### 3. Запустите приложение

@@ -2,7 +2,7 @@
 
 ## Обзор
 
-Данный документ описывает настройку переменных окружения для проекта "Каталог металлопроката". Все переменные окружения централизованы и валидируются с помощью Zod схем.
+Данный документ описывает настройку переменных окружения для проекта "Паркет CRM". Все переменные окружения централизованы и валидируются с помощью Zod схем.
 
 ## Структура файлов
 
@@ -20,7 +20,7 @@
 
 ```bash
 NODE_ENV="development"                    # Окружение: development, staging, production
-APP_NAME="Каталог металлопроката"        # Название приложения
+APP_NAME="Паркет CRM"        # Название приложения
 APP_VERSION="1.0.0"                      # Версия приложения
 ```
 
@@ -32,9 +32,9 @@ DATABASE_URL="postgresql://user:password@localhost:5432/database?schema=public"
 
 **Настройка для разных окружений:**
 
-- **Development:** `postgresql://rolled_metal_user:rolled_metal_password@localhost:5432/rolled_metal`
-- **Staging:** `postgresql://user:password@staging-db:5432/rolled_metal_staging`
-- **Production:** `postgresql://user:password@prod-db:5432/rolled_metal_prod`
+- **Development:** `postgresql://parket_crm_user:parket_crm_password@localhost:5432/parket_crm`
+- **Staging:** `postgresql://user:password@staging-db:5432/parket_crm_staging`
+- **Production:** `postgresql://user:password@prod-db:5432/parket_crm_prod`
 
 ### 3. Redis (кэширование)
 
@@ -61,15 +61,6 @@ AWS_S3_BUCKET=""                        # Название S3 bucket
 CLOUDFRONT_DOMAIN=""                    # CloudFront домен (опционально)
 ```
 
-### 6. Настройки парсинга
-
-```bash
-PARSING_BATCH_SIZE="10"                 # Размер батча для обработки
-PARSING_DELAY_MS="1000"                 # Задержка между запросами (мс)
-PARSING_MAX_RETRIES="3"                 # Максимальное количество повторов
-PARSING_USER_AGENT="Mozilla/5.0..."     # User-Agent для парсинга
-```
-
 ### 7. Мониторинг и логирование
 
 ```bash
@@ -84,7 +75,7 @@ SMTP_HOST=""                            # SMTP сервер
 SMTP_PORT="587"                         # SMTP порт
 SMTP_USER=""                            # SMTP пользователь
 SMTP_PASSWORD=""                        # SMTP пароль
-SMTP_FROM="noreply@rolled-metal.local"  # Email отправителя
+SMTP_FROM="noreply@parket-crm.local"  # Email отправителя
 ```
 
 ### 9. Безопасность
@@ -115,9 +106,9 @@ cp env.example .env.staging
 
 # Обновите переменные для staging окружения
 NODE_ENV="staging"
-DATABASE_URL="postgresql://user:password@staging-db:5432/rolled_metal_staging"
-NEXTAUTH_URL="https://staging.rolled-metal.com"
-AWS_S3_BUCKET="rolled-metal-staging"
+DATABASE_URL="postgresql://user:password@staging-db:5432/parket_crm_staging"
+NEXTAUTH_URL="https://staging.parket-crm.com"
+AWS_S3_BUCKET="parket-crm-staging"
 ```
 
 ### Production
@@ -128,10 +119,10 @@ cp env.example .env.production
 
 # Обновите переменные для production окружения
 NODE_ENV="production"
-DATABASE_URL="postgresql://user:password@prod-db:5432/rolled_metal_prod"
-NEXTAUTH_URL="https://rolled-metal.com"
+DATABASE_URL="postgresql://user:password@prod-db:5432/parket_crm_prod"
+NEXTAUTH_URL="https://parket-crm.com"
 NEXTAUTH_SECRET="your-production-secret-key-here"
-AWS_S3_BUCKET="rolled-metal-prod"
+AWS_S3_BUCKET="parket-crm-prod"
 ```
 
 ## Валидация переменных

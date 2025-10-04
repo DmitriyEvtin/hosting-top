@@ -9,12 +9,9 @@
 ### Основные модели
 
 - **User** - Пользователи системы (администраторы и обычные пользователи)
-- **Category** - Категории товаров с поддержкой иерархии
-- **Product** - Товары металлопроката
-- **ProductImage** - Изображения товаров
-- **ProductAttribute** - Атрибуты товаров (характеристики)
-- **ParsingSession** - Сессии парсинга данных
-- **ParsingLog** - Логи процесса парсинга
+- **Account** - OAuth аккаунты пользователей
+- **Session** - Сессии пользователей
+- **VerificationToken** - Токены для верификации email
 
 ## Запуск базы данных
 
@@ -34,9 +31,9 @@ docker compose logs -f postgres
 ### 2. Подключение к базе данных
 
 - **PostgreSQL**: `localhost:5432`
-- **База данных**: `rolled_metal`
-- **Пользователь**: `rolled_metal_user`
-- **Пароль**: `rolled_metal_password`
+- **База данных**: `parket_crm`
+- **Пользователь**: `parket_crm_user`
+- **Пароль**: `parket_crm_password`
 
 ### 3. Веб-интерфейс для управления БД
 
@@ -48,9 +45,9 @@ docker compose up -d adminer
 Откройте http://localhost:8080 и используйте следующие данные:
 
 - **Сервер**: `postgres`
-- **Пользователь**: `rolled_metal_user`
-- **Пароль**: `rolled_metal_password`
-- **База данных**: `rolled_metal`
+- **Пользователь**: `parket_crm_user`
+- **Пароль**: `parket_crm_password`
+- **База данных**: `parket_crm`
 
 ## Работа с Prisma
 
