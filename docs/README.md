@@ -50,6 +50,7 @@
 
 - [Аутентификация](./security/authentication.md) - Система авторизации
 - [Настройка администратора](./security/admin-setup.md) - Создание и управление администратором
+- [Email API Security](./security/email-api-security.md) - Безопасность email API
 - [Защита данных](./security/data-protection.md) - Безопасность данных
 - [Соответствие требованиям](./security/compliance.md) - GDPR и другие требования
 

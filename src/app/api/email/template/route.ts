@@ -1,5 +1,6 @@
 /**
  * API endpoint для отправки email по шаблону
+ * Требует аутентификации и прав администратора
  */
 
 import {
@@ -7,11 +8,27 @@ import {
   emailTemplates,
   renderTemplate,
 } from "@/shared/api/email";
+import { authOptions } from "@/shared/lib/auth-config";
 import { hasSmtp } from "@/shared/lib/env-simple";
+import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
+    // Проверка аутентификации
+    const session = await getServerSession(authOptions);
+    if (!session?.user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    // Проверка прав администратора
+    if (session.user.role !== "ADMIN") {
+      return NextResponse.json(
+        { error: "Forbidden. Admin access required." },
+        { status: 403 }
+      );
+    }
+
     if (!hasSmtp) {
       return NextResponse.json(
         { error: "Email service is not configured" },
