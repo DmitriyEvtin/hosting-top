@@ -10,6 +10,7 @@ import { Button } from "@/shared/ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/Card";
 import { ImageUpload } from "@/shared/ui/ImageUpload";
 import { ExternalLink, Image as ImageIcon, Trash2 } from "lucide-react";
+import Image from "next/image";
 import React, { useState } from "react";
 
 /**
@@ -52,7 +53,20 @@ export const ProductImageUpload: React.FC<ProductImageUploadProps> = ({
   /**
    * Обработка успешной загрузки
    */
-  const handleUploadComplete = (result: any) => {
+  const handleUploadComplete = (result: {
+    image: {
+      key: string;
+      url: string;
+      size: number;
+      etag: string;
+    };
+    thumbnails?: Array<{
+      key: string;
+      url: string;
+      size: number;
+      etag: string;
+    }>;
+  }) => {
     const newImage: UploadedImage = {
       key: result.image.key,
       url: result.image.url,
@@ -164,11 +178,12 @@ export const ProductImageUpload: React.FC<ProductImageUploadProps> = ({
                 >
                   {/* Превью изображения */}
                   <div className="relative aspect-square bg-gray-100 rounded-lg overflow-hidden">
-                    <img
+                    <Image
                       src={image.url}
                       alt={`Изображение ${index + 1}`}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
 

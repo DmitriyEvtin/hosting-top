@@ -1,5 +1,5 @@
 // Тест API профиля
-const { PrismaClient } = require("./src/shared/api/database/prisma");
+import { PrismaClient } from "./src/shared/api/database/prisma";
 
 async function testProfileAPI() {
   const prisma = new PrismaClient();
@@ -11,7 +11,7 @@ async function testProfileAPI() {
       select: { id: true, email: true, name: true, logoUrl: true },
     });
 
-    console.log("Пользователь:", user);
+    console.warn("Пользователь:", user);
 
     // Обновляем logoUrl
     const updatedUser = await prisma.user.update({
@@ -22,7 +22,7 @@ async function testProfileAPI() {
       select: { id: true, email: true, name: true, logoUrl: true },
     });
 
-    console.log("Обновленный пользователь:", updatedUser);
+    console.warn("Обновленный пользователь:", updatedUser);
   } catch (error) {
     console.error("Ошибка:", error);
   } finally {

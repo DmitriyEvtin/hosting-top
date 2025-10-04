@@ -141,7 +141,7 @@ export class S3Service {
 
       // Конвертация stream в Buffer
       const chunks: Uint8Array[] = [];
-      const stream = response.Body as any;
+      const stream = response.Body as ReadableStream;
 
       for await (const chunk of stream) {
         chunks.push(chunk);
@@ -282,7 +282,9 @@ export class S3Service {
   /**
    * Получение подписанного URL для временного доступа
    */
-  async getSignedUrl(key: string, expiresIn: number = 3600): Promise<string> {
+  async getSignedUrl(key: string, _expiresIn: number = 3600): Promise<string> {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const expiresIn = _expiresIn;
     // Для подписанных URL нужно использовать отдельную утилиту
     // Пока возвращаем публичный URL
     return this.getPublicUrl(key);

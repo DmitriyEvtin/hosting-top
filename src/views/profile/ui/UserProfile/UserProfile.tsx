@@ -14,6 +14,7 @@ import { useProfile } from "@/views/profile/model/useProfile";
 import { ProfileLogoUpload } from "@/views/profile/ui/ProfileLogoUpload";
 import { AlertCircle, CheckCircle } from "lucide-react";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import { useState } from "react";
 
 export function UserProfile() {
@@ -116,12 +117,14 @@ export function UserProfile() {
           <CardContent className="space-y-4">
             {/* Логотип профиля */}
             <div className="flex items-center space-x-4 mb-6">
-              <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
+              <div className="relative w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
                 {currentUser.image ? (
-                  <img
+                  <Image
                     src={currentUser.image}
                     alt="Логотип профиля"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="64px"
                   />
                 ) : (
                   <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">

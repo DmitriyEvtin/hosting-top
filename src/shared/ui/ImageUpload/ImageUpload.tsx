@@ -69,6 +69,85 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   /**
+   * Загрузка файла на сервер
+   */
+  const uploadFile = useCallback(
+    async (file: File, uploadIndex: number) => {
+      try {
+        const formData = new FormData();
+        formData.append("file", file);
+        if (category) formData.append("category", category);
+        if (productId) formData.append("productId", productId);
+        formData.append("generateThumbnails", generateThumbnails.toString());
+
+        const xhr = new XMLHttpRequest();
+
+        // Отслеживание прогресса
+        xhr.upload.addEventListener("progress", event => {
+          if (event.lengthComputable) {
+            const progress = Math.round((event.loaded / event.total) * 100);
+            setUploads(prev =>
+              prev.map((upload, index) =>
+                index === uploadIndex ? { ...upload, progress } : upload
+              )
+            );
+          }
+        });
+
+        // Обработка результата
+        xhr.addEventListener("load", () => {
+          if (xhr.status === 201) {
+            const result: UploadResult = JSON.parse(xhr.responseText);
+            setUploads(prev =>
+              prev.map((upload, index) =>
+                index === uploadIndex
+                  ? { ...upload, status: "success", result }
+                  : upload
+              )
+            );
+            onUploadComplete?.(result);
+          } else {
+            const error =
+              JSON.parse(xhr.responseText).error || "Ошибка загрузки";
+            setUploads(prev =>
+              prev.map((upload, index) =>
+                index === uploadIndex
+                  ? { ...upload, status: "error", error }
+                  : upload
+              )
+            );
+            onUploadError?.(error);
+          }
+        });
+
+        xhr.addEventListener("error", () => {
+          setUploads(prev =>
+            prev.map((upload, index) =>
+              index === uploadIndex
+                ? { ...upload, status: "error", error: "Ошибка сети" }
+                : upload
+            )
+          );
+          onUploadError?.("Ошибка сети");
+        });
+
+        xhr.open("POST", "/api/upload/image");
+        xhr.send(formData);
+      } catch {
+        setUploads(prev =>
+          prev.map((upload, index) =>
+            index === uploadIndex
+              ? { ...upload, status: "error", error: "Ошибка загрузки" }
+              : upload
+          )
+        );
+        onUploadError?.("Ошибка загрузки");
+      }
+    },
+    [category, productId, generateThumbnails, onUploadError, onUploadComplete]
+  );
+
+  /**
    * Обработка выбора файлов
    */
   const handleFileSelect = useCallback(
@@ -111,83 +190,8 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
         uploadFile(file, newUploads.length - filesToUpload.length + index);
       });
     },
-    [acceptedTypes, maxSize, maxFiles, onUploadError]
+    [acceptedTypes, maxSize, maxFiles, onUploadError, uploadFile]
   );
-
-  /**
-   * Загрузка файла на сервер
-   */
-  const uploadFile = async (file: File, uploadIndex: number) => {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      if (category) formData.append("category", category);
-      if (productId) formData.append("productId", productId);
-      formData.append("generateThumbnails", generateThumbnails.toString());
-
-      const xhr = new XMLHttpRequest();
-
-      // Отслеживание прогресса
-      xhr.upload.addEventListener("progress", event => {
-        if (event.lengthComputable) {
-          const progress = Math.round((event.loaded / event.total) * 100);
-          setUploads(prev =>
-            prev.map((upload, index) =>
-              index === uploadIndex ? { ...upload, progress } : upload
-            )
-          );
-        }
-      });
-
-      // Обработка результата
-      xhr.addEventListener("load", () => {
-        if (xhr.status === 201) {
-          const result: UploadResult = JSON.parse(xhr.responseText);
-          setUploads(prev =>
-            prev.map((upload, index) =>
-              index === uploadIndex
-                ? { ...upload, status: "success", result }
-                : upload
-            )
-          );
-          onUploadComplete?.(result);
-        } else {
-          const error = JSON.parse(xhr.responseText).error || "Ошибка загрузки";
-          setUploads(prev =>
-            prev.map((upload, index) =>
-              index === uploadIndex
-                ? { ...upload, status: "error", error }
-                : upload
-            )
-          );
-          onUploadError?.(error);
-        }
-      });
-
-      xhr.addEventListener("error", () => {
-        setUploads(prev =>
-          prev.map((upload, index) =>
-            index === uploadIndex
-              ? { ...upload, status: "error", error: "Ошибка сети" }
-              : upload
-          )
-        );
-        onUploadError?.("Ошибка сети");
-      });
-
-      xhr.open("POST", "/api/upload/image");
-      xhr.send(formData);
-    } catch (error) {
-      setUploads(prev =>
-        prev.map((upload, index) =>
-          index === uploadIndex
-            ? { ...upload, status: "error", error: "Ошибка загрузки" }
-            : upload
-        )
-      );
-      onUploadError?.("Ошибка загрузки");
-    }
-  };
 
   /**
    * Обработка drag & drop

@@ -134,8 +134,10 @@ export class ImageProcessingService {
    * В реальном проекте здесь должна быть интеграция с Sharp или Jimp
    */
   private async processImageServer(
-    imageBuffer: Buffer,
-    options: ImageProcessingOptions
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _imageBuffer: Buffer,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _options: ImageProcessingOptions
   ): Promise<ProcessedImage> {
     // Заглушка для серверной обработки
     // В реальном проекте здесь должна быть интеграция с Sharp

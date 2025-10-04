@@ -1,4 +1,4 @@
-const { PrismaClient } = require("./src/shared/api/database/prisma");
+import { PrismaClient } from "./src/shared/api/database/prisma";
 
 async function createTestUser() {
   const prisma = new PrismaClient();
@@ -15,7 +15,7 @@ async function createTestUser() {
       },
     });
 
-    console.log("Создан пользователь:", user);
+    console.warn("Создан пользователь:", user);
   } catch (error) {
     console.error("Ошибка создания пользователя:", error);
   } finally {

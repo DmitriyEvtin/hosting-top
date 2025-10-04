@@ -9,6 +9,7 @@ import {
   User,
   X,
 } from "lucide-react";
+import Image from "next/image";
 import React, { useCallback, useRef, useState } from "react";
 
 /**
@@ -187,11 +188,13 @@ export function ProfileLogoUpload({
       {/* Текущий логотип */}
       {currentLogoUrl && (
         <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
-          <div className="relative">
-            <img
+          <div className="relative w-16 h-16">
+            <Image
               src={currentLogoUrl}
               alt="Логотип профиля"
-              className="w-16 h-16 rounded-full object-cover border-2 border-gray-200"
+              fill
+              className="rounded-full object-cover border-2 border-gray-200"
+              sizes="64px"
             />
             {allowRemove && (
               <button

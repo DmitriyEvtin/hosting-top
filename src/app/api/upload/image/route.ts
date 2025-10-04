@@ -8,17 +8,17 @@ import { imageProcessingService } from "@/shared/lib/image-processing";
 import { s3KeyUtils, s3Service } from "@/shared/lib/s3-utils";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
+// import { z } from "zod";
 
 /**
  * Схема валидации для загрузки изображения
  */
-const uploadImageSchema = z.object({
-  file: z.string().min(1, "Файл обязателен"),
-  category: z.string().optional(),
-  productId: z.string().optional(),
-  generateThumbnails: z.boolean().default(true),
-});
+// const uploadImageSchema = z.object({
+//   file: z.string().min(1, "Файл обязателен"),
+//   category: z.string().optional(),
+//   productId: z.string().optional(),
+//   generateThumbnails: z.boolean().default(true),
+// });
 
 /**
  * POST /api/upload/image
@@ -75,7 +75,21 @@ export async function POST(request: NextRequest) {
       category: category || "",
     });
 
-    const result: any = {
+    const result: {
+      success: boolean;
+      image: {
+        key: string;
+        url: string;
+        size: number;
+        etag: string;
+      };
+      thumbnails?: Array<{
+        key: string;
+        url: string;
+        size: number;
+        etag: string;
+      }>;
+    } = {
       success: true,
       image: {
         key: uploadResult.key,

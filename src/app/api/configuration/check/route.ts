@@ -3,7 +3,7 @@
  * GET /api/config/check
  */
 
-import { checkAwsAvailability } from "@/shared/lib/aws-config";
+import { isAwsConfigured } from "@/shared/lib/aws-config";
 import { testDatabaseConnection } from "@/shared/lib/database-test";
 import {
   env,
@@ -41,7 +41,7 @@ export async function GET() {
     let awsStatus = "not_configured";
     if (hasAws) {
       try {
-        const awsAvailable = await checkAwsAvailability();
+        const awsAvailable = isAwsConfigured();
         awsStatus = awsAvailable ? "available" : "unavailable";
       } catch {
         awsStatus = "error";
