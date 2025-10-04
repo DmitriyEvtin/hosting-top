@@ -32,6 +32,7 @@ const eslintConfig = [
       '**/*.spec.tsx',
       '**/prisma/generated/**',
       '**/generated/**',
+      'next-env.d.ts',
     ],
   },
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
