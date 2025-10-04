@@ -185,9 +185,7 @@ export function UsersPage() {
       // Обновляем список пользователей
       await fetchUsers();
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Ошибка сохранения пользователя"
-      );
+      // Не устанавливаем ошибку на странице, только пробрасываем в модальное окно
       throw err; // Пробрасываем ошибку для отображения в модальном окне
     }
   };
@@ -260,7 +258,7 @@ export function UsersPage() {
           />
         </div>
 
-        {/* Ошибка */}
+        {/* Ошибка загрузки данных */}
         {error && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
             <p className="text-red-600">{error}</p>

@@ -57,6 +57,7 @@ export function UserEditModal({
     password: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [serverError, setServerError] = useState<string>("");
 
   useEffect(() => {
     if (user) {
@@ -75,6 +76,7 @@ export function UserEditModal({
       });
     }
     setErrors({});
+    setServerError("");
   }, [user]);
 
   const validateForm = () => {
@@ -107,6 +109,9 @@ export function UserEditModal({
       return;
     }
 
+    // Очищаем предыдущие ошибки
+    setServerError("");
+
     try {
       await onSave({
         name: formData.name.trim(),
@@ -117,6 +122,12 @@ export function UserEditModal({
       onClose();
     } catch (error) {
       console.error("Ошибка сохранения пользователя:", error);
+      // Отображаем ошибку сервера в форме
+      setServerError(
+        error instanceof Error
+          ? error.message
+          : "Ошибка сохранения пользователя"
+      );
     }
   };
 
@@ -124,6 +135,10 @@ export function UserEditModal({
     setFormData(prev => ({ ...prev, [field]: value }));
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: "" }));
+    }
+    // Очищаем серверную ошибку при изменении полей
+    if (serverError) {
+      setServerError("");
     }
   };
 
@@ -142,6 +157,13 @@ export function UserEditModal({
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Серверная ошибка */}
+          {serverError && (
+            <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-sm text-red-600">{serverError}</p>
+            </div>
+          )}
+
           <div className="space-y-2">
             <Label htmlFor="name">Имя *</Label>
             <Input
