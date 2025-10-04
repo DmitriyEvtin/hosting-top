@@ -2,7 +2,7 @@ import { prisma } from "@/shared/api/database/prisma";
 import { withAdminAuth } from "@/shared/lib/admin-middleware";
 import { NextRequest, NextResponse } from "next/server";
 
-async function handler(request: NextRequest) {
+async function handler() {
   try {
     // Тестируем подключение к базе данных
     await prisma.$connect();
@@ -39,4 +39,5 @@ async function handler(request: NextRequest) {
   }
 }
 
-export const GET = (request: NextRequest) => withAdminAuth(request, handler);
+export const GET = (request: NextRequest) =>
+  withAdminAuth(request, () => handler());

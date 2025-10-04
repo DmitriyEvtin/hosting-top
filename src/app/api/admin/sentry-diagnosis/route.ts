@@ -11,7 +11,7 @@ async function handler(request: NextRequest) {
       Sentry.captureMessage("Тест диагностики Sentry", "info");
       sentryAvailable = true;
     } catch (error) {
-      console.log("Sentry недоступен:", error);
+      console.warn("Sentry недоступен:", error);
     }
 
     const diagnosis = {

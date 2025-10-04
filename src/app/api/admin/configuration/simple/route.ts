@@ -1,7 +1,7 @@
 import { withAdminAuth } from "@/shared/lib/admin-middleware";
 import { NextRequest, NextResponse } from "next/server";
 
-async function handler(request: NextRequest) {
+async function handler() {
   try {
     const config = {
       status: "healthy",
@@ -74,4 +74,5 @@ async function handler(request: NextRequest) {
   }
 }
 
-export const GET = (request: NextRequest) => withAdminAuth(request, handler);
+export const GET = (request: NextRequest) =>
+  withAdminAuth(request, () => handler());

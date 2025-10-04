@@ -2,7 +2,7 @@ import { withAdminAuth } from "@/shared/lib/admin-middleware";
 import * as Sentry from "@sentry/nextjs";
 import { NextRequest, NextResponse } from "next/server";
 
-async function handler(request: NextRequest) {
+async function handler() {
   try {
     // Отправляем тестовую ошибку в Sentry
     const testError = new Error("Тестовая ошибка из админ-панели");
@@ -25,4 +25,5 @@ async function handler(request: NextRequest) {
   }
 }
 
-export const GET = (request: NextRequest) => withAdminAuth(request, handler);
+export const GET = (request: NextRequest) =>
+  withAdminAuth(request, () => handler());
