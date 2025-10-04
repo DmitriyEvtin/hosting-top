@@ -1,44 +1,8 @@
-# AWS Integration Guide
+# AWS Integration Documentation
 
 ## Обзор
 
 Документация по интеграции с Amazon Web Services (AWS) для хранения и обработки изображений в проекте "Паркет CRM".
-
-## Быстрый старт
-
-### 1. Настройка AWS аккаунта
-
-```bash
-# 1. Создайте AWS аккаунт
-# 2. Настройте IAM пользователя с правами S3
-# 3. Создайте S3 bucket
-# 4. Настройте CloudFront (опционально)
-```
-
-### 2. Настройка переменных окружения
-
-```bash
-# AWS credentials
-AWS_ACCESS_KEY_ID="your-access-key"
-AWS_SECRET_ACCESS_KEY="your-secret-key"
-AWS_REGION="eu-west-1"
-AWS_S3_BUCKET="your-bucket-name"
-
-# CloudFront (опционально)
-CLOUDFRONT_DOMAIN="your-cloudfront-domain"
-```
-
-### 3. Проверка работы
-
-```bash
-# Запуск приложения
-npm run dev
-
-# Тестирование загрузки
-curl -X POST http://localhost:3000/api/upload/image \
-  -F "file=@test-image.jpg" \
-  -F "category=test"
-```
 
 ## Архитектура
 
@@ -67,6 +31,19 @@ src/app/api/upload/
 
 ## Конфигурация
 
+### Переменные окружения
+
+```bash
+# AWS Credentials
+AWS_ACCESS_KEY_ID="your-access-key"
+AWS_SECRET_ACCESS_KEY="your-secret-key"
+AWS_REGION="eu-west-1"
+AWS_S3_BUCKET="your-bucket-name"
+
+# CloudFront (опционально)
+CLOUDFRONT_DOMAIN="your-cloudfront-domain"
+```
+
 ### Настройка S3 Bucket
 
 1. Создайте S3 bucket в AWS Console
@@ -85,13 +62,6 @@ src/app/api/upload/
 
 3. Настройте публичный доступ для чтения
 4. Включите версионирование (опционально)
-
-### CloudFront настройка
-
-1. Создайте CloudFront distribution
-2. Настройте origin на ваш S3 bucket
-3. Настройте кэширование
-4. Получите домен CloudFront
 
 ## API Endpoints
 
@@ -138,9 +108,35 @@ src/app/api/upload/
 - `category` (string, optional) - Фильтр по категории
 - `limit` (number, optional) - Лимит результатов (по умолчанию 50)
 
+**Ответ:**
+
+```json
+{
+  "success": true,
+  "images": [
+    {
+      "key": "images/product_123456_abc123.jpg",
+      "url": "https://bucket.s3.region.amazonaws.com/images/product_123456_abc123.jpg",
+      "size": 1024000,
+      "lastModified": "2024-01-01T12:00:00.000Z",
+      "etag": "\"abc123def456\""
+    }
+  ]
+}
+```
+
 ### DELETE /api/upload/image/[key]
 
 Удаление изображения из S3.
+
+**Ответ:**
+
+```json
+{
+  "success": true,
+  "message": "Изображение успешно удалено"
+}
+```
 
 ## Использование
 
@@ -329,12 +325,3 @@ npm run test:e2e -- upload
 2. **Progressive JPEG** поддержка
 3. **Responsive images** с srcset
 4. **Image optimization** на лету
-
-## Альтернативы для разработки
-
-Для локальной разработки рекомендуется использовать MinIO:
-
-- [MinIO Setup Guide](./minio-setup.md) - S3-совместимое локальное хранилище
-- Быстрый старт без настройки AWS
-- Полная совместимость с S3 API
-- Бесплатное использование

@@ -1,49 +1,80 @@
-# Переменные окружения для Production
+# Переменные окружения
 
-## Обязательные переменные
+[← Назад к документации](../README.md)
 
-### База данных
+## 📋 Обзор
 
-```bash
-POSTGRES_DB=parket_crm
-POSTGRES_USER=parket_crm_user
-POSTGRES_PASSWORD=your_secure_password_here
+Данный документ описывает полную настройку переменных окружения для проекта "Паркет CRM" во всех средах: development, staging и production. Все переменные централизованы и валидируются с помощью Zod схем.
+
+## 🏗️ Структура файлов
+
+```
+├── env.example                 # Пример всех переменных окружения
+├── .env.development           # Переменные для разработки (создать вручную)
+├── .env.staging              # Переменные для staging (создать вручную)
+├── .env.production           # Переменные для production (создать вручную)
+└── src/shared/lib/env.ts     # Валидация и типизация переменных
 ```
 
-### Redis
+## 🔧 Основные переменные
+
+### 1. Основные настройки приложения
 
 ```bash
-REDIS_URL=redis://redis:6379
+NODE_ENV="development"                    # Окружение: development, staging, production
+APP_NAME="Паркет CRM"                    # Название приложения
+APP_VERSION="1.0.0"                      # Версия приложения
 ```
 
-### Next.js
+### 2. База данных
 
 ```bash
-NODE_ENV=production
-NEXTAUTH_SECRET=your_nextauth_secret_here
-NEXTAUTH_URL=https://your-domain.com
+DATABASE_URL="postgresql://user:password@localhost:5432/database?schema=public"
 ```
 
-**⚠️ ВАЖНО**: `NEXTAUTH_URL` должен быть установлен в production окружении и не должен содержать `localhost`. Используйте полный URL вашего домена (например, `https://your-domain.com`).
+**Настройка для разных окружений:**
 
-### OAuth провайдеры
+- **Development:** `postgresql://parket_crm_user:parket_crm_password@localhost:5432/parket_crm`
+- **Staging:** `postgresql://user:password@staging-db:5432/parket_crm_staging`
+- **Production:** `postgresql://user:password@prod-db:5432/parket_crm_prod`
+
+### 3. Redis (кэширование)
 
 ```bash
-# Международные OAuth провайдеры
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-GITHUB_CLIENT_ID=your_github_client_id
-GITHUB_CLIENT_SECRET=your_github_client_secret
+REDIS_URL="redis://localhost:6379"       # URL Redis сервера (опционально)
+```
 
-# Российские OAuth провайдеры
-VK_CLIENT_ID=your_vk_client_id
-VK_CLIENT_SECRET=your_vk_client_secret
-OK_CLIENT_ID=your_ok_client_id
-OK_CLIENT_SECRET=your_ok_client_secret
-MAIL_CLIENT_ID=your_mail_client_id
-MAIL_CLIENT_SECRET=your_mail_client_secret
-YANDEX_CLIENT_ID=your_yandex_client_id
-YANDEX_CLIENT_SECRET=your_yandex_client_secret
+### 4. Аутентификация (NextAuth.js)
+
+```bash
+NEXTAUTH_SECRET="your-secret-key-here"   # Секретный ключ (минимум 32 символа)
+NEXTAUTH_URL="http://localhost:3000"     # URL приложения
+```
+
+**⚠️ ВАЖНО**: Для production обязательно измените `NEXTAUTH_SECRET` на уникальное значение!
+
+### 5. OAuth провайдеры
+
+#### Международные провайдеры
+
+```bash
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+GITHUB_CLIENT_ID=""
+GITHUB_CLIENT_SECRET=""
+```
+
+#### Российские провайдеры
+
+```bash
+VK_CLIENT_ID=""
+VK_CLIENT_SECRET=""
+OK_CLIENT_ID=""
+OK_CLIENT_SECRET=""
+MAIL_CLIENT_ID=""
+MAIL_CLIENT_SECRET=""
+YANDEX_CLIENT_ID=""
+YANDEX_CLIENT_SECRET=""
 ```
 
 **📋 Настройка OAuth провайдеров**:
@@ -51,29 +82,81 @@ YANDEX_CLIENT_SECRET=your_yandex_client_secret
 - [OAuth Setup Guide](../security/oauth-setup.md) - подробные инструкции по настройке каждого провайдера
 - [OAuth Production Setup](./oauth-production.md) - быстрая настройка для production окружения
 
-### AWS Configuration
+### 6. AWS S3 (хранение изображений)
 
 ```bash
-AWS_ACCESS_KEY_ID=your_aws_access_key_here
-AWS_SECRET_ACCESS_KEY=your_aws_secret_key_here
-AWS_REGION=us-east-1
-AWS_S3_BUCKET=your-s3-bucket-name
+AWS_ACCESS_KEY_ID=""                    # AWS Access Key ID
+AWS_SECRET_ACCESS_KEY=""                # AWS Secret Access Key
+AWS_REGION="eu-west-1"                  # AWS регион
+AWS_S3_BUCKET=""                        # Название S3 bucket
+CLOUDFRONT_DOMAIN=""                    # CloudFront домен (опционально)
 ```
 
-### Sentry
+### 7. Мониторинг и логирование
 
 ```bash
-SENTRY_DSN=your_sentry_dsn_here
+SENTRY_DSN=""                           # Sentry DSN для мониторинга ошибок
+LOG_LEVEL="debug"                       # Уровень логирования: error, warn, info, debug
 ```
 
-### Application
+### 8. Email (уведомления)
 
 ```bash
-APP_URL=https://your-domain.com
-API_URL=https://your-domain.com/api
+SMTP_HOST=""                            # SMTP сервер
+SMTP_PORT="587"                         # SMTP порт
+SMTP_USER=""                            # SMTP пользователь
+SMTP_PASSWORD=""                        # SMTP пароль
+SMTP_FROM="noreply@parket-crm.local"    # Email отправителя
 ```
 
-## Настройка GitHub Secrets
+### 9. Безопасность
+
+```bash
+CORS_ORIGIN="http://localhost:3000"      # Разрешенные домены для CORS
+RATE_LIMIT_MAX="100"                    # Максимальное количество запросов
+RATE_LIMIT_WINDOW_MS="900000"            # Окно для rate limiting (мс)
+```
+
+## 🌍 Настройка для разных окружений
+
+### Development
+
+```bash
+# Скопируйте env.example в .env.development
+cp env.example .env.development
+
+# Отредактируйте переменные для локальной разработки
+# Основные настройки уже готовы для development
+```
+
+### Staging
+
+```bash
+# Создайте .env.staging
+cp env.example .env.staging
+
+# Обновите переменные для staging окружения
+NODE_ENV="staging"
+DATABASE_URL="postgresql://user:password@staging-db:5432/parket_crm_staging"
+NEXTAUTH_URL="https://staging.parket-crm.com"
+AWS_S3_BUCKET="parket-crm-staging"
+```
+
+### Production
+
+```bash
+# Создайте .env.production
+cp env.example .env.production
+
+# Обновите переменные для production окружения
+NODE_ENV="production"
+DATABASE_URL="postgresql://user:password@prod-db:5432/parket_crm_prod"
+NEXTAUTH_URL="https://parket-crm.com"
+NEXTAUTH_SECRET="your-production-secret-key-here"
+AWS_S3_BUCKET="parket-crm-prod"
+```
+
+## 🔐 Настройка GitHub Secrets
 
 Для автоматического деплоя необходимо настроить следующие секреты в GitHub:
 
@@ -111,19 +194,85 @@ API_URL=https://your-domain.com/api
 - `DEPLOY_USER` - Пользователь для деплоя
 - `DEPLOY_KEY` - SSH ключ для деплоя
 
-## Локальная настройка
+## ✅ Валидация переменных
 
-1. Скопируйте `.env.example` в `.env.local`
-2. Заполните переменные реальными значениями
-3. Запустите `make dev` для development окружения
+Все переменные окружения автоматически валидируются при запуске приложения:
 
-## Production настройка
+```typescript
+import { env, validateProductionEnv } from "@/shared/lib/env";
 
-1. Создайте `.env.production` файл
-2. Заполните все переменные реальными значениями
-3. Запустите `make prod-up` для production окружения
+// Переменные уже валидированы и типизированы
+console.log(env.DATABASE_URL);
+console.log(env.NODE_ENV);
 
-## Устранение проблем
+// Дополнительная валидация для production
+validateProductionEnv();
+```
+
+## 🛠️ Утилиты для работы с окружением
+
+```typescript
+import {
+  isDevelopment,
+  isStaging,
+  isProduction,
+  hasRedis,
+  hasAws,
+  hasSmtp,
+  hasSentry,
+} from "@/shared/lib/env";
+
+// Проверка окружения
+if (isDevelopment) {
+  console.log("Режим разработки");
+}
+
+// Проверка доступности сервисов
+if (hasAws) {
+  console.log("AWS S3 доступен");
+}
+```
+
+## 🔒 Безопасность
+
+### Критические переменные для production
+
+Следующие переменные обязательны для production:
+
+- `DATABASE_URL`
+- `NEXTAUTH_SECRET`
+- `NEXTAUTH_URL`
+
+### Рекомендации по безопасности
+
+1. **Никогда не коммитьте .env файлы в git**
+2. **Используйте разные секреты для разных окружений**
+3. **Регулярно ротируйте секретные ключи**
+4. **Ограничьте доступ к production переменным**
+
+## 🚨 Устранение проблем
+
+### Ошибка валидации переменных
+
+```
+Ошибка валидации переменных окружения:
+DATABASE_URL: DATABASE_URL должен быть валидным URL
+```
+
+**Решение:** Проверьте формат DATABASE_URL и убедитесь, что он начинается с `postgresql://`
+
+### Ошибка NEXTAUTH_SECRET
+
+```
+NEXTAUTH_SECRET должен содержать минимум 32 символа
+```
+
+**Решение:** Сгенерируйте новый секретный ключ:
+
+```bash
+# Генерация случайного ключа
+openssl rand -base64 32
+```
 
 ### Ошибка "NEXTAUTH_URL не должен содержать localhost для production"
 
@@ -149,10 +298,57 @@ API_URL=https://your-domain.com/api
 3. Для GitHub Actions добавьте в Secrets:
    - `NEXTAUTH_URL` = `https://your-domain.com`
 
-## Безопасность
+### Ошибка AWS конфигурации
 
-- Никогда не коммитьте файлы с реальными секретами
-- Используйте сильные пароли для базы данных
-- Регулярно ротируйте AWS ключи
-- Используйте HTTPS для production
-- Настройте firewall для ограничения доступа
+```
+AWS S3 недоступен: AccessDenied
+```
+
+**Решение:** Проверьте AWS credentials и права доступа к S3 bucket.
+
+## 📊 Мониторинг
+
+### Логирование
+
+Все переменные окружения логируются при запуске (только в development):
+
+```typescript
+// В development режиме
+console.log("Environment variables loaded:", {
+  NODE_ENV: env.NODE_ENV,
+  DATABASE_URL: env.DATABASE_URL ? "Set" : "Not set",
+  AWS_S3_BUCKET: env.AWS_S3_BUCKET || "Not set",
+});
+```
+
+### Проверка конфигурации
+
+```typescript
+import { checkAwsAvailability } from "@/shared/lib/aws-config";
+
+// Проверка доступности AWS
+const awsAvailable = await checkAwsAvailability();
+console.log("AWS доступен:", awsAvailable);
+```
+
+## 📋 Быстрый старт
+
+### Локальная настройка
+
+1. Скопируйте `env.example` в `.env.development`
+2. Настройте переменные для вашего окружения
+3. Запустите приложение и проверьте логи
+4. Настройте переменные для staging и production окружений
+
+### Production настройка
+
+1. Создайте `.env.production` файл
+2. Заполните все переменные реальными значениями
+3. Запустите `make prod-up` для production окружения
+
+## 🔗 Связанные документы
+
+- [Настройка окружения](../development/setup.md) - полная настройка development окружения
+- [Docker конфигурация](./docker.md) - настройка Docker окружения
+- [OAuth Setup Guide](../security/oauth-setup.md) - настройка OAuth провайдеров
+- [AWS Integration](../aws-integration.md) - настройка AWS сервисов
