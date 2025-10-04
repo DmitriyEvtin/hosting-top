@@ -106,7 +106,11 @@ export function SignInForm({ callbackUrl = "/" }: SignInFormProps) {
           </div>
 
           <div className="mt-6">
-            <SocialAuthButtons callbackUrl={callbackUrl} disabled={isLoading} />
+            <SocialAuthButtons
+              callbackUrl={callbackUrl}
+              disabled={isLoading}
+              actionType="login"
+            />
           </div>
         </div>
 

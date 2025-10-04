@@ -10,6 +10,7 @@ interface SocialAuthButtonProps {
   callbackUrl?: string;
   className?: string;
   disabled?: boolean;
+  actionType?: "login" | "register";
 }
 
 export function SocialAuthButton({
@@ -18,6 +19,7 @@ export function SocialAuthButton({
   callbackUrl = "/",
   className,
   disabled = false,
+  actionType = "login",
 }: SocialAuthButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,7 +42,11 @@ export function SocialAuthButton({
       disabled={disabled || isLoading}
       className={className}
     >
-      {isLoading ? "Вход..." : children}
+      {isLoading
+        ? actionType === "register"
+          ? "Регистрация..."
+          : "Вход..."
+        : children}
     </Button>
   );
 }
