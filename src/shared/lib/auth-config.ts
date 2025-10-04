@@ -4,6 +4,10 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { prisma } from "../api/database";
+import MailProvider from "./auth-providers/mail-provider";
+import OKProvider from "./auth-providers/ok-provider";
+import VKProvider from "./auth-providers/vk-provider";
+import YandexProvider from "./auth-providers/yandex-provider";
 import "./auth-types";
 import { UserRole } from "./types";
 
@@ -65,6 +69,30 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GITHUB_CLIENT_ID!,
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     }),
+
+    // VK Provider
+    VKProvider({
+      clientId: process.env.VK_CLIENT_ID!,
+      clientSecret: process.env.VK_CLIENT_SECRET!,
+    }),
+
+    // Одноклассники Provider
+    OKProvider({
+      clientId: process.env.OK_CLIENT_ID!,
+      clientSecret: process.env.OK_CLIENT_SECRET!,
+    }),
+
+    // Mail.ru Provider
+    MailProvider({
+      clientId: process.env.MAIL_CLIENT_ID!,
+      clientSecret: process.env.MAIL_CLIENT_SECRET!,
+    }),
+
+    // Yandex Provider
+    YandexProvider({
+      clientId: process.env.YANDEX_CLIENT_ID!,
+      clientSecret: process.env.YANDEX_CLIENT_SECRET!,
+    }),
   ],
 
   session: {
@@ -104,7 +132,11 @@ export const authOptions: NextAuthOptions = {
       }
 
       // Для OAuth провайдеров проверяем, есть ли пользователь в БД
-      if (account?.provider === "google" || account?.provider === "github") {
+      if (
+        ["google", "github", "vk", "ok", "mail", "yandex"].includes(
+          account?.provider || ""
+        )
+      ) {
         const existingUser = await prisma.user.findUnique({
           where: { email: user.email! },
         });

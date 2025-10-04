@@ -2,6 +2,7 @@
 
 import { Button } from "@/shared/ui/Button";
 import { Card } from "@/shared/ui/Card";
+import { SocialAuthButtons } from "@/shared/ui/SocialAuthButtons";
 import { getSession, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -39,28 +40,6 @@ export function SignInForm({ callbackUrl = "/" }: SignInFormProps) {
       }
     } catch {
       setError("Произошла ошибка при входе");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleGoogleSignIn = async () => {
-    setIsLoading(true);
-    try {
-      await signIn("google", { callbackUrl });
-    } catch {
-      setError("Ошибка входа через Google");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleGitHubSignIn = async () => {
-    setIsLoading(true);
-    try {
-      await signIn("github", { callbackUrl });
-    } catch {
-      setError("Ошибка входа через GitHub");
     } finally {
       setIsLoading(false);
     }
@@ -126,26 +105,8 @@ export function SignInForm({ callbackUrl = "/" }: SignInFormProps) {
             </div>
           </div>
 
-          <div className="mt-6 space-y-3">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleGoogleSignIn}
-              disabled={isLoading}
-              className="w-full"
-            >
-              Войти через Google
-            </Button>
-
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleGitHubSignIn}
-              disabled={isLoading}
-              className="w-full"
-            >
-              Войти через GitHub
-            </Button>
+          <div className="mt-6">
+            <SocialAuthButtons callbackUrl={callbackUrl} disabled={isLoading} />
           </div>
         </div>
 

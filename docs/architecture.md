@@ -20,7 +20,7 @@
 - **PostgreSQL** - Основная база данных
 - **Prisma ORM** - Работа с базой данных
 - **Redis** - Кэширование и сессии
-- **NextAuth.js** - Аутентификация
+- **NextAuth.js** - Аутентификация с поддержкой OAuth провайдеров
 
 ### Парсинг и обработка данных
 
@@ -84,6 +84,11 @@ src/
     └── lib/                     # Shared utilities
         ├── env.ts               # Environment variables
         ├── auth-config.ts       # Authentication configuration
+        ├── auth-providers/      # OAuth providers
+        │   ├── vk-provider.ts   # VKontakte OAuth
+        │   ├── ok-provider.ts   # Одноклассники OAuth
+        │   ├── mail-provider.ts # Mail.ru OAuth
+        │   └── yandex-provider.ts # Yandex OAuth
         ├── aws-config.ts       # AWS S3 configuration
         ├── parsing-config.ts    # Parsing configuration
         ├── database-test.ts    # Database testing utilities
@@ -154,6 +159,22 @@ REDIS_URL="redis://localhost:6379"
 # Аутентификация
 NEXTAUTH_SECRET="your-secret-key"
 NEXTAUTH_URL="http://localhost:3000"
+
+# OAuth провайдеры
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+GITHUB_CLIENT_ID=""
+GITHUB_CLIENT_SECRET=""
+
+# Российские OAuth провайдеры
+VK_CLIENT_ID=""
+VK_CLIENT_SECRET=""
+OK_CLIENT_ID=""
+OK_CLIENT_SECRET=""
+MAIL_CLIENT_ID=""
+MAIL_CLIENT_SECRET=""
+YANDEX_CLIENT_ID=""
+YANDEX_CLIENT_SECRET=""
 
 # AWS S3
 AWS_ACCESS_KEY_ID=""
@@ -228,14 +249,47 @@ export const authConfig: NextAuthOptions = {
   secret: env.NEXTAUTH_SECRET,
   url: env.NEXTAUTH_URL,
   providers: [
-    // Email провайдер
+    // Credentials провайдер для email/password
+    CredentialsProvider({...}),
+
+    // Международные OAuth провайдеры
+    GoogleProvider({...}),
+    GitHubProvider({...}),
+
+    // Российские OAuth провайдеры
+    VKProvider({...}),
+    OKProvider({...}),
+    MailProvider({...}),
+    YandexProvider({...}),
   ],
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 дней
   },
+  callbacks: {
+    // Обработка OAuth входов
+    async signIn({ user, account }) {
+      // Создание пользователя при первом OAuth входе
+    },
+    // Передача роли в сессию
+    async session({ session, token }) {
+      session.user.role = token.role;
+      return session;
+    },
+  },
 };
 ```
+
+#### Поддерживаемые OAuth провайдеры
+
+- **Google** - Международный поисковик
+- **GitHub** - Платформа для разработчиков
+- **VKontakte** - Российская социальная сеть
+- **Одноклассники** - Российская социальная сеть
+- **Mail.ru** - Российский почтовый сервис
+- **Yandex** - Российский поисковик
+
+Подробная документация: [OAuth Setup Guide](./security/oauth-setup.md)
 
 ### 3. AWS S3 (хранение изображений)
 

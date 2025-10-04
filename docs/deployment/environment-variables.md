@@ -26,6 +26,31 @@ NEXTAUTH_URL=https://your-domain.com
 
 **⚠️ ВАЖНО**: `NEXTAUTH_URL` должен быть установлен в production окружении и не должен содержать `localhost`. Используйте полный URL вашего домена (например, `https://your-domain.com`).
 
+### OAuth провайдеры
+
+```bash
+# Международные OAuth провайдеры
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+
+# Российские OAuth провайдеры
+VK_CLIENT_ID=your_vk_client_id
+VK_CLIENT_SECRET=your_vk_client_secret
+OK_CLIENT_ID=your_ok_client_id
+OK_CLIENT_SECRET=your_ok_client_secret
+MAIL_CLIENT_ID=your_mail_client_id
+MAIL_CLIENT_SECRET=your_mail_client_secret
+YANDEX_CLIENT_ID=your_yandex_client_id
+YANDEX_CLIENT_SECRET=your_yandex_client_secret
+```
+
+**📋 Настройка OAuth провайдеров**:
+
+- [OAuth Setup Guide](../security/oauth-setup.md) - подробные инструкции по настройке каждого провайдера
+- [OAuth Production Setup](./oauth-production.md) - быстрая настройка для production окружения
+
 ### AWS Configuration
 
 ```bash
@@ -70,6 +95,15 @@ API_URL=https://your-domain.com/api
 
 - `NEXTAUTH_SECRET` - Секретный ключ для NextAuth
 - `SENTRY_DSN` - DSN для Sentry мониторинга
+
+### OAuth Secrets
+
+- `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` - Google OAuth
+- `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` - GitHub OAuth
+- `VK_CLIENT_ID` / `VK_CLIENT_SECRET` - VKontakte OAuth
+- `OK_CLIENT_ID` / `OK_CLIENT_SECRET` - Одноклассники OAuth
+- `MAIL_CLIENT_ID` / `MAIL_CLIENT_SECRET` - Mail.ru OAuth
+- `YANDEX_CLIENT_ID` / `YANDEX_CLIENT_SECRET` - Yandex OAuth
 
 ### Deployment Secrets
 

@@ -2,6 +2,7 @@
 
 import { Button } from "@/shared/ui/Button";
 import { Card } from "@/shared/ui/Card";
+import { SocialAuthButtons } from "@/shared/ui/SocialAuthButtons";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -84,28 +85,6 @@ export function SignUpForm({ callbackUrl = "/" }: SignUpFormProps) {
           ? error.message
           : "Произошла ошибка при регистрации"
       );
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleGoogleSignUp = async () => {
-    setIsLoading(true);
-    try {
-      await signIn("google", { callbackUrl });
-    } catch {
-      setError("Ошибка регистрации через Google");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleGitHubSignUp = async () => {
-    setIsLoading(true);
-    try {
-      await signIn("github", { callbackUrl });
-    } catch {
-      setError("Ошибка регистрации через GitHub");
     } finally {
       setIsLoading(false);
     }
@@ -208,26 +187,8 @@ export function SignUpForm({ callbackUrl = "/" }: SignUpFormProps) {
             </div>
           </div>
 
-          <div className="mt-6 space-y-3">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleGoogleSignUp}
-              disabled={isLoading}
-              className="w-full"
-            >
-              Зарегистрироваться через Google
-            </Button>
-
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleGitHubSignUp}
-              disabled={isLoading}
-              className="w-full"
-            >
-              Зарегистрироваться через GitHub
-            </Button>
+          <div className="mt-6">
+            <SocialAuthButtons callbackUrl={callbackUrl} disabled={isLoading} />
           </div>
         </div>
 

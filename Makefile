@@ -47,6 +47,44 @@ prod-down:
 prod-restart:
 	docker compose -f docker-compose.prod.yml restart
 
+# Production переменные окружения
+prod-env-check:
+	@echo "Проверка production переменных окружения..."
+	@if [ ! -f .env.production ]; then \
+		echo "❌ Файл .env.production не найден"; \
+		echo "📋 Скопируйте env.production.example в .env.production и заполните переменные"; \
+		exit 1; \
+	fi
+	@echo "✅ Файл .env.production найден"
+	@echo "🔍 Проверка обязательных переменных..."
+	@source .env.production && \
+		[ -n "$$NEXTAUTH_SECRET" ] && echo "✅ NEXTAUTH_SECRET установлен" || echo "❌ NEXTAUTH_SECRET не установлен"; \
+		[ -n "$$NEXTAUTH_URL" ] && echo "✅ NEXTAUTH_URL установлен" || echo "❌ NEXTAUTH_URL не установлен"; \
+		[ -n "$$POSTGRES_PASSWORD" ] && echo "✅ POSTGRES_PASSWORD установлен" || echo "❌ POSTGRES_PASSWORD не установлен"; \
+		[ -n "$$AWS_ACCESS_KEY_ID" ] && echo "✅ AWS_ACCESS_KEY_ID установлен" || echo "❌ AWS_ACCESS_KEY_ID не установлен"; \
+		[ -n "$$AWS_SECRET_ACCESS_KEY" ] && echo "✅ AWS_SECRET_ACCESS_KEY установлен" || echo "❌ AWS_SECRET_ACCESS_KEY не установлен"; \
+		[ -n "$$AWS_S3_BUCKET" ] && echo "✅ AWS_S3_BUCKET установлен" || echo "❌ AWS_S3_BUCKET не установлен"
+
+prod-env-setup:
+	@echo "📋 Настройка production переменных окружения..."
+	@if [ ! -f .env.production ]; then \
+		cp env.production.example .env.production; \
+		echo "✅ Создан файл .env.production на основе env.production.example"; \
+		echo "⚠️  Не забудьте заполнить все переменные в .env.production"; \
+	else \
+		echo "ℹ️  Файл .env.production уже существует"; \
+	fi
+
+prod-oauth-check:
+	@echo "🔍 Проверка OAuth переменных..."
+	@source .env.production && \
+		echo "Google OAuth: $$([ -n "$$GOOGLE_CLIENT_ID" ] && echo "✅" || echo "❌")"; \
+		echo "GitHub OAuth: $$([ -n "$$GITHUB_CLIENT_ID" ] && echo "✅" || echo "❌")"; \
+		echo "VK OAuth: $$([ -n "$$VK_CLIENT_ID" ] && echo "✅" || echo "❌")"; \
+		echo "OK OAuth: $$([ -n "$$OK_CLIENT_ID" ] && echo "✅" || echo "❌")"; \
+		echo "Mail OAuth: $$([ -n "$$MAIL_CLIENT_ID" ] && echo "✅" || echo "❌")"; \
+		echo "Yandex OAuth: $$([ -n "$$YANDEX_CLIENT_ID" ] && echo "✅" || echo "❌")"
+
 # Docker build команды
 build: build-app build-nginx
 
