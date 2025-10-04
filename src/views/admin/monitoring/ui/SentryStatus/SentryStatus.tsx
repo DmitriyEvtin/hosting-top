@@ -50,7 +50,7 @@ export function SentryStatus() {
     setError(null);
 
     try {
-      const response = await fetch("/api/sentry-diagnosis");
+      const response = await fetch("/api/admin/sentry-diagnosis");
       const data = await response.json();
 
       if (data.success) {
@@ -67,7 +67,7 @@ export function SentryStatus() {
 
   const testError = async () => {
     try {
-      await fetch("/api/sentry-test");
+      await fetch("/api/admin/sentry-test");
       setTestResults(prev => ({ ...prev, error: true }));
     } catch {
       console.error("Ошибка тестирования");
@@ -76,13 +76,13 @@ export function SentryStatus() {
 
   const testMessage = async () => {
     try {
-      await fetch("/api/sentry-diagnosis", {
+      await fetch("/api/admin/sentry-diagnosis", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          message: "Тестовое сообщение с главной страницы",
+          message: "Тестовое сообщение с админ-панели",
         }),
       });
       setTestResults(prev => ({ ...prev, message: true }));

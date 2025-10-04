@@ -33,7 +33,7 @@ export function DatabaseStatus() {
   useEffect(() => {
     const testDatabase = async () => {
       try {
-        const response = await fetch("/api/database/test");
+        const response = await fetch("/api/admin/database/test");
         const data: DatabaseTestResponse = await response.json();
 
         if (data.success && data.stats) {

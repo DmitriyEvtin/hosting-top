@@ -71,7 +71,7 @@ export function ConfigStatus() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch("/api/configuration/simple");
+      const response = await fetch("/api/admin/configuration/simple");
       const data = await response.json();
 
       if (response.ok) {

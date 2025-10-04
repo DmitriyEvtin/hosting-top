@@ -5,9 +5,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui";
-import { ConfigStatus } from "../ConfigStatus";
-import { DatabaseStatus } from "../DatabaseStatus";
-import { SentryStatus } from "../SentryStatus";
 
 export function HomePage() {
   return (
@@ -17,13 +14,6 @@ export function HomePage() {
         <p className="text-lg text-muted-foreground">
           Автоматический каталог товаров с парсингом данных
         </p>
-      </div>
-
-      {/* Статус системы */}
-      <div className="mb-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <DatabaseStatus />
-        <ConfigStatus />
-        <SentryStatus />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
