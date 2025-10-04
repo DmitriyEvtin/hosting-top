@@ -20,6 +20,7 @@ interface ProfileLogoUploadProps {
   onUploadError?: (error: string) => void;
   onRemoveLogo?: () => void;
   className?: string;
+  allowRemove?: boolean; // Новый проп для управления кнопкой удаления
 }
 
 interface UploadResult {
@@ -45,6 +46,7 @@ export function ProfileLogoUpload({
   onUploadError,
   onRemoveLogo,
   className = "",
+  allowRemove = true, // По умолчанию разрешено удаление
 }: ProfileLogoUploadProps) {
   const [uploadProgress, setUploadProgress] = useState<UploadProgress | null>(
     null
@@ -191,13 +193,15 @@ export function ProfileLogoUpload({
               alt="Логотип профиля"
               className="w-16 h-16 rounded-full object-cover border-2 border-gray-200"
             />
-            <button
-              onClick={handleRemoveLogo}
-              className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
-              title="Удалить логотип"
-            >
-              <X className="w-3 h-3" />
-            </button>
+            {allowRemove && (
+              <button
+                onClick={handleRemoveLogo}
+                className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
+                title="Удалить логотип"
+              >
+                <X className="w-3 h-3" />
+              </button>
+            )}
           </div>
           <div>
             <p className="text-sm font-medium text-gray-900">Текущий логотип</p>

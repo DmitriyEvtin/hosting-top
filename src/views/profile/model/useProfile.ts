@@ -28,8 +28,14 @@ export function useProfile(): UseProfileReturn {
   const { data: session, update } = useSession();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [localUser, setLocalUser] = useState<User | null>(null);
+  const [isUpdating, setIsUpdating] = useState(false);
 
-  const user = session?.user as User | null;
+  // Используем локальное состояние, если оно есть, иначе данные из сессии
+  const user = localUser || (session?.user as User | null);
+
+  // Убираем автоматическое обновление сессии, так как это может вызывать бесконечные циклы
+  // JWT callback уже обновляет данные при вызове update()
 
   const updateProfile = useCallback(
     async (data: { name?: string; image?: string | null }) => {
@@ -38,7 +44,12 @@ export function useProfile(): UseProfileReturn {
         return;
       }
 
+      if (isUpdating) {
+        return; // Предотвращаем множественные обновления
+      }
+
       setIsLoading(true);
+      setIsUpdating(true);
       setError(null);
 
       try {
@@ -57,14 +68,12 @@ export function useProfile(): UseProfileReturn {
 
         const result = await response.json();
 
+        // Сначала обновляем локальное состояние для немедленного отображения
+        setLocalUser(result.user);
+
         // Обновляем сессию с новыми данными
-        await update({
-          ...session,
-          user: {
-            ...session.user,
-            ...result.user,
-          },
-        });
+        // JWT callback автоматически получит актуальные данные из БД
+        await update();
       } catch (err) {
         const errorMessage =
           err instanceof Error ? err.message : "Неизвестная ошибка";
@@ -72,9 +81,10 @@ export function useProfile(): UseProfileReturn {
         throw err;
       } finally {
         setIsLoading(false);
+        setIsUpdating(false);
       }
     },
-    [session, update]
+    [session, update, isUpdating]
   );
 
   const removeLogo = useCallback(async () => {

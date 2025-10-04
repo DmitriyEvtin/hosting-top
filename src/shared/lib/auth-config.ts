@@ -105,11 +105,39 @@ export const authOptions: NextAuthOptions = {
   },
 
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger }) {
       // При первом входе сохраняем данные пользователя в токен
       if (user) {
         token.role = user.role;
         token.id = user.id;
+        token.image = user.image;
+        token.name = user.name;
+        token.email = user.email;
+      }
+
+      // Если это обновление сессии (trigger === 'update'), получаем актуальные данные из БД
+      if (trigger === "update" && token.id) {
+        try {
+          const updatedUser = await prisma.user.findUnique({
+            where: { id: token.id as string },
+            select: {
+              id: true,
+              email: true,
+              name: true,
+              role: true,
+              image: true,
+            },
+          });
+
+          if (updatedUser) {
+            token.role = updatedUser.role as UserRole;
+            token.image = updatedUser.image;
+            token.name = updatedUser.name;
+            token.email = updatedUser.email;
+          }
+        } catch (error) {
+          console.error("Ошибка обновления JWT токена:", error);
+        }
       }
 
       return token;
@@ -120,6 +148,9 @@ export const authOptions: NextAuthOptions = {
       if (token) {
         session.user.id = token.id as string;
         session.user.role = token.role as UserRole;
+        session.user.image = token.image as string | null;
+        session.user.name = token.name as string | null;
+        session.user.email = token.email as string;
       }
 
       return session;

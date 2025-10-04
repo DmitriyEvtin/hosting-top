@@ -1,5 +1,6 @@
 import { prisma } from "@/shared/api/database/prisma";
 import { authOptions } from "@/shared/lib/auth-config";
+import { s3Service } from "@/shared/lib/s3-utils";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -74,6 +75,43 @@ export async function PATCH(request: NextRequest) {
         { error: "URL изображения должен быть строкой" },
         { status: 400 }
       );
+    }
+
+    // Получаем текущего пользователя для проверки старого логотипа
+    const currentUser = await prisma.user.findUnique({
+      where: { id: session.user.id },
+      select: { image: true },
+    });
+
+    // Если обновляется логотип и есть старый логотип, удаляем его из S3
+    if (
+      image !== undefined &&
+      currentUser?.image &&
+      currentUser.image !== image
+    ) {
+      try {
+        const oldImageKey = s3Service.extractKeyFromUrl(currentUser.image);
+        if (oldImageKey) {
+          // Удаляем старый логотип из S3
+          await s3Service.deleteFile(oldImageKey);
+
+          // Также удаляем миниатюры старого логотипа
+          try {
+            const thumbnails = await s3Service.listFiles(
+              `thumbnails/${oldImageKey.split("/").pop()?.split(".")[0]}`
+            );
+            for (const thumbnail of thumbnails) {
+              await s3Service.deleteFile(thumbnail.key);
+            }
+          } catch (error) {
+            console.error("Ошибка удаления миниатюр старого логотипа:", error);
+            // Не прерываем процесс из-за ошибки удаления миниатюр
+          }
+        }
+      } catch (error) {
+        console.error("Ошибка удаления старого логотипа:", error);
+        // Не прерываем обновление профиля из-за ошибки удаления файла
+      }
     }
 
     // Обновляем пользователя

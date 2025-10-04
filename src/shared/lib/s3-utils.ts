@@ -287,6 +287,50 @@ export class S3Service {
     // Пока возвращаем публичный URL
     return this.getPublicUrl(key);
   }
+
+  /**
+   * Извлечение ключа S3 из публичного URL
+   */
+  extractKeyFromUrl(url: string): string | null {
+    try {
+      // CloudFront URL
+      if (
+        AWS_CONFIG.CLOUDFRONT_DOMAIN &&
+        url.includes(AWS_CONFIG.CLOUDFRONT_DOMAIN)
+      ) {
+        return url.replace(`https://${AWS_CONFIG.CLOUDFRONT_DOMAIN}/`, "");
+      }
+
+      // MinIO URL для локальной разработки
+      if (process.env.AWS_S3_ENDPOINT) {
+        const endpoint = process.env.AWS_S3_ENDPOINT.replace(
+          /^https?:\/\//,
+          ""
+        );
+        const minioPattern = new RegExp(
+          `http://${endpoint.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}/${this.bucket}/(.+)`
+        );
+        const match = url.match(minioPattern);
+        if (match) {
+          return match[1];
+        }
+      }
+
+      // AWS S3 URL
+      const s3Pattern = new RegExp(
+        `https://${this.bucket}\\.s3\\.${AWS_CONFIG.REGION}\\.amazonaws\\.com/(.+)`
+      );
+      const match = url.match(s3Pattern);
+      if (match) {
+        return match[1];
+      }
+
+      return null;
+    } catch (error) {
+      console.error("Ошибка извлечения ключа из URL:", error);
+      return null;
+    }
+  }
 }
 
 /**

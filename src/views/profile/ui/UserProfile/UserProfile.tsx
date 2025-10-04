@@ -23,6 +23,9 @@ export function UserProfile() {
   const [uploadError, setUploadError] = useState<string | null>(null);
   const { user, updateProfile, removeLogo } = useProfile();
 
+  // Используем данные из useProfile, если они доступны, иначе fallback на сессию
+  const currentUser = user || session?.user;
+
   // Обработчики для загрузки логотипа
   const handleLogoUpload = async (logoUrl: string) => {
     try {
@@ -52,8 +55,8 @@ export function UserProfile() {
     }
   };
 
-  // Если нет сессии, не рендерим компонент (лейаут уже обработает это)
-  if (!session?.user) {
+  // Если нет пользователя, не рендерим компонент (лейаут уже обработает это)
+  if (!currentUser) {
     return null;
   }
 
@@ -114,17 +117,17 @@ export function UserProfile() {
             {/* Логотип профиля */}
             <div className="flex items-center space-x-4 mb-6">
               <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
-                {session.user.image ? (
+                {currentUser.image ? (
                   <img
-                    src={session.user.image}
+                    src={currentUser.image}
                     alt="Логотип профиля"
                     className="w-full h-full object-cover"
                   />
                 ) : (
                   <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
                     <span className="text-gray-600 font-medium text-lg">
-                      {session.user.name?.charAt(0)?.toUpperCase() ||
-                        session.user.email?.charAt(0)?.toUpperCase() ||
+                      {currentUser.name?.charAt(0)?.toUpperCase() ||
+                        currentUser.email?.charAt(0)?.toUpperCase() ||
                         "?"}
                     </span>
                   </div>
@@ -132,22 +135,22 @@ export function UserProfile() {
               </div>
               <div>
                 <h3 className="text-lg font-medium text-gray-900">
-                  {session.user.name || "Пользователь"}
+                  {currentUser.name || "Пользователь"}
                 </h3>
-                <p className="text-sm text-gray-500">{session.user.email}</p>
+                <p className="text-sm text-gray-500">{currentUser.email}</p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="text-sm font-medium text-gray-700">Имя</label>
-                <p className="text-lg">{session.user.name || "Не указано"}</p>
+                <p className="text-lg">{currentUser.name || "Не указано"}</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-gray-700">
                   Email
                 </label>
-                <p className="text-lg">{session.user.email}</p>
+                <p className="text-lg">{currentUser.email}</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-gray-700">
@@ -156,10 +159,10 @@ export function UserProfile() {
                 <p className="text-lg">
                   <span
                     className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getRoleColor(
-                      session.user.role
+                      currentUser.role
                     )}`}
                   >
-                    {getRoleDisplayName(session.user.role)}
+                    {getRoleDisplayName(currentUser.role)}
                   </span>
                 </p>
               </div>
@@ -167,7 +170,7 @@ export function UserProfile() {
                 <label className="text-sm font-medium text-gray-700">
                   ID пользователя
                 </label>
-                <p className="text-lg font-mono text-sm">{session.user.id}</p>
+                <p className="text-lg font-mono text-sm">{currentUser.id}</p>
               </div>
             </div>
           </CardContent>
@@ -183,10 +186,11 @@ export function UserProfile() {
           </CardHeader>
           <CardContent>
             <ProfileLogoUpload
-              currentLogoUrl={session.user.image || undefined}
+              currentLogoUrl={currentUser.image || undefined}
               onUploadComplete={handleLogoUpload}
               onUploadError={error => setUploadError(error)}
               onRemoveLogo={handleLogoRemove}
+              allowRemove={false} // Временно отключаем кнопку удаления
             />
           </CardContent>
         </Card>
