@@ -11,7 +11,7 @@ class EmailServiceImpl implements EmailService {
 
   constructor() {
     if (hasSmtp) {
-      const transporterConfig: any = {
+      const transporterConfig: nodemailer.TransportOptions = {
         host: env.SMTP_HOST,
         port: env.SMTP_PORT,
         secure: env.SMTP_PORT === 465, // true для 465, false для других портов
