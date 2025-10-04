@@ -9,6 +9,7 @@
 - **База данных**: PostgreSQL
 - **Архитектура**: Feature-Sliced Design (FSD)
 - **Парсинг**: Puppeteer, Cheerio
+- **Облако**: AWS S3, CloudFront CDN
 - **Мониторинг**: Sentry
 
 ## Развертывание
@@ -35,3 +36,10 @@ docker-compose -f docker-compose.prod.yml up -d
 ## Документация
 
 📖 **Полная документация проекта**: [docs/README.md](./docs/README.md)
+
+### Быстрый старт
+
+- **MinIO Setup (локально)**: [docs/minio-quickstart.md](./docs/minio-quickstart.md)
+- **AWS S3 Setup**: [docs/aws-quickstart.md](./docs/aws-quickstart.md)
+- **AWS Integration**: [docs/aws-integration.md](./docs/aws-integration.md)
+- **Development Setup**: [docs/development/setup.md](./docs/development/setup.md)

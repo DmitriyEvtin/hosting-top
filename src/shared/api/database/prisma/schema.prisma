@@ -23,6 +23,7 @@ model User {
   role          UserRole  @default(USER)
   emailVerified DateTime?
   image         String?
+  logoUrl       String? // URL логотипа пользователя
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 

@@ -47,9 +47,31 @@ services:
     networks:
       - rolled-metal-network
 
+  minio:
+    image: minio/minio:latest
+    container_name: rolled-metal-minio
+    restart: unless-stopped
+    ports:
+      - "9000:9000" # API порт
+      - "9001:9001" # Console порт
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin123
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - rolled-metal-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
 volumes:
   postgres_data:
   redis_data:
+  minio_data:
 
 networks:
   rolled-metal-network:

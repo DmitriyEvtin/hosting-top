@@ -1,169 +1,145 @@
 /**
- * Конфигурация AWS S3
- * Настройки для хранения изображений и файлов
+ * AWS Configuration
+ * Централизованная конфигурация для AWS сервисов
  */
 
-import { S3Client, S3ClientConfig } from "@aws-sdk/client-s3";
-import { env, hasAws } from "./env";
+import { CloudFrontClient } from "@aws-sdk/client-cloudfront";
+import { S3Client } from "@aws-sdk/client-s3";
 
-// Конфигурация AWS S3 клиента
-export const s3Config: S3ClientConfig = {
-  region: env.AWS_REGION,
-  credentials: hasAws
-    ? {
-        accessKeyId: env.AWS_ACCESS_KEY_ID!,
-        secretAccessKey: env.AWS_SECRET_ACCESS_KEY!,
-      }
-    : undefined,
-  // Настройки для production
-  ...(env.NODE_ENV === "production" && {
-    maxAttempts: 3,
-    retryMode: "adaptive",
-  }),
+// Валидация переменных окружения
+const validateAwsConfig = () => {
+  const requiredVars = [
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "AWS_REGION",
+    "AWS_S3_BUCKET",
+  ];
+
+  const missingVars = requiredVars.filter(varName => !process.env[varName]);
+
+  if (missingVars.length > 0) {
+    throw new Error(
+      `Отсутствуют обязательные переменные окружения AWS: ${missingVars.join(", ")}`
+    );
+  }
 };
 
-// Создание S3 клиента
-export const s3Client = new S3Client(s3Config);
+// Валидация конфигурации при инициализации
+validateAwsConfig();
 
-// Настройки для загрузки файлов
-export const uploadConfig = {
-  // Максимальный размер файла (10MB)
-  maxFileSize: 10 * 1024 * 1024,
+/**
+ * AWS S3 Client Configuration
+ */
+export const s3Client = new S3Client({
+  region: process.env.AWS_REGION!,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+  },
+  // MinIO endpoint для локальной разработки
+  ...(process.env.AWS_S3_ENDPOINT && {
+    endpoint: process.env.AWS_S3_ENDPOINT,
+    forcePathStyle: process.env.AWS_S3_FORCE_PATH_STYLE === "true",
+  }),
+  // Настройки для оптимизации производительности
+  maxAttempts: 3,
+  retryMode: "adaptive",
+});
 
-  // Разрешенные типы файлов
-  allowedMimeTypes: ["image/jpeg", "image/png", "image/webp", "image/gif"],
+/**
+ * AWS CloudFront Client Configuration
+ */
+export const cloudFrontClient = new CloudFrontClient({
+  region: process.env.AWS_REGION!,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+  },
+  // MinIO endpoint для локальной разработки (CloudFront не поддерживается в MinIO)
+  ...(process.env.AWS_S3_ENDPOINT && {
+    endpoint: process.env.AWS_S3_ENDPOINT,
+  }),
+  maxAttempts: 3,
+  retryMode: "adaptive",
+});
+
+/**
+ * AWS Configuration Constants
+ */
+export const AWS_CONFIG = {
+  S3_BUCKET: process.env.AWS_S3_BUCKET!,
+  REGION: process.env.AWS_REGION!,
+  CLOUDFRONT_DOMAIN: process.env.CLOUDFRONT_DOMAIN || "",
+} as const;
+
+/**
+ * S3 Bucket Configuration
+ */
+export const S3_BUCKET_CONFIG = {
+  // Основные настройки bucket
+  bucket: AWS_CONFIG.S3_BUCKET,
+  region: AWS_CONFIG.REGION,
 
   // Настройки для изображений
-  imageSettings: {
-    // Максимальные размеры
-    maxWidth: 2048,
-    maxHeight: 2048,
-
-    // Качество сжатия
-    quality: 85,
-
-    // Формат по умолчанию
-    defaultFormat: "webp",
+  images: {
+    folder: "images",
+    maxSize: 10 * 1024 * 1024, // 10MB
+    allowedTypes: ["image/jpeg", "image/png", "image/webp", "image/avif"],
+    thumbnailSizes: [150, 300, 600, 1200], // Размеры миниатюр
   },
 
-  // Настройки для миниатюр
-  thumbnailSettings: {
-    width: 300,
-    height: 300,
-    quality: 80,
-    format: "webp",
+  // Настройки для других файлов
+  files: {
+    folder: "files",
+    maxSize: 50 * 1024 * 1024, // 50MB
   },
+} as const;
 
-  // Настройки для превью
-  previewSettings: {
-    width: 800,
-    height: 600,
-    quality: 85,
-    format: "webp",
+/**
+ * CloudFront Configuration
+ */
+export const CLOUDFRONT_CONFIG = {
+  domain: AWS_CONFIG.CLOUDFRONT_DOMAIN,
+  cacheTtl: 31536000, // 1 год в секундах
+  headers: {
+    "Cache-Control": "public, max-age=31536000, immutable",
   },
-};
+} as const;
 
-// Настройки CloudFront CDN
-export const cdnConfig = {
-  domain: env.CLOUDFRONT_DOMAIN,
-  enabled: !!env.CLOUDFRONT_DOMAIN,
+/**
+ * Типы для AWS операций
+ */
+export type AwsRegion = string;
+export type S3Bucket = string;
+export type S3Key = string;
+export type CloudFrontDomain = string;
 
-  // Настройки кэширования
-  cacheSettings: {
-    // Время кэширования для изображений (7 дней)
-    imageCacheTTL: 7 * 24 * 60 * 60,
+/**
+ * Интерфейс для AWS конфигурации
+ */
+export interface AwsConfig {
+  region: AwsRegion;
+  bucket: S3Bucket;
+  cloudFrontDomain?: CloudFrontDomain;
+}
 
-    // Время кэширования для миниатюр (30 дней)
-    thumbnailCacheTTL: 30 * 24 * 60 * 60,
+/**
+ * Получение текущей AWS конфигурации
+ */
+export const getAwsConfig = (): AwsConfig => ({
+  region: AWS_CONFIG.REGION,
+  bucket: AWS_CONFIG.S3_BUCKET,
+  cloudFrontDomain: AWS_CONFIG.CLOUDFRONT_DOMAIN || undefined,
+});
 
-    // Настройки для разных типов файлов
-    cacheBehaviors: {
-      "*.webp": { ttl: 7 * 24 * 60 * 60 },
-      "*.jpg": { ttl: 7 * 24 * 60 * 60 },
-      "*.png": { ttl: 7 * 24 * 60 * 60 },
-    },
-  },
-};
-
-// Утилиты для работы с S3
-export const s3Utils = {
-  // Генерация URL для файла
-  getFileUrl: (key: string): string => {
-    if (cdnConfig.enabled) {
-      return `https://${cdnConfig.domain}/${key}`;
-    }
-    return `https://${env.AWS_S3_BUCKET}.s3.${env.AWS_REGION}.amazonaws.com/${key}`;
-  },
-
-  // Генерация ключа для файла
-  generateKey: (prefix: string, filename: string): string => {
-    const timestamp = Date.now();
-    const randomId = Math.random().toString(36).substring(2, 8);
-    const extension = filename.split(".").pop();
-    return `${prefix}/${timestamp}-${randomId}.${extension}`;
-  },
-
-  // Проверка типа файла
-  isValidFileType: (mimeType: string): boolean => {
-    return uploadConfig.allowedMimeTypes.includes(mimeType);
-  },
-
-  // Проверка размера файла
-  isValidFileSize: (size: number): boolean => {
-    return size <= uploadConfig.maxFileSize;
-  },
-
-  // Генерация ключей для разных размеров изображений
-  generateImageKeys: (baseKey: string) => {
-    const nameWithoutExt = baseKey.replace(/\.[^/.]+$/, "");
-    const extension = baseKey.split(".").pop();
-
-    return {
-      original: baseKey,
-      thumbnail: `${nameWithoutExt}-thumb.${extension}`,
-      preview: `${nameWithoutExt}-preview.${extension}`,
-    };
-  },
-};
-
-// Настройки для разных окружений
-export const environmentConfig = {
-  development: {
-    bucket: `${env.AWS_S3_BUCKET}-dev`,
-    cdnEnabled: false,
-    cacheTTL: 60, // 1 минута для разработки
-  },
-
-  staging: {
-    bucket: `${env.AWS_S3_BUCKET}-staging`,
-    cdnEnabled: false,
-    cacheTTL: 60 * 60, // 1 час для staging
-  },
-
-  production: {
-    bucket: env.AWS_S3_BUCKET!,
-    cdnEnabled: cdnConfig.enabled,
-    cacheTTL: cdnConfig.cacheSettings.imageCacheTTL,
-  },
-};
-
-// Получение конфигурации для текущего окружения
-export const getCurrentConfig = () => {
-  return environmentConfig[env.NODE_ENV];
-};
-
-// Проверка доступности AWS сервисов
-export const checkAwsAvailability = async (): Promise<boolean> => {
-  if (!hasAws) {
-    return false;
-  }
-
+/**
+ * Проверка доступности AWS сервисов
+ */
+export const isAwsConfigured = (): boolean => {
   try {
-    // Простая проверка доступности S3
-    await s3Client.send({} as unknown);
+    validateAwsConfig();
     return true;
-  } catch (error) {
-    console.error("AWS S3 недоступен:", error);
+  } catch {
     return false;
   }
 };

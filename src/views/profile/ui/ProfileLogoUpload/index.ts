@@ -1,2 +1,1 @@
 export { ProfileLogoUpload } from "./ProfileLogoUpload";
-export { UserProfile } from "./UserProfile";

@@ -1903,6 +1903,7 @@ export namespace Prisma {
     role: $Enums.UserRole | null
     emailVerified: Date | null
     image: string | null
+    logoUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1915,6 +1916,7 @@ export namespace Prisma {
     role: $Enums.UserRole | null
     emailVerified: Date | null
     image: string | null
+    logoUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1927,6 +1929,7 @@ export namespace Prisma {
     role: number
     emailVerified: number
     image: number
+    logoUrl: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1941,6 +1944,7 @@ export namespace Prisma {
     role?: true
     emailVerified?: true
     image?: true
+    logoUrl?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1953,6 +1957,7 @@ export namespace Prisma {
     role?: true
     emailVerified?: true
     image?: true
+    logoUrl?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1965,6 +1970,7 @@ export namespace Prisma {
     role?: true
     emailVerified?: true
     image?: true
+    logoUrl?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2050,6 +2056,7 @@ export namespace Prisma {
     role: $Enums.UserRole
     emailVerified: Date | null
     image: string | null
+    logoUrl: string | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -2079,6 +2086,7 @@ export namespace Prisma {
     role?: boolean
     emailVerified?: boolean
     image?: boolean
+    logoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     parsingSessions?: boolean | User$parsingSessionsArgs<ExtArgs>
@@ -2095,6 +2103,7 @@ export namespace Prisma {
     role?: boolean
     emailVerified?: boolean
     image?: boolean
+    logoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -2107,6 +2116,7 @@ export namespace Prisma {
     role?: boolean
     emailVerified?: boolean
     image?: boolean
+    logoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -2119,11 +2129,12 @@ export namespace Prisma {
     role?: boolean
     emailVerified?: boolean
     image?: boolean
+    logoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "role" | "emailVerified" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "role" | "emailVerified" | "image" | "logoUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parsingSessions?: boolean | User$parsingSessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
@@ -2148,6 +2159,7 @@ export namespace Prisma {
       role: $Enums.UserRole
       emailVerified: Date | null
       image: string | null
+      logoUrl: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -2583,6 +2595,7 @@ export namespace Prisma {
     readonly role: FieldRef<"User", 'UserRole'>
     readonly emailVerified: FieldRef<"User", 'DateTime'>
     readonly image: FieldRef<"User", 'String'>
+    readonly logoUrl: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -13233,6 +13246,7 @@ export namespace Prisma {
     role: 'role',
     emailVerified: 'emailVerified',
     image: 'image',
+    logoUrl: 'logoUrl',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -13556,6 +13570,7 @@ export namespace Prisma {
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
+    logoUrl?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     parsingSessions?: ParsingSessionListRelationFilter
@@ -13571,6 +13586,7 @@ export namespace Prisma {
     role?: SortOrder
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
+    logoUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     parsingSessions?: ParsingSessionOrderByRelationAggregateInput
@@ -13589,6 +13605,7 @@ export namespace Prisma {
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
+    logoUrl?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     parsingSessions?: ParsingSessionListRelationFilter
@@ -13604,6 +13621,7 @@ export namespace Prisma {
     role?: SortOrder
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
+    logoUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -13622,6 +13640,7 @@ export namespace Prisma {
     role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
     emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
+    logoUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -14275,6 +14294,7 @@ export namespace Prisma {
     role?: $Enums.UserRole
     emailVerified?: Date | string | null
     image?: string | null
+    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     parsingSessions?: ParsingSessionCreateNestedManyWithoutUserInput
@@ -14290,6 +14310,7 @@ export namespace Prisma {
     role?: $Enums.UserRole
     emailVerified?: Date | string | null
     image?: string | null
+    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     parsingSessions?: ParsingSessionUncheckedCreateNestedManyWithoutUserInput
@@ -14305,6 +14326,7 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parsingSessions?: ParsingSessionUpdateManyWithoutUserNestedInput
@@ -14320,6 +14342,7 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parsingSessions?: ParsingSessionUncheckedUpdateManyWithoutUserNestedInput
@@ -14335,6 +14358,7 @@ export namespace Prisma {
     role?: $Enums.UserRole
     emailVerified?: Date | string | null
     image?: string | null
+    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14347,6 +14371,7 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14359,6 +14384,7 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15149,6 +15175,7 @@ export namespace Prisma {
     role?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
+    logoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -15161,6 +15188,7 @@ export namespace Prisma {
     role?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
+    logoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -15173,6 +15201,7 @@ export namespace Prisma {
     role?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
+    logoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -16857,6 +16886,7 @@ export namespace Prisma {
     role?: $Enums.UserRole
     emailVerified?: Date | string | null
     image?: string | null
+    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     parsingSessions?: ParsingSessionCreateNestedManyWithoutUserInput
@@ -16871,6 +16901,7 @@ export namespace Prisma {
     role?: $Enums.UserRole
     emailVerified?: Date | string | null
     image?: string | null
+    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     parsingSessions?: ParsingSessionUncheckedCreateNestedManyWithoutUserInput
@@ -16901,6 +16932,7 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parsingSessions?: ParsingSessionUpdateManyWithoutUserNestedInput
@@ -16915,6 +16947,7 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parsingSessions?: ParsingSessionUncheckedUpdateManyWithoutUserNestedInput
@@ -16929,6 +16962,7 @@ export namespace Prisma {
     role?: $Enums.UserRole
     emailVerified?: Date | string | null
     image?: string | null
+    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     parsingSessions?: ParsingSessionCreateNestedManyWithoutUserInput
@@ -16943,6 +16977,7 @@ export namespace Prisma {
     role?: $Enums.UserRole
     emailVerified?: Date | string | null
     image?: string | null
+    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     parsingSessions?: ParsingSessionUncheckedCreateNestedManyWithoutUserInput
@@ -16973,6 +17008,7 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parsingSessions?: ParsingSessionUpdateManyWithoutUserNestedInput
@@ -16987,6 +17023,7 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parsingSessions?: ParsingSessionUncheckedUpdateManyWithoutUserNestedInput
@@ -17551,6 +17588,7 @@ export namespace Prisma {
     role?: $Enums.UserRole
     emailVerified?: Date | string | null
     image?: string | null
+    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -17565,6 +17603,7 @@ export namespace Prisma {
     role?: $Enums.UserRole
     emailVerified?: Date | string | null
     image?: string | null
+    logoUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -17621,6 +17660,7 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -17635,6 +17675,7 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput

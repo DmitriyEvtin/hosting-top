@@ -6,11 +6,40 @@ ENVIRONMENT ?= development
 
 # Development команды
 dev:
-	docker compose up -d postgres redis mailer
+	docker compose up -d postgres redis mailer minio
 	npm run dev
 
 dev-down:
 	docker compose down
+
+# MinIO команды
+minio-up:
+	docker compose up -d minio
+
+minio-down:
+	docker compose stop minio
+
+minio-restart:
+	docker compose restart minio
+
+minio-logs:
+	docker compose logs -f minio
+
+minio-setup:
+	npm run minio:setup
+
+minio-status:
+	@echo "🔍 Проверка статуса MinIO..."
+	@curl -f http://localhost:9000/minio/health/live || echo "❌ MinIO недоступен"
+	@echo "📊 MinIO Console: http://localhost:9001"
+	@echo "🔗 MinIO API: http://localhost:9000"
+
+minio-console:
+	@echo "🌐 Открытие MinIO Console..."
+	@echo "URL: http://localhost:9001"
+	@echo "Логин: minioadmin"
+	@echo "Пароль: minioadmin123"
+	@open http://localhost:9001 || echo "Откройте http://localhost:9001 в браузере"
 
 # MailHog команды
 mailhog-up:
@@ -271,6 +300,11 @@ help:
 	@echo "Доступные команды:"
 	@echo "  dev          - Запуск development окружения"
 	@echo "  dev-down     - Остановка development окружения"
+	@echo "  minio-up     - Запуск MinIO"
+	@echo "  minio-down   - Остановка MinIO"
+	@echo "  minio-setup  - Настройка MinIO bucket"
+	@echo "  minio-status - Проверка статуса MinIO"
+	@echo "  minio-console - Открытие MinIO Console"
 	@echo "  prod-up      - Запуск production окружения"
 	@echo "  prod-down    - Остановка production окружения"
 	@echo "  prod-restart - Перезапуск production окружения"
