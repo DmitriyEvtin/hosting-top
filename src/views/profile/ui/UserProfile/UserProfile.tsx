@@ -16,19 +16,9 @@ export function UserProfile() {
   const { data: session } = useSession();
   const [showChangePassword, setShowChangePassword] = useState(false);
 
+  // Если нет сессии, не рендерим компонент (лейаут уже обработает это)
   if (!session?.user) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>Доступ запрещен</CardTitle>
-            <CardDescription>
-              Необходимо войти в систему для доступа к профилю
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      </div>
-    );
+    return null;
   }
 
   const getRoleDisplayName = (role: string) => {
