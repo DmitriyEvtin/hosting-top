@@ -31,13 +31,6 @@
 - **Traefik** - Reverse proxy и load balancer
 - **GitHub Actions** - CI/CD
 
-### Конфигурация изображений
-
-- **Next.js Image Optimization** - Автоматическая оптимизация изображений
-- **S3 Integration** - Поддержка внешних доменов для изображений
-- **Remote Patterns** - Гибкая настройка доменов с wildcards
-- **Format Support** - WebP и AVIF для лучшей производительности
-
 ## Структура проекта (FSD)
 
 ```
@@ -47,98 +40,22 @@ src/
 │   ├── page.tsx                 # Home page
 │   ├── globals.css              # Global styles
 │   └── api/                     # API routes
-│       └── config/              # Configuration endpoints
-├── views/                       # FSD Views layer (переименован из pages для избежания конфликтов с Next.js)
+├── views/                       # FSD Views layer
 │   └── home/                    # Home page slice
 │       ├── ui/
 │       │   ├── HomePage/         # Main page component
 │       │   │   ├── HomePage.tsx
 │       │   │   └── index.ts
-│       │   ├── ConfigStatus/     # Status components
-│       │   │   ├── ConfigStatus.tsx
-│       │   │   └── index.ts
-│       │   ├── DatabaseStatus/
-│       │   │   ├── DatabaseStatus.tsx
-│       │   │   └── index.ts
-│       │   ├── SentryStatus/
-│       │   │   ├── SentryStatus.tsx
-│       │   │   └── index.ts
-│       │   └── index.ts          # Exports only HomePage
+│       │   └── index.ts
 │       └── index.ts
 ├── widgets/                     # FSD Widgets layer (будущее)
 ├── features/                    # FSD Features layer (будущее)
 ├── entities/                    # FSD Entities layer (будущее)
 └── shared/                      # FSD Shared layer
     ├── ui/                      # Shared UI components
-    │   ├── Button/
-    │   │   ├── Button.tsx
-    │   │   └── index.ts
-    │   ├── Card/
-    │   │   ├── Card.tsx
-    │   │   └── index.ts
-    │   ├── ThemeToggle/         # Theme toggle component
-    │   │   ├── ThemeToggle.tsx
-    │   │   └── index.ts
-    │   └── index.ts
     ├── api/                     # Shared API utilities
-    │   └── database/            # Database configuration
     └── lib/                     # Shared utilities
-        ├── env.ts               # Environment variables
-        ├── auth-config.ts       # Authentication configuration
-        ├── auth-providers/      # OAuth providers
-        │   ├── vk-provider.ts   # VKontakte OAuth
-        │   ├── ok-provider.ts   # Одноклассники OAuth
-        │   ├── mail-provider.ts # Mail.ru OAuth
-        │   └── yandex-provider.ts # Yandex OAuth
-        ├── aws-config.ts       # AWS S3 configuration
-        ├── database-test.ts    # Database testing utilities
-        ├── theme-context.tsx    # Theme management context
-        ├── utils.ts            # General utilities
-        └── index.ts            # Exports
 ```
-
-## Структура компонентов
-
-### Правила организации компонентов
-
-Каждый компонент должен быть организован в отдельной папке со следующей структурой:
-
-```
-ComponentName/
-├── ComponentName.tsx    # Основной файл компонента
-└── index.ts            # Экспорт для чистых импортов
-```
-
-### Примеры структуры
-
-**Shared UI компоненты:**
-
-```
-src/shared/ui/Button/
-├── Button.tsx          # export function Button() { ... }
-└── index.ts            # export { Button } from "./Button";
-```
-
-**Page компоненты:**
-
-```
-src/views/home/ui/HomePage/
-├── HomePage.tsx        # export function HomePage() { ... }
-└── index.ts            # export { HomePage } from "./HomePage";
-```
-
-### Правила экспорта
-
-- **Pages layer**: `index.ts` экспортирует только основной компонент страницы
-- **Shared layer**: `index.ts` экспортирует все доступные компоненты
-- **Компоненты**: Импортируются напрямую из своих папок в родительских компонентах
-
-### Преимущества такой структуры
-
-1. **Модульность** - каждый компонент изолирован в своей папке
-2. **Чистые импорты** - использование index.ts для упрощения импортов
-3. **Масштабируемость** - легко добавлять новые компоненты
-4. **FSD соответствие** - структура соответствует принципам Feature-Sliced Design
 
 ## Переменные окружения
 
@@ -183,7 +100,6 @@ AWS_REGION="eu-west-1"
 AWS_S3_BUCKET=""
 CLOUDFRONT_DOMAIN=""
 
-
 # Мониторинг
 SENTRY_DSN=""
 LOG_LEVEL="debug"
@@ -199,27 +115,6 @@ SMTP_FROM="noreply@parket-crm.local"
 CORS_ORIGIN="http://localhost:3000"
 RATE_LIMIT_MAX="100"
 RATE_LIMIT_WINDOW_MS="900000"
-```
-
-### Валидация переменных
-
-Все переменные окружения валидируются с помощью Zod схем в `src/shared/lib/env.ts`:
-
-```typescript
-import { env, isDevelopment, hasAws } from "@/shared/lib/env";
-
-// Типизированные переменные
-console.log(env.DATABASE_URL);
-console.log(env.NODE_ENV);
-
-// Утилиты для проверки
-if (isDevelopment) {
-  console.log("Development mode");
-}
-
-if (hasAws) {
-  console.log("AWS S3 configured");
-}
 ```
 
 ## Конфигурация сервисов
@@ -285,8 +180,6 @@ export const authConfig: NextAuthOptions = {
 - **Mail.ru** - Российский почтовый сервис
 - **Yandex** - Российский поисковик
 
-Подробная документация: [OAuth Setup Guide](./security/oauth-setup.md)
-
 ### 3. AWS S3 (хранение изображений)
 
 ```typescript
@@ -319,21 +212,6 @@ export const s3Config: S3ClientConfig = {
 - Плавные анимации переключения
 - Поддержка accessibility (ARIA атрибуты)
 - Интеграция с Tailwind CSS через CSS переменные
-
-#### Использование
-
-```tsx
-import { useTheme } from "@/shared/lib/theme-context";
-import { ThemeToggle } from "@/shared/ui/ThemeToggle";
-
-// Хук для управления темой
-const { theme, setTheme, toggleTheme } = useTheme();
-
-// Компонент переключателя
-<ThemeToggle />;
-```
-
-Подробная документация: [Theme System Documentation](./development/theme-system.md)
 
 ## API Endpoints
 
@@ -420,32 +298,6 @@ RATE_LIMIT_WINDOW_MS = "900000";
 - Security сканирование
 - Генерация отчетов
 
-### Docker Configuration
-
-#### Production Dockerfile
-
-```dockerfile
-# Multi-stage build для оптимизации
-FROM node:24-alpine AS base
-FROM base AS deps
-FROM base AS builder
-FROM base AS runner
-
-# Standalone режим Next.js
-# Health checks
-# Security (non-root user)
-```
-
-#### Docker Compose
-
-```yaml
-# Development: docker-compose.yml
-# Production: docker-compose.prod.yml
-# Health checks для всех сервисов
-# Volume persistence
-# Network isolation
-```
-
 ## Развертывание
 
 ### Development
@@ -481,78 +333,19 @@ docker compose -f docker-compose.prod.yml up -d
 # Запуск сервиса миграций
 make db-migrate
 
-# Только применение миграций
-make db-migrate-only
-
 # Проверка состояния базы данных
 make db-check
-
-# Исправление проблем с базой данных
-make db-fix
-
-# Статус миграций
-make db-status
-
-# Логи миграций
-make db-logs
 
 # Проверка здоровья
 make health
 ```
 
-### Docker Commands
-
-```bash
-# Сборка образов
-make build
-
-# Отправка в registry
-make push
-
-# Тестирование
-make test-docker
-
-# Мониторинг
-make logs
-make health
-
-# Очистка
-make clean
-```
-
-### Docker Registry
-
-```bash
-# Управление Registry
-make registry-up          # Запуск Registry
-make registry-down        # Остановка Registry
-make registry-logs        # Просмотр логов
-make registry-status      # Проверка статуса
-
-# Работа с образами
-make registry-login       # Логин в Registry
-make registry-push        # Отправка образов
-make registry-pull        # Загрузка образов
-```
-
-Registry доступен по адресу: `https://registry.evtin.ru`
-
-### Environment Variables
-
-См. [Environment Variables Documentation](./deployment/environment-variables.md) для полного списка переменных окружения.
-
-## Следующие шаги
-
-1. **Этап 2**: Настройка тестирования
-2. **Этап 3**: Настройка CI/CD
-3. **Этап 5**: Расширение схемы БД
-
 ## Документация
 
+- [FSD структура](./architecture/fsd-structure.md)
+- [Схема базы данных](./architecture/database-schema.md)
+- [API дизайн](./architecture/api-design.md)
 - [Настройка переменных окружения](./development/environment-setup.md)
 - [Настройка базы данных](./database-setup.md)
-- [FSD структура](./architecture/fsd-structure.md)
-- [API дизайн](./architecture/api-design.md)
-- [Схема базы данных](./architecture/database-schema.md)
 - [Docker Registry](./deployment/docker-registry.md)
 - [Traefik Configuration](./deployment/traefik.md)

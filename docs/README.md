@@ -10,30 +10,31 @@
 
 ### 🏗️ Архитектура
 
+- [Общая архитектура](./architecture.md) - Обзор архитектуры проекта
 - [FSD структура](./architecture/fsd-structure.md) - Feature-Sliced Design архитектура
 - [Схема базы данных](./architecture/database-schema.md) - Структура БД и модели
 - [API дизайн](./architecture/api-design.md) - REST API и GraphQL
 
 ### 🛠️ Разработка
 
-- [Seed файлы](./development/seed-files.md) - Инициализация и тестовые данные
 - [Настройка окружения](./development/setup.md) - Установка и настройка
-- [Конфигурация](./development/configuration.md) - Настройки сервисов
-- [Git Workflow](./development/git-workflow.md) - Правила работы с Git и Conventional Commits
-- [Мониторинг и логирование](./development/monitoring.md) - Sentry и мониторинг ошибок
+- [Настройка базы данных](./database-setup.md) - Конфигурация PostgreSQL
+- [MinIO Setup](./development/minio-setup.md) - Локальное S3-совместимое хранилище
+- [Seed файлы](./development/seed-files.md) - Инициализация и тестовые данные
 - [Настройка Email](./development/email-setup.md) - Email сервис и уведомления
-- [Настройка MailHog](./development/mailhog-setup.md) - Тестирование email с MailHog
-- [Быстрый старт MailHog](./development/mailhog-quickstart.md) - Быстрое тестирование email
+- [MailHog Setup](./development/mailhog-setup.md) - Тестирование email с MailHog
+- [Мониторинг](./development/monitoring.md) - Sentry и мониторинг ошибок
 - [Тестирование](./development/testing.md) - Стратегия тестирования
+- [Git Workflow](./development/git-workflow.md) - Правила работы с Git
 
 ### 🚀 Деплой
 
-- [Production Seed](./deployment/production-seed.md) - Создание администратора в production
-
 - [Docker конфигурация](./deployment/docker.md) - Контейнеризация
 - [Миграции базы данных](./deployment/database-migrations.md) - Сервис миграций
-- [CI/CD](./deployment/ci-cd.md) - Автоматизация развертывания
-- [Production](./deployment/production.md) - Production окружение
+- [Production Seed](./deployment/production-seed.md) - Создание администратора в production
+- [Environment Variables](./deployment/environment-variables.md) - Переменные окружения
+- [Docker Registry](./deployment/docker-registry.md) - Управление Docker образами
+- [Traefik Configuration](./deployment/traefik.md) - Reverse proxy настройка
 
 ### 🔄 CI/CD и GitHub Actions
 
@@ -44,26 +45,34 @@
 
 - [Аутентификация](./security/authentication.md) - Система авторизации
 - [Настройка администратора](./security/admin-setup.md) - Создание и управление администратором
+- [OAuth Setup](./security/oauth-setup.md) - Настройка OAuth провайдеров
 - [Email API Security](./security/email-api-security.md) - Безопасность email API
-- [Защита данных](./security/data-protection.md) - Безопасность данных
-- [Соответствие требованиям](./security/compliance.md) - GDPR и другие требования
 
 ### 🔧 Поддержка
 
 - [Частые проблемы](./troubleshooting/common-issues.md) - Решение проблем
-- [Диагностика](./troubleshooting/diagnostics.md) - Диагностика системы
-- [Восстановление](./troubleshooting/recovery.md) - Восстановление после сбоев
+- [Диагностика Sentry](./troubleshooting/sentry-diagnosis.md) - Диагностика системы мониторинга
+- [Исправление загрузки изображений](./troubleshooting/image-loading-fix.md) - Решение проблем с изображениями
 
 ## Быстрый старт
 
 1. [Настройка окружения](./development/setup.md)
-2. [Конфигурация базы данных](./development/configuration.md)
+2. [Настройка базы данных](./database-setup.md)
 3. [Запуск приложения](./deployment/docker.md)
+
+## Интеграции
+
+### AWS Services
+
+- [AWS Integration](./aws-integration.md) - Полная интеграция с AWS
+- [AWS Quickstart](./aws-quickstart.md) - Быстрый старт с AWS
+
+### Мониторинг
+
+- [Sentry Setup](./sentry-setup.md) - Настройка мониторинга ошибок
 
 ## Контрибьюторы
 
-- [План разработки](./plan.md) - Roadmap проекта
-- [Архитектурные решения](./architecture.md) - Принятые решения
 - [Промпты](./prompts.md) - Промпты для AI ассистента
 
 ---
