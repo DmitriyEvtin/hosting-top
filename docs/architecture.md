@@ -11,8 +11,9 @@
 - **Next.js 15** - React фреймворк с App Router
 - **React 19** - UI библиотека
 - **TypeScript 5** - Типизация
-- **Tailwind CSS 4** - Стилизация
+- **Tailwind CSS 4** - Стилизация с поддержкой темной темы
 - **shadcn/ui** - UI компоненты
+- **Lucide React** - Иконки
 
 ### Backend
 
@@ -74,6 +75,9 @@ src/
     │   ├── Card/
     │   │   ├── Card.tsx
     │   │   └── index.ts
+    │   ├── ThemeToggle/         # Theme toggle component
+    │   │   ├── ThemeToggle.tsx
+    │   │   └── index.ts
     │   └── index.ts
     ├── api/                     # Shared API utilities
     │   └── database/            # Database configuration
@@ -83,6 +87,7 @@ src/
         ├── aws-config.ts       # AWS S3 configuration
         ├── parsing-config.ts    # Parsing configuration
         ├── database-test.ts    # Database testing utilities
+        ├── theme-context.tsx    # Theme management context
         ├── utils.ts            # General utilities
         └── index.ts            # Exports
 ```
@@ -262,6 +267,41 @@ export const parsingConfig = {
   },
 };
 ```
+
+## Система переключения темы
+
+### Архитектура темы
+
+Проект включает полноценную систему переключения между светлой и темной темами:
+
+#### Компоненты темы
+
+- **ThemeProvider** (`src/shared/lib/theme-context.tsx`) - Контекст для управления темой
+- **ThemeToggle** (`src/shared/ui/ThemeToggle/`) - Компонент переключателя темы
+- **CSS переменные** - Определены в `src/app/globals.css` для обеих тем
+
+#### Функциональность
+
+- Автоматическое определение системной темы
+- Сохранение выбора пользователя в localStorage
+- Плавные анимации переключения
+- Поддержка accessibility (ARIA атрибуты)
+- Интеграция с Tailwind CSS через CSS переменные
+
+#### Использование
+
+```tsx
+import { useTheme } from "@/shared/lib/theme-context";
+import { ThemeToggle } from "@/shared/ui/ThemeToggle";
+
+// Хук для управления темой
+const { theme, setTheme, toggleTheme } = useTheme();
+
+// Компонент переключателя
+<ThemeToggle />;
+```
+
+Подробная документация: [Theme System Documentation](./development/theme-system.md)
 
 ## API Endpoints
 
