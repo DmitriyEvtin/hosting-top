@@ -6,11 +6,24 @@ ENVIRONMENT ?= development
 
 # Development команды
 dev:
+	docker compose down -v
+	docker volume prune -f
 	docker compose up -d
+	npm run dev:setup
 	npm run dev
 
 dev-down:
 	docker compose down
+
+dev-setup:
+	npm run dev:setup
+
+dev-clean:
+	npm run dev:clean
+
+dev-reset:
+	npm run dev:clean
+	npm run dev:setup
 
 # MinIO команды
 minio-up:
@@ -298,8 +311,11 @@ registry-pull:
 # Помощь
 help:
 	@echo "Доступные команды:"
-	@echo "  dev          - Запуск development окружения"
+	@echo "  dev          - Очистка + запуск всех контейнеров + настройка БД + запуск приложения"
 	@echo "  dev-down     - Остановка development окружения"
+	@echo "  dev-setup    - Только настройка среды разработки"
+	@echo "  dev-clean    - Очистка среды разработки"
+	@echo "  dev-reset    - Полный сброс среды разработки"
 	@echo "  minio-up     - Запуск MinIO"
 	@echo "  minio-down   - Остановка MinIO"
 	@echo "  minio-setup  - Настройка MinIO bucket"

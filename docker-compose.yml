@@ -10,7 +10,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      # Убираем постоянное хранение для разработки - база будет пересоздаваться каждый раз
       - ./docker/postgres/init:/docker-entrypoint-initdb.d
     networks:
       - parket-crm-network
@@ -69,7 +69,6 @@ services:
       retries: 3
 
 volumes:
-  postgres_data:
   redis_data:
   minio_data:
 

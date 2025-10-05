@@ -39,7 +39,40 @@ docker-compose -f docker-compose.prod.yml up -d
 
 ### Быстрый старт
 
+- **🚀 Quick Start**: [docs/development/quick-start.md](./docs/development/quick-start.md)
+- **🛠️ Development Environment**: [docs/development/dev-environment.md](./docs/development/dev-environment.md)
 - **MinIO Setup (локально)**: [docs/minio-quickstart.md](./docs/minio-quickstart.md)
 - **AWS S3 Setup**: [docs/aws-quickstart.md](./docs/aws-quickstart.md)
 - **AWS Integration**: [docs/aws-integration.md](./docs/aws-integration.md)
 - **Development Setup**: [docs/development/setup.md](./docs/development/setup.md)
+
+## 🛠️ Разработка
+
+### Быстрая настройка среды разработки
+
+```bash
+# Единственная команда для запуска всего!
+make dev
+```
+
+Эта команда автоматически:
+
+- Остановит и удалит существующие контейнеры
+- Удалит старые volumes (база данных будет пересоздана)
+- Запустит все контейнеры (PostgreSQL, Redis, MinIO, MailHog, Adminer)
+- Выполнит миграции
+- Заполнит базу тестовыми данными
+- Запустит приложение
+
+**Учетные данные для разработки:**
+
+- Администратор: `admin@dev.ru` / `111111`
+- Пользователи: `user@dev.ru`, `moderator@dev.ru`, `test@dev.ru` / `111111`
+
+**Сервисы:**
+
+- PostgreSQL: `localhost:5432`
+- Redis: `localhost:6379`
+- Adminer: http://localhost:8080
+- MailHog: http://localhost:8025
+- MinIO: http://localhost:9001
