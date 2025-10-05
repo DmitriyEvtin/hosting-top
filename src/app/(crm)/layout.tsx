@@ -1,7 +1,7 @@
 import { AuthGuard } from "@/shared/ui/AuthGuard";
 import { Navigation } from "@/shared/ui/Navigation";
 
-export default function ProtectedLayout({
+export default function CRMLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
