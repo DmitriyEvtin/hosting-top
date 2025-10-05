@@ -67,7 +67,11 @@ src/
 │       └── index.ts
 ├── widgets/                     # FSD Widgets layer (будущее)
 ├── features/                    # FSD Features layer (будущее)
-├── entities/                    # FSD Entities layer (будущее)
+├── entities/                    # FSD Entities layer
+│   └── city/                   # City entity
+│       ├── api/               # City API functions
+│       ├── model/             # City types and validation
+│       └── ui/                # City UI components
 └── shared/                      # FSD Shared layer
     ├── ui/                      # Shared UI components
     │   ├── Button/
@@ -345,6 +349,18 @@ const { theme, setTheme, toggleTheme } = useTheme();
 ### База данных
 
 - `GET /api/database/test` - Тестирование подключения к БД
+
+### Сущности
+
+#### Города (Cities)
+
+- `GET /api/cities` - Получить список городов с поиском и пагинацией
+- `POST /api/cities` - Создать новый город
+- `GET /api/cities/[id]` - Получить город по ID
+- `PUT /api/cities/[id]` - Обновить город
+- `DELETE /api/cities/[id]` - Удалить город
+
+**Права доступа:** Менеджер (MANAGER) и Админ (ADMIN)
 
 ## Мониторинг и логирование
 

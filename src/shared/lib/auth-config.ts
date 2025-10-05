@@ -151,7 +151,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
 
-    async signIn({ user, account }) {
+    async signIn({ account }) {
       // Дополнительная логика при входе
       if (account?.provider === "credentials") {
         return true;

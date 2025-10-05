@@ -1,0 +1,1 @@
+export { CitiesPagination } from "./CitiesPagination";

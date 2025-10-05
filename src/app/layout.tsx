@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@/shared/lib/theme-context";
 import { AuthProvider } from "@/shared/ui/AuthProvider";
+import { Toaster } from "@/shared/ui/Toaster";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -17,7 +18,10 @@ export default function RootLayout({
     <html lang="ru">
       <body>
         <ThemeProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            {children}
+            <Toaster />
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

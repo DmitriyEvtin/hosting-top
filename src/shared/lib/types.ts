@@ -3,6 +3,7 @@ export enum UserRole {
   ADMIN = "ADMIN",
   MODERATOR = "MODERATOR",
   USER = "USER",
+  MANAGER = "MANAGER",
 }
 
 export enum ParsingStatus {
