@@ -2,7 +2,7 @@
 
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/Button";
-import { Building2, MapPin, Menu, X } from "lucide-react";
+import { Building2, MapPin, Menu, Users, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -25,6 +25,11 @@ export function CRMSidebar({ className }: CRMSidebarProps) {
       href: "/holdings",
       label: "Холдинги",
       icon: Building2,
+    },
+    {
+      href: "/dealers",
+      label: "Дилеры",
+      icon: Users,
     },
   ];
 

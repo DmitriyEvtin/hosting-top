@@ -174,6 +174,23 @@ exports.Prisma.HoldingScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.DealerScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  holdingId: 'holdingId',
+  cityId: 'cityId',
+  dealerType: 'dealerType',
+  totalSales: 'totalSales',
+  balance: 'balance',
+  managerId: 'managerId',
+  cooperationStartDate: 'cooperationStartDate',
+  lastVisitDate: 'lastVisitDate',
+  createdById: 'createdById',
+  updatedById: 'updatedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -195,13 +212,20 @@ exports.UserRole = exports.$Enums.UserRole = {
   MANAGER: 'MANAGER'
 };
 
+exports.DealerType = exports.$Enums.DealerType = {
+  VIP: 'VIP',
+  STANDARD: 'STANDARD',
+  PREMIUM: 'PREMIUM'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
   Session: 'Session',
   VerificationToken: 'VerificationToken',
   City: 'City',
-  Holding: 'Holding'
+  Holding: 'Holding',
+  Dealer: 'Dealer'
 };
 
 /**
