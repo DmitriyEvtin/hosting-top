@@ -1,15 +1,14 @@
 import { ThemeProvider } from "@/shared/lib/theme-context";
 import { AuthProvider } from "@/shared/ui/AuthProvider";
-import { Navigation } from "@/shared/ui/Navigation";
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "Паркет CRM",
   description: "CRM для работы оптовой базы паркета",
 };
 
-export default function RootLayout({
+export default function PublicLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -20,7 +19,6 @@ export default function RootLayout({
         <ThemeProvider>
           <AuthProvider>
             <div className="min-h-screen bg-background">
-              <Navigation />
               <main>{children}</main>
             </div>
           </AuthProvider>
