@@ -27,7 +27,7 @@ make dev
 - **Приложение**: http://localhost:3000
 - **PostgreSQL**: localhost:5432
 - **Redis**: localhost:6379
-- **Adminer**: http://localhost:8080
+- **Adminer**: http://localhost:8080 (автоматическое подключение к PostgreSQL)
 - **MailHog**: http://localhost:8025
 - **MinIO**: http://localhost:9001
 
