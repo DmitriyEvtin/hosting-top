@@ -68,12 +68,12 @@ export function DealerEditModal({
     if (dealer) {
       setFormData({
         name: dealer.name,
-        holdingId: dealer.holdingId || "",
-        cityId: dealer.cityId || "",
+        holdingId: dealer.holdingId || undefined,
+        cityId: dealer.cityId || undefined,
         dealerType: dealer.dealerType,
         totalSales: dealer.totalSales,
         balance: dealer.balance,
-        managerId: dealer.managerId || "",
+        managerId: dealer.managerId || undefined,
         cooperationStartDate: dealer.cooperationStartDate,
         lastVisitDate: dealer.lastVisitDate,
       });

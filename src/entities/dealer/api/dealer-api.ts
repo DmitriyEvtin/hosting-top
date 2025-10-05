@@ -214,6 +214,17 @@ export class DealerApi {
     createdById?: string
   ): Promise<Dealer | null> {
     try {
+      // Очистка пустых строк - преобразуем их в undefined
+      if (data.holdingId === "") {
+        data.holdingId = undefined;
+      }
+      if (data.cityId === "") {
+        data.cityId = undefined;
+      }
+      if (data.managerId === "") {
+        data.managerId = undefined;
+      }
+
       // Валидация внешних ключей
       if (data.holdingId) {
         const holding = await prisma.holding.findUnique({
@@ -245,6 +256,18 @@ export class DealerApi {
         if (!manager) {
           console.error(`Менеджер с ID ${data.managerId} не найден`);
           data.managerId = undefined;
+        }
+      }
+
+      // Валидация createdById
+      if (createdById) {
+        const user = await prisma.user.findUnique({
+          where: { id: createdById },
+          select: { id: true },
+        });
+        if (!user) {
+          console.error(`Пользователь с ID ${createdById} не найден`);
+          createdById = undefined;
         }
       }
 
@@ -305,6 +328,63 @@ export class DealerApi {
     updatedById?: string
   ): Promise<Dealer | null> {
     try {
+      // Очистка пустых строк - преобразуем их в undefined
+      if (data.holdingId === "") {
+        data.holdingId = undefined;
+      }
+      if (data.cityId === "") {
+        data.cityId = undefined;
+      }
+      if (data.managerId === "") {
+        data.managerId = undefined;
+      }
+
+      // Валидация внешних ключей
+      if (data.holdingId) {
+        const holding = await prisma.holding.findUnique({
+          where: { id: data.holdingId },
+          select: { id: true },
+        });
+        if (!holding) {
+          console.error(`Холдинг с ID ${data.holdingId} не найден`);
+          data.holdingId = undefined;
+        }
+      }
+
+      if (data.cityId) {
+        const city = await prisma.city.findUnique({
+          where: { id: data.cityId },
+          select: { id: true },
+        });
+        if (!city) {
+          console.error(`Город с ID ${data.cityId} не найден`);
+          data.cityId = undefined;
+        }
+      }
+
+      if (data.managerId) {
+        const manager = await prisma.user.findUnique({
+          where: { id: data.managerId },
+          select: { id: true },
+        });
+        if (!manager) {
+          console.error(`Менеджер с ID ${data.managerId} не найден`);
+          data.managerId = undefined;
+        }
+      }
+
+      // Валидация updatedById
+      if (updatedById) {
+        const user = await prisma.user.findUnique({
+          where: { id: updatedById },
+          select: { id: true },
+        });
+        if (!user) {
+          console.error(`Пользователь с ID ${updatedById} не найден`);
+          updatedById = undefined;
+        }
+      }
+
       const dealer = await prisma.dealer.update({
         where: { id },
         data: {
@@ -351,6 +431,32 @@ export class DealerApi {
       return dealer ? mapPrismaDealerToDealer(dealer) : null;
     } catch (error) {
       console.error("Ошибка при обновлении дилера:", error);
+
+      // Проверяем тип ошибки Prisma
+      if (error && typeof error === "object" && "code" in error) {
+        const prismaError = error as { code: string; meta?: unknown };
+
+        switch (prismaError.code) {
+          case "P2002":
+            console.error(
+              "Нарушение уникального ограничения:",
+              prismaError.meta
+            );
+            break;
+          case "P2003":
+            console.error(
+              "Нарушение ограничения внешнего ключа:",
+              prismaError.meta
+            );
+            break;
+          case "P2025":
+            console.error("Запись не найдена для обновления");
+            break;
+          default:
+            console.error("Неизвестная ошибка Prisma:", prismaError.code);
+        }
+      }
+
       return null;
     }
   }
