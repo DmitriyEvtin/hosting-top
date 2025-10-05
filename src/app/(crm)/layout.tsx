@@ -1,4 +1,5 @@
 import { AuthGuard } from "@/shared/ui/AuthGuard";
+import { CRMSidebar } from "@/shared/ui/CRMSidebar";
 import { Navigation } from "@/shared/ui/Navigation";
 
 export default function CRMLayout({
@@ -10,7 +11,12 @@ export default function CRMLayout({
     <AuthGuard>
       <div className="min-h-screen bg-background">
         <Navigation />
-        <main>{children}</main>
+        <div className="flex">
+          <CRMSidebar />
+          <main className="flex-1 lg:ml-0">
+            <div className="p-6">{children}</div>
+          </main>
+        </div>
       </div>
     </AuthGuard>
   );
