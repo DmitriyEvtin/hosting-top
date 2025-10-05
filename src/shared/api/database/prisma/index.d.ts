@@ -38,6 +38,11 @@ export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTok
  * 
  */
 export type City = $Result.DefaultSelection<Prisma.$CityPayload>
+/**
+ * Model Holding
+ * 
+ */
+export type Holding = $Result.DefaultSelection<Prisma.$HoldingPayload>
 
 /**
  * Enums
@@ -225,6 +230,16 @@ export class PrismaClient<
     * ```
     */
   get city(): Prisma.CityDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.holding`: Exposes CRUD operations for the **Holding** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Holdings
+    * const holdings = await prisma.holding.findMany()
+    * ```
+    */
+  get holding(): Prisma.HoldingDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -669,7 +684,8 @@ export namespace Prisma {
     Account: 'Account',
     Session: 'Session',
     VerificationToken: 'VerificationToken',
-    City: 'City'
+    City: 'City',
+    Holding: 'Holding'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -688,7 +704,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "verificationToken" | "city"
+      modelProps: "user" | "account" | "session" | "verificationToken" | "city" | "holding"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1062,6 +1078,80 @@ export namespace Prisma {
           }
         }
       }
+      Holding: {
+        payload: Prisma.$HoldingPayload<ExtArgs>
+        fields: Prisma.HoldingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HoldingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoldingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HoldingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoldingPayload>
+          }
+          findFirst: {
+            args: Prisma.HoldingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoldingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HoldingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoldingPayload>
+          }
+          findMany: {
+            args: Prisma.HoldingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoldingPayload>[]
+          }
+          create: {
+            args: Prisma.HoldingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoldingPayload>
+          }
+          createMany: {
+            args: Prisma.HoldingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HoldingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoldingPayload>[]
+          }
+          delete: {
+            args: Prisma.HoldingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoldingPayload>
+          }
+          update: {
+            args: Prisma.HoldingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoldingPayload>
+          }
+          deleteMany: {
+            args: Prisma.HoldingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HoldingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HoldingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoldingPayload>[]
+          }
+          upsert: {
+            args: Prisma.HoldingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HoldingPayload>
+          }
+          aggregate: {
+            args: Prisma.HoldingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHolding>
+          }
+          groupBy: {
+            args: Prisma.HoldingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HoldingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HoldingCountArgs<ExtArgs>
+            result: $Utils.Optional<HoldingCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1163,6 +1253,7 @@ export namespace Prisma {
     session?: SessionOmit
     verificationToken?: VerificationTokenOmit
     city?: CityOmit
+    holding?: HoldingOmit
   }
 
   /* Types for Logging */
@@ -6612,6 +6703,988 @@ export namespace Prisma {
 
 
   /**
+   * Model Holding
+   */
+
+  export type AggregateHolding = {
+    _count: HoldingCountAggregateOutputType | null
+    _min: HoldingMinAggregateOutputType | null
+    _max: HoldingMaxAggregateOutputType | null
+  }
+
+  export type HoldingMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HoldingMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HoldingCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type HoldingMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HoldingMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HoldingCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type HoldingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Holding to aggregate.
+     */
+    where?: HoldingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Holdings to fetch.
+     */
+    orderBy?: HoldingOrderByWithRelationInput | HoldingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HoldingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Holdings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Holdings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Holdings
+    **/
+    _count?: true | HoldingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HoldingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HoldingMaxAggregateInputType
+  }
+
+  export type GetHoldingAggregateType<T extends HoldingAggregateArgs> = {
+        [P in keyof T & keyof AggregateHolding]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHolding[P]>
+      : GetScalarType<T[P], AggregateHolding[P]>
+  }
+
+
+
+
+  export type HoldingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HoldingWhereInput
+    orderBy?: HoldingOrderByWithAggregationInput | HoldingOrderByWithAggregationInput[]
+    by: HoldingScalarFieldEnum[] | HoldingScalarFieldEnum
+    having?: HoldingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HoldingCountAggregateInputType | true
+    _min?: HoldingMinAggregateInputType
+    _max?: HoldingMaxAggregateInputType
+  }
+
+  export type HoldingGroupByOutputType = {
+    id: string
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: HoldingCountAggregateOutputType | null
+    _min: HoldingMinAggregateOutputType | null
+    _max: HoldingMaxAggregateOutputType | null
+  }
+
+  type GetHoldingGroupByPayload<T extends HoldingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HoldingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HoldingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HoldingGroupByOutputType[P]>
+            : GetScalarType<T[P], HoldingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HoldingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["holding"]>
+
+  export type HoldingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["holding"]>
+
+  export type HoldingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["holding"]>
+
+  export type HoldingSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type HoldingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["holding"]>
+
+  export type $HoldingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Holding"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["holding"]>
+    composites: {}
+  }
+
+  type HoldingGetPayload<S extends boolean | null | undefined | HoldingDefaultArgs> = $Result.GetResult<Prisma.$HoldingPayload, S>
+
+  type HoldingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HoldingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HoldingCountAggregateInputType | true
+    }
+
+  export interface HoldingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Holding'], meta: { name: 'Holding' } }
+    /**
+     * Find zero or one Holding that matches the filter.
+     * @param {HoldingFindUniqueArgs} args - Arguments to find a Holding
+     * @example
+     * // Get one Holding
+     * const holding = await prisma.holding.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HoldingFindUniqueArgs>(args: SelectSubset<T, HoldingFindUniqueArgs<ExtArgs>>): Prisma__HoldingClient<$Result.GetResult<Prisma.$HoldingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Holding that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HoldingFindUniqueOrThrowArgs} args - Arguments to find a Holding
+     * @example
+     * // Get one Holding
+     * const holding = await prisma.holding.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HoldingFindUniqueOrThrowArgs>(args: SelectSubset<T, HoldingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HoldingClient<$Result.GetResult<Prisma.$HoldingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Holding that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoldingFindFirstArgs} args - Arguments to find a Holding
+     * @example
+     * // Get one Holding
+     * const holding = await prisma.holding.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HoldingFindFirstArgs>(args?: SelectSubset<T, HoldingFindFirstArgs<ExtArgs>>): Prisma__HoldingClient<$Result.GetResult<Prisma.$HoldingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Holding that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoldingFindFirstOrThrowArgs} args - Arguments to find a Holding
+     * @example
+     * // Get one Holding
+     * const holding = await prisma.holding.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HoldingFindFirstOrThrowArgs>(args?: SelectSubset<T, HoldingFindFirstOrThrowArgs<ExtArgs>>): Prisma__HoldingClient<$Result.GetResult<Prisma.$HoldingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Holdings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoldingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Holdings
+     * const holdings = await prisma.holding.findMany()
+     * 
+     * // Get first 10 Holdings
+     * const holdings = await prisma.holding.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const holdingWithIdOnly = await prisma.holding.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HoldingFindManyArgs>(args?: SelectSubset<T, HoldingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HoldingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Holding.
+     * @param {HoldingCreateArgs} args - Arguments to create a Holding.
+     * @example
+     * // Create one Holding
+     * const Holding = await prisma.holding.create({
+     *   data: {
+     *     // ... data to create a Holding
+     *   }
+     * })
+     * 
+     */
+    create<T extends HoldingCreateArgs>(args: SelectSubset<T, HoldingCreateArgs<ExtArgs>>): Prisma__HoldingClient<$Result.GetResult<Prisma.$HoldingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Holdings.
+     * @param {HoldingCreateManyArgs} args - Arguments to create many Holdings.
+     * @example
+     * // Create many Holdings
+     * const holding = await prisma.holding.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HoldingCreateManyArgs>(args?: SelectSubset<T, HoldingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Holdings and returns the data saved in the database.
+     * @param {HoldingCreateManyAndReturnArgs} args - Arguments to create many Holdings.
+     * @example
+     * // Create many Holdings
+     * const holding = await prisma.holding.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Holdings and only return the `id`
+     * const holdingWithIdOnly = await prisma.holding.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HoldingCreateManyAndReturnArgs>(args?: SelectSubset<T, HoldingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HoldingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Holding.
+     * @param {HoldingDeleteArgs} args - Arguments to delete one Holding.
+     * @example
+     * // Delete one Holding
+     * const Holding = await prisma.holding.delete({
+     *   where: {
+     *     // ... filter to delete one Holding
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HoldingDeleteArgs>(args: SelectSubset<T, HoldingDeleteArgs<ExtArgs>>): Prisma__HoldingClient<$Result.GetResult<Prisma.$HoldingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Holding.
+     * @param {HoldingUpdateArgs} args - Arguments to update one Holding.
+     * @example
+     * // Update one Holding
+     * const holding = await prisma.holding.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HoldingUpdateArgs>(args: SelectSubset<T, HoldingUpdateArgs<ExtArgs>>): Prisma__HoldingClient<$Result.GetResult<Prisma.$HoldingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Holdings.
+     * @param {HoldingDeleteManyArgs} args - Arguments to filter Holdings to delete.
+     * @example
+     * // Delete a few Holdings
+     * const { count } = await prisma.holding.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HoldingDeleteManyArgs>(args?: SelectSubset<T, HoldingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Holdings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoldingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Holdings
+     * const holding = await prisma.holding.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HoldingUpdateManyArgs>(args: SelectSubset<T, HoldingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Holdings and returns the data updated in the database.
+     * @param {HoldingUpdateManyAndReturnArgs} args - Arguments to update many Holdings.
+     * @example
+     * // Update many Holdings
+     * const holding = await prisma.holding.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Holdings and only return the `id`
+     * const holdingWithIdOnly = await prisma.holding.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HoldingUpdateManyAndReturnArgs>(args: SelectSubset<T, HoldingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HoldingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Holding.
+     * @param {HoldingUpsertArgs} args - Arguments to update or create a Holding.
+     * @example
+     * // Update or create a Holding
+     * const holding = await prisma.holding.upsert({
+     *   create: {
+     *     // ... data to create a Holding
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Holding we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HoldingUpsertArgs>(args: SelectSubset<T, HoldingUpsertArgs<ExtArgs>>): Prisma__HoldingClient<$Result.GetResult<Prisma.$HoldingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Holdings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoldingCountArgs} args - Arguments to filter Holdings to count.
+     * @example
+     * // Count the number of Holdings
+     * const count = await prisma.holding.count({
+     *   where: {
+     *     // ... the filter for the Holdings we want to count
+     *   }
+     * })
+    **/
+    count<T extends HoldingCountArgs>(
+      args?: Subset<T, HoldingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HoldingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Holding.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoldingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HoldingAggregateArgs>(args: Subset<T, HoldingAggregateArgs>): Prisma.PrismaPromise<GetHoldingAggregateType<T>>
+
+    /**
+     * Group by Holding.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HoldingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HoldingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HoldingGroupByArgs['orderBy'] }
+        : { orderBy?: HoldingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HoldingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHoldingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Holding model
+   */
+  readonly fields: HoldingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Holding.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HoldingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Holding model
+   */
+  interface HoldingFieldRefs {
+    readonly id: FieldRef<"Holding", 'String'>
+    readonly name: FieldRef<"Holding", 'String'>
+    readonly createdAt: FieldRef<"Holding", 'DateTime'>
+    readonly updatedAt: FieldRef<"Holding", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Holding findUnique
+   */
+  export type HoldingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holding
+     */
+    select?: HoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holding
+     */
+    omit?: HoldingOmit<ExtArgs> | null
+    /**
+     * Filter, which Holding to fetch.
+     */
+    where: HoldingWhereUniqueInput
+  }
+
+  /**
+   * Holding findUniqueOrThrow
+   */
+  export type HoldingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holding
+     */
+    select?: HoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holding
+     */
+    omit?: HoldingOmit<ExtArgs> | null
+    /**
+     * Filter, which Holding to fetch.
+     */
+    where: HoldingWhereUniqueInput
+  }
+
+  /**
+   * Holding findFirst
+   */
+  export type HoldingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holding
+     */
+    select?: HoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holding
+     */
+    omit?: HoldingOmit<ExtArgs> | null
+    /**
+     * Filter, which Holding to fetch.
+     */
+    where?: HoldingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Holdings to fetch.
+     */
+    orderBy?: HoldingOrderByWithRelationInput | HoldingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Holdings.
+     */
+    cursor?: HoldingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Holdings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Holdings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Holdings.
+     */
+    distinct?: HoldingScalarFieldEnum | HoldingScalarFieldEnum[]
+  }
+
+  /**
+   * Holding findFirstOrThrow
+   */
+  export type HoldingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holding
+     */
+    select?: HoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holding
+     */
+    omit?: HoldingOmit<ExtArgs> | null
+    /**
+     * Filter, which Holding to fetch.
+     */
+    where?: HoldingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Holdings to fetch.
+     */
+    orderBy?: HoldingOrderByWithRelationInput | HoldingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Holdings.
+     */
+    cursor?: HoldingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Holdings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Holdings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Holdings.
+     */
+    distinct?: HoldingScalarFieldEnum | HoldingScalarFieldEnum[]
+  }
+
+  /**
+   * Holding findMany
+   */
+  export type HoldingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holding
+     */
+    select?: HoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holding
+     */
+    omit?: HoldingOmit<ExtArgs> | null
+    /**
+     * Filter, which Holdings to fetch.
+     */
+    where?: HoldingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Holdings to fetch.
+     */
+    orderBy?: HoldingOrderByWithRelationInput | HoldingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Holdings.
+     */
+    cursor?: HoldingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Holdings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Holdings.
+     */
+    skip?: number
+    distinct?: HoldingScalarFieldEnum | HoldingScalarFieldEnum[]
+  }
+
+  /**
+   * Holding create
+   */
+  export type HoldingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holding
+     */
+    select?: HoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holding
+     */
+    omit?: HoldingOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Holding.
+     */
+    data: XOR<HoldingCreateInput, HoldingUncheckedCreateInput>
+  }
+
+  /**
+   * Holding createMany
+   */
+  export type HoldingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Holdings.
+     */
+    data: HoldingCreateManyInput | HoldingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Holding createManyAndReturn
+   */
+  export type HoldingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holding
+     */
+    select?: HoldingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holding
+     */
+    omit?: HoldingOmit<ExtArgs> | null
+    /**
+     * The data used to create many Holdings.
+     */
+    data: HoldingCreateManyInput | HoldingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Holding update
+   */
+  export type HoldingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holding
+     */
+    select?: HoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holding
+     */
+    omit?: HoldingOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Holding.
+     */
+    data: XOR<HoldingUpdateInput, HoldingUncheckedUpdateInput>
+    /**
+     * Choose, which Holding to update.
+     */
+    where: HoldingWhereUniqueInput
+  }
+
+  /**
+   * Holding updateMany
+   */
+  export type HoldingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Holdings.
+     */
+    data: XOR<HoldingUpdateManyMutationInput, HoldingUncheckedUpdateManyInput>
+    /**
+     * Filter which Holdings to update
+     */
+    where?: HoldingWhereInput
+    /**
+     * Limit how many Holdings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Holding updateManyAndReturn
+   */
+  export type HoldingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holding
+     */
+    select?: HoldingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holding
+     */
+    omit?: HoldingOmit<ExtArgs> | null
+    /**
+     * The data used to update Holdings.
+     */
+    data: XOR<HoldingUpdateManyMutationInput, HoldingUncheckedUpdateManyInput>
+    /**
+     * Filter which Holdings to update
+     */
+    where?: HoldingWhereInput
+    /**
+     * Limit how many Holdings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Holding upsert
+   */
+  export type HoldingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holding
+     */
+    select?: HoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holding
+     */
+    omit?: HoldingOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Holding to update in case it exists.
+     */
+    where: HoldingWhereUniqueInput
+    /**
+     * In case the Holding found by the `where` argument doesn't exist, create a new Holding with this data.
+     */
+    create: XOR<HoldingCreateInput, HoldingUncheckedCreateInput>
+    /**
+     * In case the Holding was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HoldingUpdateInput, HoldingUncheckedUpdateInput>
+  }
+
+  /**
+   * Holding delete
+   */
+  export type HoldingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holding
+     */
+    select?: HoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holding
+     */
+    omit?: HoldingOmit<ExtArgs> | null
+    /**
+     * Filter which Holding to delete.
+     */
+    where: HoldingWhereUniqueInput
+  }
+
+  /**
+   * Holding deleteMany
+   */
+  export type HoldingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Holdings to delete
+     */
+    where?: HoldingWhereInput
+    /**
+     * Limit how many Holdings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Holding without action
+   */
+  export type HoldingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Holding
+     */
+    select?: HoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Holding
+     */
+    omit?: HoldingOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6685,6 +7758,16 @@ export namespace Prisma {
   };
 
   export type CityScalarFieldEnum = (typeof CityScalarFieldEnum)[keyof typeof CityScalarFieldEnum]
+
+
+  export const HoldingScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type HoldingScalarFieldEnum = (typeof HoldingScalarFieldEnum)[keyof typeof HoldingScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -7100,6 +8183,53 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"City"> | Date | string
   }
 
+  export type HoldingWhereInput = {
+    AND?: HoldingWhereInput | HoldingWhereInput[]
+    OR?: HoldingWhereInput[]
+    NOT?: HoldingWhereInput | HoldingWhereInput[]
+    id?: StringFilter<"Holding"> | string
+    name?: StringFilter<"Holding"> | string
+    createdAt?: DateTimeFilter<"Holding"> | Date | string
+    updatedAt?: DateTimeFilter<"Holding"> | Date | string
+  }
+
+  export type HoldingOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HoldingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: HoldingWhereInput | HoldingWhereInput[]
+    OR?: HoldingWhereInput[]
+    NOT?: HoldingWhereInput | HoldingWhereInput[]
+    createdAt?: DateTimeFilter<"Holding"> | Date | string
+    updatedAt?: DateTimeFilter<"Holding"> | Date | string
+  }, "id" | "name">
+
+  export type HoldingOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: HoldingCountOrderByAggregateInput
+    _max?: HoldingMaxOrderByAggregateInput
+    _min?: HoldingMinOrderByAggregateInput
+  }
+
+  export type HoldingScalarWhereWithAggregatesInput = {
+    AND?: HoldingScalarWhereWithAggregatesInput | HoldingScalarWhereWithAggregatesInput[]
+    OR?: HoldingScalarWhereWithAggregatesInput[]
+    NOT?: HoldingScalarWhereWithAggregatesInput | HoldingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Holding"> | string
+    name?: StringWithAggregatesFilter<"Holding"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Holding"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Holding"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -7429,6 +8559,55 @@ export namespace Prisma {
   }
 
   export type CityUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HoldingCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HoldingUncheckedCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HoldingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HoldingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HoldingCreateManyInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HoldingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HoldingUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7778,6 +8957,27 @@ export namespace Prisma {
   }
 
   export type CityMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HoldingCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HoldingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HoldingMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
