@@ -1,1 +1,0 @@
-export { HoldingViewModal } from "./HoldingViewModal";

@@ -1,1 +1,0 @@
-export { HoldingTable } from "./HoldingTable";

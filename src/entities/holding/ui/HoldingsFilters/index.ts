@@ -1,1 +1,0 @@
-export { HoldingsFilters } from "./HoldingsFilters";

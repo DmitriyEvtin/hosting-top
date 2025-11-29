@@ -1,1 +1,0 @@
-export { HoldingsPagination } from "./HoldingsPagination";

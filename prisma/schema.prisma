@@ -21,11 +21,6 @@ model User {
   accounts        Account[]
   sessions        Session[]
   
-  // Связи с дилерами
-  managedDealers   Dealer[] @relation("DealerManager")
-  createdDealers   Dealer[] @relation("DealerCreatedBy")
-  updatedDealers  Dealer[] @relation("DealerUpdatedBy")
-
   @@map("users")
 }
 
@@ -74,57 +69,9 @@ model City {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
-  // Связи
-  dealers   Dealer[]
-
   @@map("cities")
 }
 
-model Holding {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  
-  // Связи
-  dealers   Dealer[]
-
-  @@map("holdings")
-}
-
-model Dealer {
-  id                    String   @id @default(cuid())
-  name                   String   // Название компании дилера (обязательное)
-  holdingId              String?  // ID связи с холдингом
-  cityId                 String?  // ID связи с городом
-  dealerType             DealerType @default(VIP) // Тип дилера
-  totalSales             Decimal? @db.Decimal(15, 2) // Общая сумма продаж
-  balance                Decimal? @db.Decimal(15, 2) // Дебиторская задолженность
-  managerId              String?  // ID ответственного менеджера
-  cooperationStartDate   DateTime? // Дата начала сотрудничества
-  lastVisitDate          DateTime? // Дата последнего посещения
-  
-  // Аудит
-  createdById             String?  // Кто создал
-  updatedById             String?  // Кто последний изменил
-  createdAt               DateTime @default(now())
-  updatedAt               DateTime @updatedAt
-  
-  // Связи
-  holding                Holding? @relation(fields: [holdingId], references: [id])
-  city                   City?    @relation(fields: [cityId], references: [id])
-  manager                User?    @relation("DealerManager", fields: [managerId], references: [id])
-  createdBy               User?    @relation("DealerCreatedBy", fields: [createdById], references: [id])
-  updatedBy               User?    @relation("DealerUpdatedBy", fields: [updatedById], references: [id])
-
-  @@map("dealers")
-}
-
-enum DealerType {
-  VIP
-  STANDARD
-  PREMIUM
-}
 
 enum UserRole {
   ADMIN
@@ -132,4 +79,5 @@ enum UserRole {
   MODERATOR
   MANAGER
 }
+
 
