@@ -6,13 +6,13 @@ import type { EmailTemplate } from "./types";
 
 export const emailTemplates: Record<string, EmailTemplate> = {
   welcome: {
-    subject: "Добро пожаловать в Паркет CRM",
+    subject: "Добро пожаловать в Паркет Retail",
     text: "Добро пожаловать! Ваш аккаунт был успешно создан.",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
           <h1 style="color: #333; margin: 0 0 20px 0;">Добро пожаловать!</h1>
-          <p style="color: #666; margin: 0 0 15px 0;">Ваш аккаунт был успешно создан в системе Паркет CRM.</p>
+          <p style="color: #666; margin: 0 0 15px 0;">Ваш аккаунт был успешно создан в системе Паркет Retail.</p>
           <p style="color: #666; margin: 0 0 20px 0;">Теперь вы можете войти в систему и пользоваться всеми возможностями.</p>
           <div style="text-align: center; margin: 20px 0;">
             <a href="{loginUrl}" style="background-color: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">Войти в систему</a>
@@ -25,7 +25,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
   },
 
   passwordReset: {
-    subject: "Сброс пароля - Паркет CRM",
+    subject: "Сброс пароля - Паркет Retail",
     text: "Для сброса пароля перейдите по ссылке: {resetLink}",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -45,7 +45,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
   },
 
   userCreated: {
-    subject: "Новый пользователь создан - Паркет CRM",
+    subject: "Новый пользователь создан - Паркет Retail",
     text: "Новый пользователь {userName} ({userEmail}) был создан администратором.",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -66,7 +66,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
   },
 
   userUpdated: {
-    subject: "Профиль обновлен - Паркет CRM",
+    subject: "Профиль обновлен - Паркет Retail",
     text: "Ваш профиль был обновлен администратором.",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">

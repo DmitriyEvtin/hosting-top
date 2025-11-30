@@ -5,8 +5,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Паркет CRM",
-  description: "CRM для работы оптовой базы паркета",
+  title: "Паркет Retail",
+  description: "CRM для работы розничной базы паркета",
 };
 
 export default function RootLayout({

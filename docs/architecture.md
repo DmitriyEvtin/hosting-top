@@ -1,4 +1,4 @@
-# Архитектура проекта "Паркет CRM"
+# Архитектура проекта "Паркет Retail"
 
 ## Обзор
 
@@ -151,7 +151,7 @@ src/views/home/ui/HomePage/
 ```bash
 # Основные настройки
 NODE_ENV="development"
-APP_NAME="Паркет CRM"
+APP_NAME="Паркет Retail"
 APP_VERSION="1.0.0"
 
 # База данных

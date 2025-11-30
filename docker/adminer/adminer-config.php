@@ -21,7 +21,7 @@ function adminer_object() {
         
         function name() {
             // Кастомное название
-            return 'Parket CRM Database';
+            return 'Parket Retail Database';
         }
         
         function permanentLogin($jwt) {

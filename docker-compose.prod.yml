@@ -1,12 +1,12 @@
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: parket-crm-postgres-prod
+    container_name: parket-retail-postgres-prod
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-parket_crm}
-      POSTGRES_USER: ${POSTGRES_USER:-parket_crm_user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-parket_crm_password}
+      POSTGRES_DB: ${POSTGRES_DB:-parket_retail}
+      POSTGRES_USER: ${POSTGRES_USER:-parket_retail_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-parket_retail_password}
       POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
     ports:
       - "5432:5432"
@@ -14,12 +14,12 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
     networks:
-      - parket-crm-network
+      - parket-crretailm-network
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "pg_isready -U ${POSTGRES_USER:-parket_crm_user} -d ${POSTGRES_DB:-parket_crm}",
+          "pg_isready -U ${POSTGRES_USER:-parket_retail_user} -d ${POSTGRES_DB:-parket_retail}",
         ]
       interval: 30s
       timeout: 10s
@@ -28,14 +28,14 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: parket-crm-redis-prod
+    container_name: parket-retail-redis-prod
     restart: unless-stopped
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data
     networks:
-      - parket-crm-network
+      - parket-retail-network
     command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
@@ -45,13 +45,13 @@ services:
       start_period: 30s
 
   migrations:
-    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_crm}-app:${IMAGE_TAG:-latest}
-    container_name: parket-crm-migrations-prod
+    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_retail}-app:${IMAGE_TAG:-latest}
+    container_name: parket-retail-migrations-prod
     environment:
       NODE_ENV: production
-      DATABASE_URL: postgresql://${POSTGRES_USER:-parket_crm_user}:${POSTGRES_PASSWORD:-parket_crm_password}@postgres:5432/${POSTGRES_DB:-parket_crm}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-parket_retail_user}:${POSTGRES_PASSWORD:-parket_retail_password}@postgres:5432/${POSTGRES_DB:-parket_retail}
     networks:
-      - parket-crm-network
+      - parket-retail-network
     depends_on:
       postgres:
         condition: service_healthy
@@ -59,7 +59,7 @@ services:
     restart: "no"
 
   app:
-    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_crm}-app:${IMAGE_TAG:-latest}
+    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_retail}-app:${IMAGE_TAG:-latest}
     restart: unless-stopped
     deploy:
       replicas: 2
@@ -72,7 +72,7 @@ services:
       NODE_ENV: production
       HOSTNAME: "0.0.0.0"
       PORT: "3000"
-      DATABASE_URL: postgresql://${POSTGRES_USER:-parket_crm_user}:${POSTGRES_PASSWORD:-parket_crm_password}@postgres:5432/${POSTGRES_DB:-parket_crm}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-parket_retail_user}:${POSTGRES_PASSWORD:-parket_retail_password}@postgres:5432/${POSTGRES_DB:-parket_retail}
       REDIS_URL: redis://redis:6379
       NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
       NEXTAUTH_URL: ${NEXTAUTH_URL}
@@ -103,12 +103,12 @@ services:
       SMTP_PORT: ${SMTP_PORT:-587}
       SMTP_USER: ${SMTP_USER}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
-      SMTP_FROM: ${SMTP_FROM:-noreply@parket-crm.ru}
+      SMTP_FROM: ${SMTP_FROM:-noreply@parket-retail.ru}
     # Порт 3000 отключен для production - доступ только через nginx
     # ports:
     #   - "3000:3000"
     networks:
-      - parket-crm-network
+      - parket-retail-network
     depends_on:
       postgres:
         condition: service_healthy
@@ -119,11 +119,11 @@ services:
     # healthcheck настроен в Dockerfile
 
   nginx:
-    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_crm}-nginx:${IMAGE_TAG:-latest}
-    container_name: parket-crm-nginx-prod
+    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_retail}-nginx:${IMAGE_TAG:-latest}
+    container_name: parket-retail-nginx-prod
     restart: unless-stopped
     networks:
-      - parket-crm-network
+      - parket-retail-network
       - traefik-public
     depends_on:
       - app
@@ -173,7 +173,7 @@ volumes:
     driver: local
 
 networks:
-  parket-crm-network:
+  parket-retail-network:
     external: true
   traefik-public:
     external: true

@@ -1,6 +1,6 @@
 # Переменные окружения
 REGISTRY ?= localhost
-IMAGE_NAME ?= parket_crm
+IMAGE_NAME ?= parket_retail
 TAG ?= latest
 ENVIRONMENT ?= development
 
@@ -9,6 +9,10 @@ dev:
 	docker compose down -v
 	docker volume prune -f
 	docker compose up -d
+	@if [ ! -d "node_modules" ]; then \
+		echo "📦 Установка зависимостей..."; \
+		npm install; \
+	fi
 	npm run dev:setup
 	npm run dev
 
@@ -16,6 +20,10 @@ dev-down:
 	docker compose down
 
 dev-setup:
+	@if [ ! -d "node_modules" ]; then \
+		echo "📦 Установка зависимостей..."; \
+		npm install; \
+	fi
 	npm run dev:setup
 
 dev-clean:
@@ -62,7 +70,7 @@ mailhog-down:
 	docker compose stop mailer
 
 mailhog-logs:
-	docker logs parket-crm-mailhog -f
+	docker logs parket-retail-mailhog -f
 
 mailhog-clear:
 	curl -X DELETE http://localhost:8025/api/v1/messages

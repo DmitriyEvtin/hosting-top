@@ -1,62 +1,62 @@
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: parket-crm-postgres
+    container_name: parket-retail-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: parket_crm
-      POSTGRES_USER: parket_crm_user
-      POSTGRES_PASSWORD: parket_crm_password
+      POSTGRES_DB: parket_retail
+      POSTGRES_USER: parket_retail_user
+      POSTGRES_PASSWORD: parket_retail_password
     ports:
       - "5432:5432"
     volumes:
       # Убираем постоянное хранение для разработки - база будет пересоздаваться каждый раз
       - ./docker/postgres/init:/docker-entrypoint-initdb.d
     networks:
-      - parket-crm-network
+      - parket-retail-network
 
   redis:
     image: redis:7-alpine
-    container_name: parket-crm-redis
+    container_name: parket-retail-redis
     restart: unless-stopped
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data
     networks:
-      - parket-crm-network
+      - parket-retail-network
 
   adminer:
     image: adminer:4.8.1
-    container_name: parket-crm-adminer
+    container_name: parket-retail-adminer
     restart: unless-stopped
     ports:
       - "8080:8080"
     environment:
       ADMINER_DEFAULT_SERVER: postgres
       ADMINER_DESIGN: pepa-linha-dark
-      ADMINER_DEFAULT_DB: parket_crm
-      ADMINER_DEFAULT_USER: parket_crm_user
-      ADMINER_DEFAULT_PASSWORD: parket_crm_password
+      ADMINER_DEFAULT_DB: parket_retail
+      ADMINER_DEFAULT_USER: parket_retail_user
+      ADMINER_DEFAULT_PASSWORD: parket_retail_password
       ADMINER_DEFAULT_DRIVER: pgsql
     networks:
-      - parket-crm-network
+      - parket-retail-network
     depends_on:
       - postgres
 
   mailer:
     image: mailhog/mailhog
-    container_name: parket-crm-mailhog
+    container_name: parket-retail-mailhog
     restart: unless-stopped
     ports:
       - "1025:1025" # SMTP порт
       - "8025:8025" # Web UI порт
     networks:
-      - parket-crm-network
+      - parket-retail-network
 
   minio:
     image: minio/minio:latest
-    container_name: parket-crm-minio
+    container_name: parket-retail-minio
     restart: unless-stopped
     ports:
       - "9000:9000" # API порт
@@ -68,7 +68,7 @@ services:
       - minio_data:/data
     command: server /data --console-address ":9001"
     networks:
-      - parket-crm-network
+      - parket-retail-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
       interval: 30s
@@ -80,5 +80,5 @@ volumes:
   minio_data:
 
 networks:
-  parket-crm-network:
+  parket-retail-network:
     driver: bridge
