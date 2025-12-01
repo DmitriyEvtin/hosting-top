@@ -14,6 +14,7 @@ export async function middleware(request: NextRequest) {
     "/api/configuration",
     "/api/database/test",
     "/api/sentry",
+    "/api/public",
   ];
 
   // Проверяем, является ли маршрут публичным
