@@ -2,7 +2,7 @@
 
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/Button";
-import { MapPin, Menu, X } from "lucide-react";
+import { Globe, MapPin, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -11,15 +11,41 @@ interface CRMSidebarProps {
   className?: string;
 }
 
+interface MenuItem {
+  href: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+interface MenuSection {
+  title: string;
+  items: MenuItem[];
+}
+
 export function CRMSidebar({ className }: CRMSidebarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const menuItems = [
+  const menuSections: MenuSection[] = [
     {
-      href: "/cities",
-      label: "Города",
-      icon: MapPin,
+      title: "Основное",
+      items: [
+        {
+          href: "/cities",
+          label: "Города",
+          icon: MapPin,
+        },
+      ],
+    },
+    {
+      title: "Каталог",
+      items: [
+        {
+          href: "/sites",
+          label: "Сайты",
+          icon: Globe,
+        },
+      ],
     },
   ];
 
@@ -80,28 +106,37 @@ export function CRMSidebar({ className }: CRMSidebarProps) {
             </Button>
           </div>
 
-          <nav className="space-y-2">
-            {menuItems.map(item => {
-              const Icon = item.icon;
-              const isActive = pathname === item.href;
+          <nav className="space-y-6">
+            {menuSections.map((section, sectionIndex) => (
+              <div key={sectionIndex}>
+                <h3 className="px-3 mb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                  {section.title}
+                </h3>
+                <div className="space-y-1">
+                  {section.items.map(item => {
+                    const Icon = item.icon;
+                    const isActive = pathname === item.href;
 
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={closeMobileMenu}
-                  className={cn(
-                    "flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                    isActive
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  )}
-                >
-                  <Icon className="h-4 w-4" />
-                  <span>{item.label}</span>
-                </Link>
-              );
-            })}
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={closeMobileMenu}
+                        className={cn(
+                          "flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                          isActive
+                            ? "bg-primary text-primary-foreground"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                        )}
+                      >
+                        <Icon className="h-4 w-4" />
+                        <span>{item.label}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </nav>
         </div>
       </div>
@@ -113,27 +148,36 @@ export function CRMSidebar({ className }: CRMSidebarProps) {
             CRM Retail Меню
           </h2>
 
-          <nav className="space-y-2">
-            {menuItems.map(item => {
-              const Icon = item.icon;
-              const isActive = pathname === item.href;
+          <nav className="space-y-6">
+            {menuSections.map((section, sectionIndex) => (
+              <div key={sectionIndex}>
+                <h3 className="px-3 mb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                  {section.title}
+                </h3>
+                <div className="space-y-1">
+                  {section.items.map(item => {
+                    const Icon = item.icon;
+                    const isActive = pathname === item.href;
 
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                    isActive
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  )}
-                >
-                  <Icon className="h-4 w-4" />
-                  <span>{item.label}</span>
-                </Link>
-              );
-            })}
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={cn(
+                          "flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                          isActive
+                            ? "bg-primary text-primary-foreground"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                        )}
+                      >
+                        <Icon className="h-4 w-4" />
+                        <span>{item.label}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </nav>
         </div>
       </div>
