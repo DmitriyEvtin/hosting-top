@@ -9,7 +9,7 @@ import { z } from "zod";
 /**
  * GET /api/sites - Получить список всех сайтов
  */
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 

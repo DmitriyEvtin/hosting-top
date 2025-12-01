@@ -13,7 +13,7 @@ export class ProductApi {
     siteId?: string,
     categoryId?: string
   ): Promise<Product[]> {
-    const whereConditions: any[] = [];
+    const whereConditions: Array<Record<string, unknown>> = [];
 
     if (siteId) {
       whereConditions.push({
