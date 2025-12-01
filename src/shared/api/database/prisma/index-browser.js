@@ -167,6 +167,38 @@ exports.Prisma.CityScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.SiteScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CategorySiteScalarFieldEnum = {
+  categoryId: 'categoryId',
+  siteId: 'siteId'
+};
+
+exports.Prisma.ProductSiteScalarFieldEnum = {
+  productId: 'productId',
+  siteId: 'siteId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -193,7 +225,12 @@ exports.Prisma.ModelName = {
   Account: 'Account',
   Session: 'Session',
   VerificationToken: 'VerificationToken',
-  City: 'City'
+  City: 'City',
+  Site: 'Site',
+  Category: 'Category',
+  Product: 'Product',
+  CategorySite: 'CategorySite',
+  ProductSite: 'ProductSite'
 };
 
 /**
