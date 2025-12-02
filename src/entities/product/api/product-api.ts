@@ -3,6 +3,9 @@ import {
   Product,
   CreateProductData,
   UpdateProductData,
+  ProductImage,
+  CreateProductImagesData,
+  ReorderProductImagesData,
 } from "../model/types";
 
 export class ProductApi {
@@ -248,6 +251,147 @@ export class ProductApi {
     await prisma.product.delete({
       where: { id },
     });
+  }
+
+  /**
+   * Получить все изображения товара, отсортированные по sortOrder
+   */
+  static async getProductImages(productId: string): Promise<ProductImage[]> {
+    return await prisma.productImage.findMany({
+      where: { productId },
+      orderBy: { sortOrder: "asc" },
+    });
+  }
+
+  /**
+   * Получить максимальный sortOrder для товара
+   */
+  static async getMaxSortOrder(productId: string): Promise<number> {
+    const result = await prisma.productImage.aggregate({
+      where: { productId },
+      _max: { sortOrder: true },
+    });
+    return result._max.sortOrder ?? -1;
+  }
+
+  /**
+   * Добавить изображения к товару
+   */
+  static async addProductImages(
+    productId: string,
+    data: CreateProductImagesData
+  ): Promise<ProductImage[]> {
+    return await prisma.$transaction(async (tx) => {
+      // Получаем максимальный sortOrder
+      const maxSortOrderResult = await tx.productImage.aggregate({
+        where: { productId },
+        _max: { sortOrder: true },
+      });
+      const maxSortOrder = maxSortOrderResult._max.sortOrder ?? -1;
+
+      // Создаем изображения с автоинкрементом sortOrder
+      const images = await Promise.all(
+        data.imageUrls.map((imageUrl, index) =>
+          tx.productImage.create({
+            data: {
+              productId,
+              imageUrl,
+              sortOrder: maxSortOrder + 1 + index,
+            },
+          })
+        )
+      );
+
+      return images;
+    });
+  }
+
+  /**
+   * Изменить порядок изображений товара
+   */
+  static async reorderProductImages(
+    productId: string,
+    data: ReorderProductImagesData
+  ): Promise<ProductImage[]> {
+    return await prisma.$transaction(async (tx) => {
+      // Проверяем, что все изображения принадлежат товару
+      const existingImages = await tx.productImage.findMany({
+        where: {
+          productId,
+          id: { in: data.imageIds },
+        },
+      });
+
+      if (existingImages.length !== data.imageIds.length) {
+        throw new Error("Некоторые изображения не найдены или не принадлежат товару");
+      }
+
+      // Обновляем sortOrder для каждого изображения по индексу в массиве
+      const updatePromises = data.imageIds.map((imageId, index) =>
+        tx.productImage.update({
+          where: { id: imageId },
+          data: { sortOrder: index },
+        })
+      );
+
+      await Promise.all(updatePromises);
+
+      // Возвращаем обновленные изображения
+      return await tx.productImage.findMany({
+        where: { productId },
+        orderBy: { sortOrder: "asc" },
+      });
+    });
+  }
+
+  /**
+   * Удалить изображение товара
+   */
+  static async deleteProductImage(imageId: string): Promise<{
+    imageUrl: string;
+    productId: string;
+    sortOrder: number;
+  }> {
+    const image = await prisma.productImage.findUnique({
+      where: { id: imageId },
+      select: {
+        imageUrl: true,
+        productId: true,
+        sortOrder: true,
+      },
+    });
+
+    if (!image) {
+      throw new Error("Изображение не найдено");
+    }
+
+    await prisma.$transaction(async (tx) => {
+      // Удаляем изображение
+      await tx.productImage.delete({
+        where: { id: imageId },
+      });
+
+      // Получаем все изображения с sortOrder больше удаленного
+      const imagesToRenumber = await tx.productImage.findMany({
+        where: {
+          productId: image.productId,
+          sortOrder: { gt: image.sortOrder },
+        },
+        orderBy: { sortOrder: "asc" },
+      });
+
+      // Перенумеровываем оставшиеся изображения
+      await Promise.all(
+        imagesToRenumber.map((img) =>
+          tx.productImage.update({
+            where: { id: img.id },
+            data: { sortOrder: img.sortOrder - 1 },
+          })
+        )
+      );
+    });
+
+    return image;
   }
 }
 

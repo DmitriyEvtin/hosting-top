@@ -36,3 +36,18 @@ export const updateProductSchema = z.object({
 export type CreateProductInput = z.infer<typeof createProductSchema>;
 export type UpdateProductInput = z.infer<typeof updateProductSchema>;
 
+export const createProductImagesSchema = z.object({
+  imageUrls: z
+    .array(z.string().url("Некорректный формат URL"))
+    .min(1, "Необходимо указать хотя бы одно изображение"),
+});
+
+export const reorderProductImagesSchema = z.object({
+  imageIds: z
+    .array(z.string().cuid("Некорректный формат CUID"))
+    .min(1, "Необходимо указать хотя бы одно изображение"),
+});
+
+export type CreateProductImagesInput = z.infer<typeof createProductImagesSchema>;
+export type ReorderProductImagesInput = z.infer<typeof reorderProductImagesSchema>;
+

@@ -38,3 +38,20 @@ export interface UpdateProductData {
   siteIds?: string[];
 }
 
+export interface ProductImage {
+  id: string;
+  productId: string;
+  imageUrl: string;
+  sortOrder: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface CreateProductImagesData {
+  imageUrls: string[];
+}
+
+export interface ReorderProductImagesData {
+  imageIds: string[];
+}
+
