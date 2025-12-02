@@ -92,7 +92,91 @@ export async function PUT(
       }
     }
 
-    const category = await CategoryApi.updateCategory(params.id, validatedData);
+    // Сохраняем старое изображение для возможного удаления
+    const oldImageUrl = existingCategory.image;
+
+    const category = await CategoryApi.updateCategory(
+      params.id,
+      validatedData,
+      oldImageUrl
+    );
+
+    return NextResponse.json(category);
+  } catch (error) {
+    console.error("Ошибка при обновлении категории:", error);
+
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        {
+          error: "Неверные данные",
+          details: error.errors,
+        },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json(
+      { error: "Внутренняя ошибка сервера" },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * PATCH /api/categories/[id] - Частичное обновление категории (включая изображение)
+ */
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session?.user) {
+      return NextResponse.json({ error: "Не авторизован" }, { status: 401 });
+    }
+
+    // Проверяем права доступа (Менеджер или Админ)
+    if (!hasManagerOrAdminAccess(session.user.role)) {
+      return NextResponse.json({ error: "Недостаточно прав" }, { status: 403 });
+    }
+
+    // Проверяем существование категории
+    const existingCategory = await CategoryApi.getCategoryById(params.id);
+    if (!existingCategory) {
+      return NextResponse.json(
+        { error: "Категория не найдена" },
+        { status: 404 }
+      );
+    }
+
+    const body = await request.json();
+    const validatedData = updateCategorySchema.parse(body);
+
+    // Если указаны siteIds, проверяем их существование
+    if (validatedData.siteIds !== undefined) {
+      const siteValidation = await CategoryApi.validateSiteIds(
+        validatedData.siteIds
+      );
+      if (!siteValidation.valid) {
+        return NextResponse.json(
+          {
+            error: "Некоторые сайты не найдены",
+            missingSiteIds: siteValidation.missingIds,
+          },
+          { status: 400 }
+        );
+      }
+    }
+
+    // Сохраняем старое изображение для возможного удаления
+    const oldImageUrl = existingCategory.image;
+
+    const category = await CategoryApi.updateCategory(
+      params.id,
+      validatedData,
+      oldImageUrl
+    );
 
     return NextResponse.json(category);
   } catch (error) {

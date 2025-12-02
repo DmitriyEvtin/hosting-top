@@ -1,4 +1,5 @@
 import { prisma } from "@/shared/api/database/prisma";
+import { s3Service } from "@/shared/lib/s3-utils";
 import {
   Category,
   CreateCategoryData,
@@ -121,17 +122,47 @@ export class CategoryApi {
   }
 
   /**
+   * Удалить старое изображение из S3
+   */
+  static async deleteOldImage(imageUrl: string | null | undefined): Promise<void> {
+    if (!imageUrl) {
+      return;
+    }
+
+    try {
+      const key = s3Service.extractKeyFromUrl(imageUrl);
+      if (key) {
+        await s3Service.deleteFile(key);
+      }
+    } catch (error) {
+      // Логируем ошибку, но не прерываем выполнение
+      console.error("Ошибка при удалении старого изображения:", error);
+    }
+  }
+
+  /**
    * Обновить категорию и связи с сайтами
    */
   static async updateCategory(
     id: string,
-    data: UpdateCategoryData
+    data: UpdateCategoryData,
+    oldImageUrl?: string | null
   ): Promise<Category> {
     return await prisma.$transaction(async (tx) => {
       // Обновляем название категории, если оно указано
-      const updateData: { name?: string } = {};
+      const updateData: { name?: string; image?: string | null } = {};
       if (data.name !== undefined) {
         updateData.name = data.name;
+      }
+
+      // Обработка изображения
+      if (data.image !== undefined) {
+        updateData.image = data.image;
+
+        // Если изображение изменилось (включая удаление через null) и старое существует, удаляем его из S3
+        if (oldImageUrl && oldImageUrl !== data.image) {
+          await this.deleteOldImage(oldImageUrl);
+        }
       }
 
       // Если указаны siteIds, обновляем связи

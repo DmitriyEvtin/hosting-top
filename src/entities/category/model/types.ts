@@ -1,6 +1,7 @@
 export interface Category {
   id: string;
   name: string;
+  image?: string | null;
   createdAt: Date;
   updatedAt: Date;
   sites?: CategorySite[];
@@ -25,5 +26,6 @@ export interface CreateCategoryData {
 export interface UpdateCategoryData {
   name?: string;
   siteIds?: string[];
+  image?: string | null;
 }
 
