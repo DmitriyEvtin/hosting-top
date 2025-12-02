@@ -22,7 +22,8 @@ import {
   SelectValue,
 } from "@/shared/ui/Select";
 import { useEffect, useState } from "react";
-import { Product } from "../../model/types";
+import { Product, ProductImage } from "../../model/types";
+import { ProductGallery } from "../ProductGallery";
 
 interface ProductEditModalProps {
   product: Product | null;
@@ -54,23 +55,49 @@ export function ProductEditModal({
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [serverError, setServerError] = useState<string>("");
+  const [images, setImages] = useState<ProductImage[]>([]);
+  const [loadingImages, setLoadingImages] = useState(false);
+
+  /**
+   * Загрузка изображений товара
+   */
+  const loadProductImages = async (productId: string) => {
+    setLoadingImages(true);
+    try {
+      const response = await fetch(`/api/products/${productId}/images`);
+      if (!response.ok) {
+        throw new Error("Ошибка при загрузке изображений");
+      }
+      const productImages = await response.json();
+      setImages(productImages);
+    } catch (error) {
+      console.error("Ошибка при загрузке изображений:", error);
+      setImages([]);
+    } finally {
+      setLoadingImages(false);
+    }
+  };
 
   useEffect(() => {
-    if (product) {
+    if (product && isOpen) {
       setFormData({
         name: product.name,
         categoryId: product.categoryId,
         siteIds: product.sites?.map((ps) => ps.siteId) || [],
       });
+      // Загружаем изображения товара
+      loadProductImages(product.id);
     } else {
       setFormData({
         name: "",
         categoryId: null,
         siteIds: [],
       });
+      setImages([]);
     }
     setErrors({});
     setServerError("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product, isOpen]);
 
   const validateForm = () => {
@@ -143,7 +170,7 @@ export function ProductEditModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
             {product ? "Редактировать товар" : "Создать товар"}
@@ -233,6 +260,18 @@ export function ProductEditModal({
           {serverError && (
             <div className="p-3 bg-red-50 border border-red-200 rounded-md">
               <p className="text-sm text-red-600">{serverError}</p>
+            </div>
+          )}
+
+          {/* Галерея изображений (только для существующих товаров) */}
+          {product && (
+            <div className="space-y-2">
+              <ProductGallery
+                productId={product.id}
+                images={images}
+                onImagesChange={setImages}
+                disabled={loading || loadingImages}
+              />
             </div>
           )}
 

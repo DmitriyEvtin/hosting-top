@@ -7,6 +7,47 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 /**
+ * GET /api/products/[id]/images - Получить изображения товара
+ */
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session?.user) {
+      return NextResponse.json({ error: "Не авторизован" }, { status: 401 });
+    }
+
+    // Проверяем права доступа (Менеджер или Админ)
+    if (!hasManagerOrAdminAccess(session.user.role)) {
+      return NextResponse.json({ error: "Недостаточно прав" }, { status: 403 });
+    }
+
+    // Проверяем существование товара
+    const existingProduct = await ProductApi.getProductById(params.id);
+    if (!existingProduct) {
+      return NextResponse.json(
+        { error: "Товар не найден" },
+        { status: 404 }
+      );
+    }
+
+    const images = await ProductApi.getProductImages(params.id);
+
+    return NextResponse.json(images);
+  } catch (error) {
+    console.error("Ошибка при получении изображений:", error);
+
+    return NextResponse.json(
+      { error: "Внутренняя ошибка сервера" },
+      { status: 500 }
+    );
+  }
+}
+
+/**
  * POST /api/products/[id]/images - Добавить изображения к товару
  */
 export async function POST(
