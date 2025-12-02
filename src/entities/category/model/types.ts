@@ -21,6 +21,7 @@ export interface CategorySite {
 export interface CreateCategoryData {
   name: string;
   siteIds: string[];
+  image?: string | null;
 }
 
 export interface UpdateCategoryData {

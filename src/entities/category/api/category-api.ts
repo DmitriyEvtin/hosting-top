@@ -98,6 +98,7 @@ export class CategoryApi {
     return await prisma.category.create({
       data: {
         name: data.name,
+        image: data.image || null,
         sites: {
           create: data.siteIds.map((siteId) => ({
             siteId,

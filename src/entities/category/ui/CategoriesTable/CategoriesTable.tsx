@@ -10,7 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/ui/Table";
-import { Edit, Trash2 } from "lucide-react";
+import { Edit, Image as ImageIcon, Trash2 } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import { Category } from "../../model/types";
 
@@ -84,6 +85,7 @@ export function CategoriesTable({
       <Table>
         <TableHeader>
           <TableRow>
+            <TableHead className="w-[60px]">Изображение</TableHead>
             <TableHead>Название</TableHead>
             <TableHead>Сайты публикации</TableHead>
             <TableHead>Дата создания</TableHead>
@@ -93,6 +95,23 @@ export function CategoriesTable({
         <TableBody>
           {categories.map((category) => (
             <TableRow key={category.id}>
+              <TableCell>
+                {category.image ? (
+                  <div className="relative w-10 h-10 rounded-md overflow-hidden border border-gray-200">
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      fill
+                      className="object-cover"
+                      sizes="40px"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-10 h-10 rounded-md border border-gray-200 bg-gray-100 flex items-center justify-center">
+                    <ImageIcon className="w-5 h-5 text-gray-400" />
+                  </div>
+                )}
+              </TableCell>
               <TableCell className="font-medium">{category.name}</TableCell>
               <TableCell>
                 <div className="flex flex-wrap gap-2">

@@ -13,14 +13,16 @@ import {
 } from "@/shared/ui/Dialog";
 import { Input } from "@/shared/ui/Input";
 import { Label } from "@/shared/ui/Label";
+import { useToast } from "@/shared/lib/use-toast";
 import { useEffect, useState } from "react";
 import { Category } from "../../model/types";
+import { CategoryImageUpload } from "../CategoryImageUpload";
 
 interface CategoryEditModalProps {
   category: Category | null;
   open: boolean;
   onClose: () => void;
-  onSave: (data: { name: string; siteIds: string[] }) => Promise<void>;
+  onSave: (data: { name: string; siteIds: string[]; image?: string | null }) => Promise<void>;
   sites: Site[];
   loading?: boolean;
 }
@@ -33,9 +35,11 @@ export function CategoryEditModal({
   sites,
   loading = false,
 }: CategoryEditModalProps) {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     siteIds: [] as string[],
+    image: null as string | null,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [serverError, setServerError] = useState<string>("");
@@ -45,11 +49,13 @@ export function CategoryEditModal({
       setFormData({
         name: category.name,
         siteIds: category.sites?.map((cs) => cs.siteId) || [],
+        image: category.image || null,
       });
     } else {
       setFormData({
         name: "",
         siteIds: [],
+        image: null,
       });
     }
     setErrors({});
@@ -88,6 +94,7 @@ export function CategoryEditModal({
       await onSave({
         name: formData.name.trim(),
         siteIds: formData.siteIds,
+        image: formData.image,
       });
       onClose();
     } catch (error) {
@@ -153,6 +160,32 @@ export function CategoryEditModal({
             {errors.name && (
               <p className="text-sm text-red-500">{errors.name}</p>
             )}
+          </div>
+
+          <div className="space-y-2">
+            <Label>Изображение категории</Label>
+            <CategoryImageUpload
+              currentImageUrl={formData.image}
+              onUploadComplete={(imageUrl) => {
+                setFormData({ ...formData, image: imageUrl });
+                toast({
+                  variant: "success",
+                  title: "Изображение загружено",
+                  description: "Изображение успешно загружено",
+                });
+              }}
+              onUploadError={(error) => {
+                toast({
+                  variant: "destructive",
+                  title: "Ошибка загрузки",
+                  description: error,
+                });
+              }}
+              onRemoveImage={() => {
+                setFormData({ ...formData, image: null });
+              }}
+              allowRemove={true}
+            />
           </div>
 
           <div className="space-y-2">

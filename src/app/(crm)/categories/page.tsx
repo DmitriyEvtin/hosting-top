@@ -139,12 +139,13 @@ export default function CategoriesPage() {
   const handleSave = async (categoryData: {
     name: string;
     siteIds: string[];
+    image?: string | null;
   }) => {
     try {
       if (editingCategory) {
         // Обновление существующей категории
         const response = await fetch(`/api/categories/${editingCategory.id}`, {
-          method: "PUT",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },

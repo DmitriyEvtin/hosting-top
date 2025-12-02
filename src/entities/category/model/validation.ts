@@ -47,6 +47,18 @@ export const createCategorySchema = z.object({
   siteIds: z
     .array(z.string().cuid("Некорректный формат CUID"))
     .min(1, "Необходимо указать хотя бы один сайт"),
+  image: z
+    .union([
+      z
+        .string()
+        .url("URL изображения должен быть валидным")
+        .refine(
+          (url) => validateImageUrl(url),
+          "URL изображения должен быть из разрешенного S3 bucket"
+        ),
+      z.null(),
+    ])
+    .optional(),
 });
 
 export const updateCategorySchema = z.object({
@@ -61,13 +73,16 @@ export const updateCategorySchema = z.object({
     .min(1, "Необходимо указать хотя бы один сайт")
     .optional(),
   image: z
-    .string()
-    .url("URL изображения должен быть валидным")
-    .refine(
-      (url) => validateImageUrl(url),
-      "URL изображения должен быть из разрешенного S3 bucket"
-    )
-    .nullable()
+    .union([
+      z
+        .string()
+        .url("URL изображения должен быть валидным")
+        .refine(
+          (url) => validateImageUrl(url),
+          "URL изображения должен быть из разрешенного S3 bucket"
+        ),
+      z.null(),
+    ])
     .optional(),
 });
 
