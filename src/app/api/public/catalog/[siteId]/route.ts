@@ -1,5 +1,22 @@
 import { prisma } from "@/shared/api/database";
 import { NextRequest, NextResponse } from "next/server";
+import type { ProductImage } from "@prisma/client";
+
+/**
+ * Трансформирует массив изображений товара для публичного API
+ * Добавляет флаг isMain для первого изображения (с наименьшим sortOrder)
+ * 
+ * @param images - Массив изображений товара, отсортированный по sortOrder
+ * @returns Трансформированный массив изображений с флагом isMain
+ */
+function transformProductImages(images: ProductImage[]) {
+  return images.map((img, index) => ({
+    id: img.id,
+    url: img.imageUrl,
+    sortOrder: img.sortOrder,
+    isMain: index === 0,
+  }));
+}
 
 /**
  * GET /api/public/catalog/[siteId] - Получить публичный каталог товаров для конкретного сайта
@@ -12,7 +29,7 @@ import { NextRequest, NextResponse } from "next/server";
  * 
  * @param request - Next.js request object
  * @param params - Route parameters с siteId
- * @returns Структурированный каталог с категориями и товарами
+ * @returns Структурированный каталог с категориями и товарами, включая изображения
  */
 export async function GET(
   request: NextRequest,
@@ -49,7 +66,10 @@ export async function GET(
           },
         },
       },
-      include: {
+      select: {
+        id: true,
+        name: true,
+        image: true,
         products: {
           where: {
             // Товар должен быть опубликован на сайте
@@ -58,7 +78,6 @@ export async function GET(
                 siteId: siteId,
               },
             },
-            // Товар автоматически принадлежит категории через include
           },
           select: {
             id: true,
@@ -66,6 +85,11 @@ export async function GET(
             categoryId: true,
             createdAt: true,
             updatedAt: true,
+            images: {
+              orderBy: {
+                sortOrder: "asc",
+              },
+            },
           },
         },
       },
@@ -90,6 +114,11 @@ export async function GET(
         categoryId: true,
         createdAt: true,
         updatedAt: true,
+        images: {
+          orderBy: {
+            sortOrder: "asc",
+          },
+        },
       },
       orderBy: {
         name: "asc",
@@ -105,9 +134,24 @@ export async function GET(
       categories: categories.map((category) => ({
         id: category.id,
         name: category.name,
-        products: category.products,
+        image: category.image,
+        products: category.products.map((product) => ({
+          id: product.id,
+          name: product.name,
+          categoryId: product.categoryId,
+          createdAt: product.createdAt,
+          updatedAt: product.updatedAt,
+          images: transformProductImages(product.images),
+        })),
       })),
-      uncategorizedProducts,
+      uncategorizedProducts: uncategorizedProducts.map((product) => ({
+        id: product.id,
+        name: product.name,
+        categoryId: product.categoryId,
+        createdAt: product.createdAt,
+        updatedAt: product.updatedAt,
+        images: transformProductImages(product.images),
+      })),
     };
 
     return NextResponse.json(response);
