@@ -92,6 +92,7 @@ model Site {
 model Category {
   id        String         @id @default(cuid())
   name      String
+  image     String?
   createdAt DateTime       @default(now())
   updatedAt DateTime       @updatedAt
   products  Product[]
@@ -101,12 +102,13 @@ model Category {
 }
 
 model Product {
-  id         String        @id @default(cuid())
+  id         String         @id @default(cuid())
   name       String
   categoryId String?
-  createdAt  DateTime      @default(now())
-  updatedAt  DateTime      @updatedAt
-  category   Category?     @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+  category   Category?      @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  images     ProductImage[]
   sites      ProductSite[]
 
   @@map("products")
@@ -130,4 +132,17 @@ model ProductSite {
 
   @@id([productId, siteId])
   @@map("product_sites")
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  imageUrl  String
+  sortOrder Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId, sortOrder])
+  @@map("product_images")
 }
