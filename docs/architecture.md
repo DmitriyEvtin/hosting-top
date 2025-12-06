@@ -49,22 +49,23 @@ src/
 │   └── api/                     # API routes
 │       └── config/              # Configuration endpoints
 ├── views/                       # FSD Views layer (переименован из pages для избежания конфликтов с Next.js)
-│   └── home/                    # Home page slice
-│       ├── ui/
-│       │   ├── HomePage/         # Main page component
-│       │   │   ├── HomePage.tsx
-│       │   │   └── index.ts
-│       │   ├── ConfigStatus/     # Status components
-│       │   │   ├── ConfigStatus.tsx
-│       │   │   └── index.ts
-│       │   ├── DatabaseStatus/
-│       │   │   ├── DatabaseStatus.tsx
-│       │   │   └── index.ts
-│       │   ├── SentryStatus/
-│       │   │   ├── SentryStatus.tsx
-│       │   │   └── index.ts
-│       │   └── index.ts          # Exports only HomePage
-│       └── index.ts
+│   ├── home/                    # Home page slice
+│   │   ├── ui/
+│   │   │   ├── Homepage/         # Public home page component
+│   │   │   │   ├── Homepage.tsx
+│   │   │   │   └── index.ts
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   ├── manager/                  # Manager pages slice
+│   │   └── dashboard/            # Manager dashboard slice
+│   │       ├── ui/
+│   │       │   ├── ManagerDashboardPage/  # Manager dashboard page component
+│   │       │   │   ├── ManagerDashboardPage.tsx
+│   │       │   │   └── index.ts
+│   │       │   └── index.ts
+│   │       └── index.ts
+│   ├── admin/                    # Admin pages slice
+│   └── auth/                     # Auth pages slice
 ├── widgets/                     # FSD Widgets layer (будущее)
 ├── features/                    # FSD Features layer (будущее)
 ├── entities/                    # FSD Entities layer (будущее)
@@ -122,9 +123,9 @@ src/shared/ui/Button/
 **Page компоненты:**
 
 ```
-src/views/home/ui/HomePage/
-├── HomePage.tsx        # export function HomePage() { ... }
-└── index.ts            # export { HomePage } from "./HomePage";
+src/views/manager/dashboard/ui/ManagerDashboardPage/
+├── ManagerDashboardPage.tsx        # export function ManagerDashboardPage() { ... }
+└── index.ts            # export { ManagerDashboardPage } from "./ManagerDashboardPage";
 ```
 
 ### Правила экспорта

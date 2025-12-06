@@ -1,5 +1,5 @@
-import { HomePage } from "@/views/home";
+import { ManagerDashboardPage } from "@/views/manager/dashboard";
 
 export default function ManagerPage() {
-  return <HomePage />;
+  return <ManagerDashboardPage />;
 }
