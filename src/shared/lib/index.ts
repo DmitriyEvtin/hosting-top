@@ -23,4 +23,9 @@ export {
   shouldLogVerbose,
   validateProductionEnv,
 } from "./env";
+export {
+  ensureUniqueSlug,
+  generateSlug,
+  transliterate,
+} from "./slug-utils";
 export { cn } from "./utils";
