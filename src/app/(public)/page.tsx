@@ -1,5 +1,5 @@
-import { Homepage } from "@/views/home";
+import { HomePage } from "@/views/home";
 
 export default function PublicHome() {
-  return <Homepage />;
+  return <HomePage />;
 }

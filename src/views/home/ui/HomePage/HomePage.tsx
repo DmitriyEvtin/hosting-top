@@ -1,4 +1,4 @@
-export function Homepage() {
+export function HomePage() {
   return (
     <div className="container mx-auto py-12 px-4">
       <div className="text-center mb-12">

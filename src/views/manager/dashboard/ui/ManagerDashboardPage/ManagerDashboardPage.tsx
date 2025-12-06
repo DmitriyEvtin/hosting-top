@@ -1,5 +1,3 @@
-"use client";
-
 export function ManagerDashboardPage() {
   // Главная страница теперь только для авторизованных пользователей
   // Проверка авторизации происходит в AuthGuard
@@ -11,4 +9,3 @@ export function ManagerDashboardPage() {
     </div>
   );
 }
-
