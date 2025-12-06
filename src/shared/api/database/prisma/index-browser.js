@@ -160,55 +160,6 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
   expires: 'expires'
 };
 
-exports.Prisma.CityScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.SiteScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.CategoryScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  image: 'image',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.ProductScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  categoryId: 'categoryId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.CategorySiteScalarFieldEnum = {
-  categoryId: 'categoryId',
-  siteId: 'siteId'
-};
-
-exports.Prisma.ProductSiteScalarFieldEnum = {
-  productId: 'productId',
-  siteId: 'siteId'
-};
-
-exports.Prisma.ProductImageScalarFieldEnum = {
-  id: 'id',
-  productId: 'productId',
-  imageUrl: 'imageUrl',
-  sortOrder: 'sortOrder',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -234,14 +185,7 @@ exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
   Session: 'Session',
-  VerificationToken: 'VerificationToken',
-  City: 'City',
-  Site: 'Site',
-  Category: 'Category',
-  Product: 'Product',
-  CategorySite: 'CategorySite',
-  ProductSite: 'ProductSite',
-  ProductImage: 'ProductImage'
+  VerificationToken: 'VerificationToken'
 };
 
 /**
