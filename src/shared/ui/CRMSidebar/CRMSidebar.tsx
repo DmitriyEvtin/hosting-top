@@ -2,7 +2,7 @@
 
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/Button";
-import { Folder, Globe, MapPin, Menu, Package, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -26,38 +26,7 @@ export function CRMSidebar({ className }: CRMSidebarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const menuSections: MenuSection[] = [
-    {
-      title: "Основное",
-      items: [
-        {
-          href: "/cities",
-          label: "Города",
-          icon: MapPin,
-        },
-      ],
-    },
-    {
-      title: "Каталог",
-      items: [
-        {
-          href: "/sites",
-          label: "Сайты",
-          icon: Globe,
-        },
-        {
-          href: "/categories",
-          label: "Категории",
-          icon: Folder,
-        },
-        {
-          href: "/products",
-          label: "Товары",
-          icon: Package,
-        },
-      ],
-    },
-  ];
+  const menuSections: MenuSection[] = [];
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
