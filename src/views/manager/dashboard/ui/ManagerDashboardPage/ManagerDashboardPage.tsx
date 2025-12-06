@@ -1,10 +1,6 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-
 export function ManagerDashboardPage() {
-  const { data: session } = useSession();
-
   // Главная страница теперь только для авторизованных пользователей
   // Проверка авторизации происходит в AuthGuard
   return (

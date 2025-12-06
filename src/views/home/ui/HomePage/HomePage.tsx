@@ -1,6 +1,3 @@
-import Link from "next/link";
-import { Button } from "@/shared/ui/Button";
-
 export function Homepage() {
   return (
     <div className="container mx-auto py-12 px-4">
