@@ -1,12 +1,12 @@
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: parket-retail-postgres-prod
+    container_name: hosting-top-postgres-prod
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-parket_retail}
-      POSTGRES_USER: ${POSTGRES_USER:-parket_retail_user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-parket_retail_password}
+      POSTGRES_DB: ${POSTGRES_DB:-hosting_top}
+      POSTGRES_USER: ${POSTGRES_USER:-hosting_top_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hosting_top_password}
       POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
     ports:
       - "5432:5432"
@@ -14,12 +14,12 @@ services:
       - postgres_retail_data:/var/lib/postgresql/data
       - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
     networks:
-      - parket-retail-network
+      - hosting-top-network
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "pg_isready -U ${POSTGRES_USER:-parket_retail_user} -d ${POSTGRES_DB:-parket_retail}",
+          "pg_isready -U ${POSTGRES_USER:-hosting_top_user} -d ${POSTGRES_DB:-hosting_top}",
         ]
       interval: 30s
       timeout: 10s
@@ -28,14 +28,14 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: parket-retail-redis-prod
+    container_name: hosting-top-redis-prod
     restart: unless-stopped
     ports:
       - "6379:6379"
     volumes:
       - redis_retail_data:/data
     networks:
-      - parket-retail-network
+      - hosting-top-network
     command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
@@ -45,13 +45,13 @@ services:
       start_period: 30s
 
   migrations:
-    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_retail}-app:${IMAGE_TAG:-latest}
-    container_name: parket-retail-migrations-prod
+    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-hosting_top}-app:${IMAGE_TAG:-latest}
+    container_name: hosting-top-migrations-prod
     environment:
       NODE_ENV: production
-      DATABASE_URL: postgresql://${POSTGRES_USER:-parket_retail_user}:${POSTGRES_PASSWORD:-parket_retail_password}@postgres:5432/${POSTGRES_DB:-parket_retail}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-hosting_top_user}:${POSTGRES_PASSWORD:-hosting_top_password}@postgres:5432/${POSTGRES_DB:-hosting_top}
     networks:
-      - parket-retail-network
+      - hosting-top-network
     depends_on:
       postgres:
         condition: service_healthy
@@ -59,7 +59,7 @@ services:
     restart: "no"
 
   app:
-    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_retail}-app:${IMAGE_TAG:-latest}
+    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-hosting_top}-app:${IMAGE_TAG:-latest}
     restart: unless-stopped
     deploy:
       replicas: 2
@@ -72,7 +72,7 @@ services:
       NODE_ENV: production
       HOSTNAME: "0.0.0.0"
       PORT: "3000"
-      DATABASE_URL: postgresql://${POSTGRES_USER:-parket_retail_user}:${POSTGRES_PASSWORD:-parket_retail_password}@postgres:5432/${POSTGRES_DB:-parket_retail}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-hosting_top_user}:${POSTGRES_PASSWORD:-hosting_top_password}@postgres:5432/${POSTGRES_DB:-hosting_top}
       REDIS_URL: redis://redis:6379
       NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
       NEXTAUTH_URL: ${NEXTAUTH_URL}
@@ -103,12 +103,12 @@ services:
       SMTP_PORT: ${SMTP_PORT:-587}
       SMTP_USER: ${SMTP_USER}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
-      SMTP_FROM: ${SMTP_FROM:-noreply@parket-retail.ru}
+      SMTP_FROM: ${SMTP_FROM:-noreply@hosting-top.online}
     # Порт 3000 отключен для production - доступ только через nginx
     # ports:
     #   - "3000:3000"
     networks:
-      - parket-retail-network
+      - hosting-top-network
     depends_on:
       postgres:
         condition: service_healthy
@@ -119,11 +119,11 @@ services:
     # healthcheck настроен в Dockerfile
 
   nginx:
-    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-parket_retail}-nginx:${IMAGE_TAG:-latest}
-    container_name: parket-retail-nginx-prod
+    image: ${REGISTRY_URL:-registry.evtin.ru}/${IMAGE_NAME:-hosting_top}-nginx:${IMAGE_TAG:-latest}
+    container_name: hosting-top-nginx-prod
     restart: unless-stopped
     networks:
-      - parket-retail-network
+      - hosting-top-network
       - traefik-public
     depends_on:
       - app
@@ -173,7 +173,7 @@ volumes:
     driver: local
 
 networks:
-  parket-retail-network:
+  hosting-top-network:
     external: true
   traefik-public:
     external: true
