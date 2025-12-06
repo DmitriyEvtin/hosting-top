@@ -1,1 +1,0 @@
-export { CityTable } from "./CityTable";

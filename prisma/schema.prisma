@@ -62,87 +62,9 @@ model VerificationToken {
   @@map("verification_tokens")
 }
 
-model City {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("cities")
-}
-
 enum UserRole {
   ADMIN
   USER
   MODERATOR
   MANAGER
-}
-
-model Site {
-  id         String         @id @default(cuid())
-  name       String         @unique
-  createdAt  DateTime       @default(now())
-  updatedAt  DateTime       @updatedAt
-  categories CategorySite[]
-  products   ProductSite[]
-
-  @@map("sites")
-}
-
-model Category {
-  id        String         @id @default(cuid())
-  name      String
-  image     String?
-  createdAt DateTime       @default(now())
-  updatedAt DateTime       @updatedAt
-  products  Product[]
-  sites     CategorySite[]
-
-  @@map("categories")
-}
-
-model Product {
-  id         String         @id @default(cuid())
-  name       String
-  categoryId String?
-  createdAt  DateTime       @default(now())
-  updatedAt  DateTime       @updatedAt
-  category   Category?      @relation(fields: [categoryId], references: [id], onDelete: SetNull)
-  images     ProductImage[]
-  sites      ProductSite[]
-
-  @@map("products")
-}
-
-model CategorySite {
-  categoryId String
-  siteId     String
-  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  site       Site     @relation(fields: [siteId], references: [id], onDelete: Cascade)
-
-  @@id([categoryId, siteId])
-  @@map("category_sites")
-}
-
-model ProductSite {
-  productId String
-  siteId    String
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  site      Site    @relation(fields: [siteId], references: [id], onDelete: Cascade)
-
-  @@id([productId, siteId])
-  @@map("product_sites")
-}
-
-model ProductImage {
-  id        String   @id @default(cuid())
-  productId String
-  imageUrl  String
-  sortOrder Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  @@index([productId, sortOrder])
-  @@map("product_images")
 }
