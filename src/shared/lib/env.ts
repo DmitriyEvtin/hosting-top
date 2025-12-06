@@ -126,13 +126,25 @@ export const isDevelopment = env.NODE_ENV === "development";
 export const isStaging = env.NODE_ENV === "staging";
 export const isProduction = env.NODE_ENV === "production";
 
+// Проверка, что мы находимся в процессе сборки Next.js
+// Next.js устанавливает NODE_ENV=production во время сборки, но это не runtime production
+const isBuildTime =
+  // Проверка аргументов командной строки
+  process.argv.some(arg => arg.includes("build")) ||
+  // Проверка переменных окружения для пропуска валидации
+  process.env.SKIP_ENV_VALIDATION === "true" ||
+  process.env.DEV_BUILD === "true" ||
+  // Проверка фазы Next.js (если доступна)
+  process.env.NEXT_PHASE === "phase-production-build";
+
 // Проверка реального production окружения (не только сборки)
 // Для development сборки отключаем строгие проверки
 export const isRealProduction =
   isProduction &&
   process.env.NODE_ENV === "production" &&
   !process.env.NEXT_PUBLIC_DEV_MODE &&
-  !process.env.DEV_BUILD;
+  !process.env.DEV_BUILD &&
+  !isBuildTime;
 
 // Утилиты для проверки доступности сервисов
 export const hasRedis = !!env.REDIS_URL;

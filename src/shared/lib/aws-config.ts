@@ -6,8 +6,24 @@
 import { CloudFrontClient } from "@aws-sdk/client-cloudfront";
 import { S3Client } from "@aws-sdk/client-s3";
 
+// Проверка, что мы находимся в процессе сборки Next.js
+// Next.js устанавливает NODE_ENV=production во время сборки, но это не runtime production
+const isBuildTime =
+  // Проверка аргументов командной строки
+  process.argv.some(arg => arg.includes("build")) ||
+  // Проверка переменных окружения для пропуска валидации
+  process.env.SKIP_ENV_VALIDATION === "true" ||
+  process.env.DEV_BUILD === "true" ||
+  // Проверка фазы Next.js (если доступна)
+  process.env.NEXT_PHASE === "phase-production-build";
+
 // Валидация переменных окружения
 const validateAwsConfig = () => {
+  // Пропускаем валидацию во время сборки
+  if (isBuildTime) {
+    return;
+  }
+
   const requiredVars = [
     "AWS_ACCESS_KEY_ID",
     "AWS_SECRET_ACCESS_KEY",
