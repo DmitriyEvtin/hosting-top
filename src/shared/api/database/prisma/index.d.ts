@@ -33,6 +33,81 @@ export type Session = $Result.DefaultSelection<Prisma.$SessionPayload>
  * 
  */
 export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTokenPayload>
+/**
+ * Model Hosting
+ * 
+ */
+export type Hosting = $Result.DefaultSelection<Prisma.$HostingPayload>
+/**
+ * Model Tariff
+ * 
+ */
+export type Tariff = $Result.DefaultSelection<Prisma.$TariffPayload>
+/**
+ * Model CMS
+ * 
+ */
+export type CMS = $Result.DefaultSelection<Prisma.$CMSPayload>
+/**
+ * Model ControlPanel
+ * 
+ */
+export type ControlPanel = $Result.DefaultSelection<Prisma.$ControlPanelPayload>
+/**
+ * Model Country
+ * 
+ */
+export type Country = $Result.DefaultSelection<Prisma.$CountryPayload>
+/**
+ * Model DataStore
+ * 
+ */
+export type DataStore = $Result.DefaultSelection<Prisma.$DataStorePayload>
+/**
+ * Model OperationSystem
+ * 
+ */
+export type OperationSystem = $Result.DefaultSelection<Prisma.$OperationSystemPayload>
+/**
+ * Model ProgrammingLanguage
+ * 
+ */
+export type ProgrammingLanguage = $Result.DefaultSelection<Prisma.$ProgrammingLanguagePayload>
+/**
+ * Model TariffCMS
+ * 
+ */
+export type TariffCMS = $Result.DefaultSelection<Prisma.$TariffCMSPayload>
+/**
+ * Model TariffControlPanel
+ * 
+ */
+export type TariffControlPanel = $Result.DefaultSelection<Prisma.$TariffControlPanelPayload>
+/**
+ * Model TariffCountry
+ * 
+ */
+export type TariffCountry = $Result.DefaultSelection<Prisma.$TariffCountryPayload>
+/**
+ * Model TariffDataStore
+ * 
+ */
+export type TariffDataStore = $Result.DefaultSelection<Prisma.$TariffDataStorePayload>
+/**
+ * Model TariffOperationSystem
+ * 
+ */
+export type TariffOperationSystem = $Result.DefaultSelection<Prisma.$TariffOperationSystemPayload>
+/**
+ * Model TariffProgrammingLanguage
+ * 
+ */
+export type TariffProgrammingLanguage = $Result.DefaultSelection<Prisma.$TariffProgrammingLanguagePayload>
+/**
+ * Model ContentBlock
+ * 
+ */
+export type ContentBlock = $Result.DefaultSelection<Prisma.$ContentBlockPayload>
 
 /**
  * Enums
@@ -47,11 +122,23 @@ export namespace $Enums {
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
 
+
+export const TariffPeriod: {
+  MONTH: 'MONTH',
+  YEAR: 'YEAR'
+};
+
+export type TariffPeriod = (typeof TariffPeriod)[keyof typeof TariffPeriod]
+
 }
 
 export type UserRole = $Enums.UserRole
 
 export const UserRole: typeof $Enums.UserRole
+
+export type TariffPeriod = $Enums.TariffPeriod
+
+export const TariffPeriod: typeof $Enums.TariffPeriod
 
 /**
  * ##  Prisma Client ʲˢ
@@ -210,6 +297,156 @@ export class PrismaClient<
     * ```
     */
   get verificationToken(): Prisma.VerificationTokenDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.hosting`: Exposes CRUD operations for the **Hosting** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Hostings
+    * const hostings = await prisma.hosting.findMany()
+    * ```
+    */
+  get hosting(): Prisma.HostingDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tariff`: Exposes CRUD operations for the **Tariff** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tariffs
+    * const tariffs = await prisma.tariff.findMany()
+    * ```
+    */
+  get tariff(): Prisma.TariffDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.cMS`: Exposes CRUD operations for the **CMS** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CMS
+    * const cMS = await prisma.cMS.findMany()
+    * ```
+    */
+  get cMS(): Prisma.CMSDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.controlPanel`: Exposes CRUD operations for the **ControlPanel** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ControlPanels
+    * const controlPanels = await prisma.controlPanel.findMany()
+    * ```
+    */
+  get controlPanel(): Prisma.ControlPanelDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.country`: Exposes CRUD operations for the **Country** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Countries
+    * const countries = await prisma.country.findMany()
+    * ```
+    */
+  get country(): Prisma.CountryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.dataStore`: Exposes CRUD operations for the **DataStore** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DataStores
+    * const dataStores = await prisma.dataStore.findMany()
+    * ```
+    */
+  get dataStore(): Prisma.DataStoreDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.operationSystem`: Exposes CRUD operations for the **OperationSystem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OperationSystems
+    * const operationSystems = await prisma.operationSystem.findMany()
+    * ```
+    */
+  get operationSystem(): Prisma.OperationSystemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.programmingLanguage`: Exposes CRUD operations for the **ProgrammingLanguage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProgrammingLanguages
+    * const programmingLanguages = await prisma.programmingLanguage.findMany()
+    * ```
+    */
+  get programmingLanguage(): Prisma.ProgrammingLanguageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tariffCMS`: Exposes CRUD operations for the **TariffCMS** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TariffCMS
+    * const tariffCMS = await prisma.tariffCMS.findMany()
+    * ```
+    */
+  get tariffCMS(): Prisma.TariffCMSDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tariffControlPanel`: Exposes CRUD operations for the **TariffControlPanel** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TariffControlPanels
+    * const tariffControlPanels = await prisma.tariffControlPanel.findMany()
+    * ```
+    */
+  get tariffControlPanel(): Prisma.TariffControlPanelDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tariffCountry`: Exposes CRUD operations for the **TariffCountry** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TariffCountries
+    * const tariffCountries = await prisma.tariffCountry.findMany()
+    * ```
+    */
+  get tariffCountry(): Prisma.TariffCountryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tariffDataStore`: Exposes CRUD operations for the **TariffDataStore** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TariffDataStores
+    * const tariffDataStores = await prisma.tariffDataStore.findMany()
+    * ```
+    */
+  get tariffDataStore(): Prisma.TariffDataStoreDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tariffOperationSystem`: Exposes CRUD operations for the **TariffOperationSystem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TariffOperationSystems
+    * const tariffOperationSystems = await prisma.tariffOperationSystem.findMany()
+    * ```
+    */
+  get tariffOperationSystem(): Prisma.TariffOperationSystemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tariffProgrammingLanguage`: Exposes CRUD operations for the **TariffProgrammingLanguage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TariffProgrammingLanguages
+    * const tariffProgrammingLanguages = await prisma.tariffProgrammingLanguage.findMany()
+    * ```
+    */
+  get tariffProgrammingLanguage(): Prisma.TariffProgrammingLanguageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.contentBlock`: Exposes CRUD operations for the **ContentBlock** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ContentBlocks
+    * const contentBlocks = await prisma.contentBlock.findMany()
+    * ```
+    */
+  get contentBlock(): Prisma.ContentBlockDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -653,7 +890,22 @@ export namespace Prisma {
     User: 'User',
     Account: 'Account',
     Session: 'Session',
-    VerificationToken: 'VerificationToken'
+    VerificationToken: 'VerificationToken',
+    Hosting: 'Hosting',
+    Tariff: 'Tariff',
+    CMS: 'CMS',
+    ControlPanel: 'ControlPanel',
+    Country: 'Country',
+    DataStore: 'DataStore',
+    OperationSystem: 'OperationSystem',
+    ProgrammingLanguage: 'ProgrammingLanguage',
+    TariffCMS: 'TariffCMS',
+    TariffControlPanel: 'TariffControlPanel',
+    TariffCountry: 'TariffCountry',
+    TariffDataStore: 'TariffDataStore',
+    TariffOperationSystem: 'TariffOperationSystem',
+    TariffProgrammingLanguage: 'TariffProgrammingLanguage',
+    ContentBlock: 'ContentBlock'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -672,7 +924,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "verificationToken"
+      modelProps: "user" | "account" | "session" | "verificationToken" | "hosting" | "tariff" | "cMS" | "controlPanel" | "country" | "dataStore" | "operationSystem" | "programmingLanguage" | "tariffCMS" | "tariffControlPanel" | "tariffCountry" | "tariffDataStore" | "tariffOperationSystem" | "tariffProgrammingLanguage" | "contentBlock"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -972,6 +1224,1116 @@ export namespace Prisma {
           }
         }
       }
+      Hosting: {
+        payload: Prisma.$HostingPayload<ExtArgs>
+        fields: Prisma.HostingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HostingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HostingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HostingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HostingPayload>
+          }
+          findFirst: {
+            args: Prisma.HostingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HostingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HostingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HostingPayload>
+          }
+          findMany: {
+            args: Prisma.HostingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HostingPayload>[]
+          }
+          create: {
+            args: Prisma.HostingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HostingPayload>
+          }
+          createMany: {
+            args: Prisma.HostingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HostingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HostingPayload>[]
+          }
+          delete: {
+            args: Prisma.HostingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HostingPayload>
+          }
+          update: {
+            args: Prisma.HostingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HostingPayload>
+          }
+          deleteMany: {
+            args: Prisma.HostingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HostingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HostingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HostingPayload>[]
+          }
+          upsert: {
+            args: Prisma.HostingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HostingPayload>
+          }
+          aggregate: {
+            args: Prisma.HostingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHosting>
+          }
+          groupBy: {
+            args: Prisma.HostingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HostingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HostingCountArgs<ExtArgs>
+            result: $Utils.Optional<HostingCountAggregateOutputType> | number
+          }
+        }
+      }
+      Tariff: {
+        payload: Prisma.$TariffPayload<ExtArgs>
+        fields: Prisma.TariffFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TariffFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TariffFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffPayload>
+          }
+          findFirst: {
+            args: Prisma.TariffFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TariffFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffPayload>
+          }
+          findMany: {
+            args: Prisma.TariffFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffPayload>[]
+          }
+          create: {
+            args: Prisma.TariffCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffPayload>
+          }
+          createMany: {
+            args: Prisma.TariffCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TariffCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffPayload>[]
+          }
+          delete: {
+            args: Prisma.TariffDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffPayload>
+          }
+          update: {
+            args: Prisma.TariffUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffPayload>
+          }
+          deleteMany: {
+            args: Prisma.TariffDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TariffUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TariffUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffPayload>[]
+          }
+          upsert: {
+            args: Prisma.TariffUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffPayload>
+          }
+          aggregate: {
+            args: Prisma.TariffAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTariff>
+          }
+          groupBy: {
+            args: Prisma.TariffGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TariffGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TariffCountArgs<ExtArgs>
+            result: $Utils.Optional<TariffCountAggregateOutputType> | number
+          }
+        }
+      }
+      CMS: {
+        payload: Prisma.$CMSPayload<ExtArgs>
+        fields: Prisma.CMSFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CMSFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CMSPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CMSFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CMSPayload>
+          }
+          findFirst: {
+            args: Prisma.CMSFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CMSPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CMSFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CMSPayload>
+          }
+          findMany: {
+            args: Prisma.CMSFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CMSPayload>[]
+          }
+          create: {
+            args: Prisma.CMSCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CMSPayload>
+          }
+          createMany: {
+            args: Prisma.CMSCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CMSCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CMSPayload>[]
+          }
+          delete: {
+            args: Prisma.CMSDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CMSPayload>
+          }
+          update: {
+            args: Prisma.CMSUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CMSPayload>
+          }
+          deleteMany: {
+            args: Prisma.CMSDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CMSUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CMSUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CMSPayload>[]
+          }
+          upsert: {
+            args: Prisma.CMSUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CMSPayload>
+          }
+          aggregate: {
+            args: Prisma.CMSAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCMS>
+          }
+          groupBy: {
+            args: Prisma.CMSGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CMSGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CMSCountArgs<ExtArgs>
+            result: $Utils.Optional<CMSCountAggregateOutputType> | number
+          }
+        }
+      }
+      ControlPanel: {
+        payload: Prisma.$ControlPanelPayload<ExtArgs>
+        fields: Prisma.ControlPanelFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ControlPanelFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ControlPanelPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ControlPanelFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ControlPanelPayload>
+          }
+          findFirst: {
+            args: Prisma.ControlPanelFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ControlPanelPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ControlPanelFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ControlPanelPayload>
+          }
+          findMany: {
+            args: Prisma.ControlPanelFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ControlPanelPayload>[]
+          }
+          create: {
+            args: Prisma.ControlPanelCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ControlPanelPayload>
+          }
+          createMany: {
+            args: Prisma.ControlPanelCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ControlPanelCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ControlPanelPayload>[]
+          }
+          delete: {
+            args: Prisma.ControlPanelDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ControlPanelPayload>
+          }
+          update: {
+            args: Prisma.ControlPanelUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ControlPanelPayload>
+          }
+          deleteMany: {
+            args: Prisma.ControlPanelDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ControlPanelUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ControlPanelUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ControlPanelPayload>[]
+          }
+          upsert: {
+            args: Prisma.ControlPanelUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ControlPanelPayload>
+          }
+          aggregate: {
+            args: Prisma.ControlPanelAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateControlPanel>
+          }
+          groupBy: {
+            args: Prisma.ControlPanelGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ControlPanelGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ControlPanelCountArgs<ExtArgs>
+            result: $Utils.Optional<ControlPanelCountAggregateOutputType> | number
+          }
+        }
+      }
+      Country: {
+        payload: Prisma.$CountryPayload<ExtArgs>
+        fields: Prisma.CountryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CountryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CountryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>
+          }
+          findFirst: {
+            args: Prisma.CountryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CountryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>
+          }
+          findMany: {
+            args: Prisma.CountryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>[]
+          }
+          create: {
+            args: Prisma.CountryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>
+          }
+          createMany: {
+            args: Prisma.CountryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CountryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>[]
+          }
+          delete: {
+            args: Prisma.CountryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>
+          }
+          update: {
+            args: Prisma.CountryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>
+          }
+          deleteMany: {
+            args: Prisma.CountryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CountryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CountryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>[]
+          }
+          upsert: {
+            args: Prisma.CountryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>
+          }
+          aggregate: {
+            args: Prisma.CountryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCountry>
+          }
+          groupBy: {
+            args: Prisma.CountryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CountryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CountryCountArgs<ExtArgs>
+            result: $Utils.Optional<CountryCountAggregateOutputType> | number
+          }
+        }
+      }
+      DataStore: {
+        payload: Prisma.$DataStorePayload<ExtArgs>
+        fields: Prisma.DataStoreFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DataStoreFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataStorePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DataStoreFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataStorePayload>
+          }
+          findFirst: {
+            args: Prisma.DataStoreFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataStorePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DataStoreFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataStorePayload>
+          }
+          findMany: {
+            args: Prisma.DataStoreFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataStorePayload>[]
+          }
+          create: {
+            args: Prisma.DataStoreCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataStorePayload>
+          }
+          createMany: {
+            args: Prisma.DataStoreCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DataStoreCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataStorePayload>[]
+          }
+          delete: {
+            args: Prisma.DataStoreDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataStorePayload>
+          }
+          update: {
+            args: Prisma.DataStoreUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataStorePayload>
+          }
+          deleteMany: {
+            args: Prisma.DataStoreDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DataStoreUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DataStoreUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataStorePayload>[]
+          }
+          upsert: {
+            args: Prisma.DataStoreUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DataStorePayload>
+          }
+          aggregate: {
+            args: Prisma.DataStoreAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDataStore>
+          }
+          groupBy: {
+            args: Prisma.DataStoreGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DataStoreGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DataStoreCountArgs<ExtArgs>
+            result: $Utils.Optional<DataStoreCountAggregateOutputType> | number
+          }
+        }
+      }
+      OperationSystem: {
+        payload: Prisma.$OperationSystemPayload<ExtArgs>
+        fields: Prisma.OperationSystemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OperationSystemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationSystemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OperationSystemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationSystemPayload>
+          }
+          findFirst: {
+            args: Prisma.OperationSystemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationSystemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OperationSystemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationSystemPayload>
+          }
+          findMany: {
+            args: Prisma.OperationSystemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationSystemPayload>[]
+          }
+          create: {
+            args: Prisma.OperationSystemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationSystemPayload>
+          }
+          createMany: {
+            args: Prisma.OperationSystemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OperationSystemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationSystemPayload>[]
+          }
+          delete: {
+            args: Prisma.OperationSystemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationSystemPayload>
+          }
+          update: {
+            args: Prisma.OperationSystemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationSystemPayload>
+          }
+          deleteMany: {
+            args: Prisma.OperationSystemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OperationSystemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OperationSystemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationSystemPayload>[]
+          }
+          upsert: {
+            args: Prisma.OperationSystemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OperationSystemPayload>
+          }
+          aggregate: {
+            args: Prisma.OperationSystemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOperationSystem>
+          }
+          groupBy: {
+            args: Prisma.OperationSystemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OperationSystemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OperationSystemCountArgs<ExtArgs>
+            result: $Utils.Optional<OperationSystemCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProgrammingLanguage: {
+        payload: Prisma.$ProgrammingLanguagePayload<ExtArgs>
+        fields: Prisma.ProgrammingLanguageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProgrammingLanguageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgrammingLanguagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProgrammingLanguageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgrammingLanguagePayload>
+          }
+          findFirst: {
+            args: Prisma.ProgrammingLanguageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgrammingLanguagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProgrammingLanguageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgrammingLanguagePayload>
+          }
+          findMany: {
+            args: Prisma.ProgrammingLanguageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgrammingLanguagePayload>[]
+          }
+          create: {
+            args: Prisma.ProgrammingLanguageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgrammingLanguagePayload>
+          }
+          createMany: {
+            args: Prisma.ProgrammingLanguageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProgrammingLanguageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgrammingLanguagePayload>[]
+          }
+          delete: {
+            args: Prisma.ProgrammingLanguageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgrammingLanguagePayload>
+          }
+          update: {
+            args: Prisma.ProgrammingLanguageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgrammingLanguagePayload>
+          }
+          deleteMany: {
+            args: Prisma.ProgrammingLanguageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProgrammingLanguageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProgrammingLanguageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgrammingLanguagePayload>[]
+          }
+          upsert: {
+            args: Prisma.ProgrammingLanguageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProgrammingLanguagePayload>
+          }
+          aggregate: {
+            args: Prisma.ProgrammingLanguageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProgrammingLanguage>
+          }
+          groupBy: {
+            args: Prisma.ProgrammingLanguageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProgrammingLanguageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProgrammingLanguageCountArgs<ExtArgs>
+            result: $Utils.Optional<ProgrammingLanguageCountAggregateOutputType> | number
+          }
+        }
+      }
+      TariffCMS: {
+        payload: Prisma.$TariffCMSPayload<ExtArgs>
+        fields: Prisma.TariffCMSFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TariffCMSFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCMSPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TariffCMSFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCMSPayload>
+          }
+          findFirst: {
+            args: Prisma.TariffCMSFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCMSPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TariffCMSFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCMSPayload>
+          }
+          findMany: {
+            args: Prisma.TariffCMSFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCMSPayload>[]
+          }
+          create: {
+            args: Prisma.TariffCMSCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCMSPayload>
+          }
+          createMany: {
+            args: Prisma.TariffCMSCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TariffCMSCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCMSPayload>[]
+          }
+          delete: {
+            args: Prisma.TariffCMSDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCMSPayload>
+          }
+          update: {
+            args: Prisma.TariffCMSUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCMSPayload>
+          }
+          deleteMany: {
+            args: Prisma.TariffCMSDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TariffCMSUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TariffCMSUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCMSPayload>[]
+          }
+          upsert: {
+            args: Prisma.TariffCMSUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCMSPayload>
+          }
+          aggregate: {
+            args: Prisma.TariffCMSAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTariffCMS>
+          }
+          groupBy: {
+            args: Prisma.TariffCMSGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TariffCMSGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TariffCMSCountArgs<ExtArgs>
+            result: $Utils.Optional<TariffCMSCountAggregateOutputType> | number
+          }
+        }
+      }
+      TariffControlPanel: {
+        payload: Prisma.$TariffControlPanelPayload<ExtArgs>
+        fields: Prisma.TariffControlPanelFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TariffControlPanelFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffControlPanelPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TariffControlPanelFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffControlPanelPayload>
+          }
+          findFirst: {
+            args: Prisma.TariffControlPanelFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffControlPanelPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TariffControlPanelFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffControlPanelPayload>
+          }
+          findMany: {
+            args: Prisma.TariffControlPanelFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffControlPanelPayload>[]
+          }
+          create: {
+            args: Prisma.TariffControlPanelCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffControlPanelPayload>
+          }
+          createMany: {
+            args: Prisma.TariffControlPanelCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TariffControlPanelCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffControlPanelPayload>[]
+          }
+          delete: {
+            args: Prisma.TariffControlPanelDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffControlPanelPayload>
+          }
+          update: {
+            args: Prisma.TariffControlPanelUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffControlPanelPayload>
+          }
+          deleteMany: {
+            args: Prisma.TariffControlPanelDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TariffControlPanelUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TariffControlPanelUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffControlPanelPayload>[]
+          }
+          upsert: {
+            args: Prisma.TariffControlPanelUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffControlPanelPayload>
+          }
+          aggregate: {
+            args: Prisma.TariffControlPanelAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTariffControlPanel>
+          }
+          groupBy: {
+            args: Prisma.TariffControlPanelGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TariffControlPanelGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TariffControlPanelCountArgs<ExtArgs>
+            result: $Utils.Optional<TariffControlPanelCountAggregateOutputType> | number
+          }
+        }
+      }
+      TariffCountry: {
+        payload: Prisma.$TariffCountryPayload<ExtArgs>
+        fields: Prisma.TariffCountryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TariffCountryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCountryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TariffCountryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCountryPayload>
+          }
+          findFirst: {
+            args: Prisma.TariffCountryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCountryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TariffCountryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCountryPayload>
+          }
+          findMany: {
+            args: Prisma.TariffCountryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCountryPayload>[]
+          }
+          create: {
+            args: Prisma.TariffCountryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCountryPayload>
+          }
+          createMany: {
+            args: Prisma.TariffCountryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TariffCountryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCountryPayload>[]
+          }
+          delete: {
+            args: Prisma.TariffCountryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCountryPayload>
+          }
+          update: {
+            args: Prisma.TariffCountryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCountryPayload>
+          }
+          deleteMany: {
+            args: Prisma.TariffCountryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TariffCountryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TariffCountryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCountryPayload>[]
+          }
+          upsert: {
+            args: Prisma.TariffCountryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffCountryPayload>
+          }
+          aggregate: {
+            args: Prisma.TariffCountryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTariffCountry>
+          }
+          groupBy: {
+            args: Prisma.TariffCountryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TariffCountryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TariffCountryCountArgs<ExtArgs>
+            result: $Utils.Optional<TariffCountryCountAggregateOutputType> | number
+          }
+        }
+      }
+      TariffDataStore: {
+        payload: Prisma.$TariffDataStorePayload<ExtArgs>
+        fields: Prisma.TariffDataStoreFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TariffDataStoreFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffDataStorePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TariffDataStoreFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffDataStorePayload>
+          }
+          findFirst: {
+            args: Prisma.TariffDataStoreFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffDataStorePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TariffDataStoreFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffDataStorePayload>
+          }
+          findMany: {
+            args: Prisma.TariffDataStoreFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffDataStorePayload>[]
+          }
+          create: {
+            args: Prisma.TariffDataStoreCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffDataStorePayload>
+          }
+          createMany: {
+            args: Prisma.TariffDataStoreCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TariffDataStoreCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffDataStorePayload>[]
+          }
+          delete: {
+            args: Prisma.TariffDataStoreDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffDataStorePayload>
+          }
+          update: {
+            args: Prisma.TariffDataStoreUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffDataStorePayload>
+          }
+          deleteMany: {
+            args: Prisma.TariffDataStoreDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TariffDataStoreUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TariffDataStoreUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffDataStorePayload>[]
+          }
+          upsert: {
+            args: Prisma.TariffDataStoreUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffDataStorePayload>
+          }
+          aggregate: {
+            args: Prisma.TariffDataStoreAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTariffDataStore>
+          }
+          groupBy: {
+            args: Prisma.TariffDataStoreGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TariffDataStoreGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TariffDataStoreCountArgs<ExtArgs>
+            result: $Utils.Optional<TariffDataStoreCountAggregateOutputType> | number
+          }
+        }
+      }
+      TariffOperationSystem: {
+        payload: Prisma.$TariffOperationSystemPayload<ExtArgs>
+        fields: Prisma.TariffOperationSystemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TariffOperationSystemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffOperationSystemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TariffOperationSystemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffOperationSystemPayload>
+          }
+          findFirst: {
+            args: Prisma.TariffOperationSystemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffOperationSystemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TariffOperationSystemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffOperationSystemPayload>
+          }
+          findMany: {
+            args: Prisma.TariffOperationSystemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffOperationSystemPayload>[]
+          }
+          create: {
+            args: Prisma.TariffOperationSystemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffOperationSystemPayload>
+          }
+          createMany: {
+            args: Prisma.TariffOperationSystemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TariffOperationSystemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffOperationSystemPayload>[]
+          }
+          delete: {
+            args: Prisma.TariffOperationSystemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffOperationSystemPayload>
+          }
+          update: {
+            args: Prisma.TariffOperationSystemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffOperationSystemPayload>
+          }
+          deleteMany: {
+            args: Prisma.TariffOperationSystemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TariffOperationSystemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TariffOperationSystemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffOperationSystemPayload>[]
+          }
+          upsert: {
+            args: Prisma.TariffOperationSystemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffOperationSystemPayload>
+          }
+          aggregate: {
+            args: Prisma.TariffOperationSystemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTariffOperationSystem>
+          }
+          groupBy: {
+            args: Prisma.TariffOperationSystemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TariffOperationSystemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TariffOperationSystemCountArgs<ExtArgs>
+            result: $Utils.Optional<TariffOperationSystemCountAggregateOutputType> | number
+          }
+        }
+      }
+      TariffProgrammingLanguage: {
+        payload: Prisma.$TariffProgrammingLanguagePayload<ExtArgs>
+        fields: Prisma.TariffProgrammingLanguageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TariffProgrammingLanguageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffProgrammingLanguagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TariffProgrammingLanguageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffProgrammingLanguagePayload>
+          }
+          findFirst: {
+            args: Prisma.TariffProgrammingLanguageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffProgrammingLanguagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TariffProgrammingLanguageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffProgrammingLanguagePayload>
+          }
+          findMany: {
+            args: Prisma.TariffProgrammingLanguageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffProgrammingLanguagePayload>[]
+          }
+          create: {
+            args: Prisma.TariffProgrammingLanguageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffProgrammingLanguagePayload>
+          }
+          createMany: {
+            args: Prisma.TariffProgrammingLanguageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TariffProgrammingLanguageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffProgrammingLanguagePayload>[]
+          }
+          delete: {
+            args: Prisma.TariffProgrammingLanguageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffProgrammingLanguagePayload>
+          }
+          update: {
+            args: Prisma.TariffProgrammingLanguageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffProgrammingLanguagePayload>
+          }
+          deleteMany: {
+            args: Prisma.TariffProgrammingLanguageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TariffProgrammingLanguageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TariffProgrammingLanguageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffProgrammingLanguagePayload>[]
+          }
+          upsert: {
+            args: Prisma.TariffProgrammingLanguageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TariffProgrammingLanguagePayload>
+          }
+          aggregate: {
+            args: Prisma.TariffProgrammingLanguageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTariffProgrammingLanguage>
+          }
+          groupBy: {
+            args: Prisma.TariffProgrammingLanguageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TariffProgrammingLanguageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TariffProgrammingLanguageCountArgs<ExtArgs>
+            result: $Utils.Optional<TariffProgrammingLanguageCountAggregateOutputType> | number
+          }
+        }
+      }
+      ContentBlock: {
+        payload: Prisma.$ContentBlockPayload<ExtArgs>
+        fields: Prisma.ContentBlockFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ContentBlockFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentBlockPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ContentBlockFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentBlockPayload>
+          }
+          findFirst: {
+            args: Prisma.ContentBlockFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentBlockPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ContentBlockFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentBlockPayload>
+          }
+          findMany: {
+            args: Prisma.ContentBlockFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentBlockPayload>[]
+          }
+          create: {
+            args: Prisma.ContentBlockCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentBlockPayload>
+          }
+          createMany: {
+            args: Prisma.ContentBlockCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ContentBlockCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentBlockPayload>[]
+          }
+          delete: {
+            args: Prisma.ContentBlockDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentBlockPayload>
+          }
+          update: {
+            args: Prisma.ContentBlockUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentBlockPayload>
+          }
+          deleteMany: {
+            args: Prisma.ContentBlockDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ContentBlockUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ContentBlockUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentBlockPayload>[]
+          }
+          upsert: {
+            args: Prisma.ContentBlockUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContentBlockPayload>
+          }
+          aggregate: {
+            args: Prisma.ContentBlockAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateContentBlock>
+          }
+          groupBy: {
+            args: Prisma.ContentBlockGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ContentBlockGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ContentBlockCountArgs<ExtArgs>
+            result: $Utils.Optional<ContentBlockCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1072,6 +2434,21 @@ export namespace Prisma {
     account?: AccountOmit
     session?: SessionOmit
     verificationToken?: VerificationTokenOmit
+    hosting?: HostingOmit
+    tariff?: TariffOmit
+    cMS?: CMSOmit
+    controlPanel?: ControlPanelOmit
+    country?: CountryOmit
+    dataStore?: DataStoreOmit
+    operationSystem?: OperationSystemOmit
+    programmingLanguage?: ProgrammingLanguageOmit
+    tariffCMS?: TariffCMSOmit
+    tariffControlPanel?: TariffControlPanelOmit
+    tariffCountry?: TariffCountryOmit
+    tariffDataStore?: TariffDataStoreOmit
+    tariffOperationSystem?: TariffOperationSystemOmit
+    tariffProgrammingLanguage?: TariffProgrammingLanguageOmit
+    contentBlock?: ContentBlockOmit
   }
 
   /* Types for Logging */
@@ -1184,6 +2561,299 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SessionWhereInput
+  }
+
+
+  /**
+   * Count Type HostingCountOutputType
+   */
+
+  export type HostingCountOutputType = {
+    tariffs: number
+  }
+
+  export type HostingCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | HostingCountOutputTypeCountTariffsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * HostingCountOutputType without action
+   */
+  export type HostingCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HostingCountOutputType
+     */
+    select?: HostingCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * HostingCountOutputType without action
+   */
+  export type HostingCountOutputTypeCountTariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffWhereInput
+  }
+
+
+  /**
+   * Count Type TariffCountOutputType
+   */
+
+  export type TariffCountOutputType = {
+    cms: number
+    controlPanels: number
+    countries: number
+    dataStores: number
+    operationSystems: number
+    programmingLanguages: number
+  }
+
+  export type TariffCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cms?: boolean | TariffCountOutputTypeCountCmsArgs
+    controlPanels?: boolean | TariffCountOutputTypeCountControlPanelsArgs
+    countries?: boolean | TariffCountOutputTypeCountCountriesArgs
+    dataStores?: boolean | TariffCountOutputTypeCountDataStoresArgs
+    operationSystems?: boolean | TariffCountOutputTypeCountOperationSystemsArgs
+    programmingLanguages?: boolean | TariffCountOutputTypeCountProgrammingLanguagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TariffCountOutputType without action
+   */
+  export type TariffCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountOutputType
+     */
+    select?: TariffCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TariffCountOutputType without action
+   */
+  export type TariffCountOutputTypeCountCmsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffCMSWhereInput
+  }
+
+  /**
+   * TariffCountOutputType without action
+   */
+  export type TariffCountOutputTypeCountControlPanelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffControlPanelWhereInput
+  }
+
+  /**
+   * TariffCountOutputType without action
+   */
+  export type TariffCountOutputTypeCountCountriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffCountryWhereInput
+  }
+
+  /**
+   * TariffCountOutputType without action
+   */
+  export type TariffCountOutputTypeCountDataStoresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffDataStoreWhereInput
+  }
+
+  /**
+   * TariffCountOutputType without action
+   */
+  export type TariffCountOutputTypeCountOperationSystemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffOperationSystemWhereInput
+  }
+
+  /**
+   * TariffCountOutputType without action
+   */
+  export type TariffCountOutputTypeCountProgrammingLanguagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffProgrammingLanguageWhereInput
+  }
+
+
+  /**
+   * Count Type CMSCountOutputType
+   */
+
+  export type CMSCountOutputType = {
+    tariffs: number
+  }
+
+  export type CMSCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | CMSCountOutputTypeCountTariffsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CMSCountOutputType without action
+   */
+  export type CMSCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMSCountOutputType
+     */
+    select?: CMSCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CMSCountOutputType without action
+   */
+  export type CMSCountOutputTypeCountTariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffCMSWhereInput
+  }
+
+
+  /**
+   * Count Type ControlPanelCountOutputType
+   */
+
+  export type ControlPanelCountOutputType = {
+    tariffs: number
+  }
+
+  export type ControlPanelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | ControlPanelCountOutputTypeCountTariffsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ControlPanelCountOutputType without action
+   */
+  export type ControlPanelCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanelCountOutputType
+     */
+    select?: ControlPanelCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ControlPanelCountOutputType without action
+   */
+  export type ControlPanelCountOutputTypeCountTariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffControlPanelWhereInput
+  }
+
+
+  /**
+   * Count Type CountryCountOutputType
+   */
+
+  export type CountryCountOutputType = {
+    tariffs: number
+  }
+
+  export type CountryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | CountryCountOutputTypeCountTariffsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CountryCountOutputType without action
+   */
+  export type CountryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CountryCountOutputType
+     */
+    select?: CountryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CountryCountOutputType without action
+   */
+  export type CountryCountOutputTypeCountTariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffCountryWhereInput
+  }
+
+
+  /**
+   * Count Type DataStoreCountOutputType
+   */
+
+  export type DataStoreCountOutputType = {
+    tariffs: number
+  }
+
+  export type DataStoreCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | DataStoreCountOutputTypeCountTariffsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DataStoreCountOutputType without action
+   */
+  export type DataStoreCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStoreCountOutputType
+     */
+    select?: DataStoreCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DataStoreCountOutputType without action
+   */
+  export type DataStoreCountOutputTypeCountTariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffDataStoreWhereInput
+  }
+
+
+  /**
+   * Count Type OperationSystemCountOutputType
+   */
+
+  export type OperationSystemCountOutputType = {
+    tariffs: number
+  }
+
+  export type OperationSystemCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | OperationSystemCountOutputTypeCountTariffsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * OperationSystemCountOutputType without action
+   */
+  export type OperationSystemCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystemCountOutputType
+     */
+    select?: OperationSystemCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * OperationSystemCountOutputType without action
+   */
+  export type OperationSystemCountOutputTypeCountTariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffOperationSystemWhereInput
+  }
+
+
+  /**
+   * Count Type ProgrammingLanguageCountOutputType
+   */
+
+  export type ProgrammingLanguageCountOutputType = {
+    tariffs: number
+  }
+
+  export type ProgrammingLanguageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | ProgrammingLanguageCountOutputTypeCountTariffsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProgrammingLanguageCountOutputType without action
+   */
+  export type ProgrammingLanguageCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguageCountOutputType
+     */
+    select?: ProgrammingLanguageCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProgrammingLanguageCountOutputType without action
+   */
+  export type ProgrammingLanguageCountOutputTypeCountTariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffProgrammingLanguageWhereInput
   }
 
 
@@ -5539,6 +7209,16052 @@ export namespace Prisma {
 
 
   /**
+   * Model Hosting
+   */
+
+  export type AggregateHosting = {
+    _count: HostingCountAggregateOutputType | null
+    _min: HostingMinAggregateOutputType | null
+    _max: HostingMaxAggregateOutputType | null
+  }
+
+  export type HostingMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    description: string | null
+    logoUrl: string | null
+    websiteUrl: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HostingMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    description: string | null
+    logoUrl: string | null
+    websiteUrl: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HostingCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    description: number
+    logoUrl: number
+    websiteUrl: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type HostingMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    logoUrl?: true
+    websiteUrl?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HostingMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    logoUrl?: true
+    websiteUrl?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HostingCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    logoUrl?: true
+    websiteUrl?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type HostingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Hosting to aggregate.
+     */
+    where?: HostingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Hostings to fetch.
+     */
+    orderBy?: HostingOrderByWithRelationInput | HostingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HostingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Hostings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Hostings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Hostings
+    **/
+    _count?: true | HostingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HostingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HostingMaxAggregateInputType
+  }
+
+  export type GetHostingAggregateType<T extends HostingAggregateArgs> = {
+        [P in keyof T & keyof AggregateHosting]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHosting[P]>
+      : GetScalarType<T[P], AggregateHosting[P]>
+  }
+
+
+
+
+  export type HostingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HostingWhereInput
+    orderBy?: HostingOrderByWithAggregationInput | HostingOrderByWithAggregationInput[]
+    by: HostingScalarFieldEnum[] | HostingScalarFieldEnum
+    having?: HostingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HostingCountAggregateInputType | true
+    _min?: HostingMinAggregateInputType
+    _max?: HostingMaxAggregateInputType
+  }
+
+  export type HostingGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    description: string | null
+    logoUrl: string | null
+    websiteUrl: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: HostingCountAggregateOutputType | null
+    _min: HostingMinAggregateOutputType | null
+    _max: HostingMaxAggregateOutputType | null
+  }
+
+  type GetHostingGroupByPayload<T extends HostingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HostingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HostingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HostingGroupByOutputType[P]>
+            : GetScalarType<T[P], HostingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HostingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    logoUrl?: boolean
+    websiteUrl?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    tariffs?: boolean | Hosting$tariffsArgs<ExtArgs>
+    _count?: boolean | HostingCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["hosting"]>
+
+  export type HostingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    logoUrl?: boolean
+    websiteUrl?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["hosting"]>
+
+  export type HostingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    logoUrl?: boolean
+    websiteUrl?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["hosting"]>
+
+  export type HostingSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    logoUrl?: boolean
+    websiteUrl?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type HostingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "logoUrl" | "websiteUrl" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["hosting"]>
+  export type HostingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | Hosting$tariffsArgs<ExtArgs>
+    _count?: boolean | HostingCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type HostingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type HostingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $HostingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Hosting"
+    objects: {
+      tariffs: Prisma.$TariffPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+      description: string | null
+      logoUrl: string | null
+      websiteUrl: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["hosting"]>
+    composites: {}
+  }
+
+  type HostingGetPayload<S extends boolean | null | undefined | HostingDefaultArgs> = $Result.GetResult<Prisma.$HostingPayload, S>
+
+  type HostingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HostingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HostingCountAggregateInputType | true
+    }
+
+  export interface HostingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Hosting'], meta: { name: 'Hosting' } }
+    /**
+     * Find zero or one Hosting that matches the filter.
+     * @param {HostingFindUniqueArgs} args - Arguments to find a Hosting
+     * @example
+     * // Get one Hosting
+     * const hosting = await prisma.hosting.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HostingFindUniqueArgs>(args: SelectSubset<T, HostingFindUniqueArgs<ExtArgs>>): Prisma__HostingClient<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Hosting that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HostingFindUniqueOrThrowArgs} args - Arguments to find a Hosting
+     * @example
+     * // Get one Hosting
+     * const hosting = await prisma.hosting.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HostingFindUniqueOrThrowArgs>(args: SelectSubset<T, HostingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HostingClient<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Hosting that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HostingFindFirstArgs} args - Arguments to find a Hosting
+     * @example
+     * // Get one Hosting
+     * const hosting = await prisma.hosting.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HostingFindFirstArgs>(args?: SelectSubset<T, HostingFindFirstArgs<ExtArgs>>): Prisma__HostingClient<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Hosting that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HostingFindFirstOrThrowArgs} args - Arguments to find a Hosting
+     * @example
+     * // Get one Hosting
+     * const hosting = await prisma.hosting.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HostingFindFirstOrThrowArgs>(args?: SelectSubset<T, HostingFindFirstOrThrowArgs<ExtArgs>>): Prisma__HostingClient<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Hostings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HostingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Hostings
+     * const hostings = await prisma.hosting.findMany()
+     * 
+     * // Get first 10 Hostings
+     * const hostings = await prisma.hosting.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const hostingWithIdOnly = await prisma.hosting.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HostingFindManyArgs>(args?: SelectSubset<T, HostingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Hosting.
+     * @param {HostingCreateArgs} args - Arguments to create a Hosting.
+     * @example
+     * // Create one Hosting
+     * const Hosting = await prisma.hosting.create({
+     *   data: {
+     *     // ... data to create a Hosting
+     *   }
+     * })
+     * 
+     */
+    create<T extends HostingCreateArgs>(args: SelectSubset<T, HostingCreateArgs<ExtArgs>>): Prisma__HostingClient<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Hostings.
+     * @param {HostingCreateManyArgs} args - Arguments to create many Hostings.
+     * @example
+     * // Create many Hostings
+     * const hosting = await prisma.hosting.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HostingCreateManyArgs>(args?: SelectSubset<T, HostingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Hostings and returns the data saved in the database.
+     * @param {HostingCreateManyAndReturnArgs} args - Arguments to create many Hostings.
+     * @example
+     * // Create many Hostings
+     * const hosting = await prisma.hosting.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Hostings and only return the `id`
+     * const hostingWithIdOnly = await prisma.hosting.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HostingCreateManyAndReturnArgs>(args?: SelectSubset<T, HostingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Hosting.
+     * @param {HostingDeleteArgs} args - Arguments to delete one Hosting.
+     * @example
+     * // Delete one Hosting
+     * const Hosting = await prisma.hosting.delete({
+     *   where: {
+     *     // ... filter to delete one Hosting
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HostingDeleteArgs>(args: SelectSubset<T, HostingDeleteArgs<ExtArgs>>): Prisma__HostingClient<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Hosting.
+     * @param {HostingUpdateArgs} args - Arguments to update one Hosting.
+     * @example
+     * // Update one Hosting
+     * const hosting = await prisma.hosting.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HostingUpdateArgs>(args: SelectSubset<T, HostingUpdateArgs<ExtArgs>>): Prisma__HostingClient<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Hostings.
+     * @param {HostingDeleteManyArgs} args - Arguments to filter Hostings to delete.
+     * @example
+     * // Delete a few Hostings
+     * const { count } = await prisma.hosting.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HostingDeleteManyArgs>(args?: SelectSubset<T, HostingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Hostings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HostingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Hostings
+     * const hosting = await prisma.hosting.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HostingUpdateManyArgs>(args: SelectSubset<T, HostingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Hostings and returns the data updated in the database.
+     * @param {HostingUpdateManyAndReturnArgs} args - Arguments to update many Hostings.
+     * @example
+     * // Update many Hostings
+     * const hosting = await prisma.hosting.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Hostings and only return the `id`
+     * const hostingWithIdOnly = await prisma.hosting.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HostingUpdateManyAndReturnArgs>(args: SelectSubset<T, HostingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Hosting.
+     * @param {HostingUpsertArgs} args - Arguments to update or create a Hosting.
+     * @example
+     * // Update or create a Hosting
+     * const hosting = await prisma.hosting.upsert({
+     *   create: {
+     *     // ... data to create a Hosting
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Hosting we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HostingUpsertArgs>(args: SelectSubset<T, HostingUpsertArgs<ExtArgs>>): Prisma__HostingClient<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Hostings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HostingCountArgs} args - Arguments to filter Hostings to count.
+     * @example
+     * // Count the number of Hostings
+     * const count = await prisma.hosting.count({
+     *   where: {
+     *     // ... the filter for the Hostings we want to count
+     *   }
+     * })
+    **/
+    count<T extends HostingCountArgs>(
+      args?: Subset<T, HostingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HostingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Hosting.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HostingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HostingAggregateArgs>(args: Subset<T, HostingAggregateArgs>): Prisma.PrismaPromise<GetHostingAggregateType<T>>
+
+    /**
+     * Group by Hosting.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HostingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HostingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HostingGroupByArgs['orderBy'] }
+        : { orderBy?: HostingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HostingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHostingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Hosting model
+   */
+  readonly fields: HostingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Hosting.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HostingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariffs<T extends Hosting$tariffsArgs<ExtArgs> = {}>(args?: Subset<T, Hosting$tariffsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Hosting model
+   */
+  interface HostingFieldRefs {
+    readonly id: FieldRef<"Hosting", 'String'>
+    readonly name: FieldRef<"Hosting", 'String'>
+    readonly slug: FieldRef<"Hosting", 'String'>
+    readonly description: FieldRef<"Hosting", 'String'>
+    readonly logoUrl: FieldRef<"Hosting", 'String'>
+    readonly websiteUrl: FieldRef<"Hosting", 'String'>
+    readonly isActive: FieldRef<"Hosting", 'Boolean'>
+    readonly createdAt: FieldRef<"Hosting", 'DateTime'>
+    readonly updatedAt: FieldRef<"Hosting", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Hosting findUnique
+   */
+  export type HostingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HostingInclude<ExtArgs> | null
+    /**
+     * Filter, which Hosting to fetch.
+     */
+    where: HostingWhereUniqueInput
+  }
+
+  /**
+   * Hosting findUniqueOrThrow
+   */
+  export type HostingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HostingInclude<ExtArgs> | null
+    /**
+     * Filter, which Hosting to fetch.
+     */
+    where: HostingWhereUniqueInput
+  }
+
+  /**
+   * Hosting findFirst
+   */
+  export type HostingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HostingInclude<ExtArgs> | null
+    /**
+     * Filter, which Hosting to fetch.
+     */
+    where?: HostingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Hostings to fetch.
+     */
+    orderBy?: HostingOrderByWithRelationInput | HostingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Hostings.
+     */
+    cursor?: HostingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Hostings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Hostings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Hostings.
+     */
+    distinct?: HostingScalarFieldEnum | HostingScalarFieldEnum[]
+  }
+
+  /**
+   * Hosting findFirstOrThrow
+   */
+  export type HostingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HostingInclude<ExtArgs> | null
+    /**
+     * Filter, which Hosting to fetch.
+     */
+    where?: HostingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Hostings to fetch.
+     */
+    orderBy?: HostingOrderByWithRelationInput | HostingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Hostings.
+     */
+    cursor?: HostingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Hostings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Hostings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Hostings.
+     */
+    distinct?: HostingScalarFieldEnum | HostingScalarFieldEnum[]
+  }
+
+  /**
+   * Hosting findMany
+   */
+  export type HostingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HostingInclude<ExtArgs> | null
+    /**
+     * Filter, which Hostings to fetch.
+     */
+    where?: HostingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Hostings to fetch.
+     */
+    orderBy?: HostingOrderByWithRelationInput | HostingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Hostings.
+     */
+    cursor?: HostingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Hostings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Hostings.
+     */
+    skip?: number
+    distinct?: HostingScalarFieldEnum | HostingScalarFieldEnum[]
+  }
+
+  /**
+   * Hosting create
+   */
+  export type HostingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HostingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Hosting.
+     */
+    data: XOR<HostingCreateInput, HostingUncheckedCreateInput>
+  }
+
+  /**
+   * Hosting createMany
+   */
+  export type HostingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Hostings.
+     */
+    data: HostingCreateManyInput | HostingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Hosting createManyAndReturn
+   */
+  export type HostingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * The data used to create many Hostings.
+     */
+    data: HostingCreateManyInput | HostingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Hosting update
+   */
+  export type HostingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HostingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Hosting.
+     */
+    data: XOR<HostingUpdateInput, HostingUncheckedUpdateInput>
+    /**
+     * Choose, which Hosting to update.
+     */
+    where: HostingWhereUniqueInput
+  }
+
+  /**
+   * Hosting updateMany
+   */
+  export type HostingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Hostings.
+     */
+    data: XOR<HostingUpdateManyMutationInput, HostingUncheckedUpdateManyInput>
+    /**
+     * Filter which Hostings to update
+     */
+    where?: HostingWhereInput
+    /**
+     * Limit how many Hostings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Hosting updateManyAndReturn
+   */
+  export type HostingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * The data used to update Hostings.
+     */
+    data: XOR<HostingUpdateManyMutationInput, HostingUncheckedUpdateManyInput>
+    /**
+     * Filter which Hostings to update
+     */
+    where?: HostingWhereInput
+    /**
+     * Limit how many Hostings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Hosting upsert
+   */
+  export type HostingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HostingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Hosting to update in case it exists.
+     */
+    where: HostingWhereUniqueInput
+    /**
+     * In case the Hosting found by the `where` argument doesn't exist, create a new Hosting with this data.
+     */
+    create: XOR<HostingCreateInput, HostingUncheckedCreateInput>
+    /**
+     * In case the Hosting was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HostingUpdateInput, HostingUncheckedUpdateInput>
+  }
+
+  /**
+   * Hosting delete
+   */
+  export type HostingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HostingInclude<ExtArgs> | null
+    /**
+     * Filter which Hosting to delete.
+     */
+    where: HostingWhereUniqueInput
+  }
+
+  /**
+   * Hosting deleteMany
+   */
+  export type HostingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Hostings to delete
+     */
+    where?: HostingWhereInput
+    /**
+     * Limit how many Hostings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Hosting.tariffs
+   */
+  export type Hosting$tariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffInclude<ExtArgs> | null
+    where?: TariffWhereInput
+    orderBy?: TariffOrderByWithRelationInput | TariffOrderByWithRelationInput[]
+    cursor?: TariffWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffScalarFieldEnum | TariffScalarFieldEnum[]
+  }
+
+  /**
+   * Hosting without action
+   */
+  export type HostingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HostingInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Tariff
+   */
+
+  export type AggregateTariff = {
+    _count: TariffCountAggregateOutputType | null
+    _avg: TariffAvgAggregateOutputType | null
+    _sum: TariffSumAggregateOutputType | null
+    _min: TariffMinAggregateOutputType | null
+    _max: TariffMaxAggregateOutputType | null
+  }
+
+  export type TariffAvgAggregateOutputType = {
+    price: Decimal | null
+    diskSpace: number | null
+    bandwidth: number | null
+    domainsCount: number | null
+    databasesCount: number | null
+    emailAccounts: number | null
+  }
+
+  export type TariffSumAggregateOutputType = {
+    price: Decimal | null
+    diskSpace: number | null
+    bandwidth: number | null
+    domainsCount: number | null
+    databasesCount: number | null
+    emailAccounts: number | null
+  }
+
+  export type TariffMinAggregateOutputType = {
+    id: string | null
+    hostingId: string | null
+    name: string | null
+    price: Decimal | null
+    currency: string | null
+    period: $Enums.TariffPeriod | null
+    diskSpace: number | null
+    bandwidth: number | null
+    domainsCount: number | null
+    databasesCount: number | null
+    emailAccounts: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TariffMaxAggregateOutputType = {
+    id: string | null
+    hostingId: string | null
+    name: string | null
+    price: Decimal | null
+    currency: string | null
+    period: $Enums.TariffPeriod | null
+    diskSpace: number | null
+    bandwidth: number | null
+    domainsCount: number | null
+    databasesCount: number | null
+    emailAccounts: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TariffCountAggregateOutputType = {
+    id: number
+    hostingId: number
+    name: number
+    price: number
+    currency: number
+    period: number
+    diskSpace: number
+    bandwidth: number
+    domainsCount: number
+    databasesCount: number
+    emailAccounts: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TariffAvgAggregateInputType = {
+    price?: true
+    diskSpace?: true
+    bandwidth?: true
+    domainsCount?: true
+    databasesCount?: true
+    emailAccounts?: true
+  }
+
+  export type TariffSumAggregateInputType = {
+    price?: true
+    diskSpace?: true
+    bandwidth?: true
+    domainsCount?: true
+    databasesCount?: true
+    emailAccounts?: true
+  }
+
+  export type TariffMinAggregateInputType = {
+    id?: true
+    hostingId?: true
+    name?: true
+    price?: true
+    currency?: true
+    period?: true
+    diskSpace?: true
+    bandwidth?: true
+    domainsCount?: true
+    databasesCount?: true
+    emailAccounts?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TariffMaxAggregateInputType = {
+    id?: true
+    hostingId?: true
+    name?: true
+    price?: true
+    currency?: true
+    period?: true
+    diskSpace?: true
+    bandwidth?: true
+    domainsCount?: true
+    databasesCount?: true
+    emailAccounts?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TariffCountAggregateInputType = {
+    id?: true
+    hostingId?: true
+    name?: true
+    price?: true
+    currency?: true
+    period?: true
+    diskSpace?: true
+    bandwidth?: true
+    domainsCount?: true
+    databasesCount?: true
+    emailAccounts?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TariffAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Tariff to aggregate.
+     */
+    where?: TariffWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tariffs to fetch.
+     */
+    orderBy?: TariffOrderByWithRelationInput | TariffOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TariffWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tariffs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tariffs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Tariffs
+    **/
+    _count?: true | TariffCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TariffAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TariffSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TariffMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TariffMaxAggregateInputType
+  }
+
+  export type GetTariffAggregateType<T extends TariffAggregateArgs> = {
+        [P in keyof T & keyof AggregateTariff]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTariff[P]>
+      : GetScalarType<T[P], AggregateTariff[P]>
+  }
+
+
+
+
+  export type TariffGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffWhereInput
+    orderBy?: TariffOrderByWithAggregationInput | TariffOrderByWithAggregationInput[]
+    by: TariffScalarFieldEnum[] | TariffScalarFieldEnum
+    having?: TariffScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TariffCountAggregateInputType | true
+    _avg?: TariffAvgAggregateInputType
+    _sum?: TariffSumAggregateInputType
+    _min?: TariffMinAggregateInputType
+    _max?: TariffMaxAggregateInputType
+  }
+
+  export type TariffGroupByOutputType = {
+    id: string
+    hostingId: string
+    name: string
+    price: Decimal
+    currency: string
+    period: $Enums.TariffPeriod
+    diskSpace: number | null
+    bandwidth: number | null
+    domainsCount: number | null
+    databasesCount: number | null
+    emailAccounts: number | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: TariffCountAggregateOutputType | null
+    _avg: TariffAvgAggregateOutputType | null
+    _sum: TariffSumAggregateOutputType | null
+    _min: TariffMinAggregateOutputType | null
+    _max: TariffMaxAggregateOutputType | null
+  }
+
+  type GetTariffGroupByPayload<T extends TariffGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TariffGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TariffGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TariffGroupByOutputType[P]>
+            : GetScalarType<T[P], TariffGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TariffSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    hostingId?: boolean
+    name?: boolean
+    price?: boolean
+    currency?: boolean
+    period?: boolean
+    diskSpace?: boolean
+    bandwidth?: boolean
+    domainsCount?: boolean
+    databasesCount?: boolean
+    emailAccounts?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    hosting?: boolean | HostingDefaultArgs<ExtArgs>
+    cms?: boolean | Tariff$cmsArgs<ExtArgs>
+    controlPanels?: boolean | Tariff$controlPanelsArgs<ExtArgs>
+    countries?: boolean | Tariff$countriesArgs<ExtArgs>
+    dataStores?: boolean | Tariff$dataStoresArgs<ExtArgs>
+    operationSystems?: boolean | Tariff$operationSystemsArgs<ExtArgs>
+    programmingLanguages?: boolean | Tariff$programmingLanguagesArgs<ExtArgs>
+    _count?: boolean | TariffCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariff"]>
+
+  export type TariffSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    hostingId?: boolean
+    name?: boolean
+    price?: boolean
+    currency?: boolean
+    period?: boolean
+    diskSpace?: boolean
+    bandwidth?: boolean
+    domainsCount?: boolean
+    databasesCount?: boolean
+    emailAccounts?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    hosting?: boolean | HostingDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariff"]>
+
+  export type TariffSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    hostingId?: boolean
+    name?: boolean
+    price?: boolean
+    currency?: boolean
+    period?: boolean
+    diskSpace?: boolean
+    bandwidth?: boolean
+    domainsCount?: boolean
+    databasesCount?: boolean
+    emailAccounts?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    hosting?: boolean | HostingDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariff"]>
+
+  export type TariffSelectScalar = {
+    id?: boolean
+    hostingId?: boolean
+    name?: boolean
+    price?: boolean
+    currency?: boolean
+    period?: boolean
+    diskSpace?: boolean
+    bandwidth?: boolean
+    domainsCount?: boolean
+    databasesCount?: boolean
+    emailAccounts?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type TariffOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "hostingId" | "name" | "price" | "currency" | "period" | "diskSpace" | "bandwidth" | "domainsCount" | "databasesCount" | "emailAccounts" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["tariff"]>
+  export type TariffInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hosting?: boolean | HostingDefaultArgs<ExtArgs>
+    cms?: boolean | Tariff$cmsArgs<ExtArgs>
+    controlPanels?: boolean | Tariff$controlPanelsArgs<ExtArgs>
+    countries?: boolean | Tariff$countriesArgs<ExtArgs>
+    dataStores?: boolean | Tariff$dataStoresArgs<ExtArgs>
+    operationSystems?: boolean | Tariff$operationSystemsArgs<ExtArgs>
+    programmingLanguages?: boolean | Tariff$programmingLanguagesArgs<ExtArgs>
+    _count?: boolean | TariffCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TariffIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hosting?: boolean | HostingDefaultArgs<ExtArgs>
+  }
+  export type TariffIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hosting?: boolean | HostingDefaultArgs<ExtArgs>
+  }
+
+  export type $TariffPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Tariff"
+    objects: {
+      hosting: Prisma.$HostingPayload<ExtArgs>
+      cms: Prisma.$TariffCMSPayload<ExtArgs>[]
+      controlPanels: Prisma.$TariffControlPanelPayload<ExtArgs>[]
+      countries: Prisma.$TariffCountryPayload<ExtArgs>[]
+      dataStores: Prisma.$TariffDataStorePayload<ExtArgs>[]
+      operationSystems: Prisma.$TariffOperationSystemPayload<ExtArgs>[]
+      programmingLanguages: Prisma.$TariffProgrammingLanguagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      hostingId: string
+      name: string
+      price: Prisma.Decimal
+      currency: string
+      period: $Enums.TariffPeriod
+      diskSpace: number | null
+      bandwidth: number | null
+      domainsCount: number | null
+      databasesCount: number | null
+      emailAccounts: number | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["tariff"]>
+    composites: {}
+  }
+
+  type TariffGetPayload<S extends boolean | null | undefined | TariffDefaultArgs> = $Result.GetResult<Prisma.$TariffPayload, S>
+
+  type TariffCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TariffFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TariffCountAggregateInputType | true
+    }
+
+  export interface TariffDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Tariff'], meta: { name: 'Tariff' } }
+    /**
+     * Find zero or one Tariff that matches the filter.
+     * @param {TariffFindUniqueArgs} args - Arguments to find a Tariff
+     * @example
+     * // Get one Tariff
+     * const tariff = await prisma.tariff.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TariffFindUniqueArgs>(args: SelectSubset<T, TariffFindUniqueArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Tariff that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TariffFindUniqueOrThrowArgs} args - Arguments to find a Tariff
+     * @example
+     * // Get one Tariff
+     * const tariff = await prisma.tariff.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TariffFindUniqueOrThrowArgs>(args: SelectSubset<T, TariffFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tariff that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffFindFirstArgs} args - Arguments to find a Tariff
+     * @example
+     * // Get one Tariff
+     * const tariff = await prisma.tariff.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TariffFindFirstArgs>(args?: SelectSubset<T, TariffFindFirstArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tariff that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffFindFirstOrThrowArgs} args - Arguments to find a Tariff
+     * @example
+     * // Get one Tariff
+     * const tariff = await prisma.tariff.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TariffFindFirstOrThrowArgs>(args?: SelectSubset<T, TariffFindFirstOrThrowArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tariffs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tariffs
+     * const tariffs = await prisma.tariff.findMany()
+     * 
+     * // Get first 10 Tariffs
+     * const tariffs = await prisma.tariff.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tariffWithIdOnly = await prisma.tariff.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TariffFindManyArgs>(args?: SelectSubset<T, TariffFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Tariff.
+     * @param {TariffCreateArgs} args - Arguments to create a Tariff.
+     * @example
+     * // Create one Tariff
+     * const Tariff = await prisma.tariff.create({
+     *   data: {
+     *     // ... data to create a Tariff
+     *   }
+     * })
+     * 
+     */
+    create<T extends TariffCreateArgs>(args: SelectSubset<T, TariffCreateArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tariffs.
+     * @param {TariffCreateManyArgs} args - Arguments to create many Tariffs.
+     * @example
+     * // Create many Tariffs
+     * const tariff = await prisma.tariff.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TariffCreateManyArgs>(args?: SelectSubset<T, TariffCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Tariffs and returns the data saved in the database.
+     * @param {TariffCreateManyAndReturnArgs} args - Arguments to create many Tariffs.
+     * @example
+     * // Create many Tariffs
+     * const tariff = await prisma.tariff.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Tariffs and only return the `id`
+     * const tariffWithIdOnly = await prisma.tariff.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TariffCreateManyAndReturnArgs>(args?: SelectSubset<T, TariffCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Tariff.
+     * @param {TariffDeleteArgs} args - Arguments to delete one Tariff.
+     * @example
+     * // Delete one Tariff
+     * const Tariff = await prisma.tariff.delete({
+     *   where: {
+     *     // ... filter to delete one Tariff
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TariffDeleteArgs>(args: SelectSubset<T, TariffDeleteArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Tariff.
+     * @param {TariffUpdateArgs} args - Arguments to update one Tariff.
+     * @example
+     * // Update one Tariff
+     * const tariff = await prisma.tariff.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TariffUpdateArgs>(args: SelectSubset<T, TariffUpdateArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tariffs.
+     * @param {TariffDeleteManyArgs} args - Arguments to filter Tariffs to delete.
+     * @example
+     * // Delete a few Tariffs
+     * const { count } = await prisma.tariff.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TariffDeleteManyArgs>(args?: SelectSubset<T, TariffDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tariffs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tariffs
+     * const tariff = await prisma.tariff.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TariffUpdateManyArgs>(args: SelectSubset<T, TariffUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tariffs and returns the data updated in the database.
+     * @param {TariffUpdateManyAndReturnArgs} args - Arguments to update many Tariffs.
+     * @example
+     * // Update many Tariffs
+     * const tariff = await prisma.tariff.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Tariffs and only return the `id`
+     * const tariffWithIdOnly = await prisma.tariff.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TariffUpdateManyAndReturnArgs>(args: SelectSubset<T, TariffUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Tariff.
+     * @param {TariffUpsertArgs} args - Arguments to update or create a Tariff.
+     * @example
+     * // Update or create a Tariff
+     * const tariff = await prisma.tariff.upsert({
+     *   create: {
+     *     // ... data to create a Tariff
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tariff we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TariffUpsertArgs>(args: SelectSubset<T, TariffUpsertArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tariffs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCountArgs} args - Arguments to filter Tariffs to count.
+     * @example
+     * // Count the number of Tariffs
+     * const count = await prisma.tariff.count({
+     *   where: {
+     *     // ... the filter for the Tariffs we want to count
+     *   }
+     * })
+    **/
+    count<T extends TariffCountArgs>(
+      args?: Subset<T, TariffCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TariffCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tariff.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TariffAggregateArgs>(args: Subset<T, TariffAggregateArgs>): Prisma.PrismaPromise<GetTariffAggregateType<T>>
+
+    /**
+     * Group by Tariff.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TariffGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TariffGroupByArgs['orderBy'] }
+        : { orderBy?: TariffGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TariffGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTariffGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Tariff model
+   */
+  readonly fields: TariffFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Tariff.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TariffClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    hosting<T extends HostingDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HostingDefaultArgs<ExtArgs>>): Prisma__HostingClient<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    cms<T extends Tariff$cmsArgs<ExtArgs> = {}>(args?: Subset<T, Tariff$cmsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    controlPanels<T extends Tariff$controlPanelsArgs<ExtArgs> = {}>(args?: Subset<T, Tariff$controlPanelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    countries<T extends Tariff$countriesArgs<ExtArgs> = {}>(args?: Subset<T, Tariff$countriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    dataStores<T extends Tariff$dataStoresArgs<ExtArgs> = {}>(args?: Subset<T, Tariff$dataStoresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    operationSystems<T extends Tariff$operationSystemsArgs<ExtArgs> = {}>(args?: Subset<T, Tariff$operationSystemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    programmingLanguages<T extends Tariff$programmingLanguagesArgs<ExtArgs> = {}>(args?: Subset<T, Tariff$programmingLanguagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Tariff model
+   */
+  interface TariffFieldRefs {
+    readonly id: FieldRef<"Tariff", 'String'>
+    readonly hostingId: FieldRef<"Tariff", 'String'>
+    readonly name: FieldRef<"Tariff", 'String'>
+    readonly price: FieldRef<"Tariff", 'Decimal'>
+    readonly currency: FieldRef<"Tariff", 'String'>
+    readonly period: FieldRef<"Tariff", 'TariffPeriod'>
+    readonly diskSpace: FieldRef<"Tariff", 'Int'>
+    readonly bandwidth: FieldRef<"Tariff", 'Int'>
+    readonly domainsCount: FieldRef<"Tariff", 'Int'>
+    readonly databasesCount: FieldRef<"Tariff", 'Int'>
+    readonly emailAccounts: FieldRef<"Tariff", 'Int'>
+    readonly isActive: FieldRef<"Tariff", 'Boolean'>
+    readonly createdAt: FieldRef<"Tariff", 'DateTime'>
+    readonly updatedAt: FieldRef<"Tariff", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Tariff findUnique
+   */
+  export type TariffFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffInclude<ExtArgs> | null
+    /**
+     * Filter, which Tariff to fetch.
+     */
+    where: TariffWhereUniqueInput
+  }
+
+  /**
+   * Tariff findUniqueOrThrow
+   */
+  export type TariffFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffInclude<ExtArgs> | null
+    /**
+     * Filter, which Tariff to fetch.
+     */
+    where: TariffWhereUniqueInput
+  }
+
+  /**
+   * Tariff findFirst
+   */
+  export type TariffFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffInclude<ExtArgs> | null
+    /**
+     * Filter, which Tariff to fetch.
+     */
+    where?: TariffWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tariffs to fetch.
+     */
+    orderBy?: TariffOrderByWithRelationInput | TariffOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Tariffs.
+     */
+    cursor?: TariffWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tariffs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tariffs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Tariffs.
+     */
+    distinct?: TariffScalarFieldEnum | TariffScalarFieldEnum[]
+  }
+
+  /**
+   * Tariff findFirstOrThrow
+   */
+  export type TariffFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffInclude<ExtArgs> | null
+    /**
+     * Filter, which Tariff to fetch.
+     */
+    where?: TariffWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tariffs to fetch.
+     */
+    orderBy?: TariffOrderByWithRelationInput | TariffOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Tariffs.
+     */
+    cursor?: TariffWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tariffs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tariffs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Tariffs.
+     */
+    distinct?: TariffScalarFieldEnum | TariffScalarFieldEnum[]
+  }
+
+  /**
+   * Tariff findMany
+   */
+  export type TariffFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffInclude<ExtArgs> | null
+    /**
+     * Filter, which Tariffs to fetch.
+     */
+    where?: TariffWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tariffs to fetch.
+     */
+    orderBy?: TariffOrderByWithRelationInput | TariffOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Tariffs.
+     */
+    cursor?: TariffWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tariffs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tariffs.
+     */
+    skip?: number
+    distinct?: TariffScalarFieldEnum | TariffScalarFieldEnum[]
+  }
+
+  /**
+   * Tariff create
+   */
+  export type TariffCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Tariff.
+     */
+    data: XOR<TariffCreateInput, TariffUncheckedCreateInput>
+  }
+
+  /**
+   * Tariff createMany
+   */
+  export type TariffCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Tariffs.
+     */
+    data: TariffCreateManyInput | TariffCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Tariff createManyAndReturn
+   */
+  export type TariffCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * The data used to create many Tariffs.
+     */
+    data: TariffCreateManyInput | TariffCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Tariff update
+   */
+  export type TariffUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Tariff.
+     */
+    data: XOR<TariffUpdateInput, TariffUncheckedUpdateInput>
+    /**
+     * Choose, which Tariff to update.
+     */
+    where: TariffWhereUniqueInput
+  }
+
+  /**
+   * Tariff updateMany
+   */
+  export type TariffUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Tariffs.
+     */
+    data: XOR<TariffUpdateManyMutationInput, TariffUncheckedUpdateManyInput>
+    /**
+     * Filter which Tariffs to update
+     */
+    where?: TariffWhereInput
+    /**
+     * Limit how many Tariffs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Tariff updateManyAndReturn
+   */
+  export type TariffUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * The data used to update Tariffs.
+     */
+    data: XOR<TariffUpdateManyMutationInput, TariffUncheckedUpdateManyInput>
+    /**
+     * Filter which Tariffs to update
+     */
+    where?: TariffWhereInput
+    /**
+     * Limit how many Tariffs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Tariff upsert
+   */
+  export type TariffUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Tariff to update in case it exists.
+     */
+    where: TariffWhereUniqueInput
+    /**
+     * In case the Tariff found by the `where` argument doesn't exist, create a new Tariff with this data.
+     */
+    create: XOR<TariffCreateInput, TariffUncheckedCreateInput>
+    /**
+     * In case the Tariff was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TariffUpdateInput, TariffUncheckedUpdateInput>
+  }
+
+  /**
+   * Tariff delete
+   */
+  export type TariffDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffInclude<ExtArgs> | null
+    /**
+     * Filter which Tariff to delete.
+     */
+    where: TariffWhereUniqueInput
+  }
+
+  /**
+   * Tariff deleteMany
+   */
+  export type TariffDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Tariffs to delete
+     */
+    where?: TariffWhereInput
+    /**
+     * Limit how many Tariffs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Tariff.cms
+   */
+  export type Tariff$cmsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSInclude<ExtArgs> | null
+    where?: TariffCMSWhereInput
+    orderBy?: TariffCMSOrderByWithRelationInput | TariffCMSOrderByWithRelationInput[]
+    cursor?: TariffCMSWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffCMSScalarFieldEnum | TariffCMSScalarFieldEnum[]
+  }
+
+  /**
+   * Tariff.controlPanels
+   */
+  export type Tariff$controlPanelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelInclude<ExtArgs> | null
+    where?: TariffControlPanelWhereInput
+    orderBy?: TariffControlPanelOrderByWithRelationInput | TariffControlPanelOrderByWithRelationInput[]
+    cursor?: TariffControlPanelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffControlPanelScalarFieldEnum | TariffControlPanelScalarFieldEnum[]
+  }
+
+  /**
+   * Tariff.countries
+   */
+  export type Tariff$countriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryInclude<ExtArgs> | null
+    where?: TariffCountryWhereInput
+    orderBy?: TariffCountryOrderByWithRelationInput | TariffCountryOrderByWithRelationInput[]
+    cursor?: TariffCountryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffCountryScalarFieldEnum | TariffCountryScalarFieldEnum[]
+  }
+
+  /**
+   * Tariff.dataStores
+   */
+  export type Tariff$dataStoresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreInclude<ExtArgs> | null
+    where?: TariffDataStoreWhereInput
+    orderBy?: TariffDataStoreOrderByWithRelationInput | TariffDataStoreOrderByWithRelationInput[]
+    cursor?: TariffDataStoreWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffDataStoreScalarFieldEnum | TariffDataStoreScalarFieldEnum[]
+  }
+
+  /**
+   * Tariff.operationSystems
+   */
+  export type Tariff$operationSystemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemInclude<ExtArgs> | null
+    where?: TariffOperationSystemWhereInput
+    orderBy?: TariffOperationSystemOrderByWithRelationInput | TariffOperationSystemOrderByWithRelationInput[]
+    cursor?: TariffOperationSystemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffOperationSystemScalarFieldEnum | TariffOperationSystemScalarFieldEnum[]
+  }
+
+  /**
+   * Tariff.programmingLanguages
+   */
+  export type Tariff$programmingLanguagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageInclude<ExtArgs> | null
+    where?: TariffProgrammingLanguageWhereInput
+    orderBy?: TariffProgrammingLanguageOrderByWithRelationInput | TariffProgrammingLanguageOrderByWithRelationInput[]
+    cursor?: TariffProgrammingLanguageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffProgrammingLanguageScalarFieldEnum | TariffProgrammingLanguageScalarFieldEnum[]
+  }
+
+  /**
+   * Tariff without action
+   */
+  export type TariffDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tariff
+     */
+    select?: TariffSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tariff
+     */
+    omit?: TariffOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CMS
+   */
+
+  export type AggregateCMS = {
+    _count: CMSCountAggregateOutputType | null
+    _min: CMSMinAggregateOutputType | null
+    _max: CMSMaxAggregateOutputType | null
+  }
+
+  export type CMSMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type CMSMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type CMSCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    _all: number
+  }
+
+
+  export type CMSMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type CMSMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type CMSCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    _all?: true
+  }
+
+  export type CMSAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CMS to aggregate.
+     */
+    where?: CMSWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CMS to fetch.
+     */
+    orderBy?: CMSOrderByWithRelationInput | CMSOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CMSWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CMS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CMS
+    **/
+    _count?: true | CMSCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CMSMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CMSMaxAggregateInputType
+  }
+
+  export type GetCMSAggregateType<T extends CMSAggregateArgs> = {
+        [P in keyof T & keyof AggregateCMS]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCMS[P]>
+      : GetScalarType<T[P], AggregateCMS[P]>
+  }
+
+
+
+
+  export type CMSGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CMSWhereInput
+    orderBy?: CMSOrderByWithAggregationInput | CMSOrderByWithAggregationInput[]
+    by: CMSScalarFieldEnum[] | CMSScalarFieldEnum
+    having?: CMSScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CMSCountAggregateInputType | true
+    _min?: CMSMinAggregateInputType
+    _max?: CMSMaxAggregateInputType
+  }
+
+  export type CMSGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    _count: CMSCountAggregateOutputType | null
+    _min: CMSMinAggregateOutputType | null
+    _max: CMSMaxAggregateOutputType | null
+  }
+
+  type GetCMSGroupByPayload<T extends CMSGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CMSGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CMSGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CMSGroupByOutputType[P]>
+            : GetScalarType<T[P], CMSGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CMSSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    tariffs?: boolean | CMS$tariffsArgs<ExtArgs>
+    _count?: boolean | CMSCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cMS"]>
+
+  export type CMSSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["cMS"]>
+
+  export type CMSSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["cMS"]>
+
+  export type CMSSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }
+
+  export type CMSOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug", ExtArgs["result"]["cMS"]>
+  export type CMSInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | CMS$tariffsArgs<ExtArgs>
+    _count?: boolean | CMSCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CMSIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CMSIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $CMSPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CMS"
+    objects: {
+      tariffs: Prisma.$TariffCMSPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+    }, ExtArgs["result"]["cMS"]>
+    composites: {}
+  }
+
+  type CMSGetPayload<S extends boolean | null | undefined | CMSDefaultArgs> = $Result.GetResult<Prisma.$CMSPayload, S>
+
+  type CMSCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CMSFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CMSCountAggregateInputType | true
+    }
+
+  export interface CMSDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CMS'], meta: { name: 'CMS' } }
+    /**
+     * Find zero or one CMS that matches the filter.
+     * @param {CMSFindUniqueArgs} args - Arguments to find a CMS
+     * @example
+     * // Get one CMS
+     * const cMS = await prisma.cMS.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CMSFindUniqueArgs>(args: SelectSubset<T, CMSFindUniqueArgs<ExtArgs>>): Prisma__CMSClient<$Result.GetResult<Prisma.$CMSPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CMS that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CMSFindUniqueOrThrowArgs} args - Arguments to find a CMS
+     * @example
+     * // Get one CMS
+     * const cMS = await prisma.cMS.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CMSFindUniqueOrThrowArgs>(args: SelectSubset<T, CMSFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CMSClient<$Result.GetResult<Prisma.$CMSPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CMS that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CMSFindFirstArgs} args - Arguments to find a CMS
+     * @example
+     * // Get one CMS
+     * const cMS = await prisma.cMS.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CMSFindFirstArgs>(args?: SelectSubset<T, CMSFindFirstArgs<ExtArgs>>): Prisma__CMSClient<$Result.GetResult<Prisma.$CMSPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CMS that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CMSFindFirstOrThrowArgs} args - Arguments to find a CMS
+     * @example
+     * // Get one CMS
+     * const cMS = await prisma.cMS.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CMSFindFirstOrThrowArgs>(args?: SelectSubset<T, CMSFindFirstOrThrowArgs<ExtArgs>>): Prisma__CMSClient<$Result.GetResult<Prisma.$CMSPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CMS that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CMSFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CMS
+     * const cMS = await prisma.cMS.findMany()
+     * 
+     * // Get first 10 CMS
+     * const cMS = await prisma.cMS.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const cMSWithIdOnly = await prisma.cMS.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CMSFindManyArgs>(args?: SelectSubset<T, CMSFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CMSPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CMS.
+     * @param {CMSCreateArgs} args - Arguments to create a CMS.
+     * @example
+     * // Create one CMS
+     * const CMS = await prisma.cMS.create({
+     *   data: {
+     *     // ... data to create a CMS
+     *   }
+     * })
+     * 
+     */
+    create<T extends CMSCreateArgs>(args: SelectSubset<T, CMSCreateArgs<ExtArgs>>): Prisma__CMSClient<$Result.GetResult<Prisma.$CMSPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CMS.
+     * @param {CMSCreateManyArgs} args - Arguments to create many CMS.
+     * @example
+     * // Create many CMS
+     * const cMS = await prisma.cMS.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CMSCreateManyArgs>(args?: SelectSubset<T, CMSCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CMS and returns the data saved in the database.
+     * @param {CMSCreateManyAndReturnArgs} args - Arguments to create many CMS.
+     * @example
+     * // Create many CMS
+     * const cMS = await prisma.cMS.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CMS and only return the `id`
+     * const cMSWithIdOnly = await prisma.cMS.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CMSCreateManyAndReturnArgs>(args?: SelectSubset<T, CMSCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CMSPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CMS.
+     * @param {CMSDeleteArgs} args - Arguments to delete one CMS.
+     * @example
+     * // Delete one CMS
+     * const CMS = await prisma.cMS.delete({
+     *   where: {
+     *     // ... filter to delete one CMS
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CMSDeleteArgs>(args: SelectSubset<T, CMSDeleteArgs<ExtArgs>>): Prisma__CMSClient<$Result.GetResult<Prisma.$CMSPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CMS.
+     * @param {CMSUpdateArgs} args - Arguments to update one CMS.
+     * @example
+     * // Update one CMS
+     * const cMS = await prisma.cMS.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CMSUpdateArgs>(args: SelectSubset<T, CMSUpdateArgs<ExtArgs>>): Prisma__CMSClient<$Result.GetResult<Prisma.$CMSPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CMS.
+     * @param {CMSDeleteManyArgs} args - Arguments to filter CMS to delete.
+     * @example
+     * // Delete a few CMS
+     * const { count } = await prisma.cMS.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CMSDeleteManyArgs>(args?: SelectSubset<T, CMSDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CMS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CMSUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CMS
+     * const cMS = await prisma.cMS.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CMSUpdateManyArgs>(args: SelectSubset<T, CMSUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CMS and returns the data updated in the database.
+     * @param {CMSUpdateManyAndReturnArgs} args - Arguments to update many CMS.
+     * @example
+     * // Update many CMS
+     * const cMS = await prisma.cMS.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CMS and only return the `id`
+     * const cMSWithIdOnly = await prisma.cMS.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CMSUpdateManyAndReturnArgs>(args: SelectSubset<T, CMSUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CMSPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CMS.
+     * @param {CMSUpsertArgs} args - Arguments to update or create a CMS.
+     * @example
+     * // Update or create a CMS
+     * const cMS = await prisma.cMS.upsert({
+     *   create: {
+     *     // ... data to create a CMS
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CMS we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CMSUpsertArgs>(args: SelectSubset<T, CMSUpsertArgs<ExtArgs>>): Prisma__CMSClient<$Result.GetResult<Prisma.$CMSPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CMS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CMSCountArgs} args - Arguments to filter CMS to count.
+     * @example
+     * // Count the number of CMS
+     * const count = await prisma.cMS.count({
+     *   where: {
+     *     // ... the filter for the CMS we want to count
+     *   }
+     * })
+    **/
+    count<T extends CMSCountArgs>(
+      args?: Subset<T, CMSCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CMSCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CMS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CMSAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CMSAggregateArgs>(args: Subset<T, CMSAggregateArgs>): Prisma.PrismaPromise<GetCMSAggregateType<T>>
+
+    /**
+     * Group by CMS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CMSGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CMSGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CMSGroupByArgs['orderBy'] }
+        : { orderBy?: CMSGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CMSGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCMSGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CMS model
+   */
+  readonly fields: CMSFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CMS.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CMSClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariffs<T extends CMS$tariffsArgs<ExtArgs> = {}>(args?: Subset<T, CMS$tariffsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CMS model
+   */
+  interface CMSFieldRefs {
+    readonly id: FieldRef<"CMS", 'String'>
+    readonly name: FieldRef<"CMS", 'String'>
+    readonly slug: FieldRef<"CMS", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CMS findUnique
+   */
+  export type CMSFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMS
+     */
+    select?: CMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CMS
+     */
+    omit?: CMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CMSInclude<ExtArgs> | null
+    /**
+     * Filter, which CMS to fetch.
+     */
+    where: CMSWhereUniqueInput
+  }
+
+  /**
+   * CMS findUniqueOrThrow
+   */
+  export type CMSFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMS
+     */
+    select?: CMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CMS
+     */
+    omit?: CMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CMSInclude<ExtArgs> | null
+    /**
+     * Filter, which CMS to fetch.
+     */
+    where: CMSWhereUniqueInput
+  }
+
+  /**
+   * CMS findFirst
+   */
+  export type CMSFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMS
+     */
+    select?: CMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CMS
+     */
+    omit?: CMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CMSInclude<ExtArgs> | null
+    /**
+     * Filter, which CMS to fetch.
+     */
+    where?: CMSWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CMS to fetch.
+     */
+    orderBy?: CMSOrderByWithRelationInput | CMSOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CMS.
+     */
+    cursor?: CMSWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CMS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CMS.
+     */
+    distinct?: CMSScalarFieldEnum | CMSScalarFieldEnum[]
+  }
+
+  /**
+   * CMS findFirstOrThrow
+   */
+  export type CMSFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMS
+     */
+    select?: CMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CMS
+     */
+    omit?: CMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CMSInclude<ExtArgs> | null
+    /**
+     * Filter, which CMS to fetch.
+     */
+    where?: CMSWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CMS to fetch.
+     */
+    orderBy?: CMSOrderByWithRelationInput | CMSOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CMS.
+     */
+    cursor?: CMSWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CMS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CMS.
+     */
+    distinct?: CMSScalarFieldEnum | CMSScalarFieldEnum[]
+  }
+
+  /**
+   * CMS findMany
+   */
+  export type CMSFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMS
+     */
+    select?: CMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CMS
+     */
+    omit?: CMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CMSInclude<ExtArgs> | null
+    /**
+     * Filter, which CMS to fetch.
+     */
+    where?: CMSWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CMS to fetch.
+     */
+    orderBy?: CMSOrderByWithRelationInput | CMSOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CMS.
+     */
+    cursor?: CMSWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CMS.
+     */
+    skip?: number
+    distinct?: CMSScalarFieldEnum | CMSScalarFieldEnum[]
+  }
+
+  /**
+   * CMS create
+   */
+  export type CMSCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMS
+     */
+    select?: CMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CMS
+     */
+    omit?: CMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CMSInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CMS.
+     */
+    data: XOR<CMSCreateInput, CMSUncheckedCreateInput>
+  }
+
+  /**
+   * CMS createMany
+   */
+  export type CMSCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CMS.
+     */
+    data: CMSCreateManyInput | CMSCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CMS createManyAndReturn
+   */
+  export type CMSCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMS
+     */
+    select?: CMSSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CMS
+     */
+    omit?: CMSOmit<ExtArgs> | null
+    /**
+     * The data used to create many CMS.
+     */
+    data: CMSCreateManyInput | CMSCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CMS update
+   */
+  export type CMSUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMS
+     */
+    select?: CMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CMS
+     */
+    omit?: CMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CMSInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CMS.
+     */
+    data: XOR<CMSUpdateInput, CMSUncheckedUpdateInput>
+    /**
+     * Choose, which CMS to update.
+     */
+    where: CMSWhereUniqueInput
+  }
+
+  /**
+   * CMS updateMany
+   */
+  export type CMSUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CMS.
+     */
+    data: XOR<CMSUpdateManyMutationInput, CMSUncheckedUpdateManyInput>
+    /**
+     * Filter which CMS to update
+     */
+    where?: CMSWhereInput
+    /**
+     * Limit how many CMS to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CMS updateManyAndReturn
+   */
+  export type CMSUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMS
+     */
+    select?: CMSSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CMS
+     */
+    omit?: CMSOmit<ExtArgs> | null
+    /**
+     * The data used to update CMS.
+     */
+    data: XOR<CMSUpdateManyMutationInput, CMSUncheckedUpdateManyInput>
+    /**
+     * Filter which CMS to update
+     */
+    where?: CMSWhereInput
+    /**
+     * Limit how many CMS to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CMS upsert
+   */
+  export type CMSUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMS
+     */
+    select?: CMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CMS
+     */
+    omit?: CMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CMSInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CMS to update in case it exists.
+     */
+    where: CMSWhereUniqueInput
+    /**
+     * In case the CMS found by the `where` argument doesn't exist, create a new CMS with this data.
+     */
+    create: XOR<CMSCreateInput, CMSUncheckedCreateInput>
+    /**
+     * In case the CMS was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CMSUpdateInput, CMSUncheckedUpdateInput>
+  }
+
+  /**
+   * CMS delete
+   */
+  export type CMSDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMS
+     */
+    select?: CMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CMS
+     */
+    omit?: CMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CMSInclude<ExtArgs> | null
+    /**
+     * Filter which CMS to delete.
+     */
+    where: CMSWhereUniqueInput
+  }
+
+  /**
+   * CMS deleteMany
+   */
+  export type CMSDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CMS to delete
+     */
+    where?: CMSWhereInput
+    /**
+     * Limit how many CMS to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CMS.tariffs
+   */
+  export type CMS$tariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSInclude<ExtArgs> | null
+    where?: TariffCMSWhereInput
+    orderBy?: TariffCMSOrderByWithRelationInput | TariffCMSOrderByWithRelationInput[]
+    cursor?: TariffCMSWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffCMSScalarFieldEnum | TariffCMSScalarFieldEnum[]
+  }
+
+  /**
+   * CMS without action
+   */
+  export type CMSDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CMS
+     */
+    select?: CMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CMS
+     */
+    omit?: CMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CMSInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ControlPanel
+   */
+
+  export type AggregateControlPanel = {
+    _count: ControlPanelCountAggregateOutputType | null
+    _min: ControlPanelMinAggregateOutputType | null
+    _max: ControlPanelMaxAggregateOutputType | null
+  }
+
+  export type ControlPanelMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type ControlPanelMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type ControlPanelCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    _all: number
+  }
+
+
+  export type ControlPanelMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type ControlPanelMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type ControlPanelCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    _all?: true
+  }
+
+  export type ControlPanelAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ControlPanel to aggregate.
+     */
+    where?: ControlPanelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ControlPanels to fetch.
+     */
+    orderBy?: ControlPanelOrderByWithRelationInput | ControlPanelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ControlPanelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ControlPanels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ControlPanels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ControlPanels
+    **/
+    _count?: true | ControlPanelCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ControlPanelMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ControlPanelMaxAggregateInputType
+  }
+
+  export type GetControlPanelAggregateType<T extends ControlPanelAggregateArgs> = {
+        [P in keyof T & keyof AggregateControlPanel]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateControlPanel[P]>
+      : GetScalarType<T[P], AggregateControlPanel[P]>
+  }
+
+
+
+
+  export type ControlPanelGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ControlPanelWhereInput
+    orderBy?: ControlPanelOrderByWithAggregationInput | ControlPanelOrderByWithAggregationInput[]
+    by: ControlPanelScalarFieldEnum[] | ControlPanelScalarFieldEnum
+    having?: ControlPanelScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ControlPanelCountAggregateInputType | true
+    _min?: ControlPanelMinAggregateInputType
+    _max?: ControlPanelMaxAggregateInputType
+  }
+
+  export type ControlPanelGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    _count: ControlPanelCountAggregateOutputType | null
+    _min: ControlPanelMinAggregateOutputType | null
+    _max: ControlPanelMaxAggregateOutputType | null
+  }
+
+  type GetControlPanelGroupByPayload<T extends ControlPanelGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ControlPanelGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ControlPanelGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ControlPanelGroupByOutputType[P]>
+            : GetScalarType<T[P], ControlPanelGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ControlPanelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    tariffs?: boolean | ControlPanel$tariffsArgs<ExtArgs>
+    _count?: boolean | ControlPanelCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["controlPanel"]>
+
+  export type ControlPanelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["controlPanel"]>
+
+  export type ControlPanelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["controlPanel"]>
+
+  export type ControlPanelSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }
+
+  export type ControlPanelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug", ExtArgs["result"]["controlPanel"]>
+  export type ControlPanelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | ControlPanel$tariffsArgs<ExtArgs>
+    _count?: boolean | ControlPanelCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ControlPanelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ControlPanelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ControlPanelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ControlPanel"
+    objects: {
+      tariffs: Prisma.$TariffControlPanelPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+    }, ExtArgs["result"]["controlPanel"]>
+    composites: {}
+  }
+
+  type ControlPanelGetPayload<S extends boolean | null | undefined | ControlPanelDefaultArgs> = $Result.GetResult<Prisma.$ControlPanelPayload, S>
+
+  type ControlPanelCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ControlPanelFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ControlPanelCountAggregateInputType | true
+    }
+
+  export interface ControlPanelDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ControlPanel'], meta: { name: 'ControlPanel' } }
+    /**
+     * Find zero or one ControlPanel that matches the filter.
+     * @param {ControlPanelFindUniqueArgs} args - Arguments to find a ControlPanel
+     * @example
+     * // Get one ControlPanel
+     * const controlPanel = await prisma.controlPanel.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ControlPanelFindUniqueArgs>(args: SelectSubset<T, ControlPanelFindUniqueArgs<ExtArgs>>): Prisma__ControlPanelClient<$Result.GetResult<Prisma.$ControlPanelPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ControlPanel that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ControlPanelFindUniqueOrThrowArgs} args - Arguments to find a ControlPanel
+     * @example
+     * // Get one ControlPanel
+     * const controlPanel = await prisma.controlPanel.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ControlPanelFindUniqueOrThrowArgs>(args: SelectSubset<T, ControlPanelFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ControlPanelClient<$Result.GetResult<Prisma.$ControlPanelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ControlPanel that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ControlPanelFindFirstArgs} args - Arguments to find a ControlPanel
+     * @example
+     * // Get one ControlPanel
+     * const controlPanel = await prisma.controlPanel.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ControlPanelFindFirstArgs>(args?: SelectSubset<T, ControlPanelFindFirstArgs<ExtArgs>>): Prisma__ControlPanelClient<$Result.GetResult<Prisma.$ControlPanelPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ControlPanel that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ControlPanelFindFirstOrThrowArgs} args - Arguments to find a ControlPanel
+     * @example
+     * // Get one ControlPanel
+     * const controlPanel = await prisma.controlPanel.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ControlPanelFindFirstOrThrowArgs>(args?: SelectSubset<T, ControlPanelFindFirstOrThrowArgs<ExtArgs>>): Prisma__ControlPanelClient<$Result.GetResult<Prisma.$ControlPanelPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ControlPanels that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ControlPanelFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ControlPanels
+     * const controlPanels = await prisma.controlPanel.findMany()
+     * 
+     * // Get first 10 ControlPanels
+     * const controlPanels = await prisma.controlPanel.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const controlPanelWithIdOnly = await prisma.controlPanel.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ControlPanelFindManyArgs>(args?: SelectSubset<T, ControlPanelFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ControlPanelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ControlPanel.
+     * @param {ControlPanelCreateArgs} args - Arguments to create a ControlPanel.
+     * @example
+     * // Create one ControlPanel
+     * const ControlPanel = await prisma.controlPanel.create({
+     *   data: {
+     *     // ... data to create a ControlPanel
+     *   }
+     * })
+     * 
+     */
+    create<T extends ControlPanelCreateArgs>(args: SelectSubset<T, ControlPanelCreateArgs<ExtArgs>>): Prisma__ControlPanelClient<$Result.GetResult<Prisma.$ControlPanelPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ControlPanels.
+     * @param {ControlPanelCreateManyArgs} args - Arguments to create many ControlPanels.
+     * @example
+     * // Create many ControlPanels
+     * const controlPanel = await prisma.controlPanel.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ControlPanelCreateManyArgs>(args?: SelectSubset<T, ControlPanelCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ControlPanels and returns the data saved in the database.
+     * @param {ControlPanelCreateManyAndReturnArgs} args - Arguments to create many ControlPanels.
+     * @example
+     * // Create many ControlPanels
+     * const controlPanel = await prisma.controlPanel.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ControlPanels and only return the `id`
+     * const controlPanelWithIdOnly = await prisma.controlPanel.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ControlPanelCreateManyAndReturnArgs>(args?: SelectSubset<T, ControlPanelCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ControlPanelPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ControlPanel.
+     * @param {ControlPanelDeleteArgs} args - Arguments to delete one ControlPanel.
+     * @example
+     * // Delete one ControlPanel
+     * const ControlPanel = await prisma.controlPanel.delete({
+     *   where: {
+     *     // ... filter to delete one ControlPanel
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ControlPanelDeleteArgs>(args: SelectSubset<T, ControlPanelDeleteArgs<ExtArgs>>): Prisma__ControlPanelClient<$Result.GetResult<Prisma.$ControlPanelPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ControlPanel.
+     * @param {ControlPanelUpdateArgs} args - Arguments to update one ControlPanel.
+     * @example
+     * // Update one ControlPanel
+     * const controlPanel = await prisma.controlPanel.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ControlPanelUpdateArgs>(args: SelectSubset<T, ControlPanelUpdateArgs<ExtArgs>>): Prisma__ControlPanelClient<$Result.GetResult<Prisma.$ControlPanelPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ControlPanels.
+     * @param {ControlPanelDeleteManyArgs} args - Arguments to filter ControlPanels to delete.
+     * @example
+     * // Delete a few ControlPanels
+     * const { count } = await prisma.controlPanel.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ControlPanelDeleteManyArgs>(args?: SelectSubset<T, ControlPanelDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ControlPanels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ControlPanelUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ControlPanels
+     * const controlPanel = await prisma.controlPanel.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ControlPanelUpdateManyArgs>(args: SelectSubset<T, ControlPanelUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ControlPanels and returns the data updated in the database.
+     * @param {ControlPanelUpdateManyAndReturnArgs} args - Arguments to update many ControlPanels.
+     * @example
+     * // Update many ControlPanels
+     * const controlPanel = await prisma.controlPanel.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ControlPanels and only return the `id`
+     * const controlPanelWithIdOnly = await prisma.controlPanel.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ControlPanelUpdateManyAndReturnArgs>(args: SelectSubset<T, ControlPanelUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ControlPanelPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ControlPanel.
+     * @param {ControlPanelUpsertArgs} args - Arguments to update or create a ControlPanel.
+     * @example
+     * // Update or create a ControlPanel
+     * const controlPanel = await prisma.controlPanel.upsert({
+     *   create: {
+     *     // ... data to create a ControlPanel
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ControlPanel we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ControlPanelUpsertArgs>(args: SelectSubset<T, ControlPanelUpsertArgs<ExtArgs>>): Prisma__ControlPanelClient<$Result.GetResult<Prisma.$ControlPanelPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ControlPanels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ControlPanelCountArgs} args - Arguments to filter ControlPanels to count.
+     * @example
+     * // Count the number of ControlPanels
+     * const count = await prisma.controlPanel.count({
+     *   where: {
+     *     // ... the filter for the ControlPanels we want to count
+     *   }
+     * })
+    **/
+    count<T extends ControlPanelCountArgs>(
+      args?: Subset<T, ControlPanelCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ControlPanelCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ControlPanel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ControlPanelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ControlPanelAggregateArgs>(args: Subset<T, ControlPanelAggregateArgs>): Prisma.PrismaPromise<GetControlPanelAggregateType<T>>
+
+    /**
+     * Group by ControlPanel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ControlPanelGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ControlPanelGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ControlPanelGroupByArgs['orderBy'] }
+        : { orderBy?: ControlPanelGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ControlPanelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetControlPanelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ControlPanel model
+   */
+  readonly fields: ControlPanelFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ControlPanel.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ControlPanelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariffs<T extends ControlPanel$tariffsArgs<ExtArgs> = {}>(args?: Subset<T, ControlPanel$tariffsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ControlPanel model
+   */
+  interface ControlPanelFieldRefs {
+    readonly id: FieldRef<"ControlPanel", 'String'>
+    readonly name: FieldRef<"ControlPanel", 'String'>
+    readonly slug: FieldRef<"ControlPanel", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ControlPanel findUnique
+   */
+  export type ControlPanelFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanel
+     */
+    select?: ControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ControlPanel
+     */
+    omit?: ControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ControlPanelInclude<ExtArgs> | null
+    /**
+     * Filter, which ControlPanel to fetch.
+     */
+    where: ControlPanelWhereUniqueInput
+  }
+
+  /**
+   * ControlPanel findUniqueOrThrow
+   */
+  export type ControlPanelFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanel
+     */
+    select?: ControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ControlPanel
+     */
+    omit?: ControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ControlPanelInclude<ExtArgs> | null
+    /**
+     * Filter, which ControlPanel to fetch.
+     */
+    where: ControlPanelWhereUniqueInput
+  }
+
+  /**
+   * ControlPanel findFirst
+   */
+  export type ControlPanelFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanel
+     */
+    select?: ControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ControlPanel
+     */
+    omit?: ControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ControlPanelInclude<ExtArgs> | null
+    /**
+     * Filter, which ControlPanel to fetch.
+     */
+    where?: ControlPanelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ControlPanels to fetch.
+     */
+    orderBy?: ControlPanelOrderByWithRelationInput | ControlPanelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ControlPanels.
+     */
+    cursor?: ControlPanelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ControlPanels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ControlPanels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ControlPanels.
+     */
+    distinct?: ControlPanelScalarFieldEnum | ControlPanelScalarFieldEnum[]
+  }
+
+  /**
+   * ControlPanel findFirstOrThrow
+   */
+  export type ControlPanelFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanel
+     */
+    select?: ControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ControlPanel
+     */
+    omit?: ControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ControlPanelInclude<ExtArgs> | null
+    /**
+     * Filter, which ControlPanel to fetch.
+     */
+    where?: ControlPanelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ControlPanels to fetch.
+     */
+    orderBy?: ControlPanelOrderByWithRelationInput | ControlPanelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ControlPanels.
+     */
+    cursor?: ControlPanelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ControlPanels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ControlPanels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ControlPanels.
+     */
+    distinct?: ControlPanelScalarFieldEnum | ControlPanelScalarFieldEnum[]
+  }
+
+  /**
+   * ControlPanel findMany
+   */
+  export type ControlPanelFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanel
+     */
+    select?: ControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ControlPanel
+     */
+    omit?: ControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ControlPanelInclude<ExtArgs> | null
+    /**
+     * Filter, which ControlPanels to fetch.
+     */
+    where?: ControlPanelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ControlPanels to fetch.
+     */
+    orderBy?: ControlPanelOrderByWithRelationInput | ControlPanelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ControlPanels.
+     */
+    cursor?: ControlPanelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ControlPanels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ControlPanels.
+     */
+    skip?: number
+    distinct?: ControlPanelScalarFieldEnum | ControlPanelScalarFieldEnum[]
+  }
+
+  /**
+   * ControlPanel create
+   */
+  export type ControlPanelCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanel
+     */
+    select?: ControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ControlPanel
+     */
+    omit?: ControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ControlPanelInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ControlPanel.
+     */
+    data: XOR<ControlPanelCreateInput, ControlPanelUncheckedCreateInput>
+  }
+
+  /**
+   * ControlPanel createMany
+   */
+  export type ControlPanelCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ControlPanels.
+     */
+    data: ControlPanelCreateManyInput | ControlPanelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ControlPanel createManyAndReturn
+   */
+  export type ControlPanelCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanel
+     */
+    select?: ControlPanelSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ControlPanel
+     */
+    omit?: ControlPanelOmit<ExtArgs> | null
+    /**
+     * The data used to create many ControlPanels.
+     */
+    data: ControlPanelCreateManyInput | ControlPanelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ControlPanel update
+   */
+  export type ControlPanelUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanel
+     */
+    select?: ControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ControlPanel
+     */
+    omit?: ControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ControlPanelInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ControlPanel.
+     */
+    data: XOR<ControlPanelUpdateInput, ControlPanelUncheckedUpdateInput>
+    /**
+     * Choose, which ControlPanel to update.
+     */
+    where: ControlPanelWhereUniqueInput
+  }
+
+  /**
+   * ControlPanel updateMany
+   */
+  export type ControlPanelUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ControlPanels.
+     */
+    data: XOR<ControlPanelUpdateManyMutationInput, ControlPanelUncheckedUpdateManyInput>
+    /**
+     * Filter which ControlPanels to update
+     */
+    where?: ControlPanelWhereInput
+    /**
+     * Limit how many ControlPanels to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ControlPanel updateManyAndReturn
+   */
+  export type ControlPanelUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanel
+     */
+    select?: ControlPanelSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ControlPanel
+     */
+    omit?: ControlPanelOmit<ExtArgs> | null
+    /**
+     * The data used to update ControlPanels.
+     */
+    data: XOR<ControlPanelUpdateManyMutationInput, ControlPanelUncheckedUpdateManyInput>
+    /**
+     * Filter which ControlPanels to update
+     */
+    where?: ControlPanelWhereInput
+    /**
+     * Limit how many ControlPanels to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ControlPanel upsert
+   */
+  export type ControlPanelUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanel
+     */
+    select?: ControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ControlPanel
+     */
+    omit?: ControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ControlPanelInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ControlPanel to update in case it exists.
+     */
+    where: ControlPanelWhereUniqueInput
+    /**
+     * In case the ControlPanel found by the `where` argument doesn't exist, create a new ControlPanel with this data.
+     */
+    create: XOR<ControlPanelCreateInput, ControlPanelUncheckedCreateInput>
+    /**
+     * In case the ControlPanel was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ControlPanelUpdateInput, ControlPanelUncheckedUpdateInput>
+  }
+
+  /**
+   * ControlPanel delete
+   */
+  export type ControlPanelDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanel
+     */
+    select?: ControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ControlPanel
+     */
+    omit?: ControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ControlPanelInclude<ExtArgs> | null
+    /**
+     * Filter which ControlPanel to delete.
+     */
+    where: ControlPanelWhereUniqueInput
+  }
+
+  /**
+   * ControlPanel deleteMany
+   */
+  export type ControlPanelDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ControlPanels to delete
+     */
+    where?: ControlPanelWhereInput
+    /**
+     * Limit how many ControlPanels to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ControlPanel.tariffs
+   */
+  export type ControlPanel$tariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelInclude<ExtArgs> | null
+    where?: TariffControlPanelWhereInput
+    orderBy?: TariffControlPanelOrderByWithRelationInput | TariffControlPanelOrderByWithRelationInput[]
+    cursor?: TariffControlPanelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffControlPanelScalarFieldEnum | TariffControlPanelScalarFieldEnum[]
+  }
+
+  /**
+   * ControlPanel without action
+   */
+  export type ControlPanelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ControlPanel
+     */
+    select?: ControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ControlPanel
+     */
+    omit?: ControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ControlPanelInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Country
+   */
+
+  export type AggregateCountry = {
+    _count: CountryCountAggregateOutputType | null
+    _min: CountryMinAggregateOutputType | null
+    _max: CountryMaxAggregateOutputType | null
+  }
+
+  export type CountryMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type CountryMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type CountryCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    _all: number
+  }
+
+
+  export type CountryMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type CountryMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type CountryCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    _all?: true
+  }
+
+  export type CountryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Country to aggregate.
+     */
+    where?: CountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Countries to fetch.
+     */
+    orderBy?: CountryOrderByWithRelationInput | CountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Countries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Countries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Countries
+    **/
+    _count?: true | CountryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CountryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CountryMaxAggregateInputType
+  }
+
+  export type GetCountryAggregateType<T extends CountryAggregateArgs> = {
+        [P in keyof T & keyof AggregateCountry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCountry[P]>
+      : GetScalarType<T[P], AggregateCountry[P]>
+  }
+
+
+
+
+  export type CountryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CountryWhereInput
+    orderBy?: CountryOrderByWithAggregationInput | CountryOrderByWithAggregationInput[]
+    by: CountryScalarFieldEnum[] | CountryScalarFieldEnum
+    having?: CountryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CountryCountAggregateInputType | true
+    _min?: CountryMinAggregateInputType
+    _max?: CountryMaxAggregateInputType
+  }
+
+  export type CountryGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    _count: CountryCountAggregateOutputType | null
+    _min: CountryMinAggregateOutputType | null
+    _max: CountryMaxAggregateOutputType | null
+  }
+
+  type GetCountryGroupByPayload<T extends CountryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CountryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CountryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CountryGroupByOutputType[P]>
+            : GetScalarType<T[P], CountryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CountrySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    tariffs?: boolean | Country$tariffsArgs<ExtArgs>
+    _count?: boolean | CountryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["country"]>
+
+  export type CountrySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["country"]>
+
+  export type CountrySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["country"]>
+
+  export type CountrySelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }
+
+  export type CountryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug", ExtArgs["result"]["country"]>
+  export type CountryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | Country$tariffsArgs<ExtArgs>
+    _count?: boolean | CountryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CountryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CountryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $CountryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Country"
+    objects: {
+      tariffs: Prisma.$TariffCountryPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+    }, ExtArgs["result"]["country"]>
+    composites: {}
+  }
+
+  type CountryGetPayload<S extends boolean | null | undefined | CountryDefaultArgs> = $Result.GetResult<Prisma.$CountryPayload, S>
+
+  type CountryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CountryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CountryCountAggregateInputType | true
+    }
+
+  export interface CountryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Country'], meta: { name: 'Country' } }
+    /**
+     * Find zero or one Country that matches the filter.
+     * @param {CountryFindUniqueArgs} args - Arguments to find a Country
+     * @example
+     * // Get one Country
+     * const country = await prisma.country.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CountryFindUniqueArgs>(args: SelectSubset<T, CountryFindUniqueArgs<ExtArgs>>): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Country that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CountryFindUniqueOrThrowArgs} args - Arguments to find a Country
+     * @example
+     * // Get one Country
+     * const country = await prisma.country.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CountryFindUniqueOrThrowArgs>(args: SelectSubset<T, CountryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Country that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryFindFirstArgs} args - Arguments to find a Country
+     * @example
+     * // Get one Country
+     * const country = await prisma.country.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CountryFindFirstArgs>(args?: SelectSubset<T, CountryFindFirstArgs<ExtArgs>>): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Country that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryFindFirstOrThrowArgs} args - Arguments to find a Country
+     * @example
+     * // Get one Country
+     * const country = await prisma.country.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CountryFindFirstOrThrowArgs>(args?: SelectSubset<T, CountryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Countries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Countries
+     * const countries = await prisma.country.findMany()
+     * 
+     * // Get first 10 Countries
+     * const countries = await prisma.country.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const countryWithIdOnly = await prisma.country.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CountryFindManyArgs>(args?: SelectSubset<T, CountryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Country.
+     * @param {CountryCreateArgs} args - Arguments to create a Country.
+     * @example
+     * // Create one Country
+     * const Country = await prisma.country.create({
+     *   data: {
+     *     // ... data to create a Country
+     *   }
+     * })
+     * 
+     */
+    create<T extends CountryCreateArgs>(args: SelectSubset<T, CountryCreateArgs<ExtArgs>>): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Countries.
+     * @param {CountryCreateManyArgs} args - Arguments to create many Countries.
+     * @example
+     * // Create many Countries
+     * const country = await prisma.country.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CountryCreateManyArgs>(args?: SelectSubset<T, CountryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Countries and returns the data saved in the database.
+     * @param {CountryCreateManyAndReturnArgs} args - Arguments to create many Countries.
+     * @example
+     * // Create many Countries
+     * const country = await prisma.country.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Countries and only return the `id`
+     * const countryWithIdOnly = await prisma.country.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CountryCreateManyAndReturnArgs>(args?: SelectSubset<T, CountryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Country.
+     * @param {CountryDeleteArgs} args - Arguments to delete one Country.
+     * @example
+     * // Delete one Country
+     * const Country = await prisma.country.delete({
+     *   where: {
+     *     // ... filter to delete one Country
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CountryDeleteArgs>(args: SelectSubset<T, CountryDeleteArgs<ExtArgs>>): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Country.
+     * @param {CountryUpdateArgs} args - Arguments to update one Country.
+     * @example
+     * // Update one Country
+     * const country = await prisma.country.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CountryUpdateArgs>(args: SelectSubset<T, CountryUpdateArgs<ExtArgs>>): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Countries.
+     * @param {CountryDeleteManyArgs} args - Arguments to filter Countries to delete.
+     * @example
+     * // Delete a few Countries
+     * const { count } = await prisma.country.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CountryDeleteManyArgs>(args?: SelectSubset<T, CountryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Countries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Countries
+     * const country = await prisma.country.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CountryUpdateManyArgs>(args: SelectSubset<T, CountryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Countries and returns the data updated in the database.
+     * @param {CountryUpdateManyAndReturnArgs} args - Arguments to update many Countries.
+     * @example
+     * // Update many Countries
+     * const country = await prisma.country.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Countries and only return the `id`
+     * const countryWithIdOnly = await prisma.country.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CountryUpdateManyAndReturnArgs>(args: SelectSubset<T, CountryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Country.
+     * @param {CountryUpsertArgs} args - Arguments to update or create a Country.
+     * @example
+     * // Update or create a Country
+     * const country = await prisma.country.upsert({
+     *   create: {
+     *     // ... data to create a Country
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Country we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CountryUpsertArgs>(args: SelectSubset<T, CountryUpsertArgs<ExtArgs>>): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Countries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryCountArgs} args - Arguments to filter Countries to count.
+     * @example
+     * // Count the number of Countries
+     * const count = await prisma.country.count({
+     *   where: {
+     *     // ... the filter for the Countries we want to count
+     *   }
+     * })
+    **/
+    count<T extends CountryCountArgs>(
+      args?: Subset<T, CountryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CountryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Country.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CountryAggregateArgs>(args: Subset<T, CountryAggregateArgs>): Prisma.PrismaPromise<GetCountryAggregateType<T>>
+
+    /**
+     * Group by Country.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CountryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CountryGroupByArgs['orderBy'] }
+        : { orderBy?: CountryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CountryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCountryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Country model
+   */
+  readonly fields: CountryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Country.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CountryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariffs<T extends Country$tariffsArgs<ExtArgs> = {}>(args?: Subset<T, Country$tariffsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Country model
+   */
+  interface CountryFieldRefs {
+    readonly id: FieldRef<"Country", 'String'>
+    readonly name: FieldRef<"Country", 'String'>
+    readonly slug: FieldRef<"Country", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Country findUnique
+   */
+  export type CountryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Country
+     */
+    omit?: CountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null
+    /**
+     * Filter, which Country to fetch.
+     */
+    where: CountryWhereUniqueInput
+  }
+
+  /**
+   * Country findUniqueOrThrow
+   */
+  export type CountryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Country
+     */
+    omit?: CountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null
+    /**
+     * Filter, which Country to fetch.
+     */
+    where: CountryWhereUniqueInput
+  }
+
+  /**
+   * Country findFirst
+   */
+  export type CountryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Country
+     */
+    omit?: CountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null
+    /**
+     * Filter, which Country to fetch.
+     */
+    where?: CountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Countries to fetch.
+     */
+    orderBy?: CountryOrderByWithRelationInput | CountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Countries.
+     */
+    cursor?: CountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Countries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Countries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Countries.
+     */
+    distinct?: CountryScalarFieldEnum | CountryScalarFieldEnum[]
+  }
+
+  /**
+   * Country findFirstOrThrow
+   */
+  export type CountryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Country
+     */
+    omit?: CountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null
+    /**
+     * Filter, which Country to fetch.
+     */
+    where?: CountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Countries to fetch.
+     */
+    orderBy?: CountryOrderByWithRelationInput | CountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Countries.
+     */
+    cursor?: CountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Countries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Countries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Countries.
+     */
+    distinct?: CountryScalarFieldEnum | CountryScalarFieldEnum[]
+  }
+
+  /**
+   * Country findMany
+   */
+  export type CountryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Country
+     */
+    omit?: CountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null
+    /**
+     * Filter, which Countries to fetch.
+     */
+    where?: CountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Countries to fetch.
+     */
+    orderBy?: CountryOrderByWithRelationInput | CountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Countries.
+     */
+    cursor?: CountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Countries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Countries.
+     */
+    skip?: number
+    distinct?: CountryScalarFieldEnum | CountryScalarFieldEnum[]
+  }
+
+  /**
+   * Country create
+   */
+  export type CountryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Country
+     */
+    omit?: CountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Country.
+     */
+    data: XOR<CountryCreateInput, CountryUncheckedCreateInput>
+  }
+
+  /**
+   * Country createMany
+   */
+  export type CountryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Countries.
+     */
+    data: CountryCreateManyInput | CountryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Country createManyAndReturn
+   */
+  export type CountryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Country
+     */
+    omit?: CountryOmit<ExtArgs> | null
+    /**
+     * The data used to create many Countries.
+     */
+    data: CountryCreateManyInput | CountryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Country update
+   */
+  export type CountryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Country
+     */
+    omit?: CountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Country.
+     */
+    data: XOR<CountryUpdateInput, CountryUncheckedUpdateInput>
+    /**
+     * Choose, which Country to update.
+     */
+    where: CountryWhereUniqueInput
+  }
+
+  /**
+   * Country updateMany
+   */
+  export type CountryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Countries.
+     */
+    data: XOR<CountryUpdateManyMutationInput, CountryUncheckedUpdateManyInput>
+    /**
+     * Filter which Countries to update
+     */
+    where?: CountryWhereInput
+    /**
+     * Limit how many Countries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Country updateManyAndReturn
+   */
+  export type CountryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Country
+     */
+    omit?: CountryOmit<ExtArgs> | null
+    /**
+     * The data used to update Countries.
+     */
+    data: XOR<CountryUpdateManyMutationInput, CountryUncheckedUpdateManyInput>
+    /**
+     * Filter which Countries to update
+     */
+    where?: CountryWhereInput
+    /**
+     * Limit how many Countries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Country upsert
+   */
+  export type CountryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Country
+     */
+    omit?: CountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Country to update in case it exists.
+     */
+    where: CountryWhereUniqueInput
+    /**
+     * In case the Country found by the `where` argument doesn't exist, create a new Country with this data.
+     */
+    create: XOR<CountryCreateInput, CountryUncheckedCreateInput>
+    /**
+     * In case the Country was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CountryUpdateInput, CountryUncheckedUpdateInput>
+  }
+
+  /**
+   * Country delete
+   */
+  export type CountryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Country
+     */
+    omit?: CountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null
+    /**
+     * Filter which Country to delete.
+     */
+    where: CountryWhereUniqueInput
+  }
+
+  /**
+   * Country deleteMany
+   */
+  export type CountryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Countries to delete
+     */
+    where?: CountryWhereInput
+    /**
+     * Limit how many Countries to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Country.tariffs
+   */
+  export type Country$tariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryInclude<ExtArgs> | null
+    where?: TariffCountryWhereInput
+    orderBy?: TariffCountryOrderByWithRelationInput | TariffCountryOrderByWithRelationInput[]
+    cursor?: TariffCountryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffCountryScalarFieldEnum | TariffCountryScalarFieldEnum[]
+  }
+
+  /**
+   * Country without action
+   */
+  export type CountryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Country
+     */
+    omit?: CountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DataStore
+   */
+
+  export type AggregateDataStore = {
+    _count: DataStoreCountAggregateOutputType | null
+    _min: DataStoreMinAggregateOutputType | null
+    _max: DataStoreMaxAggregateOutputType | null
+  }
+
+  export type DataStoreMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type DataStoreMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type DataStoreCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    _all: number
+  }
+
+
+  export type DataStoreMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type DataStoreMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type DataStoreCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    _all?: true
+  }
+
+  export type DataStoreAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DataStore to aggregate.
+     */
+    where?: DataStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DataStores to fetch.
+     */
+    orderBy?: DataStoreOrderByWithRelationInput | DataStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DataStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DataStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DataStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DataStores
+    **/
+    _count?: true | DataStoreCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DataStoreMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DataStoreMaxAggregateInputType
+  }
+
+  export type GetDataStoreAggregateType<T extends DataStoreAggregateArgs> = {
+        [P in keyof T & keyof AggregateDataStore]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDataStore[P]>
+      : GetScalarType<T[P], AggregateDataStore[P]>
+  }
+
+
+
+
+  export type DataStoreGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DataStoreWhereInput
+    orderBy?: DataStoreOrderByWithAggregationInput | DataStoreOrderByWithAggregationInput[]
+    by: DataStoreScalarFieldEnum[] | DataStoreScalarFieldEnum
+    having?: DataStoreScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DataStoreCountAggregateInputType | true
+    _min?: DataStoreMinAggregateInputType
+    _max?: DataStoreMaxAggregateInputType
+  }
+
+  export type DataStoreGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    _count: DataStoreCountAggregateOutputType | null
+    _min: DataStoreMinAggregateOutputType | null
+    _max: DataStoreMaxAggregateOutputType | null
+  }
+
+  type GetDataStoreGroupByPayload<T extends DataStoreGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DataStoreGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DataStoreGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DataStoreGroupByOutputType[P]>
+            : GetScalarType<T[P], DataStoreGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DataStoreSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    tariffs?: boolean | DataStore$tariffsArgs<ExtArgs>
+    _count?: boolean | DataStoreCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dataStore"]>
+
+  export type DataStoreSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["dataStore"]>
+
+  export type DataStoreSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["dataStore"]>
+
+  export type DataStoreSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }
+
+  export type DataStoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug", ExtArgs["result"]["dataStore"]>
+  export type DataStoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | DataStore$tariffsArgs<ExtArgs>
+    _count?: boolean | DataStoreCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DataStoreIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type DataStoreIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $DataStorePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DataStore"
+    objects: {
+      tariffs: Prisma.$TariffDataStorePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+    }, ExtArgs["result"]["dataStore"]>
+    composites: {}
+  }
+
+  type DataStoreGetPayload<S extends boolean | null | undefined | DataStoreDefaultArgs> = $Result.GetResult<Prisma.$DataStorePayload, S>
+
+  type DataStoreCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DataStoreFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DataStoreCountAggregateInputType | true
+    }
+
+  export interface DataStoreDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DataStore'], meta: { name: 'DataStore' } }
+    /**
+     * Find zero or one DataStore that matches the filter.
+     * @param {DataStoreFindUniqueArgs} args - Arguments to find a DataStore
+     * @example
+     * // Get one DataStore
+     * const dataStore = await prisma.dataStore.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DataStoreFindUniqueArgs>(args: SelectSubset<T, DataStoreFindUniqueArgs<ExtArgs>>): Prisma__DataStoreClient<$Result.GetResult<Prisma.$DataStorePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DataStore that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DataStoreFindUniqueOrThrowArgs} args - Arguments to find a DataStore
+     * @example
+     * // Get one DataStore
+     * const dataStore = await prisma.dataStore.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DataStoreFindUniqueOrThrowArgs>(args: SelectSubset<T, DataStoreFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DataStoreClient<$Result.GetResult<Prisma.$DataStorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DataStore that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataStoreFindFirstArgs} args - Arguments to find a DataStore
+     * @example
+     * // Get one DataStore
+     * const dataStore = await prisma.dataStore.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DataStoreFindFirstArgs>(args?: SelectSubset<T, DataStoreFindFirstArgs<ExtArgs>>): Prisma__DataStoreClient<$Result.GetResult<Prisma.$DataStorePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DataStore that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataStoreFindFirstOrThrowArgs} args - Arguments to find a DataStore
+     * @example
+     * // Get one DataStore
+     * const dataStore = await prisma.dataStore.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DataStoreFindFirstOrThrowArgs>(args?: SelectSubset<T, DataStoreFindFirstOrThrowArgs<ExtArgs>>): Prisma__DataStoreClient<$Result.GetResult<Prisma.$DataStorePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DataStores that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataStoreFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DataStores
+     * const dataStores = await prisma.dataStore.findMany()
+     * 
+     * // Get first 10 DataStores
+     * const dataStores = await prisma.dataStore.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const dataStoreWithIdOnly = await prisma.dataStore.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DataStoreFindManyArgs>(args?: SelectSubset<T, DataStoreFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DataStorePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DataStore.
+     * @param {DataStoreCreateArgs} args - Arguments to create a DataStore.
+     * @example
+     * // Create one DataStore
+     * const DataStore = await prisma.dataStore.create({
+     *   data: {
+     *     // ... data to create a DataStore
+     *   }
+     * })
+     * 
+     */
+    create<T extends DataStoreCreateArgs>(args: SelectSubset<T, DataStoreCreateArgs<ExtArgs>>): Prisma__DataStoreClient<$Result.GetResult<Prisma.$DataStorePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DataStores.
+     * @param {DataStoreCreateManyArgs} args - Arguments to create many DataStores.
+     * @example
+     * // Create many DataStores
+     * const dataStore = await prisma.dataStore.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DataStoreCreateManyArgs>(args?: SelectSubset<T, DataStoreCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DataStores and returns the data saved in the database.
+     * @param {DataStoreCreateManyAndReturnArgs} args - Arguments to create many DataStores.
+     * @example
+     * // Create many DataStores
+     * const dataStore = await prisma.dataStore.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DataStores and only return the `id`
+     * const dataStoreWithIdOnly = await prisma.dataStore.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DataStoreCreateManyAndReturnArgs>(args?: SelectSubset<T, DataStoreCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DataStorePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DataStore.
+     * @param {DataStoreDeleteArgs} args - Arguments to delete one DataStore.
+     * @example
+     * // Delete one DataStore
+     * const DataStore = await prisma.dataStore.delete({
+     *   where: {
+     *     // ... filter to delete one DataStore
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DataStoreDeleteArgs>(args: SelectSubset<T, DataStoreDeleteArgs<ExtArgs>>): Prisma__DataStoreClient<$Result.GetResult<Prisma.$DataStorePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DataStore.
+     * @param {DataStoreUpdateArgs} args - Arguments to update one DataStore.
+     * @example
+     * // Update one DataStore
+     * const dataStore = await prisma.dataStore.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DataStoreUpdateArgs>(args: SelectSubset<T, DataStoreUpdateArgs<ExtArgs>>): Prisma__DataStoreClient<$Result.GetResult<Prisma.$DataStorePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DataStores.
+     * @param {DataStoreDeleteManyArgs} args - Arguments to filter DataStores to delete.
+     * @example
+     * // Delete a few DataStores
+     * const { count } = await prisma.dataStore.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DataStoreDeleteManyArgs>(args?: SelectSubset<T, DataStoreDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DataStores.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataStoreUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DataStores
+     * const dataStore = await prisma.dataStore.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DataStoreUpdateManyArgs>(args: SelectSubset<T, DataStoreUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DataStores and returns the data updated in the database.
+     * @param {DataStoreUpdateManyAndReturnArgs} args - Arguments to update many DataStores.
+     * @example
+     * // Update many DataStores
+     * const dataStore = await prisma.dataStore.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DataStores and only return the `id`
+     * const dataStoreWithIdOnly = await prisma.dataStore.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DataStoreUpdateManyAndReturnArgs>(args: SelectSubset<T, DataStoreUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DataStorePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DataStore.
+     * @param {DataStoreUpsertArgs} args - Arguments to update or create a DataStore.
+     * @example
+     * // Update or create a DataStore
+     * const dataStore = await prisma.dataStore.upsert({
+     *   create: {
+     *     // ... data to create a DataStore
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DataStore we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DataStoreUpsertArgs>(args: SelectSubset<T, DataStoreUpsertArgs<ExtArgs>>): Prisma__DataStoreClient<$Result.GetResult<Prisma.$DataStorePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DataStores.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataStoreCountArgs} args - Arguments to filter DataStores to count.
+     * @example
+     * // Count the number of DataStores
+     * const count = await prisma.dataStore.count({
+     *   where: {
+     *     // ... the filter for the DataStores we want to count
+     *   }
+     * })
+    **/
+    count<T extends DataStoreCountArgs>(
+      args?: Subset<T, DataStoreCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DataStoreCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DataStore.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataStoreAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DataStoreAggregateArgs>(args: Subset<T, DataStoreAggregateArgs>): Prisma.PrismaPromise<GetDataStoreAggregateType<T>>
+
+    /**
+     * Group by DataStore.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DataStoreGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DataStoreGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DataStoreGroupByArgs['orderBy'] }
+        : { orderBy?: DataStoreGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DataStoreGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDataStoreGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DataStore model
+   */
+  readonly fields: DataStoreFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DataStore.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DataStoreClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariffs<T extends DataStore$tariffsArgs<ExtArgs> = {}>(args?: Subset<T, DataStore$tariffsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DataStore model
+   */
+  interface DataStoreFieldRefs {
+    readonly id: FieldRef<"DataStore", 'String'>
+    readonly name: FieldRef<"DataStore", 'String'>
+    readonly slug: FieldRef<"DataStore", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DataStore findUnique
+   */
+  export type DataStoreFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStore
+     */
+    select?: DataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataStore
+     */
+    omit?: DataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DataStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which DataStore to fetch.
+     */
+    where: DataStoreWhereUniqueInput
+  }
+
+  /**
+   * DataStore findUniqueOrThrow
+   */
+  export type DataStoreFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStore
+     */
+    select?: DataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataStore
+     */
+    omit?: DataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DataStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which DataStore to fetch.
+     */
+    where: DataStoreWhereUniqueInput
+  }
+
+  /**
+   * DataStore findFirst
+   */
+  export type DataStoreFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStore
+     */
+    select?: DataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataStore
+     */
+    omit?: DataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DataStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which DataStore to fetch.
+     */
+    where?: DataStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DataStores to fetch.
+     */
+    orderBy?: DataStoreOrderByWithRelationInput | DataStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DataStores.
+     */
+    cursor?: DataStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DataStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DataStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DataStores.
+     */
+    distinct?: DataStoreScalarFieldEnum | DataStoreScalarFieldEnum[]
+  }
+
+  /**
+   * DataStore findFirstOrThrow
+   */
+  export type DataStoreFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStore
+     */
+    select?: DataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataStore
+     */
+    omit?: DataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DataStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which DataStore to fetch.
+     */
+    where?: DataStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DataStores to fetch.
+     */
+    orderBy?: DataStoreOrderByWithRelationInput | DataStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DataStores.
+     */
+    cursor?: DataStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DataStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DataStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DataStores.
+     */
+    distinct?: DataStoreScalarFieldEnum | DataStoreScalarFieldEnum[]
+  }
+
+  /**
+   * DataStore findMany
+   */
+  export type DataStoreFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStore
+     */
+    select?: DataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataStore
+     */
+    omit?: DataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DataStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which DataStores to fetch.
+     */
+    where?: DataStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DataStores to fetch.
+     */
+    orderBy?: DataStoreOrderByWithRelationInput | DataStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DataStores.
+     */
+    cursor?: DataStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DataStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DataStores.
+     */
+    skip?: number
+    distinct?: DataStoreScalarFieldEnum | DataStoreScalarFieldEnum[]
+  }
+
+  /**
+   * DataStore create
+   */
+  export type DataStoreCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStore
+     */
+    select?: DataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataStore
+     */
+    omit?: DataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DataStoreInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DataStore.
+     */
+    data: XOR<DataStoreCreateInput, DataStoreUncheckedCreateInput>
+  }
+
+  /**
+   * DataStore createMany
+   */
+  export type DataStoreCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DataStores.
+     */
+    data: DataStoreCreateManyInput | DataStoreCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DataStore createManyAndReturn
+   */
+  export type DataStoreCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStore
+     */
+    select?: DataStoreSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataStore
+     */
+    omit?: DataStoreOmit<ExtArgs> | null
+    /**
+     * The data used to create many DataStores.
+     */
+    data: DataStoreCreateManyInput | DataStoreCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DataStore update
+   */
+  export type DataStoreUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStore
+     */
+    select?: DataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataStore
+     */
+    omit?: DataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DataStoreInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DataStore.
+     */
+    data: XOR<DataStoreUpdateInput, DataStoreUncheckedUpdateInput>
+    /**
+     * Choose, which DataStore to update.
+     */
+    where: DataStoreWhereUniqueInput
+  }
+
+  /**
+   * DataStore updateMany
+   */
+  export type DataStoreUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DataStores.
+     */
+    data: XOR<DataStoreUpdateManyMutationInput, DataStoreUncheckedUpdateManyInput>
+    /**
+     * Filter which DataStores to update
+     */
+    where?: DataStoreWhereInput
+    /**
+     * Limit how many DataStores to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DataStore updateManyAndReturn
+   */
+  export type DataStoreUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStore
+     */
+    select?: DataStoreSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataStore
+     */
+    omit?: DataStoreOmit<ExtArgs> | null
+    /**
+     * The data used to update DataStores.
+     */
+    data: XOR<DataStoreUpdateManyMutationInput, DataStoreUncheckedUpdateManyInput>
+    /**
+     * Filter which DataStores to update
+     */
+    where?: DataStoreWhereInput
+    /**
+     * Limit how many DataStores to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DataStore upsert
+   */
+  export type DataStoreUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStore
+     */
+    select?: DataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataStore
+     */
+    omit?: DataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DataStoreInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DataStore to update in case it exists.
+     */
+    where: DataStoreWhereUniqueInput
+    /**
+     * In case the DataStore found by the `where` argument doesn't exist, create a new DataStore with this data.
+     */
+    create: XOR<DataStoreCreateInput, DataStoreUncheckedCreateInput>
+    /**
+     * In case the DataStore was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DataStoreUpdateInput, DataStoreUncheckedUpdateInput>
+  }
+
+  /**
+   * DataStore delete
+   */
+  export type DataStoreDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStore
+     */
+    select?: DataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataStore
+     */
+    omit?: DataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DataStoreInclude<ExtArgs> | null
+    /**
+     * Filter which DataStore to delete.
+     */
+    where: DataStoreWhereUniqueInput
+  }
+
+  /**
+   * DataStore deleteMany
+   */
+  export type DataStoreDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DataStores to delete
+     */
+    where?: DataStoreWhereInput
+    /**
+     * Limit how many DataStores to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DataStore.tariffs
+   */
+  export type DataStore$tariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreInclude<ExtArgs> | null
+    where?: TariffDataStoreWhereInput
+    orderBy?: TariffDataStoreOrderByWithRelationInput | TariffDataStoreOrderByWithRelationInput[]
+    cursor?: TariffDataStoreWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffDataStoreScalarFieldEnum | TariffDataStoreScalarFieldEnum[]
+  }
+
+  /**
+   * DataStore without action
+   */
+  export type DataStoreDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DataStore
+     */
+    select?: DataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DataStore
+     */
+    omit?: DataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DataStoreInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model OperationSystem
+   */
+
+  export type AggregateOperationSystem = {
+    _count: OperationSystemCountAggregateOutputType | null
+    _min: OperationSystemMinAggregateOutputType | null
+    _max: OperationSystemMaxAggregateOutputType | null
+  }
+
+  export type OperationSystemMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type OperationSystemMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type OperationSystemCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    _all: number
+  }
+
+
+  export type OperationSystemMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type OperationSystemMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type OperationSystemCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    _all?: true
+  }
+
+  export type OperationSystemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OperationSystem to aggregate.
+     */
+    where?: OperationSystemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperationSystems to fetch.
+     */
+    orderBy?: OperationSystemOrderByWithRelationInput | OperationSystemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OperationSystemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperationSystems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperationSystems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OperationSystems
+    **/
+    _count?: true | OperationSystemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OperationSystemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OperationSystemMaxAggregateInputType
+  }
+
+  export type GetOperationSystemAggregateType<T extends OperationSystemAggregateArgs> = {
+        [P in keyof T & keyof AggregateOperationSystem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOperationSystem[P]>
+      : GetScalarType<T[P], AggregateOperationSystem[P]>
+  }
+
+
+
+
+  export type OperationSystemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OperationSystemWhereInput
+    orderBy?: OperationSystemOrderByWithAggregationInput | OperationSystemOrderByWithAggregationInput[]
+    by: OperationSystemScalarFieldEnum[] | OperationSystemScalarFieldEnum
+    having?: OperationSystemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OperationSystemCountAggregateInputType | true
+    _min?: OperationSystemMinAggregateInputType
+    _max?: OperationSystemMaxAggregateInputType
+  }
+
+  export type OperationSystemGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    _count: OperationSystemCountAggregateOutputType | null
+    _min: OperationSystemMinAggregateOutputType | null
+    _max: OperationSystemMaxAggregateOutputType | null
+  }
+
+  type GetOperationSystemGroupByPayload<T extends OperationSystemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OperationSystemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OperationSystemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OperationSystemGroupByOutputType[P]>
+            : GetScalarType<T[P], OperationSystemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OperationSystemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    tariffs?: boolean | OperationSystem$tariffsArgs<ExtArgs>
+    _count?: boolean | OperationSystemCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["operationSystem"]>
+
+  export type OperationSystemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["operationSystem"]>
+
+  export type OperationSystemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["operationSystem"]>
+
+  export type OperationSystemSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }
+
+  export type OperationSystemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug", ExtArgs["result"]["operationSystem"]>
+  export type OperationSystemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | OperationSystem$tariffsArgs<ExtArgs>
+    _count?: boolean | OperationSystemCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type OperationSystemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type OperationSystemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $OperationSystemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OperationSystem"
+    objects: {
+      tariffs: Prisma.$TariffOperationSystemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+    }, ExtArgs["result"]["operationSystem"]>
+    composites: {}
+  }
+
+  type OperationSystemGetPayload<S extends boolean | null | undefined | OperationSystemDefaultArgs> = $Result.GetResult<Prisma.$OperationSystemPayload, S>
+
+  type OperationSystemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OperationSystemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OperationSystemCountAggregateInputType | true
+    }
+
+  export interface OperationSystemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OperationSystem'], meta: { name: 'OperationSystem' } }
+    /**
+     * Find zero or one OperationSystem that matches the filter.
+     * @param {OperationSystemFindUniqueArgs} args - Arguments to find a OperationSystem
+     * @example
+     * // Get one OperationSystem
+     * const operationSystem = await prisma.operationSystem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OperationSystemFindUniqueArgs>(args: SelectSubset<T, OperationSystemFindUniqueArgs<ExtArgs>>): Prisma__OperationSystemClient<$Result.GetResult<Prisma.$OperationSystemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OperationSystem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OperationSystemFindUniqueOrThrowArgs} args - Arguments to find a OperationSystem
+     * @example
+     * // Get one OperationSystem
+     * const operationSystem = await prisma.operationSystem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OperationSystemFindUniqueOrThrowArgs>(args: SelectSubset<T, OperationSystemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OperationSystemClient<$Result.GetResult<Prisma.$OperationSystemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OperationSystem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationSystemFindFirstArgs} args - Arguments to find a OperationSystem
+     * @example
+     * // Get one OperationSystem
+     * const operationSystem = await prisma.operationSystem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OperationSystemFindFirstArgs>(args?: SelectSubset<T, OperationSystemFindFirstArgs<ExtArgs>>): Prisma__OperationSystemClient<$Result.GetResult<Prisma.$OperationSystemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OperationSystem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationSystemFindFirstOrThrowArgs} args - Arguments to find a OperationSystem
+     * @example
+     * // Get one OperationSystem
+     * const operationSystem = await prisma.operationSystem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OperationSystemFindFirstOrThrowArgs>(args?: SelectSubset<T, OperationSystemFindFirstOrThrowArgs<ExtArgs>>): Prisma__OperationSystemClient<$Result.GetResult<Prisma.$OperationSystemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OperationSystems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationSystemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OperationSystems
+     * const operationSystems = await prisma.operationSystem.findMany()
+     * 
+     * // Get first 10 OperationSystems
+     * const operationSystems = await prisma.operationSystem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const operationSystemWithIdOnly = await prisma.operationSystem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OperationSystemFindManyArgs>(args?: SelectSubset<T, OperationSystemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperationSystemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OperationSystem.
+     * @param {OperationSystemCreateArgs} args - Arguments to create a OperationSystem.
+     * @example
+     * // Create one OperationSystem
+     * const OperationSystem = await prisma.operationSystem.create({
+     *   data: {
+     *     // ... data to create a OperationSystem
+     *   }
+     * })
+     * 
+     */
+    create<T extends OperationSystemCreateArgs>(args: SelectSubset<T, OperationSystemCreateArgs<ExtArgs>>): Prisma__OperationSystemClient<$Result.GetResult<Prisma.$OperationSystemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OperationSystems.
+     * @param {OperationSystemCreateManyArgs} args - Arguments to create many OperationSystems.
+     * @example
+     * // Create many OperationSystems
+     * const operationSystem = await prisma.operationSystem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OperationSystemCreateManyArgs>(args?: SelectSubset<T, OperationSystemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OperationSystems and returns the data saved in the database.
+     * @param {OperationSystemCreateManyAndReturnArgs} args - Arguments to create many OperationSystems.
+     * @example
+     * // Create many OperationSystems
+     * const operationSystem = await prisma.operationSystem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OperationSystems and only return the `id`
+     * const operationSystemWithIdOnly = await prisma.operationSystem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OperationSystemCreateManyAndReturnArgs>(args?: SelectSubset<T, OperationSystemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperationSystemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OperationSystem.
+     * @param {OperationSystemDeleteArgs} args - Arguments to delete one OperationSystem.
+     * @example
+     * // Delete one OperationSystem
+     * const OperationSystem = await prisma.operationSystem.delete({
+     *   where: {
+     *     // ... filter to delete one OperationSystem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OperationSystemDeleteArgs>(args: SelectSubset<T, OperationSystemDeleteArgs<ExtArgs>>): Prisma__OperationSystemClient<$Result.GetResult<Prisma.$OperationSystemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OperationSystem.
+     * @param {OperationSystemUpdateArgs} args - Arguments to update one OperationSystem.
+     * @example
+     * // Update one OperationSystem
+     * const operationSystem = await prisma.operationSystem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OperationSystemUpdateArgs>(args: SelectSubset<T, OperationSystemUpdateArgs<ExtArgs>>): Prisma__OperationSystemClient<$Result.GetResult<Prisma.$OperationSystemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OperationSystems.
+     * @param {OperationSystemDeleteManyArgs} args - Arguments to filter OperationSystems to delete.
+     * @example
+     * // Delete a few OperationSystems
+     * const { count } = await prisma.operationSystem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OperationSystemDeleteManyArgs>(args?: SelectSubset<T, OperationSystemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OperationSystems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationSystemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OperationSystems
+     * const operationSystem = await prisma.operationSystem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OperationSystemUpdateManyArgs>(args: SelectSubset<T, OperationSystemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OperationSystems and returns the data updated in the database.
+     * @param {OperationSystemUpdateManyAndReturnArgs} args - Arguments to update many OperationSystems.
+     * @example
+     * // Update many OperationSystems
+     * const operationSystem = await prisma.operationSystem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OperationSystems and only return the `id`
+     * const operationSystemWithIdOnly = await prisma.operationSystem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OperationSystemUpdateManyAndReturnArgs>(args: SelectSubset<T, OperationSystemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OperationSystemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OperationSystem.
+     * @param {OperationSystemUpsertArgs} args - Arguments to update or create a OperationSystem.
+     * @example
+     * // Update or create a OperationSystem
+     * const operationSystem = await prisma.operationSystem.upsert({
+     *   create: {
+     *     // ... data to create a OperationSystem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OperationSystem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OperationSystemUpsertArgs>(args: SelectSubset<T, OperationSystemUpsertArgs<ExtArgs>>): Prisma__OperationSystemClient<$Result.GetResult<Prisma.$OperationSystemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OperationSystems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationSystemCountArgs} args - Arguments to filter OperationSystems to count.
+     * @example
+     * // Count the number of OperationSystems
+     * const count = await prisma.operationSystem.count({
+     *   where: {
+     *     // ... the filter for the OperationSystems we want to count
+     *   }
+     * })
+    **/
+    count<T extends OperationSystemCountArgs>(
+      args?: Subset<T, OperationSystemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OperationSystemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OperationSystem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationSystemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OperationSystemAggregateArgs>(args: Subset<T, OperationSystemAggregateArgs>): Prisma.PrismaPromise<GetOperationSystemAggregateType<T>>
+
+    /**
+     * Group by OperationSystem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OperationSystemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OperationSystemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OperationSystemGroupByArgs['orderBy'] }
+        : { orderBy?: OperationSystemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OperationSystemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOperationSystemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OperationSystem model
+   */
+  readonly fields: OperationSystemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OperationSystem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OperationSystemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariffs<T extends OperationSystem$tariffsArgs<ExtArgs> = {}>(args?: Subset<T, OperationSystem$tariffsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OperationSystem model
+   */
+  interface OperationSystemFieldRefs {
+    readonly id: FieldRef<"OperationSystem", 'String'>
+    readonly name: FieldRef<"OperationSystem", 'String'>
+    readonly slug: FieldRef<"OperationSystem", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OperationSystem findUnique
+   */
+  export type OperationSystemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystem
+     */
+    select?: OperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationSystem
+     */
+    omit?: OperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationSystemInclude<ExtArgs> | null
+    /**
+     * Filter, which OperationSystem to fetch.
+     */
+    where: OperationSystemWhereUniqueInput
+  }
+
+  /**
+   * OperationSystem findUniqueOrThrow
+   */
+  export type OperationSystemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystem
+     */
+    select?: OperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationSystem
+     */
+    omit?: OperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationSystemInclude<ExtArgs> | null
+    /**
+     * Filter, which OperationSystem to fetch.
+     */
+    where: OperationSystemWhereUniqueInput
+  }
+
+  /**
+   * OperationSystem findFirst
+   */
+  export type OperationSystemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystem
+     */
+    select?: OperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationSystem
+     */
+    omit?: OperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationSystemInclude<ExtArgs> | null
+    /**
+     * Filter, which OperationSystem to fetch.
+     */
+    where?: OperationSystemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperationSystems to fetch.
+     */
+    orderBy?: OperationSystemOrderByWithRelationInput | OperationSystemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OperationSystems.
+     */
+    cursor?: OperationSystemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperationSystems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperationSystems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OperationSystems.
+     */
+    distinct?: OperationSystemScalarFieldEnum | OperationSystemScalarFieldEnum[]
+  }
+
+  /**
+   * OperationSystem findFirstOrThrow
+   */
+  export type OperationSystemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystem
+     */
+    select?: OperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationSystem
+     */
+    omit?: OperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationSystemInclude<ExtArgs> | null
+    /**
+     * Filter, which OperationSystem to fetch.
+     */
+    where?: OperationSystemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperationSystems to fetch.
+     */
+    orderBy?: OperationSystemOrderByWithRelationInput | OperationSystemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OperationSystems.
+     */
+    cursor?: OperationSystemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperationSystems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperationSystems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OperationSystems.
+     */
+    distinct?: OperationSystemScalarFieldEnum | OperationSystemScalarFieldEnum[]
+  }
+
+  /**
+   * OperationSystem findMany
+   */
+  export type OperationSystemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystem
+     */
+    select?: OperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationSystem
+     */
+    omit?: OperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationSystemInclude<ExtArgs> | null
+    /**
+     * Filter, which OperationSystems to fetch.
+     */
+    where?: OperationSystemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OperationSystems to fetch.
+     */
+    orderBy?: OperationSystemOrderByWithRelationInput | OperationSystemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OperationSystems.
+     */
+    cursor?: OperationSystemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OperationSystems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OperationSystems.
+     */
+    skip?: number
+    distinct?: OperationSystemScalarFieldEnum | OperationSystemScalarFieldEnum[]
+  }
+
+  /**
+   * OperationSystem create
+   */
+  export type OperationSystemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystem
+     */
+    select?: OperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationSystem
+     */
+    omit?: OperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationSystemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OperationSystem.
+     */
+    data: XOR<OperationSystemCreateInput, OperationSystemUncheckedCreateInput>
+  }
+
+  /**
+   * OperationSystem createMany
+   */
+  export type OperationSystemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OperationSystems.
+     */
+    data: OperationSystemCreateManyInput | OperationSystemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OperationSystem createManyAndReturn
+   */
+  export type OperationSystemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystem
+     */
+    select?: OperationSystemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationSystem
+     */
+    omit?: OperationSystemOmit<ExtArgs> | null
+    /**
+     * The data used to create many OperationSystems.
+     */
+    data: OperationSystemCreateManyInput | OperationSystemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OperationSystem update
+   */
+  export type OperationSystemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystem
+     */
+    select?: OperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationSystem
+     */
+    omit?: OperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationSystemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OperationSystem.
+     */
+    data: XOR<OperationSystemUpdateInput, OperationSystemUncheckedUpdateInput>
+    /**
+     * Choose, which OperationSystem to update.
+     */
+    where: OperationSystemWhereUniqueInput
+  }
+
+  /**
+   * OperationSystem updateMany
+   */
+  export type OperationSystemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OperationSystems.
+     */
+    data: XOR<OperationSystemUpdateManyMutationInput, OperationSystemUncheckedUpdateManyInput>
+    /**
+     * Filter which OperationSystems to update
+     */
+    where?: OperationSystemWhereInput
+    /**
+     * Limit how many OperationSystems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OperationSystem updateManyAndReturn
+   */
+  export type OperationSystemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystem
+     */
+    select?: OperationSystemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationSystem
+     */
+    omit?: OperationSystemOmit<ExtArgs> | null
+    /**
+     * The data used to update OperationSystems.
+     */
+    data: XOR<OperationSystemUpdateManyMutationInput, OperationSystemUncheckedUpdateManyInput>
+    /**
+     * Filter which OperationSystems to update
+     */
+    where?: OperationSystemWhereInput
+    /**
+     * Limit how many OperationSystems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OperationSystem upsert
+   */
+  export type OperationSystemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystem
+     */
+    select?: OperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationSystem
+     */
+    omit?: OperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationSystemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OperationSystem to update in case it exists.
+     */
+    where: OperationSystemWhereUniqueInput
+    /**
+     * In case the OperationSystem found by the `where` argument doesn't exist, create a new OperationSystem with this data.
+     */
+    create: XOR<OperationSystemCreateInput, OperationSystemUncheckedCreateInput>
+    /**
+     * In case the OperationSystem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OperationSystemUpdateInput, OperationSystemUncheckedUpdateInput>
+  }
+
+  /**
+   * OperationSystem delete
+   */
+  export type OperationSystemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystem
+     */
+    select?: OperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationSystem
+     */
+    omit?: OperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationSystemInclude<ExtArgs> | null
+    /**
+     * Filter which OperationSystem to delete.
+     */
+    where: OperationSystemWhereUniqueInput
+  }
+
+  /**
+   * OperationSystem deleteMany
+   */
+  export type OperationSystemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OperationSystems to delete
+     */
+    where?: OperationSystemWhereInput
+    /**
+     * Limit how many OperationSystems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OperationSystem.tariffs
+   */
+  export type OperationSystem$tariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemInclude<ExtArgs> | null
+    where?: TariffOperationSystemWhereInput
+    orderBy?: TariffOperationSystemOrderByWithRelationInput | TariffOperationSystemOrderByWithRelationInput[]
+    cursor?: TariffOperationSystemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffOperationSystemScalarFieldEnum | TariffOperationSystemScalarFieldEnum[]
+  }
+
+  /**
+   * OperationSystem without action
+   */
+  export type OperationSystemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OperationSystem
+     */
+    select?: OperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OperationSystem
+     */
+    omit?: OperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OperationSystemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProgrammingLanguage
+   */
+
+  export type AggregateProgrammingLanguage = {
+    _count: ProgrammingLanguageCountAggregateOutputType | null
+    _min: ProgrammingLanguageMinAggregateOutputType | null
+    _max: ProgrammingLanguageMaxAggregateOutputType | null
+  }
+
+  export type ProgrammingLanguageMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type ProgrammingLanguageMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type ProgrammingLanguageCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    _all: number
+  }
+
+
+  export type ProgrammingLanguageMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type ProgrammingLanguageMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type ProgrammingLanguageCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    _all?: true
+  }
+
+  export type ProgrammingLanguageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProgrammingLanguage to aggregate.
+     */
+    where?: ProgrammingLanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProgrammingLanguages to fetch.
+     */
+    orderBy?: ProgrammingLanguageOrderByWithRelationInput | ProgrammingLanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProgrammingLanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProgrammingLanguages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProgrammingLanguages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProgrammingLanguages
+    **/
+    _count?: true | ProgrammingLanguageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProgrammingLanguageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProgrammingLanguageMaxAggregateInputType
+  }
+
+  export type GetProgrammingLanguageAggregateType<T extends ProgrammingLanguageAggregateArgs> = {
+        [P in keyof T & keyof AggregateProgrammingLanguage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProgrammingLanguage[P]>
+      : GetScalarType<T[P], AggregateProgrammingLanguage[P]>
+  }
+
+
+
+
+  export type ProgrammingLanguageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProgrammingLanguageWhereInput
+    orderBy?: ProgrammingLanguageOrderByWithAggregationInput | ProgrammingLanguageOrderByWithAggregationInput[]
+    by: ProgrammingLanguageScalarFieldEnum[] | ProgrammingLanguageScalarFieldEnum
+    having?: ProgrammingLanguageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProgrammingLanguageCountAggregateInputType | true
+    _min?: ProgrammingLanguageMinAggregateInputType
+    _max?: ProgrammingLanguageMaxAggregateInputType
+  }
+
+  export type ProgrammingLanguageGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    _count: ProgrammingLanguageCountAggregateOutputType | null
+    _min: ProgrammingLanguageMinAggregateOutputType | null
+    _max: ProgrammingLanguageMaxAggregateOutputType | null
+  }
+
+  type GetProgrammingLanguageGroupByPayload<T extends ProgrammingLanguageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProgrammingLanguageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProgrammingLanguageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProgrammingLanguageGroupByOutputType[P]>
+            : GetScalarType<T[P], ProgrammingLanguageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProgrammingLanguageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    tariffs?: boolean | ProgrammingLanguage$tariffsArgs<ExtArgs>
+    _count?: boolean | ProgrammingLanguageCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["programmingLanguage"]>
+
+  export type ProgrammingLanguageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["programmingLanguage"]>
+
+  export type ProgrammingLanguageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["programmingLanguage"]>
+
+  export type ProgrammingLanguageSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }
+
+  export type ProgrammingLanguageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug", ExtArgs["result"]["programmingLanguage"]>
+  export type ProgrammingLanguageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariffs?: boolean | ProgrammingLanguage$tariffsArgs<ExtArgs>
+    _count?: boolean | ProgrammingLanguageCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ProgrammingLanguageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ProgrammingLanguageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ProgrammingLanguagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProgrammingLanguage"
+    objects: {
+      tariffs: Prisma.$TariffProgrammingLanguagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+    }, ExtArgs["result"]["programmingLanguage"]>
+    composites: {}
+  }
+
+  type ProgrammingLanguageGetPayload<S extends boolean | null | undefined | ProgrammingLanguageDefaultArgs> = $Result.GetResult<Prisma.$ProgrammingLanguagePayload, S>
+
+  type ProgrammingLanguageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProgrammingLanguageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProgrammingLanguageCountAggregateInputType | true
+    }
+
+  export interface ProgrammingLanguageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProgrammingLanguage'], meta: { name: 'ProgrammingLanguage' } }
+    /**
+     * Find zero or one ProgrammingLanguage that matches the filter.
+     * @param {ProgrammingLanguageFindUniqueArgs} args - Arguments to find a ProgrammingLanguage
+     * @example
+     * // Get one ProgrammingLanguage
+     * const programmingLanguage = await prisma.programmingLanguage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProgrammingLanguageFindUniqueArgs>(args: SelectSubset<T, ProgrammingLanguageFindUniqueArgs<ExtArgs>>): Prisma__ProgrammingLanguageClient<$Result.GetResult<Prisma.$ProgrammingLanguagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProgrammingLanguage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProgrammingLanguageFindUniqueOrThrowArgs} args - Arguments to find a ProgrammingLanguage
+     * @example
+     * // Get one ProgrammingLanguage
+     * const programmingLanguage = await prisma.programmingLanguage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProgrammingLanguageFindUniqueOrThrowArgs>(args: SelectSubset<T, ProgrammingLanguageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProgrammingLanguageClient<$Result.GetResult<Prisma.$ProgrammingLanguagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProgrammingLanguage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgrammingLanguageFindFirstArgs} args - Arguments to find a ProgrammingLanguage
+     * @example
+     * // Get one ProgrammingLanguage
+     * const programmingLanguage = await prisma.programmingLanguage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProgrammingLanguageFindFirstArgs>(args?: SelectSubset<T, ProgrammingLanguageFindFirstArgs<ExtArgs>>): Prisma__ProgrammingLanguageClient<$Result.GetResult<Prisma.$ProgrammingLanguagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProgrammingLanguage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgrammingLanguageFindFirstOrThrowArgs} args - Arguments to find a ProgrammingLanguage
+     * @example
+     * // Get one ProgrammingLanguage
+     * const programmingLanguage = await prisma.programmingLanguage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProgrammingLanguageFindFirstOrThrowArgs>(args?: SelectSubset<T, ProgrammingLanguageFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProgrammingLanguageClient<$Result.GetResult<Prisma.$ProgrammingLanguagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProgrammingLanguages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgrammingLanguageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProgrammingLanguages
+     * const programmingLanguages = await prisma.programmingLanguage.findMany()
+     * 
+     * // Get first 10 ProgrammingLanguages
+     * const programmingLanguages = await prisma.programmingLanguage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const programmingLanguageWithIdOnly = await prisma.programmingLanguage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProgrammingLanguageFindManyArgs>(args?: SelectSubset<T, ProgrammingLanguageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProgrammingLanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProgrammingLanguage.
+     * @param {ProgrammingLanguageCreateArgs} args - Arguments to create a ProgrammingLanguage.
+     * @example
+     * // Create one ProgrammingLanguage
+     * const ProgrammingLanguage = await prisma.programmingLanguage.create({
+     *   data: {
+     *     // ... data to create a ProgrammingLanguage
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProgrammingLanguageCreateArgs>(args: SelectSubset<T, ProgrammingLanguageCreateArgs<ExtArgs>>): Prisma__ProgrammingLanguageClient<$Result.GetResult<Prisma.$ProgrammingLanguagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProgrammingLanguages.
+     * @param {ProgrammingLanguageCreateManyArgs} args - Arguments to create many ProgrammingLanguages.
+     * @example
+     * // Create many ProgrammingLanguages
+     * const programmingLanguage = await prisma.programmingLanguage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProgrammingLanguageCreateManyArgs>(args?: SelectSubset<T, ProgrammingLanguageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProgrammingLanguages and returns the data saved in the database.
+     * @param {ProgrammingLanguageCreateManyAndReturnArgs} args - Arguments to create many ProgrammingLanguages.
+     * @example
+     * // Create many ProgrammingLanguages
+     * const programmingLanguage = await prisma.programmingLanguage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProgrammingLanguages and only return the `id`
+     * const programmingLanguageWithIdOnly = await prisma.programmingLanguage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProgrammingLanguageCreateManyAndReturnArgs>(args?: SelectSubset<T, ProgrammingLanguageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProgrammingLanguagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ProgrammingLanguage.
+     * @param {ProgrammingLanguageDeleteArgs} args - Arguments to delete one ProgrammingLanguage.
+     * @example
+     * // Delete one ProgrammingLanguage
+     * const ProgrammingLanguage = await prisma.programmingLanguage.delete({
+     *   where: {
+     *     // ... filter to delete one ProgrammingLanguage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProgrammingLanguageDeleteArgs>(args: SelectSubset<T, ProgrammingLanguageDeleteArgs<ExtArgs>>): Prisma__ProgrammingLanguageClient<$Result.GetResult<Prisma.$ProgrammingLanguagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProgrammingLanguage.
+     * @param {ProgrammingLanguageUpdateArgs} args - Arguments to update one ProgrammingLanguage.
+     * @example
+     * // Update one ProgrammingLanguage
+     * const programmingLanguage = await prisma.programmingLanguage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProgrammingLanguageUpdateArgs>(args: SelectSubset<T, ProgrammingLanguageUpdateArgs<ExtArgs>>): Prisma__ProgrammingLanguageClient<$Result.GetResult<Prisma.$ProgrammingLanguagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProgrammingLanguages.
+     * @param {ProgrammingLanguageDeleteManyArgs} args - Arguments to filter ProgrammingLanguages to delete.
+     * @example
+     * // Delete a few ProgrammingLanguages
+     * const { count } = await prisma.programmingLanguage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProgrammingLanguageDeleteManyArgs>(args?: SelectSubset<T, ProgrammingLanguageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProgrammingLanguages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgrammingLanguageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProgrammingLanguages
+     * const programmingLanguage = await prisma.programmingLanguage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProgrammingLanguageUpdateManyArgs>(args: SelectSubset<T, ProgrammingLanguageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProgrammingLanguages and returns the data updated in the database.
+     * @param {ProgrammingLanguageUpdateManyAndReturnArgs} args - Arguments to update many ProgrammingLanguages.
+     * @example
+     * // Update many ProgrammingLanguages
+     * const programmingLanguage = await prisma.programmingLanguage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ProgrammingLanguages and only return the `id`
+     * const programmingLanguageWithIdOnly = await prisma.programmingLanguage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProgrammingLanguageUpdateManyAndReturnArgs>(args: SelectSubset<T, ProgrammingLanguageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProgrammingLanguagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ProgrammingLanguage.
+     * @param {ProgrammingLanguageUpsertArgs} args - Arguments to update or create a ProgrammingLanguage.
+     * @example
+     * // Update or create a ProgrammingLanguage
+     * const programmingLanguage = await prisma.programmingLanguage.upsert({
+     *   create: {
+     *     // ... data to create a ProgrammingLanguage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProgrammingLanguage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProgrammingLanguageUpsertArgs>(args: SelectSubset<T, ProgrammingLanguageUpsertArgs<ExtArgs>>): Prisma__ProgrammingLanguageClient<$Result.GetResult<Prisma.$ProgrammingLanguagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProgrammingLanguages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgrammingLanguageCountArgs} args - Arguments to filter ProgrammingLanguages to count.
+     * @example
+     * // Count the number of ProgrammingLanguages
+     * const count = await prisma.programmingLanguage.count({
+     *   where: {
+     *     // ... the filter for the ProgrammingLanguages we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProgrammingLanguageCountArgs>(
+      args?: Subset<T, ProgrammingLanguageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProgrammingLanguageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProgrammingLanguage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgrammingLanguageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProgrammingLanguageAggregateArgs>(args: Subset<T, ProgrammingLanguageAggregateArgs>): Prisma.PrismaPromise<GetProgrammingLanguageAggregateType<T>>
+
+    /**
+     * Group by ProgrammingLanguage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProgrammingLanguageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProgrammingLanguageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProgrammingLanguageGroupByArgs['orderBy'] }
+        : { orderBy?: ProgrammingLanguageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProgrammingLanguageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProgrammingLanguageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProgrammingLanguage model
+   */
+  readonly fields: ProgrammingLanguageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProgrammingLanguage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProgrammingLanguageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariffs<T extends ProgrammingLanguage$tariffsArgs<ExtArgs> = {}>(args?: Subset<T, ProgrammingLanguage$tariffsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProgrammingLanguage model
+   */
+  interface ProgrammingLanguageFieldRefs {
+    readonly id: FieldRef<"ProgrammingLanguage", 'String'>
+    readonly name: FieldRef<"ProgrammingLanguage", 'String'>
+    readonly slug: FieldRef<"ProgrammingLanguage", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProgrammingLanguage findUnique
+   */
+  export type ProgrammingLanguageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguage
+     */
+    select?: ProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgrammingLanguage
+     */
+    omit?: ProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProgrammingLanguage to fetch.
+     */
+    where: ProgrammingLanguageWhereUniqueInput
+  }
+
+  /**
+   * ProgrammingLanguage findUniqueOrThrow
+   */
+  export type ProgrammingLanguageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguage
+     */
+    select?: ProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgrammingLanguage
+     */
+    omit?: ProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProgrammingLanguage to fetch.
+     */
+    where: ProgrammingLanguageWhereUniqueInput
+  }
+
+  /**
+   * ProgrammingLanguage findFirst
+   */
+  export type ProgrammingLanguageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguage
+     */
+    select?: ProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgrammingLanguage
+     */
+    omit?: ProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProgrammingLanguage to fetch.
+     */
+    where?: ProgrammingLanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProgrammingLanguages to fetch.
+     */
+    orderBy?: ProgrammingLanguageOrderByWithRelationInput | ProgrammingLanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProgrammingLanguages.
+     */
+    cursor?: ProgrammingLanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProgrammingLanguages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProgrammingLanguages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProgrammingLanguages.
+     */
+    distinct?: ProgrammingLanguageScalarFieldEnum | ProgrammingLanguageScalarFieldEnum[]
+  }
+
+  /**
+   * ProgrammingLanguage findFirstOrThrow
+   */
+  export type ProgrammingLanguageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguage
+     */
+    select?: ProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgrammingLanguage
+     */
+    omit?: ProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProgrammingLanguage to fetch.
+     */
+    where?: ProgrammingLanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProgrammingLanguages to fetch.
+     */
+    orderBy?: ProgrammingLanguageOrderByWithRelationInput | ProgrammingLanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProgrammingLanguages.
+     */
+    cursor?: ProgrammingLanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProgrammingLanguages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProgrammingLanguages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProgrammingLanguages.
+     */
+    distinct?: ProgrammingLanguageScalarFieldEnum | ProgrammingLanguageScalarFieldEnum[]
+  }
+
+  /**
+   * ProgrammingLanguage findMany
+   */
+  export type ProgrammingLanguageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguage
+     */
+    select?: ProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgrammingLanguage
+     */
+    omit?: ProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which ProgrammingLanguages to fetch.
+     */
+    where?: ProgrammingLanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProgrammingLanguages to fetch.
+     */
+    orderBy?: ProgrammingLanguageOrderByWithRelationInput | ProgrammingLanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProgrammingLanguages.
+     */
+    cursor?: ProgrammingLanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProgrammingLanguages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProgrammingLanguages.
+     */
+    skip?: number
+    distinct?: ProgrammingLanguageScalarFieldEnum | ProgrammingLanguageScalarFieldEnum[]
+  }
+
+  /**
+   * ProgrammingLanguage create
+   */
+  export type ProgrammingLanguageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguage
+     */
+    select?: ProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgrammingLanguage
+     */
+    omit?: ProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProgrammingLanguage.
+     */
+    data: XOR<ProgrammingLanguageCreateInput, ProgrammingLanguageUncheckedCreateInput>
+  }
+
+  /**
+   * ProgrammingLanguage createMany
+   */
+  export type ProgrammingLanguageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProgrammingLanguages.
+     */
+    data: ProgrammingLanguageCreateManyInput | ProgrammingLanguageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProgrammingLanguage createManyAndReturn
+   */
+  export type ProgrammingLanguageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguage
+     */
+    select?: ProgrammingLanguageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgrammingLanguage
+     */
+    omit?: ProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * The data used to create many ProgrammingLanguages.
+     */
+    data: ProgrammingLanguageCreateManyInput | ProgrammingLanguageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProgrammingLanguage update
+   */
+  export type ProgrammingLanguageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguage
+     */
+    select?: ProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgrammingLanguage
+     */
+    omit?: ProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProgrammingLanguage.
+     */
+    data: XOR<ProgrammingLanguageUpdateInput, ProgrammingLanguageUncheckedUpdateInput>
+    /**
+     * Choose, which ProgrammingLanguage to update.
+     */
+    where: ProgrammingLanguageWhereUniqueInput
+  }
+
+  /**
+   * ProgrammingLanguage updateMany
+   */
+  export type ProgrammingLanguageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProgrammingLanguages.
+     */
+    data: XOR<ProgrammingLanguageUpdateManyMutationInput, ProgrammingLanguageUncheckedUpdateManyInput>
+    /**
+     * Filter which ProgrammingLanguages to update
+     */
+    where?: ProgrammingLanguageWhereInput
+    /**
+     * Limit how many ProgrammingLanguages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProgrammingLanguage updateManyAndReturn
+   */
+  export type ProgrammingLanguageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguage
+     */
+    select?: ProgrammingLanguageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgrammingLanguage
+     */
+    omit?: ProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * The data used to update ProgrammingLanguages.
+     */
+    data: XOR<ProgrammingLanguageUpdateManyMutationInput, ProgrammingLanguageUncheckedUpdateManyInput>
+    /**
+     * Filter which ProgrammingLanguages to update
+     */
+    where?: ProgrammingLanguageWhereInput
+    /**
+     * Limit how many ProgrammingLanguages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProgrammingLanguage upsert
+   */
+  export type ProgrammingLanguageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguage
+     */
+    select?: ProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgrammingLanguage
+     */
+    omit?: ProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProgrammingLanguage to update in case it exists.
+     */
+    where: ProgrammingLanguageWhereUniqueInput
+    /**
+     * In case the ProgrammingLanguage found by the `where` argument doesn't exist, create a new ProgrammingLanguage with this data.
+     */
+    create: XOR<ProgrammingLanguageCreateInput, ProgrammingLanguageUncheckedCreateInput>
+    /**
+     * In case the ProgrammingLanguage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProgrammingLanguageUpdateInput, ProgrammingLanguageUncheckedUpdateInput>
+  }
+
+  /**
+   * ProgrammingLanguage delete
+   */
+  export type ProgrammingLanguageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguage
+     */
+    select?: ProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgrammingLanguage
+     */
+    omit?: ProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * Filter which ProgrammingLanguage to delete.
+     */
+    where: ProgrammingLanguageWhereUniqueInput
+  }
+
+  /**
+   * ProgrammingLanguage deleteMany
+   */
+  export type ProgrammingLanguageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProgrammingLanguages to delete
+     */
+    where?: ProgrammingLanguageWhereInput
+    /**
+     * Limit how many ProgrammingLanguages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProgrammingLanguage.tariffs
+   */
+  export type ProgrammingLanguage$tariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageInclude<ExtArgs> | null
+    where?: TariffProgrammingLanguageWhereInput
+    orderBy?: TariffProgrammingLanguageOrderByWithRelationInput | TariffProgrammingLanguageOrderByWithRelationInput[]
+    cursor?: TariffProgrammingLanguageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TariffProgrammingLanguageScalarFieldEnum | TariffProgrammingLanguageScalarFieldEnum[]
+  }
+
+  /**
+   * ProgrammingLanguage without action
+   */
+  export type ProgrammingLanguageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgrammingLanguage
+     */
+    select?: ProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProgrammingLanguage
+     */
+    omit?: ProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProgrammingLanguageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TariffCMS
+   */
+
+  export type AggregateTariffCMS = {
+    _count: TariffCMSCountAggregateOutputType | null
+    _min: TariffCMSMinAggregateOutputType | null
+    _max: TariffCMSMaxAggregateOutputType | null
+  }
+
+  export type TariffCMSMinAggregateOutputType = {
+    id: string | null
+    tariffId: string | null
+    cmsId: string | null
+  }
+
+  export type TariffCMSMaxAggregateOutputType = {
+    id: string | null
+    tariffId: string | null
+    cmsId: string | null
+  }
+
+  export type TariffCMSCountAggregateOutputType = {
+    id: number
+    tariffId: number
+    cmsId: number
+    _all: number
+  }
+
+
+  export type TariffCMSMinAggregateInputType = {
+    id?: true
+    tariffId?: true
+    cmsId?: true
+  }
+
+  export type TariffCMSMaxAggregateInputType = {
+    id?: true
+    tariffId?: true
+    cmsId?: true
+  }
+
+  export type TariffCMSCountAggregateInputType = {
+    id?: true
+    tariffId?: true
+    cmsId?: true
+    _all?: true
+  }
+
+  export type TariffCMSAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TariffCMS to aggregate.
+     */
+    where?: TariffCMSWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffCMS to fetch.
+     */
+    orderBy?: TariffCMSOrderByWithRelationInput | TariffCMSOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TariffCMSWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffCMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffCMS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TariffCMS
+    **/
+    _count?: true | TariffCMSCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TariffCMSMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TariffCMSMaxAggregateInputType
+  }
+
+  export type GetTariffCMSAggregateType<T extends TariffCMSAggregateArgs> = {
+        [P in keyof T & keyof AggregateTariffCMS]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTariffCMS[P]>
+      : GetScalarType<T[P], AggregateTariffCMS[P]>
+  }
+
+
+
+
+  export type TariffCMSGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffCMSWhereInput
+    orderBy?: TariffCMSOrderByWithAggregationInput | TariffCMSOrderByWithAggregationInput[]
+    by: TariffCMSScalarFieldEnum[] | TariffCMSScalarFieldEnum
+    having?: TariffCMSScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TariffCMSCountAggregateInputType | true
+    _min?: TariffCMSMinAggregateInputType
+    _max?: TariffCMSMaxAggregateInputType
+  }
+
+  export type TariffCMSGroupByOutputType = {
+    id: string
+    tariffId: string
+    cmsId: string
+    _count: TariffCMSCountAggregateOutputType | null
+    _min: TariffCMSMinAggregateOutputType | null
+    _max: TariffCMSMaxAggregateOutputType | null
+  }
+
+  type GetTariffCMSGroupByPayload<T extends TariffCMSGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TariffCMSGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TariffCMSGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TariffCMSGroupByOutputType[P]>
+            : GetScalarType<T[P], TariffCMSGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TariffCMSSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    cmsId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    cms?: boolean | CMSDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffCMS"]>
+
+  export type TariffCMSSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    cmsId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    cms?: boolean | CMSDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffCMS"]>
+
+  export type TariffCMSSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    cmsId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    cms?: boolean | CMSDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffCMS"]>
+
+  export type TariffCMSSelectScalar = {
+    id?: boolean
+    tariffId?: boolean
+    cmsId?: boolean
+  }
+
+  export type TariffCMSOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tariffId" | "cmsId", ExtArgs["result"]["tariffCMS"]>
+  export type TariffCMSInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    cms?: boolean | CMSDefaultArgs<ExtArgs>
+  }
+  export type TariffCMSIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    cms?: boolean | CMSDefaultArgs<ExtArgs>
+  }
+  export type TariffCMSIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    cms?: boolean | CMSDefaultArgs<ExtArgs>
+  }
+
+  export type $TariffCMSPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TariffCMS"
+    objects: {
+      tariff: Prisma.$TariffPayload<ExtArgs>
+      cms: Prisma.$CMSPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      tariffId: string
+      cmsId: string
+    }, ExtArgs["result"]["tariffCMS"]>
+    composites: {}
+  }
+
+  type TariffCMSGetPayload<S extends boolean | null | undefined | TariffCMSDefaultArgs> = $Result.GetResult<Prisma.$TariffCMSPayload, S>
+
+  type TariffCMSCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TariffCMSFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TariffCMSCountAggregateInputType | true
+    }
+
+  export interface TariffCMSDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TariffCMS'], meta: { name: 'TariffCMS' } }
+    /**
+     * Find zero or one TariffCMS that matches the filter.
+     * @param {TariffCMSFindUniqueArgs} args - Arguments to find a TariffCMS
+     * @example
+     * // Get one TariffCMS
+     * const tariffCMS = await prisma.tariffCMS.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TariffCMSFindUniqueArgs>(args: SelectSubset<T, TariffCMSFindUniqueArgs<ExtArgs>>): Prisma__TariffCMSClient<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TariffCMS that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TariffCMSFindUniqueOrThrowArgs} args - Arguments to find a TariffCMS
+     * @example
+     * // Get one TariffCMS
+     * const tariffCMS = await prisma.tariffCMS.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TariffCMSFindUniqueOrThrowArgs>(args: SelectSubset<T, TariffCMSFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TariffCMSClient<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TariffCMS that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCMSFindFirstArgs} args - Arguments to find a TariffCMS
+     * @example
+     * // Get one TariffCMS
+     * const tariffCMS = await prisma.tariffCMS.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TariffCMSFindFirstArgs>(args?: SelectSubset<T, TariffCMSFindFirstArgs<ExtArgs>>): Prisma__TariffCMSClient<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TariffCMS that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCMSFindFirstOrThrowArgs} args - Arguments to find a TariffCMS
+     * @example
+     * // Get one TariffCMS
+     * const tariffCMS = await prisma.tariffCMS.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TariffCMSFindFirstOrThrowArgs>(args?: SelectSubset<T, TariffCMSFindFirstOrThrowArgs<ExtArgs>>): Prisma__TariffCMSClient<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TariffCMS that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCMSFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TariffCMS
+     * const tariffCMS = await prisma.tariffCMS.findMany()
+     * 
+     * // Get first 10 TariffCMS
+     * const tariffCMS = await prisma.tariffCMS.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tariffCMSWithIdOnly = await prisma.tariffCMS.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TariffCMSFindManyArgs>(args?: SelectSubset<T, TariffCMSFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TariffCMS.
+     * @param {TariffCMSCreateArgs} args - Arguments to create a TariffCMS.
+     * @example
+     * // Create one TariffCMS
+     * const TariffCMS = await prisma.tariffCMS.create({
+     *   data: {
+     *     // ... data to create a TariffCMS
+     *   }
+     * })
+     * 
+     */
+    create<T extends TariffCMSCreateArgs>(args: SelectSubset<T, TariffCMSCreateArgs<ExtArgs>>): Prisma__TariffCMSClient<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TariffCMS.
+     * @param {TariffCMSCreateManyArgs} args - Arguments to create many TariffCMS.
+     * @example
+     * // Create many TariffCMS
+     * const tariffCMS = await prisma.tariffCMS.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TariffCMSCreateManyArgs>(args?: SelectSubset<T, TariffCMSCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TariffCMS and returns the data saved in the database.
+     * @param {TariffCMSCreateManyAndReturnArgs} args - Arguments to create many TariffCMS.
+     * @example
+     * // Create many TariffCMS
+     * const tariffCMS = await prisma.tariffCMS.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TariffCMS and only return the `id`
+     * const tariffCMSWithIdOnly = await prisma.tariffCMS.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TariffCMSCreateManyAndReturnArgs>(args?: SelectSubset<T, TariffCMSCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TariffCMS.
+     * @param {TariffCMSDeleteArgs} args - Arguments to delete one TariffCMS.
+     * @example
+     * // Delete one TariffCMS
+     * const TariffCMS = await prisma.tariffCMS.delete({
+     *   where: {
+     *     // ... filter to delete one TariffCMS
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TariffCMSDeleteArgs>(args: SelectSubset<T, TariffCMSDeleteArgs<ExtArgs>>): Prisma__TariffCMSClient<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TariffCMS.
+     * @param {TariffCMSUpdateArgs} args - Arguments to update one TariffCMS.
+     * @example
+     * // Update one TariffCMS
+     * const tariffCMS = await prisma.tariffCMS.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TariffCMSUpdateArgs>(args: SelectSubset<T, TariffCMSUpdateArgs<ExtArgs>>): Prisma__TariffCMSClient<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TariffCMS.
+     * @param {TariffCMSDeleteManyArgs} args - Arguments to filter TariffCMS to delete.
+     * @example
+     * // Delete a few TariffCMS
+     * const { count } = await prisma.tariffCMS.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TariffCMSDeleteManyArgs>(args?: SelectSubset<T, TariffCMSDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TariffCMS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCMSUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TariffCMS
+     * const tariffCMS = await prisma.tariffCMS.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TariffCMSUpdateManyArgs>(args: SelectSubset<T, TariffCMSUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TariffCMS and returns the data updated in the database.
+     * @param {TariffCMSUpdateManyAndReturnArgs} args - Arguments to update many TariffCMS.
+     * @example
+     * // Update many TariffCMS
+     * const tariffCMS = await prisma.tariffCMS.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TariffCMS and only return the `id`
+     * const tariffCMSWithIdOnly = await prisma.tariffCMS.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TariffCMSUpdateManyAndReturnArgs>(args: SelectSubset<T, TariffCMSUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TariffCMS.
+     * @param {TariffCMSUpsertArgs} args - Arguments to update or create a TariffCMS.
+     * @example
+     * // Update or create a TariffCMS
+     * const tariffCMS = await prisma.tariffCMS.upsert({
+     *   create: {
+     *     // ... data to create a TariffCMS
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TariffCMS we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TariffCMSUpsertArgs>(args: SelectSubset<T, TariffCMSUpsertArgs<ExtArgs>>): Prisma__TariffCMSClient<$Result.GetResult<Prisma.$TariffCMSPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TariffCMS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCMSCountArgs} args - Arguments to filter TariffCMS to count.
+     * @example
+     * // Count the number of TariffCMS
+     * const count = await prisma.tariffCMS.count({
+     *   where: {
+     *     // ... the filter for the TariffCMS we want to count
+     *   }
+     * })
+    **/
+    count<T extends TariffCMSCountArgs>(
+      args?: Subset<T, TariffCMSCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TariffCMSCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TariffCMS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCMSAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TariffCMSAggregateArgs>(args: Subset<T, TariffCMSAggregateArgs>): Prisma.PrismaPromise<GetTariffCMSAggregateType<T>>
+
+    /**
+     * Group by TariffCMS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCMSGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TariffCMSGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TariffCMSGroupByArgs['orderBy'] }
+        : { orderBy?: TariffCMSGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TariffCMSGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTariffCMSGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TariffCMS model
+   */
+  readonly fields: TariffCMSFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TariffCMS.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TariffCMSClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariff<T extends TariffDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TariffDefaultArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    cms<T extends CMSDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CMSDefaultArgs<ExtArgs>>): Prisma__CMSClient<$Result.GetResult<Prisma.$CMSPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TariffCMS model
+   */
+  interface TariffCMSFieldRefs {
+    readonly id: FieldRef<"TariffCMS", 'String'>
+    readonly tariffId: FieldRef<"TariffCMS", 'String'>
+    readonly cmsId: FieldRef<"TariffCMS", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TariffCMS findUnique
+   */
+  export type TariffCMSFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffCMS to fetch.
+     */
+    where: TariffCMSWhereUniqueInput
+  }
+
+  /**
+   * TariffCMS findUniqueOrThrow
+   */
+  export type TariffCMSFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffCMS to fetch.
+     */
+    where: TariffCMSWhereUniqueInput
+  }
+
+  /**
+   * TariffCMS findFirst
+   */
+  export type TariffCMSFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffCMS to fetch.
+     */
+    where?: TariffCMSWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffCMS to fetch.
+     */
+    orderBy?: TariffCMSOrderByWithRelationInput | TariffCMSOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TariffCMS.
+     */
+    cursor?: TariffCMSWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffCMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffCMS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TariffCMS.
+     */
+    distinct?: TariffCMSScalarFieldEnum | TariffCMSScalarFieldEnum[]
+  }
+
+  /**
+   * TariffCMS findFirstOrThrow
+   */
+  export type TariffCMSFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffCMS to fetch.
+     */
+    where?: TariffCMSWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffCMS to fetch.
+     */
+    orderBy?: TariffCMSOrderByWithRelationInput | TariffCMSOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TariffCMS.
+     */
+    cursor?: TariffCMSWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffCMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffCMS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TariffCMS.
+     */
+    distinct?: TariffCMSScalarFieldEnum | TariffCMSScalarFieldEnum[]
+  }
+
+  /**
+   * TariffCMS findMany
+   */
+  export type TariffCMSFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffCMS to fetch.
+     */
+    where?: TariffCMSWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffCMS to fetch.
+     */
+    orderBy?: TariffCMSOrderByWithRelationInput | TariffCMSOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TariffCMS.
+     */
+    cursor?: TariffCMSWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffCMS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffCMS.
+     */
+    skip?: number
+    distinct?: TariffCMSScalarFieldEnum | TariffCMSScalarFieldEnum[]
+  }
+
+  /**
+   * TariffCMS create
+   */
+  export type TariffCMSCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TariffCMS.
+     */
+    data: XOR<TariffCMSCreateInput, TariffCMSUncheckedCreateInput>
+  }
+
+  /**
+   * TariffCMS createMany
+   */
+  export type TariffCMSCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TariffCMS.
+     */
+    data: TariffCMSCreateManyInput | TariffCMSCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TariffCMS createManyAndReturn
+   */
+  export type TariffCMSCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * The data used to create many TariffCMS.
+     */
+    data: TariffCMSCreateManyInput | TariffCMSCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TariffCMS update
+   */
+  export type TariffCMSUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TariffCMS.
+     */
+    data: XOR<TariffCMSUpdateInput, TariffCMSUncheckedUpdateInput>
+    /**
+     * Choose, which TariffCMS to update.
+     */
+    where: TariffCMSWhereUniqueInput
+  }
+
+  /**
+   * TariffCMS updateMany
+   */
+  export type TariffCMSUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TariffCMS.
+     */
+    data: XOR<TariffCMSUpdateManyMutationInput, TariffCMSUncheckedUpdateManyInput>
+    /**
+     * Filter which TariffCMS to update
+     */
+    where?: TariffCMSWhereInput
+    /**
+     * Limit how many TariffCMS to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TariffCMS updateManyAndReturn
+   */
+  export type TariffCMSUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * The data used to update TariffCMS.
+     */
+    data: XOR<TariffCMSUpdateManyMutationInput, TariffCMSUncheckedUpdateManyInput>
+    /**
+     * Filter which TariffCMS to update
+     */
+    where?: TariffCMSWhereInput
+    /**
+     * Limit how many TariffCMS to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TariffCMS upsert
+   */
+  export type TariffCMSUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TariffCMS to update in case it exists.
+     */
+    where: TariffCMSWhereUniqueInput
+    /**
+     * In case the TariffCMS found by the `where` argument doesn't exist, create a new TariffCMS with this data.
+     */
+    create: XOR<TariffCMSCreateInput, TariffCMSUncheckedCreateInput>
+    /**
+     * In case the TariffCMS was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TariffCMSUpdateInput, TariffCMSUncheckedUpdateInput>
+  }
+
+  /**
+   * TariffCMS delete
+   */
+  export type TariffCMSDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSInclude<ExtArgs> | null
+    /**
+     * Filter which TariffCMS to delete.
+     */
+    where: TariffCMSWhereUniqueInput
+  }
+
+  /**
+   * TariffCMS deleteMany
+   */
+  export type TariffCMSDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TariffCMS to delete
+     */
+    where?: TariffCMSWhereInput
+    /**
+     * Limit how many TariffCMS to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TariffCMS without action
+   */
+  export type TariffCMSDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCMS
+     */
+    select?: TariffCMSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCMS
+     */
+    omit?: TariffCMSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCMSInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TariffControlPanel
+   */
+
+  export type AggregateTariffControlPanel = {
+    _count: TariffControlPanelCountAggregateOutputType | null
+    _min: TariffControlPanelMinAggregateOutputType | null
+    _max: TariffControlPanelMaxAggregateOutputType | null
+  }
+
+  export type TariffControlPanelMinAggregateOutputType = {
+    id: string | null
+    tariffId: string | null
+    controlPanelId: string | null
+  }
+
+  export type TariffControlPanelMaxAggregateOutputType = {
+    id: string | null
+    tariffId: string | null
+    controlPanelId: string | null
+  }
+
+  export type TariffControlPanelCountAggregateOutputType = {
+    id: number
+    tariffId: number
+    controlPanelId: number
+    _all: number
+  }
+
+
+  export type TariffControlPanelMinAggregateInputType = {
+    id?: true
+    tariffId?: true
+    controlPanelId?: true
+  }
+
+  export type TariffControlPanelMaxAggregateInputType = {
+    id?: true
+    tariffId?: true
+    controlPanelId?: true
+  }
+
+  export type TariffControlPanelCountAggregateInputType = {
+    id?: true
+    tariffId?: true
+    controlPanelId?: true
+    _all?: true
+  }
+
+  export type TariffControlPanelAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TariffControlPanel to aggregate.
+     */
+    where?: TariffControlPanelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffControlPanels to fetch.
+     */
+    orderBy?: TariffControlPanelOrderByWithRelationInput | TariffControlPanelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TariffControlPanelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffControlPanels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffControlPanels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TariffControlPanels
+    **/
+    _count?: true | TariffControlPanelCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TariffControlPanelMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TariffControlPanelMaxAggregateInputType
+  }
+
+  export type GetTariffControlPanelAggregateType<T extends TariffControlPanelAggregateArgs> = {
+        [P in keyof T & keyof AggregateTariffControlPanel]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTariffControlPanel[P]>
+      : GetScalarType<T[P], AggregateTariffControlPanel[P]>
+  }
+
+
+
+
+  export type TariffControlPanelGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffControlPanelWhereInput
+    orderBy?: TariffControlPanelOrderByWithAggregationInput | TariffControlPanelOrderByWithAggregationInput[]
+    by: TariffControlPanelScalarFieldEnum[] | TariffControlPanelScalarFieldEnum
+    having?: TariffControlPanelScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TariffControlPanelCountAggregateInputType | true
+    _min?: TariffControlPanelMinAggregateInputType
+    _max?: TariffControlPanelMaxAggregateInputType
+  }
+
+  export type TariffControlPanelGroupByOutputType = {
+    id: string
+    tariffId: string
+    controlPanelId: string
+    _count: TariffControlPanelCountAggregateOutputType | null
+    _min: TariffControlPanelMinAggregateOutputType | null
+    _max: TariffControlPanelMaxAggregateOutputType | null
+  }
+
+  type GetTariffControlPanelGroupByPayload<T extends TariffControlPanelGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TariffControlPanelGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TariffControlPanelGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TariffControlPanelGroupByOutputType[P]>
+            : GetScalarType<T[P], TariffControlPanelGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TariffControlPanelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    controlPanelId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    controlPanel?: boolean | ControlPanelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffControlPanel"]>
+
+  export type TariffControlPanelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    controlPanelId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    controlPanel?: boolean | ControlPanelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffControlPanel"]>
+
+  export type TariffControlPanelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    controlPanelId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    controlPanel?: boolean | ControlPanelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffControlPanel"]>
+
+  export type TariffControlPanelSelectScalar = {
+    id?: boolean
+    tariffId?: boolean
+    controlPanelId?: boolean
+  }
+
+  export type TariffControlPanelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tariffId" | "controlPanelId", ExtArgs["result"]["tariffControlPanel"]>
+  export type TariffControlPanelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    controlPanel?: boolean | ControlPanelDefaultArgs<ExtArgs>
+  }
+  export type TariffControlPanelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    controlPanel?: boolean | ControlPanelDefaultArgs<ExtArgs>
+  }
+  export type TariffControlPanelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    controlPanel?: boolean | ControlPanelDefaultArgs<ExtArgs>
+  }
+
+  export type $TariffControlPanelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TariffControlPanel"
+    objects: {
+      tariff: Prisma.$TariffPayload<ExtArgs>
+      controlPanel: Prisma.$ControlPanelPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      tariffId: string
+      controlPanelId: string
+    }, ExtArgs["result"]["tariffControlPanel"]>
+    composites: {}
+  }
+
+  type TariffControlPanelGetPayload<S extends boolean | null | undefined | TariffControlPanelDefaultArgs> = $Result.GetResult<Prisma.$TariffControlPanelPayload, S>
+
+  type TariffControlPanelCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TariffControlPanelFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TariffControlPanelCountAggregateInputType | true
+    }
+
+  export interface TariffControlPanelDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TariffControlPanel'], meta: { name: 'TariffControlPanel' } }
+    /**
+     * Find zero or one TariffControlPanel that matches the filter.
+     * @param {TariffControlPanelFindUniqueArgs} args - Arguments to find a TariffControlPanel
+     * @example
+     * // Get one TariffControlPanel
+     * const tariffControlPanel = await prisma.tariffControlPanel.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TariffControlPanelFindUniqueArgs>(args: SelectSubset<T, TariffControlPanelFindUniqueArgs<ExtArgs>>): Prisma__TariffControlPanelClient<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TariffControlPanel that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TariffControlPanelFindUniqueOrThrowArgs} args - Arguments to find a TariffControlPanel
+     * @example
+     * // Get one TariffControlPanel
+     * const tariffControlPanel = await prisma.tariffControlPanel.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TariffControlPanelFindUniqueOrThrowArgs>(args: SelectSubset<T, TariffControlPanelFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TariffControlPanelClient<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TariffControlPanel that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffControlPanelFindFirstArgs} args - Arguments to find a TariffControlPanel
+     * @example
+     * // Get one TariffControlPanel
+     * const tariffControlPanel = await prisma.tariffControlPanel.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TariffControlPanelFindFirstArgs>(args?: SelectSubset<T, TariffControlPanelFindFirstArgs<ExtArgs>>): Prisma__TariffControlPanelClient<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TariffControlPanel that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffControlPanelFindFirstOrThrowArgs} args - Arguments to find a TariffControlPanel
+     * @example
+     * // Get one TariffControlPanel
+     * const tariffControlPanel = await prisma.tariffControlPanel.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TariffControlPanelFindFirstOrThrowArgs>(args?: SelectSubset<T, TariffControlPanelFindFirstOrThrowArgs<ExtArgs>>): Prisma__TariffControlPanelClient<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TariffControlPanels that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffControlPanelFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TariffControlPanels
+     * const tariffControlPanels = await prisma.tariffControlPanel.findMany()
+     * 
+     * // Get first 10 TariffControlPanels
+     * const tariffControlPanels = await prisma.tariffControlPanel.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tariffControlPanelWithIdOnly = await prisma.tariffControlPanel.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TariffControlPanelFindManyArgs>(args?: SelectSubset<T, TariffControlPanelFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TariffControlPanel.
+     * @param {TariffControlPanelCreateArgs} args - Arguments to create a TariffControlPanel.
+     * @example
+     * // Create one TariffControlPanel
+     * const TariffControlPanel = await prisma.tariffControlPanel.create({
+     *   data: {
+     *     // ... data to create a TariffControlPanel
+     *   }
+     * })
+     * 
+     */
+    create<T extends TariffControlPanelCreateArgs>(args: SelectSubset<T, TariffControlPanelCreateArgs<ExtArgs>>): Prisma__TariffControlPanelClient<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TariffControlPanels.
+     * @param {TariffControlPanelCreateManyArgs} args - Arguments to create many TariffControlPanels.
+     * @example
+     * // Create many TariffControlPanels
+     * const tariffControlPanel = await prisma.tariffControlPanel.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TariffControlPanelCreateManyArgs>(args?: SelectSubset<T, TariffControlPanelCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TariffControlPanels and returns the data saved in the database.
+     * @param {TariffControlPanelCreateManyAndReturnArgs} args - Arguments to create many TariffControlPanels.
+     * @example
+     * // Create many TariffControlPanels
+     * const tariffControlPanel = await prisma.tariffControlPanel.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TariffControlPanels and only return the `id`
+     * const tariffControlPanelWithIdOnly = await prisma.tariffControlPanel.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TariffControlPanelCreateManyAndReturnArgs>(args?: SelectSubset<T, TariffControlPanelCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TariffControlPanel.
+     * @param {TariffControlPanelDeleteArgs} args - Arguments to delete one TariffControlPanel.
+     * @example
+     * // Delete one TariffControlPanel
+     * const TariffControlPanel = await prisma.tariffControlPanel.delete({
+     *   where: {
+     *     // ... filter to delete one TariffControlPanel
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TariffControlPanelDeleteArgs>(args: SelectSubset<T, TariffControlPanelDeleteArgs<ExtArgs>>): Prisma__TariffControlPanelClient<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TariffControlPanel.
+     * @param {TariffControlPanelUpdateArgs} args - Arguments to update one TariffControlPanel.
+     * @example
+     * // Update one TariffControlPanel
+     * const tariffControlPanel = await prisma.tariffControlPanel.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TariffControlPanelUpdateArgs>(args: SelectSubset<T, TariffControlPanelUpdateArgs<ExtArgs>>): Prisma__TariffControlPanelClient<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TariffControlPanels.
+     * @param {TariffControlPanelDeleteManyArgs} args - Arguments to filter TariffControlPanels to delete.
+     * @example
+     * // Delete a few TariffControlPanels
+     * const { count } = await prisma.tariffControlPanel.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TariffControlPanelDeleteManyArgs>(args?: SelectSubset<T, TariffControlPanelDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TariffControlPanels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffControlPanelUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TariffControlPanels
+     * const tariffControlPanel = await prisma.tariffControlPanel.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TariffControlPanelUpdateManyArgs>(args: SelectSubset<T, TariffControlPanelUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TariffControlPanels and returns the data updated in the database.
+     * @param {TariffControlPanelUpdateManyAndReturnArgs} args - Arguments to update many TariffControlPanels.
+     * @example
+     * // Update many TariffControlPanels
+     * const tariffControlPanel = await prisma.tariffControlPanel.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TariffControlPanels and only return the `id`
+     * const tariffControlPanelWithIdOnly = await prisma.tariffControlPanel.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TariffControlPanelUpdateManyAndReturnArgs>(args: SelectSubset<T, TariffControlPanelUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TariffControlPanel.
+     * @param {TariffControlPanelUpsertArgs} args - Arguments to update or create a TariffControlPanel.
+     * @example
+     * // Update or create a TariffControlPanel
+     * const tariffControlPanel = await prisma.tariffControlPanel.upsert({
+     *   create: {
+     *     // ... data to create a TariffControlPanel
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TariffControlPanel we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TariffControlPanelUpsertArgs>(args: SelectSubset<T, TariffControlPanelUpsertArgs<ExtArgs>>): Prisma__TariffControlPanelClient<$Result.GetResult<Prisma.$TariffControlPanelPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TariffControlPanels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffControlPanelCountArgs} args - Arguments to filter TariffControlPanels to count.
+     * @example
+     * // Count the number of TariffControlPanels
+     * const count = await prisma.tariffControlPanel.count({
+     *   where: {
+     *     // ... the filter for the TariffControlPanels we want to count
+     *   }
+     * })
+    **/
+    count<T extends TariffControlPanelCountArgs>(
+      args?: Subset<T, TariffControlPanelCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TariffControlPanelCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TariffControlPanel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffControlPanelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TariffControlPanelAggregateArgs>(args: Subset<T, TariffControlPanelAggregateArgs>): Prisma.PrismaPromise<GetTariffControlPanelAggregateType<T>>
+
+    /**
+     * Group by TariffControlPanel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffControlPanelGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TariffControlPanelGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TariffControlPanelGroupByArgs['orderBy'] }
+        : { orderBy?: TariffControlPanelGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TariffControlPanelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTariffControlPanelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TariffControlPanel model
+   */
+  readonly fields: TariffControlPanelFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TariffControlPanel.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TariffControlPanelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariff<T extends TariffDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TariffDefaultArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    controlPanel<T extends ControlPanelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ControlPanelDefaultArgs<ExtArgs>>): Prisma__ControlPanelClient<$Result.GetResult<Prisma.$ControlPanelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TariffControlPanel model
+   */
+  interface TariffControlPanelFieldRefs {
+    readonly id: FieldRef<"TariffControlPanel", 'String'>
+    readonly tariffId: FieldRef<"TariffControlPanel", 'String'>
+    readonly controlPanelId: FieldRef<"TariffControlPanel", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TariffControlPanel findUnique
+   */
+  export type TariffControlPanelFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffControlPanel to fetch.
+     */
+    where: TariffControlPanelWhereUniqueInput
+  }
+
+  /**
+   * TariffControlPanel findUniqueOrThrow
+   */
+  export type TariffControlPanelFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffControlPanel to fetch.
+     */
+    where: TariffControlPanelWhereUniqueInput
+  }
+
+  /**
+   * TariffControlPanel findFirst
+   */
+  export type TariffControlPanelFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffControlPanel to fetch.
+     */
+    where?: TariffControlPanelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffControlPanels to fetch.
+     */
+    orderBy?: TariffControlPanelOrderByWithRelationInput | TariffControlPanelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TariffControlPanels.
+     */
+    cursor?: TariffControlPanelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffControlPanels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffControlPanels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TariffControlPanels.
+     */
+    distinct?: TariffControlPanelScalarFieldEnum | TariffControlPanelScalarFieldEnum[]
+  }
+
+  /**
+   * TariffControlPanel findFirstOrThrow
+   */
+  export type TariffControlPanelFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffControlPanel to fetch.
+     */
+    where?: TariffControlPanelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffControlPanels to fetch.
+     */
+    orderBy?: TariffControlPanelOrderByWithRelationInput | TariffControlPanelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TariffControlPanels.
+     */
+    cursor?: TariffControlPanelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffControlPanels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffControlPanels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TariffControlPanels.
+     */
+    distinct?: TariffControlPanelScalarFieldEnum | TariffControlPanelScalarFieldEnum[]
+  }
+
+  /**
+   * TariffControlPanel findMany
+   */
+  export type TariffControlPanelFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffControlPanels to fetch.
+     */
+    where?: TariffControlPanelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffControlPanels to fetch.
+     */
+    orderBy?: TariffControlPanelOrderByWithRelationInput | TariffControlPanelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TariffControlPanels.
+     */
+    cursor?: TariffControlPanelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffControlPanels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffControlPanels.
+     */
+    skip?: number
+    distinct?: TariffControlPanelScalarFieldEnum | TariffControlPanelScalarFieldEnum[]
+  }
+
+  /**
+   * TariffControlPanel create
+   */
+  export type TariffControlPanelCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TariffControlPanel.
+     */
+    data: XOR<TariffControlPanelCreateInput, TariffControlPanelUncheckedCreateInput>
+  }
+
+  /**
+   * TariffControlPanel createMany
+   */
+  export type TariffControlPanelCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TariffControlPanels.
+     */
+    data: TariffControlPanelCreateManyInput | TariffControlPanelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TariffControlPanel createManyAndReturn
+   */
+  export type TariffControlPanelCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * The data used to create many TariffControlPanels.
+     */
+    data: TariffControlPanelCreateManyInput | TariffControlPanelCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TariffControlPanel update
+   */
+  export type TariffControlPanelUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TariffControlPanel.
+     */
+    data: XOR<TariffControlPanelUpdateInput, TariffControlPanelUncheckedUpdateInput>
+    /**
+     * Choose, which TariffControlPanel to update.
+     */
+    where: TariffControlPanelWhereUniqueInput
+  }
+
+  /**
+   * TariffControlPanel updateMany
+   */
+  export type TariffControlPanelUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TariffControlPanels.
+     */
+    data: XOR<TariffControlPanelUpdateManyMutationInput, TariffControlPanelUncheckedUpdateManyInput>
+    /**
+     * Filter which TariffControlPanels to update
+     */
+    where?: TariffControlPanelWhereInput
+    /**
+     * Limit how many TariffControlPanels to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TariffControlPanel updateManyAndReturn
+   */
+  export type TariffControlPanelUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * The data used to update TariffControlPanels.
+     */
+    data: XOR<TariffControlPanelUpdateManyMutationInput, TariffControlPanelUncheckedUpdateManyInput>
+    /**
+     * Filter which TariffControlPanels to update
+     */
+    where?: TariffControlPanelWhereInput
+    /**
+     * Limit how many TariffControlPanels to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TariffControlPanel upsert
+   */
+  export type TariffControlPanelUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TariffControlPanel to update in case it exists.
+     */
+    where: TariffControlPanelWhereUniqueInput
+    /**
+     * In case the TariffControlPanel found by the `where` argument doesn't exist, create a new TariffControlPanel with this data.
+     */
+    create: XOR<TariffControlPanelCreateInput, TariffControlPanelUncheckedCreateInput>
+    /**
+     * In case the TariffControlPanel was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TariffControlPanelUpdateInput, TariffControlPanelUncheckedUpdateInput>
+  }
+
+  /**
+   * TariffControlPanel delete
+   */
+  export type TariffControlPanelDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelInclude<ExtArgs> | null
+    /**
+     * Filter which TariffControlPanel to delete.
+     */
+    where: TariffControlPanelWhereUniqueInput
+  }
+
+  /**
+   * TariffControlPanel deleteMany
+   */
+  export type TariffControlPanelDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TariffControlPanels to delete
+     */
+    where?: TariffControlPanelWhereInput
+    /**
+     * Limit how many TariffControlPanels to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TariffControlPanel without action
+   */
+  export type TariffControlPanelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffControlPanel
+     */
+    select?: TariffControlPanelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffControlPanel
+     */
+    omit?: TariffControlPanelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffControlPanelInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TariffCountry
+   */
+
+  export type AggregateTariffCountry = {
+    _count: TariffCountryCountAggregateOutputType | null
+    _min: TariffCountryMinAggregateOutputType | null
+    _max: TariffCountryMaxAggregateOutputType | null
+  }
+
+  export type TariffCountryMinAggregateOutputType = {
+    id: string | null
+    tariffId: string | null
+    countryId: string | null
+  }
+
+  export type TariffCountryMaxAggregateOutputType = {
+    id: string | null
+    tariffId: string | null
+    countryId: string | null
+  }
+
+  export type TariffCountryCountAggregateOutputType = {
+    id: number
+    tariffId: number
+    countryId: number
+    _all: number
+  }
+
+
+  export type TariffCountryMinAggregateInputType = {
+    id?: true
+    tariffId?: true
+    countryId?: true
+  }
+
+  export type TariffCountryMaxAggregateInputType = {
+    id?: true
+    tariffId?: true
+    countryId?: true
+  }
+
+  export type TariffCountryCountAggregateInputType = {
+    id?: true
+    tariffId?: true
+    countryId?: true
+    _all?: true
+  }
+
+  export type TariffCountryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TariffCountry to aggregate.
+     */
+    where?: TariffCountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffCountries to fetch.
+     */
+    orderBy?: TariffCountryOrderByWithRelationInput | TariffCountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TariffCountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffCountries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffCountries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TariffCountries
+    **/
+    _count?: true | TariffCountryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TariffCountryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TariffCountryMaxAggregateInputType
+  }
+
+  export type GetTariffCountryAggregateType<T extends TariffCountryAggregateArgs> = {
+        [P in keyof T & keyof AggregateTariffCountry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTariffCountry[P]>
+      : GetScalarType<T[P], AggregateTariffCountry[P]>
+  }
+
+
+
+
+  export type TariffCountryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffCountryWhereInput
+    orderBy?: TariffCountryOrderByWithAggregationInput | TariffCountryOrderByWithAggregationInput[]
+    by: TariffCountryScalarFieldEnum[] | TariffCountryScalarFieldEnum
+    having?: TariffCountryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TariffCountryCountAggregateInputType | true
+    _min?: TariffCountryMinAggregateInputType
+    _max?: TariffCountryMaxAggregateInputType
+  }
+
+  export type TariffCountryGroupByOutputType = {
+    id: string
+    tariffId: string
+    countryId: string
+    _count: TariffCountryCountAggregateOutputType | null
+    _min: TariffCountryMinAggregateOutputType | null
+    _max: TariffCountryMaxAggregateOutputType | null
+  }
+
+  type GetTariffCountryGroupByPayload<T extends TariffCountryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TariffCountryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TariffCountryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TariffCountryGroupByOutputType[P]>
+            : GetScalarType<T[P], TariffCountryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TariffCountrySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    countryId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    country?: boolean | CountryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffCountry"]>
+
+  export type TariffCountrySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    countryId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    country?: boolean | CountryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffCountry"]>
+
+  export type TariffCountrySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    countryId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    country?: boolean | CountryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffCountry"]>
+
+  export type TariffCountrySelectScalar = {
+    id?: boolean
+    tariffId?: boolean
+    countryId?: boolean
+  }
+
+  export type TariffCountryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tariffId" | "countryId", ExtArgs["result"]["tariffCountry"]>
+  export type TariffCountryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    country?: boolean | CountryDefaultArgs<ExtArgs>
+  }
+  export type TariffCountryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    country?: boolean | CountryDefaultArgs<ExtArgs>
+  }
+  export type TariffCountryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    country?: boolean | CountryDefaultArgs<ExtArgs>
+  }
+
+  export type $TariffCountryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TariffCountry"
+    objects: {
+      tariff: Prisma.$TariffPayload<ExtArgs>
+      country: Prisma.$CountryPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      tariffId: string
+      countryId: string
+    }, ExtArgs["result"]["tariffCountry"]>
+    composites: {}
+  }
+
+  type TariffCountryGetPayload<S extends boolean | null | undefined | TariffCountryDefaultArgs> = $Result.GetResult<Prisma.$TariffCountryPayload, S>
+
+  type TariffCountryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TariffCountryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TariffCountryCountAggregateInputType | true
+    }
+
+  export interface TariffCountryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TariffCountry'], meta: { name: 'TariffCountry' } }
+    /**
+     * Find zero or one TariffCountry that matches the filter.
+     * @param {TariffCountryFindUniqueArgs} args - Arguments to find a TariffCountry
+     * @example
+     * // Get one TariffCountry
+     * const tariffCountry = await prisma.tariffCountry.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TariffCountryFindUniqueArgs>(args: SelectSubset<T, TariffCountryFindUniqueArgs<ExtArgs>>): Prisma__TariffCountryClient<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TariffCountry that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TariffCountryFindUniqueOrThrowArgs} args - Arguments to find a TariffCountry
+     * @example
+     * // Get one TariffCountry
+     * const tariffCountry = await prisma.tariffCountry.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TariffCountryFindUniqueOrThrowArgs>(args: SelectSubset<T, TariffCountryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TariffCountryClient<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TariffCountry that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCountryFindFirstArgs} args - Arguments to find a TariffCountry
+     * @example
+     * // Get one TariffCountry
+     * const tariffCountry = await prisma.tariffCountry.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TariffCountryFindFirstArgs>(args?: SelectSubset<T, TariffCountryFindFirstArgs<ExtArgs>>): Prisma__TariffCountryClient<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TariffCountry that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCountryFindFirstOrThrowArgs} args - Arguments to find a TariffCountry
+     * @example
+     * // Get one TariffCountry
+     * const tariffCountry = await prisma.tariffCountry.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TariffCountryFindFirstOrThrowArgs>(args?: SelectSubset<T, TariffCountryFindFirstOrThrowArgs<ExtArgs>>): Prisma__TariffCountryClient<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TariffCountries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCountryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TariffCountries
+     * const tariffCountries = await prisma.tariffCountry.findMany()
+     * 
+     * // Get first 10 TariffCountries
+     * const tariffCountries = await prisma.tariffCountry.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tariffCountryWithIdOnly = await prisma.tariffCountry.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TariffCountryFindManyArgs>(args?: SelectSubset<T, TariffCountryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TariffCountry.
+     * @param {TariffCountryCreateArgs} args - Arguments to create a TariffCountry.
+     * @example
+     * // Create one TariffCountry
+     * const TariffCountry = await prisma.tariffCountry.create({
+     *   data: {
+     *     // ... data to create a TariffCountry
+     *   }
+     * })
+     * 
+     */
+    create<T extends TariffCountryCreateArgs>(args: SelectSubset<T, TariffCountryCreateArgs<ExtArgs>>): Prisma__TariffCountryClient<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TariffCountries.
+     * @param {TariffCountryCreateManyArgs} args - Arguments to create many TariffCountries.
+     * @example
+     * // Create many TariffCountries
+     * const tariffCountry = await prisma.tariffCountry.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TariffCountryCreateManyArgs>(args?: SelectSubset<T, TariffCountryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TariffCountries and returns the data saved in the database.
+     * @param {TariffCountryCreateManyAndReturnArgs} args - Arguments to create many TariffCountries.
+     * @example
+     * // Create many TariffCountries
+     * const tariffCountry = await prisma.tariffCountry.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TariffCountries and only return the `id`
+     * const tariffCountryWithIdOnly = await prisma.tariffCountry.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TariffCountryCreateManyAndReturnArgs>(args?: SelectSubset<T, TariffCountryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TariffCountry.
+     * @param {TariffCountryDeleteArgs} args - Arguments to delete one TariffCountry.
+     * @example
+     * // Delete one TariffCountry
+     * const TariffCountry = await prisma.tariffCountry.delete({
+     *   where: {
+     *     // ... filter to delete one TariffCountry
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TariffCountryDeleteArgs>(args: SelectSubset<T, TariffCountryDeleteArgs<ExtArgs>>): Prisma__TariffCountryClient<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TariffCountry.
+     * @param {TariffCountryUpdateArgs} args - Arguments to update one TariffCountry.
+     * @example
+     * // Update one TariffCountry
+     * const tariffCountry = await prisma.tariffCountry.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TariffCountryUpdateArgs>(args: SelectSubset<T, TariffCountryUpdateArgs<ExtArgs>>): Prisma__TariffCountryClient<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TariffCountries.
+     * @param {TariffCountryDeleteManyArgs} args - Arguments to filter TariffCountries to delete.
+     * @example
+     * // Delete a few TariffCountries
+     * const { count } = await prisma.tariffCountry.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TariffCountryDeleteManyArgs>(args?: SelectSubset<T, TariffCountryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TariffCountries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCountryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TariffCountries
+     * const tariffCountry = await prisma.tariffCountry.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TariffCountryUpdateManyArgs>(args: SelectSubset<T, TariffCountryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TariffCountries and returns the data updated in the database.
+     * @param {TariffCountryUpdateManyAndReturnArgs} args - Arguments to update many TariffCountries.
+     * @example
+     * // Update many TariffCountries
+     * const tariffCountry = await prisma.tariffCountry.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TariffCountries and only return the `id`
+     * const tariffCountryWithIdOnly = await prisma.tariffCountry.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TariffCountryUpdateManyAndReturnArgs>(args: SelectSubset<T, TariffCountryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TariffCountry.
+     * @param {TariffCountryUpsertArgs} args - Arguments to update or create a TariffCountry.
+     * @example
+     * // Update or create a TariffCountry
+     * const tariffCountry = await prisma.tariffCountry.upsert({
+     *   create: {
+     *     // ... data to create a TariffCountry
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TariffCountry we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TariffCountryUpsertArgs>(args: SelectSubset<T, TariffCountryUpsertArgs<ExtArgs>>): Prisma__TariffCountryClient<$Result.GetResult<Prisma.$TariffCountryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TariffCountries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCountryCountArgs} args - Arguments to filter TariffCountries to count.
+     * @example
+     * // Count the number of TariffCountries
+     * const count = await prisma.tariffCountry.count({
+     *   where: {
+     *     // ... the filter for the TariffCountries we want to count
+     *   }
+     * })
+    **/
+    count<T extends TariffCountryCountArgs>(
+      args?: Subset<T, TariffCountryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TariffCountryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TariffCountry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCountryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TariffCountryAggregateArgs>(args: Subset<T, TariffCountryAggregateArgs>): Prisma.PrismaPromise<GetTariffCountryAggregateType<T>>
+
+    /**
+     * Group by TariffCountry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffCountryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TariffCountryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TariffCountryGroupByArgs['orderBy'] }
+        : { orderBy?: TariffCountryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TariffCountryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTariffCountryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TariffCountry model
+   */
+  readonly fields: TariffCountryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TariffCountry.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TariffCountryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariff<T extends TariffDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TariffDefaultArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    country<T extends CountryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CountryDefaultArgs<ExtArgs>>): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TariffCountry model
+   */
+  interface TariffCountryFieldRefs {
+    readonly id: FieldRef<"TariffCountry", 'String'>
+    readonly tariffId: FieldRef<"TariffCountry", 'String'>
+    readonly countryId: FieldRef<"TariffCountry", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TariffCountry findUnique
+   */
+  export type TariffCountryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffCountry to fetch.
+     */
+    where: TariffCountryWhereUniqueInput
+  }
+
+  /**
+   * TariffCountry findUniqueOrThrow
+   */
+  export type TariffCountryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffCountry to fetch.
+     */
+    where: TariffCountryWhereUniqueInput
+  }
+
+  /**
+   * TariffCountry findFirst
+   */
+  export type TariffCountryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffCountry to fetch.
+     */
+    where?: TariffCountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffCountries to fetch.
+     */
+    orderBy?: TariffCountryOrderByWithRelationInput | TariffCountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TariffCountries.
+     */
+    cursor?: TariffCountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffCountries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffCountries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TariffCountries.
+     */
+    distinct?: TariffCountryScalarFieldEnum | TariffCountryScalarFieldEnum[]
+  }
+
+  /**
+   * TariffCountry findFirstOrThrow
+   */
+  export type TariffCountryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffCountry to fetch.
+     */
+    where?: TariffCountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffCountries to fetch.
+     */
+    orderBy?: TariffCountryOrderByWithRelationInput | TariffCountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TariffCountries.
+     */
+    cursor?: TariffCountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffCountries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffCountries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TariffCountries.
+     */
+    distinct?: TariffCountryScalarFieldEnum | TariffCountryScalarFieldEnum[]
+  }
+
+  /**
+   * TariffCountry findMany
+   */
+  export type TariffCountryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffCountries to fetch.
+     */
+    where?: TariffCountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffCountries to fetch.
+     */
+    orderBy?: TariffCountryOrderByWithRelationInput | TariffCountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TariffCountries.
+     */
+    cursor?: TariffCountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffCountries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffCountries.
+     */
+    skip?: number
+    distinct?: TariffCountryScalarFieldEnum | TariffCountryScalarFieldEnum[]
+  }
+
+  /**
+   * TariffCountry create
+   */
+  export type TariffCountryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TariffCountry.
+     */
+    data: XOR<TariffCountryCreateInput, TariffCountryUncheckedCreateInput>
+  }
+
+  /**
+   * TariffCountry createMany
+   */
+  export type TariffCountryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TariffCountries.
+     */
+    data: TariffCountryCreateManyInput | TariffCountryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TariffCountry createManyAndReturn
+   */
+  export type TariffCountryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * The data used to create many TariffCountries.
+     */
+    data: TariffCountryCreateManyInput | TariffCountryCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TariffCountry update
+   */
+  export type TariffCountryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TariffCountry.
+     */
+    data: XOR<TariffCountryUpdateInput, TariffCountryUncheckedUpdateInput>
+    /**
+     * Choose, which TariffCountry to update.
+     */
+    where: TariffCountryWhereUniqueInput
+  }
+
+  /**
+   * TariffCountry updateMany
+   */
+  export type TariffCountryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TariffCountries.
+     */
+    data: XOR<TariffCountryUpdateManyMutationInput, TariffCountryUncheckedUpdateManyInput>
+    /**
+     * Filter which TariffCountries to update
+     */
+    where?: TariffCountryWhereInput
+    /**
+     * Limit how many TariffCountries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TariffCountry updateManyAndReturn
+   */
+  export type TariffCountryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * The data used to update TariffCountries.
+     */
+    data: XOR<TariffCountryUpdateManyMutationInput, TariffCountryUncheckedUpdateManyInput>
+    /**
+     * Filter which TariffCountries to update
+     */
+    where?: TariffCountryWhereInput
+    /**
+     * Limit how many TariffCountries to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TariffCountry upsert
+   */
+  export type TariffCountryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TariffCountry to update in case it exists.
+     */
+    where: TariffCountryWhereUniqueInput
+    /**
+     * In case the TariffCountry found by the `where` argument doesn't exist, create a new TariffCountry with this data.
+     */
+    create: XOR<TariffCountryCreateInput, TariffCountryUncheckedCreateInput>
+    /**
+     * In case the TariffCountry was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TariffCountryUpdateInput, TariffCountryUncheckedUpdateInput>
+  }
+
+  /**
+   * TariffCountry delete
+   */
+  export type TariffCountryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryInclude<ExtArgs> | null
+    /**
+     * Filter which TariffCountry to delete.
+     */
+    where: TariffCountryWhereUniqueInput
+  }
+
+  /**
+   * TariffCountry deleteMany
+   */
+  export type TariffCountryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TariffCountries to delete
+     */
+    where?: TariffCountryWhereInput
+    /**
+     * Limit how many TariffCountries to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TariffCountry without action
+   */
+  export type TariffCountryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffCountry
+     */
+    select?: TariffCountrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffCountry
+     */
+    omit?: TariffCountryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffCountryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TariffDataStore
+   */
+
+  export type AggregateTariffDataStore = {
+    _count: TariffDataStoreCountAggregateOutputType | null
+    _min: TariffDataStoreMinAggregateOutputType | null
+    _max: TariffDataStoreMaxAggregateOutputType | null
+  }
+
+  export type TariffDataStoreMinAggregateOutputType = {
+    id: string | null
+    tariffId: string | null
+    dataStoreId: string | null
+  }
+
+  export type TariffDataStoreMaxAggregateOutputType = {
+    id: string | null
+    tariffId: string | null
+    dataStoreId: string | null
+  }
+
+  export type TariffDataStoreCountAggregateOutputType = {
+    id: number
+    tariffId: number
+    dataStoreId: number
+    _all: number
+  }
+
+
+  export type TariffDataStoreMinAggregateInputType = {
+    id?: true
+    tariffId?: true
+    dataStoreId?: true
+  }
+
+  export type TariffDataStoreMaxAggregateInputType = {
+    id?: true
+    tariffId?: true
+    dataStoreId?: true
+  }
+
+  export type TariffDataStoreCountAggregateInputType = {
+    id?: true
+    tariffId?: true
+    dataStoreId?: true
+    _all?: true
+  }
+
+  export type TariffDataStoreAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TariffDataStore to aggregate.
+     */
+    where?: TariffDataStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffDataStores to fetch.
+     */
+    orderBy?: TariffDataStoreOrderByWithRelationInput | TariffDataStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TariffDataStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffDataStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffDataStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TariffDataStores
+    **/
+    _count?: true | TariffDataStoreCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TariffDataStoreMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TariffDataStoreMaxAggregateInputType
+  }
+
+  export type GetTariffDataStoreAggregateType<T extends TariffDataStoreAggregateArgs> = {
+        [P in keyof T & keyof AggregateTariffDataStore]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTariffDataStore[P]>
+      : GetScalarType<T[P], AggregateTariffDataStore[P]>
+  }
+
+
+
+
+  export type TariffDataStoreGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffDataStoreWhereInput
+    orderBy?: TariffDataStoreOrderByWithAggregationInput | TariffDataStoreOrderByWithAggregationInput[]
+    by: TariffDataStoreScalarFieldEnum[] | TariffDataStoreScalarFieldEnum
+    having?: TariffDataStoreScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TariffDataStoreCountAggregateInputType | true
+    _min?: TariffDataStoreMinAggregateInputType
+    _max?: TariffDataStoreMaxAggregateInputType
+  }
+
+  export type TariffDataStoreGroupByOutputType = {
+    id: string
+    tariffId: string
+    dataStoreId: string
+    _count: TariffDataStoreCountAggregateOutputType | null
+    _min: TariffDataStoreMinAggregateOutputType | null
+    _max: TariffDataStoreMaxAggregateOutputType | null
+  }
+
+  type GetTariffDataStoreGroupByPayload<T extends TariffDataStoreGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TariffDataStoreGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TariffDataStoreGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TariffDataStoreGroupByOutputType[P]>
+            : GetScalarType<T[P], TariffDataStoreGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TariffDataStoreSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    dataStoreId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    dataStore?: boolean | DataStoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffDataStore"]>
+
+  export type TariffDataStoreSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    dataStoreId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    dataStore?: boolean | DataStoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffDataStore"]>
+
+  export type TariffDataStoreSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    dataStoreId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    dataStore?: boolean | DataStoreDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffDataStore"]>
+
+  export type TariffDataStoreSelectScalar = {
+    id?: boolean
+    tariffId?: boolean
+    dataStoreId?: boolean
+  }
+
+  export type TariffDataStoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tariffId" | "dataStoreId", ExtArgs["result"]["tariffDataStore"]>
+  export type TariffDataStoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    dataStore?: boolean | DataStoreDefaultArgs<ExtArgs>
+  }
+  export type TariffDataStoreIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    dataStore?: boolean | DataStoreDefaultArgs<ExtArgs>
+  }
+  export type TariffDataStoreIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    dataStore?: boolean | DataStoreDefaultArgs<ExtArgs>
+  }
+
+  export type $TariffDataStorePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TariffDataStore"
+    objects: {
+      tariff: Prisma.$TariffPayload<ExtArgs>
+      dataStore: Prisma.$DataStorePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      tariffId: string
+      dataStoreId: string
+    }, ExtArgs["result"]["tariffDataStore"]>
+    composites: {}
+  }
+
+  type TariffDataStoreGetPayload<S extends boolean | null | undefined | TariffDataStoreDefaultArgs> = $Result.GetResult<Prisma.$TariffDataStorePayload, S>
+
+  type TariffDataStoreCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TariffDataStoreFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TariffDataStoreCountAggregateInputType | true
+    }
+
+  export interface TariffDataStoreDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TariffDataStore'], meta: { name: 'TariffDataStore' } }
+    /**
+     * Find zero or one TariffDataStore that matches the filter.
+     * @param {TariffDataStoreFindUniqueArgs} args - Arguments to find a TariffDataStore
+     * @example
+     * // Get one TariffDataStore
+     * const tariffDataStore = await prisma.tariffDataStore.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TariffDataStoreFindUniqueArgs>(args: SelectSubset<T, TariffDataStoreFindUniqueArgs<ExtArgs>>): Prisma__TariffDataStoreClient<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TariffDataStore that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TariffDataStoreFindUniqueOrThrowArgs} args - Arguments to find a TariffDataStore
+     * @example
+     * // Get one TariffDataStore
+     * const tariffDataStore = await prisma.tariffDataStore.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TariffDataStoreFindUniqueOrThrowArgs>(args: SelectSubset<T, TariffDataStoreFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TariffDataStoreClient<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TariffDataStore that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffDataStoreFindFirstArgs} args - Arguments to find a TariffDataStore
+     * @example
+     * // Get one TariffDataStore
+     * const tariffDataStore = await prisma.tariffDataStore.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TariffDataStoreFindFirstArgs>(args?: SelectSubset<T, TariffDataStoreFindFirstArgs<ExtArgs>>): Prisma__TariffDataStoreClient<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TariffDataStore that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffDataStoreFindFirstOrThrowArgs} args - Arguments to find a TariffDataStore
+     * @example
+     * // Get one TariffDataStore
+     * const tariffDataStore = await prisma.tariffDataStore.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TariffDataStoreFindFirstOrThrowArgs>(args?: SelectSubset<T, TariffDataStoreFindFirstOrThrowArgs<ExtArgs>>): Prisma__TariffDataStoreClient<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TariffDataStores that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffDataStoreFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TariffDataStores
+     * const tariffDataStores = await prisma.tariffDataStore.findMany()
+     * 
+     * // Get first 10 TariffDataStores
+     * const tariffDataStores = await prisma.tariffDataStore.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tariffDataStoreWithIdOnly = await prisma.tariffDataStore.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TariffDataStoreFindManyArgs>(args?: SelectSubset<T, TariffDataStoreFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TariffDataStore.
+     * @param {TariffDataStoreCreateArgs} args - Arguments to create a TariffDataStore.
+     * @example
+     * // Create one TariffDataStore
+     * const TariffDataStore = await prisma.tariffDataStore.create({
+     *   data: {
+     *     // ... data to create a TariffDataStore
+     *   }
+     * })
+     * 
+     */
+    create<T extends TariffDataStoreCreateArgs>(args: SelectSubset<T, TariffDataStoreCreateArgs<ExtArgs>>): Prisma__TariffDataStoreClient<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TariffDataStores.
+     * @param {TariffDataStoreCreateManyArgs} args - Arguments to create many TariffDataStores.
+     * @example
+     * // Create many TariffDataStores
+     * const tariffDataStore = await prisma.tariffDataStore.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TariffDataStoreCreateManyArgs>(args?: SelectSubset<T, TariffDataStoreCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TariffDataStores and returns the data saved in the database.
+     * @param {TariffDataStoreCreateManyAndReturnArgs} args - Arguments to create many TariffDataStores.
+     * @example
+     * // Create many TariffDataStores
+     * const tariffDataStore = await prisma.tariffDataStore.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TariffDataStores and only return the `id`
+     * const tariffDataStoreWithIdOnly = await prisma.tariffDataStore.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TariffDataStoreCreateManyAndReturnArgs>(args?: SelectSubset<T, TariffDataStoreCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TariffDataStore.
+     * @param {TariffDataStoreDeleteArgs} args - Arguments to delete one TariffDataStore.
+     * @example
+     * // Delete one TariffDataStore
+     * const TariffDataStore = await prisma.tariffDataStore.delete({
+     *   where: {
+     *     // ... filter to delete one TariffDataStore
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TariffDataStoreDeleteArgs>(args: SelectSubset<T, TariffDataStoreDeleteArgs<ExtArgs>>): Prisma__TariffDataStoreClient<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TariffDataStore.
+     * @param {TariffDataStoreUpdateArgs} args - Arguments to update one TariffDataStore.
+     * @example
+     * // Update one TariffDataStore
+     * const tariffDataStore = await prisma.tariffDataStore.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TariffDataStoreUpdateArgs>(args: SelectSubset<T, TariffDataStoreUpdateArgs<ExtArgs>>): Prisma__TariffDataStoreClient<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TariffDataStores.
+     * @param {TariffDataStoreDeleteManyArgs} args - Arguments to filter TariffDataStores to delete.
+     * @example
+     * // Delete a few TariffDataStores
+     * const { count } = await prisma.tariffDataStore.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TariffDataStoreDeleteManyArgs>(args?: SelectSubset<T, TariffDataStoreDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TariffDataStores.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffDataStoreUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TariffDataStores
+     * const tariffDataStore = await prisma.tariffDataStore.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TariffDataStoreUpdateManyArgs>(args: SelectSubset<T, TariffDataStoreUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TariffDataStores and returns the data updated in the database.
+     * @param {TariffDataStoreUpdateManyAndReturnArgs} args - Arguments to update many TariffDataStores.
+     * @example
+     * // Update many TariffDataStores
+     * const tariffDataStore = await prisma.tariffDataStore.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TariffDataStores and only return the `id`
+     * const tariffDataStoreWithIdOnly = await prisma.tariffDataStore.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TariffDataStoreUpdateManyAndReturnArgs>(args: SelectSubset<T, TariffDataStoreUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TariffDataStore.
+     * @param {TariffDataStoreUpsertArgs} args - Arguments to update or create a TariffDataStore.
+     * @example
+     * // Update or create a TariffDataStore
+     * const tariffDataStore = await prisma.tariffDataStore.upsert({
+     *   create: {
+     *     // ... data to create a TariffDataStore
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TariffDataStore we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TariffDataStoreUpsertArgs>(args: SelectSubset<T, TariffDataStoreUpsertArgs<ExtArgs>>): Prisma__TariffDataStoreClient<$Result.GetResult<Prisma.$TariffDataStorePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TariffDataStores.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffDataStoreCountArgs} args - Arguments to filter TariffDataStores to count.
+     * @example
+     * // Count the number of TariffDataStores
+     * const count = await prisma.tariffDataStore.count({
+     *   where: {
+     *     // ... the filter for the TariffDataStores we want to count
+     *   }
+     * })
+    **/
+    count<T extends TariffDataStoreCountArgs>(
+      args?: Subset<T, TariffDataStoreCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TariffDataStoreCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TariffDataStore.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffDataStoreAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TariffDataStoreAggregateArgs>(args: Subset<T, TariffDataStoreAggregateArgs>): Prisma.PrismaPromise<GetTariffDataStoreAggregateType<T>>
+
+    /**
+     * Group by TariffDataStore.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffDataStoreGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TariffDataStoreGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TariffDataStoreGroupByArgs['orderBy'] }
+        : { orderBy?: TariffDataStoreGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TariffDataStoreGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTariffDataStoreGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TariffDataStore model
+   */
+  readonly fields: TariffDataStoreFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TariffDataStore.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TariffDataStoreClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariff<T extends TariffDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TariffDefaultArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    dataStore<T extends DataStoreDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DataStoreDefaultArgs<ExtArgs>>): Prisma__DataStoreClient<$Result.GetResult<Prisma.$DataStorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TariffDataStore model
+   */
+  interface TariffDataStoreFieldRefs {
+    readonly id: FieldRef<"TariffDataStore", 'String'>
+    readonly tariffId: FieldRef<"TariffDataStore", 'String'>
+    readonly dataStoreId: FieldRef<"TariffDataStore", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TariffDataStore findUnique
+   */
+  export type TariffDataStoreFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffDataStore to fetch.
+     */
+    where: TariffDataStoreWhereUniqueInput
+  }
+
+  /**
+   * TariffDataStore findUniqueOrThrow
+   */
+  export type TariffDataStoreFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffDataStore to fetch.
+     */
+    where: TariffDataStoreWhereUniqueInput
+  }
+
+  /**
+   * TariffDataStore findFirst
+   */
+  export type TariffDataStoreFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffDataStore to fetch.
+     */
+    where?: TariffDataStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffDataStores to fetch.
+     */
+    orderBy?: TariffDataStoreOrderByWithRelationInput | TariffDataStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TariffDataStores.
+     */
+    cursor?: TariffDataStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffDataStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffDataStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TariffDataStores.
+     */
+    distinct?: TariffDataStoreScalarFieldEnum | TariffDataStoreScalarFieldEnum[]
+  }
+
+  /**
+   * TariffDataStore findFirstOrThrow
+   */
+  export type TariffDataStoreFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffDataStore to fetch.
+     */
+    where?: TariffDataStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffDataStores to fetch.
+     */
+    orderBy?: TariffDataStoreOrderByWithRelationInput | TariffDataStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TariffDataStores.
+     */
+    cursor?: TariffDataStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffDataStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffDataStores.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TariffDataStores.
+     */
+    distinct?: TariffDataStoreScalarFieldEnum | TariffDataStoreScalarFieldEnum[]
+  }
+
+  /**
+   * TariffDataStore findMany
+   */
+  export type TariffDataStoreFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffDataStores to fetch.
+     */
+    where?: TariffDataStoreWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffDataStores to fetch.
+     */
+    orderBy?: TariffDataStoreOrderByWithRelationInput | TariffDataStoreOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TariffDataStores.
+     */
+    cursor?: TariffDataStoreWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffDataStores from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffDataStores.
+     */
+    skip?: number
+    distinct?: TariffDataStoreScalarFieldEnum | TariffDataStoreScalarFieldEnum[]
+  }
+
+  /**
+   * TariffDataStore create
+   */
+  export type TariffDataStoreCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TariffDataStore.
+     */
+    data: XOR<TariffDataStoreCreateInput, TariffDataStoreUncheckedCreateInput>
+  }
+
+  /**
+   * TariffDataStore createMany
+   */
+  export type TariffDataStoreCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TariffDataStores.
+     */
+    data: TariffDataStoreCreateManyInput | TariffDataStoreCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TariffDataStore createManyAndReturn
+   */
+  export type TariffDataStoreCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * The data used to create many TariffDataStores.
+     */
+    data: TariffDataStoreCreateManyInput | TariffDataStoreCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TariffDataStore update
+   */
+  export type TariffDataStoreUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TariffDataStore.
+     */
+    data: XOR<TariffDataStoreUpdateInput, TariffDataStoreUncheckedUpdateInput>
+    /**
+     * Choose, which TariffDataStore to update.
+     */
+    where: TariffDataStoreWhereUniqueInput
+  }
+
+  /**
+   * TariffDataStore updateMany
+   */
+  export type TariffDataStoreUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TariffDataStores.
+     */
+    data: XOR<TariffDataStoreUpdateManyMutationInput, TariffDataStoreUncheckedUpdateManyInput>
+    /**
+     * Filter which TariffDataStores to update
+     */
+    where?: TariffDataStoreWhereInput
+    /**
+     * Limit how many TariffDataStores to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TariffDataStore updateManyAndReturn
+   */
+  export type TariffDataStoreUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * The data used to update TariffDataStores.
+     */
+    data: XOR<TariffDataStoreUpdateManyMutationInput, TariffDataStoreUncheckedUpdateManyInput>
+    /**
+     * Filter which TariffDataStores to update
+     */
+    where?: TariffDataStoreWhereInput
+    /**
+     * Limit how many TariffDataStores to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TariffDataStore upsert
+   */
+  export type TariffDataStoreUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TariffDataStore to update in case it exists.
+     */
+    where: TariffDataStoreWhereUniqueInput
+    /**
+     * In case the TariffDataStore found by the `where` argument doesn't exist, create a new TariffDataStore with this data.
+     */
+    create: XOR<TariffDataStoreCreateInput, TariffDataStoreUncheckedCreateInput>
+    /**
+     * In case the TariffDataStore was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TariffDataStoreUpdateInput, TariffDataStoreUncheckedUpdateInput>
+  }
+
+  /**
+   * TariffDataStore delete
+   */
+  export type TariffDataStoreDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreInclude<ExtArgs> | null
+    /**
+     * Filter which TariffDataStore to delete.
+     */
+    where: TariffDataStoreWhereUniqueInput
+  }
+
+  /**
+   * TariffDataStore deleteMany
+   */
+  export type TariffDataStoreDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TariffDataStores to delete
+     */
+    where?: TariffDataStoreWhereInput
+    /**
+     * Limit how many TariffDataStores to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TariffDataStore without action
+   */
+  export type TariffDataStoreDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffDataStore
+     */
+    select?: TariffDataStoreSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffDataStore
+     */
+    omit?: TariffDataStoreOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffDataStoreInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TariffOperationSystem
+   */
+
+  export type AggregateTariffOperationSystem = {
+    _count: TariffOperationSystemCountAggregateOutputType | null
+    _min: TariffOperationSystemMinAggregateOutputType | null
+    _max: TariffOperationSystemMaxAggregateOutputType | null
+  }
+
+  export type TariffOperationSystemMinAggregateOutputType = {
+    id: string | null
+    tariffId: string | null
+    operationSystemId: string | null
+  }
+
+  export type TariffOperationSystemMaxAggregateOutputType = {
+    id: string | null
+    tariffId: string | null
+    operationSystemId: string | null
+  }
+
+  export type TariffOperationSystemCountAggregateOutputType = {
+    id: number
+    tariffId: number
+    operationSystemId: number
+    _all: number
+  }
+
+
+  export type TariffOperationSystemMinAggregateInputType = {
+    id?: true
+    tariffId?: true
+    operationSystemId?: true
+  }
+
+  export type TariffOperationSystemMaxAggregateInputType = {
+    id?: true
+    tariffId?: true
+    operationSystemId?: true
+  }
+
+  export type TariffOperationSystemCountAggregateInputType = {
+    id?: true
+    tariffId?: true
+    operationSystemId?: true
+    _all?: true
+  }
+
+  export type TariffOperationSystemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TariffOperationSystem to aggregate.
+     */
+    where?: TariffOperationSystemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffOperationSystems to fetch.
+     */
+    orderBy?: TariffOperationSystemOrderByWithRelationInput | TariffOperationSystemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TariffOperationSystemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffOperationSystems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffOperationSystems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TariffOperationSystems
+    **/
+    _count?: true | TariffOperationSystemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TariffOperationSystemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TariffOperationSystemMaxAggregateInputType
+  }
+
+  export type GetTariffOperationSystemAggregateType<T extends TariffOperationSystemAggregateArgs> = {
+        [P in keyof T & keyof AggregateTariffOperationSystem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTariffOperationSystem[P]>
+      : GetScalarType<T[P], AggregateTariffOperationSystem[P]>
+  }
+
+
+
+
+  export type TariffOperationSystemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffOperationSystemWhereInput
+    orderBy?: TariffOperationSystemOrderByWithAggregationInput | TariffOperationSystemOrderByWithAggregationInput[]
+    by: TariffOperationSystemScalarFieldEnum[] | TariffOperationSystemScalarFieldEnum
+    having?: TariffOperationSystemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TariffOperationSystemCountAggregateInputType | true
+    _min?: TariffOperationSystemMinAggregateInputType
+    _max?: TariffOperationSystemMaxAggregateInputType
+  }
+
+  export type TariffOperationSystemGroupByOutputType = {
+    id: string
+    tariffId: string
+    operationSystemId: string
+    _count: TariffOperationSystemCountAggregateOutputType | null
+    _min: TariffOperationSystemMinAggregateOutputType | null
+    _max: TariffOperationSystemMaxAggregateOutputType | null
+  }
+
+  type GetTariffOperationSystemGroupByPayload<T extends TariffOperationSystemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TariffOperationSystemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TariffOperationSystemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TariffOperationSystemGroupByOutputType[P]>
+            : GetScalarType<T[P], TariffOperationSystemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TariffOperationSystemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    operationSystemId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    operationSystem?: boolean | OperationSystemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffOperationSystem"]>
+
+  export type TariffOperationSystemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    operationSystemId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    operationSystem?: boolean | OperationSystemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffOperationSystem"]>
+
+  export type TariffOperationSystemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    operationSystemId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    operationSystem?: boolean | OperationSystemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffOperationSystem"]>
+
+  export type TariffOperationSystemSelectScalar = {
+    id?: boolean
+    tariffId?: boolean
+    operationSystemId?: boolean
+  }
+
+  export type TariffOperationSystemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tariffId" | "operationSystemId", ExtArgs["result"]["tariffOperationSystem"]>
+  export type TariffOperationSystemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    operationSystem?: boolean | OperationSystemDefaultArgs<ExtArgs>
+  }
+  export type TariffOperationSystemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    operationSystem?: boolean | OperationSystemDefaultArgs<ExtArgs>
+  }
+  export type TariffOperationSystemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    operationSystem?: boolean | OperationSystemDefaultArgs<ExtArgs>
+  }
+
+  export type $TariffOperationSystemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TariffOperationSystem"
+    objects: {
+      tariff: Prisma.$TariffPayload<ExtArgs>
+      operationSystem: Prisma.$OperationSystemPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      tariffId: string
+      operationSystemId: string
+    }, ExtArgs["result"]["tariffOperationSystem"]>
+    composites: {}
+  }
+
+  type TariffOperationSystemGetPayload<S extends boolean | null | undefined | TariffOperationSystemDefaultArgs> = $Result.GetResult<Prisma.$TariffOperationSystemPayload, S>
+
+  type TariffOperationSystemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TariffOperationSystemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TariffOperationSystemCountAggregateInputType | true
+    }
+
+  export interface TariffOperationSystemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TariffOperationSystem'], meta: { name: 'TariffOperationSystem' } }
+    /**
+     * Find zero or one TariffOperationSystem that matches the filter.
+     * @param {TariffOperationSystemFindUniqueArgs} args - Arguments to find a TariffOperationSystem
+     * @example
+     * // Get one TariffOperationSystem
+     * const tariffOperationSystem = await prisma.tariffOperationSystem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TariffOperationSystemFindUniqueArgs>(args: SelectSubset<T, TariffOperationSystemFindUniqueArgs<ExtArgs>>): Prisma__TariffOperationSystemClient<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TariffOperationSystem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TariffOperationSystemFindUniqueOrThrowArgs} args - Arguments to find a TariffOperationSystem
+     * @example
+     * // Get one TariffOperationSystem
+     * const tariffOperationSystem = await prisma.tariffOperationSystem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TariffOperationSystemFindUniqueOrThrowArgs>(args: SelectSubset<T, TariffOperationSystemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TariffOperationSystemClient<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TariffOperationSystem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffOperationSystemFindFirstArgs} args - Arguments to find a TariffOperationSystem
+     * @example
+     * // Get one TariffOperationSystem
+     * const tariffOperationSystem = await prisma.tariffOperationSystem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TariffOperationSystemFindFirstArgs>(args?: SelectSubset<T, TariffOperationSystemFindFirstArgs<ExtArgs>>): Prisma__TariffOperationSystemClient<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TariffOperationSystem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffOperationSystemFindFirstOrThrowArgs} args - Arguments to find a TariffOperationSystem
+     * @example
+     * // Get one TariffOperationSystem
+     * const tariffOperationSystem = await prisma.tariffOperationSystem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TariffOperationSystemFindFirstOrThrowArgs>(args?: SelectSubset<T, TariffOperationSystemFindFirstOrThrowArgs<ExtArgs>>): Prisma__TariffOperationSystemClient<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TariffOperationSystems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffOperationSystemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TariffOperationSystems
+     * const tariffOperationSystems = await prisma.tariffOperationSystem.findMany()
+     * 
+     * // Get first 10 TariffOperationSystems
+     * const tariffOperationSystems = await prisma.tariffOperationSystem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tariffOperationSystemWithIdOnly = await prisma.tariffOperationSystem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TariffOperationSystemFindManyArgs>(args?: SelectSubset<T, TariffOperationSystemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TariffOperationSystem.
+     * @param {TariffOperationSystemCreateArgs} args - Arguments to create a TariffOperationSystem.
+     * @example
+     * // Create one TariffOperationSystem
+     * const TariffOperationSystem = await prisma.tariffOperationSystem.create({
+     *   data: {
+     *     // ... data to create a TariffOperationSystem
+     *   }
+     * })
+     * 
+     */
+    create<T extends TariffOperationSystemCreateArgs>(args: SelectSubset<T, TariffOperationSystemCreateArgs<ExtArgs>>): Prisma__TariffOperationSystemClient<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TariffOperationSystems.
+     * @param {TariffOperationSystemCreateManyArgs} args - Arguments to create many TariffOperationSystems.
+     * @example
+     * // Create many TariffOperationSystems
+     * const tariffOperationSystem = await prisma.tariffOperationSystem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TariffOperationSystemCreateManyArgs>(args?: SelectSubset<T, TariffOperationSystemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TariffOperationSystems and returns the data saved in the database.
+     * @param {TariffOperationSystemCreateManyAndReturnArgs} args - Arguments to create many TariffOperationSystems.
+     * @example
+     * // Create many TariffOperationSystems
+     * const tariffOperationSystem = await prisma.tariffOperationSystem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TariffOperationSystems and only return the `id`
+     * const tariffOperationSystemWithIdOnly = await prisma.tariffOperationSystem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TariffOperationSystemCreateManyAndReturnArgs>(args?: SelectSubset<T, TariffOperationSystemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TariffOperationSystem.
+     * @param {TariffOperationSystemDeleteArgs} args - Arguments to delete one TariffOperationSystem.
+     * @example
+     * // Delete one TariffOperationSystem
+     * const TariffOperationSystem = await prisma.tariffOperationSystem.delete({
+     *   where: {
+     *     // ... filter to delete one TariffOperationSystem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TariffOperationSystemDeleteArgs>(args: SelectSubset<T, TariffOperationSystemDeleteArgs<ExtArgs>>): Prisma__TariffOperationSystemClient<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TariffOperationSystem.
+     * @param {TariffOperationSystemUpdateArgs} args - Arguments to update one TariffOperationSystem.
+     * @example
+     * // Update one TariffOperationSystem
+     * const tariffOperationSystem = await prisma.tariffOperationSystem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TariffOperationSystemUpdateArgs>(args: SelectSubset<T, TariffOperationSystemUpdateArgs<ExtArgs>>): Prisma__TariffOperationSystemClient<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TariffOperationSystems.
+     * @param {TariffOperationSystemDeleteManyArgs} args - Arguments to filter TariffOperationSystems to delete.
+     * @example
+     * // Delete a few TariffOperationSystems
+     * const { count } = await prisma.tariffOperationSystem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TariffOperationSystemDeleteManyArgs>(args?: SelectSubset<T, TariffOperationSystemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TariffOperationSystems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffOperationSystemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TariffOperationSystems
+     * const tariffOperationSystem = await prisma.tariffOperationSystem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TariffOperationSystemUpdateManyArgs>(args: SelectSubset<T, TariffOperationSystemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TariffOperationSystems and returns the data updated in the database.
+     * @param {TariffOperationSystemUpdateManyAndReturnArgs} args - Arguments to update many TariffOperationSystems.
+     * @example
+     * // Update many TariffOperationSystems
+     * const tariffOperationSystem = await prisma.tariffOperationSystem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TariffOperationSystems and only return the `id`
+     * const tariffOperationSystemWithIdOnly = await prisma.tariffOperationSystem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TariffOperationSystemUpdateManyAndReturnArgs>(args: SelectSubset<T, TariffOperationSystemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TariffOperationSystem.
+     * @param {TariffOperationSystemUpsertArgs} args - Arguments to update or create a TariffOperationSystem.
+     * @example
+     * // Update or create a TariffOperationSystem
+     * const tariffOperationSystem = await prisma.tariffOperationSystem.upsert({
+     *   create: {
+     *     // ... data to create a TariffOperationSystem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TariffOperationSystem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TariffOperationSystemUpsertArgs>(args: SelectSubset<T, TariffOperationSystemUpsertArgs<ExtArgs>>): Prisma__TariffOperationSystemClient<$Result.GetResult<Prisma.$TariffOperationSystemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TariffOperationSystems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffOperationSystemCountArgs} args - Arguments to filter TariffOperationSystems to count.
+     * @example
+     * // Count the number of TariffOperationSystems
+     * const count = await prisma.tariffOperationSystem.count({
+     *   where: {
+     *     // ... the filter for the TariffOperationSystems we want to count
+     *   }
+     * })
+    **/
+    count<T extends TariffOperationSystemCountArgs>(
+      args?: Subset<T, TariffOperationSystemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TariffOperationSystemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TariffOperationSystem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffOperationSystemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TariffOperationSystemAggregateArgs>(args: Subset<T, TariffOperationSystemAggregateArgs>): Prisma.PrismaPromise<GetTariffOperationSystemAggregateType<T>>
+
+    /**
+     * Group by TariffOperationSystem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffOperationSystemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TariffOperationSystemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TariffOperationSystemGroupByArgs['orderBy'] }
+        : { orderBy?: TariffOperationSystemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TariffOperationSystemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTariffOperationSystemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TariffOperationSystem model
+   */
+  readonly fields: TariffOperationSystemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TariffOperationSystem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TariffOperationSystemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariff<T extends TariffDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TariffDefaultArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    operationSystem<T extends OperationSystemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OperationSystemDefaultArgs<ExtArgs>>): Prisma__OperationSystemClient<$Result.GetResult<Prisma.$OperationSystemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TariffOperationSystem model
+   */
+  interface TariffOperationSystemFieldRefs {
+    readonly id: FieldRef<"TariffOperationSystem", 'String'>
+    readonly tariffId: FieldRef<"TariffOperationSystem", 'String'>
+    readonly operationSystemId: FieldRef<"TariffOperationSystem", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TariffOperationSystem findUnique
+   */
+  export type TariffOperationSystemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffOperationSystem to fetch.
+     */
+    where: TariffOperationSystemWhereUniqueInput
+  }
+
+  /**
+   * TariffOperationSystem findUniqueOrThrow
+   */
+  export type TariffOperationSystemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffOperationSystem to fetch.
+     */
+    where: TariffOperationSystemWhereUniqueInput
+  }
+
+  /**
+   * TariffOperationSystem findFirst
+   */
+  export type TariffOperationSystemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffOperationSystem to fetch.
+     */
+    where?: TariffOperationSystemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffOperationSystems to fetch.
+     */
+    orderBy?: TariffOperationSystemOrderByWithRelationInput | TariffOperationSystemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TariffOperationSystems.
+     */
+    cursor?: TariffOperationSystemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffOperationSystems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffOperationSystems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TariffOperationSystems.
+     */
+    distinct?: TariffOperationSystemScalarFieldEnum | TariffOperationSystemScalarFieldEnum[]
+  }
+
+  /**
+   * TariffOperationSystem findFirstOrThrow
+   */
+  export type TariffOperationSystemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffOperationSystem to fetch.
+     */
+    where?: TariffOperationSystemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffOperationSystems to fetch.
+     */
+    orderBy?: TariffOperationSystemOrderByWithRelationInput | TariffOperationSystemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TariffOperationSystems.
+     */
+    cursor?: TariffOperationSystemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffOperationSystems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffOperationSystems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TariffOperationSystems.
+     */
+    distinct?: TariffOperationSystemScalarFieldEnum | TariffOperationSystemScalarFieldEnum[]
+  }
+
+  /**
+   * TariffOperationSystem findMany
+   */
+  export type TariffOperationSystemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffOperationSystems to fetch.
+     */
+    where?: TariffOperationSystemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffOperationSystems to fetch.
+     */
+    orderBy?: TariffOperationSystemOrderByWithRelationInput | TariffOperationSystemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TariffOperationSystems.
+     */
+    cursor?: TariffOperationSystemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffOperationSystems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffOperationSystems.
+     */
+    skip?: number
+    distinct?: TariffOperationSystemScalarFieldEnum | TariffOperationSystemScalarFieldEnum[]
+  }
+
+  /**
+   * TariffOperationSystem create
+   */
+  export type TariffOperationSystemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TariffOperationSystem.
+     */
+    data: XOR<TariffOperationSystemCreateInput, TariffOperationSystemUncheckedCreateInput>
+  }
+
+  /**
+   * TariffOperationSystem createMany
+   */
+  export type TariffOperationSystemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TariffOperationSystems.
+     */
+    data: TariffOperationSystemCreateManyInput | TariffOperationSystemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TariffOperationSystem createManyAndReturn
+   */
+  export type TariffOperationSystemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * The data used to create many TariffOperationSystems.
+     */
+    data: TariffOperationSystemCreateManyInput | TariffOperationSystemCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TariffOperationSystem update
+   */
+  export type TariffOperationSystemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TariffOperationSystem.
+     */
+    data: XOR<TariffOperationSystemUpdateInput, TariffOperationSystemUncheckedUpdateInput>
+    /**
+     * Choose, which TariffOperationSystem to update.
+     */
+    where: TariffOperationSystemWhereUniqueInput
+  }
+
+  /**
+   * TariffOperationSystem updateMany
+   */
+  export type TariffOperationSystemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TariffOperationSystems.
+     */
+    data: XOR<TariffOperationSystemUpdateManyMutationInput, TariffOperationSystemUncheckedUpdateManyInput>
+    /**
+     * Filter which TariffOperationSystems to update
+     */
+    where?: TariffOperationSystemWhereInput
+    /**
+     * Limit how many TariffOperationSystems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TariffOperationSystem updateManyAndReturn
+   */
+  export type TariffOperationSystemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * The data used to update TariffOperationSystems.
+     */
+    data: XOR<TariffOperationSystemUpdateManyMutationInput, TariffOperationSystemUncheckedUpdateManyInput>
+    /**
+     * Filter which TariffOperationSystems to update
+     */
+    where?: TariffOperationSystemWhereInput
+    /**
+     * Limit how many TariffOperationSystems to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TariffOperationSystem upsert
+   */
+  export type TariffOperationSystemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TariffOperationSystem to update in case it exists.
+     */
+    where: TariffOperationSystemWhereUniqueInput
+    /**
+     * In case the TariffOperationSystem found by the `where` argument doesn't exist, create a new TariffOperationSystem with this data.
+     */
+    create: XOR<TariffOperationSystemCreateInput, TariffOperationSystemUncheckedCreateInput>
+    /**
+     * In case the TariffOperationSystem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TariffOperationSystemUpdateInput, TariffOperationSystemUncheckedUpdateInput>
+  }
+
+  /**
+   * TariffOperationSystem delete
+   */
+  export type TariffOperationSystemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemInclude<ExtArgs> | null
+    /**
+     * Filter which TariffOperationSystem to delete.
+     */
+    where: TariffOperationSystemWhereUniqueInput
+  }
+
+  /**
+   * TariffOperationSystem deleteMany
+   */
+  export type TariffOperationSystemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TariffOperationSystems to delete
+     */
+    where?: TariffOperationSystemWhereInput
+    /**
+     * Limit how many TariffOperationSystems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TariffOperationSystem without action
+   */
+  export type TariffOperationSystemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffOperationSystem
+     */
+    select?: TariffOperationSystemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffOperationSystem
+     */
+    omit?: TariffOperationSystemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffOperationSystemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TariffProgrammingLanguage
+   */
+
+  export type AggregateTariffProgrammingLanguage = {
+    _count: TariffProgrammingLanguageCountAggregateOutputType | null
+    _min: TariffProgrammingLanguageMinAggregateOutputType | null
+    _max: TariffProgrammingLanguageMaxAggregateOutputType | null
+  }
+
+  export type TariffProgrammingLanguageMinAggregateOutputType = {
+    id: string | null
+    tariffId: string | null
+    programmingLanguageId: string | null
+  }
+
+  export type TariffProgrammingLanguageMaxAggregateOutputType = {
+    id: string | null
+    tariffId: string | null
+    programmingLanguageId: string | null
+  }
+
+  export type TariffProgrammingLanguageCountAggregateOutputType = {
+    id: number
+    tariffId: number
+    programmingLanguageId: number
+    _all: number
+  }
+
+
+  export type TariffProgrammingLanguageMinAggregateInputType = {
+    id?: true
+    tariffId?: true
+    programmingLanguageId?: true
+  }
+
+  export type TariffProgrammingLanguageMaxAggregateInputType = {
+    id?: true
+    tariffId?: true
+    programmingLanguageId?: true
+  }
+
+  export type TariffProgrammingLanguageCountAggregateInputType = {
+    id?: true
+    tariffId?: true
+    programmingLanguageId?: true
+    _all?: true
+  }
+
+  export type TariffProgrammingLanguageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TariffProgrammingLanguage to aggregate.
+     */
+    where?: TariffProgrammingLanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffProgrammingLanguages to fetch.
+     */
+    orderBy?: TariffProgrammingLanguageOrderByWithRelationInput | TariffProgrammingLanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TariffProgrammingLanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffProgrammingLanguages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffProgrammingLanguages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TariffProgrammingLanguages
+    **/
+    _count?: true | TariffProgrammingLanguageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TariffProgrammingLanguageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TariffProgrammingLanguageMaxAggregateInputType
+  }
+
+  export type GetTariffProgrammingLanguageAggregateType<T extends TariffProgrammingLanguageAggregateArgs> = {
+        [P in keyof T & keyof AggregateTariffProgrammingLanguage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTariffProgrammingLanguage[P]>
+      : GetScalarType<T[P], AggregateTariffProgrammingLanguage[P]>
+  }
+
+
+
+
+  export type TariffProgrammingLanguageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TariffProgrammingLanguageWhereInput
+    orderBy?: TariffProgrammingLanguageOrderByWithAggregationInput | TariffProgrammingLanguageOrderByWithAggregationInput[]
+    by: TariffProgrammingLanguageScalarFieldEnum[] | TariffProgrammingLanguageScalarFieldEnum
+    having?: TariffProgrammingLanguageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TariffProgrammingLanguageCountAggregateInputType | true
+    _min?: TariffProgrammingLanguageMinAggregateInputType
+    _max?: TariffProgrammingLanguageMaxAggregateInputType
+  }
+
+  export type TariffProgrammingLanguageGroupByOutputType = {
+    id: string
+    tariffId: string
+    programmingLanguageId: string
+    _count: TariffProgrammingLanguageCountAggregateOutputType | null
+    _min: TariffProgrammingLanguageMinAggregateOutputType | null
+    _max: TariffProgrammingLanguageMaxAggregateOutputType | null
+  }
+
+  type GetTariffProgrammingLanguageGroupByPayload<T extends TariffProgrammingLanguageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TariffProgrammingLanguageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TariffProgrammingLanguageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TariffProgrammingLanguageGroupByOutputType[P]>
+            : GetScalarType<T[P], TariffProgrammingLanguageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TariffProgrammingLanguageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    programmingLanguageId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    programmingLanguage?: boolean | ProgrammingLanguageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffProgrammingLanguage"]>
+
+  export type TariffProgrammingLanguageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    programmingLanguageId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    programmingLanguage?: boolean | ProgrammingLanguageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffProgrammingLanguage"]>
+
+  export type TariffProgrammingLanguageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tariffId?: boolean
+    programmingLanguageId?: boolean
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    programmingLanguage?: boolean | ProgrammingLanguageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tariffProgrammingLanguage"]>
+
+  export type TariffProgrammingLanguageSelectScalar = {
+    id?: boolean
+    tariffId?: boolean
+    programmingLanguageId?: boolean
+  }
+
+  export type TariffProgrammingLanguageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tariffId" | "programmingLanguageId", ExtArgs["result"]["tariffProgrammingLanguage"]>
+  export type TariffProgrammingLanguageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    programmingLanguage?: boolean | ProgrammingLanguageDefaultArgs<ExtArgs>
+  }
+  export type TariffProgrammingLanguageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    programmingLanguage?: boolean | ProgrammingLanguageDefaultArgs<ExtArgs>
+  }
+  export type TariffProgrammingLanguageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tariff?: boolean | TariffDefaultArgs<ExtArgs>
+    programmingLanguage?: boolean | ProgrammingLanguageDefaultArgs<ExtArgs>
+  }
+
+  export type $TariffProgrammingLanguagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TariffProgrammingLanguage"
+    objects: {
+      tariff: Prisma.$TariffPayload<ExtArgs>
+      programmingLanguage: Prisma.$ProgrammingLanguagePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      tariffId: string
+      programmingLanguageId: string
+    }, ExtArgs["result"]["tariffProgrammingLanguage"]>
+    composites: {}
+  }
+
+  type TariffProgrammingLanguageGetPayload<S extends boolean | null | undefined | TariffProgrammingLanguageDefaultArgs> = $Result.GetResult<Prisma.$TariffProgrammingLanguagePayload, S>
+
+  type TariffProgrammingLanguageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TariffProgrammingLanguageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TariffProgrammingLanguageCountAggregateInputType | true
+    }
+
+  export interface TariffProgrammingLanguageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TariffProgrammingLanguage'], meta: { name: 'TariffProgrammingLanguage' } }
+    /**
+     * Find zero or one TariffProgrammingLanguage that matches the filter.
+     * @param {TariffProgrammingLanguageFindUniqueArgs} args - Arguments to find a TariffProgrammingLanguage
+     * @example
+     * // Get one TariffProgrammingLanguage
+     * const tariffProgrammingLanguage = await prisma.tariffProgrammingLanguage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TariffProgrammingLanguageFindUniqueArgs>(args: SelectSubset<T, TariffProgrammingLanguageFindUniqueArgs<ExtArgs>>): Prisma__TariffProgrammingLanguageClient<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TariffProgrammingLanguage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TariffProgrammingLanguageFindUniqueOrThrowArgs} args - Arguments to find a TariffProgrammingLanguage
+     * @example
+     * // Get one TariffProgrammingLanguage
+     * const tariffProgrammingLanguage = await prisma.tariffProgrammingLanguage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TariffProgrammingLanguageFindUniqueOrThrowArgs>(args: SelectSubset<T, TariffProgrammingLanguageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TariffProgrammingLanguageClient<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TariffProgrammingLanguage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffProgrammingLanguageFindFirstArgs} args - Arguments to find a TariffProgrammingLanguage
+     * @example
+     * // Get one TariffProgrammingLanguage
+     * const tariffProgrammingLanguage = await prisma.tariffProgrammingLanguage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TariffProgrammingLanguageFindFirstArgs>(args?: SelectSubset<T, TariffProgrammingLanguageFindFirstArgs<ExtArgs>>): Prisma__TariffProgrammingLanguageClient<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TariffProgrammingLanguage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffProgrammingLanguageFindFirstOrThrowArgs} args - Arguments to find a TariffProgrammingLanguage
+     * @example
+     * // Get one TariffProgrammingLanguage
+     * const tariffProgrammingLanguage = await prisma.tariffProgrammingLanguage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TariffProgrammingLanguageFindFirstOrThrowArgs>(args?: SelectSubset<T, TariffProgrammingLanguageFindFirstOrThrowArgs<ExtArgs>>): Prisma__TariffProgrammingLanguageClient<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TariffProgrammingLanguages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffProgrammingLanguageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TariffProgrammingLanguages
+     * const tariffProgrammingLanguages = await prisma.tariffProgrammingLanguage.findMany()
+     * 
+     * // Get first 10 TariffProgrammingLanguages
+     * const tariffProgrammingLanguages = await prisma.tariffProgrammingLanguage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tariffProgrammingLanguageWithIdOnly = await prisma.tariffProgrammingLanguage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TariffProgrammingLanguageFindManyArgs>(args?: SelectSubset<T, TariffProgrammingLanguageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TariffProgrammingLanguage.
+     * @param {TariffProgrammingLanguageCreateArgs} args - Arguments to create a TariffProgrammingLanguage.
+     * @example
+     * // Create one TariffProgrammingLanguage
+     * const TariffProgrammingLanguage = await prisma.tariffProgrammingLanguage.create({
+     *   data: {
+     *     // ... data to create a TariffProgrammingLanguage
+     *   }
+     * })
+     * 
+     */
+    create<T extends TariffProgrammingLanguageCreateArgs>(args: SelectSubset<T, TariffProgrammingLanguageCreateArgs<ExtArgs>>): Prisma__TariffProgrammingLanguageClient<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TariffProgrammingLanguages.
+     * @param {TariffProgrammingLanguageCreateManyArgs} args - Arguments to create many TariffProgrammingLanguages.
+     * @example
+     * // Create many TariffProgrammingLanguages
+     * const tariffProgrammingLanguage = await prisma.tariffProgrammingLanguage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TariffProgrammingLanguageCreateManyArgs>(args?: SelectSubset<T, TariffProgrammingLanguageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TariffProgrammingLanguages and returns the data saved in the database.
+     * @param {TariffProgrammingLanguageCreateManyAndReturnArgs} args - Arguments to create many TariffProgrammingLanguages.
+     * @example
+     * // Create many TariffProgrammingLanguages
+     * const tariffProgrammingLanguage = await prisma.tariffProgrammingLanguage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TariffProgrammingLanguages and only return the `id`
+     * const tariffProgrammingLanguageWithIdOnly = await prisma.tariffProgrammingLanguage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TariffProgrammingLanguageCreateManyAndReturnArgs>(args?: SelectSubset<T, TariffProgrammingLanguageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TariffProgrammingLanguage.
+     * @param {TariffProgrammingLanguageDeleteArgs} args - Arguments to delete one TariffProgrammingLanguage.
+     * @example
+     * // Delete one TariffProgrammingLanguage
+     * const TariffProgrammingLanguage = await prisma.tariffProgrammingLanguage.delete({
+     *   where: {
+     *     // ... filter to delete one TariffProgrammingLanguage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TariffProgrammingLanguageDeleteArgs>(args: SelectSubset<T, TariffProgrammingLanguageDeleteArgs<ExtArgs>>): Prisma__TariffProgrammingLanguageClient<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TariffProgrammingLanguage.
+     * @param {TariffProgrammingLanguageUpdateArgs} args - Arguments to update one TariffProgrammingLanguage.
+     * @example
+     * // Update one TariffProgrammingLanguage
+     * const tariffProgrammingLanguage = await prisma.tariffProgrammingLanguage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TariffProgrammingLanguageUpdateArgs>(args: SelectSubset<T, TariffProgrammingLanguageUpdateArgs<ExtArgs>>): Prisma__TariffProgrammingLanguageClient<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TariffProgrammingLanguages.
+     * @param {TariffProgrammingLanguageDeleteManyArgs} args - Arguments to filter TariffProgrammingLanguages to delete.
+     * @example
+     * // Delete a few TariffProgrammingLanguages
+     * const { count } = await prisma.tariffProgrammingLanguage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TariffProgrammingLanguageDeleteManyArgs>(args?: SelectSubset<T, TariffProgrammingLanguageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TariffProgrammingLanguages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffProgrammingLanguageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TariffProgrammingLanguages
+     * const tariffProgrammingLanguage = await prisma.tariffProgrammingLanguage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TariffProgrammingLanguageUpdateManyArgs>(args: SelectSubset<T, TariffProgrammingLanguageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TariffProgrammingLanguages and returns the data updated in the database.
+     * @param {TariffProgrammingLanguageUpdateManyAndReturnArgs} args - Arguments to update many TariffProgrammingLanguages.
+     * @example
+     * // Update many TariffProgrammingLanguages
+     * const tariffProgrammingLanguage = await prisma.tariffProgrammingLanguage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TariffProgrammingLanguages and only return the `id`
+     * const tariffProgrammingLanguageWithIdOnly = await prisma.tariffProgrammingLanguage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TariffProgrammingLanguageUpdateManyAndReturnArgs>(args: SelectSubset<T, TariffProgrammingLanguageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TariffProgrammingLanguage.
+     * @param {TariffProgrammingLanguageUpsertArgs} args - Arguments to update or create a TariffProgrammingLanguage.
+     * @example
+     * // Update or create a TariffProgrammingLanguage
+     * const tariffProgrammingLanguage = await prisma.tariffProgrammingLanguage.upsert({
+     *   create: {
+     *     // ... data to create a TariffProgrammingLanguage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TariffProgrammingLanguage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TariffProgrammingLanguageUpsertArgs>(args: SelectSubset<T, TariffProgrammingLanguageUpsertArgs<ExtArgs>>): Prisma__TariffProgrammingLanguageClient<$Result.GetResult<Prisma.$TariffProgrammingLanguagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TariffProgrammingLanguages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffProgrammingLanguageCountArgs} args - Arguments to filter TariffProgrammingLanguages to count.
+     * @example
+     * // Count the number of TariffProgrammingLanguages
+     * const count = await prisma.tariffProgrammingLanguage.count({
+     *   where: {
+     *     // ... the filter for the TariffProgrammingLanguages we want to count
+     *   }
+     * })
+    **/
+    count<T extends TariffProgrammingLanguageCountArgs>(
+      args?: Subset<T, TariffProgrammingLanguageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TariffProgrammingLanguageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TariffProgrammingLanguage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffProgrammingLanguageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TariffProgrammingLanguageAggregateArgs>(args: Subset<T, TariffProgrammingLanguageAggregateArgs>): Prisma.PrismaPromise<GetTariffProgrammingLanguageAggregateType<T>>
+
+    /**
+     * Group by TariffProgrammingLanguage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TariffProgrammingLanguageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TariffProgrammingLanguageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TariffProgrammingLanguageGroupByArgs['orderBy'] }
+        : { orderBy?: TariffProgrammingLanguageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TariffProgrammingLanguageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTariffProgrammingLanguageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TariffProgrammingLanguage model
+   */
+  readonly fields: TariffProgrammingLanguageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TariffProgrammingLanguage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TariffProgrammingLanguageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tariff<T extends TariffDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TariffDefaultArgs<ExtArgs>>): Prisma__TariffClient<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    programmingLanguage<T extends ProgrammingLanguageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProgrammingLanguageDefaultArgs<ExtArgs>>): Prisma__ProgrammingLanguageClient<$Result.GetResult<Prisma.$ProgrammingLanguagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TariffProgrammingLanguage model
+   */
+  interface TariffProgrammingLanguageFieldRefs {
+    readonly id: FieldRef<"TariffProgrammingLanguage", 'String'>
+    readonly tariffId: FieldRef<"TariffProgrammingLanguage", 'String'>
+    readonly programmingLanguageId: FieldRef<"TariffProgrammingLanguage", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TariffProgrammingLanguage findUnique
+   */
+  export type TariffProgrammingLanguageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffProgrammingLanguage to fetch.
+     */
+    where: TariffProgrammingLanguageWhereUniqueInput
+  }
+
+  /**
+   * TariffProgrammingLanguage findUniqueOrThrow
+   */
+  export type TariffProgrammingLanguageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffProgrammingLanguage to fetch.
+     */
+    where: TariffProgrammingLanguageWhereUniqueInput
+  }
+
+  /**
+   * TariffProgrammingLanguage findFirst
+   */
+  export type TariffProgrammingLanguageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffProgrammingLanguage to fetch.
+     */
+    where?: TariffProgrammingLanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffProgrammingLanguages to fetch.
+     */
+    orderBy?: TariffProgrammingLanguageOrderByWithRelationInput | TariffProgrammingLanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TariffProgrammingLanguages.
+     */
+    cursor?: TariffProgrammingLanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffProgrammingLanguages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffProgrammingLanguages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TariffProgrammingLanguages.
+     */
+    distinct?: TariffProgrammingLanguageScalarFieldEnum | TariffProgrammingLanguageScalarFieldEnum[]
+  }
+
+  /**
+   * TariffProgrammingLanguage findFirstOrThrow
+   */
+  export type TariffProgrammingLanguageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffProgrammingLanguage to fetch.
+     */
+    where?: TariffProgrammingLanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffProgrammingLanguages to fetch.
+     */
+    orderBy?: TariffProgrammingLanguageOrderByWithRelationInput | TariffProgrammingLanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TariffProgrammingLanguages.
+     */
+    cursor?: TariffProgrammingLanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffProgrammingLanguages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffProgrammingLanguages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TariffProgrammingLanguages.
+     */
+    distinct?: TariffProgrammingLanguageScalarFieldEnum | TariffProgrammingLanguageScalarFieldEnum[]
+  }
+
+  /**
+   * TariffProgrammingLanguage findMany
+   */
+  export type TariffProgrammingLanguageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * Filter, which TariffProgrammingLanguages to fetch.
+     */
+    where?: TariffProgrammingLanguageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TariffProgrammingLanguages to fetch.
+     */
+    orderBy?: TariffProgrammingLanguageOrderByWithRelationInput | TariffProgrammingLanguageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TariffProgrammingLanguages.
+     */
+    cursor?: TariffProgrammingLanguageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TariffProgrammingLanguages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TariffProgrammingLanguages.
+     */
+    skip?: number
+    distinct?: TariffProgrammingLanguageScalarFieldEnum | TariffProgrammingLanguageScalarFieldEnum[]
+  }
+
+  /**
+   * TariffProgrammingLanguage create
+   */
+  export type TariffProgrammingLanguageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TariffProgrammingLanguage.
+     */
+    data: XOR<TariffProgrammingLanguageCreateInput, TariffProgrammingLanguageUncheckedCreateInput>
+  }
+
+  /**
+   * TariffProgrammingLanguage createMany
+   */
+  export type TariffProgrammingLanguageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TariffProgrammingLanguages.
+     */
+    data: TariffProgrammingLanguageCreateManyInput | TariffProgrammingLanguageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TariffProgrammingLanguage createManyAndReturn
+   */
+  export type TariffProgrammingLanguageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * The data used to create many TariffProgrammingLanguages.
+     */
+    data: TariffProgrammingLanguageCreateManyInput | TariffProgrammingLanguageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TariffProgrammingLanguage update
+   */
+  export type TariffProgrammingLanguageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TariffProgrammingLanguage.
+     */
+    data: XOR<TariffProgrammingLanguageUpdateInput, TariffProgrammingLanguageUncheckedUpdateInput>
+    /**
+     * Choose, which TariffProgrammingLanguage to update.
+     */
+    where: TariffProgrammingLanguageWhereUniqueInput
+  }
+
+  /**
+   * TariffProgrammingLanguage updateMany
+   */
+  export type TariffProgrammingLanguageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TariffProgrammingLanguages.
+     */
+    data: XOR<TariffProgrammingLanguageUpdateManyMutationInput, TariffProgrammingLanguageUncheckedUpdateManyInput>
+    /**
+     * Filter which TariffProgrammingLanguages to update
+     */
+    where?: TariffProgrammingLanguageWhereInput
+    /**
+     * Limit how many TariffProgrammingLanguages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TariffProgrammingLanguage updateManyAndReturn
+   */
+  export type TariffProgrammingLanguageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * The data used to update TariffProgrammingLanguages.
+     */
+    data: XOR<TariffProgrammingLanguageUpdateManyMutationInput, TariffProgrammingLanguageUncheckedUpdateManyInput>
+    /**
+     * Filter which TariffProgrammingLanguages to update
+     */
+    where?: TariffProgrammingLanguageWhereInput
+    /**
+     * Limit how many TariffProgrammingLanguages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TariffProgrammingLanguage upsert
+   */
+  export type TariffProgrammingLanguageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TariffProgrammingLanguage to update in case it exists.
+     */
+    where: TariffProgrammingLanguageWhereUniqueInput
+    /**
+     * In case the TariffProgrammingLanguage found by the `where` argument doesn't exist, create a new TariffProgrammingLanguage with this data.
+     */
+    create: XOR<TariffProgrammingLanguageCreateInput, TariffProgrammingLanguageUncheckedCreateInput>
+    /**
+     * In case the TariffProgrammingLanguage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TariffProgrammingLanguageUpdateInput, TariffProgrammingLanguageUncheckedUpdateInput>
+  }
+
+  /**
+   * TariffProgrammingLanguage delete
+   */
+  export type TariffProgrammingLanguageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageInclude<ExtArgs> | null
+    /**
+     * Filter which TariffProgrammingLanguage to delete.
+     */
+    where: TariffProgrammingLanguageWhereUniqueInput
+  }
+
+  /**
+   * TariffProgrammingLanguage deleteMany
+   */
+  export type TariffProgrammingLanguageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TariffProgrammingLanguages to delete
+     */
+    where?: TariffProgrammingLanguageWhereInput
+    /**
+     * Limit how many TariffProgrammingLanguages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TariffProgrammingLanguage without action
+   */
+  export type TariffProgrammingLanguageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TariffProgrammingLanguage
+     */
+    select?: TariffProgrammingLanguageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TariffProgrammingLanguage
+     */
+    omit?: TariffProgrammingLanguageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TariffProgrammingLanguageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ContentBlock
+   */
+
+  export type AggregateContentBlock = {
+    _count: ContentBlockCountAggregateOutputType | null
+    _min: ContentBlockMinAggregateOutputType | null
+    _max: ContentBlockMaxAggregateOutputType | null
+  }
+
+  export type ContentBlockMinAggregateOutputType = {
+    id: string | null
+    key: string | null
+    title: string | null
+    content: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ContentBlockMaxAggregateOutputType = {
+    id: string | null
+    key: string | null
+    title: string | null
+    content: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ContentBlockCountAggregateOutputType = {
+    id: number
+    key: number
+    title: number
+    content: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ContentBlockMinAggregateInputType = {
+    id?: true
+    key?: true
+    title?: true
+    content?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ContentBlockMaxAggregateInputType = {
+    id?: true
+    key?: true
+    title?: true
+    content?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ContentBlockCountAggregateInputType = {
+    id?: true
+    key?: true
+    title?: true
+    content?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ContentBlockAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ContentBlock to aggregate.
+     */
+    where?: ContentBlockWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentBlocks to fetch.
+     */
+    orderBy?: ContentBlockOrderByWithRelationInput | ContentBlockOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ContentBlockWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentBlocks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentBlocks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ContentBlocks
+    **/
+    _count?: true | ContentBlockCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ContentBlockMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ContentBlockMaxAggregateInputType
+  }
+
+  export type GetContentBlockAggregateType<T extends ContentBlockAggregateArgs> = {
+        [P in keyof T & keyof AggregateContentBlock]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateContentBlock[P]>
+      : GetScalarType<T[P], AggregateContentBlock[P]>
+  }
+
+
+
+
+  export type ContentBlockGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContentBlockWhereInput
+    orderBy?: ContentBlockOrderByWithAggregationInput | ContentBlockOrderByWithAggregationInput[]
+    by: ContentBlockScalarFieldEnum[] | ContentBlockScalarFieldEnum
+    having?: ContentBlockScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ContentBlockCountAggregateInputType | true
+    _min?: ContentBlockMinAggregateInputType
+    _max?: ContentBlockMaxAggregateInputType
+  }
+
+  export type ContentBlockGroupByOutputType = {
+    id: string
+    key: string
+    title: string | null
+    content: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: ContentBlockCountAggregateOutputType | null
+    _min: ContentBlockMinAggregateOutputType | null
+    _max: ContentBlockMaxAggregateOutputType | null
+  }
+
+  type GetContentBlockGroupByPayload<T extends ContentBlockGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ContentBlockGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ContentBlockGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ContentBlockGroupByOutputType[P]>
+            : GetScalarType<T[P], ContentBlockGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ContentBlockSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    title?: boolean
+    content?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["contentBlock"]>
+
+  export type ContentBlockSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    title?: boolean
+    content?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["contentBlock"]>
+
+  export type ContentBlockSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    title?: boolean
+    content?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["contentBlock"]>
+
+  export type ContentBlockSelectScalar = {
+    id?: boolean
+    key?: boolean
+    title?: boolean
+    content?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ContentBlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "key" | "title" | "content" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["contentBlock"]>
+
+  export type $ContentBlockPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ContentBlock"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      key: string
+      title: string | null
+      content: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["contentBlock"]>
+    composites: {}
+  }
+
+  type ContentBlockGetPayload<S extends boolean | null | undefined | ContentBlockDefaultArgs> = $Result.GetResult<Prisma.$ContentBlockPayload, S>
+
+  type ContentBlockCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ContentBlockFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ContentBlockCountAggregateInputType | true
+    }
+
+  export interface ContentBlockDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ContentBlock'], meta: { name: 'ContentBlock' } }
+    /**
+     * Find zero or one ContentBlock that matches the filter.
+     * @param {ContentBlockFindUniqueArgs} args - Arguments to find a ContentBlock
+     * @example
+     * // Get one ContentBlock
+     * const contentBlock = await prisma.contentBlock.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ContentBlockFindUniqueArgs>(args: SelectSubset<T, ContentBlockFindUniqueArgs<ExtArgs>>): Prisma__ContentBlockClient<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ContentBlock that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ContentBlockFindUniqueOrThrowArgs} args - Arguments to find a ContentBlock
+     * @example
+     * // Get one ContentBlock
+     * const contentBlock = await prisma.contentBlock.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ContentBlockFindUniqueOrThrowArgs>(args: SelectSubset<T, ContentBlockFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ContentBlockClient<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ContentBlock that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentBlockFindFirstArgs} args - Arguments to find a ContentBlock
+     * @example
+     * // Get one ContentBlock
+     * const contentBlock = await prisma.contentBlock.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ContentBlockFindFirstArgs>(args?: SelectSubset<T, ContentBlockFindFirstArgs<ExtArgs>>): Prisma__ContentBlockClient<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ContentBlock that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentBlockFindFirstOrThrowArgs} args - Arguments to find a ContentBlock
+     * @example
+     * // Get one ContentBlock
+     * const contentBlock = await prisma.contentBlock.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ContentBlockFindFirstOrThrowArgs>(args?: SelectSubset<T, ContentBlockFindFirstOrThrowArgs<ExtArgs>>): Prisma__ContentBlockClient<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ContentBlocks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentBlockFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ContentBlocks
+     * const contentBlocks = await prisma.contentBlock.findMany()
+     * 
+     * // Get first 10 ContentBlocks
+     * const contentBlocks = await prisma.contentBlock.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const contentBlockWithIdOnly = await prisma.contentBlock.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ContentBlockFindManyArgs>(args?: SelectSubset<T, ContentBlockFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ContentBlock.
+     * @param {ContentBlockCreateArgs} args - Arguments to create a ContentBlock.
+     * @example
+     * // Create one ContentBlock
+     * const ContentBlock = await prisma.contentBlock.create({
+     *   data: {
+     *     // ... data to create a ContentBlock
+     *   }
+     * })
+     * 
+     */
+    create<T extends ContentBlockCreateArgs>(args: SelectSubset<T, ContentBlockCreateArgs<ExtArgs>>): Prisma__ContentBlockClient<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ContentBlocks.
+     * @param {ContentBlockCreateManyArgs} args - Arguments to create many ContentBlocks.
+     * @example
+     * // Create many ContentBlocks
+     * const contentBlock = await prisma.contentBlock.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ContentBlockCreateManyArgs>(args?: SelectSubset<T, ContentBlockCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ContentBlocks and returns the data saved in the database.
+     * @param {ContentBlockCreateManyAndReturnArgs} args - Arguments to create many ContentBlocks.
+     * @example
+     * // Create many ContentBlocks
+     * const contentBlock = await prisma.contentBlock.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ContentBlocks and only return the `id`
+     * const contentBlockWithIdOnly = await prisma.contentBlock.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ContentBlockCreateManyAndReturnArgs>(args?: SelectSubset<T, ContentBlockCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ContentBlock.
+     * @param {ContentBlockDeleteArgs} args - Arguments to delete one ContentBlock.
+     * @example
+     * // Delete one ContentBlock
+     * const ContentBlock = await prisma.contentBlock.delete({
+     *   where: {
+     *     // ... filter to delete one ContentBlock
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ContentBlockDeleteArgs>(args: SelectSubset<T, ContentBlockDeleteArgs<ExtArgs>>): Prisma__ContentBlockClient<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ContentBlock.
+     * @param {ContentBlockUpdateArgs} args - Arguments to update one ContentBlock.
+     * @example
+     * // Update one ContentBlock
+     * const contentBlock = await prisma.contentBlock.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ContentBlockUpdateArgs>(args: SelectSubset<T, ContentBlockUpdateArgs<ExtArgs>>): Prisma__ContentBlockClient<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ContentBlocks.
+     * @param {ContentBlockDeleteManyArgs} args - Arguments to filter ContentBlocks to delete.
+     * @example
+     * // Delete a few ContentBlocks
+     * const { count } = await prisma.contentBlock.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ContentBlockDeleteManyArgs>(args?: SelectSubset<T, ContentBlockDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ContentBlocks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentBlockUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ContentBlocks
+     * const contentBlock = await prisma.contentBlock.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ContentBlockUpdateManyArgs>(args: SelectSubset<T, ContentBlockUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ContentBlocks and returns the data updated in the database.
+     * @param {ContentBlockUpdateManyAndReturnArgs} args - Arguments to update many ContentBlocks.
+     * @example
+     * // Update many ContentBlocks
+     * const contentBlock = await prisma.contentBlock.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ContentBlocks and only return the `id`
+     * const contentBlockWithIdOnly = await prisma.contentBlock.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ContentBlockUpdateManyAndReturnArgs>(args: SelectSubset<T, ContentBlockUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ContentBlock.
+     * @param {ContentBlockUpsertArgs} args - Arguments to update or create a ContentBlock.
+     * @example
+     * // Update or create a ContentBlock
+     * const contentBlock = await prisma.contentBlock.upsert({
+     *   create: {
+     *     // ... data to create a ContentBlock
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ContentBlock we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ContentBlockUpsertArgs>(args: SelectSubset<T, ContentBlockUpsertArgs<ExtArgs>>): Prisma__ContentBlockClient<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ContentBlocks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentBlockCountArgs} args - Arguments to filter ContentBlocks to count.
+     * @example
+     * // Count the number of ContentBlocks
+     * const count = await prisma.contentBlock.count({
+     *   where: {
+     *     // ... the filter for the ContentBlocks we want to count
+     *   }
+     * })
+    **/
+    count<T extends ContentBlockCountArgs>(
+      args?: Subset<T, ContentBlockCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ContentBlockCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ContentBlock.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentBlockAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ContentBlockAggregateArgs>(args: Subset<T, ContentBlockAggregateArgs>): Prisma.PrismaPromise<GetContentBlockAggregateType<T>>
+
+    /**
+     * Group by ContentBlock.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContentBlockGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ContentBlockGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ContentBlockGroupByArgs['orderBy'] }
+        : { orderBy?: ContentBlockGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ContentBlockGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContentBlockGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ContentBlock model
+   */
+  readonly fields: ContentBlockFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ContentBlock.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ContentBlockClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ContentBlock model
+   */
+  interface ContentBlockFieldRefs {
+    readonly id: FieldRef<"ContentBlock", 'String'>
+    readonly key: FieldRef<"ContentBlock", 'String'>
+    readonly title: FieldRef<"ContentBlock", 'String'>
+    readonly content: FieldRef<"ContentBlock", 'String'>
+    readonly isActive: FieldRef<"ContentBlock", 'Boolean'>
+    readonly createdAt: FieldRef<"ContentBlock", 'DateTime'>
+    readonly updatedAt: FieldRef<"ContentBlock", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ContentBlock findUnique
+   */
+  export type ContentBlockFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * Filter, which ContentBlock to fetch.
+     */
+    where: ContentBlockWhereUniqueInput
+  }
+
+  /**
+   * ContentBlock findUniqueOrThrow
+   */
+  export type ContentBlockFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * Filter, which ContentBlock to fetch.
+     */
+    where: ContentBlockWhereUniqueInput
+  }
+
+  /**
+   * ContentBlock findFirst
+   */
+  export type ContentBlockFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * Filter, which ContentBlock to fetch.
+     */
+    where?: ContentBlockWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentBlocks to fetch.
+     */
+    orderBy?: ContentBlockOrderByWithRelationInput | ContentBlockOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ContentBlocks.
+     */
+    cursor?: ContentBlockWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentBlocks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentBlocks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ContentBlocks.
+     */
+    distinct?: ContentBlockScalarFieldEnum | ContentBlockScalarFieldEnum[]
+  }
+
+  /**
+   * ContentBlock findFirstOrThrow
+   */
+  export type ContentBlockFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * Filter, which ContentBlock to fetch.
+     */
+    where?: ContentBlockWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentBlocks to fetch.
+     */
+    orderBy?: ContentBlockOrderByWithRelationInput | ContentBlockOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ContentBlocks.
+     */
+    cursor?: ContentBlockWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentBlocks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentBlocks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ContentBlocks.
+     */
+    distinct?: ContentBlockScalarFieldEnum | ContentBlockScalarFieldEnum[]
+  }
+
+  /**
+   * ContentBlock findMany
+   */
+  export type ContentBlockFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * Filter, which ContentBlocks to fetch.
+     */
+    where?: ContentBlockWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContentBlocks to fetch.
+     */
+    orderBy?: ContentBlockOrderByWithRelationInput | ContentBlockOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ContentBlocks.
+     */
+    cursor?: ContentBlockWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContentBlocks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContentBlocks.
+     */
+    skip?: number
+    distinct?: ContentBlockScalarFieldEnum | ContentBlockScalarFieldEnum[]
+  }
+
+  /**
+   * ContentBlock create
+   */
+  export type ContentBlockCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * The data needed to create a ContentBlock.
+     */
+    data: XOR<ContentBlockCreateInput, ContentBlockUncheckedCreateInput>
+  }
+
+  /**
+   * ContentBlock createMany
+   */
+  export type ContentBlockCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ContentBlocks.
+     */
+    data: ContentBlockCreateManyInput | ContentBlockCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ContentBlock createManyAndReturn
+   */
+  export type ContentBlockCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * The data used to create many ContentBlocks.
+     */
+    data: ContentBlockCreateManyInput | ContentBlockCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ContentBlock update
+   */
+  export type ContentBlockUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * The data needed to update a ContentBlock.
+     */
+    data: XOR<ContentBlockUpdateInput, ContentBlockUncheckedUpdateInput>
+    /**
+     * Choose, which ContentBlock to update.
+     */
+    where: ContentBlockWhereUniqueInput
+  }
+
+  /**
+   * ContentBlock updateMany
+   */
+  export type ContentBlockUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ContentBlocks.
+     */
+    data: XOR<ContentBlockUpdateManyMutationInput, ContentBlockUncheckedUpdateManyInput>
+    /**
+     * Filter which ContentBlocks to update
+     */
+    where?: ContentBlockWhereInput
+    /**
+     * Limit how many ContentBlocks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContentBlock updateManyAndReturn
+   */
+  export type ContentBlockUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * The data used to update ContentBlocks.
+     */
+    data: XOR<ContentBlockUpdateManyMutationInput, ContentBlockUncheckedUpdateManyInput>
+    /**
+     * Filter which ContentBlocks to update
+     */
+    where?: ContentBlockWhereInput
+    /**
+     * Limit how many ContentBlocks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContentBlock upsert
+   */
+  export type ContentBlockUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * The filter to search for the ContentBlock to update in case it exists.
+     */
+    where: ContentBlockWhereUniqueInput
+    /**
+     * In case the ContentBlock found by the `where` argument doesn't exist, create a new ContentBlock with this data.
+     */
+    create: XOR<ContentBlockCreateInput, ContentBlockUncheckedCreateInput>
+    /**
+     * In case the ContentBlock was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ContentBlockUpdateInput, ContentBlockUncheckedUpdateInput>
+  }
+
+  /**
+   * ContentBlock delete
+   */
+  export type ContentBlockDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * Filter which ContentBlock to delete.
+     */
+    where: ContentBlockWhereUniqueInput
+  }
+
+  /**
+   * ContentBlock deleteMany
+   */
+  export type ContentBlockDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ContentBlocks to delete
+     */
+    where?: ContentBlockWhereInput
+    /**
+     * Limit how many ContentBlocks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ContentBlock without action
+   */
+  export type ContentBlockDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5602,6 +23318,162 @@ export namespace Prisma {
   };
 
   export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
+
+
+  export const HostingScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug',
+    description: 'description',
+    logoUrl: 'logoUrl',
+    websiteUrl: 'websiteUrl',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type HostingScalarFieldEnum = (typeof HostingScalarFieldEnum)[keyof typeof HostingScalarFieldEnum]
+
+
+  export const TariffScalarFieldEnum: {
+    id: 'id',
+    hostingId: 'hostingId',
+    name: 'name',
+    price: 'price',
+    currency: 'currency',
+    period: 'period',
+    diskSpace: 'diskSpace',
+    bandwidth: 'bandwidth',
+    domainsCount: 'domainsCount',
+    databasesCount: 'databasesCount',
+    emailAccounts: 'emailAccounts',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TariffScalarFieldEnum = (typeof TariffScalarFieldEnum)[keyof typeof TariffScalarFieldEnum]
+
+
+  export const CMSScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug'
+  };
+
+  export type CMSScalarFieldEnum = (typeof CMSScalarFieldEnum)[keyof typeof CMSScalarFieldEnum]
+
+
+  export const ControlPanelScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug'
+  };
+
+  export type ControlPanelScalarFieldEnum = (typeof ControlPanelScalarFieldEnum)[keyof typeof ControlPanelScalarFieldEnum]
+
+
+  export const CountryScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug'
+  };
+
+  export type CountryScalarFieldEnum = (typeof CountryScalarFieldEnum)[keyof typeof CountryScalarFieldEnum]
+
+
+  export const DataStoreScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug'
+  };
+
+  export type DataStoreScalarFieldEnum = (typeof DataStoreScalarFieldEnum)[keyof typeof DataStoreScalarFieldEnum]
+
+
+  export const OperationSystemScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug'
+  };
+
+  export type OperationSystemScalarFieldEnum = (typeof OperationSystemScalarFieldEnum)[keyof typeof OperationSystemScalarFieldEnum]
+
+
+  export const ProgrammingLanguageScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug'
+  };
+
+  export type ProgrammingLanguageScalarFieldEnum = (typeof ProgrammingLanguageScalarFieldEnum)[keyof typeof ProgrammingLanguageScalarFieldEnum]
+
+
+  export const TariffCMSScalarFieldEnum: {
+    id: 'id',
+    tariffId: 'tariffId',
+    cmsId: 'cmsId'
+  };
+
+  export type TariffCMSScalarFieldEnum = (typeof TariffCMSScalarFieldEnum)[keyof typeof TariffCMSScalarFieldEnum]
+
+
+  export const TariffControlPanelScalarFieldEnum: {
+    id: 'id',
+    tariffId: 'tariffId',
+    controlPanelId: 'controlPanelId'
+  };
+
+  export type TariffControlPanelScalarFieldEnum = (typeof TariffControlPanelScalarFieldEnum)[keyof typeof TariffControlPanelScalarFieldEnum]
+
+
+  export const TariffCountryScalarFieldEnum: {
+    id: 'id',
+    tariffId: 'tariffId',
+    countryId: 'countryId'
+  };
+
+  export type TariffCountryScalarFieldEnum = (typeof TariffCountryScalarFieldEnum)[keyof typeof TariffCountryScalarFieldEnum]
+
+
+  export const TariffDataStoreScalarFieldEnum: {
+    id: 'id',
+    tariffId: 'tariffId',
+    dataStoreId: 'dataStoreId'
+  };
+
+  export type TariffDataStoreScalarFieldEnum = (typeof TariffDataStoreScalarFieldEnum)[keyof typeof TariffDataStoreScalarFieldEnum]
+
+
+  export const TariffOperationSystemScalarFieldEnum: {
+    id: 'id',
+    tariffId: 'tariffId',
+    operationSystemId: 'operationSystemId'
+  };
+
+  export type TariffOperationSystemScalarFieldEnum = (typeof TariffOperationSystemScalarFieldEnum)[keyof typeof TariffOperationSystemScalarFieldEnum]
+
+
+  export const TariffProgrammingLanguageScalarFieldEnum: {
+    id: 'id',
+    tariffId: 'tariffId',
+    programmingLanguageId: 'programmingLanguageId'
+  };
+
+  export type TariffProgrammingLanguageScalarFieldEnum = (typeof TariffProgrammingLanguageScalarFieldEnum)[keyof typeof TariffProgrammingLanguageScalarFieldEnum]
+
+
+  export const ContentBlockScalarFieldEnum: {
+    id: 'id',
+    key: 'key',
+    title: 'title',
+    content: 'content',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ContentBlockScalarFieldEnum = (typeof ContentBlockScalarFieldEnum)[keyof typeof ContentBlockScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5686,6 +23558,41 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TariffPeriod'
+   */
+  export type EnumTariffPeriodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TariffPeriod'>
+    
+
+
+  /**
+   * Reference to a field of type 'TariffPeriod[]'
+   */
+  export type ListEnumTariffPeriodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TariffPeriod[]'>
     
 
 
@@ -5968,6 +23875,827 @@ export namespace Prisma {
     identifier?: StringWithAggregatesFilter<"VerificationToken"> | string
     token?: StringWithAggregatesFilter<"VerificationToken"> | string
     expires?: DateTimeWithAggregatesFilter<"VerificationToken"> | Date | string
+  }
+
+  export type HostingWhereInput = {
+    AND?: HostingWhereInput | HostingWhereInput[]
+    OR?: HostingWhereInput[]
+    NOT?: HostingWhereInput | HostingWhereInput[]
+    id?: StringFilter<"Hosting"> | string
+    name?: StringFilter<"Hosting"> | string
+    slug?: StringFilter<"Hosting"> | string
+    description?: StringNullableFilter<"Hosting"> | string | null
+    logoUrl?: StringNullableFilter<"Hosting"> | string | null
+    websiteUrl?: StringNullableFilter<"Hosting"> | string | null
+    isActive?: BoolFilter<"Hosting"> | boolean
+    createdAt?: DateTimeFilter<"Hosting"> | Date | string
+    updatedAt?: DateTimeFilter<"Hosting"> | Date | string
+    tariffs?: TariffListRelationFilter
+  }
+
+  export type HostingOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrderInput | SortOrder
+    logoUrl?: SortOrderInput | SortOrder
+    websiteUrl?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    tariffs?: TariffOrderByRelationAggregateInput
+  }
+
+  export type HostingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: HostingWhereInput | HostingWhereInput[]
+    OR?: HostingWhereInput[]
+    NOT?: HostingWhereInput | HostingWhereInput[]
+    name?: StringFilter<"Hosting"> | string
+    description?: StringNullableFilter<"Hosting"> | string | null
+    logoUrl?: StringNullableFilter<"Hosting"> | string | null
+    websiteUrl?: StringNullableFilter<"Hosting"> | string | null
+    isActive?: BoolFilter<"Hosting"> | boolean
+    createdAt?: DateTimeFilter<"Hosting"> | Date | string
+    updatedAt?: DateTimeFilter<"Hosting"> | Date | string
+    tariffs?: TariffListRelationFilter
+  }, "id" | "slug">
+
+  export type HostingOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrderInput | SortOrder
+    logoUrl?: SortOrderInput | SortOrder
+    websiteUrl?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: HostingCountOrderByAggregateInput
+    _max?: HostingMaxOrderByAggregateInput
+    _min?: HostingMinOrderByAggregateInput
+  }
+
+  export type HostingScalarWhereWithAggregatesInput = {
+    AND?: HostingScalarWhereWithAggregatesInput | HostingScalarWhereWithAggregatesInput[]
+    OR?: HostingScalarWhereWithAggregatesInput[]
+    NOT?: HostingScalarWhereWithAggregatesInput | HostingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Hosting"> | string
+    name?: StringWithAggregatesFilter<"Hosting"> | string
+    slug?: StringWithAggregatesFilter<"Hosting"> | string
+    description?: StringNullableWithAggregatesFilter<"Hosting"> | string | null
+    logoUrl?: StringNullableWithAggregatesFilter<"Hosting"> | string | null
+    websiteUrl?: StringNullableWithAggregatesFilter<"Hosting"> | string | null
+    isActive?: BoolWithAggregatesFilter<"Hosting"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Hosting"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Hosting"> | Date | string
+  }
+
+  export type TariffWhereInput = {
+    AND?: TariffWhereInput | TariffWhereInput[]
+    OR?: TariffWhereInput[]
+    NOT?: TariffWhereInput | TariffWhereInput[]
+    id?: StringFilter<"Tariff"> | string
+    hostingId?: StringFilter<"Tariff"> | string
+    name?: StringFilter<"Tariff"> | string
+    price?: DecimalFilter<"Tariff"> | Decimal | DecimalJsLike | number | string
+    currency?: StringFilter<"Tariff"> | string
+    period?: EnumTariffPeriodFilter<"Tariff"> | $Enums.TariffPeriod
+    diskSpace?: IntNullableFilter<"Tariff"> | number | null
+    bandwidth?: IntNullableFilter<"Tariff"> | number | null
+    domainsCount?: IntNullableFilter<"Tariff"> | number | null
+    databasesCount?: IntNullableFilter<"Tariff"> | number | null
+    emailAccounts?: IntNullableFilter<"Tariff"> | number | null
+    isActive?: BoolFilter<"Tariff"> | boolean
+    createdAt?: DateTimeFilter<"Tariff"> | Date | string
+    updatedAt?: DateTimeFilter<"Tariff"> | Date | string
+    hosting?: XOR<HostingScalarRelationFilter, HostingWhereInput>
+    cms?: TariffCMSListRelationFilter
+    controlPanels?: TariffControlPanelListRelationFilter
+    countries?: TariffCountryListRelationFilter
+    dataStores?: TariffDataStoreListRelationFilter
+    operationSystems?: TariffOperationSystemListRelationFilter
+    programmingLanguages?: TariffProgrammingLanguageListRelationFilter
+  }
+
+  export type TariffOrderByWithRelationInput = {
+    id?: SortOrder
+    hostingId?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    currency?: SortOrder
+    period?: SortOrder
+    diskSpace?: SortOrderInput | SortOrder
+    bandwidth?: SortOrderInput | SortOrder
+    domainsCount?: SortOrderInput | SortOrder
+    databasesCount?: SortOrderInput | SortOrder
+    emailAccounts?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    hosting?: HostingOrderByWithRelationInput
+    cms?: TariffCMSOrderByRelationAggregateInput
+    controlPanels?: TariffControlPanelOrderByRelationAggregateInput
+    countries?: TariffCountryOrderByRelationAggregateInput
+    dataStores?: TariffDataStoreOrderByRelationAggregateInput
+    operationSystems?: TariffOperationSystemOrderByRelationAggregateInput
+    programmingLanguages?: TariffProgrammingLanguageOrderByRelationAggregateInput
+  }
+
+  export type TariffWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TariffWhereInput | TariffWhereInput[]
+    OR?: TariffWhereInput[]
+    NOT?: TariffWhereInput | TariffWhereInput[]
+    hostingId?: StringFilter<"Tariff"> | string
+    name?: StringFilter<"Tariff"> | string
+    price?: DecimalFilter<"Tariff"> | Decimal | DecimalJsLike | number | string
+    currency?: StringFilter<"Tariff"> | string
+    period?: EnumTariffPeriodFilter<"Tariff"> | $Enums.TariffPeriod
+    diskSpace?: IntNullableFilter<"Tariff"> | number | null
+    bandwidth?: IntNullableFilter<"Tariff"> | number | null
+    domainsCount?: IntNullableFilter<"Tariff"> | number | null
+    databasesCount?: IntNullableFilter<"Tariff"> | number | null
+    emailAccounts?: IntNullableFilter<"Tariff"> | number | null
+    isActive?: BoolFilter<"Tariff"> | boolean
+    createdAt?: DateTimeFilter<"Tariff"> | Date | string
+    updatedAt?: DateTimeFilter<"Tariff"> | Date | string
+    hosting?: XOR<HostingScalarRelationFilter, HostingWhereInput>
+    cms?: TariffCMSListRelationFilter
+    controlPanels?: TariffControlPanelListRelationFilter
+    countries?: TariffCountryListRelationFilter
+    dataStores?: TariffDataStoreListRelationFilter
+    operationSystems?: TariffOperationSystemListRelationFilter
+    programmingLanguages?: TariffProgrammingLanguageListRelationFilter
+  }, "id">
+
+  export type TariffOrderByWithAggregationInput = {
+    id?: SortOrder
+    hostingId?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    currency?: SortOrder
+    period?: SortOrder
+    diskSpace?: SortOrderInput | SortOrder
+    bandwidth?: SortOrderInput | SortOrder
+    domainsCount?: SortOrderInput | SortOrder
+    databasesCount?: SortOrderInput | SortOrder
+    emailAccounts?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: TariffCountOrderByAggregateInput
+    _avg?: TariffAvgOrderByAggregateInput
+    _max?: TariffMaxOrderByAggregateInput
+    _min?: TariffMinOrderByAggregateInput
+    _sum?: TariffSumOrderByAggregateInput
+  }
+
+  export type TariffScalarWhereWithAggregatesInput = {
+    AND?: TariffScalarWhereWithAggregatesInput | TariffScalarWhereWithAggregatesInput[]
+    OR?: TariffScalarWhereWithAggregatesInput[]
+    NOT?: TariffScalarWhereWithAggregatesInput | TariffScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Tariff"> | string
+    hostingId?: StringWithAggregatesFilter<"Tariff"> | string
+    name?: StringWithAggregatesFilter<"Tariff"> | string
+    price?: DecimalWithAggregatesFilter<"Tariff"> | Decimal | DecimalJsLike | number | string
+    currency?: StringWithAggregatesFilter<"Tariff"> | string
+    period?: EnumTariffPeriodWithAggregatesFilter<"Tariff"> | $Enums.TariffPeriod
+    diskSpace?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    bandwidth?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    domainsCount?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    databasesCount?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    emailAccounts?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    isActive?: BoolWithAggregatesFilter<"Tariff"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Tariff"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Tariff"> | Date | string
+  }
+
+  export type CMSWhereInput = {
+    AND?: CMSWhereInput | CMSWhereInput[]
+    OR?: CMSWhereInput[]
+    NOT?: CMSWhereInput | CMSWhereInput[]
+    id?: StringFilter<"CMS"> | string
+    name?: StringFilter<"CMS"> | string
+    slug?: StringFilter<"CMS"> | string
+    tariffs?: TariffCMSListRelationFilter
+  }
+
+  export type CMSOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    tariffs?: TariffCMSOrderByRelationAggregateInput
+  }
+
+  export type CMSWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: CMSWhereInput | CMSWhereInput[]
+    OR?: CMSWhereInput[]
+    NOT?: CMSWhereInput | CMSWhereInput[]
+    name?: StringFilter<"CMS"> | string
+    tariffs?: TariffCMSListRelationFilter
+  }, "id" | "slug">
+
+  export type CMSOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    _count?: CMSCountOrderByAggregateInput
+    _max?: CMSMaxOrderByAggregateInput
+    _min?: CMSMinOrderByAggregateInput
+  }
+
+  export type CMSScalarWhereWithAggregatesInput = {
+    AND?: CMSScalarWhereWithAggregatesInput | CMSScalarWhereWithAggregatesInput[]
+    OR?: CMSScalarWhereWithAggregatesInput[]
+    NOT?: CMSScalarWhereWithAggregatesInput | CMSScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CMS"> | string
+    name?: StringWithAggregatesFilter<"CMS"> | string
+    slug?: StringWithAggregatesFilter<"CMS"> | string
+  }
+
+  export type ControlPanelWhereInput = {
+    AND?: ControlPanelWhereInput | ControlPanelWhereInput[]
+    OR?: ControlPanelWhereInput[]
+    NOT?: ControlPanelWhereInput | ControlPanelWhereInput[]
+    id?: StringFilter<"ControlPanel"> | string
+    name?: StringFilter<"ControlPanel"> | string
+    slug?: StringFilter<"ControlPanel"> | string
+    tariffs?: TariffControlPanelListRelationFilter
+  }
+
+  export type ControlPanelOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    tariffs?: TariffControlPanelOrderByRelationAggregateInput
+  }
+
+  export type ControlPanelWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: ControlPanelWhereInput | ControlPanelWhereInput[]
+    OR?: ControlPanelWhereInput[]
+    NOT?: ControlPanelWhereInput | ControlPanelWhereInput[]
+    name?: StringFilter<"ControlPanel"> | string
+    tariffs?: TariffControlPanelListRelationFilter
+  }, "id" | "slug">
+
+  export type ControlPanelOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    _count?: ControlPanelCountOrderByAggregateInput
+    _max?: ControlPanelMaxOrderByAggregateInput
+    _min?: ControlPanelMinOrderByAggregateInput
+  }
+
+  export type ControlPanelScalarWhereWithAggregatesInput = {
+    AND?: ControlPanelScalarWhereWithAggregatesInput | ControlPanelScalarWhereWithAggregatesInput[]
+    OR?: ControlPanelScalarWhereWithAggregatesInput[]
+    NOT?: ControlPanelScalarWhereWithAggregatesInput | ControlPanelScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ControlPanel"> | string
+    name?: StringWithAggregatesFilter<"ControlPanel"> | string
+    slug?: StringWithAggregatesFilter<"ControlPanel"> | string
+  }
+
+  export type CountryWhereInput = {
+    AND?: CountryWhereInput | CountryWhereInput[]
+    OR?: CountryWhereInput[]
+    NOT?: CountryWhereInput | CountryWhereInput[]
+    id?: StringFilter<"Country"> | string
+    name?: StringFilter<"Country"> | string
+    slug?: StringFilter<"Country"> | string
+    tariffs?: TariffCountryListRelationFilter
+  }
+
+  export type CountryOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    tariffs?: TariffCountryOrderByRelationAggregateInput
+  }
+
+  export type CountryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: CountryWhereInput | CountryWhereInput[]
+    OR?: CountryWhereInput[]
+    NOT?: CountryWhereInput | CountryWhereInput[]
+    name?: StringFilter<"Country"> | string
+    tariffs?: TariffCountryListRelationFilter
+  }, "id" | "slug">
+
+  export type CountryOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    _count?: CountryCountOrderByAggregateInput
+    _max?: CountryMaxOrderByAggregateInput
+    _min?: CountryMinOrderByAggregateInput
+  }
+
+  export type CountryScalarWhereWithAggregatesInput = {
+    AND?: CountryScalarWhereWithAggregatesInput | CountryScalarWhereWithAggregatesInput[]
+    OR?: CountryScalarWhereWithAggregatesInput[]
+    NOT?: CountryScalarWhereWithAggregatesInput | CountryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Country"> | string
+    name?: StringWithAggregatesFilter<"Country"> | string
+    slug?: StringWithAggregatesFilter<"Country"> | string
+  }
+
+  export type DataStoreWhereInput = {
+    AND?: DataStoreWhereInput | DataStoreWhereInput[]
+    OR?: DataStoreWhereInput[]
+    NOT?: DataStoreWhereInput | DataStoreWhereInput[]
+    id?: StringFilter<"DataStore"> | string
+    name?: StringFilter<"DataStore"> | string
+    slug?: StringFilter<"DataStore"> | string
+    tariffs?: TariffDataStoreListRelationFilter
+  }
+
+  export type DataStoreOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    tariffs?: TariffDataStoreOrderByRelationAggregateInput
+  }
+
+  export type DataStoreWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: DataStoreWhereInput | DataStoreWhereInput[]
+    OR?: DataStoreWhereInput[]
+    NOT?: DataStoreWhereInput | DataStoreWhereInput[]
+    name?: StringFilter<"DataStore"> | string
+    tariffs?: TariffDataStoreListRelationFilter
+  }, "id" | "slug">
+
+  export type DataStoreOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    _count?: DataStoreCountOrderByAggregateInput
+    _max?: DataStoreMaxOrderByAggregateInput
+    _min?: DataStoreMinOrderByAggregateInput
+  }
+
+  export type DataStoreScalarWhereWithAggregatesInput = {
+    AND?: DataStoreScalarWhereWithAggregatesInput | DataStoreScalarWhereWithAggregatesInput[]
+    OR?: DataStoreScalarWhereWithAggregatesInput[]
+    NOT?: DataStoreScalarWhereWithAggregatesInput | DataStoreScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DataStore"> | string
+    name?: StringWithAggregatesFilter<"DataStore"> | string
+    slug?: StringWithAggregatesFilter<"DataStore"> | string
+  }
+
+  export type OperationSystemWhereInput = {
+    AND?: OperationSystemWhereInput | OperationSystemWhereInput[]
+    OR?: OperationSystemWhereInput[]
+    NOT?: OperationSystemWhereInput | OperationSystemWhereInput[]
+    id?: StringFilter<"OperationSystem"> | string
+    name?: StringFilter<"OperationSystem"> | string
+    slug?: StringFilter<"OperationSystem"> | string
+    tariffs?: TariffOperationSystemListRelationFilter
+  }
+
+  export type OperationSystemOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    tariffs?: TariffOperationSystemOrderByRelationAggregateInput
+  }
+
+  export type OperationSystemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: OperationSystemWhereInput | OperationSystemWhereInput[]
+    OR?: OperationSystemWhereInput[]
+    NOT?: OperationSystemWhereInput | OperationSystemWhereInput[]
+    name?: StringFilter<"OperationSystem"> | string
+    tariffs?: TariffOperationSystemListRelationFilter
+  }, "id" | "slug">
+
+  export type OperationSystemOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    _count?: OperationSystemCountOrderByAggregateInput
+    _max?: OperationSystemMaxOrderByAggregateInput
+    _min?: OperationSystemMinOrderByAggregateInput
+  }
+
+  export type OperationSystemScalarWhereWithAggregatesInput = {
+    AND?: OperationSystemScalarWhereWithAggregatesInput | OperationSystemScalarWhereWithAggregatesInput[]
+    OR?: OperationSystemScalarWhereWithAggregatesInput[]
+    NOT?: OperationSystemScalarWhereWithAggregatesInput | OperationSystemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"OperationSystem"> | string
+    name?: StringWithAggregatesFilter<"OperationSystem"> | string
+    slug?: StringWithAggregatesFilter<"OperationSystem"> | string
+  }
+
+  export type ProgrammingLanguageWhereInput = {
+    AND?: ProgrammingLanguageWhereInput | ProgrammingLanguageWhereInput[]
+    OR?: ProgrammingLanguageWhereInput[]
+    NOT?: ProgrammingLanguageWhereInput | ProgrammingLanguageWhereInput[]
+    id?: StringFilter<"ProgrammingLanguage"> | string
+    name?: StringFilter<"ProgrammingLanguage"> | string
+    slug?: StringFilter<"ProgrammingLanguage"> | string
+    tariffs?: TariffProgrammingLanguageListRelationFilter
+  }
+
+  export type ProgrammingLanguageOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    tariffs?: TariffProgrammingLanguageOrderByRelationAggregateInput
+  }
+
+  export type ProgrammingLanguageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: ProgrammingLanguageWhereInput | ProgrammingLanguageWhereInput[]
+    OR?: ProgrammingLanguageWhereInput[]
+    NOT?: ProgrammingLanguageWhereInput | ProgrammingLanguageWhereInput[]
+    name?: StringFilter<"ProgrammingLanguage"> | string
+    tariffs?: TariffProgrammingLanguageListRelationFilter
+  }, "id" | "slug">
+
+  export type ProgrammingLanguageOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    _count?: ProgrammingLanguageCountOrderByAggregateInput
+    _max?: ProgrammingLanguageMaxOrderByAggregateInput
+    _min?: ProgrammingLanguageMinOrderByAggregateInput
+  }
+
+  export type ProgrammingLanguageScalarWhereWithAggregatesInput = {
+    AND?: ProgrammingLanguageScalarWhereWithAggregatesInput | ProgrammingLanguageScalarWhereWithAggregatesInput[]
+    OR?: ProgrammingLanguageScalarWhereWithAggregatesInput[]
+    NOT?: ProgrammingLanguageScalarWhereWithAggregatesInput | ProgrammingLanguageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProgrammingLanguage"> | string
+    name?: StringWithAggregatesFilter<"ProgrammingLanguage"> | string
+    slug?: StringWithAggregatesFilter<"ProgrammingLanguage"> | string
+  }
+
+  export type TariffCMSWhereInput = {
+    AND?: TariffCMSWhereInput | TariffCMSWhereInput[]
+    OR?: TariffCMSWhereInput[]
+    NOT?: TariffCMSWhereInput | TariffCMSWhereInput[]
+    id?: StringFilter<"TariffCMS"> | string
+    tariffId?: StringFilter<"TariffCMS"> | string
+    cmsId?: StringFilter<"TariffCMS"> | string
+    tariff?: XOR<TariffScalarRelationFilter, TariffWhereInput>
+    cms?: XOR<CMSScalarRelationFilter, CMSWhereInput>
+  }
+
+  export type TariffCMSOrderByWithRelationInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    cmsId?: SortOrder
+    tariff?: TariffOrderByWithRelationInput
+    cms?: CMSOrderByWithRelationInput
+  }
+
+  export type TariffCMSWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    tariffId_cmsId?: TariffCMSTariffIdCmsIdCompoundUniqueInput
+    AND?: TariffCMSWhereInput | TariffCMSWhereInput[]
+    OR?: TariffCMSWhereInput[]
+    NOT?: TariffCMSWhereInput | TariffCMSWhereInput[]
+    tariffId?: StringFilter<"TariffCMS"> | string
+    cmsId?: StringFilter<"TariffCMS"> | string
+    tariff?: XOR<TariffScalarRelationFilter, TariffWhereInput>
+    cms?: XOR<CMSScalarRelationFilter, CMSWhereInput>
+  }, "id" | "tariffId_cmsId">
+
+  export type TariffCMSOrderByWithAggregationInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    cmsId?: SortOrder
+    _count?: TariffCMSCountOrderByAggregateInput
+    _max?: TariffCMSMaxOrderByAggregateInput
+    _min?: TariffCMSMinOrderByAggregateInput
+  }
+
+  export type TariffCMSScalarWhereWithAggregatesInput = {
+    AND?: TariffCMSScalarWhereWithAggregatesInput | TariffCMSScalarWhereWithAggregatesInput[]
+    OR?: TariffCMSScalarWhereWithAggregatesInput[]
+    NOT?: TariffCMSScalarWhereWithAggregatesInput | TariffCMSScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TariffCMS"> | string
+    tariffId?: StringWithAggregatesFilter<"TariffCMS"> | string
+    cmsId?: StringWithAggregatesFilter<"TariffCMS"> | string
+  }
+
+  export type TariffControlPanelWhereInput = {
+    AND?: TariffControlPanelWhereInput | TariffControlPanelWhereInput[]
+    OR?: TariffControlPanelWhereInput[]
+    NOT?: TariffControlPanelWhereInput | TariffControlPanelWhereInput[]
+    id?: StringFilter<"TariffControlPanel"> | string
+    tariffId?: StringFilter<"TariffControlPanel"> | string
+    controlPanelId?: StringFilter<"TariffControlPanel"> | string
+    tariff?: XOR<TariffScalarRelationFilter, TariffWhereInput>
+    controlPanel?: XOR<ControlPanelScalarRelationFilter, ControlPanelWhereInput>
+  }
+
+  export type TariffControlPanelOrderByWithRelationInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    controlPanelId?: SortOrder
+    tariff?: TariffOrderByWithRelationInput
+    controlPanel?: ControlPanelOrderByWithRelationInput
+  }
+
+  export type TariffControlPanelWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    tariffId_controlPanelId?: TariffControlPanelTariffIdControlPanelIdCompoundUniqueInput
+    AND?: TariffControlPanelWhereInput | TariffControlPanelWhereInput[]
+    OR?: TariffControlPanelWhereInput[]
+    NOT?: TariffControlPanelWhereInput | TariffControlPanelWhereInput[]
+    tariffId?: StringFilter<"TariffControlPanel"> | string
+    controlPanelId?: StringFilter<"TariffControlPanel"> | string
+    tariff?: XOR<TariffScalarRelationFilter, TariffWhereInput>
+    controlPanel?: XOR<ControlPanelScalarRelationFilter, ControlPanelWhereInput>
+  }, "id" | "tariffId_controlPanelId">
+
+  export type TariffControlPanelOrderByWithAggregationInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    controlPanelId?: SortOrder
+    _count?: TariffControlPanelCountOrderByAggregateInput
+    _max?: TariffControlPanelMaxOrderByAggregateInput
+    _min?: TariffControlPanelMinOrderByAggregateInput
+  }
+
+  export type TariffControlPanelScalarWhereWithAggregatesInput = {
+    AND?: TariffControlPanelScalarWhereWithAggregatesInput | TariffControlPanelScalarWhereWithAggregatesInput[]
+    OR?: TariffControlPanelScalarWhereWithAggregatesInput[]
+    NOT?: TariffControlPanelScalarWhereWithAggregatesInput | TariffControlPanelScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TariffControlPanel"> | string
+    tariffId?: StringWithAggregatesFilter<"TariffControlPanel"> | string
+    controlPanelId?: StringWithAggregatesFilter<"TariffControlPanel"> | string
+  }
+
+  export type TariffCountryWhereInput = {
+    AND?: TariffCountryWhereInput | TariffCountryWhereInput[]
+    OR?: TariffCountryWhereInput[]
+    NOT?: TariffCountryWhereInput | TariffCountryWhereInput[]
+    id?: StringFilter<"TariffCountry"> | string
+    tariffId?: StringFilter<"TariffCountry"> | string
+    countryId?: StringFilter<"TariffCountry"> | string
+    tariff?: XOR<TariffScalarRelationFilter, TariffWhereInput>
+    country?: XOR<CountryScalarRelationFilter, CountryWhereInput>
+  }
+
+  export type TariffCountryOrderByWithRelationInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    countryId?: SortOrder
+    tariff?: TariffOrderByWithRelationInput
+    country?: CountryOrderByWithRelationInput
+  }
+
+  export type TariffCountryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    tariffId_countryId?: TariffCountryTariffIdCountryIdCompoundUniqueInput
+    AND?: TariffCountryWhereInput | TariffCountryWhereInput[]
+    OR?: TariffCountryWhereInput[]
+    NOT?: TariffCountryWhereInput | TariffCountryWhereInput[]
+    tariffId?: StringFilter<"TariffCountry"> | string
+    countryId?: StringFilter<"TariffCountry"> | string
+    tariff?: XOR<TariffScalarRelationFilter, TariffWhereInput>
+    country?: XOR<CountryScalarRelationFilter, CountryWhereInput>
+  }, "id" | "tariffId_countryId">
+
+  export type TariffCountryOrderByWithAggregationInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    countryId?: SortOrder
+    _count?: TariffCountryCountOrderByAggregateInput
+    _max?: TariffCountryMaxOrderByAggregateInput
+    _min?: TariffCountryMinOrderByAggregateInput
+  }
+
+  export type TariffCountryScalarWhereWithAggregatesInput = {
+    AND?: TariffCountryScalarWhereWithAggregatesInput | TariffCountryScalarWhereWithAggregatesInput[]
+    OR?: TariffCountryScalarWhereWithAggregatesInput[]
+    NOT?: TariffCountryScalarWhereWithAggregatesInput | TariffCountryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TariffCountry"> | string
+    tariffId?: StringWithAggregatesFilter<"TariffCountry"> | string
+    countryId?: StringWithAggregatesFilter<"TariffCountry"> | string
+  }
+
+  export type TariffDataStoreWhereInput = {
+    AND?: TariffDataStoreWhereInput | TariffDataStoreWhereInput[]
+    OR?: TariffDataStoreWhereInput[]
+    NOT?: TariffDataStoreWhereInput | TariffDataStoreWhereInput[]
+    id?: StringFilter<"TariffDataStore"> | string
+    tariffId?: StringFilter<"TariffDataStore"> | string
+    dataStoreId?: StringFilter<"TariffDataStore"> | string
+    tariff?: XOR<TariffScalarRelationFilter, TariffWhereInput>
+    dataStore?: XOR<DataStoreScalarRelationFilter, DataStoreWhereInput>
+  }
+
+  export type TariffDataStoreOrderByWithRelationInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    dataStoreId?: SortOrder
+    tariff?: TariffOrderByWithRelationInput
+    dataStore?: DataStoreOrderByWithRelationInput
+  }
+
+  export type TariffDataStoreWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    tariffId_dataStoreId?: TariffDataStoreTariffIdDataStoreIdCompoundUniqueInput
+    AND?: TariffDataStoreWhereInput | TariffDataStoreWhereInput[]
+    OR?: TariffDataStoreWhereInput[]
+    NOT?: TariffDataStoreWhereInput | TariffDataStoreWhereInput[]
+    tariffId?: StringFilter<"TariffDataStore"> | string
+    dataStoreId?: StringFilter<"TariffDataStore"> | string
+    tariff?: XOR<TariffScalarRelationFilter, TariffWhereInput>
+    dataStore?: XOR<DataStoreScalarRelationFilter, DataStoreWhereInput>
+  }, "id" | "tariffId_dataStoreId">
+
+  export type TariffDataStoreOrderByWithAggregationInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    dataStoreId?: SortOrder
+    _count?: TariffDataStoreCountOrderByAggregateInput
+    _max?: TariffDataStoreMaxOrderByAggregateInput
+    _min?: TariffDataStoreMinOrderByAggregateInput
+  }
+
+  export type TariffDataStoreScalarWhereWithAggregatesInput = {
+    AND?: TariffDataStoreScalarWhereWithAggregatesInput | TariffDataStoreScalarWhereWithAggregatesInput[]
+    OR?: TariffDataStoreScalarWhereWithAggregatesInput[]
+    NOT?: TariffDataStoreScalarWhereWithAggregatesInput | TariffDataStoreScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TariffDataStore"> | string
+    tariffId?: StringWithAggregatesFilter<"TariffDataStore"> | string
+    dataStoreId?: StringWithAggregatesFilter<"TariffDataStore"> | string
+  }
+
+  export type TariffOperationSystemWhereInput = {
+    AND?: TariffOperationSystemWhereInput | TariffOperationSystemWhereInput[]
+    OR?: TariffOperationSystemWhereInput[]
+    NOT?: TariffOperationSystemWhereInput | TariffOperationSystemWhereInput[]
+    id?: StringFilter<"TariffOperationSystem"> | string
+    tariffId?: StringFilter<"TariffOperationSystem"> | string
+    operationSystemId?: StringFilter<"TariffOperationSystem"> | string
+    tariff?: XOR<TariffScalarRelationFilter, TariffWhereInput>
+    operationSystem?: XOR<OperationSystemScalarRelationFilter, OperationSystemWhereInput>
+  }
+
+  export type TariffOperationSystemOrderByWithRelationInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    operationSystemId?: SortOrder
+    tariff?: TariffOrderByWithRelationInput
+    operationSystem?: OperationSystemOrderByWithRelationInput
+  }
+
+  export type TariffOperationSystemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    tariffId_operationSystemId?: TariffOperationSystemTariffIdOperationSystemIdCompoundUniqueInput
+    AND?: TariffOperationSystemWhereInput | TariffOperationSystemWhereInput[]
+    OR?: TariffOperationSystemWhereInput[]
+    NOT?: TariffOperationSystemWhereInput | TariffOperationSystemWhereInput[]
+    tariffId?: StringFilter<"TariffOperationSystem"> | string
+    operationSystemId?: StringFilter<"TariffOperationSystem"> | string
+    tariff?: XOR<TariffScalarRelationFilter, TariffWhereInput>
+    operationSystem?: XOR<OperationSystemScalarRelationFilter, OperationSystemWhereInput>
+  }, "id" | "tariffId_operationSystemId">
+
+  export type TariffOperationSystemOrderByWithAggregationInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    operationSystemId?: SortOrder
+    _count?: TariffOperationSystemCountOrderByAggregateInput
+    _max?: TariffOperationSystemMaxOrderByAggregateInput
+    _min?: TariffOperationSystemMinOrderByAggregateInput
+  }
+
+  export type TariffOperationSystemScalarWhereWithAggregatesInput = {
+    AND?: TariffOperationSystemScalarWhereWithAggregatesInput | TariffOperationSystemScalarWhereWithAggregatesInput[]
+    OR?: TariffOperationSystemScalarWhereWithAggregatesInput[]
+    NOT?: TariffOperationSystemScalarWhereWithAggregatesInput | TariffOperationSystemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TariffOperationSystem"> | string
+    tariffId?: StringWithAggregatesFilter<"TariffOperationSystem"> | string
+    operationSystemId?: StringWithAggregatesFilter<"TariffOperationSystem"> | string
+  }
+
+  export type TariffProgrammingLanguageWhereInput = {
+    AND?: TariffProgrammingLanguageWhereInput | TariffProgrammingLanguageWhereInput[]
+    OR?: TariffProgrammingLanguageWhereInput[]
+    NOT?: TariffProgrammingLanguageWhereInput | TariffProgrammingLanguageWhereInput[]
+    id?: StringFilter<"TariffProgrammingLanguage"> | string
+    tariffId?: StringFilter<"TariffProgrammingLanguage"> | string
+    programmingLanguageId?: StringFilter<"TariffProgrammingLanguage"> | string
+    tariff?: XOR<TariffScalarRelationFilter, TariffWhereInput>
+    programmingLanguage?: XOR<ProgrammingLanguageScalarRelationFilter, ProgrammingLanguageWhereInput>
+  }
+
+  export type TariffProgrammingLanguageOrderByWithRelationInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    programmingLanguageId?: SortOrder
+    tariff?: TariffOrderByWithRelationInput
+    programmingLanguage?: ProgrammingLanguageOrderByWithRelationInput
+  }
+
+  export type TariffProgrammingLanguageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    tariffId_programmingLanguageId?: TariffProgrammingLanguageTariffIdProgrammingLanguageIdCompoundUniqueInput
+    AND?: TariffProgrammingLanguageWhereInput | TariffProgrammingLanguageWhereInput[]
+    OR?: TariffProgrammingLanguageWhereInput[]
+    NOT?: TariffProgrammingLanguageWhereInput | TariffProgrammingLanguageWhereInput[]
+    tariffId?: StringFilter<"TariffProgrammingLanguage"> | string
+    programmingLanguageId?: StringFilter<"TariffProgrammingLanguage"> | string
+    tariff?: XOR<TariffScalarRelationFilter, TariffWhereInput>
+    programmingLanguage?: XOR<ProgrammingLanguageScalarRelationFilter, ProgrammingLanguageWhereInput>
+  }, "id" | "tariffId_programmingLanguageId">
+
+  export type TariffProgrammingLanguageOrderByWithAggregationInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    programmingLanguageId?: SortOrder
+    _count?: TariffProgrammingLanguageCountOrderByAggregateInput
+    _max?: TariffProgrammingLanguageMaxOrderByAggregateInput
+    _min?: TariffProgrammingLanguageMinOrderByAggregateInput
+  }
+
+  export type TariffProgrammingLanguageScalarWhereWithAggregatesInput = {
+    AND?: TariffProgrammingLanguageScalarWhereWithAggregatesInput | TariffProgrammingLanguageScalarWhereWithAggregatesInput[]
+    OR?: TariffProgrammingLanguageScalarWhereWithAggregatesInput[]
+    NOT?: TariffProgrammingLanguageScalarWhereWithAggregatesInput | TariffProgrammingLanguageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TariffProgrammingLanguage"> | string
+    tariffId?: StringWithAggregatesFilter<"TariffProgrammingLanguage"> | string
+    programmingLanguageId?: StringWithAggregatesFilter<"TariffProgrammingLanguage"> | string
+  }
+
+  export type ContentBlockWhereInput = {
+    AND?: ContentBlockWhereInput | ContentBlockWhereInput[]
+    OR?: ContentBlockWhereInput[]
+    NOT?: ContentBlockWhereInput | ContentBlockWhereInput[]
+    id?: StringFilter<"ContentBlock"> | string
+    key?: StringFilter<"ContentBlock"> | string
+    title?: StringNullableFilter<"ContentBlock"> | string | null
+    content?: StringNullableFilter<"ContentBlock"> | string | null
+    isActive?: BoolFilter<"ContentBlock"> | boolean
+    createdAt?: DateTimeFilter<"ContentBlock"> | Date | string
+    updatedAt?: DateTimeFilter<"ContentBlock"> | Date | string
+  }
+
+  export type ContentBlockOrderByWithRelationInput = {
+    id?: SortOrder
+    key?: SortOrder
+    title?: SortOrderInput | SortOrder
+    content?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ContentBlockWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    key?: string
+    AND?: ContentBlockWhereInput | ContentBlockWhereInput[]
+    OR?: ContentBlockWhereInput[]
+    NOT?: ContentBlockWhereInput | ContentBlockWhereInput[]
+    title?: StringNullableFilter<"ContentBlock"> | string | null
+    content?: StringNullableFilter<"ContentBlock"> | string | null
+    isActive?: BoolFilter<"ContentBlock"> | boolean
+    createdAt?: DateTimeFilter<"ContentBlock"> | Date | string
+    updatedAt?: DateTimeFilter<"ContentBlock"> | Date | string
+  }, "id" | "key">
+
+  export type ContentBlockOrderByWithAggregationInput = {
+    id?: SortOrder
+    key?: SortOrder
+    title?: SortOrderInput | SortOrder
+    content?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ContentBlockCountOrderByAggregateInput
+    _max?: ContentBlockMaxOrderByAggregateInput
+    _min?: ContentBlockMinOrderByAggregateInput
+  }
+
+  export type ContentBlockScalarWhereWithAggregatesInput = {
+    AND?: ContentBlockScalarWhereWithAggregatesInput | ContentBlockScalarWhereWithAggregatesInput[]
+    OR?: ContentBlockScalarWhereWithAggregatesInput[]
+    NOT?: ContentBlockScalarWhereWithAggregatesInput | ContentBlockScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ContentBlock"> | string
+    key?: StringWithAggregatesFilter<"ContentBlock"> | string
+    title?: StringNullableWithAggregatesFilter<"ContentBlock"> | string | null
+    content?: StringNullableWithAggregatesFilter<"ContentBlock"> | string | null
+    isActive?: BoolWithAggregatesFilter<"ContentBlock"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"ContentBlock"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ContentBlock"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -6254,6 +24982,822 @@ export namespace Prisma {
     identifier?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
     expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HostingCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    logoUrl?: string | null
+    websiteUrl?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tariffs?: TariffCreateNestedManyWithoutHostingInput
+  }
+
+  export type HostingUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    logoUrl?: string | null
+    websiteUrl?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tariffs?: TariffUncheckedCreateNestedManyWithoutHostingInput
+  }
+
+  export type HostingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tariffs?: TariffUpdateManyWithoutHostingNestedInput
+  }
+
+  export type HostingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tariffs?: TariffUncheckedUpdateManyWithoutHostingNestedInput
+  }
+
+  export type HostingCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    logoUrl?: string | null
+    websiteUrl?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HostingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HostingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TariffCreateInput = {
+    id?: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hosting: HostingCreateNestedOneWithoutTariffsInput
+    cms?: TariffCMSCreateNestedManyWithoutTariffInput
+    controlPanels?: TariffControlPanelCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffUncheckedCreateInput = {
+    id?: string
+    hostingId: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cms?: TariffCMSUncheckedCreateNestedManyWithoutTariffInput
+    controlPanels?: TariffControlPanelUncheckedCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryUncheckedCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreUncheckedCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemUncheckedCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hosting?: HostingUpdateOneRequiredWithoutTariffsNestedInput
+    cms?: TariffCMSUpdateManyWithoutTariffNestedInput
+    controlPanels?: TariffControlPanelUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUpdateManyWithoutTariffNestedInput
+  }
+
+  export type TariffUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cms?: TariffCMSUncheckedUpdateManyWithoutTariffNestedInput
+    controlPanels?: TariffControlPanelUncheckedUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUncheckedUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUncheckedUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUncheckedUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedUpdateManyWithoutTariffNestedInput
+  }
+
+  export type TariffCreateManyInput = {
+    id?: string
+    hostingId: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TariffUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TariffUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CMSCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    tariffs?: TariffCMSCreateNestedManyWithoutCmsInput
+  }
+
+  export type CMSUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    tariffs?: TariffCMSUncheckedCreateNestedManyWithoutCmsInput
+  }
+
+  export type CMSUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    tariffs?: TariffCMSUpdateManyWithoutCmsNestedInput
+  }
+
+  export type CMSUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    tariffs?: TariffCMSUncheckedUpdateManyWithoutCmsNestedInput
+  }
+
+  export type CMSCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type CMSUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CMSUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ControlPanelCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    tariffs?: TariffControlPanelCreateNestedManyWithoutControlPanelInput
+  }
+
+  export type ControlPanelUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    tariffs?: TariffControlPanelUncheckedCreateNestedManyWithoutControlPanelInput
+  }
+
+  export type ControlPanelUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    tariffs?: TariffControlPanelUpdateManyWithoutControlPanelNestedInput
+  }
+
+  export type ControlPanelUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    tariffs?: TariffControlPanelUncheckedUpdateManyWithoutControlPanelNestedInput
+  }
+
+  export type ControlPanelCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type ControlPanelUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ControlPanelUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CountryCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    tariffs?: TariffCountryCreateNestedManyWithoutCountryInput
+  }
+
+  export type CountryUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    tariffs?: TariffCountryUncheckedCreateNestedManyWithoutCountryInput
+  }
+
+  export type CountryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    tariffs?: TariffCountryUpdateManyWithoutCountryNestedInput
+  }
+
+  export type CountryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    tariffs?: TariffCountryUncheckedUpdateManyWithoutCountryNestedInput
+  }
+
+  export type CountryCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type CountryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CountryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DataStoreCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    tariffs?: TariffDataStoreCreateNestedManyWithoutDataStoreInput
+  }
+
+  export type DataStoreUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    tariffs?: TariffDataStoreUncheckedCreateNestedManyWithoutDataStoreInput
+  }
+
+  export type DataStoreUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    tariffs?: TariffDataStoreUpdateManyWithoutDataStoreNestedInput
+  }
+
+  export type DataStoreUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    tariffs?: TariffDataStoreUncheckedUpdateManyWithoutDataStoreNestedInput
+  }
+
+  export type DataStoreCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type DataStoreUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DataStoreUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OperationSystemCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    tariffs?: TariffOperationSystemCreateNestedManyWithoutOperationSystemInput
+  }
+
+  export type OperationSystemUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    tariffs?: TariffOperationSystemUncheckedCreateNestedManyWithoutOperationSystemInput
+  }
+
+  export type OperationSystemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    tariffs?: TariffOperationSystemUpdateManyWithoutOperationSystemNestedInput
+  }
+
+  export type OperationSystemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    tariffs?: TariffOperationSystemUncheckedUpdateManyWithoutOperationSystemNestedInput
+  }
+
+  export type OperationSystemCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type OperationSystemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OperationSystemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProgrammingLanguageCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    tariffs?: TariffProgrammingLanguageCreateNestedManyWithoutProgrammingLanguageInput
+  }
+
+  export type ProgrammingLanguageUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    tariffs?: TariffProgrammingLanguageUncheckedCreateNestedManyWithoutProgrammingLanguageInput
+  }
+
+  export type ProgrammingLanguageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    tariffs?: TariffProgrammingLanguageUpdateManyWithoutProgrammingLanguageNestedInput
+  }
+
+  export type ProgrammingLanguageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    tariffs?: TariffProgrammingLanguageUncheckedUpdateManyWithoutProgrammingLanguageNestedInput
+  }
+
+  export type ProgrammingLanguageCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type ProgrammingLanguageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProgrammingLanguageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCMSCreateInput = {
+    id?: string
+    tariff: TariffCreateNestedOneWithoutCmsInput
+    cms: CMSCreateNestedOneWithoutTariffsInput
+  }
+
+  export type TariffCMSUncheckedCreateInput = {
+    id?: string
+    tariffId: string
+    cmsId: string
+  }
+
+  export type TariffCMSUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariff?: TariffUpdateOneRequiredWithoutCmsNestedInput
+    cms?: CMSUpdateOneRequiredWithoutTariffsNestedInput
+  }
+
+  export type TariffCMSUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+    cmsId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCMSCreateManyInput = {
+    id?: string
+    tariffId: string
+    cmsId: string
+  }
+
+  export type TariffCMSUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCMSUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+    cmsId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffControlPanelCreateInput = {
+    id?: string
+    tariff: TariffCreateNestedOneWithoutControlPanelsInput
+    controlPanel: ControlPanelCreateNestedOneWithoutTariffsInput
+  }
+
+  export type TariffControlPanelUncheckedCreateInput = {
+    id?: string
+    tariffId: string
+    controlPanelId: string
+  }
+
+  export type TariffControlPanelUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariff?: TariffUpdateOneRequiredWithoutControlPanelsNestedInput
+    controlPanel?: ControlPanelUpdateOneRequiredWithoutTariffsNestedInput
+  }
+
+  export type TariffControlPanelUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+    controlPanelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffControlPanelCreateManyInput = {
+    id?: string
+    tariffId: string
+    controlPanelId: string
+  }
+
+  export type TariffControlPanelUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffControlPanelUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+    controlPanelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCountryCreateInput = {
+    id?: string
+    tariff: TariffCreateNestedOneWithoutCountriesInput
+    country: CountryCreateNestedOneWithoutTariffsInput
+  }
+
+  export type TariffCountryUncheckedCreateInput = {
+    id?: string
+    tariffId: string
+    countryId: string
+  }
+
+  export type TariffCountryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariff?: TariffUpdateOneRequiredWithoutCountriesNestedInput
+    country?: CountryUpdateOneRequiredWithoutTariffsNestedInput
+  }
+
+  export type TariffCountryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+    countryId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCountryCreateManyInput = {
+    id?: string
+    tariffId: string
+    countryId: string
+  }
+
+  export type TariffCountryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCountryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+    countryId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffDataStoreCreateInput = {
+    id?: string
+    tariff: TariffCreateNestedOneWithoutDataStoresInput
+    dataStore: DataStoreCreateNestedOneWithoutTariffsInput
+  }
+
+  export type TariffDataStoreUncheckedCreateInput = {
+    id?: string
+    tariffId: string
+    dataStoreId: string
+  }
+
+  export type TariffDataStoreUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariff?: TariffUpdateOneRequiredWithoutDataStoresNestedInput
+    dataStore?: DataStoreUpdateOneRequiredWithoutTariffsNestedInput
+  }
+
+  export type TariffDataStoreUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+    dataStoreId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffDataStoreCreateManyInput = {
+    id?: string
+    tariffId: string
+    dataStoreId: string
+  }
+
+  export type TariffDataStoreUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffDataStoreUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+    dataStoreId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffOperationSystemCreateInput = {
+    id?: string
+    tariff: TariffCreateNestedOneWithoutOperationSystemsInput
+    operationSystem: OperationSystemCreateNestedOneWithoutTariffsInput
+  }
+
+  export type TariffOperationSystemUncheckedCreateInput = {
+    id?: string
+    tariffId: string
+    operationSystemId: string
+  }
+
+  export type TariffOperationSystemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariff?: TariffUpdateOneRequiredWithoutOperationSystemsNestedInput
+    operationSystem?: OperationSystemUpdateOneRequiredWithoutTariffsNestedInput
+  }
+
+  export type TariffOperationSystemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+    operationSystemId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffOperationSystemCreateManyInput = {
+    id?: string
+    tariffId: string
+    operationSystemId: string
+  }
+
+  export type TariffOperationSystemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffOperationSystemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+    operationSystemId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffProgrammingLanguageCreateInput = {
+    id?: string
+    tariff: TariffCreateNestedOneWithoutProgrammingLanguagesInput
+    programmingLanguage: ProgrammingLanguageCreateNestedOneWithoutTariffsInput
+  }
+
+  export type TariffProgrammingLanguageUncheckedCreateInput = {
+    id?: string
+    tariffId: string
+    programmingLanguageId: string
+  }
+
+  export type TariffProgrammingLanguageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariff?: TariffUpdateOneRequiredWithoutProgrammingLanguagesNestedInput
+    programmingLanguage?: ProgrammingLanguageUpdateOneRequiredWithoutTariffsNestedInput
+  }
+
+  export type TariffProgrammingLanguageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+    programmingLanguageId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffProgrammingLanguageCreateManyInput = {
+    id?: string
+    tariffId: string
+    programmingLanguageId: string
+  }
+
+  export type TariffProgrammingLanguageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffProgrammingLanguageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+    programmingLanguageId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ContentBlockCreateInput = {
+    id?: string
+    key: string
+    title?: string | null
+    content?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContentBlockUncheckedCreateInput = {
+    id?: string
+    key: string
+    title?: string | null
+    content?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContentBlockUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentBlockUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentBlockCreateManyInput = {
+    id?: string
+    key: string
+    title?: string | null
+    content?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContentBlockUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentBlockUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6584,6 +26128,554 @@ export namespace Prisma {
     expires?: SortOrder
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type TariffListRelationFilter = {
+    every?: TariffWhereInput
+    some?: TariffWhereInput
+    none?: TariffWhereInput
+  }
+
+  export type TariffOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type HostingCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    logoUrl?: SortOrder
+    websiteUrl?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HostingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    logoUrl?: SortOrder
+    websiteUrl?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HostingMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    logoUrl?: SortOrder
+    websiteUrl?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type EnumTariffPeriodFilter<$PrismaModel = never> = {
+    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel>
+    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
+    not?: NestedEnumTariffPeriodFilter<$PrismaModel> | $Enums.TariffPeriod
+  }
+
+  export type HostingScalarRelationFilter = {
+    is?: HostingWhereInput
+    isNot?: HostingWhereInput
+  }
+
+  export type TariffCMSListRelationFilter = {
+    every?: TariffCMSWhereInput
+    some?: TariffCMSWhereInput
+    none?: TariffCMSWhereInput
+  }
+
+  export type TariffControlPanelListRelationFilter = {
+    every?: TariffControlPanelWhereInput
+    some?: TariffControlPanelWhereInput
+    none?: TariffControlPanelWhereInput
+  }
+
+  export type TariffCountryListRelationFilter = {
+    every?: TariffCountryWhereInput
+    some?: TariffCountryWhereInput
+    none?: TariffCountryWhereInput
+  }
+
+  export type TariffDataStoreListRelationFilter = {
+    every?: TariffDataStoreWhereInput
+    some?: TariffDataStoreWhereInput
+    none?: TariffDataStoreWhereInput
+  }
+
+  export type TariffOperationSystemListRelationFilter = {
+    every?: TariffOperationSystemWhereInput
+    some?: TariffOperationSystemWhereInput
+    none?: TariffOperationSystemWhereInput
+  }
+
+  export type TariffProgrammingLanguageListRelationFilter = {
+    every?: TariffProgrammingLanguageWhereInput
+    some?: TariffProgrammingLanguageWhereInput
+    none?: TariffProgrammingLanguageWhereInput
+  }
+
+  export type TariffCMSOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TariffControlPanelOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TariffCountryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TariffDataStoreOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TariffOperationSystemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TariffProgrammingLanguageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TariffCountOrderByAggregateInput = {
+    id?: SortOrder
+    hostingId?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    currency?: SortOrder
+    period?: SortOrder
+    diskSpace?: SortOrder
+    bandwidth?: SortOrder
+    domainsCount?: SortOrder
+    databasesCount?: SortOrder
+    emailAccounts?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TariffAvgOrderByAggregateInput = {
+    price?: SortOrder
+    diskSpace?: SortOrder
+    bandwidth?: SortOrder
+    domainsCount?: SortOrder
+    databasesCount?: SortOrder
+    emailAccounts?: SortOrder
+  }
+
+  export type TariffMaxOrderByAggregateInput = {
+    id?: SortOrder
+    hostingId?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    currency?: SortOrder
+    period?: SortOrder
+    diskSpace?: SortOrder
+    bandwidth?: SortOrder
+    domainsCount?: SortOrder
+    databasesCount?: SortOrder
+    emailAccounts?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TariffMinOrderByAggregateInput = {
+    id?: SortOrder
+    hostingId?: SortOrder
+    name?: SortOrder
+    price?: SortOrder
+    currency?: SortOrder
+    period?: SortOrder
+    diskSpace?: SortOrder
+    bandwidth?: SortOrder
+    domainsCount?: SortOrder
+    databasesCount?: SortOrder
+    emailAccounts?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TariffSumOrderByAggregateInput = {
+    price?: SortOrder
+    diskSpace?: SortOrder
+    bandwidth?: SortOrder
+    domainsCount?: SortOrder
+    databasesCount?: SortOrder
+    emailAccounts?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type EnumTariffPeriodWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel>
+    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
+    not?: NestedEnumTariffPeriodWithAggregatesFilter<$PrismaModel> | $Enums.TariffPeriod
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTariffPeriodFilter<$PrismaModel>
+    _max?: NestedEnumTariffPeriodFilter<$PrismaModel>
+  }
+
+  export type CMSCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type CMSMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type CMSMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type ControlPanelCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type ControlPanelMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type ControlPanelMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type CountryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type CountryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type CountryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type DataStoreCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type DataStoreMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type DataStoreMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type OperationSystemCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type OperationSystemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type OperationSystemMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type ProgrammingLanguageCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type ProgrammingLanguageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type ProgrammingLanguageMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type TariffScalarRelationFilter = {
+    is?: TariffWhereInput
+    isNot?: TariffWhereInput
+  }
+
+  export type CMSScalarRelationFilter = {
+    is?: CMSWhereInput
+    isNot?: CMSWhereInput
+  }
+
+  export type TariffCMSTariffIdCmsIdCompoundUniqueInput = {
+    tariffId: string
+    cmsId: string
+  }
+
+  export type TariffCMSCountOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    cmsId?: SortOrder
+  }
+
+  export type TariffCMSMaxOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    cmsId?: SortOrder
+  }
+
+  export type TariffCMSMinOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    cmsId?: SortOrder
+  }
+
+  export type ControlPanelScalarRelationFilter = {
+    is?: ControlPanelWhereInput
+    isNot?: ControlPanelWhereInput
+  }
+
+  export type TariffControlPanelTariffIdControlPanelIdCompoundUniqueInput = {
+    tariffId: string
+    controlPanelId: string
+  }
+
+  export type TariffControlPanelCountOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    controlPanelId?: SortOrder
+  }
+
+  export type TariffControlPanelMaxOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    controlPanelId?: SortOrder
+  }
+
+  export type TariffControlPanelMinOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    controlPanelId?: SortOrder
+  }
+
+  export type CountryScalarRelationFilter = {
+    is?: CountryWhereInput
+    isNot?: CountryWhereInput
+  }
+
+  export type TariffCountryTariffIdCountryIdCompoundUniqueInput = {
+    tariffId: string
+    countryId: string
+  }
+
+  export type TariffCountryCountOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    countryId?: SortOrder
+  }
+
+  export type TariffCountryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    countryId?: SortOrder
+  }
+
+  export type TariffCountryMinOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    countryId?: SortOrder
+  }
+
+  export type DataStoreScalarRelationFilter = {
+    is?: DataStoreWhereInput
+    isNot?: DataStoreWhereInput
+  }
+
+  export type TariffDataStoreTariffIdDataStoreIdCompoundUniqueInput = {
+    tariffId: string
+    dataStoreId: string
+  }
+
+  export type TariffDataStoreCountOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    dataStoreId?: SortOrder
+  }
+
+  export type TariffDataStoreMaxOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    dataStoreId?: SortOrder
+  }
+
+  export type TariffDataStoreMinOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    dataStoreId?: SortOrder
+  }
+
+  export type OperationSystemScalarRelationFilter = {
+    is?: OperationSystemWhereInput
+    isNot?: OperationSystemWhereInput
+  }
+
+  export type TariffOperationSystemTariffIdOperationSystemIdCompoundUniqueInput = {
+    tariffId: string
+    operationSystemId: string
+  }
+
+  export type TariffOperationSystemCountOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    operationSystemId?: SortOrder
+  }
+
+  export type TariffOperationSystemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    operationSystemId?: SortOrder
+  }
+
+  export type TariffOperationSystemMinOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    operationSystemId?: SortOrder
+  }
+
+  export type ProgrammingLanguageScalarRelationFilter = {
+    is?: ProgrammingLanguageWhereInput
+    isNot?: ProgrammingLanguageWhereInput
+  }
+
+  export type TariffProgrammingLanguageTariffIdProgrammingLanguageIdCompoundUniqueInput = {
+    tariffId: string
+    programmingLanguageId: string
+  }
+
+  export type TariffProgrammingLanguageCountOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    programmingLanguageId?: SortOrder
+  }
+
+  export type TariffProgrammingLanguageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    programmingLanguageId?: SortOrder
+  }
+
+  export type TariffProgrammingLanguageMinOrderByAggregateInput = {
+    id?: SortOrder
+    tariffId?: SortOrder
+    programmingLanguageId?: SortOrder
+  }
+
+  export type ContentBlockCountOrderByAggregateInput = {
+    id?: SortOrder
+    key?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ContentBlockMaxOrderByAggregateInput = {
+    id?: SortOrder
+    key?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ContentBlockMinOrderByAggregateInput = {
+    id?: SortOrder
+    key?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -6722,6 +26814,750 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutSessionsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionsInput, UserUpdateWithoutSessionsInput>, UserUncheckedUpdateWithoutSessionsInput>
+  }
+
+  export type TariffCreateNestedManyWithoutHostingInput = {
+    create?: XOR<TariffCreateWithoutHostingInput, TariffUncheckedCreateWithoutHostingInput> | TariffCreateWithoutHostingInput[] | TariffUncheckedCreateWithoutHostingInput[]
+    connectOrCreate?: TariffCreateOrConnectWithoutHostingInput | TariffCreateOrConnectWithoutHostingInput[]
+    createMany?: TariffCreateManyHostingInputEnvelope
+    connect?: TariffWhereUniqueInput | TariffWhereUniqueInput[]
+  }
+
+  export type TariffUncheckedCreateNestedManyWithoutHostingInput = {
+    create?: XOR<TariffCreateWithoutHostingInput, TariffUncheckedCreateWithoutHostingInput> | TariffCreateWithoutHostingInput[] | TariffUncheckedCreateWithoutHostingInput[]
+    connectOrCreate?: TariffCreateOrConnectWithoutHostingInput | TariffCreateOrConnectWithoutHostingInput[]
+    createMany?: TariffCreateManyHostingInputEnvelope
+    connect?: TariffWhereUniqueInput | TariffWhereUniqueInput[]
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type TariffUpdateManyWithoutHostingNestedInput = {
+    create?: XOR<TariffCreateWithoutHostingInput, TariffUncheckedCreateWithoutHostingInput> | TariffCreateWithoutHostingInput[] | TariffUncheckedCreateWithoutHostingInput[]
+    connectOrCreate?: TariffCreateOrConnectWithoutHostingInput | TariffCreateOrConnectWithoutHostingInput[]
+    upsert?: TariffUpsertWithWhereUniqueWithoutHostingInput | TariffUpsertWithWhereUniqueWithoutHostingInput[]
+    createMany?: TariffCreateManyHostingInputEnvelope
+    set?: TariffWhereUniqueInput | TariffWhereUniqueInput[]
+    disconnect?: TariffWhereUniqueInput | TariffWhereUniqueInput[]
+    delete?: TariffWhereUniqueInput | TariffWhereUniqueInput[]
+    connect?: TariffWhereUniqueInput | TariffWhereUniqueInput[]
+    update?: TariffUpdateWithWhereUniqueWithoutHostingInput | TariffUpdateWithWhereUniqueWithoutHostingInput[]
+    updateMany?: TariffUpdateManyWithWhereWithoutHostingInput | TariffUpdateManyWithWhereWithoutHostingInput[]
+    deleteMany?: TariffScalarWhereInput | TariffScalarWhereInput[]
+  }
+
+  export type TariffUncheckedUpdateManyWithoutHostingNestedInput = {
+    create?: XOR<TariffCreateWithoutHostingInput, TariffUncheckedCreateWithoutHostingInput> | TariffCreateWithoutHostingInput[] | TariffUncheckedCreateWithoutHostingInput[]
+    connectOrCreate?: TariffCreateOrConnectWithoutHostingInput | TariffCreateOrConnectWithoutHostingInput[]
+    upsert?: TariffUpsertWithWhereUniqueWithoutHostingInput | TariffUpsertWithWhereUniqueWithoutHostingInput[]
+    createMany?: TariffCreateManyHostingInputEnvelope
+    set?: TariffWhereUniqueInput | TariffWhereUniqueInput[]
+    disconnect?: TariffWhereUniqueInput | TariffWhereUniqueInput[]
+    delete?: TariffWhereUniqueInput | TariffWhereUniqueInput[]
+    connect?: TariffWhereUniqueInput | TariffWhereUniqueInput[]
+    update?: TariffUpdateWithWhereUniqueWithoutHostingInput | TariffUpdateWithWhereUniqueWithoutHostingInput[]
+    updateMany?: TariffUpdateManyWithWhereWithoutHostingInput | TariffUpdateManyWithWhereWithoutHostingInput[]
+    deleteMany?: TariffScalarWhereInput | TariffScalarWhereInput[]
+  }
+
+  export type HostingCreateNestedOneWithoutTariffsInput = {
+    create?: XOR<HostingCreateWithoutTariffsInput, HostingUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: HostingCreateOrConnectWithoutTariffsInput
+    connect?: HostingWhereUniqueInput
+  }
+
+  export type TariffCMSCreateNestedManyWithoutTariffInput = {
+    create?: XOR<TariffCMSCreateWithoutTariffInput, TariffCMSUncheckedCreateWithoutTariffInput> | TariffCMSCreateWithoutTariffInput[] | TariffCMSUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffCMSCreateOrConnectWithoutTariffInput | TariffCMSCreateOrConnectWithoutTariffInput[]
+    createMany?: TariffCMSCreateManyTariffInputEnvelope
+    connect?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+  }
+
+  export type TariffControlPanelCreateNestedManyWithoutTariffInput = {
+    create?: XOR<TariffControlPanelCreateWithoutTariffInput, TariffControlPanelUncheckedCreateWithoutTariffInput> | TariffControlPanelCreateWithoutTariffInput[] | TariffControlPanelUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffControlPanelCreateOrConnectWithoutTariffInput | TariffControlPanelCreateOrConnectWithoutTariffInput[]
+    createMany?: TariffControlPanelCreateManyTariffInputEnvelope
+    connect?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+  }
+
+  export type TariffCountryCreateNestedManyWithoutTariffInput = {
+    create?: XOR<TariffCountryCreateWithoutTariffInput, TariffCountryUncheckedCreateWithoutTariffInput> | TariffCountryCreateWithoutTariffInput[] | TariffCountryUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffCountryCreateOrConnectWithoutTariffInput | TariffCountryCreateOrConnectWithoutTariffInput[]
+    createMany?: TariffCountryCreateManyTariffInputEnvelope
+    connect?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+  }
+
+  export type TariffDataStoreCreateNestedManyWithoutTariffInput = {
+    create?: XOR<TariffDataStoreCreateWithoutTariffInput, TariffDataStoreUncheckedCreateWithoutTariffInput> | TariffDataStoreCreateWithoutTariffInput[] | TariffDataStoreUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffDataStoreCreateOrConnectWithoutTariffInput | TariffDataStoreCreateOrConnectWithoutTariffInput[]
+    createMany?: TariffDataStoreCreateManyTariffInputEnvelope
+    connect?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+  }
+
+  export type TariffOperationSystemCreateNestedManyWithoutTariffInput = {
+    create?: XOR<TariffOperationSystemCreateWithoutTariffInput, TariffOperationSystemUncheckedCreateWithoutTariffInput> | TariffOperationSystemCreateWithoutTariffInput[] | TariffOperationSystemUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffOperationSystemCreateOrConnectWithoutTariffInput | TariffOperationSystemCreateOrConnectWithoutTariffInput[]
+    createMany?: TariffOperationSystemCreateManyTariffInputEnvelope
+    connect?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+  }
+
+  export type TariffProgrammingLanguageCreateNestedManyWithoutTariffInput = {
+    create?: XOR<TariffProgrammingLanguageCreateWithoutTariffInput, TariffProgrammingLanguageUncheckedCreateWithoutTariffInput> | TariffProgrammingLanguageCreateWithoutTariffInput[] | TariffProgrammingLanguageUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffProgrammingLanguageCreateOrConnectWithoutTariffInput | TariffProgrammingLanguageCreateOrConnectWithoutTariffInput[]
+    createMany?: TariffProgrammingLanguageCreateManyTariffInputEnvelope
+    connect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+  }
+
+  export type TariffCMSUncheckedCreateNestedManyWithoutTariffInput = {
+    create?: XOR<TariffCMSCreateWithoutTariffInput, TariffCMSUncheckedCreateWithoutTariffInput> | TariffCMSCreateWithoutTariffInput[] | TariffCMSUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffCMSCreateOrConnectWithoutTariffInput | TariffCMSCreateOrConnectWithoutTariffInput[]
+    createMany?: TariffCMSCreateManyTariffInputEnvelope
+    connect?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+  }
+
+  export type TariffControlPanelUncheckedCreateNestedManyWithoutTariffInput = {
+    create?: XOR<TariffControlPanelCreateWithoutTariffInput, TariffControlPanelUncheckedCreateWithoutTariffInput> | TariffControlPanelCreateWithoutTariffInput[] | TariffControlPanelUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffControlPanelCreateOrConnectWithoutTariffInput | TariffControlPanelCreateOrConnectWithoutTariffInput[]
+    createMany?: TariffControlPanelCreateManyTariffInputEnvelope
+    connect?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+  }
+
+  export type TariffCountryUncheckedCreateNestedManyWithoutTariffInput = {
+    create?: XOR<TariffCountryCreateWithoutTariffInput, TariffCountryUncheckedCreateWithoutTariffInput> | TariffCountryCreateWithoutTariffInput[] | TariffCountryUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffCountryCreateOrConnectWithoutTariffInput | TariffCountryCreateOrConnectWithoutTariffInput[]
+    createMany?: TariffCountryCreateManyTariffInputEnvelope
+    connect?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+  }
+
+  export type TariffDataStoreUncheckedCreateNestedManyWithoutTariffInput = {
+    create?: XOR<TariffDataStoreCreateWithoutTariffInput, TariffDataStoreUncheckedCreateWithoutTariffInput> | TariffDataStoreCreateWithoutTariffInput[] | TariffDataStoreUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffDataStoreCreateOrConnectWithoutTariffInput | TariffDataStoreCreateOrConnectWithoutTariffInput[]
+    createMany?: TariffDataStoreCreateManyTariffInputEnvelope
+    connect?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+  }
+
+  export type TariffOperationSystemUncheckedCreateNestedManyWithoutTariffInput = {
+    create?: XOR<TariffOperationSystemCreateWithoutTariffInput, TariffOperationSystemUncheckedCreateWithoutTariffInput> | TariffOperationSystemCreateWithoutTariffInput[] | TariffOperationSystemUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffOperationSystemCreateOrConnectWithoutTariffInput | TariffOperationSystemCreateOrConnectWithoutTariffInput[]
+    createMany?: TariffOperationSystemCreateManyTariffInputEnvelope
+    connect?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+  }
+
+  export type TariffProgrammingLanguageUncheckedCreateNestedManyWithoutTariffInput = {
+    create?: XOR<TariffProgrammingLanguageCreateWithoutTariffInput, TariffProgrammingLanguageUncheckedCreateWithoutTariffInput> | TariffProgrammingLanguageCreateWithoutTariffInput[] | TariffProgrammingLanguageUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffProgrammingLanguageCreateOrConnectWithoutTariffInput | TariffProgrammingLanguageCreateOrConnectWithoutTariffInput[]
+    createMany?: TariffProgrammingLanguageCreateManyTariffInputEnvelope
+    connect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+  }
+
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type EnumTariffPeriodFieldUpdateOperationsInput = {
+    set?: $Enums.TariffPeriod
+  }
+
+  export type HostingUpdateOneRequiredWithoutTariffsNestedInput = {
+    create?: XOR<HostingCreateWithoutTariffsInput, HostingUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: HostingCreateOrConnectWithoutTariffsInput
+    upsert?: HostingUpsertWithoutTariffsInput
+    connect?: HostingWhereUniqueInput
+    update?: XOR<XOR<HostingUpdateToOneWithWhereWithoutTariffsInput, HostingUpdateWithoutTariffsInput>, HostingUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type TariffCMSUpdateManyWithoutTariffNestedInput = {
+    create?: XOR<TariffCMSCreateWithoutTariffInput, TariffCMSUncheckedCreateWithoutTariffInput> | TariffCMSCreateWithoutTariffInput[] | TariffCMSUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffCMSCreateOrConnectWithoutTariffInput | TariffCMSCreateOrConnectWithoutTariffInput[]
+    upsert?: TariffCMSUpsertWithWhereUniqueWithoutTariffInput | TariffCMSUpsertWithWhereUniqueWithoutTariffInput[]
+    createMany?: TariffCMSCreateManyTariffInputEnvelope
+    set?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    disconnect?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    delete?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    connect?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    update?: TariffCMSUpdateWithWhereUniqueWithoutTariffInput | TariffCMSUpdateWithWhereUniqueWithoutTariffInput[]
+    updateMany?: TariffCMSUpdateManyWithWhereWithoutTariffInput | TariffCMSUpdateManyWithWhereWithoutTariffInput[]
+    deleteMany?: TariffCMSScalarWhereInput | TariffCMSScalarWhereInput[]
+  }
+
+  export type TariffControlPanelUpdateManyWithoutTariffNestedInput = {
+    create?: XOR<TariffControlPanelCreateWithoutTariffInput, TariffControlPanelUncheckedCreateWithoutTariffInput> | TariffControlPanelCreateWithoutTariffInput[] | TariffControlPanelUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffControlPanelCreateOrConnectWithoutTariffInput | TariffControlPanelCreateOrConnectWithoutTariffInput[]
+    upsert?: TariffControlPanelUpsertWithWhereUniqueWithoutTariffInput | TariffControlPanelUpsertWithWhereUniqueWithoutTariffInput[]
+    createMany?: TariffControlPanelCreateManyTariffInputEnvelope
+    set?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    disconnect?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    delete?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    connect?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    update?: TariffControlPanelUpdateWithWhereUniqueWithoutTariffInput | TariffControlPanelUpdateWithWhereUniqueWithoutTariffInput[]
+    updateMany?: TariffControlPanelUpdateManyWithWhereWithoutTariffInput | TariffControlPanelUpdateManyWithWhereWithoutTariffInput[]
+    deleteMany?: TariffControlPanelScalarWhereInput | TariffControlPanelScalarWhereInput[]
+  }
+
+  export type TariffCountryUpdateManyWithoutTariffNestedInput = {
+    create?: XOR<TariffCountryCreateWithoutTariffInput, TariffCountryUncheckedCreateWithoutTariffInput> | TariffCountryCreateWithoutTariffInput[] | TariffCountryUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffCountryCreateOrConnectWithoutTariffInput | TariffCountryCreateOrConnectWithoutTariffInput[]
+    upsert?: TariffCountryUpsertWithWhereUniqueWithoutTariffInput | TariffCountryUpsertWithWhereUniqueWithoutTariffInput[]
+    createMany?: TariffCountryCreateManyTariffInputEnvelope
+    set?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    disconnect?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    delete?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    connect?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    update?: TariffCountryUpdateWithWhereUniqueWithoutTariffInput | TariffCountryUpdateWithWhereUniqueWithoutTariffInput[]
+    updateMany?: TariffCountryUpdateManyWithWhereWithoutTariffInput | TariffCountryUpdateManyWithWhereWithoutTariffInput[]
+    deleteMany?: TariffCountryScalarWhereInput | TariffCountryScalarWhereInput[]
+  }
+
+  export type TariffDataStoreUpdateManyWithoutTariffNestedInput = {
+    create?: XOR<TariffDataStoreCreateWithoutTariffInput, TariffDataStoreUncheckedCreateWithoutTariffInput> | TariffDataStoreCreateWithoutTariffInput[] | TariffDataStoreUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffDataStoreCreateOrConnectWithoutTariffInput | TariffDataStoreCreateOrConnectWithoutTariffInput[]
+    upsert?: TariffDataStoreUpsertWithWhereUniqueWithoutTariffInput | TariffDataStoreUpsertWithWhereUniqueWithoutTariffInput[]
+    createMany?: TariffDataStoreCreateManyTariffInputEnvelope
+    set?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    disconnect?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    delete?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    connect?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    update?: TariffDataStoreUpdateWithWhereUniqueWithoutTariffInput | TariffDataStoreUpdateWithWhereUniqueWithoutTariffInput[]
+    updateMany?: TariffDataStoreUpdateManyWithWhereWithoutTariffInput | TariffDataStoreUpdateManyWithWhereWithoutTariffInput[]
+    deleteMany?: TariffDataStoreScalarWhereInput | TariffDataStoreScalarWhereInput[]
+  }
+
+  export type TariffOperationSystemUpdateManyWithoutTariffNestedInput = {
+    create?: XOR<TariffOperationSystemCreateWithoutTariffInput, TariffOperationSystemUncheckedCreateWithoutTariffInput> | TariffOperationSystemCreateWithoutTariffInput[] | TariffOperationSystemUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffOperationSystemCreateOrConnectWithoutTariffInput | TariffOperationSystemCreateOrConnectWithoutTariffInput[]
+    upsert?: TariffOperationSystemUpsertWithWhereUniqueWithoutTariffInput | TariffOperationSystemUpsertWithWhereUniqueWithoutTariffInput[]
+    createMany?: TariffOperationSystemCreateManyTariffInputEnvelope
+    set?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    disconnect?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    delete?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    connect?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    update?: TariffOperationSystemUpdateWithWhereUniqueWithoutTariffInput | TariffOperationSystemUpdateWithWhereUniqueWithoutTariffInput[]
+    updateMany?: TariffOperationSystemUpdateManyWithWhereWithoutTariffInput | TariffOperationSystemUpdateManyWithWhereWithoutTariffInput[]
+    deleteMany?: TariffOperationSystemScalarWhereInput | TariffOperationSystemScalarWhereInput[]
+  }
+
+  export type TariffProgrammingLanguageUpdateManyWithoutTariffNestedInput = {
+    create?: XOR<TariffProgrammingLanguageCreateWithoutTariffInput, TariffProgrammingLanguageUncheckedCreateWithoutTariffInput> | TariffProgrammingLanguageCreateWithoutTariffInput[] | TariffProgrammingLanguageUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffProgrammingLanguageCreateOrConnectWithoutTariffInput | TariffProgrammingLanguageCreateOrConnectWithoutTariffInput[]
+    upsert?: TariffProgrammingLanguageUpsertWithWhereUniqueWithoutTariffInput | TariffProgrammingLanguageUpsertWithWhereUniqueWithoutTariffInput[]
+    createMany?: TariffProgrammingLanguageCreateManyTariffInputEnvelope
+    set?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    disconnect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    delete?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    connect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    update?: TariffProgrammingLanguageUpdateWithWhereUniqueWithoutTariffInput | TariffProgrammingLanguageUpdateWithWhereUniqueWithoutTariffInput[]
+    updateMany?: TariffProgrammingLanguageUpdateManyWithWhereWithoutTariffInput | TariffProgrammingLanguageUpdateManyWithWhereWithoutTariffInput[]
+    deleteMany?: TariffProgrammingLanguageScalarWhereInput | TariffProgrammingLanguageScalarWhereInput[]
+  }
+
+  export type TariffCMSUncheckedUpdateManyWithoutTariffNestedInput = {
+    create?: XOR<TariffCMSCreateWithoutTariffInput, TariffCMSUncheckedCreateWithoutTariffInput> | TariffCMSCreateWithoutTariffInput[] | TariffCMSUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffCMSCreateOrConnectWithoutTariffInput | TariffCMSCreateOrConnectWithoutTariffInput[]
+    upsert?: TariffCMSUpsertWithWhereUniqueWithoutTariffInput | TariffCMSUpsertWithWhereUniqueWithoutTariffInput[]
+    createMany?: TariffCMSCreateManyTariffInputEnvelope
+    set?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    disconnect?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    delete?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    connect?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    update?: TariffCMSUpdateWithWhereUniqueWithoutTariffInput | TariffCMSUpdateWithWhereUniqueWithoutTariffInput[]
+    updateMany?: TariffCMSUpdateManyWithWhereWithoutTariffInput | TariffCMSUpdateManyWithWhereWithoutTariffInput[]
+    deleteMany?: TariffCMSScalarWhereInput | TariffCMSScalarWhereInput[]
+  }
+
+  export type TariffControlPanelUncheckedUpdateManyWithoutTariffNestedInput = {
+    create?: XOR<TariffControlPanelCreateWithoutTariffInput, TariffControlPanelUncheckedCreateWithoutTariffInput> | TariffControlPanelCreateWithoutTariffInput[] | TariffControlPanelUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffControlPanelCreateOrConnectWithoutTariffInput | TariffControlPanelCreateOrConnectWithoutTariffInput[]
+    upsert?: TariffControlPanelUpsertWithWhereUniqueWithoutTariffInput | TariffControlPanelUpsertWithWhereUniqueWithoutTariffInput[]
+    createMany?: TariffControlPanelCreateManyTariffInputEnvelope
+    set?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    disconnect?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    delete?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    connect?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    update?: TariffControlPanelUpdateWithWhereUniqueWithoutTariffInput | TariffControlPanelUpdateWithWhereUniqueWithoutTariffInput[]
+    updateMany?: TariffControlPanelUpdateManyWithWhereWithoutTariffInput | TariffControlPanelUpdateManyWithWhereWithoutTariffInput[]
+    deleteMany?: TariffControlPanelScalarWhereInput | TariffControlPanelScalarWhereInput[]
+  }
+
+  export type TariffCountryUncheckedUpdateManyWithoutTariffNestedInput = {
+    create?: XOR<TariffCountryCreateWithoutTariffInput, TariffCountryUncheckedCreateWithoutTariffInput> | TariffCountryCreateWithoutTariffInput[] | TariffCountryUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffCountryCreateOrConnectWithoutTariffInput | TariffCountryCreateOrConnectWithoutTariffInput[]
+    upsert?: TariffCountryUpsertWithWhereUniqueWithoutTariffInput | TariffCountryUpsertWithWhereUniqueWithoutTariffInput[]
+    createMany?: TariffCountryCreateManyTariffInputEnvelope
+    set?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    disconnect?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    delete?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    connect?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    update?: TariffCountryUpdateWithWhereUniqueWithoutTariffInput | TariffCountryUpdateWithWhereUniqueWithoutTariffInput[]
+    updateMany?: TariffCountryUpdateManyWithWhereWithoutTariffInput | TariffCountryUpdateManyWithWhereWithoutTariffInput[]
+    deleteMany?: TariffCountryScalarWhereInput | TariffCountryScalarWhereInput[]
+  }
+
+  export type TariffDataStoreUncheckedUpdateManyWithoutTariffNestedInput = {
+    create?: XOR<TariffDataStoreCreateWithoutTariffInput, TariffDataStoreUncheckedCreateWithoutTariffInput> | TariffDataStoreCreateWithoutTariffInput[] | TariffDataStoreUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffDataStoreCreateOrConnectWithoutTariffInput | TariffDataStoreCreateOrConnectWithoutTariffInput[]
+    upsert?: TariffDataStoreUpsertWithWhereUniqueWithoutTariffInput | TariffDataStoreUpsertWithWhereUniqueWithoutTariffInput[]
+    createMany?: TariffDataStoreCreateManyTariffInputEnvelope
+    set?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    disconnect?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    delete?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    connect?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    update?: TariffDataStoreUpdateWithWhereUniqueWithoutTariffInput | TariffDataStoreUpdateWithWhereUniqueWithoutTariffInput[]
+    updateMany?: TariffDataStoreUpdateManyWithWhereWithoutTariffInput | TariffDataStoreUpdateManyWithWhereWithoutTariffInput[]
+    deleteMany?: TariffDataStoreScalarWhereInput | TariffDataStoreScalarWhereInput[]
+  }
+
+  export type TariffOperationSystemUncheckedUpdateManyWithoutTariffNestedInput = {
+    create?: XOR<TariffOperationSystemCreateWithoutTariffInput, TariffOperationSystemUncheckedCreateWithoutTariffInput> | TariffOperationSystemCreateWithoutTariffInput[] | TariffOperationSystemUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffOperationSystemCreateOrConnectWithoutTariffInput | TariffOperationSystemCreateOrConnectWithoutTariffInput[]
+    upsert?: TariffOperationSystemUpsertWithWhereUniqueWithoutTariffInput | TariffOperationSystemUpsertWithWhereUniqueWithoutTariffInput[]
+    createMany?: TariffOperationSystemCreateManyTariffInputEnvelope
+    set?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    disconnect?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    delete?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    connect?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    update?: TariffOperationSystemUpdateWithWhereUniqueWithoutTariffInput | TariffOperationSystemUpdateWithWhereUniqueWithoutTariffInput[]
+    updateMany?: TariffOperationSystemUpdateManyWithWhereWithoutTariffInput | TariffOperationSystemUpdateManyWithWhereWithoutTariffInput[]
+    deleteMany?: TariffOperationSystemScalarWhereInput | TariffOperationSystemScalarWhereInput[]
+  }
+
+  export type TariffProgrammingLanguageUncheckedUpdateManyWithoutTariffNestedInput = {
+    create?: XOR<TariffProgrammingLanguageCreateWithoutTariffInput, TariffProgrammingLanguageUncheckedCreateWithoutTariffInput> | TariffProgrammingLanguageCreateWithoutTariffInput[] | TariffProgrammingLanguageUncheckedCreateWithoutTariffInput[]
+    connectOrCreate?: TariffProgrammingLanguageCreateOrConnectWithoutTariffInput | TariffProgrammingLanguageCreateOrConnectWithoutTariffInput[]
+    upsert?: TariffProgrammingLanguageUpsertWithWhereUniqueWithoutTariffInput | TariffProgrammingLanguageUpsertWithWhereUniqueWithoutTariffInput[]
+    createMany?: TariffProgrammingLanguageCreateManyTariffInputEnvelope
+    set?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    disconnect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    delete?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    connect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    update?: TariffProgrammingLanguageUpdateWithWhereUniqueWithoutTariffInput | TariffProgrammingLanguageUpdateWithWhereUniqueWithoutTariffInput[]
+    updateMany?: TariffProgrammingLanguageUpdateManyWithWhereWithoutTariffInput | TariffProgrammingLanguageUpdateManyWithWhereWithoutTariffInput[]
+    deleteMany?: TariffProgrammingLanguageScalarWhereInput | TariffProgrammingLanguageScalarWhereInput[]
+  }
+
+  export type TariffCMSCreateNestedManyWithoutCmsInput = {
+    create?: XOR<TariffCMSCreateWithoutCmsInput, TariffCMSUncheckedCreateWithoutCmsInput> | TariffCMSCreateWithoutCmsInput[] | TariffCMSUncheckedCreateWithoutCmsInput[]
+    connectOrCreate?: TariffCMSCreateOrConnectWithoutCmsInput | TariffCMSCreateOrConnectWithoutCmsInput[]
+    createMany?: TariffCMSCreateManyCmsInputEnvelope
+    connect?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+  }
+
+  export type TariffCMSUncheckedCreateNestedManyWithoutCmsInput = {
+    create?: XOR<TariffCMSCreateWithoutCmsInput, TariffCMSUncheckedCreateWithoutCmsInput> | TariffCMSCreateWithoutCmsInput[] | TariffCMSUncheckedCreateWithoutCmsInput[]
+    connectOrCreate?: TariffCMSCreateOrConnectWithoutCmsInput | TariffCMSCreateOrConnectWithoutCmsInput[]
+    createMany?: TariffCMSCreateManyCmsInputEnvelope
+    connect?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+  }
+
+  export type TariffCMSUpdateManyWithoutCmsNestedInput = {
+    create?: XOR<TariffCMSCreateWithoutCmsInput, TariffCMSUncheckedCreateWithoutCmsInput> | TariffCMSCreateWithoutCmsInput[] | TariffCMSUncheckedCreateWithoutCmsInput[]
+    connectOrCreate?: TariffCMSCreateOrConnectWithoutCmsInput | TariffCMSCreateOrConnectWithoutCmsInput[]
+    upsert?: TariffCMSUpsertWithWhereUniqueWithoutCmsInput | TariffCMSUpsertWithWhereUniqueWithoutCmsInput[]
+    createMany?: TariffCMSCreateManyCmsInputEnvelope
+    set?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    disconnect?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    delete?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    connect?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    update?: TariffCMSUpdateWithWhereUniqueWithoutCmsInput | TariffCMSUpdateWithWhereUniqueWithoutCmsInput[]
+    updateMany?: TariffCMSUpdateManyWithWhereWithoutCmsInput | TariffCMSUpdateManyWithWhereWithoutCmsInput[]
+    deleteMany?: TariffCMSScalarWhereInput | TariffCMSScalarWhereInput[]
+  }
+
+  export type TariffCMSUncheckedUpdateManyWithoutCmsNestedInput = {
+    create?: XOR<TariffCMSCreateWithoutCmsInput, TariffCMSUncheckedCreateWithoutCmsInput> | TariffCMSCreateWithoutCmsInput[] | TariffCMSUncheckedCreateWithoutCmsInput[]
+    connectOrCreate?: TariffCMSCreateOrConnectWithoutCmsInput | TariffCMSCreateOrConnectWithoutCmsInput[]
+    upsert?: TariffCMSUpsertWithWhereUniqueWithoutCmsInput | TariffCMSUpsertWithWhereUniqueWithoutCmsInput[]
+    createMany?: TariffCMSCreateManyCmsInputEnvelope
+    set?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    disconnect?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    delete?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    connect?: TariffCMSWhereUniqueInput | TariffCMSWhereUniqueInput[]
+    update?: TariffCMSUpdateWithWhereUniqueWithoutCmsInput | TariffCMSUpdateWithWhereUniqueWithoutCmsInput[]
+    updateMany?: TariffCMSUpdateManyWithWhereWithoutCmsInput | TariffCMSUpdateManyWithWhereWithoutCmsInput[]
+    deleteMany?: TariffCMSScalarWhereInput | TariffCMSScalarWhereInput[]
+  }
+
+  export type TariffControlPanelCreateNestedManyWithoutControlPanelInput = {
+    create?: XOR<TariffControlPanelCreateWithoutControlPanelInput, TariffControlPanelUncheckedCreateWithoutControlPanelInput> | TariffControlPanelCreateWithoutControlPanelInput[] | TariffControlPanelUncheckedCreateWithoutControlPanelInput[]
+    connectOrCreate?: TariffControlPanelCreateOrConnectWithoutControlPanelInput | TariffControlPanelCreateOrConnectWithoutControlPanelInput[]
+    createMany?: TariffControlPanelCreateManyControlPanelInputEnvelope
+    connect?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+  }
+
+  export type TariffControlPanelUncheckedCreateNestedManyWithoutControlPanelInput = {
+    create?: XOR<TariffControlPanelCreateWithoutControlPanelInput, TariffControlPanelUncheckedCreateWithoutControlPanelInput> | TariffControlPanelCreateWithoutControlPanelInput[] | TariffControlPanelUncheckedCreateWithoutControlPanelInput[]
+    connectOrCreate?: TariffControlPanelCreateOrConnectWithoutControlPanelInput | TariffControlPanelCreateOrConnectWithoutControlPanelInput[]
+    createMany?: TariffControlPanelCreateManyControlPanelInputEnvelope
+    connect?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+  }
+
+  export type TariffControlPanelUpdateManyWithoutControlPanelNestedInput = {
+    create?: XOR<TariffControlPanelCreateWithoutControlPanelInput, TariffControlPanelUncheckedCreateWithoutControlPanelInput> | TariffControlPanelCreateWithoutControlPanelInput[] | TariffControlPanelUncheckedCreateWithoutControlPanelInput[]
+    connectOrCreate?: TariffControlPanelCreateOrConnectWithoutControlPanelInput | TariffControlPanelCreateOrConnectWithoutControlPanelInput[]
+    upsert?: TariffControlPanelUpsertWithWhereUniqueWithoutControlPanelInput | TariffControlPanelUpsertWithWhereUniqueWithoutControlPanelInput[]
+    createMany?: TariffControlPanelCreateManyControlPanelInputEnvelope
+    set?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    disconnect?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    delete?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    connect?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    update?: TariffControlPanelUpdateWithWhereUniqueWithoutControlPanelInput | TariffControlPanelUpdateWithWhereUniqueWithoutControlPanelInput[]
+    updateMany?: TariffControlPanelUpdateManyWithWhereWithoutControlPanelInput | TariffControlPanelUpdateManyWithWhereWithoutControlPanelInput[]
+    deleteMany?: TariffControlPanelScalarWhereInput | TariffControlPanelScalarWhereInput[]
+  }
+
+  export type TariffControlPanelUncheckedUpdateManyWithoutControlPanelNestedInput = {
+    create?: XOR<TariffControlPanelCreateWithoutControlPanelInput, TariffControlPanelUncheckedCreateWithoutControlPanelInput> | TariffControlPanelCreateWithoutControlPanelInput[] | TariffControlPanelUncheckedCreateWithoutControlPanelInput[]
+    connectOrCreate?: TariffControlPanelCreateOrConnectWithoutControlPanelInput | TariffControlPanelCreateOrConnectWithoutControlPanelInput[]
+    upsert?: TariffControlPanelUpsertWithWhereUniqueWithoutControlPanelInput | TariffControlPanelUpsertWithWhereUniqueWithoutControlPanelInput[]
+    createMany?: TariffControlPanelCreateManyControlPanelInputEnvelope
+    set?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    disconnect?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    delete?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    connect?: TariffControlPanelWhereUniqueInput | TariffControlPanelWhereUniqueInput[]
+    update?: TariffControlPanelUpdateWithWhereUniqueWithoutControlPanelInput | TariffControlPanelUpdateWithWhereUniqueWithoutControlPanelInput[]
+    updateMany?: TariffControlPanelUpdateManyWithWhereWithoutControlPanelInput | TariffControlPanelUpdateManyWithWhereWithoutControlPanelInput[]
+    deleteMany?: TariffControlPanelScalarWhereInput | TariffControlPanelScalarWhereInput[]
+  }
+
+  export type TariffCountryCreateNestedManyWithoutCountryInput = {
+    create?: XOR<TariffCountryCreateWithoutCountryInput, TariffCountryUncheckedCreateWithoutCountryInput> | TariffCountryCreateWithoutCountryInput[] | TariffCountryUncheckedCreateWithoutCountryInput[]
+    connectOrCreate?: TariffCountryCreateOrConnectWithoutCountryInput | TariffCountryCreateOrConnectWithoutCountryInput[]
+    createMany?: TariffCountryCreateManyCountryInputEnvelope
+    connect?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+  }
+
+  export type TariffCountryUncheckedCreateNestedManyWithoutCountryInput = {
+    create?: XOR<TariffCountryCreateWithoutCountryInput, TariffCountryUncheckedCreateWithoutCountryInput> | TariffCountryCreateWithoutCountryInput[] | TariffCountryUncheckedCreateWithoutCountryInput[]
+    connectOrCreate?: TariffCountryCreateOrConnectWithoutCountryInput | TariffCountryCreateOrConnectWithoutCountryInput[]
+    createMany?: TariffCountryCreateManyCountryInputEnvelope
+    connect?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+  }
+
+  export type TariffCountryUpdateManyWithoutCountryNestedInput = {
+    create?: XOR<TariffCountryCreateWithoutCountryInput, TariffCountryUncheckedCreateWithoutCountryInput> | TariffCountryCreateWithoutCountryInput[] | TariffCountryUncheckedCreateWithoutCountryInput[]
+    connectOrCreate?: TariffCountryCreateOrConnectWithoutCountryInput | TariffCountryCreateOrConnectWithoutCountryInput[]
+    upsert?: TariffCountryUpsertWithWhereUniqueWithoutCountryInput | TariffCountryUpsertWithWhereUniqueWithoutCountryInput[]
+    createMany?: TariffCountryCreateManyCountryInputEnvelope
+    set?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    disconnect?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    delete?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    connect?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    update?: TariffCountryUpdateWithWhereUniqueWithoutCountryInput | TariffCountryUpdateWithWhereUniqueWithoutCountryInput[]
+    updateMany?: TariffCountryUpdateManyWithWhereWithoutCountryInput | TariffCountryUpdateManyWithWhereWithoutCountryInput[]
+    deleteMany?: TariffCountryScalarWhereInput | TariffCountryScalarWhereInput[]
+  }
+
+  export type TariffCountryUncheckedUpdateManyWithoutCountryNestedInput = {
+    create?: XOR<TariffCountryCreateWithoutCountryInput, TariffCountryUncheckedCreateWithoutCountryInput> | TariffCountryCreateWithoutCountryInput[] | TariffCountryUncheckedCreateWithoutCountryInput[]
+    connectOrCreate?: TariffCountryCreateOrConnectWithoutCountryInput | TariffCountryCreateOrConnectWithoutCountryInput[]
+    upsert?: TariffCountryUpsertWithWhereUniqueWithoutCountryInput | TariffCountryUpsertWithWhereUniqueWithoutCountryInput[]
+    createMany?: TariffCountryCreateManyCountryInputEnvelope
+    set?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    disconnect?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    delete?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    connect?: TariffCountryWhereUniqueInput | TariffCountryWhereUniqueInput[]
+    update?: TariffCountryUpdateWithWhereUniqueWithoutCountryInput | TariffCountryUpdateWithWhereUniqueWithoutCountryInput[]
+    updateMany?: TariffCountryUpdateManyWithWhereWithoutCountryInput | TariffCountryUpdateManyWithWhereWithoutCountryInput[]
+    deleteMany?: TariffCountryScalarWhereInput | TariffCountryScalarWhereInput[]
+  }
+
+  export type TariffDataStoreCreateNestedManyWithoutDataStoreInput = {
+    create?: XOR<TariffDataStoreCreateWithoutDataStoreInput, TariffDataStoreUncheckedCreateWithoutDataStoreInput> | TariffDataStoreCreateWithoutDataStoreInput[] | TariffDataStoreUncheckedCreateWithoutDataStoreInput[]
+    connectOrCreate?: TariffDataStoreCreateOrConnectWithoutDataStoreInput | TariffDataStoreCreateOrConnectWithoutDataStoreInput[]
+    createMany?: TariffDataStoreCreateManyDataStoreInputEnvelope
+    connect?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+  }
+
+  export type TariffDataStoreUncheckedCreateNestedManyWithoutDataStoreInput = {
+    create?: XOR<TariffDataStoreCreateWithoutDataStoreInput, TariffDataStoreUncheckedCreateWithoutDataStoreInput> | TariffDataStoreCreateWithoutDataStoreInput[] | TariffDataStoreUncheckedCreateWithoutDataStoreInput[]
+    connectOrCreate?: TariffDataStoreCreateOrConnectWithoutDataStoreInput | TariffDataStoreCreateOrConnectWithoutDataStoreInput[]
+    createMany?: TariffDataStoreCreateManyDataStoreInputEnvelope
+    connect?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+  }
+
+  export type TariffDataStoreUpdateManyWithoutDataStoreNestedInput = {
+    create?: XOR<TariffDataStoreCreateWithoutDataStoreInput, TariffDataStoreUncheckedCreateWithoutDataStoreInput> | TariffDataStoreCreateWithoutDataStoreInput[] | TariffDataStoreUncheckedCreateWithoutDataStoreInput[]
+    connectOrCreate?: TariffDataStoreCreateOrConnectWithoutDataStoreInput | TariffDataStoreCreateOrConnectWithoutDataStoreInput[]
+    upsert?: TariffDataStoreUpsertWithWhereUniqueWithoutDataStoreInput | TariffDataStoreUpsertWithWhereUniqueWithoutDataStoreInput[]
+    createMany?: TariffDataStoreCreateManyDataStoreInputEnvelope
+    set?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    disconnect?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    delete?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    connect?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    update?: TariffDataStoreUpdateWithWhereUniqueWithoutDataStoreInput | TariffDataStoreUpdateWithWhereUniqueWithoutDataStoreInput[]
+    updateMany?: TariffDataStoreUpdateManyWithWhereWithoutDataStoreInput | TariffDataStoreUpdateManyWithWhereWithoutDataStoreInput[]
+    deleteMany?: TariffDataStoreScalarWhereInput | TariffDataStoreScalarWhereInput[]
+  }
+
+  export type TariffDataStoreUncheckedUpdateManyWithoutDataStoreNestedInput = {
+    create?: XOR<TariffDataStoreCreateWithoutDataStoreInput, TariffDataStoreUncheckedCreateWithoutDataStoreInput> | TariffDataStoreCreateWithoutDataStoreInput[] | TariffDataStoreUncheckedCreateWithoutDataStoreInput[]
+    connectOrCreate?: TariffDataStoreCreateOrConnectWithoutDataStoreInput | TariffDataStoreCreateOrConnectWithoutDataStoreInput[]
+    upsert?: TariffDataStoreUpsertWithWhereUniqueWithoutDataStoreInput | TariffDataStoreUpsertWithWhereUniqueWithoutDataStoreInput[]
+    createMany?: TariffDataStoreCreateManyDataStoreInputEnvelope
+    set?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    disconnect?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    delete?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    connect?: TariffDataStoreWhereUniqueInput | TariffDataStoreWhereUniqueInput[]
+    update?: TariffDataStoreUpdateWithWhereUniqueWithoutDataStoreInput | TariffDataStoreUpdateWithWhereUniqueWithoutDataStoreInput[]
+    updateMany?: TariffDataStoreUpdateManyWithWhereWithoutDataStoreInput | TariffDataStoreUpdateManyWithWhereWithoutDataStoreInput[]
+    deleteMany?: TariffDataStoreScalarWhereInput | TariffDataStoreScalarWhereInput[]
+  }
+
+  export type TariffOperationSystemCreateNestedManyWithoutOperationSystemInput = {
+    create?: XOR<TariffOperationSystemCreateWithoutOperationSystemInput, TariffOperationSystemUncheckedCreateWithoutOperationSystemInput> | TariffOperationSystemCreateWithoutOperationSystemInput[] | TariffOperationSystemUncheckedCreateWithoutOperationSystemInput[]
+    connectOrCreate?: TariffOperationSystemCreateOrConnectWithoutOperationSystemInput | TariffOperationSystemCreateOrConnectWithoutOperationSystemInput[]
+    createMany?: TariffOperationSystemCreateManyOperationSystemInputEnvelope
+    connect?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+  }
+
+  export type TariffOperationSystemUncheckedCreateNestedManyWithoutOperationSystemInput = {
+    create?: XOR<TariffOperationSystemCreateWithoutOperationSystemInput, TariffOperationSystemUncheckedCreateWithoutOperationSystemInput> | TariffOperationSystemCreateWithoutOperationSystemInput[] | TariffOperationSystemUncheckedCreateWithoutOperationSystemInput[]
+    connectOrCreate?: TariffOperationSystemCreateOrConnectWithoutOperationSystemInput | TariffOperationSystemCreateOrConnectWithoutOperationSystemInput[]
+    createMany?: TariffOperationSystemCreateManyOperationSystemInputEnvelope
+    connect?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+  }
+
+  export type TariffOperationSystemUpdateManyWithoutOperationSystemNestedInput = {
+    create?: XOR<TariffOperationSystemCreateWithoutOperationSystemInput, TariffOperationSystemUncheckedCreateWithoutOperationSystemInput> | TariffOperationSystemCreateWithoutOperationSystemInput[] | TariffOperationSystemUncheckedCreateWithoutOperationSystemInput[]
+    connectOrCreate?: TariffOperationSystemCreateOrConnectWithoutOperationSystemInput | TariffOperationSystemCreateOrConnectWithoutOperationSystemInput[]
+    upsert?: TariffOperationSystemUpsertWithWhereUniqueWithoutOperationSystemInput | TariffOperationSystemUpsertWithWhereUniqueWithoutOperationSystemInput[]
+    createMany?: TariffOperationSystemCreateManyOperationSystemInputEnvelope
+    set?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    disconnect?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    delete?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    connect?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    update?: TariffOperationSystemUpdateWithWhereUniqueWithoutOperationSystemInput | TariffOperationSystemUpdateWithWhereUniqueWithoutOperationSystemInput[]
+    updateMany?: TariffOperationSystemUpdateManyWithWhereWithoutOperationSystemInput | TariffOperationSystemUpdateManyWithWhereWithoutOperationSystemInput[]
+    deleteMany?: TariffOperationSystemScalarWhereInput | TariffOperationSystemScalarWhereInput[]
+  }
+
+  export type TariffOperationSystemUncheckedUpdateManyWithoutOperationSystemNestedInput = {
+    create?: XOR<TariffOperationSystemCreateWithoutOperationSystemInput, TariffOperationSystemUncheckedCreateWithoutOperationSystemInput> | TariffOperationSystemCreateWithoutOperationSystemInput[] | TariffOperationSystemUncheckedCreateWithoutOperationSystemInput[]
+    connectOrCreate?: TariffOperationSystemCreateOrConnectWithoutOperationSystemInput | TariffOperationSystemCreateOrConnectWithoutOperationSystemInput[]
+    upsert?: TariffOperationSystemUpsertWithWhereUniqueWithoutOperationSystemInput | TariffOperationSystemUpsertWithWhereUniqueWithoutOperationSystemInput[]
+    createMany?: TariffOperationSystemCreateManyOperationSystemInputEnvelope
+    set?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    disconnect?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    delete?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    connect?: TariffOperationSystemWhereUniqueInput | TariffOperationSystemWhereUniqueInput[]
+    update?: TariffOperationSystemUpdateWithWhereUniqueWithoutOperationSystemInput | TariffOperationSystemUpdateWithWhereUniqueWithoutOperationSystemInput[]
+    updateMany?: TariffOperationSystemUpdateManyWithWhereWithoutOperationSystemInput | TariffOperationSystemUpdateManyWithWhereWithoutOperationSystemInput[]
+    deleteMany?: TariffOperationSystemScalarWhereInput | TariffOperationSystemScalarWhereInput[]
+  }
+
+  export type TariffProgrammingLanguageCreateNestedManyWithoutProgrammingLanguageInput = {
+    create?: XOR<TariffProgrammingLanguageCreateWithoutProgrammingLanguageInput, TariffProgrammingLanguageUncheckedCreateWithoutProgrammingLanguageInput> | TariffProgrammingLanguageCreateWithoutProgrammingLanguageInput[] | TariffProgrammingLanguageUncheckedCreateWithoutProgrammingLanguageInput[]
+    connectOrCreate?: TariffProgrammingLanguageCreateOrConnectWithoutProgrammingLanguageInput | TariffProgrammingLanguageCreateOrConnectWithoutProgrammingLanguageInput[]
+    createMany?: TariffProgrammingLanguageCreateManyProgrammingLanguageInputEnvelope
+    connect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+  }
+
+  export type TariffProgrammingLanguageUncheckedCreateNestedManyWithoutProgrammingLanguageInput = {
+    create?: XOR<TariffProgrammingLanguageCreateWithoutProgrammingLanguageInput, TariffProgrammingLanguageUncheckedCreateWithoutProgrammingLanguageInput> | TariffProgrammingLanguageCreateWithoutProgrammingLanguageInput[] | TariffProgrammingLanguageUncheckedCreateWithoutProgrammingLanguageInput[]
+    connectOrCreate?: TariffProgrammingLanguageCreateOrConnectWithoutProgrammingLanguageInput | TariffProgrammingLanguageCreateOrConnectWithoutProgrammingLanguageInput[]
+    createMany?: TariffProgrammingLanguageCreateManyProgrammingLanguageInputEnvelope
+    connect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+  }
+
+  export type TariffProgrammingLanguageUpdateManyWithoutProgrammingLanguageNestedInput = {
+    create?: XOR<TariffProgrammingLanguageCreateWithoutProgrammingLanguageInput, TariffProgrammingLanguageUncheckedCreateWithoutProgrammingLanguageInput> | TariffProgrammingLanguageCreateWithoutProgrammingLanguageInput[] | TariffProgrammingLanguageUncheckedCreateWithoutProgrammingLanguageInput[]
+    connectOrCreate?: TariffProgrammingLanguageCreateOrConnectWithoutProgrammingLanguageInput | TariffProgrammingLanguageCreateOrConnectWithoutProgrammingLanguageInput[]
+    upsert?: TariffProgrammingLanguageUpsertWithWhereUniqueWithoutProgrammingLanguageInput | TariffProgrammingLanguageUpsertWithWhereUniqueWithoutProgrammingLanguageInput[]
+    createMany?: TariffProgrammingLanguageCreateManyProgrammingLanguageInputEnvelope
+    set?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    disconnect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    delete?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    connect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    update?: TariffProgrammingLanguageUpdateWithWhereUniqueWithoutProgrammingLanguageInput | TariffProgrammingLanguageUpdateWithWhereUniqueWithoutProgrammingLanguageInput[]
+    updateMany?: TariffProgrammingLanguageUpdateManyWithWhereWithoutProgrammingLanguageInput | TariffProgrammingLanguageUpdateManyWithWhereWithoutProgrammingLanguageInput[]
+    deleteMany?: TariffProgrammingLanguageScalarWhereInput | TariffProgrammingLanguageScalarWhereInput[]
+  }
+
+  export type TariffProgrammingLanguageUncheckedUpdateManyWithoutProgrammingLanguageNestedInput = {
+    create?: XOR<TariffProgrammingLanguageCreateWithoutProgrammingLanguageInput, TariffProgrammingLanguageUncheckedCreateWithoutProgrammingLanguageInput> | TariffProgrammingLanguageCreateWithoutProgrammingLanguageInput[] | TariffProgrammingLanguageUncheckedCreateWithoutProgrammingLanguageInput[]
+    connectOrCreate?: TariffProgrammingLanguageCreateOrConnectWithoutProgrammingLanguageInput | TariffProgrammingLanguageCreateOrConnectWithoutProgrammingLanguageInput[]
+    upsert?: TariffProgrammingLanguageUpsertWithWhereUniqueWithoutProgrammingLanguageInput | TariffProgrammingLanguageUpsertWithWhereUniqueWithoutProgrammingLanguageInput[]
+    createMany?: TariffProgrammingLanguageCreateManyProgrammingLanguageInputEnvelope
+    set?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    disconnect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    delete?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    connect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
+    update?: TariffProgrammingLanguageUpdateWithWhereUniqueWithoutProgrammingLanguageInput | TariffProgrammingLanguageUpdateWithWhereUniqueWithoutProgrammingLanguageInput[]
+    updateMany?: TariffProgrammingLanguageUpdateManyWithWhereWithoutProgrammingLanguageInput | TariffProgrammingLanguageUpdateManyWithWhereWithoutProgrammingLanguageInput[]
+    deleteMany?: TariffProgrammingLanguageScalarWhereInput | TariffProgrammingLanguageScalarWhereInput[]
+  }
+
+  export type TariffCreateNestedOneWithoutCmsInput = {
+    create?: XOR<TariffCreateWithoutCmsInput, TariffUncheckedCreateWithoutCmsInput>
+    connectOrCreate?: TariffCreateOrConnectWithoutCmsInput
+    connect?: TariffWhereUniqueInput
+  }
+
+  export type CMSCreateNestedOneWithoutTariffsInput = {
+    create?: XOR<CMSCreateWithoutTariffsInput, CMSUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: CMSCreateOrConnectWithoutTariffsInput
+    connect?: CMSWhereUniqueInput
+  }
+
+  export type TariffUpdateOneRequiredWithoutCmsNestedInput = {
+    create?: XOR<TariffCreateWithoutCmsInput, TariffUncheckedCreateWithoutCmsInput>
+    connectOrCreate?: TariffCreateOrConnectWithoutCmsInput
+    upsert?: TariffUpsertWithoutCmsInput
+    connect?: TariffWhereUniqueInput
+    update?: XOR<XOR<TariffUpdateToOneWithWhereWithoutCmsInput, TariffUpdateWithoutCmsInput>, TariffUncheckedUpdateWithoutCmsInput>
+  }
+
+  export type CMSUpdateOneRequiredWithoutTariffsNestedInput = {
+    create?: XOR<CMSCreateWithoutTariffsInput, CMSUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: CMSCreateOrConnectWithoutTariffsInput
+    upsert?: CMSUpsertWithoutTariffsInput
+    connect?: CMSWhereUniqueInput
+    update?: XOR<XOR<CMSUpdateToOneWithWhereWithoutTariffsInput, CMSUpdateWithoutTariffsInput>, CMSUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type TariffCreateNestedOneWithoutControlPanelsInput = {
+    create?: XOR<TariffCreateWithoutControlPanelsInput, TariffUncheckedCreateWithoutControlPanelsInput>
+    connectOrCreate?: TariffCreateOrConnectWithoutControlPanelsInput
+    connect?: TariffWhereUniqueInput
+  }
+
+  export type ControlPanelCreateNestedOneWithoutTariffsInput = {
+    create?: XOR<ControlPanelCreateWithoutTariffsInput, ControlPanelUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: ControlPanelCreateOrConnectWithoutTariffsInput
+    connect?: ControlPanelWhereUniqueInput
+  }
+
+  export type TariffUpdateOneRequiredWithoutControlPanelsNestedInput = {
+    create?: XOR<TariffCreateWithoutControlPanelsInput, TariffUncheckedCreateWithoutControlPanelsInput>
+    connectOrCreate?: TariffCreateOrConnectWithoutControlPanelsInput
+    upsert?: TariffUpsertWithoutControlPanelsInput
+    connect?: TariffWhereUniqueInput
+    update?: XOR<XOR<TariffUpdateToOneWithWhereWithoutControlPanelsInput, TariffUpdateWithoutControlPanelsInput>, TariffUncheckedUpdateWithoutControlPanelsInput>
+  }
+
+  export type ControlPanelUpdateOneRequiredWithoutTariffsNestedInput = {
+    create?: XOR<ControlPanelCreateWithoutTariffsInput, ControlPanelUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: ControlPanelCreateOrConnectWithoutTariffsInput
+    upsert?: ControlPanelUpsertWithoutTariffsInput
+    connect?: ControlPanelWhereUniqueInput
+    update?: XOR<XOR<ControlPanelUpdateToOneWithWhereWithoutTariffsInput, ControlPanelUpdateWithoutTariffsInput>, ControlPanelUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type TariffCreateNestedOneWithoutCountriesInput = {
+    create?: XOR<TariffCreateWithoutCountriesInput, TariffUncheckedCreateWithoutCountriesInput>
+    connectOrCreate?: TariffCreateOrConnectWithoutCountriesInput
+    connect?: TariffWhereUniqueInput
+  }
+
+  export type CountryCreateNestedOneWithoutTariffsInput = {
+    create?: XOR<CountryCreateWithoutTariffsInput, CountryUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: CountryCreateOrConnectWithoutTariffsInput
+    connect?: CountryWhereUniqueInput
+  }
+
+  export type TariffUpdateOneRequiredWithoutCountriesNestedInput = {
+    create?: XOR<TariffCreateWithoutCountriesInput, TariffUncheckedCreateWithoutCountriesInput>
+    connectOrCreate?: TariffCreateOrConnectWithoutCountriesInput
+    upsert?: TariffUpsertWithoutCountriesInput
+    connect?: TariffWhereUniqueInput
+    update?: XOR<XOR<TariffUpdateToOneWithWhereWithoutCountriesInput, TariffUpdateWithoutCountriesInput>, TariffUncheckedUpdateWithoutCountriesInput>
+  }
+
+  export type CountryUpdateOneRequiredWithoutTariffsNestedInput = {
+    create?: XOR<CountryCreateWithoutTariffsInput, CountryUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: CountryCreateOrConnectWithoutTariffsInput
+    upsert?: CountryUpsertWithoutTariffsInput
+    connect?: CountryWhereUniqueInput
+    update?: XOR<XOR<CountryUpdateToOneWithWhereWithoutTariffsInput, CountryUpdateWithoutTariffsInput>, CountryUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type TariffCreateNestedOneWithoutDataStoresInput = {
+    create?: XOR<TariffCreateWithoutDataStoresInput, TariffUncheckedCreateWithoutDataStoresInput>
+    connectOrCreate?: TariffCreateOrConnectWithoutDataStoresInput
+    connect?: TariffWhereUniqueInput
+  }
+
+  export type DataStoreCreateNestedOneWithoutTariffsInput = {
+    create?: XOR<DataStoreCreateWithoutTariffsInput, DataStoreUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: DataStoreCreateOrConnectWithoutTariffsInput
+    connect?: DataStoreWhereUniqueInput
+  }
+
+  export type TariffUpdateOneRequiredWithoutDataStoresNestedInput = {
+    create?: XOR<TariffCreateWithoutDataStoresInput, TariffUncheckedCreateWithoutDataStoresInput>
+    connectOrCreate?: TariffCreateOrConnectWithoutDataStoresInput
+    upsert?: TariffUpsertWithoutDataStoresInput
+    connect?: TariffWhereUniqueInput
+    update?: XOR<XOR<TariffUpdateToOneWithWhereWithoutDataStoresInput, TariffUpdateWithoutDataStoresInput>, TariffUncheckedUpdateWithoutDataStoresInput>
+  }
+
+  export type DataStoreUpdateOneRequiredWithoutTariffsNestedInput = {
+    create?: XOR<DataStoreCreateWithoutTariffsInput, DataStoreUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: DataStoreCreateOrConnectWithoutTariffsInput
+    upsert?: DataStoreUpsertWithoutTariffsInput
+    connect?: DataStoreWhereUniqueInput
+    update?: XOR<XOR<DataStoreUpdateToOneWithWhereWithoutTariffsInput, DataStoreUpdateWithoutTariffsInput>, DataStoreUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type TariffCreateNestedOneWithoutOperationSystemsInput = {
+    create?: XOR<TariffCreateWithoutOperationSystemsInput, TariffUncheckedCreateWithoutOperationSystemsInput>
+    connectOrCreate?: TariffCreateOrConnectWithoutOperationSystemsInput
+    connect?: TariffWhereUniqueInput
+  }
+
+  export type OperationSystemCreateNestedOneWithoutTariffsInput = {
+    create?: XOR<OperationSystemCreateWithoutTariffsInput, OperationSystemUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: OperationSystemCreateOrConnectWithoutTariffsInput
+    connect?: OperationSystemWhereUniqueInput
+  }
+
+  export type TariffUpdateOneRequiredWithoutOperationSystemsNestedInput = {
+    create?: XOR<TariffCreateWithoutOperationSystemsInput, TariffUncheckedCreateWithoutOperationSystemsInput>
+    connectOrCreate?: TariffCreateOrConnectWithoutOperationSystemsInput
+    upsert?: TariffUpsertWithoutOperationSystemsInput
+    connect?: TariffWhereUniqueInput
+    update?: XOR<XOR<TariffUpdateToOneWithWhereWithoutOperationSystemsInput, TariffUpdateWithoutOperationSystemsInput>, TariffUncheckedUpdateWithoutOperationSystemsInput>
+  }
+
+  export type OperationSystemUpdateOneRequiredWithoutTariffsNestedInput = {
+    create?: XOR<OperationSystemCreateWithoutTariffsInput, OperationSystemUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: OperationSystemCreateOrConnectWithoutTariffsInput
+    upsert?: OperationSystemUpsertWithoutTariffsInput
+    connect?: OperationSystemWhereUniqueInput
+    update?: XOR<XOR<OperationSystemUpdateToOneWithWhereWithoutTariffsInput, OperationSystemUpdateWithoutTariffsInput>, OperationSystemUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type TariffCreateNestedOneWithoutProgrammingLanguagesInput = {
+    create?: XOR<TariffCreateWithoutProgrammingLanguagesInput, TariffUncheckedCreateWithoutProgrammingLanguagesInput>
+    connectOrCreate?: TariffCreateOrConnectWithoutProgrammingLanguagesInput
+    connect?: TariffWhereUniqueInput
+  }
+
+  export type ProgrammingLanguageCreateNestedOneWithoutTariffsInput = {
+    create?: XOR<ProgrammingLanguageCreateWithoutTariffsInput, ProgrammingLanguageUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: ProgrammingLanguageCreateOrConnectWithoutTariffsInput
+    connect?: ProgrammingLanguageWhereUniqueInput
+  }
+
+  export type TariffUpdateOneRequiredWithoutProgrammingLanguagesNestedInput = {
+    create?: XOR<TariffCreateWithoutProgrammingLanguagesInput, TariffUncheckedCreateWithoutProgrammingLanguagesInput>
+    connectOrCreate?: TariffCreateOrConnectWithoutProgrammingLanguagesInput
+    upsert?: TariffUpsertWithoutProgrammingLanguagesInput
+    connect?: TariffWhereUniqueInput
+    update?: XOR<XOR<TariffUpdateToOneWithWhereWithoutProgrammingLanguagesInput, TariffUpdateWithoutProgrammingLanguagesInput>, TariffUncheckedUpdateWithoutProgrammingLanguagesInput>
+  }
+
+  export type ProgrammingLanguageUpdateOneRequiredWithoutTariffsNestedInput = {
+    create?: XOR<ProgrammingLanguageCreateWithoutTariffsInput, ProgrammingLanguageUncheckedCreateWithoutTariffsInput>
+    connectOrCreate?: ProgrammingLanguageCreateOrConnectWithoutTariffsInput
+    upsert?: ProgrammingLanguageUpsertWithoutTariffsInput
+    connect?: ProgrammingLanguageWhereUniqueInput
+    update?: XOR<XOR<ProgrammingLanguageUpdateToOneWithWhereWithoutTariffsInput, ProgrammingLanguageUpdateWithoutTariffsInput>, ProgrammingLanguageUncheckedUpdateWithoutTariffsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6900,6 +27736,63 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedEnumTariffPeriodFilter<$PrismaModel = never> = {
+    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel>
+    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
+    not?: NestedEnumTariffPeriodFilter<$PrismaModel> | $Enums.TariffPeriod
+  }
+
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTariffPeriodWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel>
+    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
+    not?: NestedEnumTariffPeriodWithAggregatesFilter<$PrismaModel> | $Enums.TariffPeriod
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTariffPeriodFilter<$PrismaModel>
+    _max?: NestedEnumTariffPeriodFilter<$PrismaModel>
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -7158,6 +28051,1510 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type TariffCreateWithoutHostingInput = {
+    id?: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cms?: TariffCMSCreateNestedManyWithoutTariffInput
+    controlPanels?: TariffControlPanelCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffUncheckedCreateWithoutHostingInput = {
+    id?: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cms?: TariffCMSUncheckedCreateNestedManyWithoutTariffInput
+    controlPanels?: TariffControlPanelUncheckedCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryUncheckedCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreUncheckedCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemUncheckedCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffCreateOrConnectWithoutHostingInput = {
+    where: TariffWhereUniqueInput
+    create: XOR<TariffCreateWithoutHostingInput, TariffUncheckedCreateWithoutHostingInput>
+  }
+
+  export type TariffCreateManyHostingInputEnvelope = {
+    data: TariffCreateManyHostingInput | TariffCreateManyHostingInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TariffUpsertWithWhereUniqueWithoutHostingInput = {
+    where: TariffWhereUniqueInput
+    update: XOR<TariffUpdateWithoutHostingInput, TariffUncheckedUpdateWithoutHostingInput>
+    create: XOR<TariffCreateWithoutHostingInput, TariffUncheckedCreateWithoutHostingInput>
+  }
+
+  export type TariffUpdateWithWhereUniqueWithoutHostingInput = {
+    where: TariffWhereUniqueInput
+    data: XOR<TariffUpdateWithoutHostingInput, TariffUncheckedUpdateWithoutHostingInput>
+  }
+
+  export type TariffUpdateManyWithWhereWithoutHostingInput = {
+    where: TariffScalarWhereInput
+    data: XOR<TariffUpdateManyMutationInput, TariffUncheckedUpdateManyWithoutHostingInput>
+  }
+
+  export type TariffScalarWhereInput = {
+    AND?: TariffScalarWhereInput | TariffScalarWhereInput[]
+    OR?: TariffScalarWhereInput[]
+    NOT?: TariffScalarWhereInput | TariffScalarWhereInput[]
+    id?: StringFilter<"Tariff"> | string
+    hostingId?: StringFilter<"Tariff"> | string
+    name?: StringFilter<"Tariff"> | string
+    price?: DecimalFilter<"Tariff"> | Decimal | DecimalJsLike | number | string
+    currency?: StringFilter<"Tariff"> | string
+    period?: EnumTariffPeriodFilter<"Tariff"> | $Enums.TariffPeriod
+    diskSpace?: IntNullableFilter<"Tariff"> | number | null
+    bandwidth?: IntNullableFilter<"Tariff"> | number | null
+    domainsCount?: IntNullableFilter<"Tariff"> | number | null
+    databasesCount?: IntNullableFilter<"Tariff"> | number | null
+    emailAccounts?: IntNullableFilter<"Tariff"> | number | null
+    isActive?: BoolFilter<"Tariff"> | boolean
+    createdAt?: DateTimeFilter<"Tariff"> | Date | string
+    updatedAt?: DateTimeFilter<"Tariff"> | Date | string
+  }
+
+  export type HostingCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    logoUrl?: string | null
+    websiteUrl?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HostingUncheckedCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    logoUrl?: string | null
+    websiteUrl?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HostingCreateOrConnectWithoutTariffsInput = {
+    where: HostingWhereUniqueInput
+    create: XOR<HostingCreateWithoutTariffsInput, HostingUncheckedCreateWithoutTariffsInput>
+  }
+
+  export type TariffCMSCreateWithoutTariffInput = {
+    id?: string
+    cms: CMSCreateNestedOneWithoutTariffsInput
+  }
+
+  export type TariffCMSUncheckedCreateWithoutTariffInput = {
+    id?: string
+    cmsId: string
+  }
+
+  export type TariffCMSCreateOrConnectWithoutTariffInput = {
+    where: TariffCMSWhereUniqueInput
+    create: XOR<TariffCMSCreateWithoutTariffInput, TariffCMSUncheckedCreateWithoutTariffInput>
+  }
+
+  export type TariffCMSCreateManyTariffInputEnvelope = {
+    data: TariffCMSCreateManyTariffInput | TariffCMSCreateManyTariffInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TariffControlPanelCreateWithoutTariffInput = {
+    id?: string
+    controlPanel: ControlPanelCreateNestedOneWithoutTariffsInput
+  }
+
+  export type TariffControlPanelUncheckedCreateWithoutTariffInput = {
+    id?: string
+    controlPanelId: string
+  }
+
+  export type TariffControlPanelCreateOrConnectWithoutTariffInput = {
+    where: TariffControlPanelWhereUniqueInput
+    create: XOR<TariffControlPanelCreateWithoutTariffInput, TariffControlPanelUncheckedCreateWithoutTariffInput>
+  }
+
+  export type TariffControlPanelCreateManyTariffInputEnvelope = {
+    data: TariffControlPanelCreateManyTariffInput | TariffControlPanelCreateManyTariffInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TariffCountryCreateWithoutTariffInput = {
+    id?: string
+    country: CountryCreateNestedOneWithoutTariffsInput
+  }
+
+  export type TariffCountryUncheckedCreateWithoutTariffInput = {
+    id?: string
+    countryId: string
+  }
+
+  export type TariffCountryCreateOrConnectWithoutTariffInput = {
+    where: TariffCountryWhereUniqueInput
+    create: XOR<TariffCountryCreateWithoutTariffInput, TariffCountryUncheckedCreateWithoutTariffInput>
+  }
+
+  export type TariffCountryCreateManyTariffInputEnvelope = {
+    data: TariffCountryCreateManyTariffInput | TariffCountryCreateManyTariffInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TariffDataStoreCreateWithoutTariffInput = {
+    id?: string
+    dataStore: DataStoreCreateNestedOneWithoutTariffsInput
+  }
+
+  export type TariffDataStoreUncheckedCreateWithoutTariffInput = {
+    id?: string
+    dataStoreId: string
+  }
+
+  export type TariffDataStoreCreateOrConnectWithoutTariffInput = {
+    where: TariffDataStoreWhereUniqueInput
+    create: XOR<TariffDataStoreCreateWithoutTariffInput, TariffDataStoreUncheckedCreateWithoutTariffInput>
+  }
+
+  export type TariffDataStoreCreateManyTariffInputEnvelope = {
+    data: TariffDataStoreCreateManyTariffInput | TariffDataStoreCreateManyTariffInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TariffOperationSystemCreateWithoutTariffInput = {
+    id?: string
+    operationSystem: OperationSystemCreateNestedOneWithoutTariffsInput
+  }
+
+  export type TariffOperationSystemUncheckedCreateWithoutTariffInput = {
+    id?: string
+    operationSystemId: string
+  }
+
+  export type TariffOperationSystemCreateOrConnectWithoutTariffInput = {
+    where: TariffOperationSystemWhereUniqueInput
+    create: XOR<TariffOperationSystemCreateWithoutTariffInput, TariffOperationSystemUncheckedCreateWithoutTariffInput>
+  }
+
+  export type TariffOperationSystemCreateManyTariffInputEnvelope = {
+    data: TariffOperationSystemCreateManyTariffInput | TariffOperationSystemCreateManyTariffInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TariffProgrammingLanguageCreateWithoutTariffInput = {
+    id?: string
+    programmingLanguage: ProgrammingLanguageCreateNestedOneWithoutTariffsInput
+  }
+
+  export type TariffProgrammingLanguageUncheckedCreateWithoutTariffInput = {
+    id?: string
+    programmingLanguageId: string
+  }
+
+  export type TariffProgrammingLanguageCreateOrConnectWithoutTariffInput = {
+    where: TariffProgrammingLanguageWhereUniqueInput
+    create: XOR<TariffProgrammingLanguageCreateWithoutTariffInput, TariffProgrammingLanguageUncheckedCreateWithoutTariffInput>
+  }
+
+  export type TariffProgrammingLanguageCreateManyTariffInputEnvelope = {
+    data: TariffProgrammingLanguageCreateManyTariffInput | TariffProgrammingLanguageCreateManyTariffInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type HostingUpsertWithoutTariffsInput = {
+    update: XOR<HostingUpdateWithoutTariffsInput, HostingUncheckedUpdateWithoutTariffsInput>
+    create: XOR<HostingCreateWithoutTariffsInput, HostingUncheckedCreateWithoutTariffsInput>
+    where?: HostingWhereInput
+  }
+
+  export type HostingUpdateToOneWithWhereWithoutTariffsInput = {
+    where?: HostingWhereInput
+    data: XOR<HostingUpdateWithoutTariffsInput, HostingUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type HostingUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HostingUncheckedUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TariffCMSUpsertWithWhereUniqueWithoutTariffInput = {
+    where: TariffCMSWhereUniqueInput
+    update: XOR<TariffCMSUpdateWithoutTariffInput, TariffCMSUncheckedUpdateWithoutTariffInput>
+    create: XOR<TariffCMSCreateWithoutTariffInput, TariffCMSUncheckedCreateWithoutTariffInput>
+  }
+
+  export type TariffCMSUpdateWithWhereUniqueWithoutTariffInput = {
+    where: TariffCMSWhereUniqueInput
+    data: XOR<TariffCMSUpdateWithoutTariffInput, TariffCMSUncheckedUpdateWithoutTariffInput>
+  }
+
+  export type TariffCMSUpdateManyWithWhereWithoutTariffInput = {
+    where: TariffCMSScalarWhereInput
+    data: XOR<TariffCMSUpdateManyMutationInput, TariffCMSUncheckedUpdateManyWithoutTariffInput>
+  }
+
+  export type TariffCMSScalarWhereInput = {
+    AND?: TariffCMSScalarWhereInput | TariffCMSScalarWhereInput[]
+    OR?: TariffCMSScalarWhereInput[]
+    NOT?: TariffCMSScalarWhereInput | TariffCMSScalarWhereInput[]
+    id?: StringFilter<"TariffCMS"> | string
+    tariffId?: StringFilter<"TariffCMS"> | string
+    cmsId?: StringFilter<"TariffCMS"> | string
+  }
+
+  export type TariffControlPanelUpsertWithWhereUniqueWithoutTariffInput = {
+    where: TariffControlPanelWhereUniqueInput
+    update: XOR<TariffControlPanelUpdateWithoutTariffInput, TariffControlPanelUncheckedUpdateWithoutTariffInput>
+    create: XOR<TariffControlPanelCreateWithoutTariffInput, TariffControlPanelUncheckedCreateWithoutTariffInput>
+  }
+
+  export type TariffControlPanelUpdateWithWhereUniqueWithoutTariffInput = {
+    where: TariffControlPanelWhereUniqueInput
+    data: XOR<TariffControlPanelUpdateWithoutTariffInput, TariffControlPanelUncheckedUpdateWithoutTariffInput>
+  }
+
+  export type TariffControlPanelUpdateManyWithWhereWithoutTariffInput = {
+    where: TariffControlPanelScalarWhereInput
+    data: XOR<TariffControlPanelUpdateManyMutationInput, TariffControlPanelUncheckedUpdateManyWithoutTariffInput>
+  }
+
+  export type TariffControlPanelScalarWhereInput = {
+    AND?: TariffControlPanelScalarWhereInput | TariffControlPanelScalarWhereInput[]
+    OR?: TariffControlPanelScalarWhereInput[]
+    NOT?: TariffControlPanelScalarWhereInput | TariffControlPanelScalarWhereInput[]
+    id?: StringFilter<"TariffControlPanel"> | string
+    tariffId?: StringFilter<"TariffControlPanel"> | string
+    controlPanelId?: StringFilter<"TariffControlPanel"> | string
+  }
+
+  export type TariffCountryUpsertWithWhereUniqueWithoutTariffInput = {
+    where: TariffCountryWhereUniqueInput
+    update: XOR<TariffCountryUpdateWithoutTariffInput, TariffCountryUncheckedUpdateWithoutTariffInput>
+    create: XOR<TariffCountryCreateWithoutTariffInput, TariffCountryUncheckedCreateWithoutTariffInput>
+  }
+
+  export type TariffCountryUpdateWithWhereUniqueWithoutTariffInput = {
+    where: TariffCountryWhereUniqueInput
+    data: XOR<TariffCountryUpdateWithoutTariffInput, TariffCountryUncheckedUpdateWithoutTariffInput>
+  }
+
+  export type TariffCountryUpdateManyWithWhereWithoutTariffInput = {
+    where: TariffCountryScalarWhereInput
+    data: XOR<TariffCountryUpdateManyMutationInput, TariffCountryUncheckedUpdateManyWithoutTariffInput>
+  }
+
+  export type TariffCountryScalarWhereInput = {
+    AND?: TariffCountryScalarWhereInput | TariffCountryScalarWhereInput[]
+    OR?: TariffCountryScalarWhereInput[]
+    NOT?: TariffCountryScalarWhereInput | TariffCountryScalarWhereInput[]
+    id?: StringFilter<"TariffCountry"> | string
+    tariffId?: StringFilter<"TariffCountry"> | string
+    countryId?: StringFilter<"TariffCountry"> | string
+  }
+
+  export type TariffDataStoreUpsertWithWhereUniqueWithoutTariffInput = {
+    where: TariffDataStoreWhereUniqueInput
+    update: XOR<TariffDataStoreUpdateWithoutTariffInput, TariffDataStoreUncheckedUpdateWithoutTariffInput>
+    create: XOR<TariffDataStoreCreateWithoutTariffInput, TariffDataStoreUncheckedCreateWithoutTariffInput>
+  }
+
+  export type TariffDataStoreUpdateWithWhereUniqueWithoutTariffInput = {
+    where: TariffDataStoreWhereUniqueInput
+    data: XOR<TariffDataStoreUpdateWithoutTariffInput, TariffDataStoreUncheckedUpdateWithoutTariffInput>
+  }
+
+  export type TariffDataStoreUpdateManyWithWhereWithoutTariffInput = {
+    where: TariffDataStoreScalarWhereInput
+    data: XOR<TariffDataStoreUpdateManyMutationInput, TariffDataStoreUncheckedUpdateManyWithoutTariffInput>
+  }
+
+  export type TariffDataStoreScalarWhereInput = {
+    AND?: TariffDataStoreScalarWhereInput | TariffDataStoreScalarWhereInput[]
+    OR?: TariffDataStoreScalarWhereInput[]
+    NOT?: TariffDataStoreScalarWhereInput | TariffDataStoreScalarWhereInput[]
+    id?: StringFilter<"TariffDataStore"> | string
+    tariffId?: StringFilter<"TariffDataStore"> | string
+    dataStoreId?: StringFilter<"TariffDataStore"> | string
+  }
+
+  export type TariffOperationSystemUpsertWithWhereUniqueWithoutTariffInput = {
+    where: TariffOperationSystemWhereUniqueInput
+    update: XOR<TariffOperationSystemUpdateWithoutTariffInput, TariffOperationSystemUncheckedUpdateWithoutTariffInput>
+    create: XOR<TariffOperationSystemCreateWithoutTariffInput, TariffOperationSystemUncheckedCreateWithoutTariffInput>
+  }
+
+  export type TariffOperationSystemUpdateWithWhereUniqueWithoutTariffInput = {
+    where: TariffOperationSystemWhereUniqueInput
+    data: XOR<TariffOperationSystemUpdateWithoutTariffInput, TariffOperationSystemUncheckedUpdateWithoutTariffInput>
+  }
+
+  export type TariffOperationSystemUpdateManyWithWhereWithoutTariffInput = {
+    where: TariffOperationSystemScalarWhereInput
+    data: XOR<TariffOperationSystemUpdateManyMutationInput, TariffOperationSystemUncheckedUpdateManyWithoutTariffInput>
+  }
+
+  export type TariffOperationSystemScalarWhereInput = {
+    AND?: TariffOperationSystemScalarWhereInput | TariffOperationSystemScalarWhereInput[]
+    OR?: TariffOperationSystemScalarWhereInput[]
+    NOT?: TariffOperationSystemScalarWhereInput | TariffOperationSystemScalarWhereInput[]
+    id?: StringFilter<"TariffOperationSystem"> | string
+    tariffId?: StringFilter<"TariffOperationSystem"> | string
+    operationSystemId?: StringFilter<"TariffOperationSystem"> | string
+  }
+
+  export type TariffProgrammingLanguageUpsertWithWhereUniqueWithoutTariffInput = {
+    where: TariffProgrammingLanguageWhereUniqueInput
+    update: XOR<TariffProgrammingLanguageUpdateWithoutTariffInput, TariffProgrammingLanguageUncheckedUpdateWithoutTariffInput>
+    create: XOR<TariffProgrammingLanguageCreateWithoutTariffInput, TariffProgrammingLanguageUncheckedCreateWithoutTariffInput>
+  }
+
+  export type TariffProgrammingLanguageUpdateWithWhereUniqueWithoutTariffInput = {
+    where: TariffProgrammingLanguageWhereUniqueInput
+    data: XOR<TariffProgrammingLanguageUpdateWithoutTariffInput, TariffProgrammingLanguageUncheckedUpdateWithoutTariffInput>
+  }
+
+  export type TariffProgrammingLanguageUpdateManyWithWhereWithoutTariffInput = {
+    where: TariffProgrammingLanguageScalarWhereInput
+    data: XOR<TariffProgrammingLanguageUpdateManyMutationInput, TariffProgrammingLanguageUncheckedUpdateManyWithoutTariffInput>
+  }
+
+  export type TariffProgrammingLanguageScalarWhereInput = {
+    AND?: TariffProgrammingLanguageScalarWhereInput | TariffProgrammingLanguageScalarWhereInput[]
+    OR?: TariffProgrammingLanguageScalarWhereInput[]
+    NOT?: TariffProgrammingLanguageScalarWhereInput | TariffProgrammingLanguageScalarWhereInput[]
+    id?: StringFilter<"TariffProgrammingLanguage"> | string
+    tariffId?: StringFilter<"TariffProgrammingLanguage"> | string
+    programmingLanguageId?: StringFilter<"TariffProgrammingLanguage"> | string
+  }
+
+  export type TariffCMSCreateWithoutCmsInput = {
+    id?: string
+    tariff: TariffCreateNestedOneWithoutCmsInput
+  }
+
+  export type TariffCMSUncheckedCreateWithoutCmsInput = {
+    id?: string
+    tariffId: string
+  }
+
+  export type TariffCMSCreateOrConnectWithoutCmsInput = {
+    where: TariffCMSWhereUniqueInput
+    create: XOR<TariffCMSCreateWithoutCmsInput, TariffCMSUncheckedCreateWithoutCmsInput>
+  }
+
+  export type TariffCMSCreateManyCmsInputEnvelope = {
+    data: TariffCMSCreateManyCmsInput | TariffCMSCreateManyCmsInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TariffCMSUpsertWithWhereUniqueWithoutCmsInput = {
+    where: TariffCMSWhereUniqueInput
+    update: XOR<TariffCMSUpdateWithoutCmsInput, TariffCMSUncheckedUpdateWithoutCmsInput>
+    create: XOR<TariffCMSCreateWithoutCmsInput, TariffCMSUncheckedCreateWithoutCmsInput>
+  }
+
+  export type TariffCMSUpdateWithWhereUniqueWithoutCmsInput = {
+    where: TariffCMSWhereUniqueInput
+    data: XOR<TariffCMSUpdateWithoutCmsInput, TariffCMSUncheckedUpdateWithoutCmsInput>
+  }
+
+  export type TariffCMSUpdateManyWithWhereWithoutCmsInput = {
+    where: TariffCMSScalarWhereInput
+    data: XOR<TariffCMSUpdateManyMutationInput, TariffCMSUncheckedUpdateManyWithoutCmsInput>
+  }
+
+  export type TariffControlPanelCreateWithoutControlPanelInput = {
+    id?: string
+    tariff: TariffCreateNestedOneWithoutControlPanelsInput
+  }
+
+  export type TariffControlPanelUncheckedCreateWithoutControlPanelInput = {
+    id?: string
+    tariffId: string
+  }
+
+  export type TariffControlPanelCreateOrConnectWithoutControlPanelInput = {
+    where: TariffControlPanelWhereUniqueInput
+    create: XOR<TariffControlPanelCreateWithoutControlPanelInput, TariffControlPanelUncheckedCreateWithoutControlPanelInput>
+  }
+
+  export type TariffControlPanelCreateManyControlPanelInputEnvelope = {
+    data: TariffControlPanelCreateManyControlPanelInput | TariffControlPanelCreateManyControlPanelInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TariffControlPanelUpsertWithWhereUniqueWithoutControlPanelInput = {
+    where: TariffControlPanelWhereUniqueInput
+    update: XOR<TariffControlPanelUpdateWithoutControlPanelInput, TariffControlPanelUncheckedUpdateWithoutControlPanelInput>
+    create: XOR<TariffControlPanelCreateWithoutControlPanelInput, TariffControlPanelUncheckedCreateWithoutControlPanelInput>
+  }
+
+  export type TariffControlPanelUpdateWithWhereUniqueWithoutControlPanelInput = {
+    where: TariffControlPanelWhereUniqueInput
+    data: XOR<TariffControlPanelUpdateWithoutControlPanelInput, TariffControlPanelUncheckedUpdateWithoutControlPanelInput>
+  }
+
+  export type TariffControlPanelUpdateManyWithWhereWithoutControlPanelInput = {
+    where: TariffControlPanelScalarWhereInput
+    data: XOR<TariffControlPanelUpdateManyMutationInput, TariffControlPanelUncheckedUpdateManyWithoutControlPanelInput>
+  }
+
+  export type TariffCountryCreateWithoutCountryInput = {
+    id?: string
+    tariff: TariffCreateNestedOneWithoutCountriesInput
+  }
+
+  export type TariffCountryUncheckedCreateWithoutCountryInput = {
+    id?: string
+    tariffId: string
+  }
+
+  export type TariffCountryCreateOrConnectWithoutCountryInput = {
+    where: TariffCountryWhereUniqueInput
+    create: XOR<TariffCountryCreateWithoutCountryInput, TariffCountryUncheckedCreateWithoutCountryInput>
+  }
+
+  export type TariffCountryCreateManyCountryInputEnvelope = {
+    data: TariffCountryCreateManyCountryInput | TariffCountryCreateManyCountryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TariffCountryUpsertWithWhereUniqueWithoutCountryInput = {
+    where: TariffCountryWhereUniqueInput
+    update: XOR<TariffCountryUpdateWithoutCountryInput, TariffCountryUncheckedUpdateWithoutCountryInput>
+    create: XOR<TariffCountryCreateWithoutCountryInput, TariffCountryUncheckedCreateWithoutCountryInput>
+  }
+
+  export type TariffCountryUpdateWithWhereUniqueWithoutCountryInput = {
+    where: TariffCountryWhereUniqueInput
+    data: XOR<TariffCountryUpdateWithoutCountryInput, TariffCountryUncheckedUpdateWithoutCountryInput>
+  }
+
+  export type TariffCountryUpdateManyWithWhereWithoutCountryInput = {
+    where: TariffCountryScalarWhereInput
+    data: XOR<TariffCountryUpdateManyMutationInput, TariffCountryUncheckedUpdateManyWithoutCountryInput>
+  }
+
+  export type TariffDataStoreCreateWithoutDataStoreInput = {
+    id?: string
+    tariff: TariffCreateNestedOneWithoutDataStoresInput
+  }
+
+  export type TariffDataStoreUncheckedCreateWithoutDataStoreInput = {
+    id?: string
+    tariffId: string
+  }
+
+  export type TariffDataStoreCreateOrConnectWithoutDataStoreInput = {
+    where: TariffDataStoreWhereUniqueInput
+    create: XOR<TariffDataStoreCreateWithoutDataStoreInput, TariffDataStoreUncheckedCreateWithoutDataStoreInput>
+  }
+
+  export type TariffDataStoreCreateManyDataStoreInputEnvelope = {
+    data: TariffDataStoreCreateManyDataStoreInput | TariffDataStoreCreateManyDataStoreInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TariffDataStoreUpsertWithWhereUniqueWithoutDataStoreInput = {
+    where: TariffDataStoreWhereUniqueInput
+    update: XOR<TariffDataStoreUpdateWithoutDataStoreInput, TariffDataStoreUncheckedUpdateWithoutDataStoreInput>
+    create: XOR<TariffDataStoreCreateWithoutDataStoreInput, TariffDataStoreUncheckedCreateWithoutDataStoreInput>
+  }
+
+  export type TariffDataStoreUpdateWithWhereUniqueWithoutDataStoreInput = {
+    where: TariffDataStoreWhereUniqueInput
+    data: XOR<TariffDataStoreUpdateWithoutDataStoreInput, TariffDataStoreUncheckedUpdateWithoutDataStoreInput>
+  }
+
+  export type TariffDataStoreUpdateManyWithWhereWithoutDataStoreInput = {
+    where: TariffDataStoreScalarWhereInput
+    data: XOR<TariffDataStoreUpdateManyMutationInput, TariffDataStoreUncheckedUpdateManyWithoutDataStoreInput>
+  }
+
+  export type TariffOperationSystemCreateWithoutOperationSystemInput = {
+    id?: string
+    tariff: TariffCreateNestedOneWithoutOperationSystemsInput
+  }
+
+  export type TariffOperationSystemUncheckedCreateWithoutOperationSystemInput = {
+    id?: string
+    tariffId: string
+  }
+
+  export type TariffOperationSystemCreateOrConnectWithoutOperationSystemInput = {
+    where: TariffOperationSystemWhereUniqueInput
+    create: XOR<TariffOperationSystemCreateWithoutOperationSystemInput, TariffOperationSystemUncheckedCreateWithoutOperationSystemInput>
+  }
+
+  export type TariffOperationSystemCreateManyOperationSystemInputEnvelope = {
+    data: TariffOperationSystemCreateManyOperationSystemInput | TariffOperationSystemCreateManyOperationSystemInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TariffOperationSystemUpsertWithWhereUniqueWithoutOperationSystemInput = {
+    where: TariffOperationSystemWhereUniqueInput
+    update: XOR<TariffOperationSystemUpdateWithoutOperationSystemInput, TariffOperationSystemUncheckedUpdateWithoutOperationSystemInput>
+    create: XOR<TariffOperationSystemCreateWithoutOperationSystemInput, TariffOperationSystemUncheckedCreateWithoutOperationSystemInput>
+  }
+
+  export type TariffOperationSystemUpdateWithWhereUniqueWithoutOperationSystemInput = {
+    where: TariffOperationSystemWhereUniqueInput
+    data: XOR<TariffOperationSystemUpdateWithoutOperationSystemInput, TariffOperationSystemUncheckedUpdateWithoutOperationSystemInput>
+  }
+
+  export type TariffOperationSystemUpdateManyWithWhereWithoutOperationSystemInput = {
+    where: TariffOperationSystemScalarWhereInput
+    data: XOR<TariffOperationSystemUpdateManyMutationInput, TariffOperationSystemUncheckedUpdateManyWithoutOperationSystemInput>
+  }
+
+  export type TariffProgrammingLanguageCreateWithoutProgrammingLanguageInput = {
+    id?: string
+    tariff: TariffCreateNestedOneWithoutProgrammingLanguagesInput
+  }
+
+  export type TariffProgrammingLanguageUncheckedCreateWithoutProgrammingLanguageInput = {
+    id?: string
+    tariffId: string
+  }
+
+  export type TariffProgrammingLanguageCreateOrConnectWithoutProgrammingLanguageInput = {
+    where: TariffProgrammingLanguageWhereUniqueInput
+    create: XOR<TariffProgrammingLanguageCreateWithoutProgrammingLanguageInput, TariffProgrammingLanguageUncheckedCreateWithoutProgrammingLanguageInput>
+  }
+
+  export type TariffProgrammingLanguageCreateManyProgrammingLanguageInputEnvelope = {
+    data: TariffProgrammingLanguageCreateManyProgrammingLanguageInput | TariffProgrammingLanguageCreateManyProgrammingLanguageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TariffProgrammingLanguageUpsertWithWhereUniqueWithoutProgrammingLanguageInput = {
+    where: TariffProgrammingLanguageWhereUniqueInput
+    update: XOR<TariffProgrammingLanguageUpdateWithoutProgrammingLanguageInput, TariffProgrammingLanguageUncheckedUpdateWithoutProgrammingLanguageInput>
+    create: XOR<TariffProgrammingLanguageCreateWithoutProgrammingLanguageInput, TariffProgrammingLanguageUncheckedCreateWithoutProgrammingLanguageInput>
+  }
+
+  export type TariffProgrammingLanguageUpdateWithWhereUniqueWithoutProgrammingLanguageInput = {
+    where: TariffProgrammingLanguageWhereUniqueInput
+    data: XOR<TariffProgrammingLanguageUpdateWithoutProgrammingLanguageInput, TariffProgrammingLanguageUncheckedUpdateWithoutProgrammingLanguageInput>
+  }
+
+  export type TariffProgrammingLanguageUpdateManyWithWhereWithoutProgrammingLanguageInput = {
+    where: TariffProgrammingLanguageScalarWhereInput
+    data: XOR<TariffProgrammingLanguageUpdateManyMutationInput, TariffProgrammingLanguageUncheckedUpdateManyWithoutProgrammingLanguageInput>
+  }
+
+  export type TariffCreateWithoutCmsInput = {
+    id?: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hosting: HostingCreateNestedOneWithoutTariffsInput
+    controlPanels?: TariffControlPanelCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffUncheckedCreateWithoutCmsInput = {
+    id?: string
+    hostingId: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    controlPanels?: TariffControlPanelUncheckedCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryUncheckedCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreUncheckedCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemUncheckedCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffCreateOrConnectWithoutCmsInput = {
+    where: TariffWhereUniqueInput
+    create: XOR<TariffCreateWithoutCmsInput, TariffUncheckedCreateWithoutCmsInput>
+  }
+
+  export type CMSCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type CMSUncheckedCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type CMSCreateOrConnectWithoutTariffsInput = {
+    where: CMSWhereUniqueInput
+    create: XOR<CMSCreateWithoutTariffsInput, CMSUncheckedCreateWithoutTariffsInput>
+  }
+
+  export type TariffUpsertWithoutCmsInput = {
+    update: XOR<TariffUpdateWithoutCmsInput, TariffUncheckedUpdateWithoutCmsInput>
+    create: XOR<TariffCreateWithoutCmsInput, TariffUncheckedCreateWithoutCmsInput>
+    where?: TariffWhereInput
+  }
+
+  export type TariffUpdateToOneWithWhereWithoutCmsInput = {
+    where?: TariffWhereInput
+    data: XOR<TariffUpdateWithoutCmsInput, TariffUncheckedUpdateWithoutCmsInput>
+  }
+
+  export type TariffUpdateWithoutCmsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hosting?: HostingUpdateOneRequiredWithoutTariffsNestedInput
+    controlPanels?: TariffControlPanelUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUpdateManyWithoutTariffNestedInput
+  }
+
+  export type TariffUncheckedUpdateWithoutCmsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    controlPanels?: TariffControlPanelUncheckedUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUncheckedUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUncheckedUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUncheckedUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedUpdateManyWithoutTariffNestedInput
+  }
+
+  export type CMSUpsertWithoutTariffsInput = {
+    update: XOR<CMSUpdateWithoutTariffsInput, CMSUncheckedUpdateWithoutTariffsInput>
+    create: XOR<CMSCreateWithoutTariffsInput, CMSUncheckedCreateWithoutTariffsInput>
+    where?: CMSWhereInput
+  }
+
+  export type CMSUpdateToOneWithWhereWithoutTariffsInput = {
+    where?: CMSWhereInput
+    data: XOR<CMSUpdateWithoutTariffsInput, CMSUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type CMSUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CMSUncheckedUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCreateWithoutControlPanelsInput = {
+    id?: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hosting: HostingCreateNestedOneWithoutTariffsInput
+    cms?: TariffCMSCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffUncheckedCreateWithoutControlPanelsInput = {
+    id?: string
+    hostingId: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cms?: TariffCMSUncheckedCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryUncheckedCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreUncheckedCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemUncheckedCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffCreateOrConnectWithoutControlPanelsInput = {
+    where: TariffWhereUniqueInput
+    create: XOR<TariffCreateWithoutControlPanelsInput, TariffUncheckedCreateWithoutControlPanelsInput>
+  }
+
+  export type ControlPanelCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type ControlPanelUncheckedCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type ControlPanelCreateOrConnectWithoutTariffsInput = {
+    where: ControlPanelWhereUniqueInput
+    create: XOR<ControlPanelCreateWithoutTariffsInput, ControlPanelUncheckedCreateWithoutTariffsInput>
+  }
+
+  export type TariffUpsertWithoutControlPanelsInput = {
+    update: XOR<TariffUpdateWithoutControlPanelsInput, TariffUncheckedUpdateWithoutControlPanelsInput>
+    create: XOR<TariffCreateWithoutControlPanelsInput, TariffUncheckedCreateWithoutControlPanelsInput>
+    where?: TariffWhereInput
+  }
+
+  export type TariffUpdateToOneWithWhereWithoutControlPanelsInput = {
+    where?: TariffWhereInput
+    data: XOR<TariffUpdateWithoutControlPanelsInput, TariffUncheckedUpdateWithoutControlPanelsInput>
+  }
+
+  export type TariffUpdateWithoutControlPanelsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hosting?: HostingUpdateOneRequiredWithoutTariffsNestedInput
+    cms?: TariffCMSUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUpdateManyWithoutTariffNestedInput
+  }
+
+  export type TariffUncheckedUpdateWithoutControlPanelsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cms?: TariffCMSUncheckedUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUncheckedUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUncheckedUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUncheckedUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedUpdateManyWithoutTariffNestedInput
+  }
+
+  export type ControlPanelUpsertWithoutTariffsInput = {
+    update: XOR<ControlPanelUpdateWithoutTariffsInput, ControlPanelUncheckedUpdateWithoutTariffsInput>
+    create: XOR<ControlPanelCreateWithoutTariffsInput, ControlPanelUncheckedCreateWithoutTariffsInput>
+    where?: ControlPanelWhereInput
+  }
+
+  export type ControlPanelUpdateToOneWithWhereWithoutTariffsInput = {
+    where?: ControlPanelWhereInput
+    data: XOR<ControlPanelUpdateWithoutTariffsInput, ControlPanelUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type ControlPanelUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ControlPanelUncheckedUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCreateWithoutCountriesInput = {
+    id?: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hosting: HostingCreateNestedOneWithoutTariffsInput
+    cms?: TariffCMSCreateNestedManyWithoutTariffInput
+    controlPanels?: TariffControlPanelCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffUncheckedCreateWithoutCountriesInput = {
+    id?: string
+    hostingId: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cms?: TariffCMSUncheckedCreateNestedManyWithoutTariffInput
+    controlPanels?: TariffControlPanelUncheckedCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreUncheckedCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemUncheckedCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffCreateOrConnectWithoutCountriesInput = {
+    where: TariffWhereUniqueInput
+    create: XOR<TariffCreateWithoutCountriesInput, TariffUncheckedCreateWithoutCountriesInput>
+  }
+
+  export type CountryCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type CountryUncheckedCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type CountryCreateOrConnectWithoutTariffsInput = {
+    where: CountryWhereUniqueInput
+    create: XOR<CountryCreateWithoutTariffsInput, CountryUncheckedCreateWithoutTariffsInput>
+  }
+
+  export type TariffUpsertWithoutCountriesInput = {
+    update: XOR<TariffUpdateWithoutCountriesInput, TariffUncheckedUpdateWithoutCountriesInput>
+    create: XOR<TariffCreateWithoutCountriesInput, TariffUncheckedCreateWithoutCountriesInput>
+    where?: TariffWhereInput
+  }
+
+  export type TariffUpdateToOneWithWhereWithoutCountriesInput = {
+    where?: TariffWhereInput
+    data: XOR<TariffUpdateWithoutCountriesInput, TariffUncheckedUpdateWithoutCountriesInput>
+  }
+
+  export type TariffUpdateWithoutCountriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hosting?: HostingUpdateOneRequiredWithoutTariffsNestedInput
+    cms?: TariffCMSUpdateManyWithoutTariffNestedInput
+    controlPanels?: TariffControlPanelUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUpdateManyWithoutTariffNestedInput
+  }
+
+  export type TariffUncheckedUpdateWithoutCountriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cms?: TariffCMSUncheckedUpdateManyWithoutTariffNestedInput
+    controlPanels?: TariffControlPanelUncheckedUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUncheckedUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUncheckedUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedUpdateManyWithoutTariffNestedInput
+  }
+
+  export type CountryUpsertWithoutTariffsInput = {
+    update: XOR<CountryUpdateWithoutTariffsInput, CountryUncheckedUpdateWithoutTariffsInput>
+    create: XOR<CountryCreateWithoutTariffsInput, CountryUncheckedCreateWithoutTariffsInput>
+    where?: CountryWhereInput
+  }
+
+  export type CountryUpdateToOneWithWhereWithoutTariffsInput = {
+    where?: CountryWhereInput
+    data: XOR<CountryUpdateWithoutTariffsInput, CountryUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type CountryUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CountryUncheckedUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCreateWithoutDataStoresInput = {
+    id?: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hosting: HostingCreateNestedOneWithoutTariffsInput
+    cms?: TariffCMSCreateNestedManyWithoutTariffInput
+    controlPanels?: TariffControlPanelCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffUncheckedCreateWithoutDataStoresInput = {
+    id?: string
+    hostingId: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cms?: TariffCMSUncheckedCreateNestedManyWithoutTariffInput
+    controlPanels?: TariffControlPanelUncheckedCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryUncheckedCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemUncheckedCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffCreateOrConnectWithoutDataStoresInput = {
+    where: TariffWhereUniqueInput
+    create: XOR<TariffCreateWithoutDataStoresInput, TariffUncheckedCreateWithoutDataStoresInput>
+  }
+
+  export type DataStoreCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type DataStoreUncheckedCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type DataStoreCreateOrConnectWithoutTariffsInput = {
+    where: DataStoreWhereUniqueInput
+    create: XOR<DataStoreCreateWithoutTariffsInput, DataStoreUncheckedCreateWithoutTariffsInput>
+  }
+
+  export type TariffUpsertWithoutDataStoresInput = {
+    update: XOR<TariffUpdateWithoutDataStoresInput, TariffUncheckedUpdateWithoutDataStoresInput>
+    create: XOR<TariffCreateWithoutDataStoresInput, TariffUncheckedCreateWithoutDataStoresInput>
+    where?: TariffWhereInput
+  }
+
+  export type TariffUpdateToOneWithWhereWithoutDataStoresInput = {
+    where?: TariffWhereInput
+    data: XOR<TariffUpdateWithoutDataStoresInput, TariffUncheckedUpdateWithoutDataStoresInput>
+  }
+
+  export type TariffUpdateWithoutDataStoresInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hosting?: HostingUpdateOneRequiredWithoutTariffsNestedInput
+    cms?: TariffCMSUpdateManyWithoutTariffNestedInput
+    controlPanels?: TariffControlPanelUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUpdateManyWithoutTariffNestedInput
+  }
+
+  export type TariffUncheckedUpdateWithoutDataStoresInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cms?: TariffCMSUncheckedUpdateManyWithoutTariffNestedInput
+    controlPanels?: TariffControlPanelUncheckedUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUncheckedUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUncheckedUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedUpdateManyWithoutTariffNestedInput
+  }
+
+  export type DataStoreUpsertWithoutTariffsInput = {
+    update: XOR<DataStoreUpdateWithoutTariffsInput, DataStoreUncheckedUpdateWithoutTariffsInput>
+    create: XOR<DataStoreCreateWithoutTariffsInput, DataStoreUncheckedCreateWithoutTariffsInput>
+    where?: DataStoreWhereInput
+  }
+
+  export type DataStoreUpdateToOneWithWhereWithoutTariffsInput = {
+    where?: DataStoreWhereInput
+    data: XOR<DataStoreUpdateWithoutTariffsInput, DataStoreUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type DataStoreUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DataStoreUncheckedUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCreateWithoutOperationSystemsInput = {
+    id?: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hosting: HostingCreateNestedOneWithoutTariffsInput
+    cms?: TariffCMSCreateNestedManyWithoutTariffInput
+    controlPanels?: TariffControlPanelCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffUncheckedCreateWithoutOperationSystemsInput = {
+    id?: string
+    hostingId: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cms?: TariffCMSUncheckedCreateNestedManyWithoutTariffInput
+    controlPanels?: TariffControlPanelUncheckedCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryUncheckedCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreUncheckedCreateNestedManyWithoutTariffInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffCreateOrConnectWithoutOperationSystemsInput = {
+    where: TariffWhereUniqueInput
+    create: XOR<TariffCreateWithoutOperationSystemsInput, TariffUncheckedCreateWithoutOperationSystemsInput>
+  }
+
+  export type OperationSystemCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type OperationSystemUncheckedCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type OperationSystemCreateOrConnectWithoutTariffsInput = {
+    where: OperationSystemWhereUniqueInput
+    create: XOR<OperationSystemCreateWithoutTariffsInput, OperationSystemUncheckedCreateWithoutTariffsInput>
+  }
+
+  export type TariffUpsertWithoutOperationSystemsInput = {
+    update: XOR<TariffUpdateWithoutOperationSystemsInput, TariffUncheckedUpdateWithoutOperationSystemsInput>
+    create: XOR<TariffCreateWithoutOperationSystemsInput, TariffUncheckedCreateWithoutOperationSystemsInput>
+    where?: TariffWhereInput
+  }
+
+  export type TariffUpdateToOneWithWhereWithoutOperationSystemsInput = {
+    where?: TariffWhereInput
+    data: XOR<TariffUpdateWithoutOperationSystemsInput, TariffUncheckedUpdateWithoutOperationSystemsInput>
+  }
+
+  export type TariffUpdateWithoutOperationSystemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hosting?: HostingUpdateOneRequiredWithoutTariffsNestedInput
+    cms?: TariffCMSUpdateManyWithoutTariffNestedInput
+    controlPanels?: TariffControlPanelUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUpdateManyWithoutTariffNestedInput
+  }
+
+  export type TariffUncheckedUpdateWithoutOperationSystemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cms?: TariffCMSUncheckedUpdateManyWithoutTariffNestedInput
+    controlPanels?: TariffControlPanelUncheckedUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUncheckedUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUncheckedUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedUpdateManyWithoutTariffNestedInput
+  }
+
+  export type OperationSystemUpsertWithoutTariffsInput = {
+    update: XOR<OperationSystemUpdateWithoutTariffsInput, OperationSystemUncheckedUpdateWithoutTariffsInput>
+    create: XOR<OperationSystemCreateWithoutTariffsInput, OperationSystemUncheckedCreateWithoutTariffsInput>
+    where?: OperationSystemWhereInput
+  }
+
+  export type OperationSystemUpdateToOneWithWhereWithoutTariffsInput = {
+    where?: OperationSystemWhereInput
+    data: XOR<OperationSystemUpdateWithoutTariffsInput, OperationSystemUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type OperationSystemUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OperationSystemUncheckedUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCreateWithoutProgrammingLanguagesInput = {
+    id?: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hosting: HostingCreateNestedOneWithoutTariffsInput
+    cms?: TariffCMSCreateNestedManyWithoutTariffInput
+    controlPanels?: TariffControlPanelCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffUncheckedCreateWithoutProgrammingLanguagesInput = {
+    id?: string
+    hostingId: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cms?: TariffCMSUncheckedCreateNestedManyWithoutTariffInput
+    controlPanels?: TariffControlPanelUncheckedCreateNestedManyWithoutTariffInput
+    countries?: TariffCountryUncheckedCreateNestedManyWithoutTariffInput
+    dataStores?: TariffDataStoreUncheckedCreateNestedManyWithoutTariffInput
+    operationSystems?: TariffOperationSystemUncheckedCreateNestedManyWithoutTariffInput
+  }
+
+  export type TariffCreateOrConnectWithoutProgrammingLanguagesInput = {
+    where: TariffWhereUniqueInput
+    create: XOR<TariffCreateWithoutProgrammingLanguagesInput, TariffUncheckedCreateWithoutProgrammingLanguagesInput>
+  }
+
+  export type ProgrammingLanguageCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type ProgrammingLanguageUncheckedCreateWithoutTariffsInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type ProgrammingLanguageCreateOrConnectWithoutTariffsInput = {
+    where: ProgrammingLanguageWhereUniqueInput
+    create: XOR<ProgrammingLanguageCreateWithoutTariffsInput, ProgrammingLanguageUncheckedCreateWithoutTariffsInput>
+  }
+
+  export type TariffUpsertWithoutProgrammingLanguagesInput = {
+    update: XOR<TariffUpdateWithoutProgrammingLanguagesInput, TariffUncheckedUpdateWithoutProgrammingLanguagesInput>
+    create: XOR<TariffCreateWithoutProgrammingLanguagesInput, TariffUncheckedCreateWithoutProgrammingLanguagesInput>
+    where?: TariffWhereInput
+  }
+
+  export type TariffUpdateToOneWithWhereWithoutProgrammingLanguagesInput = {
+    where?: TariffWhereInput
+    data: XOR<TariffUpdateWithoutProgrammingLanguagesInput, TariffUncheckedUpdateWithoutProgrammingLanguagesInput>
+  }
+
+  export type TariffUpdateWithoutProgrammingLanguagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hosting?: HostingUpdateOneRequiredWithoutTariffsNestedInput
+    cms?: TariffCMSUpdateManyWithoutTariffNestedInput
+    controlPanels?: TariffControlPanelUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUpdateManyWithoutTariffNestedInput
+  }
+
+  export type TariffUncheckedUpdateWithoutProgrammingLanguagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cms?: TariffCMSUncheckedUpdateManyWithoutTariffNestedInput
+    controlPanels?: TariffControlPanelUncheckedUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUncheckedUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUncheckedUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUncheckedUpdateManyWithoutTariffNestedInput
+  }
+
+  export type ProgrammingLanguageUpsertWithoutTariffsInput = {
+    update: XOR<ProgrammingLanguageUpdateWithoutTariffsInput, ProgrammingLanguageUncheckedUpdateWithoutTariffsInput>
+    create: XOR<ProgrammingLanguageCreateWithoutTariffsInput, ProgrammingLanguageUncheckedCreateWithoutTariffsInput>
+    where?: ProgrammingLanguageWhereInput
+  }
+
+  export type ProgrammingLanguageUpdateToOneWithWhereWithoutTariffsInput = {
+    where?: ProgrammingLanguageWhereInput
+    data: XOR<ProgrammingLanguageUpdateWithoutTariffsInput, ProgrammingLanguageUncheckedUpdateWithoutTariffsInput>
+  }
+
+  export type ProgrammingLanguageUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProgrammingLanguageUncheckedUpdateWithoutTariffsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
   export type AccountCreateManyUserInput = {
     id?: string
     type: string
@@ -7236,6 +29633,322 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     sessionToken?: StringFieldUpdateOperationsInput | string
     expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TariffCreateManyHostingInput = {
+    id?: string
+    name: string
+    price: Decimal | DecimalJsLike | number | string
+    currency?: string
+    period: $Enums.TariffPeriod
+    diskSpace?: number | null
+    bandwidth?: number | null
+    domainsCount?: number | null
+    databasesCount?: number | null
+    emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TariffUpdateWithoutHostingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cms?: TariffCMSUpdateManyWithoutTariffNestedInput
+    controlPanels?: TariffControlPanelUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUpdateManyWithoutTariffNestedInput
+  }
+
+  export type TariffUncheckedUpdateWithoutHostingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cms?: TariffCMSUncheckedUpdateManyWithoutTariffNestedInput
+    controlPanels?: TariffControlPanelUncheckedUpdateManyWithoutTariffNestedInput
+    countries?: TariffCountryUncheckedUpdateManyWithoutTariffNestedInput
+    dataStores?: TariffDataStoreUncheckedUpdateManyWithoutTariffNestedInput
+    operationSystems?: TariffOperationSystemUncheckedUpdateManyWithoutTariffNestedInput
+    programmingLanguages?: TariffProgrammingLanguageUncheckedUpdateManyWithoutTariffNestedInput
+  }
+
+  export type TariffUncheckedUpdateManyWithoutHostingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
+    domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
+    databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
+    emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TariffCMSCreateManyTariffInput = {
+    id?: string
+    cmsId: string
+  }
+
+  export type TariffControlPanelCreateManyTariffInput = {
+    id?: string
+    controlPanelId: string
+  }
+
+  export type TariffCountryCreateManyTariffInput = {
+    id?: string
+    countryId: string
+  }
+
+  export type TariffDataStoreCreateManyTariffInput = {
+    id?: string
+    dataStoreId: string
+  }
+
+  export type TariffOperationSystemCreateManyTariffInput = {
+    id?: string
+    operationSystemId: string
+  }
+
+  export type TariffProgrammingLanguageCreateManyTariffInput = {
+    id?: string
+    programmingLanguageId: string
+  }
+
+  export type TariffCMSUpdateWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cms?: CMSUpdateOneRequiredWithoutTariffsNestedInput
+  }
+
+  export type TariffCMSUncheckedUpdateWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cmsId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCMSUncheckedUpdateManyWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cmsId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffControlPanelUpdateWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    controlPanel?: ControlPanelUpdateOneRequiredWithoutTariffsNestedInput
+  }
+
+  export type TariffControlPanelUncheckedUpdateWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    controlPanelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffControlPanelUncheckedUpdateManyWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    controlPanelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCountryUpdateWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    country?: CountryUpdateOneRequiredWithoutTariffsNestedInput
+  }
+
+  export type TariffCountryUncheckedUpdateWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    countryId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCountryUncheckedUpdateManyWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    countryId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffDataStoreUpdateWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dataStore?: DataStoreUpdateOneRequiredWithoutTariffsNestedInput
+  }
+
+  export type TariffDataStoreUncheckedUpdateWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dataStoreId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffDataStoreUncheckedUpdateManyWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dataStoreId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffOperationSystemUpdateWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    operationSystem?: OperationSystemUpdateOneRequiredWithoutTariffsNestedInput
+  }
+
+  export type TariffOperationSystemUncheckedUpdateWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    operationSystemId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffOperationSystemUncheckedUpdateManyWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    operationSystemId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffProgrammingLanguageUpdateWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    programmingLanguage?: ProgrammingLanguageUpdateOneRequiredWithoutTariffsNestedInput
+  }
+
+  export type TariffProgrammingLanguageUncheckedUpdateWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    programmingLanguageId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffProgrammingLanguageUncheckedUpdateManyWithoutTariffInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    programmingLanguageId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCMSCreateManyCmsInput = {
+    id?: string
+    tariffId: string
+  }
+
+  export type TariffCMSUpdateWithoutCmsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariff?: TariffUpdateOneRequiredWithoutCmsNestedInput
+  }
+
+  export type TariffCMSUncheckedUpdateWithoutCmsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCMSUncheckedUpdateManyWithoutCmsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffControlPanelCreateManyControlPanelInput = {
+    id?: string
+    tariffId: string
+  }
+
+  export type TariffControlPanelUpdateWithoutControlPanelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariff?: TariffUpdateOneRequiredWithoutControlPanelsNestedInput
+  }
+
+  export type TariffControlPanelUncheckedUpdateWithoutControlPanelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffControlPanelUncheckedUpdateManyWithoutControlPanelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCountryCreateManyCountryInput = {
+    id?: string
+    tariffId: string
+  }
+
+  export type TariffCountryUpdateWithoutCountryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariff?: TariffUpdateOneRequiredWithoutCountriesNestedInput
+  }
+
+  export type TariffCountryUncheckedUpdateWithoutCountryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffCountryUncheckedUpdateManyWithoutCountryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffDataStoreCreateManyDataStoreInput = {
+    id?: string
+    tariffId: string
+  }
+
+  export type TariffDataStoreUpdateWithoutDataStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariff?: TariffUpdateOneRequiredWithoutDataStoresNestedInput
+  }
+
+  export type TariffDataStoreUncheckedUpdateWithoutDataStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffDataStoreUncheckedUpdateManyWithoutDataStoreInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffOperationSystemCreateManyOperationSystemInput = {
+    id?: string
+    tariffId: string
+  }
+
+  export type TariffOperationSystemUpdateWithoutOperationSystemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariff?: TariffUpdateOneRequiredWithoutOperationSystemsNestedInput
+  }
+
+  export type TariffOperationSystemUncheckedUpdateWithoutOperationSystemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffOperationSystemUncheckedUpdateManyWithoutOperationSystemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffProgrammingLanguageCreateManyProgrammingLanguageInput = {
+    id?: string
+    tariffId: string
+  }
+
+  export type TariffProgrammingLanguageUpdateWithoutProgrammingLanguageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariff?: TariffUpdateOneRequiredWithoutProgrammingLanguagesNestedInput
+  }
+
+  export type TariffProgrammingLanguageUncheckedUpdateWithoutProgrammingLanguageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TariffProgrammingLanguageUncheckedUpdateManyWithoutProgrammingLanguageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tariffId?: StringFieldUpdateOperationsInput | string
   }
 
 

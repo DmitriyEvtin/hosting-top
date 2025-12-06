@@ -160,6 +160,117 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
   expires: 'expires'
 };
 
+exports.Prisma.HostingScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  logoUrl: 'logoUrl',
+  websiteUrl: 'websiteUrl',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TariffScalarFieldEnum = {
+  id: 'id',
+  hostingId: 'hostingId',
+  name: 'name',
+  price: 'price',
+  currency: 'currency',
+  period: 'period',
+  diskSpace: 'diskSpace',
+  bandwidth: 'bandwidth',
+  domainsCount: 'domainsCount',
+  databasesCount: 'databasesCount',
+  emailAccounts: 'emailAccounts',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CMSScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug'
+};
+
+exports.Prisma.ControlPanelScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug'
+};
+
+exports.Prisma.CountryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug'
+};
+
+exports.Prisma.DataStoreScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug'
+};
+
+exports.Prisma.OperationSystemScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug'
+};
+
+exports.Prisma.ProgrammingLanguageScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug'
+};
+
+exports.Prisma.TariffCMSScalarFieldEnum = {
+  id: 'id',
+  tariffId: 'tariffId',
+  cmsId: 'cmsId'
+};
+
+exports.Prisma.TariffControlPanelScalarFieldEnum = {
+  id: 'id',
+  tariffId: 'tariffId',
+  controlPanelId: 'controlPanelId'
+};
+
+exports.Prisma.TariffCountryScalarFieldEnum = {
+  id: 'id',
+  tariffId: 'tariffId',
+  countryId: 'countryId'
+};
+
+exports.Prisma.TariffDataStoreScalarFieldEnum = {
+  id: 'id',
+  tariffId: 'tariffId',
+  dataStoreId: 'dataStoreId'
+};
+
+exports.Prisma.TariffOperationSystemScalarFieldEnum = {
+  id: 'id',
+  tariffId: 'tariffId',
+  operationSystemId: 'operationSystemId'
+};
+
+exports.Prisma.TariffProgrammingLanguageScalarFieldEnum = {
+  id: 'id',
+  tariffId: 'tariffId',
+  programmingLanguageId: 'programmingLanguageId'
+};
+
+exports.Prisma.ContentBlockScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  title: 'title',
+  content: 'content',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -181,11 +292,31 @@ exports.UserRole = exports.$Enums.UserRole = {
   MANAGER: 'MANAGER'
 };
 
+exports.TariffPeriod = exports.$Enums.TariffPeriod = {
+  MONTH: 'MONTH',
+  YEAR: 'YEAR'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
   Session: 'Session',
-  VerificationToken: 'VerificationToken'
+  VerificationToken: 'VerificationToken',
+  Hosting: 'Hosting',
+  Tariff: 'Tariff',
+  CMS: 'CMS',
+  ControlPanel: 'ControlPanel',
+  Country: 'Country',
+  DataStore: 'DataStore',
+  OperationSystem: 'OperationSystem',
+  ProgrammingLanguage: 'ProgrammingLanguage',
+  TariffCMS: 'TariffCMS',
+  TariffControlPanel: 'TariffControlPanel',
+  TariffCountry: 'TariffCountry',
+  TariffDataStore: 'TariffDataStore',
+  TariffOperationSystem: 'TariffOperationSystem',
+  TariffProgrammingLanguage: 'TariffProgrammingLanguage',
+  ContentBlock: 'ContentBlock'
 };
 
 /**
