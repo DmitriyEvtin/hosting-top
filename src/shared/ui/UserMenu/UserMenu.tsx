@@ -1,5 +1,7 @@
 "use client";
 
+import { hasManagerOrAdminAccess } from "@/shared/lib/permissions";
+import { UserRole } from "@/shared/lib/types";
 import { Button } from "@/shared/ui/Button";
 import { Card } from "@/shared/ui/Card";
 import { signOut, useSession } from "next-auth/react";
@@ -116,6 +118,16 @@ export function UserMenu({ className }: UserMenuProps) {
               >
                 Профиль
               </Link>
+
+              {hasManagerOrAdminAccess(session.user.role as UserRole) && (
+                <Link
+                  href="/manager"
+                  className="block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Панель менеджера
+                </Link>
+              )}
 
               {session.user.role === "ADMIN" && (
                 <Link
