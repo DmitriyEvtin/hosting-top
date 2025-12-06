@@ -68,3 +68,184 @@ enum UserRole {
   MODERATOR
   MANAGER
 }
+
+enum TariffPeriod {
+  MONTH
+  YEAR
+}
+
+model Hosting {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String   @unique
+  description String?
+  logoUrl     String?  @map("logo_url")
+  websiteUrl  String?  @map("website_url")
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  tariffs     Tariff[]
+
+  @@index([isActive])
+  @@map("hostings")
+}
+
+model Tariff {
+  id                   String                      @id @default(uuid())
+  hostingId            String                      @map("hosting_id")
+  name                 String
+  price                Decimal                     @db.Decimal(10, 2)
+  currency             String                      @default("RUB")
+  period               TariffPeriod
+  diskSpace            Int?                        @map("disk_space")
+  bandwidth            Int?                        @db.Integer
+  domainsCount         Int?                        @map("domains_count")
+  databasesCount       Int?                        @map("databases_count")
+  emailAccounts        Int?                        @map("email_accounts")
+  isActive             Boolean                     @default(true) @map("is_active")
+  createdAt            DateTime                    @default(now()) @map("created_at")
+  updatedAt            DateTime                    @updatedAt @map("updated_at")
+  hosting              Hosting                     @relation(fields: [hostingId], references: [id], onDelete: Cascade)
+  cms                  TariffCMS[]
+  controlPanels        TariffControlPanel[]
+  countries            TariffCountry[]
+  dataStores           TariffDataStore[]
+  operationSystems     TariffOperationSystem[]
+  programmingLanguages TariffProgrammingLanguage[]
+
+  @@index([hostingId])
+  @@index([isActive])
+  @@map("tariffs")
+}
+
+model CMS {
+  id      String      @id @default(uuid())
+  name    String
+  slug    String      @unique
+  tariffs TariffCMS[]
+
+  @@map("cms")
+}
+
+model ControlPanel {
+  id      String               @id @default(uuid())
+  name    String
+  slug    String               @unique
+  tariffs TariffControlPanel[]
+
+  @@map("control_panels")
+}
+
+model Country {
+  id      String          @id @default(uuid())
+  name    String
+  slug    String          @unique
+  tariffs TariffCountry[]
+
+  @@map("countries")
+}
+
+model DataStore {
+  id      String            @id @default(uuid())
+  name    String
+  slug    String            @unique
+  tariffs TariffDataStore[]
+
+  @@map("data_stores")
+}
+
+model OperationSystem {
+  id      String                  @id @default(uuid())
+  name    String
+  slug    String                  @unique
+  tariffs TariffOperationSystem[]
+
+  @@map("operation_systems")
+}
+
+model ProgrammingLanguage {
+  id      String                      @id @default(uuid())
+  name    String
+  slug    String                      @unique
+  tariffs TariffProgrammingLanguage[]
+
+  @@map("programming_languages")
+}
+
+model TariffCMS {
+  id       String @id @default(uuid())
+  tariffId String @map("tariff_id")
+  cmsId    String @map("cms_id")
+  tariff   Tariff @relation(fields: [tariffId], references: [id], onDelete: Cascade)
+  cms      CMS    @relation(fields: [cmsId], references: [id], onDelete: Cascade)
+
+  @@unique([tariffId, cmsId])
+  @@map("tariff_cms")
+}
+
+model TariffControlPanel {
+  id             String       @id @default(uuid())
+  tariffId       String       @map("tariff_id")
+  controlPanelId String       @map("control_panel_id")
+  tariff         Tariff       @relation(fields: [tariffId], references: [id], onDelete: Cascade)
+  controlPanel   ControlPanel @relation(fields: [controlPanelId], references: [id], onDelete: Cascade)
+
+  @@unique([tariffId, controlPanelId])
+  @@map("tariff_control_panels")
+}
+
+model TariffCountry {
+  id        String  @id @default(uuid())
+  tariffId  String  @map("tariff_id")
+  countryId String  @map("country_id")
+  tariff    Tariff  @relation(fields: [tariffId], references: [id], onDelete: Cascade)
+  country   Country @relation(fields: [countryId], references: [id], onDelete: Cascade)
+
+  @@unique([tariffId, countryId])
+  @@map("tariff_countries")
+}
+
+model TariffDataStore {
+  id          String    @id @default(uuid())
+  tariffId    String    @map("tariff_id")
+  dataStoreId String    @map("data_store_id")
+  tariff      Tariff    @relation(fields: [tariffId], references: [id], onDelete: Cascade)
+  dataStore   DataStore @relation(fields: [dataStoreId], references: [id], onDelete: Cascade)
+
+  @@unique([tariffId, dataStoreId])
+  @@map("tariff_data_stores")
+}
+
+model TariffOperationSystem {
+  id                String          @id @default(uuid())
+  tariffId          String          @map("tariff_id")
+  operationSystemId String          @map("operation_system_id")
+  tariff            Tariff          @relation(fields: [tariffId], references: [id], onDelete: Cascade)
+  operationSystem   OperationSystem @relation(fields: [operationSystemId], references: [id], onDelete: Cascade)
+
+  @@unique([tariffId, operationSystemId])
+  @@map("tariff_operation_systems")
+}
+
+model TariffProgrammingLanguage {
+  id                    String              @id @default(uuid())
+  tariffId              String              @map("tariff_id")
+  programmingLanguageId String              @map("programming_language_id")
+  tariff                Tariff              @relation(fields: [tariffId], references: [id], onDelete: Cascade)
+  programmingLanguage   ProgrammingLanguage @relation(fields: [programmingLanguageId], references: [id], onDelete: Cascade)
+
+  @@unique([tariffId, programmingLanguageId])
+  @@map("tariff_programming_languages")
+}
+
+model ContentBlock {
+  id        String   @id @default(uuid())
+  key       String   @unique
+  title     String?
+  content   String?  @db.Text
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("content_blocks")
+}
