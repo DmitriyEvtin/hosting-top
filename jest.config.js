@@ -14,7 +14,7 @@ const customJestConfig = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   transformIgnorePatterns: [
-    'node_modules/(?!(@auth/prisma-adapter|next-auth)/)',
+    'node_modules/(?!(@auth/prisma-adapter|next-auth|uuid)/)',
   ],
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
@@ -41,6 +41,8 @@ const customJestConfig = {
     '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
     '<rootDir>/src/**/*.{test,spec}.{js,jsx,ts,tsx}',
     '<rootDir>/tests/**/*.{test,spec}.{js,jsx,ts,tsx}',
+    '<rootDir>/scripts/**/__tests__/**/*.{js,jsx,ts,tsx}',
+    '<rootDir>/scripts/**/*.{test,spec}.{js,jsx,ts,tsx}',
   ],
 }
 
