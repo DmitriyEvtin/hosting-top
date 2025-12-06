@@ -27,7 +27,7 @@ docker network create parket-crm-network
 docker-compose -f docker-compose.prod.yml up -d
 ```
 
-### 📋 Альтернативные способы развертывания
+### 📋 Альтернативные способы развертывания.
 
 - **Production с Docker**: [docs/deployment/docker.md](./docs/deployment/docker.md)
 - **Docker Registry**: [docs/deployment/docker-registry.md](./docs/deployment/docker-registry.md)
