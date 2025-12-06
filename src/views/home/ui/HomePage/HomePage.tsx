@@ -10,12 +10,7 @@ export function HomePage() {
   return (
     <div className="container mx-auto py-8">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold mb-4">
-          Добро пожаловать в Hosting Top
-        </h1>
-        <p className="text-muted-foreground">
-          Добро пожаловать, {session?.user?.name || session?.user?.email}!
-        </p>
+        <h1 className="text-4xl font-bold mb-4">Dashboard</h1>
       </div>
     </div>
   );

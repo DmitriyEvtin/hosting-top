@@ -2,7 +2,7 @@ import { AuthGuard } from "@/shared/ui/AuthGuard";
 import { CRMSidebar } from "@/shared/ui/CRMSidebar";
 import { Navigation } from "@/shared/ui/Navigation";
 
-export default function CRMLayout({
+export default function ManagerLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
