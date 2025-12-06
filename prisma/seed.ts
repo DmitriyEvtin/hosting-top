@@ -12,7 +12,7 @@ function generateSecurePassword(): string {
 // Функция для создания администратора
 async function createAdminUser() {
   // Проверяем переменные окружения для переопределения
-  const adminEmail = process.env.ADMIN_EMAIL || "admin@parket-crm.ru";
+  const adminEmail = process.env.ADMIN_EMAIL || "admin@hosting-top.online";
   const adminPassword = process.env.ADMIN_PASSWORD || generateSecurePassword();
   const adminName = process.env.ADMIN_NAME || "Администратор";
 

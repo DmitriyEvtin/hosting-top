@@ -133,22 +133,22 @@ services:
       - "traefik.docker.network=traefik-public"
 
       # HTTP router
-      - "traefik.http.routers.nginx-http.rule=Host(`parket-crm.ru`)"
+      - "traefik.http.routers.nginx-http.rule=Host(`juvian.ru`)"
       - "traefik.http.routers.nginx-http.entrypoints=http"
       - "traefik.http.routers.nginx-http.middlewares=redirect-to-https"
 
       # HTTP router для www
-      - "traefik.http.routers.nginx-www-http.rule=Host(`www.parket-crm.ru`)"
+      - "traefik.http.routers.nginx-www-http.rule=Host(`www.juvian.ru`)"
       - "traefik.http.routers.nginx-www-http.entrypoints=http"
       - "traefik.http.routers.nginx-www-http.middlewares=redirect-to-https"
 
       # HTTPS router
-      - "traefik.http.routers.nginx-https.rule=Host(`parket-crm.ru`)"
+      - "traefik.http.routers.nginx-https.rule=Host(`juvian.ru`)"
       - "traefik.http.routers.nginx-https.entrypoints=https"
       - "traefik.http.routers.nginx-https.tls.certresolver=letsencrypt"
 
       # HTTPS router для www с редиректом
-      - "traefik.http.routers.nginx-www-https.rule=Host(`www.parket-crm.ru`)"
+      - "traefik.http.routers.nginx-www-https.rule=Host(`www.juvian.ru`)"
       - "traefik.http.routers.nginx-www-https.entrypoints=https"
       - "traefik.http.routers.nginx-www-https.tls.certresolver=letsencrypt"
       - "traefik.http.routers.nginx-www-https.middlewares=redirect-www-to-non-www"
@@ -161,8 +161,8 @@ services:
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
 
       # Middleware для редиректа с www на основной домен
-      - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.regex=^https://www\\.parket-crm\\.ru/(.*)"
-      - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.replacement=https://parket-crm.ru/$${1}"
+      - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.regex=^https://www\\.juvian\\.ru/(.*)"
+      - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.replacement=https://juvian.ru/$${1}"
       - "traefik.http.middlewares.redirect-www-to-non-www.redirectregex.permanent=true"
     # healthcheck настроен в Dockerfile
 
