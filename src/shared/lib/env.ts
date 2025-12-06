@@ -11,7 +11,7 @@ const envSchema = z.object({
   NODE_ENV: z
     .enum(["development", "staging", "production"])
     .default("development"),
-  APP_NAME: z.string().default("Паркет Retail"),
+  APP_NAME: z.string().default("Hosting Top"),
   APP_VERSION: z.string().default("1.0.0"),
 
   // База данных

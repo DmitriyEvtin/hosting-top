@@ -10,7 +10,7 @@ export async function GET() {
     // Простая проверка переменных окружения без сложной валидации
     const basicConfig = {
       nodeEnv: process.env.NODE_ENV || "development",
-      appName: process.env.APP_NAME || "Паркет Retail",
+      appName: process.env.APP_NAME || "Hosting Top",
       appVersion: process.env.APP_VERSION || "1.0.0",
     };
 

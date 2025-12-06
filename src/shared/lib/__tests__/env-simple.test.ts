@@ -22,7 +22,7 @@ describe("env-simple", () => {
       const { env: freshEnv } = require("../env-simple");
 
       expect(freshEnv.NODE_ENV).toBe("development");
-      expect(freshEnv.APP_NAME).toBe("Паркет Retail");
+      expect(freshEnv.APP_NAME).toBe("Hosting Top");
       expect(freshEnv.APP_VERSION).toBe("1.0.0");
       expect(freshEnv.DATABASE_URL).toBe("");
       expect(freshEnv.REDIS_URL).toBe("");

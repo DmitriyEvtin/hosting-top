@@ -280,7 +280,7 @@ function generateReport(results) {
 
 // Основная функция
 async function main() {
-  log('🚀 Проверка конфигурации проекта "Паркет Retail"', "bright");
+  log('🚀 Проверка конфигурации проекта "Hosting Top"', "bright");
   log("=" * 60, "blue");
 
   const results = {

@@ -6,7 +6,7 @@
 // Базовые переменные окружения
 export const env = {
   NODE_ENV: process.env.NODE_ENV || "development",
-  APP_NAME: process.env.APP_NAME || "Паркет Retail",
+  APP_NAME: process.env.APP_NAME || "Hosting Top",
   APP_VERSION: process.env.APP_VERSION || "1.0.0",
 
   // База данных

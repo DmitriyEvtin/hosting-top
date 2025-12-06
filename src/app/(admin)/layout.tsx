@@ -2,7 +2,7 @@ import { AuthGuard } from "@/shared/ui/AuthGuard";
 import { Navigation } from "@/shared/ui/Navigation";
 
 export const metadata = {
-  title: "Админ панель - Паркет Retail",
+  title: "Админ панель - Hosting Top",
   description: "Административная панель для управления системой",
 };
 

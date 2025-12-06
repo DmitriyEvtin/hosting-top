@@ -104,7 +104,7 @@ export function CRMSidebar({ className }: CRMSidebarProps) {
         <div className="p-6">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-lg font-semibold text-foreground">
-              CRM Retail Меню
+              Hosting Top Меню
             </h2>
             <Button
               variant="ghost"
@@ -155,7 +155,7 @@ export function CRMSidebar({ className }: CRMSidebarProps) {
       <div className="hidden lg:block w-64 bg-background border-r border-border min-h-screen">
         <div className="p-6">
           <h2 className="text-lg font-semibold text-foreground mb-8">
-            CRM Retail Меню
+            Hosting Top Меню
           </h2>
 
           <nav className="space-y-6">

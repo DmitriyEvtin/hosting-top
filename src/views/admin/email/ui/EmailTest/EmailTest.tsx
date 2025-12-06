@@ -20,8 +20,8 @@ export function EmailTest() {
       await sendEmail({
         to: testEmail,
         subject: "Тестовое письмо",
-        text: "Это тестовое письмо из системы Паркет Retail.",
-        html: "<p>Это <strong>тестовое письмо</strong> из системы Паркет Retail.</p>",
+        text: "Это тестовое письмо из системы Hosting Top.",
+        html: "<p>Это <strong>тестовое письмо</strong> из системы Hosting Top.</p>",
       });
       setMessage("Письмо отправлено успешно!");
     } catch (err) {

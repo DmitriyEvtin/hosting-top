@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Паркет Retail",
+  title: "Hosting Top",
   description: "CRM для работы розничной базы паркета",
 };
 
