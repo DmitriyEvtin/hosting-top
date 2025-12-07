@@ -93,7 +93,9 @@ export function TariffsPage({ hostingId }: TariffsPageProps) {
     setError(null);
 
     try {
-      const response = await fetch(`/api/manager/hostings/${hostingId}/tariffs`);
+      const response = await fetch(
+        `/api/manager/hostings/${hostingId}/tariffs`
+      );
       const data = await response.json();
 
       if (!response.ok) {
@@ -192,7 +194,7 @@ export function TariffsPage({ hostingId }: TariffsPageProps) {
         {hosting && (
           <>
             <Link
-              href={`/manager/hostings/${hosting.id}`}
+              href={`/manager/hostings/${hosting.id}/edit`}
               className="hover:text-gray-900"
             >
               {hosting.name}
@@ -209,16 +211,11 @@ export function TariffsPage({ hostingId }: TariffsPageProps) {
           <h1 className="text-3xl font-bold text-gray-900">
             Тарифы {hosting && `— ${hosting.name}`}
           </h1>
-          <p className="mt-2 text-gray-600">
-            Управление тарифами хостинга
-          </p>
+          <p className="mt-2 text-gray-600">Управление тарифами хостинга</p>
         </div>
 
         <div className="flex items-center gap-4">
-          <Button
-            onClick={handleCreate}
-            className="flex items-center gap-2"
-          >
+          <Button onClick={handleCreate} className="flex items-center gap-2">
             <Plus className="h-4 w-4" />
             Добавить тариф
           </Button>
@@ -228,9 +225,7 @@ export function TariffsPage({ hostingId }: TariffsPageProps) {
             disabled={loading}
             className="flex items-center gap-2"
           >
-            <RefreshCw
-              className={`h-4 w-4 ${loading ? "animate-spin" : ""}`}
-            />
+            <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
             Обновить
           </Button>
         </div>
@@ -279,8 +274,8 @@ export function TariffsPage({ hostingId }: TariffsPageProps) {
           <DialogHeader>
             <DialogTitle>Подтверждение удаления</DialogTitle>
             <DialogDescription>
-              Вы уверены, что хотите удалить тариф "{tariffToDelete?.name}"?
-              Это действие нельзя отменить.
+              Вы уверены, что хотите удалить тариф "{tariffToDelete?.name}"? Это
+              действие нельзя отменить.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
@@ -304,4 +299,3 @@ export function TariffsPage({ hostingId }: TariffsPageProps) {
     </div>
   );
 }
-

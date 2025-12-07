@@ -101,7 +101,7 @@ export function HostingsTable({
               </TableCell>
               <TableCell className="font-medium">
                 <Link
-                  href={`/manager/hostings/${hosting.id}`}
+                  href={`/manager/hostings/${hosting.id}/edit`}
                   className="hover:underline"
                 >
                   {hosting.name}
@@ -173,4 +173,3 @@ export function HostingsTable({
     </div>
   );
 }
-
