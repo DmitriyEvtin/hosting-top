@@ -16,6 +16,13 @@ export enum TariffPeriod {
  * MySQL структуры (на основе Yii2 таблиц)
  */
 
+export interface MySQLImage {
+  id: number;
+  owner_hash: string;
+  owner_id: number;
+  path?: string | null;
+}
+
 export interface MySQLHosting {
   id: number;
   name: string;

@@ -45,6 +45,7 @@ import {
   type MySQLCountry,
   type MySQLDataStore,
   type MySQLHosting,
+  type MySQLImage,
   type MySQLOperationSystem,
   type MySQLProgrammingLanguage,
   type MySQLTariff,
@@ -170,9 +171,26 @@ async function checkConnections(): Promise<void> {
 
   // Проверка MySQL
   logger.info("Проверка подключения к MySQL...");
+
+  // Проверяем наличие обязательных переменных окружения
+  const missingVars = [];
+  if (!process.env.MYSQL_HOST) missingVars.push("MYSQL_HOST");
+  if (!process.env.MYSQL_USER) missingVars.push("MYSQL_USER");
+  if (!process.env.MYSQL_PASSWORD) missingVars.push("MYSQL_PASSWORD");
+  if (!process.env.MYSQL_DATABASE) missingVars.push("MYSQL_DATABASE");
+
+  if (missingVars.length > 0) {
+    throw new Error(
+      `Не удалось подключиться к MySQL. Отсутствуют переменные окружения: ${missingVars.join(", ")}. ` +
+        `Убедитесь, что переменные MySQL заданы в docker-compose.prod.yml или .env файле.`
+    );
+  }
+
   const mysqlConnected = await testMySQLConnection();
   if (!mysqlConnected) {
-    throw new Error("Не удалось подключиться к MySQL");
+    throw new Error(
+      "Не удалось подключиться к MySQL. Проверьте настройки подключения и доступность сервера."
+    );
   }
   logger.success("✓ Подключение к MySQL установлено");
 
@@ -615,6 +633,32 @@ async function migrateHostings(dryRun: boolean): Promise<void> {
     return;
   }
 
+  // Загружаем логотипы из таблицы images
+  logger.info("Загрузка логотипов из таблицы images...");
+  const mysqlImages = await queryMySQL<MySQLImage>(
+    "SELECT * FROM images WHERE owner_hash = 'hosting' AND path IS NOT NULL AND path != ''"
+  );
+
+  // Создаем маппинг owner_id -> logoUrl
+  const hostingLogoMap: Record<number, string> = {};
+  const baseImageUrl = "https://hosting-top.online/upload/images";
+
+  for (const image of mysqlImages) {
+    if (image.path && image.owner_id) {
+      // Обеспечиваем, что path начинается с / для корректного формирования URL
+      // Если path = "/51/30/44/6008844c3951a.png", то URL будет:
+      // "https://hosting-top.online/upload/images/51/30/44/6008844c3951a.png"
+      const cleanPath = image.path.startsWith("/")
+        ? image.path
+        : `/${image.path}`;
+      hostingLogoMap[image.owner_id] = `${baseImageUrl}${cleanPath}`;
+    }
+  }
+
+  logger.info(
+    `Найдено логотипов в таблице images: ${Object.keys(hostingLogoMap).length}`
+  );
+
   const progressBar = new cliProgress.SingleBar(
     {
       format: "Hostings |{bar}| {percentage}% | {value}/{total}",
@@ -633,6 +677,20 @@ async function migrateHostings(dryRun: boolean): Promise<void> {
         );
       }
       const prismaHosting = mapHosting(mysqlHosting);
+
+      // Обновляем logoUrl из таблицы images, если есть
+      if (hostingLogoMap[mysqlHosting.id]) {
+        prismaHosting.logoUrl = hostingLogoMap[mysqlHosting.id];
+        logger.info(
+          `Хостинг ID ${mysqlHosting.id}: логотип найден в images: ${prismaHosting.logoUrl}`
+        );
+      } else if (prismaHosting.logoUrl) {
+        logger.info(
+          `Хостинг ID ${mysqlHosting.id}: используется logoUrl из таблицы hosting: ${prismaHosting.logoUrl}`
+        );
+      } else {
+        logger.info(`Хостинг ID ${mysqlHosting.id}: логотип не найден`);
+      }
       if (prismaHosting.slug !== mysqlHosting.slug) {
         logger.info(
           `Хостинг ID ${mysqlHosting.id}: slug после маппинга = "${prismaHosting.slug}" (было "${mysqlHosting.slug || "нет"}")`
@@ -1410,7 +1468,8 @@ async function migrateContentBlocks(dryRun: boolean): Promise<void> {
         // Определяем hostingId перед созданием
         let hostingIdToSet: string | null = null;
         if (mysqlContentBlock.hosting_id) {
-          hostingIdToSet = idMappings.hostings[mysqlContentBlock.hosting_id] || null;
+          hostingIdToSet =
+            idMappings.hostings[mysqlContentBlock.hosting_id] || null;
           if (!hostingIdToSet) {
             logger.warning(
               `Хостинг с MySQL ID ${mysqlContentBlock.hosting_id} не найден в маппинге для ContentBlock "${prismaContentBlock.key}"`
