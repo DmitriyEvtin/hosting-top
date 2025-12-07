@@ -5,6 +5,7 @@ import { cn } from "@/shared/lib/utils";
 import { Card, CardHeader } from "@/shared/ui/Card";
 import { HostingBreadcrumbs } from "@/shared/ui/HostingBreadcrumbs";
 import { HostingNavigation } from "@/shared/ui/HostingNavigation";
+import { RatingStars } from "@/shared/ui/RatingStars";
 import { CreateReviewSection } from "@/views/public/reviews/ui/CreateReviewSection";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
@@ -16,6 +17,18 @@ interface ContentBlock {
   title: string | null;
   content: string | null;
   type: string | null;
+}
+
+interface HostingRating {
+  average: number;
+  count: number;
+  criteria: {
+    performance: number;
+    support: number;
+    priceQuality: number;
+    reliability: number;
+    easeOfUse: number;
+  };
 }
 
 interface HostingOverviewPageProps {
@@ -31,9 +44,13 @@ interface HostingOverviewPageProps {
     testPeriod: number | null;
     contentBlocks: ContentBlock[];
   };
+  hostingRating: HostingRating;
 }
 
-export function HostingOverviewPage({ hosting }: HostingOverviewPageProps) {
+export function HostingOverviewPage({
+  hosting,
+  hostingRating,
+}: HostingOverviewPageProps) {
   const breadcrumbsItems = [
     { label: "Главная", href: "/" },
     { label: "Хостинги", href: "/hosting" },
@@ -83,6 +100,49 @@ export function HostingOverviewPage({ hosting }: HostingOverviewPageProps) {
                       dangerouslySetInnerHTML={{ __html: hosting.description }}
                     />
                   )*/}
+
+                  {/* Рейтинг хостинга */}
+                  {hostingRating.count > 0 ? (
+                    <div className="flex items-center gap-6 mt-4">
+                      <div className="flex items-center gap-3">
+                        <span className="text-4xl font-bold text-gray-900 dark:text-gray-100">
+                          {hostingRating.average.toFixed(1)}
+                        </span>
+                        <div>
+                          <RatingStars
+                            rating={Math.round(hostingRating.average)}
+                            size="lg"
+                          />
+                          <p className="text-sm text-muted-foreground mt-1">
+                            На основе {hostingRating.count}{" "}
+                            {hostingRating.count === 1
+                              ? "отзыва"
+                              : hostingRating.count < 5
+                                ? "отзывов"
+                                : "отзывов"}
+                          </p>
+                        </div>
+                      </div>
+                      <Link
+                        href={`/hosting/${hosting.slug}/reviews`}
+                        className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors"
+                      >
+                        Смотреть все отзывы →
+                      </Link>
+                    </div>
+                  ) : (
+                    <div className="mt-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-center">
+                      <p className="text-gray-600 dark:text-gray-400 mb-2">
+                        У этого провайдера пока нет отзывов
+                      </p>
+                      <Link
+                        href={`/hosting/${hosting.slug}/reviews`}
+                        className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors"
+                      >
+                        Оставить первый отзыв →
+                      </Link>
+                    </div>
+                  )}
                 </div>
 
                 {/* Дополнительная информация */}

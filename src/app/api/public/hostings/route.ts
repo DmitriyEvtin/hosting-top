@@ -306,6 +306,18 @@ export async function GET(request: NextRequest) {
               },
             },
           },
+          reviews: {
+            where: {
+              status: "APPROVED",
+            },
+            select: {
+              performanceRating: true,
+              supportRating: true,
+              priceQualityRating: true,
+              reliabilityRating: true,
+              easeOfUseRating: true,
+            },
+          },
         },
         orderBy: { name: "asc" },
         skip,
@@ -314,8 +326,40 @@ export async function GET(request: NextRequest) {
       prisma.hosting.count({ where }),
     ]);
 
+    // Рассчитываем рейтинг для каждого хостинга
+    const hostingsWithRating = hostings.map(hosting => {
+      const approvedReviews = hosting.reviews;
+      let averageRating: number | null = null;
+
+      if (approvedReviews.length > 0) {
+        // Рассчитываем средний рейтинг каждого отзыва
+        const totalRating = approvedReviews.reduce((sum, review) => {
+          const reviewAvg =
+            (review.performanceRating +
+              review.supportRating +
+              review.priceQualityRating +
+              review.reliabilityRating +
+              review.easeOfUseRating) /
+            5;
+          return sum + reviewAvg;
+        }, 0);
+
+        averageRating = totalRating / approvedReviews.length;
+      }
+
+      // Исключаем reviews из результата
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { reviews, ...hostingData } = hosting;
+
+      return {
+        ...hostingData,
+        averageRating: averageRating !== null ? Number(averageRating.toFixed(1)) : null,
+        reviewCount: approvedReviews.length,
+      };
+    });
+
     return NextResponse.json({
-      hostings,
+      hostings: hostingsWithRating,
       pagination: {
         page,
         limit,

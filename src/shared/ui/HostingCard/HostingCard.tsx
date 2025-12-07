@@ -11,8 +11,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui/Card";
+import { RatingStars } from "@/shared/ui/RatingStars";
 import { Calendar, Clock, ExternalLink, Package, Users } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 interface HostingCardProps {
@@ -27,6 +29,8 @@ interface HostingCardProps {
     clients: number | null;
     testPeriod: number;
     _count: { tariffs: number };
+    averageRating?: number | null;
+    reviewCount?: number;
   };
   className?: string;
 }
@@ -113,21 +117,59 @@ export function HostingCard({ hosting, className }: HostingCardProps) {
         </div>
       </CardContent>
 
-      <CardFooter className="flex items-center justify-between pt-4 border-t">
-        <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-          <Package className="h-4 w-4" />
-          <span>
-            {hosting._count.tariffs}{" "}
-            {hosting._count.tariffs === 1
-              ? "тариф"
-              : hosting._count.tariffs < 5
-                ? "тарифа"
-                : "тарифов"}
-          </span>
+      <CardFooter className="flex flex-col gap-4 pt-4 border-t">
+        {/* Рейтинг и отзывы */}
+        {hosting.averageRating !== null &&
+        hosting.averageRating !== undefined &&
+        hosting.reviewCount !== undefined &&
+        hosting.reviewCount > 0 ? (
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                {hosting.averageRating.toFixed(1)}
+              </span>
+              <RatingStars
+                rating={Math.round(hosting.averageRating)}
+                size="sm"
+              />
+            </div>
+            <Link
+              href={`/hosting/${hosting.slug}/reviews`}
+              onClick={e => e.stopPropagation()}
+              className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors"
+            >
+              Отзывы ({hosting.reviewCount})
+            </Link>
+          </div>
+        ) : (
+          <div className="w-full">
+            <Link
+              href={`/hosting/${hosting.slug}/reviews`}
+              onClick={e => e.stopPropagation()}
+              className="text-sm text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+            >
+              Станьте первым, кто оставит отзыв →
+            </Link>
+          </div>
+        )}
+
+        {/* Тарифы и кнопка */}
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+            <Package className="h-4 w-4" />
+            <span>
+              {hosting._count.tariffs}{" "}
+              {hosting._count.tariffs === 1
+                ? "тариф"
+                : hosting._count.tariffs < 5
+                  ? "тарифа"
+                  : "тарифов"}
+            </span>
+          </div>
+          <Badge variant="outline" className="text-xs">
+            Подробнее
+          </Badge>
         </div>
-        <Badge variant="outline" className="text-xs">
-          Подробнее
-        </Badge>
       </CardFooter>
     </Card>
   );

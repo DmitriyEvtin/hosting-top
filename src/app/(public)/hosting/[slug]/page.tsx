@@ -58,6 +58,60 @@ async function getHosting(slug: string) {
   }
 }
 
+async function getHostingRating(slug: string) {
+  try {
+    const baseUrl =
+      process.env.NEXT_PUBLIC_APP_URL ||
+      process.env.NEXTAUTH_URL ||
+      "http://localhost:3000";
+
+    const response = await fetch(
+      `${baseUrl}/api/public/hostings/${slug}/reviews?limit=1`,
+      { cache: "no-store" }
+    );
+
+    if (!response.ok) {
+      return {
+        average: 0,
+        count: 0,
+        criteria: {
+          performance: 0,
+          support: 0,
+          priceQuality: 0,
+          reliability: 0,
+          easeOfUse: 0,
+        },
+      };
+    }
+
+    const data = await response.json();
+    return data.hostingRating || {
+      average: 0,
+      count: 0,
+      criteria: {
+        performance: 0,
+        support: 0,
+        priceQuality: 0,
+        reliability: 0,
+        easeOfUse: 0,
+      },
+    };
+  } catch (error) {
+    console.error("Ошибка получения рейтинга хостинга:", error);
+    return {
+      average: 0,
+      count: 0,
+      criteria: {
+        performance: 0,
+        support: 0,
+        priceQuality: 0,
+        reliability: 0,
+        easeOfUse: 0,
+      },
+    };
+  }
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await Promise.resolve(params);
   const { slug } = resolvedParams;
@@ -83,11 +137,16 @@ export default async function HostingPage({ params }: Props) {
   const resolvedParams = await Promise.resolve(params);
   const { slug } = resolvedParams;
 
-  const hosting = await getHosting(slug);
+  const [hosting, hostingRating] = await Promise.all([
+    getHosting(slug),
+    getHostingRating(slug),
+  ]);
 
   if (!hosting) {
     notFound();
   }
 
-  return <HostingOverviewPage hosting={hosting} />;
+  return (
+    <HostingOverviewPage hosting={hosting} hostingRating={hostingRating} />
+  );
 }

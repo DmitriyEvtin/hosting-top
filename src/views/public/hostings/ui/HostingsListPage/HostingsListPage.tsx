@@ -26,6 +26,8 @@ interface Hosting {
   clients: number | null;
   testPeriod: number;
   _count: { tariffs: number };
+  averageRating?: number | null;
+  reviewCount?: number;
 }
 
 interface FiltersData {
