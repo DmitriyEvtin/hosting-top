@@ -131,7 +131,7 @@ export async function initializeMigrationStatus(
     errors: [],
     results: null,
     dryRun,
-    skippedImages,
+    skippedImages: skipImages,
   };
 
   await saveMigrationStatus(status);

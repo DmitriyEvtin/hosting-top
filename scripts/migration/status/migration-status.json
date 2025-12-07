@@ -1,0 +1,36 @@
+{
+  "id": "89323717-344b-4355-982f-c2f7e157f8dc",
+  "status": "completed",
+  "progress": {
+    "current": 0,
+    "total": 0,
+    "stage": "initializing"
+  },
+  "startedAt": "2025-12-07T01:04:29.200Z",
+  "completedAt": "2025-12-07T01:04:36.779Z",
+  "errors": [],
+  "results": {
+    "hostings": 0,
+    "tariffs": 0,
+    "images": 0,
+    "references": {
+      "cms": 0,
+      "controlPanels": 0,
+      "countries": 0,
+      "dataStores": 0,
+      "operationSystems": 0,
+      "programmingLanguages": 0
+    },
+    "tariffRelations": {
+      "cms": 0,
+      "controlPanels": 0,
+      "countries": 0,
+      "dataStores": 0,
+      "operationSystems": 0,
+      "programmingLanguages": 0
+    },
+    "contentBlocks": 0
+  },
+  "dryRun": false,
+  "skippedImages": true
+}
