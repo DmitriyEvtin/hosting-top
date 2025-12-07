@@ -1,0 +1,2 @@
+export { TariffCard } from "./TariffCard";
+

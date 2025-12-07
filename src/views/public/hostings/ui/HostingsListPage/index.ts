@@ -1,0 +1,2 @@
+export { HostingsListPage } from "./HostingsListPage";
+
