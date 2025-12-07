@@ -1,0 +1,2 @@
+export { ReviewModerationTable } from "./ReviewModerationTable";
+
