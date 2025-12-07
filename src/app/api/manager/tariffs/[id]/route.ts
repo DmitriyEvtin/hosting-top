@@ -1,10 +1,10 @@
 import { prisma } from "@/shared/api/database";
+import { TariffPeriod } from "@/shared/api/database/prisma";
 import { authOptions } from "@/shared/lib/auth-config";
 import { hasManagerAccess } from "@/shared/lib/permissions";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { TariffPeriod } from "@/shared/api/database/prisma";
 
 /**
  * Схема валидации для связей тарифа
@@ -23,16 +23,16 @@ const TariffRelationsSchema = z.object({
  */
 const TariffUpdateSchema = z.object({
   name: z.string().min(1, "Название обязательно").max(255, "Название слишком длинное").optional(),
+  subtitle: z.string().max(255, "Подзаголовок слишком длинный").optional().nullable(),
   price: z.number().positive("Цена должна быть положительной").or(z.string().transform((val) => parseFloat(val))).optional(),
   currency: z.string().min(1, "Валюта обязательна").max(10, "Валюта слишком длинная").optional(),
-  period: z.nativeEnum(TariffPeriod, {
-    errorMap: () => ({ message: "Период должен быть MONTH или YEAR" }),
-  }).optional(),
+  period: z.nativeEnum(TariffPeriod).optional(),
   disk_space: z.number().int().positive().optional().nullable(),
   bandwidth: z.number().int().positive().optional().nullable(),
   domains_count: z.number().int().nonnegative().optional().nullable(),
   databases_count: z.number().int().nonnegative().optional().nullable(),
   email_accounts: z.number().int().nonnegative().optional().nullable(),
+  info_domains: z.string().max(50000, "Содержимое слишком длинное (максимум 50000 символов)").optional().nullable(),
   is_active: z.boolean().optional(),
 }).merge(TariffRelationsSchema);
 
@@ -67,45 +67,69 @@ export async function GET(
           },
         },
         cms: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            cms: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
           },
         },
         controlPanels: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            controlPanel: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
           },
         },
         countries: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            country: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
           },
         },
         dataStores: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            dataStore: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
           },
         },
         operationSystems: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            operationSystem: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
           },
         },
         programmingLanguages: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            programmingLanguage: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
           },
         },
       },
@@ -118,7 +142,18 @@ export async function GET(
       );
     }
 
-    return NextResponse.json({ tariff });
+    // Трансформируем данные для совместимости с UI
+    const transformedTariff = {
+      ...tariff,
+      cms: tariff.cms.map(tc => tc.cms),
+      controlPanels: tariff.controlPanels.map(tcp => tcp.controlPanel),
+      countries: tariff.countries.map(tc => tc.country),
+      dataStores: tariff.dataStores.map(tds => tds.dataStore),
+      operationSystems: tariff.operationSystems.map(tos => tos.operationSystem),
+      programmingLanguages: tariff.programmingLanguages.map(tpl => tpl.programmingLanguage),
+    };
+
+    return NextResponse.json({ tariff: transformedTariff });
   } catch (error) {
     console.error("Ошибка получения тарифа:", error);
     return NextResponse.json(
@@ -152,6 +187,7 @@ export async function PUT(
     const validatedData = TariffUpdateSchema.parse(body);
     const {
       name,
+      subtitle,
       price,
       currency,
       period,
@@ -160,6 +196,7 @@ export async function PUT(
       domains_count,
       databases_count,
       email_accounts,
+      info_domains,
       is_active,
       cms_ids,
       control_panel_ids,
@@ -256,6 +293,10 @@ export async function PUT(
         updateData.name = name;
       }
 
+      if (subtitle !== undefined) {
+        updateData.subtitle = subtitle || null;
+      }
+
       if (price !== undefined) {
         updateData.price = typeof price === "string" ? parseFloat(price) : price;
       }
@@ -266,6 +307,10 @@ export async function PUT(
 
       if (period !== undefined) {
         updateData.period = period;
+      }
+
+      if (info_domains !== undefined) {
+        updateData.infoDomains = info_domains || null;
       }
 
       if (disk_space !== undefined) {
@@ -404,7 +449,7 @@ export async function PUT(
       await Promise.all(relationPromises);
 
       // Загружаем обновленный тариф со всеми связями
-      return await tx.tariff.findUnique({
+      const updatedTariff = await tx.tariff.findUnique({
         where: { id: resolvedParams.id },
         include: {
           hosting: {
@@ -415,54 +460,104 @@ export async function PUT(
             },
           },
           cms: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              cms: {
+                select: {
+                  id: true,
+                  name: true,
+                  slug: true,
+                },
+              },
             },
           },
           controlPanels: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              controlPanel: {
+                select: {
+                  id: true,
+                  name: true,
+                  slug: true,
+                },
+              },
             },
           },
           countries: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              country: {
+                select: {
+                  id: true,
+                  name: true,
+                  slug: true,
+                },
+              },
             },
           },
           dataStores: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              dataStore: {
+                select: {
+                  id: true,
+                  name: true,
+                  slug: true,
+                },
+              },
             },
           },
           operationSystems: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              operationSystem: {
+                select: {
+                  id: true,
+                  name: true,
+                  slug: true,
+                },
+              },
             },
           },
           programmingLanguages: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              programmingLanguage: {
+                select: {
+                  id: true,
+                  name: true,
+                  slug: true,
+                },
+              },
             },
           },
         },
       });
+
+      if (!updatedTariff) {
+        throw new Error("Не удалось загрузить обновленный тариф");
+      }
+
+      // Трансформируем данные для совместимости с UI
+      return {
+        ...updatedTariff,
+        cms: updatedTariff.cms.map(tc => tc.cms),
+        controlPanels: updatedTariff.controlPanels.map(tcp => tcp.controlPanel),
+        countries: updatedTariff.countries.map(tc => tc.country),
+        dataStores: updatedTariff.dataStores.map(tds => tds.dataStore),
+        operationSystems: updatedTariff.operationSystems.map(tos => tos.operationSystem),
+        programmingLanguages: updatedTariff.programmingLanguages.map(tpl => tpl.programmingLanguage),
+      };
     });
+
+    // Трансформируем данные для совместимости с UI
+    const transformedTariff = {
+      ...tariff,
+      cms: tariff.cms.map(tc => tc.cms),
+      controlPanels: tariff.controlPanels.map(tcp => tcp.controlPanel),
+      countries: tariff.countries.map(tc => tc.country),
+      dataStores: tariff.dataStores.map(tds => tds.dataStore),
+      operationSystems: tariff.operationSystems.map(tos => tos.operationSystem),
+      programmingLanguages: tariff.programmingLanguages.map(tpl => tpl.programmingLanguage),
+    };
 
     return NextResponse.json({
       message: "Тариф успешно обновлен",
-      tariff,
+      tariff: transformedTariff,
     });
   } catch (error) {
     console.error("Ошибка обновления тарифа:", error);

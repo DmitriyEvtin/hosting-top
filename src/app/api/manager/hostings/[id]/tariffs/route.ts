@@ -1,10 +1,10 @@
 import { prisma } from "@/shared/api/database";
+import { TariffPeriod } from "@/shared/api/database/prisma";
 import { authOptions } from "@/shared/lib/auth-config";
 import { hasManagerAccess } from "@/shared/lib/permissions";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { TariffPeriod } from "@/shared/api/database/prisma";
 
 /**
  * Схема валидации для связей тарифа
@@ -21,20 +21,40 @@ const TariffRelationsSchema = z.object({
 /**
  * Схема валидации для создания тарифа
  */
-const TariffCreateSchema = z.object({
-  name: z.string().min(1, "Название обязательно").max(255, "Название слишком длинное"),
-  price: z.number().positive("Цена должна быть положительной").or(z.string().transform((val) => parseFloat(val))),
-  currency: z.string().min(1, "Валюта обязательна").max(10, "Валюта слишком длинная").default("RUB"),
-  period: z.nativeEnum(TariffPeriod, {
-    errorMap: () => ({ message: "Период должен быть MONTH или YEAR" }),
-  }),
-  disk_space: z.number().int().positive().optional().nullable(),
-  bandwidth: z.number().int().positive().optional().nullable(),
-  domains_count: z.number().int().nonnegative().optional().nullable(),
-  databases_count: z.number().int().nonnegative().optional().nullable(),
-  email_accounts: z.number().int().nonnegative().optional().nullable(),
-  is_active: z.boolean().default(true),
-}).merge(TariffRelationsSchema);
+const TariffCreateSchema = z
+  .object({
+    name: z
+      .string()
+      .min(1, "Название обязательно")
+      .max(255, "Название слишком длинное"),
+    subtitle: z
+      .string()
+      .max(255, "Подзаголовок слишком длинный")
+      .optional()
+      .nullable(),
+    price: z
+      .number()
+      .positive("Цена должна быть положительной")
+      .or(z.string().transform(val => parseFloat(val))),
+    currency: z
+      .string()
+      .min(1, "Валюта обязательна")
+      .max(10, "Валюта слишком длинная")
+      .default("RUB"),
+    period: z.nativeEnum(TariffPeriod),
+    disk_space: z.number().int().positive().optional().nullable(),
+    bandwidth: z.number().int().positive().optional().nullable(),
+    domains_count: z.number().int().nonnegative().optional().nullable(),
+    databases_count: z.number().int().nonnegative().optional().nullable(),
+    email_accounts: z.number().int().nonnegative().optional().nullable(),
+    info_domains: z
+      .string()
+      .max(50000, "Содержимое слишком длинное (максимум 50000 символов)")
+      .optional()
+      .nullable(),
+    is_active: z.boolean().default(true),
+  })
+  .merge(TariffRelationsSchema);
 
 /**
  * GET /api/manager/hostings/[id]/tariffs - Получить список тарифов хостинга
@@ -62,10 +82,7 @@ export async function GET(
     });
 
     if (!hosting) {
-      return NextResponse.json(
-        { error: "Хостинг не найден" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "Хостинг не найден" }, { status: 404 });
     }
 
     // Загружаем тарифы с связями
@@ -73,52 +90,89 @@ export async function GET(
       where: { hostingId: resolvedParams.id },
       include: {
         cms: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            cms: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
           },
         },
         controlPanels: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            controlPanel: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
           },
         },
         countries: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            country: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
           },
         },
         dataStores: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            dataStore: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
           },
         },
         operationSystems: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            operationSystem: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
           },
         },
         programmingLanguages: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            programmingLanguage: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+              },
+            },
           },
         },
       },
       orderBy: { createdAt: "desc" },
     });
 
-    return NextResponse.json({ tariffs });
+    // Трансформируем данные для совместимости с UI
+    const transformedTariffs = tariffs.map(tariff => ({
+      ...tariff,
+      cms: tariff.cms.map(tc => tc.cms),
+      controlPanels: tariff.controlPanels.map(tcp => tcp.controlPanel),
+      countries: tariff.countries.map(tc => tc.country),
+      dataStores: tariff.dataStores.map(tds => tds.dataStore),
+      operationSystems: tariff.operationSystems.map(tos => tos.operationSystem),
+      programmingLanguages: tariff.programmingLanguages.map(
+        tpl => tpl.programmingLanguage
+      ),
+    }));
+
+    return NextResponse.json({ tariffs: transformedTariffs });
   } catch (error) {
     console.error("Ошибка получения тарифов:", error);
     return NextResponse.json(
@@ -152,6 +206,7 @@ export async function POST(
     const validatedData = TariffCreateSchema.parse(body);
     const {
       name,
+      subtitle,
       price,
       currency,
       period,
@@ -160,6 +215,7 @@ export async function POST(
       domains_count,
       databases_count,
       email_accounts,
+      info_domains,
       is_active,
       cms_ids,
       control_panel_ids,
@@ -176,10 +232,7 @@ export async function POST(
     });
 
     if (!hosting) {
-      return NextResponse.json(
-        { error: "Хостинг не найден" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "Хостинг не найден" }, { status: 404 });
     }
 
     // Валидируем существование связанных сущностей
@@ -187,7 +240,7 @@ export async function POST(
 
     if (cms_ids && cms_ids.length > 0) {
       validationPromises.push(
-        prisma.cMS.count({ where: { id: { in: cms_ids } } }).then((count) => {
+        prisma.cMS.count({ where: { id: { in: cms_ids } } }).then(count => {
           if (count !== cms_ids.length) {
             throw new Error("Один или несколько CMS не найдены");
           }
@@ -197,63 +250,80 @@ export async function POST(
 
     if (control_panel_ids && control_panel_ids.length > 0) {
       validationPromises.push(
-        prisma.controlPanel.count({ where: { id: { in: control_panel_ids } } }).then((count) => {
-          if (count !== control_panel_ids.length) {
-            throw new Error("Одна или несколько панелей управления не найдены");
-          }
-        })
+        prisma.controlPanel
+          .count({ where: { id: { in: control_panel_ids } } })
+          .then(count => {
+            if (count !== control_panel_ids.length) {
+              throw new Error(
+                "Одна или несколько панелей управления не найдены"
+              );
+            }
+          })
       );
     }
 
     if (country_ids && country_ids.length > 0) {
       validationPromises.push(
-        prisma.country.count({ where: { id: { in: country_ids } } }).then((count) => {
-          if (count !== country_ids.length) {
-            throw new Error("Одна или несколько стран не найдены");
-          }
-        })
+        prisma.country
+          .count({ where: { id: { in: country_ids } } })
+          .then(count => {
+            if (count !== country_ids.length) {
+              throw new Error("Одна или несколько стран не найдены");
+            }
+          })
       );
     }
 
     if (data_store_ids && data_store_ids.length > 0) {
       validationPromises.push(
-        prisma.dataStore.count({ where: { id: { in: data_store_ids } } }).then((count) => {
-          if (count !== data_store_ids.length) {
-            throw new Error("Одно или несколько хранилищ данных не найдены");
-          }
-        })
+        prisma.dataStore
+          .count({ where: { id: { in: data_store_ids } } })
+          .then(count => {
+            if (count !== data_store_ids.length) {
+              throw new Error("Одно или несколько хранилищ данных не найдены");
+            }
+          })
       );
     }
 
     if (operation_system_ids && operation_system_ids.length > 0) {
       validationPromises.push(
-        prisma.operationSystem.count({ where: { id: { in: operation_system_ids } } }).then((count) => {
-          if (count !== operation_system_ids.length) {
-            throw new Error("Одна или несколько операционных систем не найдены");
-          }
-        })
+        prisma.operationSystem
+          .count({ where: { id: { in: operation_system_ids } } })
+          .then(count => {
+            if (count !== operation_system_ids.length) {
+              throw new Error(
+                "Одна или несколько операционных систем не найдены"
+              );
+            }
+          })
       );
     }
 
     if (programming_language_ids && programming_language_ids.length > 0) {
       validationPromises.push(
-        prisma.programmingLanguage.count({ where: { id: { in: programming_language_ids } } }).then((count) => {
-          if (count !== programming_language_ids.length) {
-            throw new Error("Один или несколько языков программирования не найдены");
-          }
-        })
+        prisma.programmingLanguage
+          .count({ where: { id: { in: programming_language_ids } } })
+          .then(count => {
+            if (count !== programming_language_ids.length) {
+              throw new Error(
+                "Один или несколько языков программирования не найдены"
+              );
+            }
+          })
       );
     }
 
     await Promise.all(validationPromises);
 
     // Создаем тариф через транзакцию
-    const tariff = await prisma.$transaction(async (tx) => {
+    const tariff = await prisma.$transaction(async tx => {
       // Создаем тариф
       const newTariff = await tx.tariff.create({
         data: {
           hostingId: resolvedParams.id,
           name,
+          subtitle: subtitle || null,
           price: typeof price === "string" ? parseFloat(price) : price,
           currency: currency || "RUB",
           period,
@@ -262,6 +332,7 @@ export async function POST(
           domainsCount: domains_count ?? null,
           databasesCount: databases_count ?? null,
           emailAccounts: email_accounts ?? null,
+          infoDomains: info_domains || null,
           isActive: is_active ?? true,
         },
       });
@@ -272,7 +343,7 @@ export async function POST(
       if (cms_ids && cms_ids.length > 0) {
         relationPromises.push(
           tx.tariffCMS.createMany({
-            data: cms_ids.map((cmsId) => ({
+            data: cms_ids.map(cmsId => ({
               tariffId: newTariff.id,
               cmsId,
             })),
@@ -283,7 +354,7 @@ export async function POST(
       if (control_panel_ids && control_panel_ids.length > 0) {
         relationPromises.push(
           tx.tariffControlPanel.createMany({
-            data: control_panel_ids.map((controlPanelId) => ({
+            data: control_panel_ids.map(controlPanelId => ({
               tariffId: newTariff.id,
               controlPanelId,
             })),
@@ -294,7 +365,7 @@ export async function POST(
       if (country_ids && country_ids.length > 0) {
         relationPromises.push(
           tx.tariffCountry.createMany({
-            data: country_ids.map((countryId) => ({
+            data: country_ids.map(countryId => ({
               tariffId: newTariff.id,
               countryId,
             })),
@@ -305,7 +376,7 @@ export async function POST(
       if (data_store_ids && data_store_ids.length > 0) {
         relationPromises.push(
           tx.tariffDataStore.createMany({
-            data: data_store_ids.map((dataStoreId) => ({
+            data: data_store_ids.map(dataStoreId => ({
               tariffId: newTariff.id,
               dataStoreId,
             })),
@@ -316,7 +387,7 @@ export async function POST(
       if (operation_system_ids && operation_system_ids.length > 0) {
         relationPromises.push(
           tx.tariffOperationSystem.createMany({
-            data: operation_system_ids.map((operationSystemId) => ({
+            data: operation_system_ids.map(operationSystemId => ({
               tariffId: newTariff.id,
               operationSystemId,
             })),
@@ -327,7 +398,7 @@ export async function POST(
       if (programming_language_ids && programming_language_ids.length > 0) {
         relationPromises.push(
           tx.tariffProgrammingLanguage.createMany({
-            data: programming_language_ids.map((programmingLanguageId) => ({
+            data: programming_language_ids.map(programmingLanguageId => ({
               tariffId: newTariff.id,
               programmingLanguageId,
             })),
@@ -338,53 +409,96 @@ export async function POST(
       await Promise.all(relationPromises);
 
       // Загружаем созданный тариф со всеми связями
-      return await tx.tariff.findUnique({
+      const createdTariff = await tx.tariff.findUnique({
         where: { id: newTariff.id },
         include: {
           cms: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              cms: {
+                select: {
+                  id: true,
+                  name: true,
+                  slug: true,
+                },
+              },
             },
           },
           controlPanels: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              controlPanel: {
+                select: {
+                  id: true,
+                  name: true,
+                  slug: true,
+                },
+              },
             },
           },
           countries: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              country: {
+                select: {
+                  id: true,
+                  name: true,
+                  slug: true,
+                },
+              },
             },
           },
           dataStores: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              dataStore: {
+                select: {
+                  id: true,
+                  name: true,
+                  slug: true,
+                },
+              },
             },
           },
           operationSystems: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              operationSystem: {
+                select: {
+                  id: true,
+                  name: true,
+                  slug: true,
+                },
+              },
             },
           },
           programmingLanguages: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              programmingLanguage: {
+                select: {
+                  id: true,
+                  name: true,
+                  slug: true,
+                },
+              },
             },
           },
         },
       });
+
+      if (!createdTariff) {
+        throw new Error("Не удалось загрузить созданный тариф");
+      }
+
+      // Трансформируем данные для совместимости с UI
+      return {
+        ...createdTariff,
+        cms: createdTariff.cms.map(tc => tc.cms),
+        controlPanels: createdTariff.controlPanels.map(tcp => tcp.controlPanel),
+        countries: createdTariff.countries.map(tc => tc.country),
+        dataStores: createdTariff.dataStores.map(tds => tds.dataStore),
+        operationSystems: createdTariff.operationSystems.map(
+          tos => tos.operationSystem
+        ),
+        programmingLanguages: createdTariff.programmingLanguages.map(
+          tpl => tpl.programmingLanguage
+        ),
+      };
     });
 
     return NextResponse.json(
@@ -405,10 +519,7 @@ export async function POST(
     }
 
     if (error instanceof Error && error.message.includes("не найдены")) {
-      return NextResponse.json(
-        { error: error.message },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
     return NextResponse.json(
@@ -417,4 +528,3 @@ export async function POST(
     );
   }
 }
-

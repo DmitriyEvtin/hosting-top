@@ -13,6 +13,7 @@ import {
 } from "@/shared/ui/Dialog";
 import { Input } from "@/shared/ui/Input";
 import { Label } from "@/shared/ui/Label";
+import { Textarea } from "@/shared/ui/Textarea";
 import {
   Select,
   SelectContent,
@@ -81,6 +82,7 @@ export function TariffModal({
 
   // Форма
   const [name, setName] = useState("");
+  const [subtitle, setSubtitle] = useState("");
   const [price, setPrice] = useState("");
   const [currency, setCurrency] = useState("RUB");
   const [period, setPeriod] = useState<"MONTH" | "YEAR">("MONTH");
@@ -89,6 +91,7 @@ export function TariffModal({
   const [domainsCount, setDomainsCount] = useState<string>("");
   const [databasesCount, setDatabasesCount] = useState<string>("");
   const [emailAccounts, setEmailAccounts] = useState<string>("");
+  const [infoDomains, setInfoDomains] = useState("");
   const [isActive, setIsActive] = useState(true);
 
   // Справочники
@@ -165,6 +168,7 @@ export function TariffModal({
 
       const tariffData = data.tariff;
       setName(tariffData.name || "");
+      setSubtitle(tariffData.subtitle || "");
       setPrice(tariffData.price?.toString() || "");
       setCurrency(tariffData.currency || "RUB");
       setPeriod(tariffData.period || "MONTH");
@@ -173,6 +177,7 @@ export function TariffModal({
       setDomainsCount(tariffData.domainsCount?.toString() || "");
       setDatabasesCount(tariffData.databasesCount?.toString() || "");
       setEmailAccounts(tariffData.emailAccounts?.toString() || "");
+      setInfoDomains(tariffData.infoDomains || "");
       setIsActive(tariffData.isActive ?? true);
 
       // Устанавливаем выбранные справочники
@@ -195,6 +200,7 @@ export function TariffModal({
   // Сброс формы
   const resetForm = () => {
     setName("");
+    setSubtitle("");
     setPrice("");
     setCurrency("RUB");
     setPeriod("MONTH");
@@ -203,6 +209,7 @@ export function TariffModal({
     setDomainsCount("");
     setDatabasesCount("");
     setEmailAccounts("");
+    setInfoDomains("");
     setIsActive(true);
     setSelectedCms([]);
     setSelectedControlPanels([]);
@@ -250,6 +257,7 @@ export function TariffModal({
     try {
       const payload = {
         name: name.trim(),
+        subtitle: subtitle.trim() || null,
         price: parseFloat(price),
         currency,
         period,
@@ -258,6 +266,7 @@ export function TariffModal({
         domains_count: domainsCount ? parseInt(domainsCount) : null,
         databases_count: databasesCount ? parseInt(databasesCount) : null,
         email_accounts: emailAccounts ? parseInt(emailAccounts) : null,
+        info_domains: infoDomains.trim() || null,
         is_active: isActive,
         cms_ids: selectedCms,
         control_panel_ids: selectedControlPanels,
@@ -340,6 +349,17 @@ export function TariffModal({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Название тарифа"
+                  maxLength={255}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="subtitle">Подзаголовок</Label>
+                <Input
+                  id="subtitle"
+                  value={subtitle}
+                  onChange={(e) => setSubtitle(e.target.value)}
+                  placeholder="Подзаголовок тарифа"
+                  maxLength={255}
                 />
               </div>
               <div className="space-y-2">
@@ -390,7 +410,7 @@ export function TariffModal({
                 <Checkbox
                   id="isActive"
                   checked={isActive}
-                  onCheckedChange={(checked) => setIsActive(checked === true)}
+                  onChange={(e) => setIsActive(e.target.checked)}
                 />
                 <Label htmlFor="isActive" className="cursor-pointer">
                   Активен
@@ -507,6 +527,25 @@ export function TariffModal({
                 onChange={setSelectedProgrammingLanguages}
                 placeholder="Выберите языки программирования"
               />
+            </div>
+          </div>
+
+          {/* Содержимое */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Содержимое</h3>
+            <div className="space-y-2">
+              <Label htmlFor="infoDomains">Информация о доменах</Label>
+              <Textarea
+                id="infoDomains"
+                value={infoDomains}
+                onChange={(e) => setInfoDomains(e.target.value)}
+                placeholder="Дополнительная информация о доменах..."
+                rows={10}
+                maxLength={50000}
+              />
+              <p className="text-sm text-gray-500">
+                {infoDomains.length}/50000 символов
+              </p>
             </div>
           </div>
         </div>
