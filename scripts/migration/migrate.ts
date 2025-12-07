@@ -617,7 +617,10 @@ async function migrateReferences(dryRun: boolean): Promise<void> {
 /**
  * Мигрирует хостинги
  */
-async function migrateHostings(dryRun: boolean): Promise<void> {
+async function migrateHostings(
+  dryRun: boolean,
+  skipImages: boolean
+): Promise<void> {
   const logger = getLogger();
   logger.section("Миграция хостингов");
 
@@ -679,17 +682,64 @@ async function migrateHostings(dryRun: boolean): Promise<void> {
       const prismaHosting = mapHosting(mysqlHosting);
 
       // Обновляем logoUrl из таблицы images, если есть
+      let sourceImageUrl: string | null = null;
       if (hostingLogoMap[mysqlHosting.id]) {
-        prismaHosting.logoUrl = hostingLogoMap[mysqlHosting.id];
+        sourceImageUrl = hostingLogoMap[mysqlHosting.id];
         logger.info(
-          `Хостинг ID ${mysqlHosting.id}: логотип найден в images: ${prismaHosting.logoUrl}`
+          `Хостинг ID ${mysqlHosting.id}: логотип найден в images: ${sourceImageUrl}`
         );
       } else if (prismaHosting.logoUrl) {
+        sourceImageUrl = prismaHosting.logoUrl;
         logger.info(
-          `Хостинг ID ${mysqlHosting.id}: используется logoUrl из таблицы hosting: ${prismaHosting.logoUrl}`
+          `Хостинг ID ${mysqlHosting.id}: используется logoUrl из таблицы hosting: ${sourceImageUrl}`
         );
       } else {
         logger.info(`Хостинг ID ${mysqlHosting.id}: логотип не найден`);
+      }
+
+      // Если есть логотип и не пропускаем изображения, мигрируем его в S3
+      if (sourceImageUrl && !skipImages && !dryRun) {
+        try {
+          logger.info(
+            `Миграция логотипа в S3 для хостинга ID ${mysqlHosting.id} (slug: ${prismaHosting.slug})`
+          );
+          // Ленивый импорт для избежания загрузки AWS конфигурации при --skip-images
+          const { migrateHostingImage } = await import("./image-migrator");
+          const s3ImageUrl = await migrateHostingImage(
+            sourceImageUrl,
+            prismaHosting.slug
+          );
+          prismaHosting.logoUrl = s3ImageUrl;
+          logger.success(
+            `✓ Логотип мигрирован в S3 для хостинга ID ${mysqlHosting.id}: ${s3ImageUrl}`
+          );
+          migrationResult.statistics.images++;
+        } catch (error) {
+          const errorMessage =
+            error instanceof Error ? error.message : String(error);
+          logger.error(
+            `Ошибка при миграции логотипа для хостинга ID ${mysqlHosting.id}: ${errorMessage}`
+          );
+          // Оставляем исходный URL, если миграция в S3 не удалась
+          prismaHosting.logoUrl = sourceImageUrl;
+          migrationResult.errors.push({
+            stage: "hostings",
+            message: `Hosting ID ${mysqlHosting.id} (logo migration)`,
+            error: errorMessage,
+          });
+        }
+      } else if (sourceImageUrl) {
+        // Если пропускаем изображения или dry-run, просто используем исходный URL
+        prismaHosting.logoUrl = sourceImageUrl;
+        if (skipImages) {
+          logger.info(
+            `Пропуск миграции логотипа в S3 (--skip-images) для хостинга ID ${mysqlHosting.id}`
+          );
+        } else if (dryRun) {
+          logger.info(
+            `Dry-run: логотип будет мигрирован в S3 для хостинга ID ${mysqlHosting.id}`
+          );
+        }
       }
       if (prismaHosting.slug !== mysqlHosting.slug) {
         logger.info(
@@ -1589,10 +1639,8 @@ async function runMigration(): Promise<void> {
 
     // Миграция в правильном порядке
     await migrateReferences(dryRun);
-    await migrateHostings(dryRun);
-    if (!skipImages) {
-      await migrateImages(skipImages);
-    }
+    await migrateHostings(dryRun, skipImages);
+    // migrateImages больше не нужна, так как миграция изображений происходит в migrateHostings
     await migrateTariffs(dryRun);
     await migrateTariffRelations(dryRun);
     await migrateContentBlocks(dryRun);
