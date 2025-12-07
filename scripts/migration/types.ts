@@ -168,14 +168,6 @@ export interface PrismaTariff {
   diskType?: number | null;
   antivirus?: boolean | null;
   countDb?: number | null;
-  infoDiskArea?: string | null;
-  infoPlatforms?: string | null;
-  infoPanels?: string | null;
-  infoPrice?: string | null;
-  infoOzu?: string | null;
-  infoCpu?: string | null;
-  infoCpuCore?: string | null;
-  infoDomains?: string | null;
   // Старые поля для обратной совместимости
   price?: Decimal | null;
   currency: string; // Не может быть null, всегда строка (default: "RUB")

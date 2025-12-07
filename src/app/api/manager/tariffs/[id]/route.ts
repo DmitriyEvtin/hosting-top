@@ -32,7 +32,6 @@ const TariffUpdateSchema = z.object({
   domains_count: z.number().int().nonnegative().optional().nullable(),
   databases_count: z.number().int().nonnegative().optional().nullable(),
   email_accounts: z.number().int().nonnegative().optional().nullable(),
-  info_domains: z.string().max(50000, "Содержимое слишком длинное (максимум 50000 символов)").optional().nullable(),
   is_active: z.boolean().optional(),
 }).merge(TariffRelationsSchema);
 
@@ -196,7 +195,6 @@ export async function PUT(
       domains_count,
       databases_count,
       email_accounts,
-      info_domains,
       is_active,
       cms_ids,
       control_panel_ids,
@@ -307,10 +305,6 @@ export async function PUT(
 
       if (period !== undefined) {
         updateData.period = period;
-      }
-
-      if (info_domains !== undefined) {
-        updateData.infoDomains = info_domains || null;
       }
 
       if (disk_space !== undefined) {

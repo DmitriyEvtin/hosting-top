@@ -283,14 +283,6 @@ export function mapTariff(
         ? toBoolean(mysqlTariff.antivirus)
         : null,
     countDb: mysqlTariff.count_db ?? null,
-    infoDiskArea: mysqlTariff.info_disk_area?.trim() || null,
-    infoPlatforms: mysqlTariff.info_platforms?.trim() || null,
-    infoPanels: mysqlTariff.info_panels?.trim() || null,
-    infoPrice: mysqlTariff.info_price?.trim() || null,
-    infoOzu: mysqlTariff.info_ozu?.trim() || null,
-    infoCpu: mysqlTariff.info_cpu?.trim() || null,
-    infoCpuCore: mysqlTariff.info_cpu_core?.trim() || null,
-    infoDomains: mysqlTariff.info_domains?.trim() || null,
     // Старые поля для обратной совместимости
     price,
     currency: mysqlTariff.currency?.trim() || "RUB",

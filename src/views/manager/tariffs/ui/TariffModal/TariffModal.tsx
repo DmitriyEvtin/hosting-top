@@ -91,7 +91,6 @@ export function TariffModal({
   const [domainsCount, setDomainsCount] = useState<string>("");
   const [databasesCount, setDatabasesCount] = useState<string>("");
   const [emailAccounts, setEmailAccounts] = useState<string>("");
-  const [infoDomains, setInfoDomains] = useState("");
   const [isActive, setIsActive] = useState(true);
 
   // Справочники
@@ -177,7 +176,6 @@ export function TariffModal({
       setDomainsCount(tariffData.domainsCount?.toString() || "");
       setDatabasesCount(tariffData.databasesCount?.toString() || "");
       setEmailAccounts(tariffData.emailAccounts?.toString() || "");
-      setInfoDomains(tariffData.infoDomains || "");
       setIsActive(tariffData.isActive ?? true);
 
       // Устанавливаем выбранные справочники
@@ -266,7 +264,6 @@ export function TariffModal({
         domains_count: domainsCount ? parseInt(domainsCount) : null,
         databases_count: databasesCount ? parseInt(databasesCount) : null,
         email_accounts: emailAccounts ? parseInt(emailAccounts) : null,
-        info_domains: infoDomains.trim() || null,
         is_active: isActive,
         cms_ids: selectedCms,
         control_panel_ids: selectedControlPanels,
@@ -530,24 +527,6 @@ export function TariffModal({
             </div>
           </div>
 
-          {/* Содержимое */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Содержимое</h3>
-            <div className="space-y-2">
-              <Label htmlFor="infoDomains">Информация о доменах</Label>
-              <Textarea
-                id="infoDomains"
-                value={infoDomains}
-                onChange={(e) => setInfoDomains(e.target.value)}
-                placeholder="Дополнительная информация о доменах..."
-                rows={10}
-                maxLength={50000}
-              />
-              <p className="text-sm text-gray-500">
-                {infoDomains.length}/50000 символов
-              </p>
-            </div>
-          </div>
         </div>
 
         <DialogFooter>

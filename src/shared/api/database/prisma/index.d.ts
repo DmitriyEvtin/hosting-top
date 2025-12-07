@@ -8525,14 +8525,6 @@ export namespace Prisma {
     diskType: number | null
     antivirus: boolean | null
     countDb: number | null
-    infoDiskArea: string | null
-    infoPlatforms: string | null
-    infoPanels: string | null
-    infoPrice: string | null
-    infoOzu: string | null
-    infoCpu: string | null
-    infoCpuCore: string | null
-    infoDomains: string | null
     price: Decimal | null
     currency: string | null
     period: $Enums.TariffPeriod | null
@@ -8572,14 +8564,6 @@ export namespace Prisma {
     diskType: number | null
     antivirus: boolean | null
     countDb: number | null
-    infoDiskArea: string | null
-    infoPlatforms: string | null
-    infoPanels: string | null
-    infoPrice: string | null
-    infoOzu: string | null
-    infoCpu: string | null
-    infoCpuCore: string | null
-    infoDomains: string | null
     price: Decimal | null
     currency: string | null
     period: $Enums.TariffPeriod | null
@@ -8619,14 +8603,6 @@ export namespace Prisma {
     diskType: number
     antivirus: number
     countDb: number
-    infoDiskArea: number
-    infoPlatforms: number
-    infoPanels: number
-    infoPrice: number
-    infoOzu: number
-    infoCpu: number
-    infoCpuCore: number
-    infoDomains: number
     price: number
     currency: number
     period: number
@@ -8710,14 +8686,6 @@ export namespace Prisma {
     diskType?: true
     antivirus?: true
     countDb?: true
-    infoDiskArea?: true
-    infoPlatforms?: true
-    infoPanels?: true
-    infoPrice?: true
-    infoOzu?: true
-    infoCpu?: true
-    infoCpuCore?: true
-    infoDomains?: true
     price?: true
     currency?: true
     period?: true
@@ -8757,14 +8725,6 @@ export namespace Prisma {
     diskType?: true
     antivirus?: true
     countDb?: true
-    infoDiskArea?: true
-    infoPlatforms?: true
-    infoPanels?: true
-    infoPrice?: true
-    infoOzu?: true
-    infoCpu?: true
-    infoCpuCore?: true
-    infoDomains?: true
     price?: true
     currency?: true
     period?: true
@@ -8804,14 +8764,6 @@ export namespace Prisma {
     diskType?: true
     antivirus?: true
     countDb?: true
-    infoDiskArea?: true
-    infoPlatforms?: true
-    infoPanels?: true
-    infoPrice?: true
-    infoOzu?: true
-    infoCpu?: true
-    infoCpuCore?: true
-    infoDomains?: true
     price?: true
     currency?: true
     period?: true
@@ -8938,14 +8890,6 @@ export namespace Prisma {
     diskType: number | null
     antivirus: boolean | null
     countDb: number | null
-    infoDiskArea: string | null
-    infoPlatforms: string | null
-    infoPanels: string | null
-    infoPrice: string | null
-    infoOzu: string | null
-    infoCpu: string | null
-    infoCpuCore: string | null
-    infoDomains: string | null
     price: Decimal | null
     currency: string
     period: $Enums.TariffPeriod | null
@@ -9004,14 +8948,6 @@ export namespace Prisma {
     diskType?: boolean
     antivirus?: boolean
     countDb?: boolean
-    infoDiskArea?: boolean
-    infoPlatforms?: boolean
-    infoPanels?: boolean
-    infoPrice?: boolean
-    infoOzu?: boolean
-    infoCpu?: boolean
-    infoCpuCore?: boolean
-    infoDomains?: boolean
     price?: boolean
     currency?: boolean
     period?: boolean
@@ -9059,14 +8995,6 @@ export namespace Prisma {
     diskType?: boolean
     antivirus?: boolean
     countDb?: boolean
-    infoDiskArea?: boolean
-    infoPlatforms?: boolean
-    infoPanels?: boolean
-    infoPrice?: boolean
-    infoOzu?: boolean
-    infoCpu?: boolean
-    infoCpuCore?: boolean
-    infoDomains?: boolean
     price?: boolean
     currency?: boolean
     period?: boolean
@@ -9107,14 +9035,6 @@ export namespace Prisma {
     diskType?: boolean
     antivirus?: boolean
     countDb?: boolean
-    infoDiskArea?: boolean
-    infoPlatforms?: boolean
-    infoPanels?: boolean
-    infoPrice?: boolean
-    infoOzu?: boolean
-    infoCpu?: boolean
-    infoCpuCore?: boolean
-    infoDomains?: boolean
     price?: boolean
     currency?: boolean
     period?: boolean
@@ -9155,14 +9075,6 @@ export namespace Prisma {
     diskType?: boolean
     antivirus?: boolean
     countDb?: boolean
-    infoDiskArea?: boolean
-    infoPlatforms?: boolean
-    infoPanels?: boolean
-    infoPrice?: boolean
-    infoOzu?: boolean
-    infoCpu?: boolean
-    infoCpuCore?: boolean
-    infoDomains?: boolean
     price?: boolean
     currency?: boolean
     period?: boolean
@@ -9175,7 +9087,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type TariffOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "hostingId" | "type" | "name" | "subtitle" | "link" | "domains" | "diskSpace" | "sites" | "ftpAccounts" | "traffic" | "mailboxes" | "automaticCms" | "ssl" | "backup" | "ssh" | "additionalId" | "priceMonth" | "priceYear" | "status" | "countTestDays" | "isTemplate" | "ddosDef" | "diskType" | "antivirus" | "countDb" | "infoDiskArea" | "infoPlatforms" | "infoPanels" | "infoPrice" | "infoOzu" | "infoCpu" | "infoCpuCore" | "infoDomains" | "price" | "currency" | "period" | "bandwidth" | "domainsCount" | "databasesCount" | "emailAccounts" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["tariff"]>
+  export type TariffOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "hostingId" | "type" | "name" | "subtitle" | "link" | "domains" | "diskSpace" | "sites" | "ftpAccounts" | "traffic" | "mailboxes" | "automaticCms" | "ssl" | "backup" | "ssh" | "additionalId" | "priceMonth" | "priceYear" | "status" | "countTestDays" | "isTemplate" | "ddosDef" | "diskType" | "antivirus" | "countDb" | "price" | "currency" | "period" | "bandwidth" | "domainsCount" | "databasesCount" | "emailAccounts" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["tariff"]>
   export type TariffInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     hosting?: boolean | HostingDefaultArgs<ExtArgs>
     cms?: boolean | Tariff$cmsArgs<ExtArgs>
@@ -9231,14 +9143,6 @@ export namespace Prisma {
       diskType: number | null
       antivirus: boolean | null
       countDb: number | null
-      infoDiskArea: string | null
-      infoPlatforms: string | null
-      infoPanels: string | null
-      infoPrice: string | null
-      infoOzu: string | null
-      infoCpu: string | null
-      infoCpuCore: string | null
-      infoDomains: string | null
       price: Prisma.Decimal | null
       currency: string
       period: $Enums.TariffPeriod | null
@@ -9705,14 +9609,6 @@ export namespace Prisma {
     readonly diskType: FieldRef<"Tariff", 'Int'>
     readonly antivirus: FieldRef<"Tariff", 'Boolean'>
     readonly countDb: FieldRef<"Tariff", 'Int'>
-    readonly infoDiskArea: FieldRef<"Tariff", 'String'>
-    readonly infoPlatforms: FieldRef<"Tariff", 'String'>
-    readonly infoPanels: FieldRef<"Tariff", 'String'>
-    readonly infoPrice: FieldRef<"Tariff", 'String'>
-    readonly infoOzu: FieldRef<"Tariff", 'String'>
-    readonly infoCpu: FieldRef<"Tariff", 'String'>
-    readonly infoCpuCore: FieldRef<"Tariff", 'String'>
-    readonly infoDomains: FieldRef<"Tariff", 'String'>
     readonly price: FieldRef<"Tariff", 'Decimal'>
     readonly currency: FieldRef<"Tariff", 'String'>
     readonly period: FieldRef<"Tariff", 'TariffPeriod'>
@@ -24025,14 +23921,6 @@ export namespace Prisma {
     diskType: 'diskType',
     antivirus: 'antivirus',
     countDb: 'countDb',
-    infoDiskArea: 'infoDiskArea',
-    infoPlatforms: 'infoPlatforms',
-    infoPanels: 'infoPanels',
-    infoPrice: 'infoPrice',
-    infoOzu: 'infoOzu',
-    infoCpu: 'infoCpu',
-    infoCpuCore: 'infoCpuCore',
-    infoDomains: 'infoDomains',
     price: 'price',
     currency: 'currency',
     period: 'period',
@@ -24697,14 +24585,6 @@ export namespace Prisma {
     diskType?: IntNullableFilter<"Tariff"> | number | null
     antivirus?: BoolNullableFilter<"Tariff"> | boolean | null
     countDb?: IntNullableFilter<"Tariff"> | number | null
-    infoDiskArea?: StringNullableFilter<"Tariff"> | string | null
-    infoPlatforms?: StringNullableFilter<"Tariff"> | string | null
-    infoPanels?: StringNullableFilter<"Tariff"> | string | null
-    infoPrice?: StringNullableFilter<"Tariff"> | string | null
-    infoOzu?: StringNullableFilter<"Tariff"> | string | null
-    infoCpu?: StringNullableFilter<"Tariff"> | string | null
-    infoCpuCore?: StringNullableFilter<"Tariff"> | string | null
-    infoDomains?: StringNullableFilter<"Tariff"> | string | null
     price?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
     currency?: StringFilter<"Tariff"> | string
     period?: EnumTariffPeriodNullableFilter<"Tariff"> | $Enums.TariffPeriod | null
@@ -24751,14 +24631,6 @@ export namespace Prisma {
     diskType?: SortOrderInput | SortOrder
     antivirus?: SortOrderInput | SortOrder
     countDb?: SortOrderInput | SortOrder
-    infoDiskArea?: SortOrderInput | SortOrder
-    infoPlatforms?: SortOrderInput | SortOrder
-    infoPanels?: SortOrderInput | SortOrder
-    infoPrice?: SortOrderInput | SortOrder
-    infoOzu?: SortOrderInput | SortOrder
-    infoCpu?: SortOrderInput | SortOrder
-    infoCpuCore?: SortOrderInput | SortOrder
-    infoDomains?: SortOrderInput | SortOrder
     price?: SortOrderInput | SortOrder
     currency?: SortOrder
     period?: SortOrderInput | SortOrder
@@ -24808,14 +24680,6 @@ export namespace Prisma {
     diskType?: IntNullableFilter<"Tariff"> | number | null
     antivirus?: BoolNullableFilter<"Tariff"> | boolean | null
     countDb?: IntNullableFilter<"Tariff"> | number | null
-    infoDiskArea?: StringNullableFilter<"Tariff"> | string | null
-    infoPlatforms?: StringNullableFilter<"Tariff"> | string | null
-    infoPanels?: StringNullableFilter<"Tariff"> | string | null
-    infoPrice?: StringNullableFilter<"Tariff"> | string | null
-    infoOzu?: StringNullableFilter<"Tariff"> | string | null
-    infoCpu?: StringNullableFilter<"Tariff"> | string | null
-    infoCpuCore?: StringNullableFilter<"Tariff"> | string | null
-    infoDomains?: StringNullableFilter<"Tariff"> | string | null
     price?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
     currency?: StringFilter<"Tariff"> | string
     period?: EnumTariffPeriodNullableFilter<"Tariff"> | $Enums.TariffPeriod | null
@@ -24862,14 +24726,6 @@ export namespace Prisma {
     diskType?: SortOrderInput | SortOrder
     antivirus?: SortOrderInput | SortOrder
     countDb?: SortOrderInput | SortOrder
-    infoDiskArea?: SortOrderInput | SortOrder
-    infoPlatforms?: SortOrderInput | SortOrder
-    infoPanels?: SortOrderInput | SortOrder
-    infoPrice?: SortOrderInput | SortOrder
-    infoOzu?: SortOrderInput | SortOrder
-    infoCpu?: SortOrderInput | SortOrder
-    infoCpuCore?: SortOrderInput | SortOrder
-    infoDomains?: SortOrderInput | SortOrder
     price?: SortOrderInput | SortOrder
     currency?: SortOrder
     period?: SortOrderInput | SortOrder
@@ -24917,14 +24773,6 @@ export namespace Prisma {
     diskType?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
     antivirus?: BoolNullableWithAggregatesFilter<"Tariff"> | boolean | null
     countDb?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
-    infoDiskArea?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
-    infoPlatforms?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
-    infoPanels?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
-    infoPrice?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
-    infoOzu?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
-    infoCpu?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
-    infoCpuCore?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
-    infoDomains?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
     price?: DecimalNullableWithAggregatesFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
     currency?: StringWithAggregatesFilter<"Tariff"> | string
     period?: EnumTariffPeriodNullableWithAggregatesFilter<"Tariff"> | $Enums.TariffPeriod | null
@@ -26001,14 +25849,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -26055,14 +25895,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -26107,14 +25939,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -26161,14 +25985,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -26214,14 +26030,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -26260,14 +26068,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -26307,14 +26107,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -27468,14 +27260,6 @@ export namespace Prisma {
     diskType?: SortOrder
     antivirus?: SortOrder
     countDb?: SortOrder
-    infoDiskArea?: SortOrder
-    infoPlatforms?: SortOrder
-    infoPanels?: SortOrder
-    infoPrice?: SortOrder
-    infoOzu?: SortOrder
-    infoCpu?: SortOrder
-    infoCpuCore?: SortOrder
-    infoDomains?: SortOrder
     price?: SortOrder
     currency?: SortOrder
     period?: SortOrder
@@ -27536,14 +27320,6 @@ export namespace Prisma {
     diskType?: SortOrder
     antivirus?: SortOrder
     countDb?: SortOrder
-    infoDiskArea?: SortOrder
-    infoPlatforms?: SortOrder
-    infoPanels?: SortOrder
-    infoPrice?: SortOrder
-    infoOzu?: SortOrder
-    infoCpu?: SortOrder
-    infoCpuCore?: SortOrder
-    infoDomains?: SortOrder
     price?: SortOrder
     currency?: SortOrder
     period?: SortOrder
@@ -27583,14 +27359,6 @@ export namespace Prisma {
     diskType?: SortOrder
     antivirus?: SortOrder
     countDb?: SortOrder
-    infoDiskArea?: SortOrder
-    infoPlatforms?: SortOrder
-    infoPanels?: SortOrder
-    infoPrice?: SortOrder
-    infoOzu?: SortOrder
-    infoCpu?: SortOrder
-    infoCpuCore?: SortOrder
-    infoDomains?: SortOrder
     price?: SortOrder
     currency?: SortOrder
     period?: SortOrder
@@ -29507,14 +29275,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -29559,14 +29319,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -29673,14 +29425,6 @@ export namespace Prisma {
     diskType?: IntNullableFilter<"Tariff"> | number | null
     antivirus?: BoolNullableFilter<"Tariff"> | boolean | null
     countDb?: IntNullableFilter<"Tariff"> | number | null
-    infoDiskArea?: StringNullableFilter<"Tariff"> | string | null
-    infoPlatforms?: StringNullableFilter<"Tariff"> | string | null
-    infoPanels?: StringNullableFilter<"Tariff"> | string | null
-    infoPrice?: StringNullableFilter<"Tariff"> | string | null
-    infoOzu?: StringNullableFilter<"Tariff"> | string | null
-    infoCpu?: StringNullableFilter<"Tariff"> | string | null
-    infoCpuCore?: StringNullableFilter<"Tariff"> | string | null
-    infoDomains?: StringNullableFilter<"Tariff"> | string | null
     price?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
     currency?: StringFilter<"Tariff"> | string
     period?: EnumTariffPeriodNullableFilter<"Tariff"> | $Enums.TariffPeriod | null
@@ -30316,14 +30060,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -30369,14 +30105,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -30453,14 +30181,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -30506,14 +30226,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -30580,14 +30292,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -30633,14 +30337,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -30717,14 +30413,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -30770,14 +30458,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -30844,14 +30524,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -30897,14 +30569,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -30981,14 +30645,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -31034,14 +30690,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -31108,14 +30756,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -31161,14 +30801,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -31245,14 +30877,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -31298,14 +30922,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -31372,14 +30988,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -31425,14 +31033,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -31509,14 +31109,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -31562,14 +31154,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -31636,14 +31220,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -31689,14 +31265,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -31773,14 +31341,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -31826,14 +31386,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -32060,14 +31612,6 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    infoDiskArea?: string | null
-    infoPlatforms?: string | null
-    infoPanels?: string | null
-    infoPrice?: string | null
-    infoOzu?: string | null
-    infoCpu?: string | null
-    infoCpuCore?: string | null
-    infoDomains?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
     period?: $Enums.TariffPeriod | null
@@ -32117,14 +31661,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -32169,14 +31705,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
@@ -32221,14 +31749,6 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
-    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
-    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
-    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
-    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
     period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null

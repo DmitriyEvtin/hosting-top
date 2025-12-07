@@ -47,11 +47,6 @@ const TariffCreateSchema = z
     domains_count: z.number().int().nonnegative().optional().nullable(),
     databases_count: z.number().int().nonnegative().optional().nullable(),
     email_accounts: z.number().int().nonnegative().optional().nullable(),
-    info_domains: z
-      .string()
-      .max(50000, "Содержимое слишком длинное (максимум 50000 символов)")
-      .optional()
-      .nullable(),
     is_active: z.boolean().default(true),
   })
   .merge(TariffRelationsSchema);
@@ -215,7 +210,6 @@ export async function POST(
       domains_count,
       databases_count,
       email_accounts,
-      info_domains,
       is_active,
       cms_ids,
       control_panel_ids,
@@ -332,7 +326,6 @@ export async function POST(
           domainsCount: domains_count ?? null,
           databasesCount: databases_count ?? null,
           emailAccounts: email_accounts ?? null,
-          infoDomains: info_domains || null,
           isActive: is_active ?? true,
         },
       });
