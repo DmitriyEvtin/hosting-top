@@ -61,6 +61,14 @@ steiger.config.json
 
 # Скрипты разработки
 scripts
+# Исключение: скрипты миграции нужны в production
+!scripts/migration
+# Исключаем логи, результаты миграции и тесты из образа
+scripts/migration/*.log
+scripts/migration/migration-result-*.json
+scripts/migration/status
+scripts/migration/__tests__
+scripts/migration/test-*.ts
 Makefile
 
 # Конфигурация разработки
