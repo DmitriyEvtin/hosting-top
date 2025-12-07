@@ -2,7 +2,14 @@
 
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/Button";
-import { Menu, X } from "lucide-react";
+import {
+  Menu,
+  X,
+  LayoutDashboard,
+  Server,
+  FileText,
+  BookOpen,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -26,7 +33,47 @@ export function CRMSidebar({ className }: CRMSidebarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const menuSections: MenuSection[] = [];
+  const menuSections: MenuSection[] = [
+    {
+      title: "Основное",
+      items: [
+        {
+          href: "/manager",
+          label: "Главная",
+          icon: LayoutDashboard,
+        },
+      ],
+    },
+    {
+      title: "Управление",
+      items: [
+        {
+          href: "/manager/hostings",
+          label: "Хостинги",
+          icon: Server,
+        },
+        {
+          href: "/manager/content-blocks",
+          label: "Блоки контента",
+          icon: FileText,
+        },
+        {
+          href: "/manager/references",
+          label: "Справочники",
+          icon: BookOpen,
+        },
+      ],
+    },
+  ];
+
+  const isActiveRoute = (href: string) => {
+    if (href === "/manager") {
+      // Для главной страницы проверяем точное совпадение
+      return pathname === href;
+    }
+    // Для остальных страниц проверяем, начинается ли путь с href
+    return pathname.startsWith(href);
+  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -94,7 +141,7 @@ export function CRMSidebar({ className }: CRMSidebarProps) {
                 <div className="space-y-1">
                   {section.items.map(item => {
                     const Icon = item.icon;
-                    const isActive = pathname === item.href;
+                    const isActive = isActiveRoute(item.href);
 
                     return (
                       <Link
@@ -136,7 +183,7 @@ export function CRMSidebar({ className }: CRMSidebarProps) {
                 <div className="space-y-1">
                   {section.items.map(item => {
                     const Icon = item.icon;
-                    const isActive = pathname === item.href;
+                    const isActive = isActiveRoute(item.href);
 
                     return (
                       <Link
