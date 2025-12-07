@@ -64,9 +64,9 @@ model VerificationToken {
 
 enum UserRole {
   ADMIN
-  USER
-  MODERATOR
   MANAGER
+  MODERATOR
+  USER
 }
 
 enum TariffPeriod {

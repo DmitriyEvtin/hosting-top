@@ -1,9 +1,9 @@
 // Экспорт типов из Prisma схемы
 export enum UserRole {
   ADMIN = "ADMIN",
+  MANAGER = "MANAGER",
   MODERATOR = "MODERATOR",
   USER = "USER",
-  MANAGER = "MANAGER",
 }
 
 export enum ParsingStatus {

@@ -32,6 +32,14 @@ export async function middleware(request: NextRequest) {
     });
   }
 
+  // Специальная защита для менеджер-панели
+  if (pathname.startsWith("/manager")) {
+    return authMiddleware(request, {
+      requiredRole: UserRole.MANAGER,
+      publicRoutes,
+    });
+  }
+
   // Обычная защита для других маршрутов
   const protectedRoutes = [
     "/profile",

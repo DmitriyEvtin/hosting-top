@@ -115,9 +115,9 @@ export type ContentBlock = $Result.DefaultSelection<Prisma.$ContentBlockPayload>
 export namespace $Enums {
   export const UserRole: {
   ADMIN: 'ADMIN',
-  USER: 'USER',
+  MANAGER: 'MANAGER',
   MODERATOR: 'MODERATOR',
-  MANAGER: 'MANAGER'
+  USER: 'USER'
 };
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]

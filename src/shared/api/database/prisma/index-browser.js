@@ -287,9 +287,9 @@ exports.Prisma.NullsOrder = {
 };
 exports.UserRole = exports.$Enums.UserRole = {
   ADMIN: 'ADMIN',
-  USER: 'USER',
+  MANAGER: 'MANAGER',
   MODERATOR: 'MODERATOR',
-  MANAGER: 'MANAGER'
+  USER: 'USER'
 };
 
 exports.TariffPeriod = exports.$Enums.TariffPeriod = {

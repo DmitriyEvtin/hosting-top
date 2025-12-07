@@ -38,11 +38,21 @@ export async function authMiddleware(
 
     // Проверяем роль пользователя
     if (requiredRole && token.role !== requiredRole) {
-      // Проверяем иерархию ролей
+      // Проверяем иерархию ролей: ADMIN > MANAGER > MODERATOR > USER
       const roleHierarchy = {
         [UserRole.USER]: [UserRole.USER],
         [UserRole.MODERATOR]: [UserRole.USER, UserRole.MODERATOR],
-        [UserRole.ADMIN]: [UserRole.USER, UserRole.MODERATOR, UserRole.ADMIN],
+        [UserRole.MANAGER]: [
+          UserRole.USER,
+          UserRole.MODERATOR,
+          UserRole.MANAGER,
+        ],
+        [UserRole.ADMIN]: [
+          UserRole.USER,
+          UserRole.MODERATOR,
+          UserRole.MANAGER,
+          UserRole.ADMIN,
+        ],
       };
 
       const allowedRoles = roleHierarchy[requiredRole] || [];
@@ -51,6 +61,11 @@ export async function authMiddleware(
         // Для админ-панели возвращаем 404 вместо 403
         if (requiredRole === UserRole.ADMIN) {
           return new NextResponse(null, { status: 404 });
+        }
+
+        // Для менеджер-панели редиректим на страницу ошибки
+        if (requiredRole === UserRole.MANAGER) {
+          return NextResponse.redirect(new URL("/auth/error", request.url));
         }
 
         return NextResponse.json(
@@ -66,10 +81,17 @@ export async function authMiddleware(
 
 // Хелперы для проверки ролей
 export function hasRole(userRole: UserRole, requiredRole: UserRole): boolean {
+  // Иерархия ролей: ADMIN > MANAGER > MODERATOR > USER
   const roleHierarchy = {
     [UserRole.USER]: [UserRole.USER],
     [UserRole.MODERATOR]: [UserRole.USER, UserRole.MODERATOR],
-    [UserRole.ADMIN]: [UserRole.USER, UserRole.MODERATOR, UserRole.ADMIN],
+    [UserRole.MANAGER]: [UserRole.USER, UserRole.MODERATOR, UserRole.MANAGER],
+    [UserRole.ADMIN]: [
+      UserRole.USER,
+      UserRole.MODERATOR,
+      UserRole.MANAGER,
+      UserRole.ADMIN,
+    ],
   };
 
   const allowedRoles = roleHierarchy[requiredRole] || [];
@@ -80,14 +102,23 @@ export function isAdmin(userRole: UserRole): boolean {
   return userRole === UserRole.ADMIN;
 }
 
+export function isManager(userRole: UserRole): boolean {
+  return userRole === UserRole.MANAGER || userRole === UserRole.ADMIN;
+}
+
 export function isModerator(userRole: UserRole): boolean {
-  return userRole === UserRole.MODERATOR || userRole === UserRole.ADMIN;
+  return (
+    userRole === UserRole.MODERATOR ||
+    userRole === UserRole.MANAGER ||
+    userRole === UserRole.ADMIN
+  );
 }
 
 export function isUser(userRole: UserRole): boolean {
   return (
     userRole === UserRole.USER ||
     userRole === UserRole.MODERATOR ||
+    userRole === UserRole.MANAGER ||
     userRole === UserRole.ADMIN
   );
 }

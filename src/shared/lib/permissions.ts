@@ -30,10 +30,17 @@ export function hasAdminAccess(userRole: UserRole): boolean {
 }
 
 /**
+ * Проверяет, имеет ли пользователь права менеджера
+ */
+export function hasManagerAccess(userRole: UserRole): boolean {
+  return userRole === UserRole.MANAGER || userRole === UserRole.ADMIN;
+}
+
+/**
  * Проверяет, имеет ли пользователь права модератора или выше
  */
 export function hasModeratorAccess(userRole: UserRole): boolean {
-  return [UserRole.ADMIN, UserRole.MODERATOR, UserRole.MANAGER].includes(
+  return [UserRole.ADMIN, UserRole.MANAGER, UserRole.MODERATOR].includes(
     userRole
   );
 }
