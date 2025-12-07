@@ -1,0 +1,2 @@
+export { ContentBlocksPage } from "./ContentBlocksPage";
+
