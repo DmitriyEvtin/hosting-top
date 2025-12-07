@@ -1,0 +1,2 @@
+export { TariffsPage } from "./TariffsPage";
+
