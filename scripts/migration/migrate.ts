@@ -5,8 +5,9 @@
 
 import chalk from "chalk";
 import cliProgress from "cli-progress";
+import { config } from "dotenv";
 import { writeFileSync } from "fs";
-import { join } from "path";
+import { join, resolve } from "path";
 import { prisma } from "../../src/shared/api/database/client";
 import {
   mapCMS,
@@ -19,7 +20,17 @@ import {
   mapProgrammingLanguage,
   mapTariff,
 } from "./data-mapper";
-import { migrateHostingImage } from "./image-migrator";
+
+// Загрузка переменных окружения из .env.migration или .env
+const envMigrationPath = resolve(process.cwd(), ".env.migration");
+const envPath = resolve(process.cwd(), ".env");
+
+// Сначала пытаемся загрузить .env.migration, если не существует - загружаем .env
+config({ path: envMigrationPath });
+if (!process.env.MYSQL_HOST) {
+  config({ path: envPath });
+}
+// Ленивый импорт image-migrator для избежания загрузки AWS конфигурации при --skip-images
 import { closeLogger, getLogger, initializeLogger } from "./migration-logger";
 import {
   closeMySQLConnection,
@@ -243,9 +254,21 @@ async function migrateReferences(dryRun: boolean): Promise<void> {
 
   // Миграция ControlPanel
   logger.info("Миграция ControlPanel...");
-  const mysqlControlPanels = await queryMySQL<MySQLControlPanel>(
-    "SELECT * FROM control_panels ORDER BY id"
-  );
+  let mysqlControlPanels: MySQLControlPanel[] = [];
+  try {
+    mysqlControlPanels = await queryMySQL<MySQLControlPanel>(
+      "SELECT * FROM control_panel ORDER BY id"
+    );
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes("doesn't exist")) {
+      logger.warning(
+        `Таблица control_panels не существует, пропускаем миграцию ControlPanel`
+      );
+    } else {
+      throw error;
+    }
+  }
   const controlPanelProgressBar = new cliProgress.SingleBar(
     {
       format: "ControlPanel |{bar}| {percentage}% | {value}/{total}",
@@ -300,9 +323,21 @@ async function migrateReferences(dryRun: boolean): Promise<void> {
 
   // Миграция Country
   logger.info("Миграция Country...");
-  const mysqlCountries = await queryMySQL<MySQLCountry>(
-    "SELECT * FROM countries ORDER BY id"
-  );
+  let mysqlCountries: MySQLCountry[] = [];
+  try {
+    mysqlCountries = await queryMySQL<MySQLCountry>(
+      "SELECT * FROM country ORDER BY id"
+    );
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes("doesn't exist")) {
+      logger.warning(
+        `Таблица countries не существует, пропускаем миграцию Country`
+      );
+    } else {
+      throw error;
+    }
+  }
   const countryProgressBar = new cliProgress.SingleBar(
     {
       format: "Country |{bar}| {percentage}% | {value}/{total}",
@@ -355,9 +390,21 @@ async function migrateReferences(dryRun: boolean): Promise<void> {
 
   // Миграция DataStore
   logger.info("Миграция DataStore...");
-  const mysqlDataStores = await queryMySQL<MySQLDataStore>(
-    "SELECT * FROM data_stores ORDER BY id"
-  );
+  let mysqlDataStores: MySQLDataStore[] = [];
+  try {
+    mysqlDataStores = await queryMySQL<MySQLDataStore>(
+      "SELECT * FROM data_store ORDER BY id"
+    );
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes("doesn't exist")) {
+      logger.warning(
+        `Таблица data_stores не существует, пропускаем миграцию DataStore`
+      );
+    } else {
+      throw error;
+    }
+  }
   const dataStoreProgressBar = new cliProgress.SingleBar(
     {
       format: "DataStore |{bar}| {percentage}% | {value}/{total}",
@@ -410,9 +457,21 @@ async function migrateReferences(dryRun: boolean): Promise<void> {
 
   // Миграция OperationSystem
   logger.info("Миграция OperationSystem...");
-  const mysqlOperationSystems = await queryMySQL<MySQLOperationSystem>(
-    "SELECT * FROM operation_systems ORDER BY id"
-  );
+  let mysqlOperationSystems: MySQLOperationSystem[] = [];
+  try {
+    mysqlOperationSystems = await queryMySQL<MySQLOperationSystem>(
+      "SELECT * FROM operation_system ORDER BY id"
+    );
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes("doesn't exist")) {
+      logger.warning(
+        `Таблица operation_systems не существует, пропускаем миграцию OperationSystem`
+      );
+    } else {
+      throw error;
+    }
+  }
   const operationSystemProgressBar = new cliProgress.SingleBar(
     {
       format: "OperationSystem |{bar}| {percentage}% | {value}/{total}",
@@ -467,9 +526,21 @@ async function migrateReferences(dryRun: boolean): Promise<void> {
 
   // Миграция ProgrammingLanguage
   logger.info("Миграция ProgrammingLanguage...");
-  const mysqlProgrammingLanguages = await queryMySQL<MySQLProgrammingLanguage>(
-    "SELECT * FROM programming_languages ORDER BY id"
-  );
+  let mysqlProgrammingLanguages: MySQLProgrammingLanguage[] = [];
+  try {
+    mysqlProgrammingLanguages = await queryMySQL<MySQLProgrammingLanguage>(
+      "SELECT * FROM programming_language ORDER BY id"
+    );
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes("doesn't exist")) {
+      logger.warning(
+        `Таблица programming_languages не существует, пропускаем миграцию ProgrammingLanguage`
+      );
+    } else {
+      throw error;
+    }
+  }
   const programmingLanguageProgressBar = new cliProgress.SingleBar(
     {
       format: "ProgrammingLanguage |{bar}| {percentage}% | {value}/{total}",
@@ -533,7 +604,7 @@ async function migrateHostings(dryRun: boolean): Promise<void> {
   logger.section("Миграция хостингов");
 
   const mysqlHostings = await queryMySQL<MySQLHosting>(
-    "SELECT * FROM hostings ORDER BY id"
+    "SELECT * FROM hosting ORDER BY id"
   );
 
   const progressBar = new cliProgress.SingleBar(
@@ -635,6 +706,8 @@ async function migrateImages(skipImages: boolean): Promise<void> {
 
     try {
       logger.info(`Миграция изображения для хостинга: ${hosting.slug}`);
+      // Ленивый импорт для избежания загрузки AWS конфигурации при --skip-images
+      const { migrateHostingImage } = await import("./image-migrator");
       const newImageUrl = await migrateHostingImage(
         hosting.logoUrl,
         hosting.slug
@@ -680,7 +753,7 @@ async function migrateTariffs(dryRun: boolean): Promise<void> {
   logger.section("Миграция тарифов");
 
   const mysqlTariffs = await queryMySQL<MySQLTariff>(
-    "SELECT * FROM tariffs ORDER BY id"
+    "SELECT * FROM tariff ORDER BY id"
   );
 
   const progressBar = new cliProgress.SingleBar(
@@ -744,9 +817,21 @@ async function migrateTariffRelations(dryRun: boolean): Promise<void> {
 
   // Миграция TariffCMS
   logger.info("Миграция связей Tariff-CMS...");
-  const tariffCMS = await queryMySQL<{ tariff_id: number; cms_id: number }>(
-    "SELECT * FROM tariff_cms ORDER BY tariff_id, cms_id"
-  );
+  let tariffCMS: Array<{ tariff_id: number; cms_id: number }> = [];
+  try {
+    tariffCMS = await queryMySQL<{ tariff_id: number; cms_id: number }>(
+      "SELECT * FROM tariff_cms ORDER BY tariff_id, cms_id"
+    );
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes("doesn't exist")) {
+      logger.warning(
+        `Таблица tariff_cms не существует, пропускаем миграцию связей Tariff-CMS`
+      );
+    } else {
+      throw error;
+    }
+  }
   let created = 0;
   for (const relation of tariffCMS) {
     try {
@@ -787,12 +872,27 @@ async function migrateTariffRelations(dryRun: boolean): Promise<void> {
 
   // Миграция TariffControlPanel
   logger.info("Миграция связей Tariff-ControlPanel...");
-  const tariffControlPanels = await queryMySQL<{
+  let tariffControlPanels: Array<{
     tariff_id: number;
     control_panel_id: number;
-  }>(
-    "SELECT * FROM tariff_control_panels ORDER BY tariff_id, control_panel_id"
-  );
+  }> = [];
+  try {
+    tariffControlPanels = await queryMySQL<{
+      tariff_id: number;
+      control_panel_id: number;
+    }>(
+      "SELECT * FROM tariff_control_panel ORDER BY tariff_id, control_panel_id"
+    );
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes("doesn't exist")) {
+      logger.warning(
+        `Таблица tariff_control_panel не существует, пропускаем миграцию связей Tariff-ControlPanel`
+      );
+    } else {
+      throw error;
+    }
+  }
   created = 0;
   for (const relation of tariffControlPanels) {
     try {
@@ -836,10 +936,25 @@ async function migrateTariffRelations(dryRun: boolean): Promise<void> {
 
   // Миграция TariffCountry
   logger.info("Миграция связей Tariff-Country...");
-  const tariffCountries = await queryMySQL<{
+  let tariffCountries: Array<{
     tariff_id: number;
     country_id: number;
-  }>("SELECT * FROM tariff_countries ORDER BY tariff_id, country_id");
+  }> = [];
+  try {
+    tariffCountries = await queryMySQL<{
+      tariff_id: number;
+      country_id: number;
+    }>("SELECT * FROM tariff_country ORDER BY tariff_id, country_id");
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes("doesn't exist")) {
+      logger.warning(
+        `Таблица tariff_country не существует, пропускаем миграцию связей Tariff-Country`
+      );
+    } else {
+      throw error;
+    }
+  }
   created = 0;
   for (const relation of tariffCountries) {
     try {
@@ -880,10 +995,25 @@ async function migrateTariffRelations(dryRun: boolean): Promise<void> {
 
   // Миграция TariffDataStore
   logger.info("Миграция связей Tariff-DataStore...");
-  const tariffDataStores = await queryMySQL<{
+  let tariffDataStores: Array<{
     tariff_id: number;
     data_store_id: number;
-  }>("SELECT * FROM tariff_data_stores ORDER BY tariff_id, data_store_id");
+  }> = [];
+  try {
+    tariffDataStores = await queryMySQL<{
+      tariff_id: number;
+      data_store_id: number;
+    }>("SELECT * FROM tariff_data_store ORDER BY tariff_id, data_store_id");
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes("doesn't exist")) {
+      logger.warning(
+        `Таблица tariff_data_store не существует, пропускаем миграцию связей Tariff-DataStore`
+      );
+    } else {
+      throw error;
+    }
+  }
   created = 0;
   for (const relation of tariffDataStores) {
     try {
@@ -926,12 +1056,27 @@ async function migrateTariffRelations(dryRun: boolean): Promise<void> {
 
   // Миграция TariffOperationSystem
   logger.info("Миграция связей Tariff-OperationSystem...");
-  const tariffOperationSystems = await queryMySQL<{
+  let tariffOperationSystems: Array<{
     tariff_id: number;
     operation_system_id: number;
-  }>(
-    "SELECT * FROM tariff_operation_systems ORDER BY tariff_id, operation_system_id"
-  );
+  }> = [];
+  try {
+    tariffOperationSystems = await queryMySQL<{
+      tariff_id: number;
+      operation_system_id: number;
+    }>(
+      "SELECT * FROM tariff_operation_system ORDER BY tariff_id, operation_system_id"
+    );
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes("doesn't exist")) {
+      logger.warning(
+        `Таблица tariff_operation_system не существует, пропускаем миграцию связей Tariff-OperationSystem`
+      );
+    } else {
+      throw error;
+    }
+  }
   created = 0;
   for (const relation of tariffOperationSystems) {
     try {
@@ -975,12 +1120,27 @@ async function migrateTariffRelations(dryRun: boolean): Promise<void> {
 
   // Миграция TariffProgrammingLanguage
   logger.info("Миграция связей Tariff-ProgrammingLanguage...");
-  const tariffProgrammingLanguages = await queryMySQL<{
+  let tariffProgrammingLanguages: Array<{
     tariff_id: number;
     programming_language_id: number;
-  }>(
-    "SELECT * FROM tariff_programming_languages ORDER BY tariff_id, programming_language_id"
-  );
+  }> = [];
+  try {
+    tariffProgrammingLanguages = await queryMySQL<{
+      tariff_id: number;
+      programming_language_id: number;
+    }>(
+      "SELECT * FROM tariff_programming_language ORDER BY tariff_id, programming_language_id"
+    );
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    if (errorMessage.includes("doesn't exist")) {
+      logger.warning(
+        `Таблица tariff_programming_language не существует, пропускаем миграцию связей Tariff-ProgrammingLanguage`
+      );
+    } else {
+      throw error;
+    }
+  }
   created = 0;
   for (const relation of tariffProgrammingLanguages) {
     try {
@@ -1033,7 +1193,7 @@ async function migrateContentBlocks(dryRun: boolean): Promise<void> {
   logger.section("Миграция блоков контента");
 
   const mysqlContentBlocks = await queryMySQL<MySQLContentBlock>(
-    "SELECT * FROM content_blocks ORDER BY id"
+    "SELECT * FROM content_block ORDER BY id"
   );
 
   const progressBar = new cliProgress.SingleBar(
