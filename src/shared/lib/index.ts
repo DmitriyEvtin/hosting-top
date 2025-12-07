@@ -28,4 +28,5 @@ export {
   generateSlug,
   transliterate,
 } from "./slug-utils";
+export { stripHtml, truncateHtml, truncateText } from "./text-utils";
 export { cn } from "./utils";

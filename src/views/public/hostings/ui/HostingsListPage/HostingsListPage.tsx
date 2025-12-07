@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { HostingCard } from "@/shared/ui/HostingCard";
-import { HostingFilters } from "@/views/public/hostings/ui/HostingFilters";
-import { HostingsPagination } from "@/views/manager/hostings/ui/HostingsPagination";
-import { Card } from "@/shared/ui/Card";
 import { Alert, AlertDescription } from "@/shared/ui/Alert";
+import { Card } from "@/shared/ui/Card";
+import { HostingCard } from "@/shared/ui/HostingCard";
+import { HostingsPagination } from "@/views/manager/hostings/ui/HostingsPagination";
+import { HostingFilters } from "@/views/public/hostings/ui/HostingFilters";
 import { AlertCircle } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 interface FilterOption {
   slug: string;
@@ -62,14 +62,32 @@ export function HostingsListPage() {
   });
 
   // Извлекаем значения фильтров из URL
+  // Используем useMemo для стабилизации массивов, чтобы избежать зацикливания
+  // Сравниваем массивы по их строковому представлению
   const currentSearch = searchParamsHook.get("search") || "";
   const currentPage = parseInt(searchParamsHook.get("page") || "1", 10);
-  const currentCountries = searchParamsHook.getAll("country");
+
+  const countriesArray = searchParamsHook.getAll("country");
+  const countriesKey = countriesArray.join(",");
+  const currentCountries = useMemo(() => countriesArray, [countriesKey]);
+
   const currentMinPrice = searchParamsHook.get("minPrice") || "";
   const currentMaxPrice = searchParamsHook.get("maxPrice") || "";
-  const currentCms = searchParamsHook.getAll("cms");
-  const currentControlPanels = searchParamsHook.getAll("controlPanel");
-  const currentOs = searchParamsHook.getAll("os");
+
+  const cmsArray = searchParamsHook.getAll("cms");
+  const cmsKey = cmsArray.join(",");
+  const currentCms = useMemo(() => cmsArray, [cmsKey]);
+
+  const controlPanelsArray = searchParamsHook.getAll("controlPanel");
+  const controlPanelsKey = controlPanelsArray.join(",");
+  const currentControlPanels = useMemo(
+    () => controlPanelsArray,
+    [controlPanelsKey]
+  );
+
+  const osArray = searchParamsHook.getAll("os");
+  const osKey = osArray.join(",");
+  const currentOs = useMemo(() => osArray, [osKey]);
 
   // Функция для обновления URL параметров
   const updateURL = useCallback(
@@ -100,7 +118,7 @@ export function HostingsListPage() {
 
       const countries =
         updates.countries !== undefined ? updates.countries : currentCountries;
-      countries.forEach((country) => params.append("country", country));
+      countries.forEach(country => params.append("country", country));
 
       const minPrice =
         updates.minPrice !== undefined ? updates.minPrice : currentMinPrice;
@@ -115,16 +133,16 @@ export function HostingsListPage() {
       }
 
       const cms = updates.cms !== undefined ? updates.cms : currentCms;
-      cms.forEach((cmsItem) => params.append("cms", cmsItem));
+      cms.forEach(cmsItem => params.append("cms", cmsItem));
 
       const controlPanels =
         updates.controlPanels !== undefined
           ? updates.controlPanels
           : currentControlPanels;
-      controlPanels.forEach((panel) => params.append("controlPanel", panel));
+      controlPanels.forEach(panel => params.append("controlPanel", panel));
 
       const os = updates.os !== undefined ? updates.os : currentOs;
-      os.forEach((osItem) => params.append("os", osItem));
+      os.forEach(osItem => params.append("os", osItem));
 
       const queryString = params.toString();
       router.push(`/hosting${queryString ? `?${queryString}` : ""}`);
@@ -182,18 +200,18 @@ export function HostingsListPage() {
 
       params.set("limit", "20");
 
-      currentCountries.forEach((country) => params.append("country", country));
+      currentCountries.forEach(country => params.append("country", country));
       if (currentMinPrice) {
         params.set("minPrice", currentMinPrice);
       }
       if (currentMaxPrice) {
         params.set("maxPrice", currentMaxPrice);
       }
-      currentCms.forEach((cmsItem) => params.append("cms", cmsItem));
-      currentControlPanels.forEach((panel) =>
+      currentCms.forEach(cmsItem => params.append("cms", cmsItem));
+      currentControlPanels.forEach(panel =>
         params.append("controlPanel", panel)
       );
-      currentOs.forEach((osItem) => params.append("os", osItem));
+      currentOs.forEach(osItem => params.append("os", osItem));
 
       const response = await fetch(`/api/public/hostings?${params.toString()}`);
 
@@ -293,7 +311,7 @@ export function HostingsListPage() {
             <div className="h-8 bg-gray-200 rounded w-1/4 mb-4"></div>
             <div className="h-32 bg-gray-200 rounded mb-4"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
+              {[1, 2, 3, 4, 5, 6].map(i => (
                 <div key={i} className="h-64 bg-gray-200 rounded"></div>
               ))}
             </div>
@@ -340,7 +358,7 @@ export function HostingsListPage() {
 
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
+            {[1, 2, 3, 4, 5, 6].map(i => (
               <Card key={i} className="animate-pulse">
                 <div className="h-64 bg-gray-200 rounded"></div>
               </Card>
@@ -348,9 +366,7 @@ export function HostingsListPage() {
           </div>
         ) : hostings.length === 0 ? (
           <Card className="p-12 text-center">
-            <h3 className="text-xl font-semibold mb-2">
-              Хостинги не найдены
-            </h3>
+            <h3 className="text-xl font-semibold mb-2">Хостинги не найдены</h3>
             <p className="text-muted-foreground mb-4">
               Попробуйте изменить параметры фильтрации
             </p>
@@ -364,7 +380,7 @@ export function HostingsListPage() {
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {hostings.map((hosting) => (
+              {hostings.map(hosting => (
                 <HostingCard key={hosting.id} hosting={hosting} />
               ))}
             </div>
@@ -387,4 +403,3 @@ export function HostingsListPage() {
     </div>
   );
 }
-

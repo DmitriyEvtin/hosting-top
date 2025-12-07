@@ -1,5 +1,8 @@
 "use client";
 
+import { truncateHtml } from "@/shared/lib/text-utils";
+import { cn } from "@/shared/lib/utils";
+import { Badge } from "@/shared/ui/Badge";
 import {
   Card,
   CardContent,
@@ -8,11 +11,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui/Card";
-import { Badge } from "@/shared/ui/Badge";
-import { ExternalLink, Package, Users, Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, ExternalLink, Package, Users } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { cn } from "@/shared/lib/utils";
 
 interface HostingCardProps {
   hosting: {
@@ -32,11 +33,7 @@ interface HostingCardProps {
 
 export function HostingCard({ hosting, className }: HostingCardProps) {
   const router = useRouter();
-  const truncatedDescription = hosting.description
-    ? hosting.description.length > 150
-      ? `${hosting.description.substring(0, 150)}...`
-      : hosting.description
-    : null;
+  const truncatedDescription = truncateHtml(hosting.description, 150);
 
   const handleCardClick = () => {
     router.push(`/hosting/${hosting.slug}`);
@@ -74,7 +71,7 @@ export function HostingCard({ hosting, className }: HostingCardProps) {
                 href={hosting.websiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
+                onClick={e => e.stopPropagation()}
                 className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <span className="truncate">
@@ -104,9 +101,7 @@ export function HostingCard({ hosting, className }: HostingCardProps) {
           {hosting.clients !== null && (
             <div className="flex items-center gap-1.5">
               <Users className="h-4 w-4" />
-              <span>
-                {hosting.clients.toLocaleString("ru-RU")} клиентов
-              </span>
+              <span>{hosting.clients.toLocaleString("ru-RU")} клиентов</span>
             </div>
           )}
           {hosting.testPeriod > 0 && (
@@ -126,8 +121,8 @@ export function HostingCard({ hosting, className }: HostingCardProps) {
             {hosting._count.tariffs === 1
               ? "тариф"
               : hosting._count.tariffs < 5
-              ? "тарифа"
-              : "тарифов"}
+                ? "тарифа"
+                : "тарифов"}
           </span>
         </div>
         <Badge variant="outline" className="text-xs">
@@ -137,4 +132,3 @@ export function HostingCard({ hosting, className }: HostingCardProps) {
     </Card>
   );
 }
-

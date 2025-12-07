@@ -1,17 +1,12 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { cn } from "@/shared/lib/utils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/Card";
 import { HostingBreadcrumbs } from "@/shared/ui/HostingBreadcrumbs";
 import { HostingNavigation } from "@/shared/ui/HostingNavigation";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@/shared/ui/Card";
-import { cn } from "@/shared/lib/utils";
+import { ExternalLink } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 interface ContentBlock {
   id: string;
@@ -36,9 +31,7 @@ interface HostingOverviewPageProps {
   };
 }
 
-export function HostingOverviewPage({
-  hosting,
-}: HostingOverviewPageProps) {
+export function HostingOverviewPage({ hosting }: HostingOverviewPageProps) {
   const breadcrumbsItems = [
     { label: "Главная", href: "/" },
     { label: "Хостинги", href: "/hosting" },
@@ -57,10 +50,7 @@ export function HostingOverviewPage({
         <HostingBreadcrumbs items={breadcrumbsItems} />
 
         {/* Навигация */}
-        <HostingNavigation
-          hostingSlug={hosting.slug}
-          currentPage="overview"
-        />
+        <HostingNavigation hostingSlug={hosting.slug} currentPage="overview" />
 
         {/* Шапка с информацией о хостинге */}
         <Card>
@@ -85,11 +75,12 @@ export function HostingOverviewPage({
               <div className="flex-1 space-y-4">
                 <div>
                   <h1 className="text-3xl font-bold mb-2">{hosting.name}</h1>
-                  {hosting.description && (
-                    <p className="text-muted-foreground text-lg">
-                      {hosting.description}
-                    </p>
-                  )}
+                  {/*hosting.description && (
+                    <div
+                      className="prose prose-lg max-w-none text-muted-foreground dark:prose-invert"
+                      dangerouslySetInnerHTML={{ __html: hosting.description }}
+                    />
+                  )*/}
                 </div>
 
                 {/* Дополнительная информация */}
@@ -122,7 +113,12 @@ export function HostingOverviewPage({
                         Тестовый период
                       </p>
                       <p className="text-lg font-semibold">
-                        {hosting.testPeriod} {hosting.testPeriod === 1 ? "день" : hosting.testPeriod < 5 ? "дня" : "дней"}
+                        {hosting.testPeriod}{" "}
+                        {hosting.testPeriod === 1
+                          ? "день"
+                          : hosting.testPeriod < 5
+                            ? "дня"
+                            : "дней"}
                       </p>
                     </div>
                   )}
@@ -151,19 +147,15 @@ export function HostingOverviewPage({
         {hosting.contentBlocks.length === 0 ? (
           <Card>
             <CardContent className="py-12 text-center">
-              <p className="text-muted-foreground">
-                Контент-блоки отсутствуют
-              </p>
+              <p className="text-muted-foreground">Контент-блоки отсутствуют</p>
             </CardContent>
           </Card>
         ) : (
           <div className="space-y-6">
-            {hosting.contentBlocks.map((block) => (
+            {hosting.contentBlocks.map(block => (
               <Card
                 key={block.id}
-                className={cn(
-                  block.type && `content-block-type-${block.type}`
-                )}
+                className={cn(block.type && `content-block-type-${block.type}`)}
               >
                 {block.title && (
                   <CardHeader>
@@ -186,4 +178,3 @@ export function HostingOverviewPage({
     </div>
   );
 }
-
