@@ -7,7 +7,6 @@ import {
   X,
   LayoutDashboard,
   Server,
-  FileText,
   BookOpen,
   Database,
 } from "lucide-react";
@@ -52,11 +51,6 @@ export function CRMSidebar({ className }: CRMSidebarProps) {
           href: "/manager/hostings",
           label: "Хостинги",
           icon: Server,
-        },
-        {
-          href: "/manager/content-blocks",
-          label: "Блоки контента",
-          icon: FileText,
         },
         {
           href: "/manager/references",
