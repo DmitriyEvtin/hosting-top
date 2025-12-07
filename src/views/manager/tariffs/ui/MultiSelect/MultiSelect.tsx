@@ -106,16 +106,24 @@ export function MultiSelect({
           </span>
           <div className="flex items-center gap-1">
             {value.length > 0 && (
-              <button
-                type="button"
+              <span
+                role="button"
+                tabIndex={0}
                 onClick={(e) => {
                   e.stopPropagation();
                   handleClear();
                 }}
-                className="rounded-sm p-1 hover:bg-accent"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleClear();
+                  }
+                }}
+                className="rounded-sm p-1 hover:bg-accent cursor-pointer focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1"
               >
                 <X className="h-4 w-4" />
-              </button>
+              </span>
             )}
           </div>
         </button>

@@ -202,9 +202,7 @@ exports.Prisma.TariffScalarFieldEnum = {
   diskType: 'diskType',
   antivirus: 'antivirus',
   countDb: 'countDb',
-  price: 'price',
   currency: 'currency',
-  period: 'period',
   bandwidth: 'bandwidth',
   domainsCount: 'domainsCount',
   databasesCount: 'databasesCount',
@@ -317,11 +315,6 @@ exports.UserRole = exports.$Enums.UserRole = {
   MANAGER: 'MANAGER',
   MODERATOR: 'MODERATOR',
   USER: 'USER'
-};
-
-exports.TariffPeriod = exports.$Enums.TariffPeriod = {
-  MONTH: 'MONTH',
-  YEAR: 'YEAR'
 };
 
 exports.Prisma.ModelName = {

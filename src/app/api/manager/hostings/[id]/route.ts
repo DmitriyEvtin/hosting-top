@@ -51,9 +51,7 @@ export async function GET(
           select: {
             id: true,
             name: true,
-            price: true,
             currency: true,
-            period: true,
             isActive: true,
           },
           orderBy: { createdAt: "desc" },

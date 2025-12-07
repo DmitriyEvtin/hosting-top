@@ -1,5 +1,4 @@
 import { prisma } from "@/shared/api/database";
-import { TariffPeriod } from "@/shared/api/database/prisma";
 import { authOptions } from "@/shared/lib/auth-config";
 import { hasManagerAccess } from "@/shared/lib/permissions";
 import { getServerSession } from "next-auth";
@@ -32,16 +31,11 @@ const TariffCreateSchema = z
       .max(255, "Подзаголовок слишком длинный")
       .optional()
       .nullable(),
-    price: z
-      .number()
-      .positive("Цена должна быть положительной")
-      .or(z.string().transform(val => parseFloat(val))),
     currency: z
       .string()
       .min(1, "Валюта обязательна")
       .max(10, "Валюта слишком длинная")
       .default("RUB"),
-    period: z.nativeEnum(TariffPeriod),
     disk_space: z.number().int().positive().optional().nullable(),
     bandwidth: z.number().int().positive().optional().nullable(),
     domains_count: z.number().int().nonnegative().optional().nullable(),
@@ -202,9 +196,7 @@ export async function POST(
     const {
       name,
       subtitle,
-      price,
       currency,
-      period,
       disk_space,
       bandwidth,
       domains_count,
@@ -318,9 +310,7 @@ export async function POST(
           hostingId: resolvedParams.id,
           name,
           subtitle: subtitle || null,
-          price: typeof price === "string" ? parseFloat(price) : price,
           currency: currency || "RUB",
-          period,
           diskSpace: disk_space ?? null,
           bandwidth: bandwidth ?? null,
           domainsCount: domains_count ?? null,

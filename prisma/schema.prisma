@@ -122,9 +122,7 @@ model Tariff {
   antivirus            Boolean?                    @default(false)
   countDb              Int?                        @map("count_db")
   // Старые поля для обратной совместимости
-  price                Decimal?                    @db.Decimal(10, 2)
   currency             String                      @default("RUB")
-  period               TariffPeriod?
   bandwidth            Int?                        @db.Integer
   domainsCount         Int?                        @map("domains_count")
   databasesCount       Int?                        @map("databases_count")

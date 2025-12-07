@@ -8470,7 +8470,6 @@ export namespace Prisma {
     countTestDays: number | null
     diskType: number | null
     countDb: number | null
-    price: Decimal | null
     bandwidth: number | null
     domainsCount: number | null
     databasesCount: number | null
@@ -8491,7 +8490,6 @@ export namespace Prisma {
     countTestDays: number | null
     diskType: number | null
     countDb: number | null
-    price: Decimal | null
     bandwidth: number | null
     domainsCount: number | null
     databasesCount: number | null
@@ -8525,9 +8523,7 @@ export namespace Prisma {
     diskType: number | null
     antivirus: boolean | null
     countDb: number | null
-    price: Decimal | null
     currency: string | null
-    period: $Enums.TariffPeriod | null
     bandwidth: number | null
     domainsCount: number | null
     databasesCount: number | null
@@ -8564,9 +8560,7 @@ export namespace Prisma {
     diskType: number | null
     antivirus: boolean | null
     countDb: number | null
-    price: Decimal | null
     currency: string | null
-    period: $Enums.TariffPeriod | null
     bandwidth: number | null
     domainsCount: number | null
     databasesCount: number | null
@@ -8603,9 +8597,7 @@ export namespace Prisma {
     diskType: number
     antivirus: number
     countDb: number
-    price: number
     currency: number
-    period: number
     bandwidth: number
     domainsCount: number
     databasesCount: number
@@ -8631,7 +8623,6 @@ export namespace Prisma {
     countTestDays?: true
     diskType?: true
     countDb?: true
-    price?: true
     bandwidth?: true
     domainsCount?: true
     databasesCount?: true
@@ -8652,7 +8643,6 @@ export namespace Prisma {
     countTestDays?: true
     diskType?: true
     countDb?: true
-    price?: true
     bandwidth?: true
     domainsCount?: true
     databasesCount?: true
@@ -8686,9 +8676,7 @@ export namespace Prisma {
     diskType?: true
     antivirus?: true
     countDb?: true
-    price?: true
     currency?: true
-    period?: true
     bandwidth?: true
     domainsCount?: true
     databasesCount?: true
@@ -8725,9 +8713,7 @@ export namespace Prisma {
     diskType?: true
     antivirus?: true
     countDb?: true
-    price?: true
     currency?: true
-    period?: true
     bandwidth?: true
     domainsCount?: true
     databasesCount?: true
@@ -8764,9 +8750,7 @@ export namespace Prisma {
     diskType?: true
     antivirus?: true
     countDb?: true
-    price?: true
     currency?: true
-    period?: true
     bandwidth?: true
     domainsCount?: true
     databasesCount?: true
@@ -8890,9 +8874,7 @@ export namespace Prisma {
     diskType: number | null
     antivirus: boolean | null
     countDb: number | null
-    price: Decimal | null
     currency: string
-    period: $Enums.TariffPeriod | null
     bandwidth: number | null
     domainsCount: number | null
     databasesCount: number | null
@@ -8948,9 +8930,7 @@ export namespace Prisma {
     diskType?: boolean
     antivirus?: boolean
     countDb?: boolean
-    price?: boolean
     currency?: boolean
-    period?: boolean
     bandwidth?: boolean
     domainsCount?: boolean
     databasesCount?: boolean
@@ -8995,9 +8975,7 @@ export namespace Prisma {
     diskType?: boolean
     antivirus?: boolean
     countDb?: boolean
-    price?: boolean
     currency?: boolean
-    period?: boolean
     bandwidth?: boolean
     domainsCount?: boolean
     databasesCount?: boolean
@@ -9035,9 +9013,7 @@ export namespace Prisma {
     diskType?: boolean
     antivirus?: boolean
     countDb?: boolean
-    price?: boolean
     currency?: boolean
-    period?: boolean
     bandwidth?: boolean
     domainsCount?: boolean
     databasesCount?: boolean
@@ -9075,9 +9051,7 @@ export namespace Prisma {
     diskType?: boolean
     antivirus?: boolean
     countDb?: boolean
-    price?: boolean
     currency?: boolean
-    period?: boolean
     bandwidth?: boolean
     domainsCount?: boolean
     databasesCount?: boolean
@@ -9087,7 +9061,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type TariffOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "hostingId" | "type" | "name" | "subtitle" | "link" | "domains" | "diskSpace" | "sites" | "ftpAccounts" | "traffic" | "mailboxes" | "automaticCms" | "ssl" | "backup" | "ssh" | "additionalId" | "priceMonth" | "priceYear" | "status" | "countTestDays" | "isTemplate" | "ddosDef" | "diskType" | "antivirus" | "countDb" | "price" | "currency" | "period" | "bandwidth" | "domainsCount" | "databasesCount" | "emailAccounts" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["tariff"]>
+  export type TariffOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "hostingId" | "type" | "name" | "subtitle" | "link" | "domains" | "diskSpace" | "sites" | "ftpAccounts" | "traffic" | "mailboxes" | "automaticCms" | "ssl" | "backup" | "ssh" | "additionalId" | "priceMonth" | "priceYear" | "status" | "countTestDays" | "isTemplate" | "ddosDef" | "diskType" | "antivirus" | "countDb" | "currency" | "bandwidth" | "domainsCount" | "databasesCount" | "emailAccounts" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["tariff"]>
   export type TariffInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     hosting?: boolean | HostingDefaultArgs<ExtArgs>
     cms?: boolean | Tariff$cmsArgs<ExtArgs>
@@ -9143,9 +9117,7 @@ export namespace Prisma {
       diskType: number | null
       antivirus: boolean | null
       countDb: number | null
-      price: Prisma.Decimal | null
       currency: string
-      period: $Enums.TariffPeriod | null
       bandwidth: number | null
       domainsCount: number | null
       databasesCount: number | null
@@ -9609,9 +9581,7 @@ export namespace Prisma {
     readonly diskType: FieldRef<"Tariff", 'Int'>
     readonly antivirus: FieldRef<"Tariff", 'Boolean'>
     readonly countDb: FieldRef<"Tariff", 'Int'>
-    readonly price: FieldRef<"Tariff", 'Decimal'>
     readonly currency: FieldRef<"Tariff", 'String'>
-    readonly period: FieldRef<"Tariff", 'TariffPeriod'>
     readonly bandwidth: FieldRef<"Tariff", 'Int'>
     readonly domainsCount: FieldRef<"Tariff", 'Int'>
     readonly databasesCount: FieldRef<"Tariff", 'Int'>
@@ -23921,9 +23891,7 @@ export namespace Prisma {
     diskType: 'diskType',
     antivirus: 'antivirus',
     countDb: 'countDb',
-    price: 'price',
     currency: 'currency',
-    period: 'period',
     bandwidth: 'bandwidth',
     domainsCount: 'domainsCount',
     databasesCount: 'databasesCount',
@@ -24162,20 +24130,6 @@ export namespace Prisma {
    * Reference to a field of type 'Decimal[]'
    */
   export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'TariffPeriod'
-   */
-  export type EnumTariffPeriodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TariffPeriod'>
-    
-
-
-  /**
-   * Reference to a field of type 'TariffPeriod[]'
-   */
-  export type ListEnumTariffPeriodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TariffPeriod[]'>
     
 
 
@@ -24585,9 +24539,7 @@ export namespace Prisma {
     diskType?: IntNullableFilter<"Tariff"> | number | null
     antivirus?: BoolNullableFilter<"Tariff"> | boolean | null
     countDb?: IntNullableFilter<"Tariff"> | number | null
-    price?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
     currency?: StringFilter<"Tariff"> | string
-    period?: EnumTariffPeriodNullableFilter<"Tariff"> | $Enums.TariffPeriod | null
     bandwidth?: IntNullableFilter<"Tariff"> | number | null
     domainsCount?: IntNullableFilter<"Tariff"> | number | null
     databasesCount?: IntNullableFilter<"Tariff"> | number | null
@@ -24631,9 +24583,7 @@ export namespace Prisma {
     diskType?: SortOrderInput | SortOrder
     antivirus?: SortOrderInput | SortOrder
     countDb?: SortOrderInput | SortOrder
-    price?: SortOrderInput | SortOrder
     currency?: SortOrder
-    period?: SortOrderInput | SortOrder
     bandwidth?: SortOrderInput | SortOrder
     domainsCount?: SortOrderInput | SortOrder
     databasesCount?: SortOrderInput | SortOrder
@@ -24680,9 +24630,7 @@ export namespace Prisma {
     diskType?: IntNullableFilter<"Tariff"> | number | null
     antivirus?: BoolNullableFilter<"Tariff"> | boolean | null
     countDb?: IntNullableFilter<"Tariff"> | number | null
-    price?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
     currency?: StringFilter<"Tariff"> | string
-    period?: EnumTariffPeriodNullableFilter<"Tariff"> | $Enums.TariffPeriod | null
     bandwidth?: IntNullableFilter<"Tariff"> | number | null
     domainsCount?: IntNullableFilter<"Tariff"> | number | null
     databasesCount?: IntNullableFilter<"Tariff"> | number | null
@@ -24726,9 +24674,7 @@ export namespace Prisma {
     diskType?: SortOrderInput | SortOrder
     antivirus?: SortOrderInput | SortOrder
     countDb?: SortOrderInput | SortOrder
-    price?: SortOrderInput | SortOrder
     currency?: SortOrder
-    period?: SortOrderInput | SortOrder
     bandwidth?: SortOrderInput | SortOrder
     domainsCount?: SortOrderInput | SortOrder
     databasesCount?: SortOrderInput | SortOrder
@@ -24773,9 +24719,7 @@ export namespace Prisma {
     diskType?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
     antivirus?: BoolNullableWithAggregatesFilter<"Tariff"> | boolean | null
     countDb?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
-    price?: DecimalNullableWithAggregatesFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
     currency?: StringWithAggregatesFilter<"Tariff"> | string
-    period?: EnumTariffPeriodNullableWithAggregatesFilter<"Tariff"> | $Enums.TariffPeriod | null
     bandwidth?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
     domainsCount?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
     databasesCount?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
@@ -25849,9 +25793,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -25895,9 +25837,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -25939,9 +25879,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -25985,9 +25923,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -26030,9 +25966,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -26068,9 +26002,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -26107,9 +26039,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -27161,13 +27091,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type EnumTariffPeriodNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel> | null
-    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumTariffPeriodNullableFilter<$PrismaModel> | $Enums.TariffPeriod | null
-  }
-
   export type HostingScalarRelationFilter = {
     is?: HostingWhereInput
     isNot?: HostingWhereInput
@@ -27260,9 +27183,7 @@ export namespace Prisma {
     diskType?: SortOrder
     antivirus?: SortOrder
     countDb?: SortOrder
-    price?: SortOrder
     currency?: SortOrder
-    period?: SortOrder
     bandwidth?: SortOrder
     domainsCount?: SortOrder
     databasesCount?: SortOrder
@@ -27286,7 +27207,6 @@ export namespace Prisma {
     countTestDays?: SortOrder
     diskType?: SortOrder
     countDb?: SortOrder
-    price?: SortOrder
     bandwidth?: SortOrder
     domainsCount?: SortOrder
     databasesCount?: SortOrder
@@ -27320,9 +27240,7 @@ export namespace Prisma {
     diskType?: SortOrder
     antivirus?: SortOrder
     countDb?: SortOrder
-    price?: SortOrder
     currency?: SortOrder
-    period?: SortOrder
     bandwidth?: SortOrder
     domainsCount?: SortOrder
     databasesCount?: SortOrder
@@ -27359,9 +27277,7 @@ export namespace Prisma {
     diskType?: SortOrder
     antivirus?: SortOrder
     countDb?: SortOrder
-    price?: SortOrder
     currency?: SortOrder
-    period?: SortOrder
     bandwidth?: SortOrder
     domainsCount?: SortOrder
     databasesCount?: SortOrder
@@ -27385,7 +27301,6 @@ export namespace Prisma {
     countTestDays?: SortOrder
     diskType?: SortOrder
     countDb?: SortOrder
-    price?: SortOrder
     bandwidth?: SortOrder
     domainsCount?: SortOrder
     databasesCount?: SortOrder
@@ -27430,16 +27345,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type EnumTariffPeriodNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel> | null
-    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumTariffPeriodNullableWithAggregatesFilter<$PrismaModel> | $Enums.TariffPeriod | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumTariffPeriodNullableFilter<$PrismaModel>
-    _max?: NestedEnumTariffPeriodNullableFilter<$PrismaModel>
   }
 
   export type CMSCountOrderByAggregateInput = {
@@ -28100,10 +28005,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type NullableEnumTariffPeriodFieldUpdateOperationsInput = {
-    set?: $Enums.TariffPeriod | null
   }
 
   export type HostingUpdateOneRequiredWithoutTariffsNestedInput = {
@@ -28925,13 +28826,6 @@ export namespace Prisma {
     not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
-  export type NestedEnumTariffPeriodNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel> | null
-    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumTariffPeriodNullableFilter<$PrismaModel> | $Enums.TariffPeriod | null
-  }
-
   export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
@@ -28981,16 +28875,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedEnumTariffPeriodNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel> | null
-    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumTariffPeriodNullableWithAggregatesFilter<$PrismaModel> | $Enums.TariffPeriod | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumTariffPeriodNullableFilter<$PrismaModel>
-    _max?: NestedEnumTariffPeriodNullableFilter<$PrismaModel>
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -29275,9 +29159,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -29319,9 +29201,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -29425,9 +29305,7 @@ export namespace Prisma {
     diskType?: IntNullableFilter<"Tariff"> | number | null
     antivirus?: BoolNullableFilter<"Tariff"> | boolean | null
     countDb?: IntNullableFilter<"Tariff"> | number | null
-    price?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
     currency?: StringFilter<"Tariff"> | string
-    period?: EnumTariffPeriodNullableFilter<"Tariff"> | $Enums.TariffPeriod | null
     bandwidth?: IntNullableFilter<"Tariff"> | number | null
     domainsCount?: IntNullableFilter<"Tariff"> | number | null
     databasesCount?: IntNullableFilter<"Tariff"> | number | null
@@ -30060,9 +29938,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -30105,9 +29981,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -30181,9 +30055,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -30226,9 +30098,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -30292,9 +30162,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -30337,9 +30205,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -30413,9 +30279,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -30458,9 +30322,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -30524,9 +30386,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -30569,9 +30429,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -30645,9 +30503,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -30690,9 +30546,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -30756,9 +30610,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -30801,9 +30653,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -30877,9 +30727,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -30922,9 +30770,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -30988,9 +30834,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -31033,9 +30877,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -31109,9 +30951,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -31154,9 +30994,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -31220,9 +31058,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -31265,9 +31101,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -31341,9 +31175,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -31386,9 +31218,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -31612,9 +31442,7 @@ export namespace Prisma {
     diskType?: number | null
     antivirus?: boolean | null
     countDb?: number | null
-    price?: Decimal | DecimalJsLike | number | string | null
     currency?: string
-    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -31661,9 +31489,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -31705,9 +31531,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -31749,9 +31573,7 @@ export namespace Prisma {
     diskType?: NullableIntFieldUpdateOperationsInput | number | null
     antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
     countDb?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     currency?: StringFieldUpdateOperationsInput | string
-    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null

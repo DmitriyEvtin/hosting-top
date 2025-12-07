@@ -25,9 +25,7 @@ interface ReferenceItem {
 interface Tariff {
   id: string;
   name: string;
-  price: string;
   currency: string;
-  period: "MONTH" | "YEAR";
   diskSpace: number | null;
   bandwidth: number | null;
   domainsCount: number | null;

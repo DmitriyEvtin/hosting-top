@@ -169,9 +169,7 @@ export interface PrismaTariff {
   antivirus?: boolean | null;
   countDb?: number | null;
   // Старые поля для обратной совместимости
-  price?: Decimal | null;
   currency: string; // Не может быть null, всегда строка (default: "RUB")
-  period?: TariffPeriod | null;
   bandwidth?: number | null;
   domainsCount?: number | null;
   databasesCount?: number | null;

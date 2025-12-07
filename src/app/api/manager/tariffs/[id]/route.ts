@@ -1,5 +1,4 @@
 import { prisma } from "@/shared/api/database";
-import { TariffPeriod } from "@/shared/api/database/prisma";
 import { authOptions } from "@/shared/lib/auth-config";
 import { hasManagerAccess } from "@/shared/lib/permissions";
 import { getServerSession } from "next-auth";
@@ -24,9 +23,7 @@ const TariffRelationsSchema = z.object({
 const TariffUpdateSchema = z.object({
   name: z.string().min(1, "Название обязательно").max(255, "Название слишком длинное").optional(),
   subtitle: z.string().max(255, "Подзаголовок слишком длинный").optional().nullable(),
-  price: z.number().positive("Цена должна быть положительной").or(z.string().transform((val) => parseFloat(val))).optional(),
   currency: z.string().min(1, "Валюта обязательна").max(10, "Валюта слишком длинная").optional(),
-  period: z.nativeEnum(TariffPeriod).optional(),
   disk_space: z.number().int().positive().optional().nullable(),
   bandwidth: z.number().int().positive().optional().nullable(),
   domains_count: z.number().int().nonnegative().optional().nullable(),
@@ -187,9 +184,7 @@ export async function PUT(
     const {
       name,
       subtitle,
-      price,
       currency,
-      period,
       disk_space,
       bandwidth,
       domains_count,
@@ -295,16 +290,8 @@ export async function PUT(
         updateData.subtitle = subtitle || null;
       }
 
-      if (price !== undefined) {
-        updateData.price = typeof price === "string" ? parseFloat(price) : price;
-      }
-
       if (currency !== undefined) {
         updateData.currency = currency;
-      }
-
-      if (period !== undefined) {
-        updateData.period = period;
       }
 
       if (disk_space !== undefined) {

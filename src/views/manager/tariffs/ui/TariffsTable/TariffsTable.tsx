@@ -21,12 +21,15 @@ interface ReferenceItem {
 interface Tariff {
   id: string;
   name: string;
-  price: string;
   currency: string;
-  period: "MONTH" | "YEAR";
   diskSpace: number | null;
   bandwidth: number | null;
+  domainsCount: number | null;
+  databasesCount: number | null;
+  emailAccounts: number | null;
   isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
   cms: ReferenceItem[];
   controlPanels: ReferenceItem[];
   countries: ReferenceItem[];
@@ -48,18 +51,6 @@ export function TariffsTable({
   onDelete,
   loading = false,
 }: TariffsTableProps) {
-  // Форматирование цены
-  const formatPrice = (price: string, currency: string, period: "MONTH" | "YEAR") => {
-    const priceNum = parseFloat(price);
-    const periodText = period === "MONTH" ? "мес" : "год";
-    return `${priceNum.toLocaleString("ru-RU")} ${currency}/${periodText}`;
-  };
-
-  // Форматирование периода
-  const formatPeriod = (period: "MONTH" | "YEAR") => {
-    return period === "MONTH" ? "Месяц" : "Год";
-  };
-
   // Форматирование размера
   const formatSize = (size: number | null) => {
     if (size === null) return "—";
@@ -94,8 +85,6 @@ export function TariffsTable({
         <TableHeader>
           <TableRow>
             <TableHead>Название</TableHead>
-            <TableHead>Цена</TableHead>
-            <TableHead>Период</TableHead>
             <TableHead>Диск</TableHead>
             <TableHead>Трафик</TableHead>
             <TableHead className="text-center">Статус</TableHead>
@@ -103,13 +92,9 @@ export function TariffsTable({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {tariffs.map((tariff) => (
+          {tariffs.map(tariff => (
             <TableRow key={tariff.id}>
               <TableCell className="font-medium">{tariff.name}</TableCell>
-              <TableCell>
-                {formatPrice(tariff.price, tariff.currency, tariff.period)}
-              </TableCell>
-              <TableCell>{formatPeriod(tariff.period)}</TableCell>
               <TableCell>{formatSize(tariff.diskSpace)}</TableCell>
               <TableCell>{formatSize(tariff.bandwidth)}</TableCell>
               <TableCell className="text-center">
@@ -146,4 +131,3 @@ export function TariffsTable({
     </div>
   );
 }
-

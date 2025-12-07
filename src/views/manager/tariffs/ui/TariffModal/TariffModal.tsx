@@ -33,9 +33,7 @@ interface ReferenceItem {
 interface Tariff {
   id: string;
   name: string;
-  price: string;
   currency: string;
-  period: "MONTH" | "YEAR";
   diskSpace: number | null;
   bandwidth: number | null;
   domainsCount: number | null;
@@ -83,9 +81,7 @@ export function TariffModal({
   // Форма
   const [name, setName] = useState("");
   const [subtitle, setSubtitle] = useState("");
-  const [price, setPrice] = useState("");
   const [currency, setCurrency] = useState("RUB");
-  const [period, setPeriod] = useState<"MONTH" | "YEAR">("MONTH");
   const [diskSpace, setDiskSpace] = useState<string>("");
   const [bandwidth, setBandwidth] = useState<string>("");
   const [domainsCount, setDomainsCount] = useState<string>("");
@@ -168,9 +164,7 @@ export function TariffModal({
       const tariffData = data.tariff;
       setName(tariffData.name || "");
       setSubtitle(tariffData.subtitle || "");
-      setPrice(tariffData.price?.toString() || "");
       setCurrency(tariffData.currency || "RUB");
-      setPeriod(tariffData.period || "MONTH");
       setDiskSpace(tariffData.diskSpace?.toString() || "");
       setBandwidth(tariffData.bandwidth?.toString() || "");
       setDomainsCount(tariffData.domainsCount?.toString() || "");
@@ -242,23 +236,12 @@ export function TariffModal({
       return;
     }
 
-    if (!price || parseFloat(price) <= 0) {
-      toast({
-        title: "Ошибка валидации",
-        description: "Цена должна быть положительной",
-        variant: "destructive",
-      });
-      return;
-    }
-
     setLoading(true);
     try {
       const payload = {
         name: name.trim(),
         subtitle: subtitle.trim() || null,
-        price: parseFloat(price),
         currency,
-        period,
         disk_space: diskSpace ? parseInt(diskSpace) : null,
         bandwidth: bandwidth ? parseInt(bandwidth) : null,
         domains_count: domainsCount ? parseInt(domainsCount) : null,
@@ -360,20 +343,6 @@ export function TariffModal({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="price">
-                  Цена <span className="text-red-500">*</span>
-                </Label>
-                <Input
-                  id="price"
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                  placeholder="0.00"
-                />
-              </div>
-              <div className="space-y-2">
                 <Label htmlFor="currency">Валюта</Label>
                 <Select value={currency} onValueChange={setCurrency}>
                   <SelectTrigger id="currency">
@@ -383,23 +352,6 @@ export function TariffModal({
                     <SelectItem value="RUB">RUB</SelectItem>
                     <SelectItem value="USD">USD</SelectItem>
                     <SelectItem value="EUR">EUR</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="period">
-                  Период <span className="text-red-500">*</span>
-                </Label>
-                <Select
-                  value={period}
-                  onValueChange={(value) => setPeriod(value as "MONTH" | "YEAR")}
-                >
-                  <SelectTrigger id="period">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="MONTH">Месяц</SelectItem>
-                    <SelectItem value="YEAR">Год</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

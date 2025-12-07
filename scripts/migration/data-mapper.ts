@@ -202,34 +202,6 @@ export function mapTariff(
     throw new Error("Tariff name is required");
   }
 
-  // Определяем period на основе price_month и price_year
-  let period: TariffPeriod | null = null;
-  if (
-    mysqlTariff.price_month !== null &&
-    mysqlTariff.price_month !== undefined
-  ) {
-    period = TariffPeriod.MONTH;
-  } else if (
-    mysqlTariff.price_year !== null &&
-    mysqlTariff.price_year !== undefined
-  ) {
-    period = TariffPeriod.YEAR;
-  } else if (mysqlTariff.period) {
-    // Используем старое поле period, если оно есть
-    period = toTariffPeriod(mysqlTariff.period);
-  }
-
-  // Определяем price на основе period
-  let price: Decimal | null = null;
-  if (period === TariffPeriod.MONTH && mysqlTariff.price_month) {
-    price = toDecimal(mysqlTariff.price_month);
-  } else if (period === TariffPeriod.YEAR && mysqlTariff.price_year) {
-    price = toDecimal(mysqlTariff.price_year);
-  } else if (mysqlTariff.price) {
-    // Используем старое поле price, если оно есть
-    price = toDecimal(mysqlTariff.price);
-  }
-
   return {
     id: randomUUID(),
     hostingId,
@@ -284,9 +256,7 @@ export function mapTariff(
         : null,
     countDb: mysqlTariff.count_db ?? null,
     // Старые поля для обратной совместимости
-    price,
     currency: mysqlTariff.currency?.trim() || "RUB",
-    period,
     bandwidth: mysqlTariff.bandwidth ?? null,
     domainsCount: mysqlTariff.domains_count ?? null,
     databasesCount: mysqlTariff.databases_count ?? null,
