@@ -626,24 +626,89 @@ async function migrateHostings(dryRun: boolean): Promise<void> {
 
   for (const mysqlHosting of mysqlHostings) {
     try {
-      const prismaHosting = mapHosting(mysqlHosting);
-
-      // Проверка на дубликат по slug
-      const existing = await prisma.hosting.findUnique({
-        where: { slug: prismaHosting.slug },
-      });
-
-      if (existing) {
-        logger.warning(
-          `Хостинг с slug "${prismaHosting.slug}" уже существует, используем существующий ID`
+      // Логируем slug из MySQL для отладки
+      if (mysqlHosting.slug) {
+        logger.info(
+          `Хостинг ID ${mysqlHosting.id}: slug из MySQL = "${mysqlHosting.slug}"`
         );
-        // Важно: сохраняем маппинг даже для существующих хостингов
-        idMappings.hostings[mysqlHosting.id] = existing.id;
+      }
+      const prismaHosting = mapHosting(mysqlHosting);
+      if (prismaHosting.slug !== mysqlHosting.slug) {
+        logger.info(
+          `Хостинг ID ${mysqlHosting.id}: slug после маппинга = "${prismaHosting.slug}" (было "${mysqlHosting.slug || "нет"}")`
+        );
+      }
+
+      // Сначала проверяем, есть ли уже маппинг для этого MySQL ID
+      // (значит хостинг уже был мигрирован ранее)
+      const existingId = idMappings.hostings[mysqlHosting.id];
+      let existing: { id: string; slug: string } | null = null;
+
+      if (existingId) {
+        // Хостинг уже был мигрирован, получаем его данные
+        existing = await prisma.hosting.findUnique({
+          where: { id: existingId },
+          select: { id: true, slug: true },
+        });
+
+        if (existing) {
+          logger.info(
+            `Хостинг ID ${mysqlHosting.id} уже мигрирован (PostgreSQL ID: ${existingId}), обновляем данные`
+          );
+        } else {
+          // Маппинг есть, но хостинг не найден - возможно был удален
+          logger.warning(
+            `Хостинг ID ${mysqlHosting.id} имеет маппинг на ${existingId}, но хостинг не найден. Создаем новый.`
+          );
+          delete idMappings.hostings[mysqlHosting.id];
+          existing = null;
+        }
+      }
+
+      // Если хостинг не найден по маппингу, ищем по slug
+      if (!existing) {
+        existing = await prisma.hosting.findUnique({
+          where: { slug: prismaHosting.slug },
+          select: { id: true, slug: true },
+        });
+
+        if (existing) {
+          logger.info(
+            `Хостинг с slug "${prismaHosting.slug}" уже существует (PostgreSQL ID: ${existing.id})`
+          );
+          // Сохраняем маппинг для будущих обновлений
+          idMappings.hostings[mysqlHosting.id] = existing.id;
+        }
+      }
+
+      // Обновляем или создаем хостинг
+      if (existing) {
+        // Обновляем существующий хостинг (включая slug, если он изменился)
+        if (!dryRun) {
+          // Исключаем id из данных для обновления и приводим типы к Prisma формату
+          const { id, createdAt, updatedAt, ...updateData } = prismaHosting;
+          await prisma.hosting.update({
+            where: { id: existing.id },
+            data: {
+              ...updateData,
+              // updatedAt будет обновлен автоматически благодаря @updatedAt
+            },
+          });
+          logger.info(
+            `✓ Хостинг обновлен: ${prismaHosting.name} (slug: ${prismaHosting.slug})`
+          );
+        }
         // Не увеличиваем счетчик, так как не создавали новую запись
       } else {
+        // Создаем новый хостинг
         if (!dryRun) {
-          const created = await prisma.hosting.create({ data: prismaHosting });
+          // Исключаем id, так как Prisma сгенерирует его автоматически
+          const { id, ...createData } = prismaHosting;
+          const created = await prisma.hosting.create({ data: createData });
           idMappings.hostings[mysqlHosting.id] = created.id;
+          logger.info(
+            `✓ Хостинг создан: ${prismaHosting.name} (slug: ${prismaHosting.slug})`
+          );
         } else {
           idMappings.hostings[mysqlHosting.id] = prismaHosting.id;
         }
@@ -767,7 +832,9 @@ async function migrateTariffs(dryRun: boolean): Promise<void> {
   );
 
   logger.info(`Найдено тарифов в MySQL: ${mysqlTariffs.length}`);
-  logger.info(`Доступно хостингов в маппинге: ${Object.keys(idMappings.hostings).length}`);
+  logger.info(
+    `Доступно хостингов в маппинге: ${Object.keys(idMappings.hostings).length}`
+  );
 
   if (mysqlTariffs.length === 0) {
     logger.warning("В MySQL таблице tariff нет данных для миграции");
@@ -814,7 +881,9 @@ async function migrateTariffs(dryRun: boolean): Promise<void> {
       const prismaTariff = mapTariff(mysqlTariff, hostingId);
 
       if (!dryRun) {
-        const created = await prisma.tariff.create({ data: prismaTariff });
+        // Исключаем id, так как Prisma сгенерирует его автоматически
+        const { id, ...createData } = prismaTariff;
+        const created = await prisma.tariff.create({ data: createData });
         idMappings.tariffs[mysqlTariff.id] = created.id;
       } else {
         idMappings.tariffs[mysqlTariff.id] = prismaTariff.id;
@@ -1289,12 +1358,87 @@ async function migrateContentBlocks(dryRun: boolean): Promise<void> {
         logger.warning(
           `ContentBlock с key "${prismaContentBlock.key}" уже существует, пропускаем создание`
         );
+
+        // Обновляем hostingId для существующего блока, если указан hosting_id
+        if (mysqlContentBlock.hosting_id) {
+          const hostingId = idMappings.hostings[mysqlContentBlock.hosting_id];
+          if (hostingId) {
+            if (!dryRun && existing.hostingId !== hostingId) {
+              try {
+                await prisma.contentBlock.update({
+                  where: { id: existing.id },
+                  data: { hostingId },
+                });
+                logger.info(
+                  `✓ Связь обновлена: ContentBlock "${prismaContentBlock.key}" -> Hosting ID ${mysqlContentBlock.hosting_id}`
+                );
+              } catch (updateError) {
+                const errorMessage =
+                  updateError instanceof Error
+                    ? updateError.message
+                    : String(updateError);
+                logger.warning(
+                  `Ошибка обновления связи ContentBlock "${prismaContentBlock.key}" с хостингом: ${errorMessage}`
+                );
+              }
+            }
+          } else {
+            logger.warning(
+              `Хостинг с MySQL ID ${mysqlContentBlock.hosting_id} не найден в маппинге для ContentBlock "${prismaContentBlock.key}"`
+            );
+          }
+        } else if (prismaContentBlock.type) {
+          // Если hosting_id не указан, но есть type, пытаемся найти хостинг по type (может быть UUID)
+          const hosting = await prisma.hosting.findUnique({
+            where: { id: prismaContentBlock.type },
+          });
+          if (hosting && !dryRun && existing.hostingId !== hosting.id) {
+            try {
+              await prisma.contentBlock.update({
+                where: { id: existing.id },
+                data: { hostingId: hosting.id },
+              });
+              logger.info(
+                `✓ Связь обновлена: ContentBlock "${prismaContentBlock.key}" -> Hosting "${hosting.name}"`
+              );
+            } catch (updateError) {
+              // Игнорируем ошибку
+            }
+          }
+        }
       } else {
+        // Определяем hostingId перед созданием
+        let hostingIdToSet: string | null = null;
+        if (mysqlContentBlock.hosting_id) {
+          hostingIdToSet = idMappings.hostings[mysqlContentBlock.hosting_id] || null;
+          if (!hostingIdToSet) {
+            logger.warning(
+              `Хостинг с MySQL ID ${mysqlContentBlock.hosting_id} не найден в маппинге для ContentBlock "${prismaContentBlock.key}"`
+            );
+          }
+        } else if (prismaContentBlock.type) {
+          // Если hosting_id не указан, но есть type, пытаемся найти хостинг по type (может быть UUID)
+          const hosting = await prisma.hosting.findUnique({
+            where: { id: prismaContentBlock.type },
+          });
+          if (hosting) {
+            hostingIdToSet = hosting.id;
+          }
+        }
+
+        // Добавляем hostingId к данным для создания
+        const contentBlockData = {
+          ...prismaContentBlock,
+          hostingId: hostingIdToSet,
+        };
+
         if (!dryRun) {
           try {
-            await prisma.contentBlock.create({ data: prismaContentBlock });
+            const created = await prisma.contentBlock.create({
+              data: contentBlockData,
+            });
             logger.info(
-              `✓ ContentBlock создан: key="${prismaContentBlock.key}", type="${prismaContentBlock.type}"`
+              `✓ ContentBlock создан: key="${prismaContentBlock.key}", type="${prismaContentBlock.type}", hostingId="${hostingIdToSet || "нет"}"`
             );
           } catch (createError) {
             const errorMessage =

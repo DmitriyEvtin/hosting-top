@@ -19,9 +19,14 @@ export enum TariffPeriod {
 export interface MySQLHosting {
   id: number;
   name: string;
+  slug?: string | null;
   description?: string | null;
   logo_url?: string | null;
   website_url?: string | null;
+  start_year?: string | null;
+  test_period?: number | null;
+  status?: number | null;
+  clients?: number | null;
   is_active?: number | boolean | null; // MySQL может возвращать 0/1 или boolean
   created_at?: string | Date | null;
   updated_at?: string | Date | null;
@@ -107,6 +112,7 @@ export interface MySQLProgrammingLanguage {
 
 export interface MySQLContentBlock {
   id: number;
+  hosting_id?: number | null;
   key?: string | null;
   title?: string | null;
   content?: string | null;
@@ -127,6 +133,9 @@ export interface PrismaHosting {
   description?: string | null;
   logoUrl?: string | null;
   websiteUrl?: string | null;
+  startYear?: string | null;
+  testPeriod?: number | null;
+  clients?: number | null;
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -152,7 +161,7 @@ export interface PrismaTariff {
   additionalId?: boolean | null;
   priceMonth?: Decimal | null;
   priceYear?: Decimal | null;
-  status?: number | null;
+  status: number; // Не может быть null, всегда число (default: 1)
   countTestDays?: number | null;
   isTemplate?: boolean | null;
   ddosDef?: boolean | null;
@@ -169,7 +178,7 @@ export interface PrismaTariff {
   infoDomains?: string | null;
   // Старые поля для обратной совместимости
   price?: Decimal | null;
-  currency?: string | null;
+  currency: string; // Не может быть null, всегда строка (default: "RUB")
   period?: TariffPeriod | null;
   bandwidth?: number | null;
   domainsCount?: number | null;
@@ -222,6 +231,7 @@ export interface PrismaContentBlock {
   title?: string | null;
   content?: string | null;
   type?: string | null;
+  hostingId?: string | null; // Связь many-to-one с Hosting
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;

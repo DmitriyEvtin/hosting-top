@@ -57,6 +57,14 @@ describe("Slug Utils", () => {
       expect(generateSlug("Текст@с#символами$")).toBe("tekstssimvolami");
     });
 
+    it("should handle domain-like slugs with dots", () => {
+      expect(generateSlug("example.com")).toBe("example.com");
+      expect(generateSlug("sub.example.com")).toBe("sub.example.com");
+      expect(generateSlug(".example.com")).toBe("example.com"); // Удаляем точку в начале
+      expect(generateSlug("example.com.")).toBe("example.com"); // Удаляем точку в конце
+      expect(generateSlug("example..com")).toBe("example.com"); // Удаляем двойные точки
+    });
+
     it("should handle multiple spaces", () => {
       expect(generateSlug("Текст   с    пробелами")).toBe(
         "tekst-s-probelami",
@@ -93,7 +101,7 @@ describe("Slug Utils", () => {
 
     it("should handle numbers", () => {
       expect(generateSlug("Хостинг 2024")).toBe("khosting-2024");
-      expect(generateSlug("План 2.0")).toBe("plan-20");
+      expect(generateSlug("План 2.0")).toBe("plan-2.0"); // Точка сохраняется для доменов
     });
 
     it("should handle mixed Russian and English", () => {

@@ -2570,10 +2570,12 @@ export namespace Prisma {
 
   export type HostingCountOutputType = {
     tariffs: number
+    contentBlocks: number
   }
 
   export type HostingCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tariffs?: boolean | HostingCountOutputTypeCountTariffsArgs
+    contentBlocks?: boolean | HostingCountOutputTypeCountContentBlocksArgs
   }
 
   // Custom InputTypes
@@ -2592,6 +2594,13 @@ export namespace Prisma {
    */
   export type HostingCountOutputTypeCountTariffsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TariffWhereInput
+  }
+
+  /**
+   * HostingCountOutputType without action
+   */
+  export type HostingCountOutputTypeCountContentBlocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContentBlockWhereInput
   }
 
 
@@ -7214,8 +7223,20 @@ export namespace Prisma {
 
   export type AggregateHosting = {
     _count: HostingCountAggregateOutputType | null
+    _avg: HostingAvgAggregateOutputType | null
+    _sum: HostingSumAggregateOutputType | null
     _min: HostingMinAggregateOutputType | null
     _max: HostingMaxAggregateOutputType | null
+  }
+
+  export type HostingAvgAggregateOutputType = {
+    testPeriod: number | null
+    clients: number | null
+  }
+
+  export type HostingSumAggregateOutputType = {
+    testPeriod: number | null
+    clients: number | null
   }
 
   export type HostingMinAggregateOutputType = {
@@ -7225,6 +7246,9 @@ export namespace Prisma {
     description: string | null
     logoUrl: string | null
     websiteUrl: string | null
+    startYear: string | null
+    testPeriod: number | null
+    clients: number | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -7237,6 +7261,9 @@ export namespace Prisma {
     description: string | null
     logoUrl: string | null
     websiteUrl: string | null
+    startYear: string | null
+    testPeriod: number | null
+    clients: number | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -7249,12 +7276,25 @@ export namespace Prisma {
     description: number
     logoUrl: number
     websiteUrl: number
+    startYear: number
+    testPeriod: number
+    clients: number
     isActive: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type HostingAvgAggregateInputType = {
+    testPeriod?: true
+    clients?: true
+  }
+
+  export type HostingSumAggregateInputType = {
+    testPeriod?: true
+    clients?: true
+  }
 
   export type HostingMinAggregateInputType = {
     id?: true
@@ -7263,6 +7303,9 @@ export namespace Prisma {
     description?: true
     logoUrl?: true
     websiteUrl?: true
+    startYear?: true
+    testPeriod?: true
+    clients?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -7275,6 +7318,9 @@ export namespace Prisma {
     description?: true
     logoUrl?: true
     websiteUrl?: true
+    startYear?: true
+    testPeriod?: true
+    clients?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -7287,6 +7333,9 @@ export namespace Prisma {
     description?: true
     logoUrl?: true
     websiteUrl?: true
+    startYear?: true
+    testPeriod?: true
+    clients?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -7331,6 +7380,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: HostingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HostingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: HostingMinAggregateInputType
@@ -7361,6 +7422,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: HostingCountAggregateInputType | true
+    _avg?: HostingAvgAggregateInputType
+    _sum?: HostingSumAggregateInputType
     _min?: HostingMinAggregateInputType
     _max?: HostingMaxAggregateInputType
   }
@@ -7372,10 +7435,15 @@ export namespace Prisma {
     description: string | null
     logoUrl: string | null
     websiteUrl: string | null
+    startYear: string | null
+    testPeriod: number | null
+    clients: number | null
     isActive: boolean
     createdAt: Date
     updatedAt: Date
     _count: HostingCountAggregateOutputType | null
+    _avg: HostingAvgAggregateOutputType | null
+    _sum: HostingSumAggregateOutputType | null
     _min: HostingMinAggregateOutputType | null
     _max: HostingMaxAggregateOutputType | null
   }
@@ -7401,10 +7469,14 @@ export namespace Prisma {
     description?: boolean
     logoUrl?: boolean
     websiteUrl?: boolean
+    startYear?: boolean
+    testPeriod?: boolean
+    clients?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     tariffs?: boolean | Hosting$tariffsArgs<ExtArgs>
+    contentBlocks?: boolean | Hosting$contentBlocksArgs<ExtArgs>
     _count?: boolean | HostingCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hosting"]>
 
@@ -7415,6 +7487,9 @@ export namespace Prisma {
     description?: boolean
     logoUrl?: boolean
     websiteUrl?: boolean
+    startYear?: boolean
+    testPeriod?: boolean
+    clients?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7427,6 +7502,9 @@ export namespace Prisma {
     description?: boolean
     logoUrl?: boolean
     websiteUrl?: boolean
+    startYear?: boolean
+    testPeriod?: boolean
+    clients?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7439,14 +7517,18 @@ export namespace Prisma {
     description?: boolean
     logoUrl?: boolean
     websiteUrl?: boolean
+    startYear?: boolean
+    testPeriod?: boolean
+    clients?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type HostingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "logoUrl" | "websiteUrl" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["hosting"]>
+  export type HostingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "logoUrl" | "websiteUrl" | "startYear" | "testPeriod" | "clients" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["hosting"]>
   export type HostingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tariffs?: boolean | Hosting$tariffsArgs<ExtArgs>
+    contentBlocks?: boolean | Hosting$contentBlocksArgs<ExtArgs>
     _count?: boolean | HostingCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type HostingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7456,6 +7538,7 @@ export namespace Prisma {
     name: "Hosting"
     objects: {
       tariffs: Prisma.$TariffPayload<ExtArgs>[]
+      contentBlocks: Prisma.$ContentBlockPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7464,6 +7547,9 @@ export namespace Prisma {
       description: string | null
       logoUrl: string | null
       websiteUrl: string | null
+      startYear: string | null
+      testPeriod: number | null
+      clients: number | null
       isActive: boolean
       createdAt: Date
       updatedAt: Date
@@ -7862,6 +7948,7 @@ export namespace Prisma {
   export interface Prisma__HostingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     tariffs<T extends Hosting$tariffsArgs<ExtArgs> = {}>(args?: Subset<T, Hosting$tariffsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    contentBlocks<T extends Hosting$contentBlocksArgs<ExtArgs> = {}>(args?: Subset<T, Hosting$contentBlocksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7897,6 +7984,9 @@ export namespace Prisma {
     readonly description: FieldRef<"Hosting", 'String'>
     readonly logoUrl: FieldRef<"Hosting", 'String'>
     readonly websiteUrl: FieldRef<"Hosting", 'String'>
+    readonly startYear: FieldRef<"Hosting", 'String'>
+    readonly testPeriod: FieldRef<"Hosting", 'Int'>
+    readonly clients: FieldRef<"Hosting", 'Int'>
     readonly isActive: FieldRef<"Hosting", 'Boolean'>
     readonly createdAt: FieldRef<"Hosting", 'DateTime'>
     readonly updatedAt: FieldRef<"Hosting", 'DateTime'>
@@ -8309,6 +8399,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TariffScalarFieldEnum | TariffScalarFieldEnum[]
+  }
+
+  /**
+   * Hosting.contentBlocks
+   */
+  export type Hosting$contentBlocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContentBlock
+     */
+    select?: ContentBlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ContentBlock
+     */
+    omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockInclude<ExtArgs> | null
+    where?: ContentBlockWhereInput
+    orderBy?: ContentBlockOrderByWithRelationInput | ContentBlockOrderByWithRelationInput[]
+    cursor?: ContentBlockWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ContentBlockScalarFieldEnum | ContentBlockScalarFieldEnum[]
   }
 
   /**
@@ -22687,6 +22801,7 @@ export namespace Prisma {
     title: string | null
     content: string | null
     type: string | null
+    hostingId: string | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -22698,6 +22813,7 @@ export namespace Prisma {
     title: string | null
     content: string | null
     type: string | null
+    hostingId: string | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -22709,6 +22825,7 @@ export namespace Prisma {
     title: number
     content: number
     type: number
+    hostingId: number
     isActive: number
     createdAt: number
     updatedAt: number
@@ -22722,6 +22839,7 @@ export namespace Prisma {
     title?: true
     content?: true
     type?: true
+    hostingId?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -22733,6 +22851,7 @@ export namespace Prisma {
     title?: true
     content?: true
     type?: true
+    hostingId?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -22744,6 +22863,7 @@ export namespace Prisma {
     title?: true
     content?: true
     type?: true
+    hostingId?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -22828,6 +22948,7 @@ export namespace Prisma {
     title: string | null
     content: string | null
     type: string | null
+    hostingId: string | null
     isActive: boolean
     createdAt: Date
     updatedAt: Date
@@ -22856,9 +22977,11 @@ export namespace Prisma {
     title?: boolean
     content?: boolean
     type?: boolean
+    hostingId?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    hosting?: boolean | ContentBlock$hostingArgs<ExtArgs>
   }, ExtArgs["result"]["contentBlock"]>
 
   export type ContentBlockSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -22867,9 +22990,11 @@ export namespace Prisma {
     title?: boolean
     content?: boolean
     type?: boolean
+    hostingId?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    hosting?: boolean | ContentBlock$hostingArgs<ExtArgs>
   }, ExtArgs["result"]["contentBlock"]>
 
   export type ContentBlockSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -22878,9 +23003,11 @@ export namespace Prisma {
     title?: boolean
     content?: boolean
     type?: boolean
+    hostingId?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    hosting?: boolean | ContentBlock$hostingArgs<ExtArgs>
   }, ExtArgs["result"]["contentBlock"]>
 
   export type ContentBlockSelectScalar = {
@@ -22889,22 +23016,35 @@ export namespace Prisma {
     title?: boolean
     content?: boolean
     type?: boolean
+    hostingId?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ContentBlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "key" | "title" | "content" | "type" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["contentBlock"]>
+  export type ContentBlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "key" | "title" | "content" | "type" | "hostingId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["contentBlock"]>
+  export type ContentBlockInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hosting?: boolean | ContentBlock$hostingArgs<ExtArgs>
+  }
+  export type ContentBlockIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hosting?: boolean | ContentBlock$hostingArgs<ExtArgs>
+  }
+  export type ContentBlockIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    hosting?: boolean | ContentBlock$hostingArgs<ExtArgs>
+  }
 
   export type $ContentBlockPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ContentBlock"
-    objects: {}
+    objects: {
+      hosting: Prisma.$HostingPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       key: string
       title: string | null
       content: string | null
       type: string | null
+      hostingId: string | null
       isActive: boolean
       createdAt: Date
       updatedAt: Date
@@ -23302,6 +23442,7 @@ export namespace Prisma {
    */
   export interface Prisma__ContentBlockClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    hosting<T extends ContentBlock$hostingArgs<ExtArgs> = {}>(args?: Subset<T, ContentBlock$hostingArgs<ExtArgs>>): Prisma__HostingClient<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -23336,6 +23477,7 @@ export namespace Prisma {
     readonly title: FieldRef<"ContentBlock", 'String'>
     readonly content: FieldRef<"ContentBlock", 'String'>
     readonly type: FieldRef<"ContentBlock", 'String'>
+    readonly hostingId: FieldRef<"ContentBlock", 'String'>
     readonly isActive: FieldRef<"ContentBlock", 'Boolean'>
     readonly createdAt: FieldRef<"ContentBlock", 'DateTime'>
     readonly updatedAt: FieldRef<"ContentBlock", 'DateTime'>
@@ -23356,6 +23498,10 @@ export namespace Prisma {
      */
     omit?: ContentBlockOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockInclude<ExtArgs> | null
+    /**
      * Filter, which ContentBlock to fetch.
      */
     where: ContentBlockWhereUniqueInput
@@ -23374,6 +23520,10 @@ export namespace Prisma {
      */
     omit?: ContentBlockOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockInclude<ExtArgs> | null
+    /**
      * Filter, which ContentBlock to fetch.
      */
     where: ContentBlockWhereUniqueInput
@@ -23391,6 +23541,10 @@ export namespace Prisma {
      * Omit specific fields from the ContentBlock
      */
     omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockInclude<ExtArgs> | null
     /**
      * Filter, which ContentBlock to fetch.
      */
@@ -23440,6 +23594,10 @@ export namespace Prisma {
      */
     omit?: ContentBlockOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockInclude<ExtArgs> | null
+    /**
      * Filter, which ContentBlock to fetch.
      */
     where?: ContentBlockWhereInput
@@ -23488,6 +23646,10 @@ export namespace Prisma {
      */
     omit?: ContentBlockOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockInclude<ExtArgs> | null
+    /**
      * Filter, which ContentBlocks to fetch.
      */
     where?: ContentBlockWhereInput
@@ -23531,6 +23693,10 @@ export namespace Prisma {
      */
     omit?: ContentBlockOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockInclude<ExtArgs> | null
+    /**
      * The data needed to create a ContentBlock.
      */
     data: XOR<ContentBlockCreateInput, ContentBlockUncheckedCreateInput>
@@ -23564,6 +23730,10 @@ export namespace Prisma {
      */
     data: ContentBlockCreateManyInput | ContentBlockCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -23578,6 +23748,10 @@ export namespace Prisma {
      * Omit specific fields from the ContentBlock
      */
     omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockInclude<ExtArgs> | null
     /**
      * The data needed to update a ContentBlock.
      */
@@ -23630,6 +23804,10 @@ export namespace Prisma {
      * Limit how many ContentBlocks to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -23644,6 +23822,10 @@ export namespace Prisma {
      * Omit specific fields from the ContentBlock
      */
     omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockInclude<ExtArgs> | null
     /**
      * The filter to search for the ContentBlock to update in case it exists.
      */
@@ -23671,6 +23853,10 @@ export namespace Prisma {
      */
     omit?: ContentBlockOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockInclude<ExtArgs> | null
+    /**
      * Filter which ContentBlock to delete.
      */
     where: ContentBlockWhereUniqueInput
@@ -23691,6 +23877,25 @@ export namespace Prisma {
   }
 
   /**
+   * ContentBlock.hosting
+   */
+  export type ContentBlock$hostingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Hosting
+     */
+    select?: HostingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Hosting
+     */
+    omit?: HostingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HostingInclude<ExtArgs> | null
+    where?: HostingWhereInput
+  }
+
+  /**
    * ContentBlock without action
    */
   export type ContentBlockDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -23702,6 +23907,10 @@ export namespace Prisma {
      * Omit specific fields from the ContentBlock
      */
     omit?: ContentBlockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContentBlockInclude<ExtArgs> | null
   }
 
 
@@ -23778,6 +23987,9 @@ export namespace Prisma {
     description: 'description',
     logoUrl: 'logoUrl',
     websiteUrl: 'websiteUrl',
+    startYear: 'startYear',
+    testPeriod: 'testPeriod',
+    clients: 'clients',
     isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -23950,6 +24162,7 @@ export namespace Prisma {
     title: 'title',
     content: 'content',
     type: 'type',
+    hostingId: 'hostingId',
     isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -24369,10 +24582,14 @@ export namespace Prisma {
     description?: StringNullableFilter<"Hosting"> | string | null
     logoUrl?: StringNullableFilter<"Hosting"> | string | null
     websiteUrl?: StringNullableFilter<"Hosting"> | string | null
+    startYear?: StringNullableFilter<"Hosting"> | string | null
+    testPeriod?: IntNullableFilter<"Hosting"> | number | null
+    clients?: IntNullableFilter<"Hosting"> | number | null
     isActive?: BoolFilter<"Hosting"> | boolean
     createdAt?: DateTimeFilter<"Hosting"> | Date | string
     updatedAt?: DateTimeFilter<"Hosting"> | Date | string
     tariffs?: TariffListRelationFilter
+    contentBlocks?: ContentBlockListRelationFilter
   }
 
   export type HostingOrderByWithRelationInput = {
@@ -24382,10 +24599,14 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     logoUrl?: SortOrderInput | SortOrder
     websiteUrl?: SortOrderInput | SortOrder
+    startYear?: SortOrderInput | SortOrder
+    testPeriod?: SortOrderInput | SortOrder
+    clients?: SortOrderInput | SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     tariffs?: TariffOrderByRelationAggregateInput
+    contentBlocks?: ContentBlockOrderByRelationAggregateInput
   }
 
   export type HostingWhereUniqueInput = Prisma.AtLeast<{
@@ -24398,10 +24619,14 @@ export namespace Prisma {
     description?: StringNullableFilter<"Hosting"> | string | null
     logoUrl?: StringNullableFilter<"Hosting"> | string | null
     websiteUrl?: StringNullableFilter<"Hosting"> | string | null
+    startYear?: StringNullableFilter<"Hosting"> | string | null
+    testPeriod?: IntNullableFilter<"Hosting"> | number | null
+    clients?: IntNullableFilter<"Hosting"> | number | null
     isActive?: BoolFilter<"Hosting"> | boolean
     createdAt?: DateTimeFilter<"Hosting"> | Date | string
     updatedAt?: DateTimeFilter<"Hosting"> | Date | string
     tariffs?: TariffListRelationFilter
+    contentBlocks?: ContentBlockListRelationFilter
   }, "id" | "slug">
 
   export type HostingOrderByWithAggregationInput = {
@@ -24411,12 +24636,17 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     logoUrl?: SortOrderInput | SortOrder
     websiteUrl?: SortOrderInput | SortOrder
+    startYear?: SortOrderInput | SortOrder
+    testPeriod?: SortOrderInput | SortOrder
+    clients?: SortOrderInput | SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: HostingCountOrderByAggregateInput
+    _avg?: HostingAvgOrderByAggregateInput
     _max?: HostingMaxOrderByAggregateInput
     _min?: HostingMinOrderByAggregateInput
+    _sum?: HostingSumOrderByAggregateInput
   }
 
   export type HostingScalarWhereWithAggregatesInput = {
@@ -24429,6 +24659,9 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Hosting"> | string | null
     logoUrl?: StringNullableWithAggregatesFilter<"Hosting"> | string | null
     websiteUrl?: StringNullableWithAggregatesFilter<"Hosting"> | string | null
+    startYear?: StringNullableWithAggregatesFilter<"Hosting"> | string | null
+    testPeriod?: IntNullableWithAggregatesFilter<"Hosting"> | number | null
+    clients?: IntNullableWithAggregatesFilter<"Hosting"> | number | null
     isActive?: BoolWithAggregatesFilter<"Hosting"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Hosting"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Hosting"> | Date | string
@@ -25277,9 +25510,11 @@ export namespace Prisma {
     title?: StringNullableFilter<"ContentBlock"> | string | null
     content?: StringNullableFilter<"ContentBlock"> | string | null
     type?: StringNullableFilter<"ContentBlock"> | string | null
+    hostingId?: StringNullableFilter<"ContentBlock"> | string | null
     isActive?: BoolFilter<"ContentBlock"> | boolean
     createdAt?: DateTimeFilter<"ContentBlock"> | Date | string
     updatedAt?: DateTimeFilter<"ContentBlock"> | Date | string
+    hosting?: XOR<HostingNullableScalarRelationFilter, HostingWhereInput> | null
   }
 
   export type ContentBlockOrderByWithRelationInput = {
@@ -25288,9 +25523,11 @@ export namespace Prisma {
     title?: SortOrderInput | SortOrder
     content?: SortOrderInput | SortOrder
     type?: SortOrderInput | SortOrder
+    hostingId?: SortOrderInput | SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    hosting?: HostingOrderByWithRelationInput
   }
 
   export type ContentBlockWhereUniqueInput = Prisma.AtLeast<{
@@ -25302,9 +25539,11 @@ export namespace Prisma {
     title?: StringNullableFilter<"ContentBlock"> | string | null
     content?: StringNullableFilter<"ContentBlock"> | string | null
     type?: StringNullableFilter<"ContentBlock"> | string | null
+    hostingId?: StringNullableFilter<"ContentBlock"> | string | null
     isActive?: BoolFilter<"ContentBlock"> | boolean
     createdAt?: DateTimeFilter<"ContentBlock"> | Date | string
     updatedAt?: DateTimeFilter<"ContentBlock"> | Date | string
+    hosting?: XOR<HostingNullableScalarRelationFilter, HostingWhereInput> | null
   }, "id" | "key">
 
   export type ContentBlockOrderByWithAggregationInput = {
@@ -25313,6 +25552,7 @@ export namespace Prisma {
     title?: SortOrderInput | SortOrder
     content?: SortOrderInput | SortOrder
     type?: SortOrderInput | SortOrder
+    hostingId?: SortOrderInput | SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -25330,6 +25570,7 @@ export namespace Prisma {
     title?: StringNullableWithAggregatesFilter<"ContentBlock"> | string | null
     content?: StringNullableWithAggregatesFilter<"ContentBlock"> | string | null
     type?: StringNullableWithAggregatesFilter<"ContentBlock"> | string | null
+    hostingId?: StringNullableWithAggregatesFilter<"ContentBlock"> | string | null
     isActive?: BoolWithAggregatesFilter<"ContentBlock"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"ContentBlock"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ContentBlock"> | Date | string
@@ -25628,10 +25869,14 @@ export namespace Prisma {
     description?: string | null
     logoUrl?: string | null
     websiteUrl?: string | null
+    startYear?: string | null
+    testPeriod?: number | null
+    clients?: number | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     tariffs?: TariffCreateNestedManyWithoutHostingInput
+    contentBlocks?: ContentBlockCreateNestedManyWithoutHostingInput
   }
 
   export type HostingUncheckedCreateInput = {
@@ -25641,10 +25886,14 @@ export namespace Prisma {
     description?: string | null
     logoUrl?: string | null
     websiteUrl?: string | null
+    startYear?: string | null
+    testPeriod?: number | null
+    clients?: number | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     tariffs?: TariffUncheckedCreateNestedManyWithoutHostingInput
+    contentBlocks?: ContentBlockUncheckedCreateNestedManyWithoutHostingInput
   }
 
   export type HostingUpdateInput = {
@@ -25654,10 +25903,14 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startYear?: NullableStringFieldUpdateOperationsInput | string | null
+    testPeriod?: NullableIntFieldUpdateOperationsInput | number | null
+    clients?: NullableIntFieldUpdateOperationsInput | number | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tariffs?: TariffUpdateManyWithoutHostingNestedInput
+    contentBlocks?: ContentBlockUpdateManyWithoutHostingNestedInput
   }
 
   export type HostingUncheckedUpdateInput = {
@@ -25667,10 +25920,14 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startYear?: NullableStringFieldUpdateOperationsInput | string | null
+    testPeriod?: NullableIntFieldUpdateOperationsInput | number | null
+    clients?: NullableIntFieldUpdateOperationsInput | number | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tariffs?: TariffUncheckedUpdateManyWithoutHostingNestedInput
+    contentBlocks?: ContentBlockUncheckedUpdateManyWithoutHostingNestedInput
   }
 
   export type HostingCreateManyInput = {
@@ -25680,6 +25937,9 @@ export namespace Prisma {
     description?: string | null
     logoUrl?: string | null
     websiteUrl?: string | null
+    startYear?: string | null
+    testPeriod?: number | null
+    clients?: number | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25692,6 +25952,9 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startYear?: NullableStringFieldUpdateOperationsInput | string | null
+    testPeriod?: NullableIntFieldUpdateOperationsInput | number | null
+    clients?: NullableIntFieldUpdateOperationsInput | number | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25704,6 +25967,9 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startYear?: NullableStringFieldUpdateOperationsInput | string | null
+    testPeriod?: NullableIntFieldUpdateOperationsInput | number | null
+    clients?: NullableIntFieldUpdateOperationsInput | number | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26586,6 +26852,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    hosting?: HostingCreateNestedOneWithoutContentBlocksInput
   }
 
   export type ContentBlockUncheckedCreateInput = {
@@ -26594,6 +26861,7 @@ export namespace Prisma {
     title?: string | null
     content?: string | null
     type?: string | null
+    hostingId?: string | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26608,6 +26876,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hosting?: HostingUpdateOneWithoutContentBlocksNestedInput
   }
 
   export type ContentBlockUncheckedUpdateInput = {
@@ -26616,6 +26885,7 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    hostingId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26627,6 +26897,7 @@ export namespace Prisma {
     title?: string | null
     content?: string | null
     type?: string | null
+    hostingId?: string | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26649,6 +26920,7 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    hostingId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26993,7 +27265,17 @@ export namespace Prisma {
     none?: TariffWhereInput
   }
 
+  export type ContentBlockListRelationFilter = {
+    every?: ContentBlockWhereInput
+    some?: ContentBlockWhereInput
+    none?: ContentBlockWhereInput
+  }
+
   export type TariffOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ContentBlockOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -27004,9 +27286,17 @@ export namespace Prisma {
     description?: SortOrder
     logoUrl?: SortOrder
     websiteUrl?: SortOrder
+    startYear?: SortOrder
+    testPeriod?: SortOrder
+    clients?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type HostingAvgOrderByAggregateInput = {
+    testPeriod?: SortOrder
+    clients?: SortOrder
   }
 
   export type HostingMaxOrderByAggregateInput = {
@@ -27016,6 +27306,9 @@ export namespace Prisma {
     description?: SortOrder
     logoUrl?: SortOrder
     websiteUrl?: SortOrder
+    startYear?: SortOrder
+    testPeriod?: SortOrder
+    clients?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -27028,9 +27321,17 @@ export namespace Prisma {
     description?: SortOrder
     logoUrl?: SortOrder
     websiteUrl?: SortOrder
+    startYear?: SortOrder
+    testPeriod?: SortOrder
+    clients?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type HostingSumOrderByAggregateInput = {
+    testPeriod?: SortOrder
+    clients?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -27654,12 +27955,18 @@ export namespace Prisma {
     programmingLanguageId?: SortOrder
   }
 
+  export type HostingNullableScalarRelationFilter = {
+    is?: HostingWhereInput | null
+    isNot?: HostingWhereInput | null
+  }
+
   export type ContentBlockCountOrderByAggregateInput = {
     id?: SortOrder
     key?: SortOrder
     title?: SortOrder
     content?: SortOrder
     type?: SortOrder
+    hostingId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -27671,6 +27978,7 @@ export namespace Prisma {
     title?: SortOrder
     content?: SortOrder
     type?: SortOrder
+    hostingId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -27682,6 +27990,7 @@ export namespace Prisma {
     title?: SortOrder
     content?: SortOrder
     type?: SortOrder
+    hostingId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -27834,11 +28143,25 @@ export namespace Prisma {
     connect?: TariffWhereUniqueInput | TariffWhereUniqueInput[]
   }
 
+  export type ContentBlockCreateNestedManyWithoutHostingInput = {
+    create?: XOR<ContentBlockCreateWithoutHostingInput, ContentBlockUncheckedCreateWithoutHostingInput> | ContentBlockCreateWithoutHostingInput[] | ContentBlockUncheckedCreateWithoutHostingInput[]
+    connectOrCreate?: ContentBlockCreateOrConnectWithoutHostingInput | ContentBlockCreateOrConnectWithoutHostingInput[]
+    createMany?: ContentBlockCreateManyHostingInputEnvelope
+    connect?: ContentBlockWhereUniqueInput | ContentBlockWhereUniqueInput[]
+  }
+
   export type TariffUncheckedCreateNestedManyWithoutHostingInput = {
     create?: XOR<TariffCreateWithoutHostingInput, TariffUncheckedCreateWithoutHostingInput> | TariffCreateWithoutHostingInput[] | TariffUncheckedCreateWithoutHostingInput[]
     connectOrCreate?: TariffCreateOrConnectWithoutHostingInput | TariffCreateOrConnectWithoutHostingInput[]
     createMany?: TariffCreateManyHostingInputEnvelope
     connect?: TariffWhereUniqueInput | TariffWhereUniqueInput[]
+  }
+
+  export type ContentBlockUncheckedCreateNestedManyWithoutHostingInput = {
+    create?: XOR<ContentBlockCreateWithoutHostingInput, ContentBlockUncheckedCreateWithoutHostingInput> | ContentBlockCreateWithoutHostingInput[] | ContentBlockUncheckedCreateWithoutHostingInput[]
+    connectOrCreate?: ContentBlockCreateOrConnectWithoutHostingInput | ContentBlockCreateOrConnectWithoutHostingInput[]
+    createMany?: ContentBlockCreateManyHostingInputEnvelope
+    connect?: ContentBlockWhereUniqueInput | ContentBlockWhereUniqueInput[]
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -27859,6 +28182,20 @@ export namespace Prisma {
     deleteMany?: TariffScalarWhereInput | TariffScalarWhereInput[]
   }
 
+  export type ContentBlockUpdateManyWithoutHostingNestedInput = {
+    create?: XOR<ContentBlockCreateWithoutHostingInput, ContentBlockUncheckedCreateWithoutHostingInput> | ContentBlockCreateWithoutHostingInput[] | ContentBlockUncheckedCreateWithoutHostingInput[]
+    connectOrCreate?: ContentBlockCreateOrConnectWithoutHostingInput | ContentBlockCreateOrConnectWithoutHostingInput[]
+    upsert?: ContentBlockUpsertWithWhereUniqueWithoutHostingInput | ContentBlockUpsertWithWhereUniqueWithoutHostingInput[]
+    createMany?: ContentBlockCreateManyHostingInputEnvelope
+    set?: ContentBlockWhereUniqueInput | ContentBlockWhereUniqueInput[]
+    disconnect?: ContentBlockWhereUniqueInput | ContentBlockWhereUniqueInput[]
+    delete?: ContentBlockWhereUniqueInput | ContentBlockWhereUniqueInput[]
+    connect?: ContentBlockWhereUniqueInput | ContentBlockWhereUniqueInput[]
+    update?: ContentBlockUpdateWithWhereUniqueWithoutHostingInput | ContentBlockUpdateWithWhereUniqueWithoutHostingInput[]
+    updateMany?: ContentBlockUpdateManyWithWhereWithoutHostingInput | ContentBlockUpdateManyWithWhereWithoutHostingInput[]
+    deleteMany?: ContentBlockScalarWhereInput | ContentBlockScalarWhereInput[]
+  }
+
   export type TariffUncheckedUpdateManyWithoutHostingNestedInput = {
     create?: XOR<TariffCreateWithoutHostingInput, TariffUncheckedCreateWithoutHostingInput> | TariffCreateWithoutHostingInput[] | TariffUncheckedCreateWithoutHostingInput[]
     connectOrCreate?: TariffCreateOrConnectWithoutHostingInput | TariffCreateOrConnectWithoutHostingInput[]
@@ -27871,6 +28208,20 @@ export namespace Prisma {
     update?: TariffUpdateWithWhereUniqueWithoutHostingInput | TariffUpdateWithWhereUniqueWithoutHostingInput[]
     updateMany?: TariffUpdateManyWithWhereWithoutHostingInput | TariffUpdateManyWithWhereWithoutHostingInput[]
     deleteMany?: TariffScalarWhereInput | TariffScalarWhereInput[]
+  }
+
+  export type ContentBlockUncheckedUpdateManyWithoutHostingNestedInput = {
+    create?: XOR<ContentBlockCreateWithoutHostingInput, ContentBlockUncheckedCreateWithoutHostingInput> | ContentBlockCreateWithoutHostingInput[] | ContentBlockUncheckedCreateWithoutHostingInput[]
+    connectOrCreate?: ContentBlockCreateOrConnectWithoutHostingInput | ContentBlockCreateOrConnectWithoutHostingInput[]
+    upsert?: ContentBlockUpsertWithWhereUniqueWithoutHostingInput | ContentBlockUpsertWithWhereUniqueWithoutHostingInput[]
+    createMany?: ContentBlockCreateManyHostingInputEnvelope
+    set?: ContentBlockWhereUniqueInput | ContentBlockWhereUniqueInput[]
+    disconnect?: ContentBlockWhereUniqueInput | ContentBlockWhereUniqueInput[]
+    delete?: ContentBlockWhereUniqueInput | ContentBlockWhereUniqueInput[]
+    connect?: ContentBlockWhereUniqueInput | ContentBlockWhereUniqueInput[]
+    update?: ContentBlockUpdateWithWhereUniqueWithoutHostingInput | ContentBlockUpdateWithWhereUniqueWithoutHostingInput[]
+    updateMany?: ContentBlockUpdateManyWithWhereWithoutHostingInput | ContentBlockUpdateManyWithWhereWithoutHostingInput[]
+    deleteMany?: ContentBlockScalarWhereInput | ContentBlockScalarWhereInput[]
   }
 
   export type HostingCreateNestedOneWithoutTariffsInput = {
@@ -28583,6 +28934,22 @@ export namespace Prisma {
     update?: XOR<XOR<ProgrammingLanguageUpdateToOneWithWhereWithoutTariffsInput, ProgrammingLanguageUpdateWithoutTariffsInput>, ProgrammingLanguageUncheckedUpdateWithoutTariffsInput>
   }
 
+  export type HostingCreateNestedOneWithoutContentBlocksInput = {
+    create?: XOR<HostingCreateWithoutContentBlocksInput, HostingUncheckedCreateWithoutContentBlocksInput>
+    connectOrCreate?: HostingCreateOrConnectWithoutContentBlocksInput
+    connect?: HostingWhereUniqueInput
+  }
+
+  export type HostingUpdateOneWithoutContentBlocksNestedInput = {
+    create?: XOR<HostingCreateWithoutContentBlocksInput, HostingUncheckedCreateWithoutContentBlocksInput>
+    connectOrCreate?: HostingCreateOrConnectWithoutContentBlocksInput
+    upsert?: HostingUpsertWithoutContentBlocksInput
+    disconnect?: HostingWhereInput | boolean
+    delete?: HostingWhereInput | boolean
+    connect?: HostingWhereUniqueInput
+    update?: XOR<XOR<HostingUpdateToOneWithWhereWithoutContentBlocksInput, HostingUpdateWithoutContentBlocksInput>, HostingUncheckedUpdateWithoutContentBlocksInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -29228,6 +29595,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ContentBlockCreateWithoutHostingInput = {
+    id?: string
+    key: string
+    title?: string | null
+    content?: string | null
+    type?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContentBlockUncheckedCreateWithoutHostingInput = {
+    id?: string
+    key: string
+    title?: string | null
+    content?: string | null
+    type?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContentBlockCreateOrConnectWithoutHostingInput = {
+    where: ContentBlockWhereUniqueInput
+    create: XOR<ContentBlockCreateWithoutHostingInput, ContentBlockUncheckedCreateWithoutHostingInput>
+  }
+
+  export type ContentBlockCreateManyHostingInputEnvelope = {
+    data: ContentBlockCreateManyHostingInput | ContentBlockCreateManyHostingInput[]
+    skipDuplicates?: boolean
+  }
+
   export type TariffUpsertWithWhereUniqueWithoutHostingInput = {
     where: TariffWhereUniqueInput
     update: XOR<TariffUpdateWithoutHostingInput, TariffUncheckedUpdateWithoutHostingInput>
@@ -29294,6 +29693,37 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Tariff"> | Date | string
   }
 
+  export type ContentBlockUpsertWithWhereUniqueWithoutHostingInput = {
+    where: ContentBlockWhereUniqueInput
+    update: XOR<ContentBlockUpdateWithoutHostingInput, ContentBlockUncheckedUpdateWithoutHostingInput>
+    create: XOR<ContentBlockCreateWithoutHostingInput, ContentBlockUncheckedCreateWithoutHostingInput>
+  }
+
+  export type ContentBlockUpdateWithWhereUniqueWithoutHostingInput = {
+    where: ContentBlockWhereUniqueInput
+    data: XOR<ContentBlockUpdateWithoutHostingInput, ContentBlockUncheckedUpdateWithoutHostingInput>
+  }
+
+  export type ContentBlockUpdateManyWithWhereWithoutHostingInput = {
+    where: ContentBlockScalarWhereInput
+    data: XOR<ContentBlockUpdateManyMutationInput, ContentBlockUncheckedUpdateManyWithoutHostingInput>
+  }
+
+  export type ContentBlockScalarWhereInput = {
+    AND?: ContentBlockScalarWhereInput | ContentBlockScalarWhereInput[]
+    OR?: ContentBlockScalarWhereInput[]
+    NOT?: ContentBlockScalarWhereInput | ContentBlockScalarWhereInput[]
+    id?: StringFilter<"ContentBlock"> | string
+    key?: StringFilter<"ContentBlock"> | string
+    title?: StringNullableFilter<"ContentBlock"> | string | null
+    content?: StringNullableFilter<"ContentBlock"> | string | null
+    type?: StringNullableFilter<"ContentBlock"> | string | null
+    hostingId?: StringNullableFilter<"ContentBlock"> | string | null
+    isActive?: BoolFilter<"ContentBlock"> | boolean
+    createdAt?: DateTimeFilter<"ContentBlock"> | Date | string
+    updatedAt?: DateTimeFilter<"ContentBlock"> | Date | string
+  }
+
   export type HostingCreateWithoutTariffsInput = {
     id?: string
     name: string
@@ -29301,9 +29731,13 @@ export namespace Prisma {
     description?: string | null
     logoUrl?: string | null
     websiteUrl?: string | null
+    startYear?: string | null
+    testPeriod?: number | null
+    clients?: number | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    contentBlocks?: ContentBlockCreateNestedManyWithoutHostingInput
   }
 
   export type HostingUncheckedCreateWithoutTariffsInput = {
@@ -29313,9 +29747,13 @@ export namespace Prisma {
     description?: string | null
     logoUrl?: string | null
     websiteUrl?: string | null
+    startYear?: string | null
+    testPeriod?: number | null
+    clients?: number | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    contentBlocks?: ContentBlockUncheckedCreateNestedManyWithoutHostingInput
   }
 
   export type HostingCreateOrConnectWithoutTariffsInput = {
@@ -29461,9 +29899,13 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startYear?: NullableStringFieldUpdateOperationsInput | string | null
+    testPeriod?: NullableIntFieldUpdateOperationsInput | number | null
+    clients?: NullableIntFieldUpdateOperationsInput | number | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contentBlocks?: ContentBlockUpdateManyWithoutHostingNestedInput
   }
 
   export type HostingUncheckedUpdateWithoutTariffsInput = {
@@ -29473,9 +29915,13 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startYear?: NullableStringFieldUpdateOperationsInput | string | null
+    testPeriod?: NullableIntFieldUpdateOperationsInput | number | null
+    clients?: NullableIntFieldUpdateOperationsInput | number | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contentBlocks?: ContentBlockUncheckedUpdateManyWithoutHostingNestedInput
   }
 
   export type TariffCMSUpsertWithWhereUniqueWithoutTariffInput = {
@@ -31428,6 +31874,86 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
   }
 
+  export type HostingCreateWithoutContentBlocksInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    logoUrl?: string | null
+    websiteUrl?: string | null
+    startYear?: string | null
+    testPeriod?: number | null
+    clients?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tariffs?: TariffCreateNestedManyWithoutHostingInput
+  }
+
+  export type HostingUncheckedCreateWithoutContentBlocksInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    logoUrl?: string | null
+    websiteUrl?: string | null
+    startYear?: string | null
+    testPeriod?: number | null
+    clients?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tariffs?: TariffUncheckedCreateNestedManyWithoutHostingInput
+  }
+
+  export type HostingCreateOrConnectWithoutContentBlocksInput = {
+    where: HostingWhereUniqueInput
+    create: XOR<HostingCreateWithoutContentBlocksInput, HostingUncheckedCreateWithoutContentBlocksInput>
+  }
+
+  export type HostingUpsertWithoutContentBlocksInput = {
+    update: XOR<HostingUpdateWithoutContentBlocksInput, HostingUncheckedUpdateWithoutContentBlocksInput>
+    create: XOR<HostingCreateWithoutContentBlocksInput, HostingUncheckedCreateWithoutContentBlocksInput>
+    where?: HostingWhereInput
+  }
+
+  export type HostingUpdateToOneWithWhereWithoutContentBlocksInput = {
+    where?: HostingWhereInput
+    data: XOR<HostingUpdateWithoutContentBlocksInput, HostingUncheckedUpdateWithoutContentBlocksInput>
+  }
+
+  export type HostingUpdateWithoutContentBlocksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startYear?: NullableStringFieldUpdateOperationsInput | string | null
+    testPeriod?: NullableIntFieldUpdateOperationsInput | number | null
+    clients?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tariffs?: TariffUpdateManyWithoutHostingNestedInput
+  }
+
+  export type HostingUncheckedUpdateWithoutContentBlocksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startYear?: NullableStringFieldUpdateOperationsInput | string | null
+    testPeriod?: NullableIntFieldUpdateOperationsInput | number | null
+    clients?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tariffs?: TariffUncheckedUpdateManyWithoutHostingNestedInput
+  }
+
   export type AccountCreateManyUserInput = {
     id?: string
     type: string
@@ -31549,6 +32075,17 @@ export namespace Prisma {
     domainsCount?: number | null
     databasesCount?: number | null
     emailAccounts?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ContentBlockCreateManyHostingInput = {
+    id?: string
+    key: string
+    title?: string | null
+    content?: string | null
+    type?: string | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -31699,6 +32236,39 @@ export namespace Prisma {
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
     emailAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentBlockUpdateWithoutHostingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentBlockUncheckedUpdateWithoutHostingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContentBlockUncheckedUpdateManyWithoutHostingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

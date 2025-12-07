@@ -38,7 +38,10 @@ function toBoolean(value: number | boolean | null | undefined): boolean {
   if (typeof value === "boolean") {
     return value;
   }
-  return value === 1 || value === true;
+  if (typeof value === "number") {
+    return value === 1;
+  }
+  return false;
 }
 
 /**
@@ -127,7 +130,14 @@ export function mapHosting(mysqlHosting: MySQLHosting): PrismaHosting {
     throw new Error("Hosting name is required");
   }
 
-  const slug = generateSlug(mysqlHosting.name);
+  // Используем slug из MySQL, если есть и не пустой, иначе генерируем из name
+  // Важно: если slug из MySQL существует, используем его как есть (сохраняем точки и другие символы доменов)
+  let slug: string;
+  if (mysqlHosting.slug && mysqlHosting.slug.trim()) {
+    slug = mysqlHosting.slug.trim();
+  } else {
+    slug = generateSlug(mysqlHosting.name);
+  }
 
   return {
     id: randomUUID(),
@@ -135,8 +145,17 @@ export function mapHosting(mysqlHosting: MySQLHosting): PrismaHosting {
     slug,
     description: mysqlHosting.description?.trim() || null,
     logoUrl: mysqlHosting.logo_url?.trim() || null,
-    websiteUrl: mysqlHosting.website_url?.trim() || null,
-    isActive: toBoolean(mysqlHosting.is_active),
+    // При переносе websiteUrl = slug
+    websiteUrl: slug,
+    startYear: mysqlHosting.start_year?.trim() || null,
+    testPeriod: mysqlHosting.test_period ?? null,
+    clients: mysqlHosting.clients ?? null,
+    // Устанавливаем isActive на основе status: is_active = status === 1
+    // Если status не указан, используем is_active из MySQL, иначе проверяем status
+    isActive:
+      mysqlHosting.status !== null && mysqlHosting.status !== undefined
+        ? mysqlHosting.status === 1
+        : toBoolean(mysqlHosting.is_active),
     createdAt: toDate(mysqlHosting.created_at),
     updatedAt: toDate(mysqlHosting.updated_at),
   };
@@ -145,9 +164,7 @@ export function mapHosting(mysqlHosting: MySQLHosting): PrismaHosting {
 /**
  * Преобразует значение цены в Decimal
  */
-function toDecimal(
-  value: string | number | null | undefined
-): Decimal | null {
+function toDecimal(value: string | number | null | undefined): Decimal | null {
   if (value === null || value === undefined) {
     return null;
   }
@@ -187,7 +204,10 @@ export function mapTariff(
 
   // Определяем period на основе price_month и price_year
   let period: TariffPeriod | null = null;
-  if (mysqlTariff.price_month !== null && mysqlTariff.price_month !== undefined) {
+  if (
+    mysqlTariff.price_month !== null &&
+    mysqlTariff.price_month !== undefined
+  ) {
     period = TariffPeriod.MONTH;
   } else if (
     mysqlTariff.price_year !== null &&
@@ -223,9 +243,11 @@ export function mapTariff(
     ftpAccounts: mysqlTariff.ftp_accounts ?? null,
     traffic: mysqlTariff.traffic ?? null,
     mailboxes: mysqlTariff.mailboxes ?? null,
-    automaticCms: mysqlTariff.automatic_cms !== null && mysqlTariff.automatic_cms !== undefined
-      ? toBoolean(mysqlTariff.automatic_cms)
-      : null,
+    automaticCms:
+      mysqlTariff.automatic_cms !== null &&
+      mysqlTariff.automatic_cms !== undefined
+        ? toBoolean(mysqlTariff.automatic_cms)
+        : null,
     ssl:
       mysqlTariff.ssl !== null && mysqlTariff.ssl !== undefined
         ? toBoolean(mysqlTariff.ssl)
@@ -248,8 +270,7 @@ export function mapTariff(
     status: mysqlTariff.status ?? 1,
     countTestDays: mysqlTariff.count_test_days ?? null,
     isTemplate:
-      mysqlTariff.is_template !== null &&
-      mysqlTariff.is_template !== undefined
+      mysqlTariff.is_template !== null && mysqlTariff.is_template !== undefined
         ? toBoolean(mysqlTariff.is_template)
         : null,
     ddosDef:

@@ -167,6 +167,9 @@ exports.Prisma.HostingScalarFieldEnum = {
   description: 'description',
   logoUrl: 'logoUrl',
   websiteUrl: 'websiteUrl',
+  startYear: 'startYear',
+  testPeriod: 'testPeriod',
+  clients: 'clients',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -297,6 +300,7 @@ exports.Prisma.ContentBlockScalarFieldEnum = {
   title: 'title',
   content: 'content',
   type: 'type',
+  hostingId: 'hostingId',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

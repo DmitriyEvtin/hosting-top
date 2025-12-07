@@ -54,7 +54,7 @@ describe("Data Mapper", () => {
       expect(result.slug).toBe("khosting-test");
       expect(result.description).toBe("Описание хостинга");
       expect(result.logoUrl).toBe("https://example.com/logo.png");
-      expect(result.websiteUrl).toBe("https://example.com");
+      expect(result.websiteUrl).toBe("khosting-test"); // websiteUrl = slug при переносе
       expect(result.isActive).toBe(true);
       expect(result.createdAt).toBeInstanceOf(Date);
       expect(result.updatedAt).toBeInstanceOf(Date);
@@ -76,7 +76,7 @@ describe("Data Mapper", () => {
 
       expect(result.description).toBeNull();
       expect(result.logoUrl).toBeNull();
-      expect(result.websiteUrl).toBeNull();
+      expect(result.websiteUrl).toBe("test-hosting"); // websiteUrl = slug при переносе
       expect(result.isActive).toBe(false);
       expect(result.createdAt).toBeInstanceOf(Date);
       expect(result.updatedAt).toBeInstanceOf(Date);
@@ -126,6 +126,110 @@ describe("Data Mapper", () => {
       expect(result.updatedAt).toBeInstanceOf(Date);
       expect(result.createdAt.getTime()).toBe(new Date("2024-01-01").getTime());
       expect(result.updatedAt.getTime()).toBe(new Date("2024-01-02").getTime());
+    });
+
+    it("should use slug from MySQL if provided (preserving dots for domains)", () => {
+      const mysqlHosting: MySQLHosting = {
+        id: 1,
+        name: "Example Hosting",
+        slug: "example.com",
+      };
+
+      const result = mapHosting(mysqlHosting);
+      expect(result.slug).toBe("example.com"); // Slug из MySQL сохраняется как есть
+      expect(result.websiteUrl).toBe("example.com"); // websiteUrl = slug при переносе
+    });
+
+    it("should use slug from MySQL with subdomain", () => {
+      const mysqlHosting: MySQLHosting = {
+        id: 1,
+        name: "Subdomain Hosting",
+        slug: "sub.example.com",
+      };
+
+      const result = mapHosting(mysqlHosting);
+      expect(result.slug).toBe("sub.example.com"); // Множественные точки сохраняются
+      expect(result.websiteUrl).toBe("sub.example.com"); // websiteUrl = slug при переносе
+    });
+
+    it("should generate slug if MySQL slug is empty or null", () => {
+      const mysqlHosting1: MySQLHosting = {
+        id: 1,
+        name: "Test Hosting",
+        slug: null,
+      };
+
+      const result1 = mapHosting(mysqlHosting1);
+      expect(result1.slug).toBe("test-hosting"); // Генерируется из name
+
+      const mysqlHosting2: MySQLHosting = {
+        id: 2,
+        name: "Test Hosting",
+        slug: "",
+      };
+
+      const result2 = mapHosting(mysqlHosting2);
+      expect(result2.slug).toBe("test-hosting"); // Генерируется из name
+
+      const mysqlHosting3: MySQLHosting = {
+        id: 3,
+        name: "Test Hosting",
+        slug: "   ", // Только пробелы
+      };
+
+      const result3 = mapHosting(mysqlHosting3);
+      expect(result3.slug).toBe("test-hosting"); // Генерируется из name
+    });
+
+    it("should set isActive based on status: is_active = status === 1", () => {
+      // Если status === 1, то isActive = true
+      const mysqlHosting1: MySQLHosting = {
+        id: 1,
+        name: "Test Hosting",
+        status: 1,
+      };
+
+      const result1 = mapHosting(mysqlHosting1);
+      expect(result1.isActive).toBe(true);
+
+      // Если status !== 1, то isActive = false
+      const mysqlHosting2: MySQLHosting = {
+        id: 2,
+        name: "Test Hosting",
+        status: 0,
+      };
+
+      const result2 = mapHosting(mysqlHosting2);
+      expect(result2.isActive).toBe(false);
+
+      // Если status === 2, то isActive = false
+      const mysqlHosting3: MySQLHosting = {
+        id: 3,
+        name: "Test Hosting",
+        status: 2,
+      };
+
+      const result3 = mapHosting(mysqlHosting3);
+      expect(result3.isActive).toBe(false);
+
+      // Если status не указан, используем is_active из MySQL
+      const mysqlHosting4: MySQLHosting = {
+        id: 4,
+        name: "Test Hosting",
+        is_active: 1,
+      };
+
+      const result4 = mapHosting(mysqlHosting4);
+      expect(result4.isActive).toBe(true);
+
+      const mysqlHosting5: MySQLHosting = {
+        id: 5,
+        name: "Test Hosting",
+        is_active: 0,
+      };
+
+      const result5 = mapHosting(mysqlHosting5);
+      expect(result5.isActive).toBe(false);
     });
   });
 

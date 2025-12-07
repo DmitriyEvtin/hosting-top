@@ -38,14 +38,10 @@ export async function GET(
       );
     }
 
-    // Получаем контентные блоки, связанные с хостингом
-    // Фильтруем по типу (type = hosting_id) или по ключу (key начинается с hosting_{id}_)
+    // Получаем контентные блоки, связанные с хостингом через поле hostingId
     const contentBlocks = await prisma.contentBlock.findMany({
       where: {
-        OR: [
-          { type: hostingId },
-          { key: { startsWith: `hosting_${hostingId}_` } },
-        ],
+        hostingId,
       },
       select: {
         id: true,
@@ -57,7 +53,9 @@ export async function GET(
         createdAt: true,
         updatedAt: true,
       },
-      orderBy: { createdAt: "desc" },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
 
     return NextResponse.json({
