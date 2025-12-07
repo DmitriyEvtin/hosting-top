@@ -443,7 +443,8 @@ export function mapContentBlock(
     title: mysqlContentBlock.title?.trim() || null,
     content: mysqlContentBlock.content?.trim() || null,
     type: typeValue,
-    isActive: toBoolean(mysqlContentBlock.is_active),
+    // При миграции is_active всегда устанавливается в true
+    isActive: true,
     createdAt: toDate(mysqlContentBlock.created_at),
     updatedAt: toDate(mysqlContentBlock.updated_at),
   };

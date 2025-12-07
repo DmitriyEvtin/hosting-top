@@ -663,7 +663,7 @@ describe("Data Mapper", () => {
 
       expect(result.title).toBeNull();
       expect(result.content).toBeNull();
-      expect(result.isActive).toBe(false);
+      expect(result.isActive).toBe(true); // При миграции is_active всегда true
       expect(result.createdAt).toBeInstanceOf(Date);
       expect(result.updatedAt).toBeInstanceOf(Date);
     });
