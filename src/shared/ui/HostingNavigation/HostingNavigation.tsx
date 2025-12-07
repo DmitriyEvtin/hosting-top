@@ -5,7 +5,7 @@ import { cn } from "@/shared/lib/utils";
 
 interface HostingNavigationProps {
   hostingSlug: string;
-  currentPage: "overview" | "tariffs";
+  currentPage: "overview" | "tariffs" | "reviews";
   className?: string;
 }
 
@@ -24,6 +24,11 @@ export function HostingNavigation({
       label: "Тарифы",
       href: `/hosting/${hostingSlug}/tariffs`,
       page: "tariffs" as const,
+    },
+    {
+      label: "Отзывы",
+      href: `/hosting/${hostingSlug}/reviews`,
+      page: "reviews" as const,
     },
   ];
 
