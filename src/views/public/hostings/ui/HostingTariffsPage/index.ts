@@ -1,0 +1,2 @@
+export { HostingTariffsPage } from "./HostingTariffsPage";
+
