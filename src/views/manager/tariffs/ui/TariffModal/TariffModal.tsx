@@ -13,7 +13,6 @@ import {
 } from "@/shared/ui/Dialog";
 import { Input } from "@/shared/ui/Input";
 import { Label } from "@/shared/ui/Label";
-import { Textarea } from "@/shared/ui/Textarea";
 import {
   Select,
   SelectContent,
@@ -193,15 +192,12 @@ export function TariffModal({
   const resetForm = () => {
     setName("");
     setSubtitle("");
-    setPrice("");
     setCurrency("RUB");
-    setPeriod("MONTH");
     setDiskSpace("");
     setBandwidth("");
     setDomainsCount("");
     setDatabasesCount("");
     setEmailAccounts("");
-    setInfoDomains("");
     setIsActive(true);
     setSelectedCms([]);
     setSelectedControlPanels([]);

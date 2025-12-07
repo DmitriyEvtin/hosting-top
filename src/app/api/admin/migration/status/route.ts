@@ -7,7 +7,8 @@ import { withAdminAuth } from "@/shared/lib/admin-middleware";
 import { getMigrationStatus } from "@/shared/lib/migration-status";
 import { NextRequest, NextResponse } from "next/server";
 
-async function handler(request: NextRequest) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function handler(_request: NextRequest) {
   try {
     const status = await getMigrationStatus();
 

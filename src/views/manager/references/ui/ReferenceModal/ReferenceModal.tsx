@@ -36,7 +36,8 @@ export function ReferenceModal({
   open,
   mode,
   item,
-  type,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  type: _type,
   title,
   apiEndpoint,
   onClose,
@@ -68,7 +69,6 @@ export function ReferenceModal({
         setSlug("");
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, mode, item]);
 
   // Обработка сохранения

@@ -234,7 +234,7 @@ export function ContentBlockModal({
         throw new Error(errorMessage);
       }
 
-      const data = await response.json();
+      await response.json();
 
       toast({
         title: mode === "create" ? "Блок контента создан" : "Блок контента обновлен",

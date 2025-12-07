@@ -16,16 +16,8 @@ const HostingCreateSchema = z.object({
   isActive: z.boolean().default(true),
 });
 
-/**
- * Схема валидации для обновления хостинга
- */
-const HostingUpdateSchema = z.object({
-  name: z.string().min(1, "Название обязательно").max(255, "Название слишком длинное").optional(),
-  description: z.string().optional(),
-  logoUrl: z.string().url("Некорректный URL").optional().or(z.literal("")),
-  websiteUrl: z.string().url("Некорректный URL").optional().or(z.literal("")),
-  isActive: z.boolean().optional(),
-});
+// Схема валидации для обновления хостинга используется в других файлах
+// const HostingUpdateSchema = z.object({...});
 
 /**
  * Схема валидации для query параметров списка хостингов

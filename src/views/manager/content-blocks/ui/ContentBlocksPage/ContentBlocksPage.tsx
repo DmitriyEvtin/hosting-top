@@ -54,9 +54,9 @@ export function ContentBlocksPage() {
   const [search, setSearch] = useState("");
   const [isActive, setIsActive] = useState<string>("all");
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
-  const [totalPages, setTotalPages] = useState(0);
-  const [totalItems, setTotalItems] = useState(0);
+  const [limit] = useState(10);
+  const [, setTotalPages] = useState(0);
+  const [, setTotalItems] = useState(0);
 
   // Модальное окно создания/редактирования
   const [modalOpen, setModalOpen] = useState(false);
@@ -343,8 +343,8 @@ export function ContentBlocksPage() {
           <DialogHeader>
             <DialogTitle>Подтверждение удаления</DialogTitle>
             <DialogDescription>
-              Вы уверены, что хотите удалить блок контента "
-              {blockToDelete?.key}"? Это действие нельзя отменить.
+              Вы уверены, что хотите удалить блок контента &quot;
+              {blockToDelete?.key}&quot;? Это действие нельзя отменить.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useToast } from "@/shared/lib/use-toast";
-import { generateSlug } from "@/shared/lib/slug-utils";
 import { Button } from "@/shared/ui/Button";
 import {
   Dialog,
@@ -11,8 +10,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/shared/ui/Dialog";
-import { Input } from "@/shared/ui/Input";
-import { Label } from "@/shared/ui/Label";
 import {
   Table,
   TableBody,
@@ -266,7 +263,7 @@ export function ReferenceSection({
           <DialogHeader>
             <DialogTitle>Подтверждение удаления</DialogTitle>
             <DialogDescription>
-              Вы уверены, что хотите удалить "{itemToDelete?.name}"?
+              Вы уверены, что хотите удалить &quot;{itemToDelete?.name}&quot;?
               Это действие нельзя отменить.
             </DialogDescription>
           </DialogHeader>

@@ -21,7 +21,7 @@ import {
   RotateCcw,
   XCircle,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface MigrationStatus {
   id: string;
@@ -75,7 +75,7 @@ export function MigrationPage() {
   const [skipImages, setSkipImages] = useState(false);
 
   // Загрузка статуса миграции
-  const fetchStatus = async () => {
+  const fetchStatus = useCallback(async () => {
     try {
       const response = await fetch("/api/admin/migration/status");
       const data = await response.json();
@@ -110,7 +110,7 @@ export function MigrationPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [toast]);
 
   // Запуск миграции
   const handleStart = async () => {
@@ -212,7 +212,7 @@ export function MigrationPage() {
   // Автообновление статуса
   useEffect(() => {
     fetchStatus();
-  }, []);
+  }, [fetchStatus]);
 
   useEffect(() => {
     if (!autoRefresh) return;
@@ -222,7 +222,7 @@ export function MigrationPage() {
     }, 3000); // Обновление каждые 3 секунды
 
     return () => clearInterval(interval);
-  }, [autoRefresh]);
+  }, [autoRefresh, fetchStatus]);
 
   const getStatusIcon = () => {
     if (!status) return <Database className="h-5 w-5" />;

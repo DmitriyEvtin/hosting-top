@@ -225,7 +225,8 @@ export async function isMigrationRunning(): Promise<boolean> {
  * Загрузить результаты миграции из файла результатов
  */
 export async function loadMigrationResultsFromFile(
-  migrationId: string
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _migrationId: string
 ): Promise<MigrationResults | null> {
   try {
     const { readdirSync, readFileSync } = await import("fs");

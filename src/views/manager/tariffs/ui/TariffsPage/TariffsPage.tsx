@@ -259,8 +259,8 @@ export function TariffsPage({ hostingId }: TariffsPageProps) {
           <DialogHeader>
             <DialogTitle>Подтверждение удаления</DialogTitle>
             <DialogDescription>
-              Вы уверены, что хотите удалить тариф "{tariffToDelete?.name}"? Это
-              действие нельзя отменить.
+              Вы уверены, что хотите удалить тариф &quot;{tariffToDelete?.name}
+              &quot;? Это действие нельзя отменить.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>

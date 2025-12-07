@@ -62,6 +62,7 @@ async function handler(request: NextRequest) {
 
     // Логируем вывод процесса
     migrationProcess.stdout?.on("data", (data) => {
+      // eslint-disable-next-line no-console
       console.log(`[Migration ${migrationId}] stdout:`, data.toString());
     });
 

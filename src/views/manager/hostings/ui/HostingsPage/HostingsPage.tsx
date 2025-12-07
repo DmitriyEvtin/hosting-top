@@ -279,14 +279,14 @@ export function HostingsPage() {
             <DialogDescription>
               {hostingToDelete?._count.tariffs > 0 ? (
                 <>
-                  Хостинг "{hostingToDelete?.name}" имеет{" "}
+                  Хостинг &quot;{hostingToDelete?.name}&quot; имеет{" "}
                   {hostingToDelete._count.tariffs} тарифов. Удаление хостинга
                   невозможно, пока не будут удалены все связанные тарифы.
                 </>
               ) : (
                 <>
-                  Вы уверены, что хотите удалить хостинг "
-                  {hostingToDelete?.name}"? Это действие нельзя отменить.
+                  Вы уверены, что хотите удалить хостинг &quot;
+                  {hostingToDelete?.name}&quot;? Это действие нельзя отменить.
                 </>
               )}
             </DialogDescription>

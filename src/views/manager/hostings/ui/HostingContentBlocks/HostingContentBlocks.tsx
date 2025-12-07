@@ -326,8 +326,8 @@ export function HostingContentBlocks({
           <DialogHeader>
             <DialogTitle>Подтверждение удаления</DialogTitle>
             <DialogDescription>
-              Вы уверены, что хотите удалить блок контента "
-              {blockToDelete?.key}"? Это действие нельзя отменить.
+              Вы уверены, что хотите удалить блок контента &quot;
+              {blockToDelete?.key}&quot;? Это действие нельзя отменить.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>

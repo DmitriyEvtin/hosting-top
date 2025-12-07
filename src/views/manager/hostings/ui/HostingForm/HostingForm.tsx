@@ -10,8 +10,8 @@ import { ImageUpload } from "@/shared/ui/ImageUpload";
 import { Input } from "@/shared/ui/Input";
 import { Label } from "@/shared/ui/Label";
 import { Textarea } from "@/shared/ui/Textarea";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -72,7 +72,6 @@ export function HostingForm({
   onCancel,
   isLoading = false,
 }: HostingFormProps) {
-  const router = useRouter();
   const { toast } = useToast();
   const [logoPreview, setLogoPreview] = useState<string | null>(
     hosting?.logoUrl || null
@@ -223,9 +222,11 @@ export function HostingForm({
             <div className="space-y-4">
               {logoPreview && (
                 <div className="relative inline-block">
-                  <img
+                  <Image
                     src={logoPreview}
                     alt="Логотип"
+                    width={96}
+                    height={96}
                     className="h-24 w-24 object-contain border rounded-lg"
                   />
                   <Button
