@@ -51,7 +51,8 @@ async function handler(request: NextRequest) {
     }
 
     // Запускаем миграцию в фоновом режиме
-    const migrationProcess = spawn("tsx", [scriptPath, ...args], {
+    // Используем npx tsx для гарантированного доступа к tsx из node_modules
+    const migrationProcess = spawn("npx", ["tsx", scriptPath, ...args], {
       cwd: process.cwd(),
       stdio: ["ignore", "pipe", "pipe"],
       env: {

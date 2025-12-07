@@ -85,6 +85,10 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/src/shared/api/database/prisma ./src/shared/api/database/prisma
+# Копируем скрипты миграции для выполнения в production
+COPY --from=builder /app/scripts/migration ./scripts/migration
+# Копируем необходимые части исходного кода для работы скриптов миграции
+COPY --from=builder /app/src/shared ./src/shared
 
 # Копируем только production зависимости
 COPY --from=deps /app/node_modules ./node_modules
