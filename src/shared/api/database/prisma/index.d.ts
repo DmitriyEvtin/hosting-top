@@ -22248,6 +22248,7 @@ export namespace Prisma {
     key: string | null
     title: string | null
     content: string | null
+    type: string | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -22258,6 +22259,7 @@ export namespace Prisma {
     key: string | null
     title: string | null
     content: string | null
+    type: string | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -22268,6 +22270,7 @@ export namespace Prisma {
     key: number
     title: number
     content: number
+    type: number
     isActive: number
     createdAt: number
     updatedAt: number
@@ -22280,6 +22283,7 @@ export namespace Prisma {
     key?: true
     title?: true
     content?: true
+    type?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -22290,6 +22294,7 @@ export namespace Prisma {
     key?: true
     title?: true
     content?: true
+    type?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -22300,6 +22305,7 @@ export namespace Prisma {
     key?: true
     title?: true
     content?: true
+    type?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -22383,6 +22389,7 @@ export namespace Prisma {
     key: string
     title: string | null
     content: string | null
+    type: string | null
     isActive: boolean
     createdAt: Date
     updatedAt: Date
@@ -22410,6 +22417,7 @@ export namespace Prisma {
     key?: boolean
     title?: boolean
     content?: boolean
+    type?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -22420,6 +22428,7 @@ export namespace Prisma {
     key?: boolean
     title?: boolean
     content?: boolean
+    type?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -22430,6 +22439,7 @@ export namespace Prisma {
     key?: boolean
     title?: boolean
     content?: boolean
+    type?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -22440,12 +22450,13 @@ export namespace Prisma {
     key?: boolean
     title?: boolean
     content?: boolean
+    type?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ContentBlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "key" | "title" | "content" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["contentBlock"]>
+  export type ContentBlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "key" | "title" | "content" | "type" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["contentBlock"]>
 
   export type $ContentBlockPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ContentBlock"
@@ -22455,6 +22466,7 @@ export namespace Prisma {
       key: string
       title: string | null
       content: string | null
+      type: string | null
       isActive: boolean
       createdAt: Date
       updatedAt: Date
@@ -22885,6 +22897,7 @@ export namespace Prisma {
     readonly key: FieldRef<"ContentBlock", 'String'>
     readonly title: FieldRef<"ContentBlock", 'String'>
     readonly content: FieldRef<"ContentBlock", 'String'>
+    readonly type: FieldRef<"ContentBlock", 'String'>
     readonly isActive: FieldRef<"ContentBlock", 'Boolean'>
     readonly createdAt: FieldRef<"ContentBlock", 'DateTime'>
     readonly updatedAt: FieldRef<"ContentBlock", 'DateTime'>
@@ -23468,6 +23481,7 @@ export namespace Prisma {
     key: 'key',
     title: 'title',
     content: 'content',
+    type: 'type',
     isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -24644,6 +24658,7 @@ export namespace Prisma {
     key?: StringFilter<"ContentBlock"> | string
     title?: StringNullableFilter<"ContentBlock"> | string | null
     content?: StringNullableFilter<"ContentBlock"> | string | null
+    type?: StringNullableFilter<"ContentBlock"> | string | null
     isActive?: BoolFilter<"ContentBlock"> | boolean
     createdAt?: DateTimeFilter<"ContentBlock"> | Date | string
     updatedAt?: DateTimeFilter<"ContentBlock"> | Date | string
@@ -24654,6 +24669,7 @@ export namespace Prisma {
     key?: SortOrder
     title?: SortOrderInput | SortOrder
     content?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -24667,6 +24683,7 @@ export namespace Prisma {
     NOT?: ContentBlockWhereInput | ContentBlockWhereInput[]
     title?: StringNullableFilter<"ContentBlock"> | string | null
     content?: StringNullableFilter<"ContentBlock"> | string | null
+    type?: StringNullableFilter<"ContentBlock"> | string | null
     isActive?: BoolFilter<"ContentBlock"> | boolean
     createdAt?: DateTimeFilter<"ContentBlock"> | Date | string
     updatedAt?: DateTimeFilter<"ContentBlock"> | Date | string
@@ -24677,6 +24694,7 @@ export namespace Prisma {
     key?: SortOrder
     title?: SortOrderInput | SortOrder
     content?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -24693,6 +24711,7 @@ export namespace Prisma {
     key?: StringWithAggregatesFilter<"ContentBlock"> | string
     title?: StringNullableWithAggregatesFilter<"ContentBlock"> | string | null
     content?: StringNullableWithAggregatesFilter<"ContentBlock"> | string | null
+    type?: StringNullableWithAggregatesFilter<"ContentBlock"> | string | null
     isActive?: BoolWithAggregatesFilter<"ContentBlock"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"ContentBlock"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ContentBlock"> | Date | string
@@ -25735,6 +25754,7 @@ export namespace Prisma {
     key: string
     title?: string | null
     content?: string | null
+    type?: string | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25745,6 +25765,7 @@ export namespace Prisma {
     key: string
     title?: string | null
     content?: string | null
+    type?: string | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25755,6 +25776,7 @@ export namespace Prisma {
     key?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25765,6 +25787,7 @@ export namespace Prisma {
     key?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25775,6 +25798,7 @@ export namespace Prisma {
     key: string
     title?: string | null
     content?: string | null
+    type?: string | null
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25785,6 +25809,7 @@ export namespace Prisma {
     key?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25795,6 +25820,7 @@ export namespace Prisma {
     key?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26651,6 +26677,7 @@ export namespace Prisma {
     key?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    type?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -26661,6 +26688,7 @@ export namespace Prisma {
     key?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    type?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -26671,6 +26699,7 @@ export namespace Prisma {
     key?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    type?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder

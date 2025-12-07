@@ -1196,6 +1196,16 @@ async function migrateContentBlocks(dryRun: boolean): Promise<void> {
     "SELECT * FROM content_block ORDER BY id"
   );
 
+  logger.info(
+    `Найдено контентных блоков в MySQL: ${mysqlContentBlocks.length}`
+  );
+
+  if (mysqlContentBlocks.length === 0) {
+    logger.warning("В MySQL таблице content_block нет данных для миграции");
+    logger.separator();
+    return;
+  }
+
   const progressBar = new cliProgress.SingleBar(
     {
       format: "ContentBlocks |{bar}| {percentage}% | {value}/{total}",
@@ -1207,7 +1217,22 @@ async function migrateContentBlocks(dryRun: boolean): Promise<void> {
 
   for (const mysqlContentBlock of mysqlContentBlocks) {
     try {
+      // Логируем структуру данных для отладки (только для первого элемента)
+      if (mysqlContentBlocks.indexOf(mysqlContentBlock) === 0) {
+        logger.info(
+          `Пример данных ContentBlock: ${JSON.stringify(mysqlContentBlock, null, 2)}`
+        );
+        logger.info(
+          `Поле type: ${mysqlContentBlock.type}, тип: ${typeof mysqlContentBlock.type}`
+        );
+      }
+
       const prismaContentBlock = mapContentBlock(mysqlContentBlock);
+
+      // Логируем результат маппинга для первого элемента
+      if (mysqlContentBlocks.indexOf(mysqlContentBlock) === 0) {
+        logger.info(`Результат маппинга type: ${prismaContentBlock.type}`);
+      }
 
       // Проверка на дубликат по key
       const existing = await prisma.contentBlock.findUnique({
@@ -1215,12 +1240,38 @@ async function migrateContentBlocks(dryRun: boolean): Promise<void> {
       });
 
       if (existing) {
+        // Обновляем существующий блок, если поле type отсутствует или отличается
+        if (!dryRun && prismaContentBlock.type !== null) {
+          if (existing.type !== prismaContentBlock.type) {
+            await prisma.contentBlock.update({
+              where: { key: prismaContentBlock.key },
+              data: { type: prismaContentBlock.type },
+            });
+            logger.info(
+              `ContentBlock с key "${prismaContentBlock.key}" обновлен: type = ${prismaContentBlock.type}`
+            );
+          }
+        }
         logger.warning(
-          `ContentBlock с key "${prismaContentBlock.key}" уже существует, пропускаем`
+          `ContentBlock с key "${prismaContentBlock.key}" уже существует, пропускаем создание`
         );
       } else {
         if (!dryRun) {
-          await prisma.contentBlock.create({ data: prismaContentBlock });
+          try {
+            await prisma.contentBlock.create({ data: prismaContentBlock });
+            logger.info(
+              `✓ ContentBlock создан: key="${prismaContentBlock.key}", type="${prismaContentBlock.type}"`
+            );
+          } catch (createError) {
+            const errorMessage =
+              createError instanceof Error
+                ? createError.message
+                : String(createError);
+            logger.error(
+              `Ошибка создания ContentBlock key="${prismaContentBlock.key}": ${errorMessage}`
+            );
+            throw createError;
+          }
         }
         migrationResult.statistics.contentBlocks++;
       }

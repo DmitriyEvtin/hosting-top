@@ -79,6 +79,7 @@ export interface MySQLContentBlock {
   key?: string | null;
   title?: string | null;
   content?: string | null;
+  type?: string | null;
   is_active?: number | boolean | null;
   created_at?: string | Date | null;
   updated_at?: string | Date | null;
@@ -158,6 +159,7 @@ export interface PrismaContentBlock {
   key: string;
   title?: string | null;
   content?: string | null;
+  type?: string | null;
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;

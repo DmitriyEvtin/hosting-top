@@ -266,6 +266,7 @@ exports.Prisma.ContentBlockScalarFieldEnum = {
   key: 'key',
   title: 'title',
   content: 'content',
+  type: 'type',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

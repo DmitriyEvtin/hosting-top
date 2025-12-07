@@ -1,13 +1,13 @@
 {
-  "id": "89323717-344b-4355-982f-c2f7e157f8dc",
+  "id": "9e4040e6-bba1-4b18-bfcc-e0363ed35f90",
   "status": "completed",
   "progress": {
     "current": 0,
     "total": 0,
     "stage": "initializing"
   },
-  "startedAt": "2025-12-07T01:04:29.200Z",
-  "completedAt": "2025-12-07T01:04:36.779Z",
+  "startedAt": "2025-12-07T08:45:46.377Z",
+  "completedAt": "2025-12-07T08:45:54.922Z",
   "errors": [],
   "results": {
     "hostings": 0,
@@ -32,5 +32,5 @@
     "contentBlocks": 0
   },
   "dryRun": false,
-  "skippedImages": true
+  "skippedImages": false
 }

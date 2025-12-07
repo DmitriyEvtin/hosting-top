@@ -292,15 +292,30 @@ export function mapContentBlock(
   let key = mysqlContentBlock.key?.trim() || null;
 
   if (!key) {
-    if (!mysqlContentBlock.title) {
-      throw new Error("ContentBlock key or title is required to generate key");
+    if (mysqlContentBlock.title) {
+      // Генерируем key из title
+      key = generateKeyFromTitle(mysqlContentBlock.title);
+    } else {
+      // Если нет ни key, ни title, генерируем key на основе ID
+      key = `content_block_${mysqlContentBlock.id}`;
     }
-    key = generateKeyFromTitle(mysqlContentBlock.title);
   }
 
   // Валидируем формат key
   if (!validateKeyFormat(key)) {
-    throw new Error(`ContentBlock key must be in snake_case format: ${key}`);
+    // Если key не соответствует формату, генерируем новый на основе ID
+    key = `content_block_${mysqlContentBlock.id}`;
+  }
+
+  // Обрабатываем поле type - может быть строкой, числом или null
+  let typeValue: string | null = null;
+  if (mysqlContentBlock.type !== null && mysqlContentBlock.type !== undefined) {
+    if (typeof mysqlContentBlock.type === "string") {
+      typeValue = mysqlContentBlock.type.trim() || null;
+    } else {
+      // Если type не строка, преобразуем в строку
+      typeValue = String(mysqlContentBlock.type);
+    }
   }
 
   return {
@@ -308,6 +323,7 @@ export function mapContentBlock(
     key,
     title: mysqlContentBlock.title?.trim() || null,
     content: mysqlContentBlock.content?.trim() || null,
+    type: typeValue,
     isActive: toBoolean(mysqlContentBlock.is_active),
     createdAt: toDate(mysqlContentBlock.created_at),
     updatedAt: toDate(mysqlContentBlock.updated_at),
