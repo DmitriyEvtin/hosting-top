@@ -607,6 +607,14 @@ async function migrateHostings(dryRun: boolean): Promise<void> {
     "SELECT * FROM hosting ORDER BY id"
   );
 
+  logger.info(`Найдено хостингов в MySQL: ${mysqlHostings.length}`);
+
+  if (mysqlHostings.length === 0) {
+    logger.warning("В MySQL таблице hosting нет данных для миграции");
+    logger.separator();
+    return;
+  }
+
   const progressBar = new cliProgress.SingleBar(
     {
       format: "Hostings |{bar}| {percentage}% | {value}/{total}",
@@ -627,9 +635,11 @@ async function migrateHostings(dryRun: boolean): Promise<void> {
 
       if (existing) {
         logger.warning(
-          `Хостинг с slug "${prismaHosting.slug}" уже существует, пропускаем`
+          `Хостинг с slug "${prismaHosting.slug}" уже существует, используем существующий ID`
         );
+        // Важно: сохраняем маппинг даже для существующих хостингов
         idMappings.hostings[mysqlHosting.id] = existing.id;
+        // Не увеличиваем счетчик, так как не создавали новую запись
       } else {
         if (!dryRun) {
           const created = await prisma.hosting.create({ data: prismaHosting });
@@ -756,6 +766,15 @@ async function migrateTariffs(dryRun: boolean): Promise<void> {
     "SELECT * FROM tariff ORDER BY id"
   );
 
+  logger.info(`Найдено тарифов в MySQL: ${mysqlTariffs.length}`);
+  logger.info(`Доступно хостингов в маппинге: ${Object.keys(idMappings.hostings).length}`);
+
+  if (mysqlTariffs.length === 0) {
+    logger.warning("В MySQL таблице tariff нет данных для миграции");
+    logger.separator();
+    return;
+  }
+
   const progressBar = new cliProgress.SingleBar(
     {
       format: "Tariffs |{bar}| {percentage}% | {value}/{total}",
@@ -770,9 +789,14 @@ async function migrateTariffs(dryRun: boolean): Promise<void> {
       // Получаем новый UUID хостинга из маппинга
       const hostingId = idMappings.hostings[mysqlTariff.hosting_id];
       if (!hostingId) {
-        logger.warning(
-          `Хостинг с ID ${mysqlTariff.hosting_id} не найден в маппинге, пропускаем тариф`
+        logger.error(
+          `Хостинг с ID ${mysqlTariff.hosting_id} не найден в маппинге. Доступные хостинги: ${Object.keys(idMappings.hostings).join(", ")}`
         );
+        migrationResult.errors.push({
+          stage: "tariffs",
+          message: `Tariff ID ${mysqlTariff.id}`,
+          error: `Hosting ID ${mysqlTariff.hosting_id} not found in mapping`,
+        });
         progressBar.increment();
         continue;
       }

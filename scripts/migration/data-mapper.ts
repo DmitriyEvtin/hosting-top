@@ -148,7 +148,12 @@ export function mapTariff(
     throw new Error("Tariff name is required");
   }
 
-  if (!mysqlTariff.price) {
+  // Проверяем price - может быть 0, null, undefined или пустой строкой
+  if (
+    mysqlTariff.price === null ||
+    mysqlTariff.price === undefined ||
+    mysqlTariff.price === ""
+  ) {
     throw new Error("Tariff price is required");
   }
 
@@ -159,13 +164,19 @@ export function mapTariff(
   // Преобразуем price в Decimal
   const priceValue =
     typeof mysqlTariff.price === "string"
-      ? mysqlTariff.price
+      ? mysqlTariff.price.trim()
       : mysqlTariff.price.toString();
+  
+  // Проверяем, что priceValue не пустая строка после trim
+  if (!priceValue || priceValue === "") {
+    throw new Error("Tariff price is required");
+  }
+  
   const price = new Decimal(priceValue);
 
-  // Валидируем, что price положительное число
-  if (price.lessThanOrEqualTo(0)) {
-    throw new Error("Tariff price must be greater than 0");
+  // Валидируем, что price не отрицательное число (0 разрешен)
+  if (price.lessThan(0)) {
+    throw new Error("Tariff price cannot be negative");
   }
 
   return {
