@@ -104,3 +104,103 @@ export function renderTemplate(
 
   return { subject, text, html };
 }
+
+/**
+ * Данные для email уведомления об одобрении отзыва
+ */
+export interface ReviewApprovedEmailData {
+  userName: string;
+  hostingName: string;
+  reviewContent: string;
+  reviewUrl: string;
+}
+
+/**
+ * Данные для email уведомления об отклонении отзыва
+ */
+export interface ReviewRejectedEmailData {
+  userName: string;
+  hostingName: string;
+  reviewContent: string;
+  rejectionReason: string;
+}
+
+/**
+ * Генерирует email шаблон для уведомления об одобрении отзыва
+ */
+export function getReviewApprovedEmailTemplate(
+  data: ReviewApprovedEmailData
+): EmailTemplate {
+  const subject = "Ваш отзыв одобрен";
+
+  const text = `
+Здравствуйте, ${data.userName}!
+
+Ваш отзыв о хостинге "${data.hostingName}" был одобрен и опубликован на сайте.
+
+Спасибо за ваш вклад в развитие нашего каталога!
+
+Просмотреть отзыв: ${data.reviewUrl}
+
+С уважением,
+Команда Hosting Top
+  `.trim();
+
+  const html = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <div style="background-color: #d4edda; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+        <h2 style="color: #155724; margin: 0 0 20px 0;">Ваш отзыв одобрен</h2>
+        <p style="color: #155724; margin: 0 0 15px 0;">Здравствуйте, ${data.userName}!</p>
+        <p style="color: #155724; margin: 0 0 15px 0;">Ваш отзыв о хостинге <strong>"${data.hostingName}"</strong> был одобрен и опубликован на сайте.</p>
+        <p style="color: #155724; margin: 0 0 20px 0;">Спасибо за ваш вклад в развитие нашего каталога!</p>
+        <div style="text-align: center; margin: 20px 0;">
+          <a href="${data.reviewUrl}" style="background-color: #28a745; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">Просмотреть отзыв</a>
+        </div>
+      </div>
+      <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+      <p style="color: #999; font-size: 12px; margin: 0;">С уважением,<br>Команда Hosting Top</p>
+    </div>
+  `;
+
+  return { subject, text, html };
+}
+
+/**
+ * Генерирует email шаблон для уведомления об отклонении отзыва
+ */
+export function getReviewRejectedEmailTemplate(
+  data: ReviewRejectedEmailData
+): EmailTemplate {
+  const subject = "Ваш отзыв отклонен";
+
+  const text = `
+Здравствуйте, ${data.userName}!
+
+К сожалению, ваш отзыв о хостинге "${data.hostingName}" был отклонен модератором.
+
+Причина отклонения:
+${data.rejectionReason}
+
+Вы можете отредактировать отзыв и отправить его на повторную модерацию.
+
+С уважением,
+Команда Hosting Top
+  `.trim();
+
+  const html = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <div style="background-color: #f8d7da; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+        <h2 style="color: #721c24; margin: 0 0 20px 0;">Ваш отзыв отклонен</h2>
+        <p style="color: #721c24; margin: 0 0 15px 0;">Здравствуйте, ${data.userName}!</p>
+        <p style="color: #721c24; margin: 0 0 15px 0;">К сожалению, ваш отзыв о хостинге <strong>"${data.hostingName}"</strong> был отклонен модератором.</p>
+        <h3 style="color: #721c24; margin: 20px 0 10px 0;">Причина отклонения:</h3>
+        <p style="color: #721c24; margin: 0 0 20px 0; padding: 10px; background-color: #fff; border-left: 4px solid #dc3545;">${data.rejectionReason}</p>
+        <p style="color: #721c24; margin: 0;">Вы можете отредактировать отзыв и отправить его на повторную модерацию.</p>
+      </div>
+      <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+      <p style="color: #999; font-size: 12px; margin: 0;">С уважением,<br>Команда Hosting Top</p>
+    </div>
+  `;
+
+  return { subject, text, html };
+}
