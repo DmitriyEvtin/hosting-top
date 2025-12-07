@@ -30,3 +30,9 @@ export {
 } from "./slug-utils";
 export { stripHtml, truncateHtml, truncateText } from "./text-utils";
 export { cn } from "./utils";
+export {
+  ContentBlockType,
+  ContentBlockTypeLabels,
+  getContentBlockHeader,
+  getContentBlockTypeLabel,
+} from "./content-block-types";

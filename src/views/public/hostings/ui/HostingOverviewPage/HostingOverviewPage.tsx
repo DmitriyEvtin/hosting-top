@@ -1,7 +1,8 @@
 "use client";
 
+import { getContentBlockHeader } from "@/shared/lib/content-block-types";
 import { cn } from "@/shared/lib/utils";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/Card";
+import { Card, CardHeader } from "@/shared/ui/Card";
 import { HostingBreadcrumbs } from "@/shared/ui/HostingBreadcrumbs";
 import { HostingNavigation } from "@/shared/ui/HostingNavigation";
 import { ExternalLink } from "lucide-react";
@@ -145,33 +146,35 @@ export function HostingOverviewPage({ hosting }: HostingOverviewPageProps) {
 
         {/* Контент-блоки */}
         {hosting.contentBlocks.length === 0 ? (
-          <Card>
-            <CardContent className="py-12 text-center">
-              <p className="text-muted-foreground">Контент-блоки отсутствуют</p>
-            </CardContent>
-          </Card>
+          <div className="py-12 text-center">
+            <p className="text-muted-foreground">Контент-блоки отсутствуют</p>
+          </div>
         ) : (
-          <div className="space-y-6">
-            {hosting.contentBlocks.map(block => (
-              <Card
-                key={block.id}
-                className={cn(block.type && `content-block-type-${block.type}`)}
-              >
-                {block.title && (
-                  <CardHeader>
-                    <CardTitle>{block.title}</CardTitle>
-                  </CardHeader>
-                )}
-                {block.content && (
-                  <CardContent>
+          <div className="space-y-8">
+            {hosting.contentBlocks.map(block => {
+              // Автоматически генерируем заголовок на основе типа, если title отсутствует
+              const blockTitle =
+                block.title || getContentBlockHeader(block.type, hosting.name);
+
+              return (
+                <section
+                  key={block.id}
+                  className={cn(
+                    block.type && `content-block-type-${block.type}`
+                  )}
+                >
+                  {blockTitle && (
+                    <h2 className="text-2xl font-bold mb-4">{blockTitle}</h2>
+                  )}
+                  {block.content && (
                     <div
-                      className="prose prose-sm max-w-none dark:prose-invert"
+                      className="prose prose-lg max-w-none dark:prose-invert"
                       dangerouslySetInnerHTML={{ __html: block.content }}
                     />
-                  </CardContent>
-                )}
-              </Card>
-            ))}
+                  )}
+                </section>
+              );
+            })}
           </div>
         )}
       </div>
