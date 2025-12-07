@@ -9,6 +9,7 @@ import {
   Server,
   BookOpen,
   Database,
+  MessageSquare,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -56,6 +57,11 @@ export function CRMSidebar({ className }: CRMSidebarProps) {
           href: "/manager/references",
           label: "Справочники",
           icon: BookOpen,
+        },
+        {
+          href: "/manager/reviews",
+          label: "Отзывы",
+          icon: MessageSquare,
         },
         {
           href: "/manager/migration",
