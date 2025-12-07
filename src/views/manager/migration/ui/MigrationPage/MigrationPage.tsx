@@ -20,6 +20,7 @@ import {
   RefreshCw,
   RotateCcw,
   XCircle,
+  Network,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
@@ -73,6 +74,7 @@ export function MigrationPage() {
   const [autoRefresh, setAutoRefresh] = useState(false);
   const [dryRun, setDryRun] = useState(false);
   const [skipImages, setSkipImages] = useState(false);
+  const [testingMySQL, setTestingMySQL] = useState(false);
 
   // Загрузка статуса миграции
   const fetchStatus = useCallback(async () => {
@@ -157,6 +159,39 @@ export function MigrationPage() {
       });
     } finally {
       setStarting(false);
+    }
+  };
+
+  // Проверка подключения к MySQL
+  const handleTestMySQL = async () => {
+    setTestingMySQL(true);
+    try {
+      const response = await fetch("/api/admin/migration/test-mysql");
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+          title: "Подключение успешно",
+          description: data.message || "Подключение к MySQL установлено",
+          variant: "success",
+        });
+      } else {
+        toast({
+          title: "Ошибка подключения",
+          description: data.details || data.error || data.message || "Не удалось подключиться к MySQL",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "Ошибка проверки подключения";
+      toast({
+        title: "Ошибка",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    } finally {
+      setTestingMySQL(false);
     }
   };
 
@@ -282,15 +317,35 @@ export function MigrationPage() {
               {getStatusIcon()}
               <CardTitle>Статус миграции</CardTitle>
             </div>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={fetchStatus}
-              disabled={loading}
-            >
-              <RefreshCw className="h-4 w-4 mr-2" />
-              Обновить
-            </Button>
+            <div className="flex items-center space-x-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleTestMySQL}
+                disabled={testingMySQL || loading}
+              >
+                {testingMySQL ? (
+                  <>
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    Проверка...
+                  </>
+                ) : (
+                  <>
+                    <Network className="h-4 w-4 mr-2" />
+                    Проверить MySQL
+                  </>
+                )}
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={fetchStatus}
+                disabled={loading}
+              >
+                <RefreshCw className="h-4 w-4 mr-2" />
+                Обновить
+              </Button>
+            </div>
           </div>
           <CardDescription>
             Текущее состояние процесса миграции данных
