@@ -92,11 +92,15 @@ export async function GET(request: NextRequest) {
           logoUrl: true,
           websiteUrl: true,
           isActive: true,
+          testPeriod: true,
+          startYear: true,
+          clients: true,
           createdAt: true,
           updatedAt: true,
           _count: {
             select: {
               tariffs: true,
+              contentBlocks: true,
             },
           },
         },

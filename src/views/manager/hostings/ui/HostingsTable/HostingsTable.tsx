@@ -22,10 +22,14 @@ interface Hosting {
   logoUrl: string | null;
   websiteUrl: string | null;
   isActive: boolean;
+  testPeriod: number | null;
+  startYear: string | null;
+  clients: number | null;
   createdAt: string;
   updatedAt: string;
   _count: {
     tariffs: number;
+    contentBlocks: number;
   };
 }
 
@@ -74,6 +78,10 @@ export function HostingsTable({
             <TableHead className="w-20">Логотип</TableHead>
             <TableHead>Название</TableHead>
             <TableHead>Сайт</TableHead>
+            <TableHead className="text-center">Контент блоков</TableHead>
+            <TableHead className="text-center">Тестовый период</TableHead>
+            <TableHead className="text-center">Дата запуска</TableHead>
+            <TableHead className="text-center">Клиентов</TableHead>
             <TableHead className="text-center">Тарифов</TableHead>
             <TableHead className="text-center">Статус</TableHead>
             <TableHead className="text-right">Действия</TableHead>
@@ -120,6 +128,30 @@ export function HostingsTable({
                     </span>
                     <ExternalLink className="h-3 w-3 flex-shrink-0" />
                   </a>
+                ) : (
+                  <span className="text-gray-400">—</span>
+                )}
+              </TableCell>
+              <TableCell className="text-center">
+                <span>{hosting._count.contentBlocks}</span>
+              </TableCell>
+              <TableCell className="text-center">
+                {hosting.testPeriod !== null ? (
+                  <span>{hosting.testPeriod} дн.</span>
+                ) : (
+                  <span className="text-gray-400">—</span>
+                )}
+              </TableCell>
+              <TableCell className="text-center">
+                {hosting.startYear ? (
+                  <span>{hosting.startYear}</span>
+                ) : (
+                  <span className="text-gray-400">—</span>
+                )}
+              </TableCell>
+              <TableCell className="text-center">
+                {hosting.clients !== null ? (
+                  <span>{hosting.clients}</span>
                 ) : (
                   <span className="text-gray-400">—</span>
                 )}

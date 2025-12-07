@@ -25,10 +25,14 @@ interface Hosting {
   logoUrl: string | null;
   websiteUrl: string | null;
   isActive: boolean;
+  testPeriod: number | null;
+  startYear: string | null;
+  clients: number | null;
   createdAt: string;
   updatedAt: string;
   _count: {
     tariffs: number;
+    contentBlocks: number;
   };
 }
 
