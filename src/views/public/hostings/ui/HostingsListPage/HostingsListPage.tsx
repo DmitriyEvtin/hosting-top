@@ -64,29 +64,37 @@ export function HostingsListPage() {
   // Извлекаем значения фильтров из URL
   // Используем useMemo для стабилизации массивов, чтобы избежать зацикливания
   // Сравниваем массивы по их строковому представлению
-  const currentSearch = searchParamsHook.get("search") || "";
-  const currentPage = parseInt(searchParamsHook.get("page") || "1", 10);
+  const currentSearch = searchParamsHook?.get("search") || "";
+  const currentPage = parseInt(searchParamsHook?.get("page") || "1", 10);
 
-  const countriesArray = searchParamsHook.getAll("country");
+  const countriesArray = searchParamsHook?.getAll("country") || [];
   const countriesKey = countriesArray.join(",");
+  // Используем только ключ в зависимостях, так как массив создается заново при каждом рендере
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const currentCountries = useMemo(() => countriesArray, [countriesKey]);
 
-  const currentMinPrice = searchParamsHook.get("minPrice") || "";
-  const currentMaxPrice = searchParamsHook.get("maxPrice") || "";
+  const currentMinPrice = searchParamsHook?.get("minPrice") || "";
+  const currentMaxPrice = searchParamsHook?.get("maxPrice") || "";
 
-  const cmsArray = searchParamsHook.getAll("cms");
+  const cmsArray = searchParamsHook?.getAll("cms") || [];
   const cmsKey = cmsArray.join(",");
+  // Используем только ключ в зависимостях, так как массив создается заново при каждом рендере
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const currentCms = useMemo(() => cmsArray, [cmsKey]);
 
-  const controlPanelsArray = searchParamsHook.getAll("controlPanel");
+  const controlPanelsArray = searchParamsHook?.getAll("controlPanel") || [];
   const controlPanelsKey = controlPanelsArray.join(",");
+  // Используем только ключ в зависимостях, так как массив создается заново при каждом рендере
   const currentControlPanels = useMemo(
     () => controlPanelsArray,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [controlPanelsKey]
   );
 
-  const osArray = searchParamsHook.getAll("os");
+  const osArray = searchParamsHook?.getAll("os") || [];
   const osKey = osArray.join(",");
+  // Используем только ключ в зависимостях, так как массив создается заново при каждом рендере
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const currentOs = useMemo(() => osArray, [osKey]);
 
   // Функция для обновления URL параметров
@@ -296,7 +304,8 @@ export function HostingsListPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleItemsPerPageChange = (itemsPerPage: number) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleItemsPerPageChange = (_itemsPerPage: number) => {
     // Для публичной страницы используем фиксированный лимит 20
     // Но можем обновить URL если нужно
     updateURL({ page: 1 });

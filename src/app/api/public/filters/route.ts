@@ -5,7 +5,8 @@ import { NextRequest, NextResponse } from "next/server";
  * GET /api/public/filters - Получить все доступные значения фильтров
  * с количеством хостингов для каждого значения и диапазоном цен
  */
-export async function GET(request: NextRequest) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function GET(_request: NextRequest) {
   try {
     // Базовое условие для активных тарифов активных хостингов
     const activeTariffCondition = {

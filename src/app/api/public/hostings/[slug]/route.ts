@@ -55,6 +55,7 @@ export async function GET(
     }
 
     // Исключаем isActive из ответа (публичный endpoint)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { isActive, ...hostingData } = hosting;
 
     return NextResponse.json({ hosting: hostingData });

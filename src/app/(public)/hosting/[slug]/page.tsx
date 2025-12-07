@@ -1,7 +1,7 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { prisma } from "@/shared/api/database";
 import { HostingOverviewPage } from "@/views/public/hostings/ui/HostingOverviewPage";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 interface Props {
   params: Promise<{ slug: string }> | { slug: string };
@@ -48,6 +48,7 @@ async function getHosting(slug: string) {
     }
 
     // Исключаем isActive из данных
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { isActive, ...hostingData } = hosting;
 
     return hostingData;
@@ -90,4 +91,3 @@ export default async function HostingPage({ params }: Props) {
 
   return <HostingOverviewPage hosting={hosting} />;
 }
-

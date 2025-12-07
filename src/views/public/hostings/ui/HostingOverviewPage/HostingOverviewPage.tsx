@@ -27,7 +27,7 @@ interface HostingOverviewPageProps {
     websiteUrl: string | null;
     startYear: string | null;
     clients: number | null;
-    testPeriod: number;
+    testPeriod: number | null;
     contentBlocks: ContentBlock[];
   };
 }
@@ -108,7 +108,7 @@ export function HostingOverviewPage({ hosting }: HostingOverviewPageProps) {
                     </div>
                   )}
 
-                  {hosting.testPeriod > 0 && (
+                  {hosting.testPeriod !== null && hosting.testPeriod > 0 && (
                     <div>
                       <p className="text-sm text-muted-foreground">
                         Тестовый период
