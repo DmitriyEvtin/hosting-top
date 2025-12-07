@@ -21,6 +21,7 @@ const ContentBlockCreateSchema = z.object({
     .regex(snakeCaseRegex, "Key должен быть в формате snake_case (только строчные буквы, цифры и подчеркивания)"),
   title: z.string().max(255, "Название слишком длинное").optional(),
   content: z.string().max(50000, "Контент слишком длинный (максимум 50000 символов)").optional(),
+  type: z.string().max(255, "Тип слишком длинный").optional(),
   isActive: z.boolean().optional().default(true),
 });
 
@@ -156,7 +157,7 @@ export async function POST(request: NextRequest) {
 
     // Валидируем данные через Zod
     const validatedData = ContentBlockCreateSchema.parse(body);
-    const { key, title, content, isActive } = validatedData;
+    const { key, title, content, type, isActive } = validatedData;
 
     // Проверяем уникальность key
     const existingByKey = await prisma.contentBlock.findUnique({
@@ -176,6 +177,7 @@ export async function POST(request: NextRequest) {
         key,
         title: title || null,
         content: content || null,
+        type: type || null,
         isActive: isActive ?? true,
       },
       select: {

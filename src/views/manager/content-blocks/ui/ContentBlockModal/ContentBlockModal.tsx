@@ -32,6 +32,7 @@ interface ContentBlockModalProps {
   block: ContentBlock | null;
   onClose: () => void;
   onSave: () => void;
+  hostingId?: string;
 }
 
 // Регулярное выражение для валидации key (snake_case)
@@ -43,6 +44,7 @@ export function ContentBlockModal({
   block,
   onClose,
   onSave,
+  hostingId,
 }: ContentBlockModalProps) {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -182,6 +184,7 @@ export function ContentBlockModal({
               key: key.trim(),
               title: title.trim() || undefined,
               content: content.trim() || undefined,
+              type: hostingId || undefined,
               isActive,
             }
           : {
