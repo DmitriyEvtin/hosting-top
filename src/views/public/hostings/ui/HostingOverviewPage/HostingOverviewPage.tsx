@@ -5,6 +5,7 @@ import { cn } from "@/shared/lib/utils";
 import { Card, CardHeader } from "@/shared/ui/Card";
 import { HostingBreadcrumbs } from "@/shared/ui/HostingBreadcrumbs";
 import { HostingNavigation } from "@/shared/ui/HostingNavigation";
+import { CreateReviewSection } from "@/views/public/reviews/ui/CreateReviewSection";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -177,6 +178,16 @@ export function HostingOverviewPage({ hosting }: HostingOverviewPageProps) {
             })}
           </div>
         )}
+
+        {/* Секция создания отзыва */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold mb-6">Отзывы пользователей</h2>
+          <CreateReviewSection
+            hostingId={hosting.id}
+            hostingName={hosting.name}
+            hostingSlug={hosting.slug}
+          />
+        </div>
       </div>
     </div>
   );

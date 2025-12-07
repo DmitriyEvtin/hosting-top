@@ -7,6 +7,7 @@ import { Button } from "@/shared/ui/Button";
 import { useSession } from "next-auth/react";
 import { HostingBreadcrumbs } from "@/shared/ui/HostingBreadcrumbs";
 import { HostingNavigation } from "@/shared/ui/HostingNavigation";
+import { EditReviewModal } from "@/views/public/reviews/ui/EditReviewModal";
 
 interface HostingReviewsPageProps {
   hostingSlug: string;
@@ -45,6 +46,7 @@ export function HostingReviewsPage({
   const [sort, setSort] = useState<"date" | "helpful" | "rating">("date");
   const [loading, setLoading] = useState(false);
   const [helpfulMarks, setHelpfulMarks] = useState<Set<string>>(new Set());
+  const [editingReview, setEditingReview] = useState<any>(null);
 
   // Загрузить отметки полезности из localStorage
   useEffect(() => {
@@ -267,11 +269,21 @@ export function HostingReviewsPage({
                 key={review.id}
                 review={review}
                 isAuthor={session?.user?.id === review.user.id}
+                onEdit={() => setEditingReview(review)}
                 onMarkHelpful={() => handleMarkHelpful(review.id)}
                 isMarkedHelpful={helpfulMarks.has(review.id)}
               />
             ))}
           </div>
+        )}
+
+        {/* Модальное окно редактирования */}
+        {editingReview && (
+          <EditReviewModal
+            review={editingReview}
+            hostingName={hostingName}
+            onClose={() => setEditingReview(null)}
+          />
         )}
 
         {/* Пагинация */}

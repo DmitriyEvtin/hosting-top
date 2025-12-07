@@ -6,6 +6,7 @@ import { Button } from "@/shared/ui/Button";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
+import { EditReviewModal } from "@/views/public/reviews/ui/EditReviewModal";
 
 interface AllReviewsPageProps {
   initialData: {
@@ -26,6 +27,7 @@ export function AllReviewsPage({ initialData }: AllReviewsPageProps) {
   const [sort, setSort] = useState<"date" | "helpful" | "rating">("date");
   const [loading, setLoading] = useState(false);
   const [helpfulMarks, setHelpfulMarks] = useState<Set<string>>(new Set());
+  const [editingReview, setEditingReview] = useState<any>(null);
 
   // Загрузить отметки полезности из localStorage
   useEffect(() => {
@@ -185,12 +187,22 @@ export function AllReviewsPage({ initialData }: AllReviewsPageProps) {
                 <ReviewCard
                   review={review}
                   isAuthor={session?.user?.id === review.user.id}
+                  onEdit={() => setEditingReview(review)}
                   onMarkHelpful={() => handleMarkHelpful(review.id)}
                   isMarkedHelpful={helpfulMarks.has(review.id)}
                 />
               </div>
             ))}
           </div>
+        )}
+
+        {/* Модальное окно редактирования */}
+        {editingReview && editingReview.hosting && (
+          <EditReviewModal
+            review={editingReview}
+            hostingName={editingReview.hosting.name}
+            onClose={() => setEditingReview(null)}
+          />
         )}
 
         {/* Пагинация */}
