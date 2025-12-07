@@ -108,6 +108,16 @@ export type TariffProgrammingLanguage = $Result.DefaultSelection<Prisma.$TariffP
  * 
  */
 export type ContentBlock = $Result.DefaultSelection<Prisma.$ContentBlockPayload>
+/**
+ * Model Review
+ * 
+ */
+export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
+/**
+ * Model ReviewHelpful
+ * 
+ */
+export type ReviewHelpful = $Result.DefaultSelection<Prisma.$ReviewHelpfulPayload>
 
 /**
  * Enums
@@ -130,6 +140,15 @@ export const TariffPeriod: {
 
 export type TariffPeriod = (typeof TariffPeriod)[keyof typeof TariffPeriod]
 
+
+export const ReviewStatus: {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
+export type ReviewStatus = (typeof ReviewStatus)[keyof typeof ReviewStatus]
+
 }
 
 export type UserRole = $Enums.UserRole
@@ -139,6 +158,10 @@ export const UserRole: typeof $Enums.UserRole
 export type TariffPeriod = $Enums.TariffPeriod
 
 export const TariffPeriod: typeof $Enums.TariffPeriod
+
+export type ReviewStatus = $Enums.ReviewStatus
+
+export const ReviewStatus: typeof $Enums.ReviewStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -447,6 +470,26 @@ export class PrismaClient<
     * ```
     */
   get contentBlock(): Prisma.ContentBlockDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.review`: Exposes CRUD operations for the **Review** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Reviews
+    * const reviews = await prisma.review.findMany()
+    * ```
+    */
+  get review(): Prisma.ReviewDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.reviewHelpful`: Exposes CRUD operations for the **ReviewHelpful** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ReviewHelpfuls
+    * const reviewHelpfuls = await prisma.reviewHelpful.findMany()
+    * ```
+    */
+  get reviewHelpful(): Prisma.ReviewHelpfulDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -905,7 +948,9 @@ export namespace Prisma {
     TariffDataStore: 'TariffDataStore',
     TariffOperationSystem: 'TariffOperationSystem',
     TariffProgrammingLanguage: 'TariffProgrammingLanguage',
-    ContentBlock: 'ContentBlock'
+    ContentBlock: 'ContentBlock',
+    Review: 'Review',
+    ReviewHelpful: 'ReviewHelpful'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -924,7 +969,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "verificationToken" | "hosting" | "tariff" | "cMS" | "controlPanel" | "country" | "dataStore" | "operationSystem" | "programmingLanguage" | "tariffCMS" | "tariffControlPanel" | "tariffCountry" | "tariffDataStore" | "tariffOperationSystem" | "tariffProgrammingLanguage" | "contentBlock"
+      modelProps: "user" | "account" | "session" | "verificationToken" | "hosting" | "tariff" | "cMS" | "controlPanel" | "country" | "dataStore" | "operationSystem" | "programmingLanguage" | "tariffCMS" | "tariffControlPanel" | "tariffCountry" | "tariffDataStore" | "tariffOperationSystem" | "tariffProgrammingLanguage" | "contentBlock" | "review" | "reviewHelpful"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2334,6 +2379,154 @@ export namespace Prisma {
           }
         }
       }
+      Review: {
+        payload: Prisma.$ReviewPayload<ExtArgs>
+        fields: Prisma.ReviewFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ReviewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ReviewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          findFirst: {
+            args: Prisma.ReviewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ReviewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          findMany: {
+            args: Prisma.ReviewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
+          }
+          create: {
+            args: Prisma.ReviewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          createMany: {
+            args: Prisma.ReviewCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ReviewCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
+          }
+          delete: {
+            args: Prisma.ReviewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          update: {
+            args: Prisma.ReviewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          deleteMany: {
+            args: Prisma.ReviewDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ReviewUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ReviewUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
+          }
+          upsert: {
+            args: Prisma.ReviewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          aggregate: {
+            args: Prisma.ReviewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReview>
+          }
+          groupBy: {
+            args: Prisma.ReviewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ReviewGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ReviewCountArgs<ExtArgs>
+            result: $Utils.Optional<ReviewCountAggregateOutputType> | number
+          }
+        }
+      }
+      ReviewHelpful: {
+        payload: Prisma.$ReviewHelpfulPayload<ExtArgs>
+        fields: Prisma.ReviewHelpfulFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ReviewHelpfulFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewHelpfulPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ReviewHelpfulFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewHelpfulPayload>
+          }
+          findFirst: {
+            args: Prisma.ReviewHelpfulFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewHelpfulPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ReviewHelpfulFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewHelpfulPayload>
+          }
+          findMany: {
+            args: Prisma.ReviewHelpfulFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewHelpfulPayload>[]
+          }
+          create: {
+            args: Prisma.ReviewHelpfulCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewHelpfulPayload>
+          }
+          createMany: {
+            args: Prisma.ReviewHelpfulCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ReviewHelpfulCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewHelpfulPayload>[]
+          }
+          delete: {
+            args: Prisma.ReviewHelpfulDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewHelpfulPayload>
+          }
+          update: {
+            args: Prisma.ReviewHelpfulUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewHelpfulPayload>
+          }
+          deleteMany: {
+            args: Prisma.ReviewHelpfulDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ReviewHelpfulUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ReviewHelpfulUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewHelpfulPayload>[]
+          }
+          upsert: {
+            args: Prisma.ReviewHelpfulUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewHelpfulPayload>
+          }
+          aggregate: {
+            args: Prisma.ReviewHelpfulAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReviewHelpful>
+          }
+          groupBy: {
+            args: Prisma.ReviewHelpfulGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ReviewHelpfulGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ReviewHelpfulCountArgs<ExtArgs>
+            result: $Utils.Optional<ReviewHelpfulCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2449,6 +2642,8 @@ export namespace Prisma {
     tariffOperationSystem?: TariffOperationSystemOmit
     tariffProgrammingLanguage?: TariffProgrammingLanguageOmit
     contentBlock?: ContentBlockOmit
+    review?: ReviewOmit
+    reviewHelpful?: ReviewHelpfulOmit
   }
 
   /* Types for Logging */
@@ -2531,11 +2726,15 @@ export namespace Prisma {
   export type UserCountOutputType = {
     accounts: number
     sessions: number
+    reviews: number
+    helpfulMarks: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
+    reviews?: boolean | UserCountOutputTypeCountReviewsArgs
+    helpfulMarks?: boolean | UserCountOutputTypeCountHelpfulMarksArgs
   }
 
   // Custom InputTypes
@@ -2563,6 +2762,20 @@ export namespace Prisma {
     where?: SessionWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountHelpfulMarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewHelpfulWhereInput
+  }
+
 
   /**
    * Count Type HostingCountOutputType
@@ -2571,11 +2784,13 @@ export namespace Prisma {
   export type HostingCountOutputType = {
     tariffs: number
     contentBlocks: number
+    reviews: number
   }
 
   export type HostingCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tariffs?: boolean | HostingCountOutputTypeCountTariffsArgs
     contentBlocks?: boolean | HostingCountOutputTypeCountContentBlocksArgs
+    reviews?: boolean | HostingCountOutputTypeCountReviewsArgs
   }
 
   // Custom InputTypes
@@ -2601,6 +2816,13 @@ export namespace Prisma {
    */
   export type HostingCountOutputTypeCountContentBlocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ContentBlockWhereInput
+  }
+
+  /**
+   * HostingCountOutputType without action
+   */
+  export type HostingCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
   }
 
 
@@ -2867,6 +3089,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ReviewCountOutputType
+   */
+
+  export type ReviewCountOutputType = {
+    helpfulMarks: number
+  }
+
+  export type ReviewCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    helpfulMarks?: boolean | ReviewCountOutputTypeCountHelpfulMarksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ReviewCountOutputType without action
+   */
+  export type ReviewCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewCountOutputType
+     */
+    select?: ReviewCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ReviewCountOutputType without action
+   */
+  export type ReviewCountOutputTypeCountHelpfulMarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewHelpfulWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -3068,6 +3321,8 @@ export namespace Prisma {
     password?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
+    reviews?: boolean | User$reviewsArgs<ExtArgs>
+    helpfulMarks?: boolean | User$helpfulMarksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3111,6 +3366,8 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
+    reviews?: boolean | User$reviewsArgs<ExtArgs>
+    helpfulMarks?: boolean | User$helpfulMarksArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3121,6 +3378,8 @@ export namespace Prisma {
     objects: {
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       sessions: Prisma.$SessionPayload<ExtArgs>[]
+      reviews: Prisma.$ReviewPayload<ExtArgs>[]
+      helpfulMarks: Prisma.$ReviewHelpfulPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3528,6 +3787,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reviews<T extends User$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    helpfulMarks<T extends User$helpfulMarksArgs<ExtArgs> = {}>(args?: Subset<T, User$helpfulMarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3999,6 +4260,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
+  }
+
+  /**
+   * User.reviews
+   */
+  export type User$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * User.helpfulMarks
+   */
+  export type User$helpfulMarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulInclude<ExtArgs> | null
+    where?: ReviewHelpfulWhereInput
+    orderBy?: ReviewHelpfulOrderByWithRelationInput | ReviewHelpfulOrderByWithRelationInput[]
+    cursor?: ReviewHelpfulWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewHelpfulScalarFieldEnum | ReviewHelpfulScalarFieldEnum[]
   }
 
   /**
@@ -7477,6 +7786,7 @@ export namespace Prisma {
     updatedAt?: boolean
     tariffs?: boolean | Hosting$tariffsArgs<ExtArgs>
     contentBlocks?: boolean | Hosting$contentBlocksArgs<ExtArgs>
+    reviews?: boolean | Hosting$reviewsArgs<ExtArgs>
     _count?: boolean | HostingCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hosting"]>
 
@@ -7529,6 +7839,7 @@ export namespace Prisma {
   export type HostingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tariffs?: boolean | Hosting$tariffsArgs<ExtArgs>
     contentBlocks?: boolean | Hosting$contentBlocksArgs<ExtArgs>
+    reviews?: boolean | Hosting$reviewsArgs<ExtArgs>
     _count?: boolean | HostingCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type HostingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7539,6 +7850,7 @@ export namespace Prisma {
     objects: {
       tariffs: Prisma.$TariffPayload<ExtArgs>[]
       contentBlocks: Prisma.$ContentBlockPayload<ExtArgs>[]
+      reviews: Prisma.$ReviewPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7949,6 +8261,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     tariffs<T extends Hosting$tariffsArgs<ExtArgs> = {}>(args?: Subset<T, Hosting$tariffsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TariffPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     contentBlocks<T extends Hosting$contentBlocksArgs<ExtArgs> = {}>(args?: Subset<T, Hosting$contentBlocksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentBlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reviews<T extends Hosting$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, Hosting$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8423,6 +8736,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ContentBlockScalarFieldEnum | ContentBlockScalarFieldEnum[]
+  }
+
+  /**
+   * Hosting.reviews
+   */
+  export type Hosting$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
   }
 
   /**
@@ -23781,6 +24118,2358 @@ export namespace Prisma {
 
 
   /**
+   * Model Review
+   */
+
+  export type AggregateReview = {
+    _count: ReviewCountAggregateOutputType | null
+    _avg: ReviewAvgAggregateOutputType | null
+    _sum: ReviewSumAggregateOutputType | null
+    _min: ReviewMinAggregateOutputType | null
+    _max: ReviewMaxAggregateOutputType | null
+  }
+
+  export type ReviewAvgAggregateOutputType = {
+    performanceRating: number | null
+    supportRating: number | null
+    priceQualityRating: number | null
+    reliabilityRating: number | null
+    easeOfUseRating: number | null
+    helpfulCount: number | null
+  }
+
+  export type ReviewSumAggregateOutputType = {
+    performanceRating: number | null
+    supportRating: number | null
+    priceQualityRating: number | null
+    reliabilityRating: number | null
+    easeOfUseRating: number | null
+    helpfulCount: number | null
+  }
+
+  export type ReviewMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    hostingId: string | null
+    content: string | null
+    performanceRating: number | null
+    supportRating: number | null
+    priceQualityRating: number | null
+    reliabilityRating: number | null
+    easeOfUseRating: number | null
+    status: $Enums.ReviewStatus | null
+    rejectionReason: string | null
+    helpfulCount: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ReviewMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    hostingId: string | null
+    content: string | null
+    performanceRating: number | null
+    supportRating: number | null
+    priceQualityRating: number | null
+    reliabilityRating: number | null
+    easeOfUseRating: number | null
+    status: $Enums.ReviewStatus | null
+    rejectionReason: string | null
+    helpfulCount: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ReviewCountAggregateOutputType = {
+    id: number
+    userId: number
+    hostingId: number
+    content: number
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status: number
+    rejectionReason: number
+    helpfulCount: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ReviewAvgAggregateInputType = {
+    performanceRating?: true
+    supportRating?: true
+    priceQualityRating?: true
+    reliabilityRating?: true
+    easeOfUseRating?: true
+    helpfulCount?: true
+  }
+
+  export type ReviewSumAggregateInputType = {
+    performanceRating?: true
+    supportRating?: true
+    priceQualityRating?: true
+    reliabilityRating?: true
+    easeOfUseRating?: true
+    helpfulCount?: true
+  }
+
+  export type ReviewMinAggregateInputType = {
+    id?: true
+    userId?: true
+    hostingId?: true
+    content?: true
+    performanceRating?: true
+    supportRating?: true
+    priceQualityRating?: true
+    reliabilityRating?: true
+    easeOfUseRating?: true
+    status?: true
+    rejectionReason?: true
+    helpfulCount?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ReviewMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    hostingId?: true
+    content?: true
+    performanceRating?: true
+    supportRating?: true
+    priceQualityRating?: true
+    reliabilityRating?: true
+    easeOfUseRating?: true
+    status?: true
+    rejectionReason?: true
+    helpfulCount?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ReviewCountAggregateInputType = {
+    id?: true
+    userId?: true
+    hostingId?: true
+    content?: true
+    performanceRating?: true
+    supportRating?: true
+    priceQualityRating?: true
+    reliabilityRating?: true
+    easeOfUseRating?: true
+    status?: true
+    rejectionReason?: true
+    helpfulCount?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ReviewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Review to aggregate.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Reviews
+    **/
+    _count?: true | ReviewCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ReviewAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ReviewSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ReviewMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ReviewMaxAggregateInputType
+  }
+
+  export type GetReviewAggregateType<T extends ReviewAggregateArgs> = {
+        [P in keyof T & keyof AggregateReview]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateReview[P]>
+      : GetScalarType<T[P], AggregateReview[P]>
+  }
+
+
+
+
+  export type ReviewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithAggregationInput | ReviewOrderByWithAggregationInput[]
+    by: ReviewScalarFieldEnum[] | ReviewScalarFieldEnum
+    having?: ReviewScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ReviewCountAggregateInputType | true
+    _avg?: ReviewAvgAggregateInputType
+    _sum?: ReviewSumAggregateInputType
+    _min?: ReviewMinAggregateInputType
+    _max?: ReviewMaxAggregateInputType
+  }
+
+  export type ReviewGroupByOutputType = {
+    id: string
+    userId: string
+    hostingId: string
+    content: string
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status: $Enums.ReviewStatus
+    rejectionReason: string | null
+    helpfulCount: number
+    createdAt: Date
+    updatedAt: Date
+    _count: ReviewCountAggregateOutputType | null
+    _avg: ReviewAvgAggregateOutputType | null
+    _sum: ReviewSumAggregateOutputType | null
+    _min: ReviewMinAggregateOutputType | null
+    _max: ReviewMaxAggregateOutputType | null
+  }
+
+  type GetReviewGroupByPayload<T extends ReviewGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ReviewGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ReviewGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ReviewGroupByOutputType[P]>
+            : GetScalarType<T[P], ReviewGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ReviewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    hostingId?: boolean
+    content?: boolean
+    performanceRating?: boolean
+    supportRating?: boolean
+    priceQualityRating?: boolean
+    reliabilityRating?: boolean
+    easeOfUseRating?: boolean
+    status?: boolean
+    rejectionReason?: boolean
+    helpfulCount?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    hosting?: boolean | HostingDefaultArgs<ExtArgs>
+    helpfulMarks?: boolean | Review$helpfulMarksArgs<ExtArgs>
+    _count?: boolean | ReviewCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["review"]>
+
+  export type ReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    hostingId?: boolean
+    content?: boolean
+    performanceRating?: boolean
+    supportRating?: boolean
+    priceQualityRating?: boolean
+    reliabilityRating?: boolean
+    easeOfUseRating?: boolean
+    status?: boolean
+    rejectionReason?: boolean
+    helpfulCount?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    hosting?: boolean | HostingDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["review"]>
+
+  export type ReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    hostingId?: boolean
+    content?: boolean
+    performanceRating?: boolean
+    supportRating?: boolean
+    priceQualityRating?: boolean
+    reliabilityRating?: boolean
+    easeOfUseRating?: boolean
+    status?: boolean
+    rejectionReason?: boolean
+    helpfulCount?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    hosting?: boolean | HostingDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["review"]>
+
+  export type ReviewSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    hostingId?: boolean
+    content?: boolean
+    performanceRating?: boolean
+    supportRating?: boolean
+    priceQualityRating?: boolean
+    reliabilityRating?: boolean
+    easeOfUseRating?: boolean
+    status?: boolean
+    rejectionReason?: boolean
+    helpfulCount?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "hostingId" | "content" | "performanceRating" | "supportRating" | "priceQualityRating" | "reliabilityRating" | "easeOfUseRating" | "status" | "rejectionReason" | "helpfulCount" | "createdAt" | "updatedAt", ExtArgs["result"]["review"]>
+  export type ReviewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    hosting?: boolean | HostingDefaultArgs<ExtArgs>
+    helpfulMarks?: boolean | Review$helpfulMarksArgs<ExtArgs>
+    _count?: boolean | ReviewCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ReviewIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    hosting?: boolean | HostingDefaultArgs<ExtArgs>
+  }
+  export type ReviewIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    hosting?: boolean | HostingDefaultArgs<ExtArgs>
+  }
+
+  export type $ReviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Review"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      hosting: Prisma.$HostingPayload<ExtArgs>
+      helpfulMarks: Prisma.$ReviewHelpfulPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      hostingId: string
+      content: string
+      performanceRating: number
+      supportRating: number
+      priceQualityRating: number
+      reliabilityRating: number
+      easeOfUseRating: number
+      status: $Enums.ReviewStatus
+      rejectionReason: string | null
+      helpfulCount: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["review"]>
+    composites: {}
+  }
+
+  type ReviewGetPayload<S extends boolean | null | undefined | ReviewDefaultArgs> = $Result.GetResult<Prisma.$ReviewPayload, S>
+
+  type ReviewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ReviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ReviewCountAggregateInputType | true
+    }
+
+  export interface ReviewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Review'], meta: { name: 'Review' } }
+    /**
+     * Find zero or one Review that matches the filter.
+     * @param {ReviewFindUniqueArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ReviewFindUniqueArgs>(args: SelectSubset<T, ReviewFindUniqueArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Review that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ReviewFindUniqueOrThrowArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ReviewFindUniqueOrThrowArgs>(args: SelectSubset<T, ReviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Review that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewFindFirstArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ReviewFindFirstArgs>(args?: SelectSubset<T, ReviewFindFirstArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Review that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewFindFirstOrThrowArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ReviewFindFirstOrThrowArgs>(args?: SelectSubset<T, ReviewFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Reviews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Reviews
+     * const reviews = await prisma.review.findMany()
+     * 
+     * // Get first 10 Reviews
+     * const reviews = await prisma.review.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const reviewWithIdOnly = await prisma.review.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ReviewFindManyArgs>(args?: SelectSubset<T, ReviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Review.
+     * @param {ReviewCreateArgs} args - Arguments to create a Review.
+     * @example
+     * // Create one Review
+     * const Review = await prisma.review.create({
+     *   data: {
+     *     // ... data to create a Review
+     *   }
+     * })
+     * 
+     */
+    create<T extends ReviewCreateArgs>(args: SelectSubset<T, ReviewCreateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Reviews.
+     * @param {ReviewCreateManyArgs} args - Arguments to create many Reviews.
+     * @example
+     * // Create many Reviews
+     * const review = await prisma.review.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ReviewCreateManyArgs>(args?: SelectSubset<T, ReviewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Reviews and returns the data saved in the database.
+     * @param {ReviewCreateManyAndReturnArgs} args - Arguments to create many Reviews.
+     * @example
+     * // Create many Reviews
+     * const review = await prisma.review.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Reviews and only return the `id`
+     * const reviewWithIdOnly = await prisma.review.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ReviewCreateManyAndReturnArgs>(args?: SelectSubset<T, ReviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Review.
+     * @param {ReviewDeleteArgs} args - Arguments to delete one Review.
+     * @example
+     * // Delete one Review
+     * const Review = await prisma.review.delete({
+     *   where: {
+     *     // ... filter to delete one Review
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ReviewDeleteArgs>(args: SelectSubset<T, ReviewDeleteArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Review.
+     * @param {ReviewUpdateArgs} args - Arguments to update one Review.
+     * @example
+     * // Update one Review
+     * const review = await prisma.review.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ReviewUpdateArgs>(args: SelectSubset<T, ReviewUpdateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Reviews.
+     * @param {ReviewDeleteManyArgs} args - Arguments to filter Reviews to delete.
+     * @example
+     * // Delete a few Reviews
+     * const { count } = await prisma.review.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ReviewDeleteManyArgs>(args?: SelectSubset<T, ReviewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Reviews
+     * const review = await prisma.review.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ReviewUpdateManyArgs>(args: SelectSubset<T, ReviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Reviews and returns the data updated in the database.
+     * @param {ReviewUpdateManyAndReturnArgs} args - Arguments to update many Reviews.
+     * @example
+     * // Update many Reviews
+     * const review = await prisma.review.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Reviews and only return the `id`
+     * const reviewWithIdOnly = await prisma.review.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ReviewUpdateManyAndReturnArgs>(args: SelectSubset<T, ReviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Review.
+     * @param {ReviewUpsertArgs} args - Arguments to update or create a Review.
+     * @example
+     * // Update or create a Review
+     * const review = await prisma.review.upsert({
+     *   create: {
+     *     // ... data to create a Review
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Review we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ReviewUpsertArgs>(args: SelectSubset<T, ReviewUpsertArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewCountArgs} args - Arguments to filter Reviews to count.
+     * @example
+     * // Count the number of Reviews
+     * const count = await prisma.review.count({
+     *   where: {
+     *     // ... the filter for the Reviews we want to count
+     *   }
+     * })
+    **/
+    count<T extends ReviewCountArgs>(
+      args?: Subset<T, ReviewCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ReviewCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Review.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ReviewAggregateArgs>(args: Subset<T, ReviewAggregateArgs>): Prisma.PrismaPromise<GetReviewAggregateType<T>>
+
+    /**
+     * Group by Review.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ReviewGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ReviewGroupByArgs['orderBy'] }
+        : { orderBy?: ReviewGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ReviewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReviewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Review model
+   */
+  readonly fields: ReviewFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Review.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ReviewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    hosting<T extends HostingDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HostingDefaultArgs<ExtArgs>>): Prisma__HostingClient<$Result.GetResult<Prisma.$HostingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    helpfulMarks<T extends Review$helpfulMarksArgs<ExtArgs> = {}>(args?: Subset<T, Review$helpfulMarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Review model
+   */
+  interface ReviewFieldRefs {
+    readonly id: FieldRef<"Review", 'String'>
+    readonly userId: FieldRef<"Review", 'String'>
+    readonly hostingId: FieldRef<"Review", 'String'>
+    readonly content: FieldRef<"Review", 'String'>
+    readonly performanceRating: FieldRef<"Review", 'Int'>
+    readonly supportRating: FieldRef<"Review", 'Int'>
+    readonly priceQualityRating: FieldRef<"Review", 'Int'>
+    readonly reliabilityRating: FieldRef<"Review", 'Int'>
+    readonly easeOfUseRating: FieldRef<"Review", 'Int'>
+    readonly status: FieldRef<"Review", 'ReviewStatus'>
+    readonly rejectionReason: FieldRef<"Review", 'String'>
+    readonly helpfulCount: FieldRef<"Review", 'Int'>
+    readonly createdAt: FieldRef<"Review", 'DateTime'>
+    readonly updatedAt: FieldRef<"Review", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Review findUnique
+   */
+  export type ReviewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review findUniqueOrThrow
+   */
+  export type ReviewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review findFirst
+   */
+  export type ReviewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Reviews.
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Reviews.
+     */
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * Review findFirstOrThrow
+   */
+  export type ReviewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Reviews.
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Reviews.
+     */
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * Review findMany
+   */
+  export type ReviewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Reviews to fetch.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Reviews.
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * Review create
+   */
+  export type ReviewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Review.
+     */
+    data: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>
+  }
+
+  /**
+   * Review createMany
+   */
+  export type ReviewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Reviews.
+     */
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Review createManyAndReturn
+   */
+  export type ReviewCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * The data used to create many Reviews.
+     */
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Review update
+   */
+  export type ReviewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Review.
+     */
+    data: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>
+    /**
+     * Choose, which Review to update.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review updateMany
+   */
+  export type ReviewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Reviews.
+     */
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
+    /**
+     * Filter which Reviews to update
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Review updateManyAndReturn
+   */
+  export type ReviewUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * The data used to update Reviews.
+     */
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
+    /**
+     * Filter which Reviews to update
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Review upsert
+   */
+  export type ReviewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Review to update in case it exists.
+     */
+    where: ReviewWhereUniqueInput
+    /**
+     * In case the Review found by the `where` argument doesn't exist, create a new Review with this data.
+     */
+    create: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>
+    /**
+     * In case the Review was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>
+  }
+
+  /**
+   * Review delete
+   */
+  export type ReviewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter which Review to delete.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review deleteMany
+   */
+  export type ReviewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Reviews to delete
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Review.helpfulMarks
+   */
+  export type Review$helpfulMarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulInclude<ExtArgs> | null
+    where?: ReviewHelpfulWhereInput
+    orderBy?: ReviewHelpfulOrderByWithRelationInput | ReviewHelpfulOrderByWithRelationInput[]
+    cursor?: ReviewHelpfulWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewHelpfulScalarFieldEnum | ReviewHelpfulScalarFieldEnum[]
+  }
+
+  /**
+   * Review without action
+   */
+  export type ReviewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ReviewHelpful
+   */
+
+  export type AggregateReviewHelpful = {
+    _count: ReviewHelpfulCountAggregateOutputType | null
+    _min: ReviewHelpfulMinAggregateOutputType | null
+    _max: ReviewHelpfulMaxAggregateOutputType | null
+  }
+
+  export type ReviewHelpfulMinAggregateOutputType = {
+    id: string | null
+    reviewId: string | null
+    userId: string | null
+    fingerprint: string | null
+    createdAt: Date | null
+  }
+
+  export type ReviewHelpfulMaxAggregateOutputType = {
+    id: string | null
+    reviewId: string | null
+    userId: string | null
+    fingerprint: string | null
+    createdAt: Date | null
+  }
+
+  export type ReviewHelpfulCountAggregateOutputType = {
+    id: number
+    reviewId: number
+    userId: number
+    fingerprint: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ReviewHelpfulMinAggregateInputType = {
+    id?: true
+    reviewId?: true
+    userId?: true
+    fingerprint?: true
+    createdAt?: true
+  }
+
+  export type ReviewHelpfulMaxAggregateInputType = {
+    id?: true
+    reviewId?: true
+    userId?: true
+    fingerprint?: true
+    createdAt?: true
+  }
+
+  export type ReviewHelpfulCountAggregateInputType = {
+    id?: true
+    reviewId?: true
+    userId?: true
+    fingerprint?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ReviewHelpfulAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ReviewHelpful to aggregate.
+     */
+    where?: ReviewHelpfulWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ReviewHelpfuls to fetch.
+     */
+    orderBy?: ReviewHelpfulOrderByWithRelationInput | ReviewHelpfulOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ReviewHelpfulWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ReviewHelpfuls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ReviewHelpfuls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ReviewHelpfuls
+    **/
+    _count?: true | ReviewHelpfulCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ReviewHelpfulMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ReviewHelpfulMaxAggregateInputType
+  }
+
+  export type GetReviewHelpfulAggregateType<T extends ReviewHelpfulAggregateArgs> = {
+        [P in keyof T & keyof AggregateReviewHelpful]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateReviewHelpful[P]>
+      : GetScalarType<T[P], AggregateReviewHelpful[P]>
+  }
+
+
+
+
+  export type ReviewHelpfulGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewHelpfulWhereInput
+    orderBy?: ReviewHelpfulOrderByWithAggregationInput | ReviewHelpfulOrderByWithAggregationInput[]
+    by: ReviewHelpfulScalarFieldEnum[] | ReviewHelpfulScalarFieldEnum
+    having?: ReviewHelpfulScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ReviewHelpfulCountAggregateInputType | true
+    _min?: ReviewHelpfulMinAggregateInputType
+    _max?: ReviewHelpfulMaxAggregateInputType
+  }
+
+  export type ReviewHelpfulGroupByOutputType = {
+    id: string
+    reviewId: string
+    userId: string | null
+    fingerprint: string | null
+    createdAt: Date
+    _count: ReviewHelpfulCountAggregateOutputType | null
+    _min: ReviewHelpfulMinAggregateOutputType | null
+    _max: ReviewHelpfulMaxAggregateOutputType | null
+  }
+
+  type GetReviewHelpfulGroupByPayload<T extends ReviewHelpfulGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ReviewHelpfulGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ReviewHelpfulGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ReviewHelpfulGroupByOutputType[P]>
+            : GetScalarType<T[P], ReviewHelpfulGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ReviewHelpfulSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    reviewId?: boolean
+    userId?: boolean
+    fingerprint?: boolean
+    createdAt?: boolean
+    review?: boolean | ReviewDefaultArgs<ExtArgs>
+    user?: boolean | ReviewHelpful$userArgs<ExtArgs>
+  }, ExtArgs["result"]["reviewHelpful"]>
+
+  export type ReviewHelpfulSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    reviewId?: boolean
+    userId?: boolean
+    fingerprint?: boolean
+    createdAt?: boolean
+    review?: boolean | ReviewDefaultArgs<ExtArgs>
+    user?: boolean | ReviewHelpful$userArgs<ExtArgs>
+  }, ExtArgs["result"]["reviewHelpful"]>
+
+  export type ReviewHelpfulSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    reviewId?: boolean
+    userId?: boolean
+    fingerprint?: boolean
+    createdAt?: boolean
+    review?: boolean | ReviewDefaultArgs<ExtArgs>
+    user?: boolean | ReviewHelpful$userArgs<ExtArgs>
+  }, ExtArgs["result"]["reviewHelpful"]>
+
+  export type ReviewHelpfulSelectScalar = {
+    id?: boolean
+    reviewId?: boolean
+    userId?: boolean
+    fingerprint?: boolean
+    createdAt?: boolean
+  }
+
+  export type ReviewHelpfulOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "reviewId" | "userId" | "fingerprint" | "createdAt", ExtArgs["result"]["reviewHelpful"]>
+  export type ReviewHelpfulInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    review?: boolean | ReviewDefaultArgs<ExtArgs>
+    user?: boolean | ReviewHelpful$userArgs<ExtArgs>
+  }
+  export type ReviewHelpfulIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    review?: boolean | ReviewDefaultArgs<ExtArgs>
+    user?: boolean | ReviewHelpful$userArgs<ExtArgs>
+  }
+  export type ReviewHelpfulIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    review?: boolean | ReviewDefaultArgs<ExtArgs>
+    user?: boolean | ReviewHelpful$userArgs<ExtArgs>
+  }
+
+  export type $ReviewHelpfulPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ReviewHelpful"
+    objects: {
+      review: Prisma.$ReviewPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      reviewId: string
+      userId: string | null
+      fingerprint: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["reviewHelpful"]>
+    composites: {}
+  }
+
+  type ReviewHelpfulGetPayload<S extends boolean | null | undefined | ReviewHelpfulDefaultArgs> = $Result.GetResult<Prisma.$ReviewHelpfulPayload, S>
+
+  type ReviewHelpfulCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ReviewHelpfulFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ReviewHelpfulCountAggregateInputType | true
+    }
+
+  export interface ReviewHelpfulDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ReviewHelpful'], meta: { name: 'ReviewHelpful' } }
+    /**
+     * Find zero or one ReviewHelpful that matches the filter.
+     * @param {ReviewHelpfulFindUniqueArgs} args - Arguments to find a ReviewHelpful
+     * @example
+     * // Get one ReviewHelpful
+     * const reviewHelpful = await prisma.reviewHelpful.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ReviewHelpfulFindUniqueArgs>(args: SelectSubset<T, ReviewHelpfulFindUniqueArgs<ExtArgs>>): Prisma__ReviewHelpfulClient<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ReviewHelpful that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ReviewHelpfulFindUniqueOrThrowArgs} args - Arguments to find a ReviewHelpful
+     * @example
+     * // Get one ReviewHelpful
+     * const reviewHelpful = await prisma.reviewHelpful.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ReviewHelpfulFindUniqueOrThrowArgs>(args: SelectSubset<T, ReviewHelpfulFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReviewHelpfulClient<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ReviewHelpful that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewHelpfulFindFirstArgs} args - Arguments to find a ReviewHelpful
+     * @example
+     * // Get one ReviewHelpful
+     * const reviewHelpful = await prisma.reviewHelpful.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ReviewHelpfulFindFirstArgs>(args?: SelectSubset<T, ReviewHelpfulFindFirstArgs<ExtArgs>>): Prisma__ReviewHelpfulClient<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ReviewHelpful that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewHelpfulFindFirstOrThrowArgs} args - Arguments to find a ReviewHelpful
+     * @example
+     * // Get one ReviewHelpful
+     * const reviewHelpful = await prisma.reviewHelpful.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ReviewHelpfulFindFirstOrThrowArgs>(args?: SelectSubset<T, ReviewHelpfulFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReviewHelpfulClient<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ReviewHelpfuls that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewHelpfulFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ReviewHelpfuls
+     * const reviewHelpfuls = await prisma.reviewHelpful.findMany()
+     * 
+     * // Get first 10 ReviewHelpfuls
+     * const reviewHelpfuls = await prisma.reviewHelpful.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const reviewHelpfulWithIdOnly = await prisma.reviewHelpful.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ReviewHelpfulFindManyArgs>(args?: SelectSubset<T, ReviewHelpfulFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ReviewHelpful.
+     * @param {ReviewHelpfulCreateArgs} args - Arguments to create a ReviewHelpful.
+     * @example
+     * // Create one ReviewHelpful
+     * const ReviewHelpful = await prisma.reviewHelpful.create({
+     *   data: {
+     *     // ... data to create a ReviewHelpful
+     *   }
+     * })
+     * 
+     */
+    create<T extends ReviewHelpfulCreateArgs>(args: SelectSubset<T, ReviewHelpfulCreateArgs<ExtArgs>>): Prisma__ReviewHelpfulClient<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ReviewHelpfuls.
+     * @param {ReviewHelpfulCreateManyArgs} args - Arguments to create many ReviewHelpfuls.
+     * @example
+     * // Create many ReviewHelpfuls
+     * const reviewHelpful = await prisma.reviewHelpful.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ReviewHelpfulCreateManyArgs>(args?: SelectSubset<T, ReviewHelpfulCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ReviewHelpfuls and returns the data saved in the database.
+     * @param {ReviewHelpfulCreateManyAndReturnArgs} args - Arguments to create many ReviewHelpfuls.
+     * @example
+     * // Create many ReviewHelpfuls
+     * const reviewHelpful = await prisma.reviewHelpful.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ReviewHelpfuls and only return the `id`
+     * const reviewHelpfulWithIdOnly = await prisma.reviewHelpful.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ReviewHelpfulCreateManyAndReturnArgs>(args?: SelectSubset<T, ReviewHelpfulCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ReviewHelpful.
+     * @param {ReviewHelpfulDeleteArgs} args - Arguments to delete one ReviewHelpful.
+     * @example
+     * // Delete one ReviewHelpful
+     * const ReviewHelpful = await prisma.reviewHelpful.delete({
+     *   where: {
+     *     // ... filter to delete one ReviewHelpful
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ReviewHelpfulDeleteArgs>(args: SelectSubset<T, ReviewHelpfulDeleteArgs<ExtArgs>>): Prisma__ReviewHelpfulClient<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ReviewHelpful.
+     * @param {ReviewHelpfulUpdateArgs} args - Arguments to update one ReviewHelpful.
+     * @example
+     * // Update one ReviewHelpful
+     * const reviewHelpful = await prisma.reviewHelpful.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ReviewHelpfulUpdateArgs>(args: SelectSubset<T, ReviewHelpfulUpdateArgs<ExtArgs>>): Prisma__ReviewHelpfulClient<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ReviewHelpfuls.
+     * @param {ReviewHelpfulDeleteManyArgs} args - Arguments to filter ReviewHelpfuls to delete.
+     * @example
+     * // Delete a few ReviewHelpfuls
+     * const { count } = await prisma.reviewHelpful.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ReviewHelpfulDeleteManyArgs>(args?: SelectSubset<T, ReviewHelpfulDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ReviewHelpfuls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewHelpfulUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ReviewHelpfuls
+     * const reviewHelpful = await prisma.reviewHelpful.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ReviewHelpfulUpdateManyArgs>(args: SelectSubset<T, ReviewHelpfulUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ReviewHelpfuls and returns the data updated in the database.
+     * @param {ReviewHelpfulUpdateManyAndReturnArgs} args - Arguments to update many ReviewHelpfuls.
+     * @example
+     * // Update many ReviewHelpfuls
+     * const reviewHelpful = await prisma.reviewHelpful.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ReviewHelpfuls and only return the `id`
+     * const reviewHelpfulWithIdOnly = await prisma.reviewHelpful.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ReviewHelpfulUpdateManyAndReturnArgs>(args: SelectSubset<T, ReviewHelpfulUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ReviewHelpful.
+     * @param {ReviewHelpfulUpsertArgs} args - Arguments to update or create a ReviewHelpful.
+     * @example
+     * // Update or create a ReviewHelpful
+     * const reviewHelpful = await prisma.reviewHelpful.upsert({
+     *   create: {
+     *     // ... data to create a ReviewHelpful
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ReviewHelpful we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ReviewHelpfulUpsertArgs>(args: SelectSubset<T, ReviewHelpfulUpsertArgs<ExtArgs>>): Prisma__ReviewHelpfulClient<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ReviewHelpfuls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewHelpfulCountArgs} args - Arguments to filter ReviewHelpfuls to count.
+     * @example
+     * // Count the number of ReviewHelpfuls
+     * const count = await prisma.reviewHelpful.count({
+     *   where: {
+     *     // ... the filter for the ReviewHelpfuls we want to count
+     *   }
+     * })
+    **/
+    count<T extends ReviewHelpfulCountArgs>(
+      args?: Subset<T, ReviewHelpfulCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ReviewHelpfulCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ReviewHelpful.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewHelpfulAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ReviewHelpfulAggregateArgs>(args: Subset<T, ReviewHelpfulAggregateArgs>): Prisma.PrismaPromise<GetReviewHelpfulAggregateType<T>>
+
+    /**
+     * Group by ReviewHelpful.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewHelpfulGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ReviewHelpfulGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ReviewHelpfulGroupByArgs['orderBy'] }
+        : { orderBy?: ReviewHelpfulGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ReviewHelpfulGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReviewHelpfulGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ReviewHelpful model
+   */
+  readonly fields: ReviewHelpfulFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ReviewHelpful.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ReviewHelpfulClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    review<T extends ReviewDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReviewDefaultArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends ReviewHelpful$userArgs<ExtArgs> = {}>(args?: Subset<T, ReviewHelpful$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ReviewHelpful model
+   */
+  interface ReviewHelpfulFieldRefs {
+    readonly id: FieldRef<"ReviewHelpful", 'String'>
+    readonly reviewId: FieldRef<"ReviewHelpful", 'String'>
+    readonly userId: FieldRef<"ReviewHelpful", 'String'>
+    readonly fingerprint: FieldRef<"ReviewHelpful", 'String'>
+    readonly createdAt: FieldRef<"ReviewHelpful", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ReviewHelpful findUnique
+   */
+  export type ReviewHelpfulFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulInclude<ExtArgs> | null
+    /**
+     * Filter, which ReviewHelpful to fetch.
+     */
+    where: ReviewHelpfulWhereUniqueInput
+  }
+
+  /**
+   * ReviewHelpful findUniqueOrThrow
+   */
+  export type ReviewHelpfulFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulInclude<ExtArgs> | null
+    /**
+     * Filter, which ReviewHelpful to fetch.
+     */
+    where: ReviewHelpfulWhereUniqueInput
+  }
+
+  /**
+   * ReviewHelpful findFirst
+   */
+  export type ReviewHelpfulFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulInclude<ExtArgs> | null
+    /**
+     * Filter, which ReviewHelpful to fetch.
+     */
+    where?: ReviewHelpfulWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ReviewHelpfuls to fetch.
+     */
+    orderBy?: ReviewHelpfulOrderByWithRelationInput | ReviewHelpfulOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ReviewHelpfuls.
+     */
+    cursor?: ReviewHelpfulWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ReviewHelpfuls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ReviewHelpfuls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ReviewHelpfuls.
+     */
+    distinct?: ReviewHelpfulScalarFieldEnum | ReviewHelpfulScalarFieldEnum[]
+  }
+
+  /**
+   * ReviewHelpful findFirstOrThrow
+   */
+  export type ReviewHelpfulFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulInclude<ExtArgs> | null
+    /**
+     * Filter, which ReviewHelpful to fetch.
+     */
+    where?: ReviewHelpfulWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ReviewHelpfuls to fetch.
+     */
+    orderBy?: ReviewHelpfulOrderByWithRelationInput | ReviewHelpfulOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ReviewHelpfuls.
+     */
+    cursor?: ReviewHelpfulWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ReviewHelpfuls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ReviewHelpfuls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ReviewHelpfuls.
+     */
+    distinct?: ReviewHelpfulScalarFieldEnum | ReviewHelpfulScalarFieldEnum[]
+  }
+
+  /**
+   * ReviewHelpful findMany
+   */
+  export type ReviewHelpfulFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulInclude<ExtArgs> | null
+    /**
+     * Filter, which ReviewHelpfuls to fetch.
+     */
+    where?: ReviewHelpfulWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ReviewHelpfuls to fetch.
+     */
+    orderBy?: ReviewHelpfulOrderByWithRelationInput | ReviewHelpfulOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ReviewHelpfuls.
+     */
+    cursor?: ReviewHelpfulWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ReviewHelpfuls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ReviewHelpfuls.
+     */
+    skip?: number
+    distinct?: ReviewHelpfulScalarFieldEnum | ReviewHelpfulScalarFieldEnum[]
+  }
+
+  /**
+   * ReviewHelpful create
+   */
+  export type ReviewHelpfulCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ReviewHelpful.
+     */
+    data: XOR<ReviewHelpfulCreateInput, ReviewHelpfulUncheckedCreateInput>
+  }
+
+  /**
+   * ReviewHelpful createMany
+   */
+  export type ReviewHelpfulCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ReviewHelpfuls.
+     */
+    data: ReviewHelpfulCreateManyInput | ReviewHelpfulCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ReviewHelpful createManyAndReturn
+   */
+  export type ReviewHelpfulCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * The data used to create many ReviewHelpfuls.
+     */
+    data: ReviewHelpfulCreateManyInput | ReviewHelpfulCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ReviewHelpful update
+   */
+  export type ReviewHelpfulUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ReviewHelpful.
+     */
+    data: XOR<ReviewHelpfulUpdateInput, ReviewHelpfulUncheckedUpdateInput>
+    /**
+     * Choose, which ReviewHelpful to update.
+     */
+    where: ReviewHelpfulWhereUniqueInput
+  }
+
+  /**
+   * ReviewHelpful updateMany
+   */
+  export type ReviewHelpfulUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ReviewHelpfuls.
+     */
+    data: XOR<ReviewHelpfulUpdateManyMutationInput, ReviewHelpfulUncheckedUpdateManyInput>
+    /**
+     * Filter which ReviewHelpfuls to update
+     */
+    where?: ReviewHelpfulWhereInput
+    /**
+     * Limit how many ReviewHelpfuls to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ReviewHelpful updateManyAndReturn
+   */
+  export type ReviewHelpfulUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * The data used to update ReviewHelpfuls.
+     */
+    data: XOR<ReviewHelpfulUpdateManyMutationInput, ReviewHelpfulUncheckedUpdateManyInput>
+    /**
+     * Filter which ReviewHelpfuls to update
+     */
+    where?: ReviewHelpfulWhereInput
+    /**
+     * Limit how many ReviewHelpfuls to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ReviewHelpful upsert
+   */
+  export type ReviewHelpfulUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ReviewHelpful to update in case it exists.
+     */
+    where: ReviewHelpfulWhereUniqueInput
+    /**
+     * In case the ReviewHelpful found by the `where` argument doesn't exist, create a new ReviewHelpful with this data.
+     */
+    create: XOR<ReviewHelpfulCreateInput, ReviewHelpfulUncheckedCreateInput>
+    /**
+     * In case the ReviewHelpful was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ReviewHelpfulUpdateInput, ReviewHelpfulUncheckedUpdateInput>
+  }
+
+  /**
+   * ReviewHelpful delete
+   */
+  export type ReviewHelpfulDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulInclude<ExtArgs> | null
+    /**
+     * Filter which ReviewHelpful to delete.
+     */
+    where: ReviewHelpfulWhereUniqueInput
+  }
+
+  /**
+   * ReviewHelpful deleteMany
+   */
+  export type ReviewHelpfulDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ReviewHelpfuls to delete
+     */
+    where?: ReviewHelpfulWhereInput
+    /**
+     * Limit how many ReviewHelpfuls to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ReviewHelpful.user
+   */
+  export type ReviewHelpful$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * ReviewHelpful without action
+   */
+  export type ReviewHelpfulDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewHelpful
+     */
+    select?: ReviewHelpfulSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReviewHelpful
+     */
+    omit?: ReviewHelpfulOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewHelpfulInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -24027,6 +26716,37 @@ export namespace Prisma {
   export type ContentBlockScalarFieldEnum = (typeof ContentBlockScalarFieldEnum)[keyof typeof ContentBlockScalarFieldEnum]
 
 
+  export const ReviewScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    hostingId: 'hostingId',
+    content: 'content',
+    performanceRating: 'performanceRating',
+    supportRating: 'supportRating',
+    priceQualityRating: 'priceQualityRating',
+    reliabilityRating: 'reliabilityRating',
+    easeOfUseRating: 'easeOfUseRating',
+    status: 'status',
+    rejectionReason: 'rejectionReason',
+    helpfulCount: 'helpfulCount',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+  export const ReviewHelpfulScalarFieldEnum: {
+    id: 'id',
+    reviewId: 'reviewId',
+    userId: 'userId',
+    fingerprint: 'fingerprint',
+    createdAt: 'createdAt'
+  };
+
+  export type ReviewHelpfulScalarFieldEnum = (typeof ReviewHelpfulScalarFieldEnum)[keyof typeof ReviewHelpfulScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -24134,6 +26854,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'ReviewStatus'
+   */
+  export type EnumReviewStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReviewStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'ReviewStatus[]'
+   */
+  export type ListEnumReviewStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReviewStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -24165,6 +26899,8 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
+    reviews?: ReviewListRelationFilter
+    helpfulMarks?: ReviewHelpfulListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -24179,6 +26915,8 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     accounts?: AccountOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
+    reviews?: ReviewOrderByRelationAggregateInput
+    helpfulMarks?: ReviewHelpfulOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -24196,6 +26934,8 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
+    reviews?: ReviewListRelationFilter
+    helpfulMarks?: ReviewHelpfulListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -24432,6 +27172,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Hosting"> | Date | string
     tariffs?: TariffListRelationFilter
     contentBlocks?: ContentBlockListRelationFilter
+    reviews?: ReviewListRelationFilter
   }
 
   export type HostingOrderByWithRelationInput = {
@@ -24449,6 +27190,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     tariffs?: TariffOrderByRelationAggregateInput
     contentBlocks?: ContentBlockOrderByRelationAggregateInput
+    reviews?: ReviewOrderByRelationAggregateInput
   }
 
   export type HostingWhereUniqueInput = Prisma.AtLeast<{
@@ -24469,6 +27211,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Hosting"> | Date | string
     tariffs?: TariffListRelationFilter
     contentBlocks?: ContentBlockListRelationFilter
+    reviews?: ReviewListRelationFilter
   }, "id" | "slug">
 
   export type HostingOrderByWithAggregationInput = {
@@ -25368,6 +28111,174 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"ContentBlock"> | Date | string
   }
 
+  export type ReviewWhereInput = {
+    AND?: ReviewWhereInput | ReviewWhereInput[]
+    OR?: ReviewWhereInput[]
+    NOT?: ReviewWhereInput | ReviewWhereInput[]
+    id?: StringFilter<"Review"> | string
+    userId?: StringFilter<"Review"> | string
+    hostingId?: StringFilter<"Review"> | string
+    content?: StringFilter<"Review"> | string
+    performanceRating?: IntFilter<"Review"> | number
+    supportRating?: IntFilter<"Review"> | number
+    priceQualityRating?: IntFilter<"Review"> | number
+    reliabilityRating?: IntFilter<"Review"> | number
+    easeOfUseRating?: IntFilter<"Review"> | number
+    status?: EnumReviewStatusFilter<"Review"> | $Enums.ReviewStatus
+    rejectionReason?: StringNullableFilter<"Review"> | string | null
+    helpfulCount?: IntFilter<"Review"> | number
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    updatedAt?: DateTimeFilter<"Review"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    hosting?: XOR<HostingScalarRelationFilter, HostingWhereInput>
+    helpfulMarks?: ReviewHelpfulListRelationFilter
+  }
+
+  export type ReviewOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    hostingId?: SortOrder
+    content?: SortOrder
+    performanceRating?: SortOrder
+    supportRating?: SortOrder
+    priceQualityRating?: SortOrder
+    reliabilityRating?: SortOrder
+    easeOfUseRating?: SortOrder
+    status?: SortOrder
+    rejectionReason?: SortOrderInput | SortOrder
+    helpfulCount?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    hosting?: HostingOrderByWithRelationInput
+    helpfulMarks?: ReviewHelpfulOrderByRelationAggregateInput
+  }
+
+  export type ReviewWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ReviewWhereInput | ReviewWhereInput[]
+    OR?: ReviewWhereInput[]
+    NOT?: ReviewWhereInput | ReviewWhereInput[]
+    userId?: StringFilter<"Review"> | string
+    hostingId?: StringFilter<"Review"> | string
+    content?: StringFilter<"Review"> | string
+    performanceRating?: IntFilter<"Review"> | number
+    supportRating?: IntFilter<"Review"> | number
+    priceQualityRating?: IntFilter<"Review"> | number
+    reliabilityRating?: IntFilter<"Review"> | number
+    easeOfUseRating?: IntFilter<"Review"> | number
+    status?: EnumReviewStatusFilter<"Review"> | $Enums.ReviewStatus
+    rejectionReason?: StringNullableFilter<"Review"> | string | null
+    helpfulCount?: IntFilter<"Review"> | number
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    updatedAt?: DateTimeFilter<"Review"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    hosting?: XOR<HostingScalarRelationFilter, HostingWhereInput>
+    helpfulMarks?: ReviewHelpfulListRelationFilter
+  }, "id">
+
+  export type ReviewOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    hostingId?: SortOrder
+    content?: SortOrder
+    performanceRating?: SortOrder
+    supportRating?: SortOrder
+    priceQualityRating?: SortOrder
+    reliabilityRating?: SortOrder
+    easeOfUseRating?: SortOrder
+    status?: SortOrder
+    rejectionReason?: SortOrderInput | SortOrder
+    helpfulCount?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ReviewCountOrderByAggregateInput
+    _avg?: ReviewAvgOrderByAggregateInput
+    _max?: ReviewMaxOrderByAggregateInput
+    _min?: ReviewMinOrderByAggregateInput
+    _sum?: ReviewSumOrderByAggregateInput
+  }
+
+  export type ReviewScalarWhereWithAggregatesInput = {
+    AND?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
+    OR?: ReviewScalarWhereWithAggregatesInput[]
+    NOT?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Review"> | string
+    userId?: StringWithAggregatesFilter<"Review"> | string
+    hostingId?: StringWithAggregatesFilter<"Review"> | string
+    content?: StringWithAggregatesFilter<"Review"> | string
+    performanceRating?: IntWithAggregatesFilter<"Review"> | number
+    supportRating?: IntWithAggregatesFilter<"Review"> | number
+    priceQualityRating?: IntWithAggregatesFilter<"Review"> | number
+    reliabilityRating?: IntWithAggregatesFilter<"Review"> | number
+    easeOfUseRating?: IntWithAggregatesFilter<"Review"> | number
+    status?: EnumReviewStatusWithAggregatesFilter<"Review"> | $Enums.ReviewStatus
+    rejectionReason?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    helpfulCount?: IntWithAggregatesFilter<"Review"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
+  }
+
+  export type ReviewHelpfulWhereInput = {
+    AND?: ReviewHelpfulWhereInput | ReviewHelpfulWhereInput[]
+    OR?: ReviewHelpfulWhereInput[]
+    NOT?: ReviewHelpfulWhereInput | ReviewHelpfulWhereInput[]
+    id?: StringFilter<"ReviewHelpful"> | string
+    reviewId?: StringFilter<"ReviewHelpful"> | string
+    userId?: StringNullableFilter<"ReviewHelpful"> | string | null
+    fingerprint?: StringNullableFilter<"ReviewHelpful"> | string | null
+    createdAt?: DateTimeFilter<"ReviewHelpful"> | Date | string
+    review?: XOR<ReviewScalarRelationFilter, ReviewWhereInput>
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }
+
+  export type ReviewHelpfulOrderByWithRelationInput = {
+    id?: SortOrder
+    reviewId?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    fingerprint?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    review?: ReviewOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type ReviewHelpfulWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    reviewId_userId?: ReviewHelpfulReviewIdUserIdCompoundUniqueInput
+    reviewId_fingerprint?: ReviewHelpfulReviewIdFingerprintCompoundUniqueInput
+    AND?: ReviewHelpfulWhereInput | ReviewHelpfulWhereInput[]
+    OR?: ReviewHelpfulWhereInput[]
+    NOT?: ReviewHelpfulWhereInput | ReviewHelpfulWhereInput[]
+    reviewId?: StringFilter<"ReviewHelpful"> | string
+    userId?: StringNullableFilter<"ReviewHelpful"> | string | null
+    fingerprint?: StringNullableFilter<"ReviewHelpful"> | string | null
+    createdAt?: DateTimeFilter<"ReviewHelpful"> | Date | string
+    review?: XOR<ReviewScalarRelationFilter, ReviewWhereInput>
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "id" | "reviewId_userId" | "reviewId_fingerprint">
+
+  export type ReviewHelpfulOrderByWithAggregationInput = {
+    id?: SortOrder
+    reviewId?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    fingerprint?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: ReviewHelpfulCountOrderByAggregateInput
+    _max?: ReviewHelpfulMaxOrderByAggregateInput
+    _min?: ReviewHelpfulMinOrderByAggregateInput
+  }
+
+  export type ReviewHelpfulScalarWhereWithAggregatesInput = {
+    AND?: ReviewHelpfulScalarWhereWithAggregatesInput | ReviewHelpfulScalarWhereWithAggregatesInput[]
+    OR?: ReviewHelpfulScalarWhereWithAggregatesInput[]
+    NOT?: ReviewHelpfulScalarWhereWithAggregatesInput | ReviewHelpfulScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ReviewHelpful"> | string
+    reviewId?: StringWithAggregatesFilter<"ReviewHelpful"> | string
+    userId?: StringNullableWithAggregatesFilter<"ReviewHelpful"> | string | null
+    fingerprint?: StringNullableWithAggregatesFilter<"ReviewHelpful"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"ReviewHelpful"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -25380,6 +28291,8 @@ export namespace Prisma {
     password?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+    helpfulMarks?: ReviewHelpfulCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -25394,6 +28307,8 @@ export namespace Prisma {
     password?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    helpfulMarks?: ReviewHelpfulUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -25408,6 +28323,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+    helpfulMarks?: ReviewHelpfulUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -25422,6 +28339,8 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    helpfulMarks?: ReviewHelpfulUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -25669,6 +28588,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     tariffs?: TariffCreateNestedManyWithoutHostingInput
     contentBlocks?: ContentBlockCreateNestedManyWithoutHostingInput
+    reviews?: ReviewCreateNestedManyWithoutHostingInput
   }
 
   export type HostingUncheckedCreateInput = {
@@ -25686,6 +28606,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     tariffs?: TariffUncheckedCreateNestedManyWithoutHostingInput
     contentBlocks?: ContentBlockUncheckedCreateNestedManyWithoutHostingInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutHostingInput
   }
 
   export type HostingUpdateInput = {
@@ -25703,6 +28624,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tariffs?: TariffUpdateManyWithoutHostingNestedInput
     contentBlocks?: ContentBlockUpdateManyWithoutHostingNestedInput
+    reviews?: ReviewUpdateManyWithoutHostingNestedInput
   }
 
   export type HostingUncheckedUpdateInput = {
@@ -25720,6 +28642,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tariffs?: TariffUncheckedUpdateManyWithoutHostingNestedInput
     contentBlocks?: ContentBlockUncheckedUpdateManyWithoutHostingNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutHostingNestedInput
   }
 
   export type HostingCreateManyInput = {
@@ -26648,6 +29571,181 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ReviewCreateInput = {
+    id?: string
+    content: string
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status?: $Enums.ReviewStatus
+    rejectionReason?: string | null
+    helpfulCount?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutReviewsInput
+    hosting: HostingCreateNestedOneWithoutReviewsInput
+    helpfulMarks?: ReviewHelpfulCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewUncheckedCreateInput = {
+    id?: string
+    userId: string
+    hostingId: string
+    content: string
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status?: $Enums.ReviewStatus
+    rejectionReason?: string | null
+    helpfulCount?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    helpfulMarks?: ReviewHelpfulUncheckedCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    performanceRating?: IntFieldUpdateOperationsInput | number
+    supportRating?: IntFieldUpdateOperationsInput | number
+    priceQualityRating?: IntFieldUpdateOperationsInput | number
+    reliabilityRating?: IntFieldUpdateOperationsInput | number
+    easeOfUseRating?: IntFieldUpdateOperationsInput | number
+    status?: EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    helpfulCount?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+    hosting?: HostingUpdateOneRequiredWithoutReviewsNestedInput
+    helpfulMarks?: ReviewHelpfulUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    performanceRating?: IntFieldUpdateOperationsInput | number
+    supportRating?: IntFieldUpdateOperationsInput | number
+    priceQualityRating?: IntFieldUpdateOperationsInput | number
+    reliabilityRating?: IntFieldUpdateOperationsInput | number
+    easeOfUseRating?: IntFieldUpdateOperationsInput | number
+    status?: EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    helpfulCount?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    helpfulMarks?: ReviewHelpfulUncheckedUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewCreateManyInput = {
+    id?: string
+    userId: string
+    hostingId: string
+    content: string
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status?: $Enums.ReviewStatus
+    rejectionReason?: string | null
+    helpfulCount?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    performanceRating?: IntFieldUpdateOperationsInput | number
+    supportRating?: IntFieldUpdateOperationsInput | number
+    priceQualityRating?: IntFieldUpdateOperationsInput | number
+    reliabilityRating?: IntFieldUpdateOperationsInput | number
+    easeOfUseRating?: IntFieldUpdateOperationsInput | number
+    status?: EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    helpfulCount?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    performanceRating?: IntFieldUpdateOperationsInput | number
+    supportRating?: IntFieldUpdateOperationsInput | number
+    priceQualityRating?: IntFieldUpdateOperationsInput | number
+    reliabilityRating?: IntFieldUpdateOperationsInput | number
+    easeOfUseRating?: IntFieldUpdateOperationsInput | number
+    status?: EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    helpfulCount?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewHelpfulCreateInput = {
+    id?: string
+    fingerprint?: string | null
+    createdAt?: Date | string
+    review: ReviewCreateNestedOneWithoutHelpfulMarksInput
+    user?: UserCreateNestedOneWithoutHelpfulMarksInput
+  }
+
+  export type ReviewHelpfulUncheckedCreateInput = {
+    id?: string
+    reviewId: string
+    userId?: string | null
+    fingerprint?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ReviewHelpfulUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fingerprint?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    review?: ReviewUpdateOneRequiredWithoutHelpfulMarksNestedInput
+    user?: UserUpdateOneWithoutHelpfulMarksNestedInput
+  }
+
+  export type ReviewHelpfulUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reviewId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    fingerprint?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewHelpfulCreateManyInput = {
+    id?: string
+    reviewId: string
+    userId?: string | null
+    fingerprint?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ReviewHelpfulUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fingerprint?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewHelpfulUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reviewId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    fingerprint?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -26719,6 +29817,18 @@ export namespace Prisma {
     none?: SessionWhereInput
   }
 
+  export type ReviewListRelationFilter = {
+    every?: ReviewWhereInput
+    some?: ReviewWhereInput
+    none?: ReviewWhereInput
+  }
+
+  export type ReviewHelpfulListRelationFilter = {
+    every?: ReviewHelpfulWhereInput
+    some?: ReviewHelpfulWhereInput
+    none?: ReviewHelpfulWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -26729,6 +29839,14 @@ export namespace Prisma {
   }
 
   export type SessionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ReviewOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ReviewHelpfulOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -27669,6 +30787,136 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EnumReviewStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ReviewStatus | EnumReviewStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ReviewStatus[] | ListEnumReviewStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ReviewStatus[] | ListEnumReviewStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumReviewStatusFilter<$PrismaModel> | $Enums.ReviewStatus
+  }
+
+  export type ReviewCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    hostingId?: SortOrder
+    content?: SortOrder
+    performanceRating?: SortOrder
+    supportRating?: SortOrder
+    priceQualityRating?: SortOrder
+    reliabilityRating?: SortOrder
+    easeOfUseRating?: SortOrder
+    status?: SortOrder
+    rejectionReason?: SortOrder
+    helpfulCount?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ReviewAvgOrderByAggregateInput = {
+    performanceRating?: SortOrder
+    supportRating?: SortOrder
+    priceQualityRating?: SortOrder
+    reliabilityRating?: SortOrder
+    easeOfUseRating?: SortOrder
+    helpfulCount?: SortOrder
+  }
+
+  export type ReviewMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    hostingId?: SortOrder
+    content?: SortOrder
+    performanceRating?: SortOrder
+    supportRating?: SortOrder
+    priceQualityRating?: SortOrder
+    reliabilityRating?: SortOrder
+    easeOfUseRating?: SortOrder
+    status?: SortOrder
+    rejectionReason?: SortOrder
+    helpfulCount?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ReviewMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    hostingId?: SortOrder
+    content?: SortOrder
+    performanceRating?: SortOrder
+    supportRating?: SortOrder
+    priceQualityRating?: SortOrder
+    reliabilityRating?: SortOrder
+    easeOfUseRating?: SortOrder
+    status?: SortOrder
+    rejectionReason?: SortOrder
+    helpfulCount?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ReviewSumOrderByAggregateInput = {
+    performanceRating?: SortOrder
+    supportRating?: SortOrder
+    priceQualityRating?: SortOrder
+    reliabilityRating?: SortOrder
+    easeOfUseRating?: SortOrder
+    helpfulCount?: SortOrder
+  }
+
+  export type EnumReviewStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ReviewStatus | EnumReviewStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ReviewStatus[] | ListEnumReviewStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ReviewStatus[] | ListEnumReviewStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumReviewStatusWithAggregatesFilter<$PrismaModel> | $Enums.ReviewStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumReviewStatusFilter<$PrismaModel>
+    _max?: NestedEnumReviewStatusFilter<$PrismaModel>
+  }
+
+  export type ReviewScalarRelationFilter = {
+    is?: ReviewWhereInput
+    isNot?: ReviewWhereInput
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
+  export type ReviewHelpfulReviewIdUserIdCompoundUniqueInput = {
+    reviewId: string
+    userId: string
+  }
+
+  export type ReviewHelpfulReviewIdFingerprintCompoundUniqueInput = {
+    reviewId: string
+    fingerprint: string
+  }
+
+  export type ReviewHelpfulCountOrderByAggregateInput = {
+    id?: SortOrder
+    reviewId?: SortOrder
+    userId?: SortOrder
+    fingerprint?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ReviewHelpfulMaxOrderByAggregateInput = {
+    id?: SortOrder
+    reviewId?: SortOrder
+    userId?: SortOrder
+    fingerprint?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ReviewHelpfulMinOrderByAggregateInput = {
+    id?: SortOrder
+    reviewId?: SortOrder
+    userId?: SortOrder
+    fingerprint?: SortOrder
+    createdAt?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -27683,6 +30931,20 @@ export namespace Prisma {
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
+  export type ReviewCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type ReviewHelpfulCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewHelpfulCreateWithoutUserInput, ReviewHelpfulUncheckedCreateWithoutUserInput> | ReviewHelpfulCreateWithoutUserInput[] | ReviewHelpfulUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewHelpfulCreateOrConnectWithoutUserInput | ReviewHelpfulCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewHelpfulCreateManyUserInputEnvelope
+    connect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+  }
+
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -27695,6 +30957,20 @@ export namespace Prisma {
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
     createMany?: SessionCreateManyUserInputEnvelope
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+  }
+
+  export type ReviewUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type ReviewHelpfulUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewHelpfulCreateWithoutUserInput, ReviewHelpfulUncheckedCreateWithoutUserInput> | ReviewHelpfulCreateWithoutUserInput[] | ReviewHelpfulUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewHelpfulCreateOrConnectWithoutUserInput | ReviewHelpfulCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewHelpfulCreateManyUserInputEnvelope
+    connect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -27745,6 +31021,34 @@ export namespace Prisma {
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
+  export type ReviewUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type ReviewHelpfulUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewHelpfulCreateWithoutUserInput, ReviewHelpfulUncheckedCreateWithoutUserInput> | ReviewHelpfulCreateWithoutUserInput[] | ReviewHelpfulUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewHelpfulCreateOrConnectWithoutUserInput | ReviewHelpfulCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewHelpfulUpsertWithWhereUniqueWithoutUserInput | ReviewHelpfulUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewHelpfulCreateManyUserInputEnvelope
+    set?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    disconnect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    delete?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    connect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    update?: ReviewHelpfulUpdateWithWhereUniqueWithoutUserInput | ReviewHelpfulUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewHelpfulUpdateManyWithWhereWithoutUserInput | ReviewHelpfulUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewHelpfulScalarWhereInput | ReviewHelpfulScalarWhereInput[]
+  }
+
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -27771,6 +31075,34 @@ export namespace Prisma {
     update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type ReviewHelpfulUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewHelpfulCreateWithoutUserInput, ReviewHelpfulUncheckedCreateWithoutUserInput> | ReviewHelpfulCreateWithoutUserInput[] | ReviewHelpfulUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewHelpfulCreateOrConnectWithoutUserInput | ReviewHelpfulCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewHelpfulUpsertWithWhereUniqueWithoutUserInput | ReviewHelpfulUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewHelpfulCreateManyUserInputEnvelope
+    set?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    disconnect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    delete?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    connect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    update?: ReviewHelpfulUpdateWithWhereUniqueWithoutUserInput | ReviewHelpfulUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewHelpfulUpdateManyWithWhereWithoutUserInput | ReviewHelpfulUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewHelpfulScalarWhereInput | ReviewHelpfulScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -27823,6 +31155,13 @@ export namespace Prisma {
     connect?: ContentBlockWhereUniqueInput | ContentBlockWhereUniqueInput[]
   }
 
+  export type ReviewCreateNestedManyWithoutHostingInput = {
+    create?: XOR<ReviewCreateWithoutHostingInput, ReviewUncheckedCreateWithoutHostingInput> | ReviewCreateWithoutHostingInput[] | ReviewUncheckedCreateWithoutHostingInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutHostingInput | ReviewCreateOrConnectWithoutHostingInput[]
+    createMany?: ReviewCreateManyHostingInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
   export type TariffUncheckedCreateNestedManyWithoutHostingInput = {
     create?: XOR<TariffCreateWithoutHostingInput, TariffUncheckedCreateWithoutHostingInput> | TariffCreateWithoutHostingInput[] | TariffUncheckedCreateWithoutHostingInput[]
     connectOrCreate?: TariffCreateOrConnectWithoutHostingInput | TariffCreateOrConnectWithoutHostingInput[]
@@ -27835,6 +31174,13 @@ export namespace Prisma {
     connectOrCreate?: ContentBlockCreateOrConnectWithoutHostingInput | ContentBlockCreateOrConnectWithoutHostingInput[]
     createMany?: ContentBlockCreateManyHostingInputEnvelope
     connect?: ContentBlockWhereUniqueInput | ContentBlockWhereUniqueInput[]
+  }
+
+  export type ReviewUncheckedCreateNestedManyWithoutHostingInput = {
+    create?: XOR<ReviewCreateWithoutHostingInput, ReviewUncheckedCreateWithoutHostingInput> | ReviewCreateWithoutHostingInput[] | ReviewUncheckedCreateWithoutHostingInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutHostingInput | ReviewCreateOrConnectWithoutHostingInput[]
+    createMany?: ReviewCreateManyHostingInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -27869,6 +31215,20 @@ export namespace Prisma {
     deleteMany?: ContentBlockScalarWhereInput | ContentBlockScalarWhereInput[]
   }
 
+  export type ReviewUpdateManyWithoutHostingNestedInput = {
+    create?: XOR<ReviewCreateWithoutHostingInput, ReviewUncheckedCreateWithoutHostingInput> | ReviewCreateWithoutHostingInput[] | ReviewUncheckedCreateWithoutHostingInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutHostingInput | ReviewCreateOrConnectWithoutHostingInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutHostingInput | ReviewUpsertWithWhereUniqueWithoutHostingInput[]
+    createMany?: ReviewCreateManyHostingInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutHostingInput | ReviewUpdateWithWhereUniqueWithoutHostingInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutHostingInput | ReviewUpdateManyWithWhereWithoutHostingInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
   export type TariffUncheckedUpdateManyWithoutHostingNestedInput = {
     create?: XOR<TariffCreateWithoutHostingInput, TariffUncheckedCreateWithoutHostingInput> | TariffCreateWithoutHostingInput[] | TariffUncheckedCreateWithoutHostingInput[]
     connectOrCreate?: TariffCreateOrConnectWithoutHostingInput | TariffCreateOrConnectWithoutHostingInput[]
@@ -27895,6 +31255,20 @@ export namespace Prisma {
     update?: ContentBlockUpdateWithWhereUniqueWithoutHostingInput | ContentBlockUpdateWithWhereUniqueWithoutHostingInput[]
     updateMany?: ContentBlockUpdateManyWithWhereWithoutHostingInput | ContentBlockUpdateManyWithWhereWithoutHostingInput[]
     deleteMany?: ContentBlockScalarWhereInput | ContentBlockScalarWhereInput[]
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutHostingNestedInput = {
+    create?: XOR<ReviewCreateWithoutHostingInput, ReviewUncheckedCreateWithoutHostingInput> | ReviewCreateWithoutHostingInput[] | ReviewUncheckedCreateWithoutHostingInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutHostingInput | ReviewCreateOrConnectWithoutHostingInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutHostingInput | ReviewUpsertWithWhereUniqueWithoutHostingInput[]
+    createMany?: ReviewCreateManyHostingInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutHostingInput | ReviewUpdateWithWhereUniqueWithoutHostingInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutHostingInput | ReviewUpdateManyWithWhereWithoutHostingInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
   }
 
   export type HostingCreateNestedOneWithoutTariffsInput = {
@@ -28619,6 +31993,110 @@ export namespace Prisma {
     update?: XOR<XOR<HostingUpdateToOneWithWhereWithoutContentBlocksInput, HostingUpdateWithoutContentBlocksInput>, HostingUncheckedUpdateWithoutContentBlocksInput>
   }
 
+  export type UserCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReviewsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type HostingCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<HostingCreateWithoutReviewsInput, HostingUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: HostingCreateOrConnectWithoutReviewsInput
+    connect?: HostingWhereUniqueInput
+  }
+
+  export type ReviewHelpfulCreateNestedManyWithoutReviewInput = {
+    create?: XOR<ReviewHelpfulCreateWithoutReviewInput, ReviewHelpfulUncheckedCreateWithoutReviewInput> | ReviewHelpfulCreateWithoutReviewInput[] | ReviewHelpfulUncheckedCreateWithoutReviewInput[]
+    connectOrCreate?: ReviewHelpfulCreateOrConnectWithoutReviewInput | ReviewHelpfulCreateOrConnectWithoutReviewInput[]
+    createMany?: ReviewHelpfulCreateManyReviewInputEnvelope
+    connect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+  }
+
+  export type ReviewHelpfulUncheckedCreateNestedManyWithoutReviewInput = {
+    create?: XOR<ReviewHelpfulCreateWithoutReviewInput, ReviewHelpfulUncheckedCreateWithoutReviewInput> | ReviewHelpfulCreateWithoutReviewInput[] | ReviewHelpfulUncheckedCreateWithoutReviewInput[]
+    connectOrCreate?: ReviewHelpfulCreateOrConnectWithoutReviewInput | ReviewHelpfulCreateOrConnectWithoutReviewInput[]
+    createMany?: ReviewHelpfulCreateManyReviewInputEnvelope
+    connect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+  }
+
+  export type EnumReviewStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ReviewStatus
+  }
+
+  export type UserUpdateOneRequiredWithoutReviewsNestedInput = {
+    create?: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReviewsInput
+    upsert?: UserUpsertWithoutReviewsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReviewsInput, UserUpdateWithoutReviewsInput>, UserUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type HostingUpdateOneRequiredWithoutReviewsNestedInput = {
+    create?: XOR<HostingCreateWithoutReviewsInput, HostingUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: HostingCreateOrConnectWithoutReviewsInput
+    upsert?: HostingUpsertWithoutReviewsInput
+    connect?: HostingWhereUniqueInput
+    update?: XOR<XOR<HostingUpdateToOneWithWhereWithoutReviewsInput, HostingUpdateWithoutReviewsInput>, HostingUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type ReviewHelpfulUpdateManyWithoutReviewNestedInput = {
+    create?: XOR<ReviewHelpfulCreateWithoutReviewInput, ReviewHelpfulUncheckedCreateWithoutReviewInput> | ReviewHelpfulCreateWithoutReviewInput[] | ReviewHelpfulUncheckedCreateWithoutReviewInput[]
+    connectOrCreate?: ReviewHelpfulCreateOrConnectWithoutReviewInput | ReviewHelpfulCreateOrConnectWithoutReviewInput[]
+    upsert?: ReviewHelpfulUpsertWithWhereUniqueWithoutReviewInput | ReviewHelpfulUpsertWithWhereUniqueWithoutReviewInput[]
+    createMany?: ReviewHelpfulCreateManyReviewInputEnvelope
+    set?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    disconnect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    delete?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    connect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    update?: ReviewHelpfulUpdateWithWhereUniqueWithoutReviewInput | ReviewHelpfulUpdateWithWhereUniqueWithoutReviewInput[]
+    updateMany?: ReviewHelpfulUpdateManyWithWhereWithoutReviewInput | ReviewHelpfulUpdateManyWithWhereWithoutReviewInput[]
+    deleteMany?: ReviewHelpfulScalarWhereInput | ReviewHelpfulScalarWhereInput[]
+  }
+
+  export type ReviewHelpfulUncheckedUpdateManyWithoutReviewNestedInput = {
+    create?: XOR<ReviewHelpfulCreateWithoutReviewInput, ReviewHelpfulUncheckedCreateWithoutReviewInput> | ReviewHelpfulCreateWithoutReviewInput[] | ReviewHelpfulUncheckedCreateWithoutReviewInput[]
+    connectOrCreate?: ReviewHelpfulCreateOrConnectWithoutReviewInput | ReviewHelpfulCreateOrConnectWithoutReviewInput[]
+    upsert?: ReviewHelpfulUpsertWithWhereUniqueWithoutReviewInput | ReviewHelpfulUpsertWithWhereUniqueWithoutReviewInput[]
+    createMany?: ReviewHelpfulCreateManyReviewInputEnvelope
+    set?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    disconnect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    delete?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    connect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+    update?: ReviewHelpfulUpdateWithWhereUniqueWithoutReviewInput | ReviewHelpfulUpdateWithWhereUniqueWithoutReviewInput[]
+    updateMany?: ReviewHelpfulUpdateManyWithWhereWithoutReviewInput | ReviewHelpfulUpdateManyWithWhereWithoutReviewInput[]
+    deleteMany?: ReviewHelpfulScalarWhereInput | ReviewHelpfulScalarWhereInput[]
+  }
+
+  export type ReviewCreateNestedOneWithoutHelpfulMarksInput = {
+    create?: XOR<ReviewCreateWithoutHelpfulMarksInput, ReviewUncheckedCreateWithoutHelpfulMarksInput>
+    connectOrCreate?: ReviewCreateOrConnectWithoutHelpfulMarksInput
+    connect?: ReviewWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutHelpfulMarksInput = {
+    create?: XOR<UserCreateWithoutHelpfulMarksInput, UserUncheckedCreateWithoutHelpfulMarksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutHelpfulMarksInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ReviewUpdateOneRequiredWithoutHelpfulMarksNestedInput = {
+    create?: XOR<ReviewCreateWithoutHelpfulMarksInput, ReviewUncheckedCreateWithoutHelpfulMarksInput>
+    connectOrCreate?: ReviewCreateOrConnectWithoutHelpfulMarksInput
+    upsert?: ReviewUpsertWithoutHelpfulMarksInput
+    connect?: ReviewWhereUniqueInput
+    update?: XOR<XOR<ReviewUpdateToOneWithWhereWithoutHelpfulMarksInput, ReviewUpdateWithoutHelpfulMarksInput>, ReviewUncheckedUpdateWithoutHelpfulMarksInput>
+  }
+
+  export type UserUpdateOneWithoutHelpfulMarksNestedInput = {
+    create?: XOR<UserCreateWithoutHelpfulMarksInput, UserUncheckedCreateWithoutHelpfulMarksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutHelpfulMarksInput
+    upsert?: UserUpsertWithoutHelpfulMarksInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutHelpfulMarksInput, UserUpdateWithoutHelpfulMarksInput>, UserUncheckedUpdateWithoutHelpfulMarksInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -28877,6 +32355,23 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedEnumReviewStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ReviewStatus | EnumReviewStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ReviewStatus[] | ListEnumReviewStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ReviewStatus[] | ListEnumReviewStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumReviewStatusFilter<$PrismaModel> | $Enums.ReviewStatus
+  }
+
+  export type NestedEnumReviewStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ReviewStatus | EnumReviewStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ReviewStatus[] | ListEnumReviewStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ReviewStatus[] | ListEnumReviewStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumReviewStatusWithAggregatesFilter<$PrismaModel> | $Enums.ReviewStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumReviewStatusFilter<$PrismaModel>
+    _max?: NestedEnumReviewStatusFilter<$PrismaModel>
+  }
+
   export type AccountCreateWithoutUserInput = {
     id?: string
     type: string
@@ -28934,6 +32429,74 @@ export namespace Prisma {
 
   export type SessionCreateManyUserInputEnvelope = {
     data: SessionCreateManyUserInput | SessionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ReviewCreateWithoutUserInput = {
+    id?: string
+    content: string
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status?: $Enums.ReviewStatus
+    rejectionReason?: string | null
+    helpfulCount?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hosting: HostingCreateNestedOneWithoutReviewsInput
+    helpfulMarks?: ReviewHelpfulCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewUncheckedCreateWithoutUserInput = {
+    id?: string
+    hostingId: string
+    content: string
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status?: $Enums.ReviewStatus
+    rejectionReason?: string | null
+    helpfulCount?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    helpfulMarks?: ReviewHelpfulUncheckedCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewCreateOrConnectWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewCreateManyUserInputEnvelope = {
+    data: ReviewCreateManyUserInput | ReviewCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ReviewHelpfulCreateWithoutUserInput = {
+    id?: string
+    fingerprint?: string | null
+    createdAt?: Date | string
+    review: ReviewCreateNestedOneWithoutHelpfulMarksInput
+  }
+
+  export type ReviewHelpfulUncheckedCreateWithoutUserInput = {
+    id?: string
+    reviewId: string
+    fingerprint?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ReviewHelpfulCreateOrConnectWithoutUserInput = {
+    where: ReviewHelpfulWhereUniqueInput
+    create: XOR<ReviewHelpfulCreateWithoutUserInput, ReviewHelpfulUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewHelpfulCreateManyUserInputEnvelope = {
+    data: ReviewHelpfulCreateManyUserInput | ReviewHelpfulCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -28997,6 +32560,69 @@ export namespace Prisma {
     expires?: DateTimeFilter<"Session"> | Date | string
   }
 
+  export type ReviewUpsertWithWhereUniqueWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
+    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutUserInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ReviewScalarWhereInput = {
+    AND?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+    OR?: ReviewScalarWhereInput[]
+    NOT?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+    id?: StringFilter<"Review"> | string
+    userId?: StringFilter<"Review"> | string
+    hostingId?: StringFilter<"Review"> | string
+    content?: StringFilter<"Review"> | string
+    performanceRating?: IntFilter<"Review"> | number
+    supportRating?: IntFilter<"Review"> | number
+    priceQualityRating?: IntFilter<"Review"> | number
+    reliabilityRating?: IntFilter<"Review"> | number
+    easeOfUseRating?: IntFilter<"Review"> | number
+    status?: EnumReviewStatusFilter<"Review"> | $Enums.ReviewStatus
+    rejectionReason?: StringNullableFilter<"Review"> | string | null
+    helpfulCount?: IntFilter<"Review"> | number
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    updatedAt?: DateTimeFilter<"Review"> | Date | string
+  }
+
+  export type ReviewHelpfulUpsertWithWhereUniqueWithoutUserInput = {
+    where: ReviewHelpfulWhereUniqueInput
+    update: XOR<ReviewHelpfulUpdateWithoutUserInput, ReviewHelpfulUncheckedUpdateWithoutUserInput>
+    create: XOR<ReviewHelpfulCreateWithoutUserInput, ReviewHelpfulUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewHelpfulUpdateWithWhereUniqueWithoutUserInput = {
+    where: ReviewHelpfulWhereUniqueInput
+    data: XOR<ReviewHelpfulUpdateWithoutUserInput, ReviewHelpfulUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ReviewHelpfulUpdateManyWithWhereWithoutUserInput = {
+    where: ReviewHelpfulScalarWhereInput
+    data: XOR<ReviewHelpfulUpdateManyMutationInput, ReviewHelpfulUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ReviewHelpfulScalarWhereInput = {
+    AND?: ReviewHelpfulScalarWhereInput | ReviewHelpfulScalarWhereInput[]
+    OR?: ReviewHelpfulScalarWhereInput[]
+    NOT?: ReviewHelpfulScalarWhereInput | ReviewHelpfulScalarWhereInput[]
+    id?: StringFilter<"ReviewHelpful"> | string
+    reviewId?: StringFilter<"ReviewHelpful"> | string
+    userId?: StringNullableFilter<"ReviewHelpful"> | string | null
+    fingerprint?: StringNullableFilter<"ReviewHelpful"> | string | null
+    createdAt?: DateTimeFilter<"ReviewHelpful"> | Date | string
+  }
+
   export type UserCreateWithoutAccountsInput = {
     id?: string
     email: string
@@ -29008,6 +32634,8 @@ export namespace Prisma {
     image?: string | null
     password?: string | null
     sessions?: SessionCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+    helpfulMarks?: ReviewHelpfulCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -29021,6 +32649,8 @@ export namespace Prisma {
     image?: string | null
     password?: string | null
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    helpfulMarks?: ReviewHelpfulUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -29050,6 +32680,8 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+    helpfulMarks?: ReviewHelpfulUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -29063,6 +32695,8 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    helpfulMarks?: ReviewHelpfulUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -29076,6 +32710,8 @@ export namespace Prisma {
     image?: string | null
     password?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+    helpfulMarks?: ReviewHelpfulCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -29089,6 +32725,8 @@ export namespace Prisma {
     image?: string | null
     password?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    helpfulMarks?: ReviewHelpfulUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -29118,6 +32756,8 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+    helpfulMarks?: ReviewHelpfulUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -29131,6 +32771,8 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    helpfulMarks?: ReviewHelpfulUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TariffCreateWithoutHostingInput = {
@@ -29259,6 +32901,50 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ReviewCreateWithoutHostingInput = {
+    id?: string
+    content: string
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status?: $Enums.ReviewStatus
+    rejectionReason?: string | null
+    helpfulCount?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutReviewsInput
+    helpfulMarks?: ReviewHelpfulCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewUncheckedCreateWithoutHostingInput = {
+    id?: string
+    userId: string
+    content: string
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status?: $Enums.ReviewStatus
+    rejectionReason?: string | null
+    helpfulCount?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    helpfulMarks?: ReviewHelpfulUncheckedCreateNestedManyWithoutReviewInput
+  }
+
+  export type ReviewCreateOrConnectWithoutHostingInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutHostingInput, ReviewUncheckedCreateWithoutHostingInput>
+  }
+
+  export type ReviewCreateManyHostingInputEnvelope = {
+    data: ReviewCreateManyHostingInput | ReviewCreateManyHostingInput[]
+    skipDuplicates?: boolean
+  }
+
   export type TariffUpsertWithWhereUniqueWithoutHostingInput = {
     where: TariffWhereUniqueInput
     update: XOR<TariffUpdateWithoutHostingInput, TariffUncheckedUpdateWithoutHostingInput>
@@ -29346,6 +33032,22 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"ContentBlock"> | Date | string
   }
 
+  export type ReviewUpsertWithWhereUniqueWithoutHostingInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutHostingInput, ReviewUncheckedUpdateWithoutHostingInput>
+    create: XOR<ReviewCreateWithoutHostingInput, ReviewUncheckedCreateWithoutHostingInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutHostingInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutHostingInput, ReviewUncheckedUpdateWithoutHostingInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutHostingInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutHostingInput>
+  }
+
   export type HostingCreateWithoutTariffsInput = {
     id?: string
     name: string
@@ -29360,6 +33062,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     contentBlocks?: ContentBlockCreateNestedManyWithoutHostingInput
+    reviews?: ReviewCreateNestedManyWithoutHostingInput
   }
 
   export type HostingUncheckedCreateWithoutTariffsInput = {
@@ -29376,6 +33079,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     contentBlocks?: ContentBlockUncheckedCreateNestedManyWithoutHostingInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutHostingInput
   }
 
   export type HostingCreateOrConnectWithoutTariffsInput = {
@@ -29528,6 +33232,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contentBlocks?: ContentBlockUpdateManyWithoutHostingNestedInput
+    reviews?: ReviewUpdateManyWithoutHostingNestedInput
   }
 
   export type HostingUncheckedUpdateWithoutTariffsInput = {
@@ -29544,6 +33249,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contentBlocks?: ContentBlockUncheckedUpdateManyWithoutHostingNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutHostingNestedInput
   }
 
   export type TariffCMSUpsertWithWhereUniqueWithoutTariffInput = {
@@ -31270,6 +34976,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     tariffs?: TariffCreateNestedManyWithoutHostingInput
+    reviews?: ReviewCreateNestedManyWithoutHostingInput
   }
 
   export type HostingUncheckedCreateWithoutContentBlocksInput = {
@@ -31286,6 +34993,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     tariffs?: TariffUncheckedCreateNestedManyWithoutHostingInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutHostingInput
   }
 
   export type HostingCreateOrConnectWithoutContentBlocksInput = {
@@ -31318,6 +35026,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tariffs?: TariffUpdateManyWithoutHostingNestedInput
+    reviews?: ReviewUpdateManyWithoutHostingNestedInput
   }
 
   export type HostingUncheckedUpdateWithoutContentBlocksInput = {
@@ -31334,6 +35043,367 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tariffs?: TariffUncheckedUpdateManyWithoutHostingNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutHostingNestedInput
+  }
+
+  export type UserCreateWithoutReviewsInput = {
+    id?: string
+    email: string
+    name?: string | null
+    role?: $Enums.UserRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    helpfulMarks?: ReviewHelpfulCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutReviewsInput = {
+    id?: string
+    email: string
+    name?: string | null
+    role?: $Enums.UserRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    helpfulMarks?: ReviewHelpfulUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutReviewsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+  }
+
+  export type HostingCreateWithoutReviewsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    logoUrl?: string | null
+    websiteUrl?: string | null
+    startYear?: string | null
+    testPeriod?: number | null
+    clients?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tariffs?: TariffCreateNestedManyWithoutHostingInput
+    contentBlocks?: ContentBlockCreateNestedManyWithoutHostingInput
+  }
+
+  export type HostingUncheckedCreateWithoutReviewsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    logoUrl?: string | null
+    websiteUrl?: string | null
+    startYear?: string | null
+    testPeriod?: number | null
+    clients?: number | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tariffs?: TariffUncheckedCreateNestedManyWithoutHostingInput
+    contentBlocks?: ContentBlockUncheckedCreateNestedManyWithoutHostingInput
+  }
+
+  export type HostingCreateOrConnectWithoutReviewsInput = {
+    where: HostingWhereUniqueInput
+    create: XOR<HostingCreateWithoutReviewsInput, HostingUncheckedCreateWithoutReviewsInput>
+  }
+
+  export type ReviewHelpfulCreateWithoutReviewInput = {
+    id?: string
+    fingerprint?: string | null
+    createdAt?: Date | string
+    user?: UserCreateNestedOneWithoutHelpfulMarksInput
+  }
+
+  export type ReviewHelpfulUncheckedCreateWithoutReviewInput = {
+    id?: string
+    userId?: string | null
+    fingerprint?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ReviewHelpfulCreateOrConnectWithoutReviewInput = {
+    where: ReviewHelpfulWhereUniqueInput
+    create: XOR<ReviewHelpfulCreateWithoutReviewInput, ReviewHelpfulUncheckedCreateWithoutReviewInput>
+  }
+
+  export type ReviewHelpfulCreateManyReviewInputEnvelope = {
+    data: ReviewHelpfulCreateManyReviewInput | ReviewHelpfulCreateManyReviewInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutReviewsInput = {
+    update: XOR<UserUpdateWithoutReviewsInput, UserUncheckedUpdateWithoutReviewsInput>
+    create: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutReviewsInput, UserUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type UserUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    helpfulMarks?: ReviewHelpfulUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    helpfulMarks?: ReviewHelpfulUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type HostingUpsertWithoutReviewsInput = {
+    update: XOR<HostingUpdateWithoutReviewsInput, HostingUncheckedUpdateWithoutReviewsInput>
+    create: XOR<HostingCreateWithoutReviewsInput, HostingUncheckedCreateWithoutReviewsInput>
+    where?: HostingWhereInput
+  }
+
+  export type HostingUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: HostingWhereInput
+    data: XOR<HostingUpdateWithoutReviewsInput, HostingUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type HostingUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startYear?: NullableStringFieldUpdateOperationsInput | string | null
+    testPeriod?: NullableIntFieldUpdateOperationsInput | number | null
+    clients?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tariffs?: TariffUpdateManyWithoutHostingNestedInput
+    contentBlocks?: ContentBlockUpdateManyWithoutHostingNestedInput
+  }
+
+  export type HostingUncheckedUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    startYear?: NullableStringFieldUpdateOperationsInput | string | null
+    testPeriod?: NullableIntFieldUpdateOperationsInput | number | null
+    clients?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tariffs?: TariffUncheckedUpdateManyWithoutHostingNestedInput
+    contentBlocks?: ContentBlockUncheckedUpdateManyWithoutHostingNestedInput
+  }
+
+  export type ReviewHelpfulUpsertWithWhereUniqueWithoutReviewInput = {
+    where: ReviewHelpfulWhereUniqueInput
+    update: XOR<ReviewHelpfulUpdateWithoutReviewInput, ReviewHelpfulUncheckedUpdateWithoutReviewInput>
+    create: XOR<ReviewHelpfulCreateWithoutReviewInput, ReviewHelpfulUncheckedCreateWithoutReviewInput>
+  }
+
+  export type ReviewHelpfulUpdateWithWhereUniqueWithoutReviewInput = {
+    where: ReviewHelpfulWhereUniqueInput
+    data: XOR<ReviewHelpfulUpdateWithoutReviewInput, ReviewHelpfulUncheckedUpdateWithoutReviewInput>
+  }
+
+  export type ReviewHelpfulUpdateManyWithWhereWithoutReviewInput = {
+    where: ReviewHelpfulScalarWhereInput
+    data: XOR<ReviewHelpfulUpdateManyMutationInput, ReviewHelpfulUncheckedUpdateManyWithoutReviewInput>
+  }
+
+  export type ReviewCreateWithoutHelpfulMarksInput = {
+    id?: string
+    content: string
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status?: $Enums.ReviewStatus
+    rejectionReason?: string | null
+    helpfulCount?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutReviewsInput
+    hosting: HostingCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateWithoutHelpfulMarksInput = {
+    id?: string
+    userId: string
+    hostingId: string
+    content: string
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status?: $Enums.ReviewStatus
+    rejectionReason?: string | null
+    helpfulCount?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewCreateOrConnectWithoutHelpfulMarksInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutHelpfulMarksInput, ReviewUncheckedCreateWithoutHelpfulMarksInput>
+  }
+
+  export type UserCreateWithoutHelpfulMarksInput = {
+    id?: string
+    email: string
+    name?: string | null
+    role?: $Enums.UserRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutHelpfulMarksInput = {
+    id?: string
+    email: string
+    name?: string | null
+    role?: $Enums.UserRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutHelpfulMarksInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutHelpfulMarksInput, UserUncheckedCreateWithoutHelpfulMarksInput>
+  }
+
+  export type ReviewUpsertWithoutHelpfulMarksInput = {
+    update: XOR<ReviewUpdateWithoutHelpfulMarksInput, ReviewUncheckedUpdateWithoutHelpfulMarksInput>
+    create: XOR<ReviewCreateWithoutHelpfulMarksInput, ReviewUncheckedCreateWithoutHelpfulMarksInput>
+    where?: ReviewWhereInput
+  }
+
+  export type ReviewUpdateToOneWithWhereWithoutHelpfulMarksInput = {
+    where?: ReviewWhereInput
+    data: XOR<ReviewUpdateWithoutHelpfulMarksInput, ReviewUncheckedUpdateWithoutHelpfulMarksInput>
+  }
+
+  export type ReviewUpdateWithoutHelpfulMarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    performanceRating?: IntFieldUpdateOperationsInput | number
+    supportRating?: IntFieldUpdateOperationsInput | number
+    priceQualityRating?: IntFieldUpdateOperationsInput | number
+    reliabilityRating?: IntFieldUpdateOperationsInput | number
+    easeOfUseRating?: IntFieldUpdateOperationsInput | number
+    status?: EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    helpfulCount?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+    hosting?: HostingUpdateOneRequiredWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutHelpfulMarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    performanceRating?: IntFieldUpdateOperationsInput | number
+    supportRating?: IntFieldUpdateOperationsInput | number
+    priceQualityRating?: IntFieldUpdateOperationsInput | number
+    reliabilityRating?: IntFieldUpdateOperationsInput | number
+    easeOfUseRating?: IntFieldUpdateOperationsInput | number
+    status?: EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    helpfulCount?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutHelpfulMarksInput = {
+    update: XOR<UserUpdateWithoutHelpfulMarksInput, UserUncheckedUpdateWithoutHelpfulMarksInput>
+    create: XOR<UserCreateWithoutHelpfulMarksInput, UserUncheckedCreateWithoutHelpfulMarksInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutHelpfulMarksInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutHelpfulMarksInput, UserUncheckedUpdateWithoutHelpfulMarksInput>
+  }
+
+  export type UserUpdateWithoutHelpfulMarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutHelpfulMarksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -31354,6 +35424,29 @@ export namespace Prisma {
     id?: string
     sessionToken: string
     expires: Date | string
+  }
+
+  export type ReviewCreateManyUserInput = {
+    id?: string
+    hostingId: string
+    content: string
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status?: $Enums.ReviewStatus
+    rejectionReason?: string | null
+    helpfulCount?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewHelpfulCreateManyUserInput = {
+    id?: string
+    reviewId: string
+    fingerprint?: string | null
+    createdAt?: Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -31416,6 +35509,77 @@ export namespace Prisma {
     expires?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ReviewUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    performanceRating?: IntFieldUpdateOperationsInput | number
+    supportRating?: IntFieldUpdateOperationsInput | number
+    priceQualityRating?: IntFieldUpdateOperationsInput | number
+    reliabilityRating?: IntFieldUpdateOperationsInput | number
+    easeOfUseRating?: IntFieldUpdateOperationsInput | number
+    status?: EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    helpfulCount?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hosting?: HostingUpdateOneRequiredWithoutReviewsNestedInput
+    helpfulMarks?: ReviewHelpfulUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    performanceRating?: IntFieldUpdateOperationsInput | number
+    supportRating?: IntFieldUpdateOperationsInput | number
+    priceQualityRating?: IntFieldUpdateOperationsInput | number
+    reliabilityRating?: IntFieldUpdateOperationsInput | number
+    easeOfUseRating?: IntFieldUpdateOperationsInput | number
+    status?: EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    helpfulCount?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    helpfulMarks?: ReviewHelpfulUncheckedUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    hostingId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    performanceRating?: IntFieldUpdateOperationsInput | number
+    supportRating?: IntFieldUpdateOperationsInput | number
+    priceQualityRating?: IntFieldUpdateOperationsInput | number
+    reliabilityRating?: IntFieldUpdateOperationsInput | number
+    easeOfUseRating?: IntFieldUpdateOperationsInput | number
+    status?: EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    helpfulCount?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewHelpfulUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fingerprint?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    review?: ReviewUpdateOneRequiredWithoutHelpfulMarksNestedInput
+  }
+
+  export type ReviewHelpfulUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reviewId?: StringFieldUpdateOperationsInput | string
+    fingerprint?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewHelpfulUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reviewId?: StringFieldUpdateOperationsInput | string
+    fingerprint?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type TariffCreateManyHostingInput = {
     id?: string
     type?: number | null
@@ -31459,6 +35623,22 @@ export namespace Prisma {
     content?: string | null
     type?: string | null
     isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewCreateManyHostingInput = {
+    id?: string
+    userId: string
+    content: string
+    performanceRating: number
+    supportRating: number
+    priceQualityRating: number
+    reliabilityRating: number
+    easeOfUseRating: number
+    status?: $Enums.ReviewStatus
+    rejectionReason?: string | null
+    helpfulCount?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -31612,6 +35792,56 @@ export namespace Prisma {
     content?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUpdateWithoutHostingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    performanceRating?: IntFieldUpdateOperationsInput | number
+    supportRating?: IntFieldUpdateOperationsInput | number
+    priceQualityRating?: IntFieldUpdateOperationsInput | number
+    reliabilityRating?: IntFieldUpdateOperationsInput | number
+    easeOfUseRating?: IntFieldUpdateOperationsInput | number
+    status?: EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    helpfulCount?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+    helpfulMarks?: ReviewHelpfulUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutHostingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    performanceRating?: IntFieldUpdateOperationsInput | number
+    supportRating?: IntFieldUpdateOperationsInput | number
+    priceQualityRating?: IntFieldUpdateOperationsInput | number
+    reliabilityRating?: IntFieldUpdateOperationsInput | number
+    easeOfUseRating?: IntFieldUpdateOperationsInput | number
+    status?: EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    helpfulCount?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    helpfulMarks?: ReviewHelpfulUncheckedUpdateManyWithoutReviewNestedInput
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutHostingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    performanceRating?: IntFieldUpdateOperationsInput | number
+    supportRating?: IntFieldUpdateOperationsInput | number
+    priceQualityRating?: IntFieldUpdateOperationsInput | number
+    reliabilityRating?: IntFieldUpdateOperationsInput | number
+    easeOfUseRating?: IntFieldUpdateOperationsInput | number
+    status?: EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    helpfulCount?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -31854,6 +36084,34 @@ export namespace Prisma {
   export type TariffProgrammingLanguageUncheckedUpdateManyWithoutProgrammingLanguageInput = {
     id?: StringFieldUpdateOperationsInput | string
     tariffId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ReviewHelpfulCreateManyReviewInput = {
+    id?: string
+    userId?: string | null
+    fingerprint?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ReviewHelpfulUpdateWithoutReviewInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fingerprint?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutHelpfulMarksNestedInput
+  }
+
+  export type ReviewHelpfulUncheckedUpdateWithoutReviewInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    fingerprint?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewHelpfulUncheckedUpdateManyWithoutReviewInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    fingerprint?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

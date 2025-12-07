@@ -20,6 +20,8 @@ model User {
   password      String?
   accounts      Account[]
   sessions      Session[]
+  reviews       Review[]
+  helpfulMarks  ReviewHelpful[]
 
   @@map("users")
 }
@@ -74,6 +76,12 @@ enum TariffPeriod {
   YEAR
 }
 
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 model Hosting {
   id          String   @id @default(uuid())
   name        String
@@ -89,6 +97,7 @@ model Hosting {
   updatedAt   DateTime @updatedAt @map("updated_at")
   tariffs     Tariff[]
   contentBlocks ContentBlock[]
+  reviews     Review[]
 
   @@index([isActive])
   @@map("hostings")
@@ -277,4 +286,49 @@ model ContentBlock {
 
   @@index([hostingId])
   @@map("content_blocks")
+}
+
+model Review {
+  id                  String       @id @default(uuid())
+  userId              String       @map("user_id")
+  hostingId           String       @map("hosting_id")
+  content             String       @db.Text
+  performanceRating   Int          @map("performance_rating")
+  supportRating       Int          @map("support_rating")
+  priceQualityRating  Int          @map("price_quality_rating")
+  reliabilityRating   Int          @map("reliability_rating")
+  easeOfUseRating     Int          @map("ease_of_use_rating")
+  status              ReviewStatus @default(PENDING)
+  rejectionReason     String?      @map("rejection_reason") @db.Text
+  helpfulCount        Int          @default(0) @map("helpful_count")
+  createdAt           DateTime     @default(now()) @map("created_at")
+  updatedAt           DateTime     @updatedAt @map("updated_at")
+
+  user                User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  hosting             Hosting      @relation(fields: [hostingId], references: [id], onDelete: Cascade)
+  helpfulMarks        ReviewHelpful[]
+
+  @@index([userId])
+  @@index([hostingId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("reviews")
+}
+
+model ReviewHelpful {
+  id          String   @id @default(uuid())
+  reviewId    String   @map("review_id")
+  userId      String?  @map("user_id")
+  fingerprint String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  review      Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([reviewId, userId])
+  @@unique([reviewId, fingerprint])
+  @@index([reviewId])
+  @@index([userId])
+  @@index([fingerprint])
+  @@map("review_helpful")
 }

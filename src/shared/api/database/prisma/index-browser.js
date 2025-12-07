@@ -296,6 +296,31 @@ exports.Prisma.ContentBlockScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  hostingId: 'hostingId',
+  content: 'content',
+  performanceRating: 'performanceRating',
+  supportRating: 'supportRating',
+  priceQualityRating: 'priceQualityRating',
+  reliabilityRating: 'reliabilityRating',
+  easeOfUseRating: 'easeOfUseRating',
+  status: 'status',
+  rejectionReason: 'rejectionReason',
+  helpfulCount: 'helpfulCount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ReviewHelpfulScalarFieldEnum = {
+  id: 'id',
+  reviewId: 'reviewId',
+  userId: 'userId',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -317,6 +342,12 @@ exports.UserRole = exports.$Enums.UserRole = {
   USER: 'USER'
 };
 
+exports.ReviewStatus = exports.$Enums.ReviewStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Account: 'Account',
@@ -336,7 +367,9 @@ exports.Prisma.ModelName = {
   TariffDataStore: 'TariffDataStore',
   TariffOperationSystem: 'TariffOperationSystem',
   TariffProgrammingLanguage: 'TariffProgrammingLanguage',
-  ContentBlock: 'ContentBlock'
+  ContentBlock: 'ContentBlock',
+  Review: 'Review',
+  ReviewHelpful: 'ReviewHelpful'
 };
 
 /**
