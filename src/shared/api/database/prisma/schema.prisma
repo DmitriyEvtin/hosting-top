@@ -93,11 +93,42 @@ model Hosting {
 model Tariff {
   id                   String                      @id @default(uuid())
   hostingId            String                      @map("hosting_id")
+  type                 Int?                        @default(0)
   name                 String
-  price                Decimal                     @db.Decimal(10, 2)
-  currency             String                      @default("RUB")
-  period               TariffPeriod
+  subtitle             String?
+  link                 String?
+  domains              Int?                        @map("domains")
   diskSpace            Int?                        @map("disk_space")
+  sites                Int?
+  ftpAccounts          Int?                        @map("ftp_accounts")
+  traffic              Int?
+  mailboxes            Int?
+  automaticCms         Boolean?                    @map("automatic_cms")
+  ssl                  Boolean?
+  backup               Boolean?
+  ssh                  Boolean?
+  additionalId         Boolean?                    @map("additional_id")
+  priceMonth           Decimal?                    @map("price_month") @db.Decimal(10, 2)
+  priceYear            Decimal?                    @map("price_year") @db.Decimal(10, 2)
+  status               Int                         @default(1)
+  countTestDays        Int?                        @map("count_test_days")
+  isTemplate           Boolean?                    @default(false) @map("is_template")
+  ddosDef              Boolean?                    @map("ddos_def")
+  diskType             Int?                        @map("disk_type")
+  antivirus            Boolean?                    @default(false)
+  countDb              Int?                        @map("count_db")
+  infoDiskArea         String?                     @map("info_disk_area")
+  infoPlatforms        String?                     @map("info_platforms")
+  infoPanels           String?                     @map("info_panels")
+  infoPrice            String?                     @map("info_price")
+  infoOzu              String?                     @map("info_ozu")
+  infoCpu              String?                     @map("info_cpu")
+  infoCpuCore          String?                     @map("info_cpu_core")
+  infoDomains          String?                     @map("info_domains") @db.Text
+  // Старые поля для обратной совместимости
+  price                Decimal?                    @db.Decimal(10, 2)
+  currency             String                      @default("RUB")
+  period               TariffPeriod?
   bandwidth            Int?                        @db.Integer
   domainsCount         Int?                        @map("domains_count")
   databasesCount       Int?                        @map("databases_count")

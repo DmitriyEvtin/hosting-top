@@ -30,18 +30,49 @@ export interface MySQLHosting {
 export interface MySQLTariff {
   id: number;
   hosting_id: number;
+  type?: number | null;
   name: string;
-  price: string | number; // MySQL DECIMAL возвращается как string
-  currency?: string | null;
-  period: string; // "month" | "year"
+  subtitle?: string | null;
+  link?: string | null;
+  domains?: number | null;
   disk_space?: number | null;
+  sites?: number | null;
+  ftp_accounts?: number | null;
+  traffic?: number | null;
+  mailboxes?: number | null;
+  automatic_cms?: number | boolean | null;
+  ssl?: number | boolean | null;
+  backup?: number | boolean | null;
+  ssh?: number | boolean | null;
+  additional_id?: number | boolean | null;
+  price_month?: string | number | null; // MySQL DECIMAL возвращается как string
+  price_year?: string | number | null; // MySQL DECIMAL возвращается как string
+  status?: number | null;
+  count_test_days?: number | null;
+  is_template?: number | boolean | null;
+  ddos_def?: number | boolean | null;
+  disk_type?: number | null;
+  antivirus?: number | boolean | null;
+  count_db?: number | null;
+  info_disk_area?: string | null;
+  info_platforms?: string | null;
+  info_panels?: string | null;
+  info_price?: string | null;
+  info_ozu?: string | null;
+  info_cpu?: string | null;
+  info_cpu_core?: string | null;
+  info_domains?: string | null;
+  // Старые поля для обратной совместимости
+  price?: string | number | null;
+  currency?: string | null;
+  period?: string | null; // "month" | "year"
   bandwidth?: number | null;
   domains_count?: number | null;
   databases_count?: number | null;
   email_accounts?: number | null;
   is_active?: number | boolean | null;
-  created_at?: string | Date | null;
-  updated_at?: string | Date | null;
+  created_at?: number | string | Date | null; // Unix timestamp или Date
+  updated_at?: number | string | Date | null; // Unix timestamp или Date
 }
 
 export interface MySQLCMS {
@@ -104,11 +135,42 @@ export interface PrismaHosting {
 export interface PrismaTariff {
   id: string; // UUID
   hostingId: string; // UUID
+  type?: number | null;
   name: string;
-  price: Decimal;
-  currency: string;
-  period: TariffPeriod;
+  subtitle?: string | null;
+  link?: string | null;
+  domains?: number | null;
   diskSpace?: number | null;
+  sites?: number | null;
+  ftpAccounts?: number | null;
+  traffic?: number | null;
+  mailboxes?: number | null;
+  automaticCms?: boolean | null;
+  ssl?: boolean | null;
+  backup?: boolean | null;
+  ssh?: boolean | null;
+  additionalId?: boolean | null;
+  priceMonth?: Decimal | null;
+  priceYear?: Decimal | null;
+  status?: number | null;
+  countTestDays?: number | null;
+  isTemplate?: boolean | null;
+  ddosDef?: boolean | null;
+  diskType?: number | null;
+  antivirus?: boolean | null;
+  countDb?: number | null;
+  infoDiskArea?: string | null;
+  infoPlatforms?: string | null;
+  infoPanels?: string | null;
+  infoPrice?: string | null;
+  infoOzu?: string | null;
+  infoCpu?: string | null;
+  infoCpuCore?: string | null;
+  infoDomains?: string | null;
+  // Старые поля для обратной совместимости
+  price?: Decimal | null;
+  currency?: string | null;
+  period?: TariffPeriod | null;
   bandwidth?: number | null;
   domainsCount?: number | null;
   databasesCount?: number | null;

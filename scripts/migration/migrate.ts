@@ -786,6 +786,16 @@ async function migrateTariffs(dryRun: boolean): Promise<void> {
 
   for (const mysqlTariff of mysqlTariffs) {
     try {
+      // Логируем структуру данных для отладки (только для первого элемента)
+      if (mysqlTariffs.indexOf(mysqlTariff) === 0) {
+        logger.info(
+          `Пример данных Tariff: ${JSON.stringify(mysqlTariff, null, 2)}`
+        );
+        logger.info(
+          `Поле price: ${mysqlTariff.price}, тип: ${typeof mysqlTariff.price}, значение: ${JSON.stringify(mysqlTariff.price)}`
+        );
+      }
+
       // Получаем новый UUID хостинга из маппинга
       const hostingId = idMappings.hostings[mysqlTariff.hosting_id];
       if (!hostingId) {

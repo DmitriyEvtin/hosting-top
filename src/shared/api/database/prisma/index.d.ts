@@ -8343,8 +8343,20 @@ export namespace Prisma {
   }
 
   export type TariffAvgAggregateOutputType = {
-    price: Decimal | null
+    type: number | null
+    domains: number | null
     diskSpace: number | null
+    sites: number | null
+    ftpAccounts: number | null
+    traffic: number | null
+    mailboxes: number | null
+    priceMonth: Decimal | null
+    priceYear: Decimal | null
+    status: number | null
+    countTestDays: number | null
+    diskType: number | null
+    countDb: number | null
+    price: Decimal | null
     bandwidth: number | null
     domainsCount: number | null
     databasesCount: number | null
@@ -8352,8 +8364,20 @@ export namespace Prisma {
   }
 
   export type TariffSumAggregateOutputType = {
-    price: Decimal | null
+    type: number | null
+    domains: number | null
     diskSpace: number | null
+    sites: number | null
+    ftpAccounts: number | null
+    traffic: number | null
+    mailboxes: number | null
+    priceMonth: Decimal | null
+    priceYear: Decimal | null
+    status: number | null
+    countTestDays: number | null
+    diskType: number | null
+    countDb: number | null
+    price: Decimal | null
     bandwidth: number | null
     domainsCount: number | null
     databasesCount: number | null
@@ -8363,11 +8387,41 @@ export namespace Prisma {
   export type TariffMinAggregateOutputType = {
     id: string | null
     hostingId: string | null
+    type: number | null
     name: string | null
+    subtitle: string | null
+    link: string | null
+    domains: number | null
+    diskSpace: number | null
+    sites: number | null
+    ftpAccounts: number | null
+    traffic: number | null
+    mailboxes: number | null
+    automaticCms: boolean | null
+    ssl: boolean | null
+    backup: boolean | null
+    ssh: boolean | null
+    additionalId: boolean | null
+    priceMonth: Decimal | null
+    priceYear: Decimal | null
+    status: number | null
+    countTestDays: number | null
+    isTemplate: boolean | null
+    ddosDef: boolean | null
+    diskType: number | null
+    antivirus: boolean | null
+    countDb: number | null
+    infoDiskArea: string | null
+    infoPlatforms: string | null
+    infoPanels: string | null
+    infoPrice: string | null
+    infoOzu: string | null
+    infoCpu: string | null
+    infoCpuCore: string | null
+    infoDomains: string | null
     price: Decimal | null
     currency: string | null
     period: $Enums.TariffPeriod | null
-    diskSpace: number | null
     bandwidth: number | null
     domainsCount: number | null
     databasesCount: number | null
@@ -8380,11 +8434,41 @@ export namespace Prisma {
   export type TariffMaxAggregateOutputType = {
     id: string | null
     hostingId: string | null
+    type: number | null
     name: string | null
+    subtitle: string | null
+    link: string | null
+    domains: number | null
+    diskSpace: number | null
+    sites: number | null
+    ftpAccounts: number | null
+    traffic: number | null
+    mailboxes: number | null
+    automaticCms: boolean | null
+    ssl: boolean | null
+    backup: boolean | null
+    ssh: boolean | null
+    additionalId: boolean | null
+    priceMonth: Decimal | null
+    priceYear: Decimal | null
+    status: number | null
+    countTestDays: number | null
+    isTemplate: boolean | null
+    ddosDef: boolean | null
+    diskType: number | null
+    antivirus: boolean | null
+    countDb: number | null
+    infoDiskArea: string | null
+    infoPlatforms: string | null
+    infoPanels: string | null
+    infoPrice: string | null
+    infoOzu: string | null
+    infoCpu: string | null
+    infoCpuCore: string | null
+    infoDomains: string | null
     price: Decimal | null
     currency: string | null
     period: $Enums.TariffPeriod | null
-    diskSpace: number | null
     bandwidth: number | null
     domainsCount: number | null
     databasesCount: number | null
@@ -8397,11 +8481,41 @@ export namespace Prisma {
   export type TariffCountAggregateOutputType = {
     id: number
     hostingId: number
+    type: number
     name: number
+    subtitle: number
+    link: number
+    domains: number
+    diskSpace: number
+    sites: number
+    ftpAccounts: number
+    traffic: number
+    mailboxes: number
+    automaticCms: number
+    ssl: number
+    backup: number
+    ssh: number
+    additionalId: number
+    priceMonth: number
+    priceYear: number
+    status: number
+    countTestDays: number
+    isTemplate: number
+    ddosDef: number
+    diskType: number
+    antivirus: number
+    countDb: number
+    infoDiskArea: number
+    infoPlatforms: number
+    infoPanels: number
+    infoPrice: number
+    infoOzu: number
+    infoCpu: number
+    infoCpuCore: number
+    infoDomains: number
     price: number
     currency: number
     period: number
-    diskSpace: number
     bandwidth: number
     domainsCount: number
     databasesCount: number
@@ -8414,8 +8528,20 @@ export namespace Prisma {
 
 
   export type TariffAvgAggregateInputType = {
-    price?: true
+    type?: true
+    domains?: true
     diskSpace?: true
+    sites?: true
+    ftpAccounts?: true
+    traffic?: true
+    mailboxes?: true
+    priceMonth?: true
+    priceYear?: true
+    status?: true
+    countTestDays?: true
+    diskType?: true
+    countDb?: true
+    price?: true
     bandwidth?: true
     domainsCount?: true
     databasesCount?: true
@@ -8423,8 +8549,20 @@ export namespace Prisma {
   }
 
   export type TariffSumAggregateInputType = {
-    price?: true
+    type?: true
+    domains?: true
     diskSpace?: true
+    sites?: true
+    ftpAccounts?: true
+    traffic?: true
+    mailboxes?: true
+    priceMonth?: true
+    priceYear?: true
+    status?: true
+    countTestDays?: true
+    diskType?: true
+    countDb?: true
+    price?: true
     bandwidth?: true
     domainsCount?: true
     databasesCount?: true
@@ -8434,11 +8572,41 @@ export namespace Prisma {
   export type TariffMinAggregateInputType = {
     id?: true
     hostingId?: true
+    type?: true
     name?: true
+    subtitle?: true
+    link?: true
+    domains?: true
+    diskSpace?: true
+    sites?: true
+    ftpAccounts?: true
+    traffic?: true
+    mailboxes?: true
+    automaticCms?: true
+    ssl?: true
+    backup?: true
+    ssh?: true
+    additionalId?: true
+    priceMonth?: true
+    priceYear?: true
+    status?: true
+    countTestDays?: true
+    isTemplate?: true
+    ddosDef?: true
+    diskType?: true
+    antivirus?: true
+    countDb?: true
+    infoDiskArea?: true
+    infoPlatforms?: true
+    infoPanels?: true
+    infoPrice?: true
+    infoOzu?: true
+    infoCpu?: true
+    infoCpuCore?: true
+    infoDomains?: true
     price?: true
     currency?: true
     period?: true
-    diskSpace?: true
     bandwidth?: true
     domainsCount?: true
     databasesCount?: true
@@ -8451,11 +8619,41 @@ export namespace Prisma {
   export type TariffMaxAggregateInputType = {
     id?: true
     hostingId?: true
+    type?: true
     name?: true
+    subtitle?: true
+    link?: true
+    domains?: true
+    diskSpace?: true
+    sites?: true
+    ftpAccounts?: true
+    traffic?: true
+    mailboxes?: true
+    automaticCms?: true
+    ssl?: true
+    backup?: true
+    ssh?: true
+    additionalId?: true
+    priceMonth?: true
+    priceYear?: true
+    status?: true
+    countTestDays?: true
+    isTemplate?: true
+    ddosDef?: true
+    diskType?: true
+    antivirus?: true
+    countDb?: true
+    infoDiskArea?: true
+    infoPlatforms?: true
+    infoPanels?: true
+    infoPrice?: true
+    infoOzu?: true
+    infoCpu?: true
+    infoCpuCore?: true
+    infoDomains?: true
     price?: true
     currency?: true
     period?: true
-    diskSpace?: true
     bandwidth?: true
     domainsCount?: true
     databasesCount?: true
@@ -8468,11 +8666,41 @@ export namespace Prisma {
   export type TariffCountAggregateInputType = {
     id?: true
     hostingId?: true
+    type?: true
     name?: true
+    subtitle?: true
+    link?: true
+    domains?: true
+    diskSpace?: true
+    sites?: true
+    ftpAccounts?: true
+    traffic?: true
+    mailboxes?: true
+    automaticCms?: true
+    ssl?: true
+    backup?: true
+    ssh?: true
+    additionalId?: true
+    priceMonth?: true
+    priceYear?: true
+    status?: true
+    countTestDays?: true
+    isTemplate?: true
+    ddosDef?: true
+    diskType?: true
+    antivirus?: true
+    countDb?: true
+    infoDiskArea?: true
+    infoPlatforms?: true
+    infoPanels?: true
+    infoPrice?: true
+    infoOzu?: true
+    infoCpu?: true
+    infoCpuCore?: true
+    infoDomains?: true
     price?: true
     currency?: true
     period?: true
-    diskSpace?: true
     bandwidth?: true
     domainsCount?: true
     databasesCount?: true
@@ -8572,11 +8800,41 @@ export namespace Prisma {
   export type TariffGroupByOutputType = {
     id: string
     hostingId: string
+    type: number | null
     name: string
-    price: Decimal
-    currency: string
-    period: $Enums.TariffPeriod
+    subtitle: string | null
+    link: string | null
+    domains: number | null
     diskSpace: number | null
+    sites: number | null
+    ftpAccounts: number | null
+    traffic: number | null
+    mailboxes: number | null
+    automaticCms: boolean | null
+    ssl: boolean | null
+    backup: boolean | null
+    ssh: boolean | null
+    additionalId: boolean | null
+    priceMonth: Decimal | null
+    priceYear: Decimal | null
+    status: number
+    countTestDays: number | null
+    isTemplate: boolean | null
+    ddosDef: boolean | null
+    diskType: number | null
+    antivirus: boolean | null
+    countDb: number | null
+    infoDiskArea: string | null
+    infoPlatforms: string | null
+    infoPanels: string | null
+    infoPrice: string | null
+    infoOzu: string | null
+    infoCpu: string | null
+    infoCpuCore: string | null
+    infoDomains: string | null
+    price: Decimal | null
+    currency: string
+    period: $Enums.TariffPeriod | null
     bandwidth: number | null
     domainsCount: number | null
     databasesCount: number | null
@@ -8608,11 +8866,41 @@ export namespace Prisma {
   export type TariffSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     hostingId?: boolean
+    type?: boolean
     name?: boolean
+    subtitle?: boolean
+    link?: boolean
+    domains?: boolean
+    diskSpace?: boolean
+    sites?: boolean
+    ftpAccounts?: boolean
+    traffic?: boolean
+    mailboxes?: boolean
+    automaticCms?: boolean
+    ssl?: boolean
+    backup?: boolean
+    ssh?: boolean
+    additionalId?: boolean
+    priceMonth?: boolean
+    priceYear?: boolean
+    status?: boolean
+    countTestDays?: boolean
+    isTemplate?: boolean
+    ddosDef?: boolean
+    diskType?: boolean
+    antivirus?: boolean
+    countDb?: boolean
+    infoDiskArea?: boolean
+    infoPlatforms?: boolean
+    infoPanels?: boolean
+    infoPrice?: boolean
+    infoOzu?: boolean
+    infoCpu?: boolean
+    infoCpuCore?: boolean
+    infoDomains?: boolean
     price?: boolean
     currency?: boolean
     period?: boolean
-    diskSpace?: boolean
     bandwidth?: boolean
     domainsCount?: boolean
     databasesCount?: boolean
@@ -8633,11 +8921,41 @@ export namespace Prisma {
   export type TariffSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     hostingId?: boolean
+    type?: boolean
     name?: boolean
+    subtitle?: boolean
+    link?: boolean
+    domains?: boolean
+    diskSpace?: boolean
+    sites?: boolean
+    ftpAccounts?: boolean
+    traffic?: boolean
+    mailboxes?: boolean
+    automaticCms?: boolean
+    ssl?: boolean
+    backup?: boolean
+    ssh?: boolean
+    additionalId?: boolean
+    priceMonth?: boolean
+    priceYear?: boolean
+    status?: boolean
+    countTestDays?: boolean
+    isTemplate?: boolean
+    ddosDef?: boolean
+    diskType?: boolean
+    antivirus?: boolean
+    countDb?: boolean
+    infoDiskArea?: boolean
+    infoPlatforms?: boolean
+    infoPanels?: boolean
+    infoPrice?: boolean
+    infoOzu?: boolean
+    infoCpu?: boolean
+    infoCpuCore?: boolean
+    infoDomains?: boolean
     price?: boolean
     currency?: boolean
     period?: boolean
-    diskSpace?: boolean
     bandwidth?: boolean
     domainsCount?: boolean
     databasesCount?: boolean
@@ -8651,11 +8969,41 @@ export namespace Prisma {
   export type TariffSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     hostingId?: boolean
+    type?: boolean
     name?: boolean
+    subtitle?: boolean
+    link?: boolean
+    domains?: boolean
+    diskSpace?: boolean
+    sites?: boolean
+    ftpAccounts?: boolean
+    traffic?: boolean
+    mailboxes?: boolean
+    automaticCms?: boolean
+    ssl?: boolean
+    backup?: boolean
+    ssh?: boolean
+    additionalId?: boolean
+    priceMonth?: boolean
+    priceYear?: boolean
+    status?: boolean
+    countTestDays?: boolean
+    isTemplate?: boolean
+    ddosDef?: boolean
+    diskType?: boolean
+    antivirus?: boolean
+    countDb?: boolean
+    infoDiskArea?: boolean
+    infoPlatforms?: boolean
+    infoPanels?: boolean
+    infoPrice?: boolean
+    infoOzu?: boolean
+    infoCpu?: boolean
+    infoCpuCore?: boolean
+    infoDomains?: boolean
     price?: boolean
     currency?: boolean
     period?: boolean
-    diskSpace?: boolean
     bandwidth?: boolean
     domainsCount?: boolean
     databasesCount?: boolean
@@ -8669,11 +9017,41 @@ export namespace Prisma {
   export type TariffSelectScalar = {
     id?: boolean
     hostingId?: boolean
+    type?: boolean
     name?: boolean
+    subtitle?: boolean
+    link?: boolean
+    domains?: boolean
+    diskSpace?: boolean
+    sites?: boolean
+    ftpAccounts?: boolean
+    traffic?: boolean
+    mailboxes?: boolean
+    automaticCms?: boolean
+    ssl?: boolean
+    backup?: boolean
+    ssh?: boolean
+    additionalId?: boolean
+    priceMonth?: boolean
+    priceYear?: boolean
+    status?: boolean
+    countTestDays?: boolean
+    isTemplate?: boolean
+    ddosDef?: boolean
+    diskType?: boolean
+    antivirus?: boolean
+    countDb?: boolean
+    infoDiskArea?: boolean
+    infoPlatforms?: boolean
+    infoPanels?: boolean
+    infoPrice?: boolean
+    infoOzu?: boolean
+    infoCpu?: boolean
+    infoCpuCore?: boolean
+    infoDomains?: boolean
     price?: boolean
     currency?: boolean
     period?: boolean
-    diskSpace?: boolean
     bandwidth?: boolean
     domainsCount?: boolean
     databasesCount?: boolean
@@ -8683,7 +9061,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type TariffOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "hostingId" | "name" | "price" | "currency" | "period" | "diskSpace" | "bandwidth" | "domainsCount" | "databasesCount" | "emailAccounts" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["tariff"]>
+  export type TariffOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "hostingId" | "type" | "name" | "subtitle" | "link" | "domains" | "diskSpace" | "sites" | "ftpAccounts" | "traffic" | "mailboxes" | "automaticCms" | "ssl" | "backup" | "ssh" | "additionalId" | "priceMonth" | "priceYear" | "status" | "countTestDays" | "isTemplate" | "ddosDef" | "diskType" | "antivirus" | "countDb" | "infoDiskArea" | "infoPlatforms" | "infoPanels" | "infoPrice" | "infoOzu" | "infoCpu" | "infoCpuCore" | "infoDomains" | "price" | "currency" | "period" | "bandwidth" | "domainsCount" | "databasesCount" | "emailAccounts" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["tariff"]>
   export type TariffInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     hosting?: boolean | HostingDefaultArgs<ExtArgs>
     cms?: boolean | Tariff$cmsArgs<ExtArgs>
@@ -8715,11 +9093,41 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       hostingId: string
+      type: number | null
       name: string
-      price: Prisma.Decimal
-      currency: string
-      period: $Enums.TariffPeriod
+      subtitle: string | null
+      link: string | null
+      domains: number | null
       diskSpace: number | null
+      sites: number | null
+      ftpAccounts: number | null
+      traffic: number | null
+      mailboxes: number | null
+      automaticCms: boolean | null
+      ssl: boolean | null
+      backup: boolean | null
+      ssh: boolean | null
+      additionalId: boolean | null
+      priceMonth: Prisma.Decimal | null
+      priceYear: Prisma.Decimal | null
+      status: number
+      countTestDays: number | null
+      isTemplate: boolean | null
+      ddosDef: boolean | null
+      diskType: number | null
+      antivirus: boolean | null
+      countDb: number | null
+      infoDiskArea: string | null
+      infoPlatforms: string | null
+      infoPanels: string | null
+      infoPrice: string | null
+      infoOzu: string | null
+      infoCpu: string | null
+      infoCpuCore: string | null
+      infoDomains: string | null
+      price: Prisma.Decimal | null
+      currency: string
+      period: $Enums.TariffPeriod | null
       bandwidth: number | null
       domainsCount: number | null
       databasesCount: number | null
@@ -9159,11 +9567,41 @@ export namespace Prisma {
   interface TariffFieldRefs {
     readonly id: FieldRef<"Tariff", 'String'>
     readonly hostingId: FieldRef<"Tariff", 'String'>
+    readonly type: FieldRef<"Tariff", 'Int'>
     readonly name: FieldRef<"Tariff", 'String'>
+    readonly subtitle: FieldRef<"Tariff", 'String'>
+    readonly link: FieldRef<"Tariff", 'String'>
+    readonly domains: FieldRef<"Tariff", 'Int'>
+    readonly diskSpace: FieldRef<"Tariff", 'Int'>
+    readonly sites: FieldRef<"Tariff", 'Int'>
+    readonly ftpAccounts: FieldRef<"Tariff", 'Int'>
+    readonly traffic: FieldRef<"Tariff", 'Int'>
+    readonly mailboxes: FieldRef<"Tariff", 'Int'>
+    readonly automaticCms: FieldRef<"Tariff", 'Boolean'>
+    readonly ssl: FieldRef<"Tariff", 'Boolean'>
+    readonly backup: FieldRef<"Tariff", 'Boolean'>
+    readonly ssh: FieldRef<"Tariff", 'Boolean'>
+    readonly additionalId: FieldRef<"Tariff", 'Boolean'>
+    readonly priceMonth: FieldRef<"Tariff", 'Decimal'>
+    readonly priceYear: FieldRef<"Tariff", 'Decimal'>
+    readonly status: FieldRef<"Tariff", 'Int'>
+    readonly countTestDays: FieldRef<"Tariff", 'Int'>
+    readonly isTemplate: FieldRef<"Tariff", 'Boolean'>
+    readonly ddosDef: FieldRef<"Tariff", 'Boolean'>
+    readonly diskType: FieldRef<"Tariff", 'Int'>
+    readonly antivirus: FieldRef<"Tariff", 'Boolean'>
+    readonly countDb: FieldRef<"Tariff", 'Int'>
+    readonly infoDiskArea: FieldRef<"Tariff", 'String'>
+    readonly infoPlatforms: FieldRef<"Tariff", 'String'>
+    readonly infoPanels: FieldRef<"Tariff", 'String'>
+    readonly infoPrice: FieldRef<"Tariff", 'String'>
+    readonly infoOzu: FieldRef<"Tariff", 'String'>
+    readonly infoCpu: FieldRef<"Tariff", 'String'>
+    readonly infoCpuCore: FieldRef<"Tariff", 'String'>
+    readonly infoDomains: FieldRef<"Tariff", 'String'>
     readonly price: FieldRef<"Tariff", 'Decimal'>
     readonly currency: FieldRef<"Tariff", 'String'>
     readonly period: FieldRef<"Tariff", 'TariffPeriod'>
-    readonly diskSpace: FieldRef<"Tariff", 'Int'>
     readonly bandwidth: FieldRef<"Tariff", 'Int'>
     readonly domainsCount: FieldRef<"Tariff", 'Int'>
     readonly databasesCount: FieldRef<"Tariff", 'Int'>
@@ -23351,11 +23789,41 @@ export namespace Prisma {
   export const TariffScalarFieldEnum: {
     id: 'id',
     hostingId: 'hostingId',
+    type: 'type',
     name: 'name',
+    subtitle: 'subtitle',
+    link: 'link',
+    domains: 'domains',
+    diskSpace: 'diskSpace',
+    sites: 'sites',
+    ftpAccounts: 'ftpAccounts',
+    traffic: 'traffic',
+    mailboxes: 'mailboxes',
+    automaticCms: 'automaticCms',
+    ssl: 'ssl',
+    backup: 'backup',
+    ssh: 'ssh',
+    additionalId: 'additionalId',
+    priceMonth: 'priceMonth',
+    priceYear: 'priceYear',
+    status: 'status',
+    countTestDays: 'countTestDays',
+    isTemplate: 'isTemplate',
+    ddosDef: 'ddosDef',
+    diskType: 'diskType',
+    antivirus: 'antivirus',
+    countDb: 'countDb',
+    infoDiskArea: 'infoDiskArea',
+    infoPlatforms: 'infoPlatforms',
+    infoPanels: 'infoPanels',
+    infoPrice: 'infoPrice',
+    infoOzu: 'infoOzu',
+    infoCpu: 'infoCpu',
+    infoCpuCore: 'infoCpuCore',
+    infoDomains: 'infoDomains',
     price: 'price',
     currency: 'currency',
     period: 'period',
-    diskSpace: 'diskSpace',
     bandwidth: 'bandwidth',
     domainsCount: 'domainsCount',
     databasesCount: 'databasesCount',
@@ -23972,11 +24440,41 @@ export namespace Prisma {
     NOT?: TariffWhereInput | TariffWhereInput[]
     id?: StringFilter<"Tariff"> | string
     hostingId?: StringFilter<"Tariff"> | string
+    type?: IntNullableFilter<"Tariff"> | number | null
     name?: StringFilter<"Tariff"> | string
-    price?: DecimalFilter<"Tariff"> | Decimal | DecimalJsLike | number | string
-    currency?: StringFilter<"Tariff"> | string
-    period?: EnumTariffPeriodFilter<"Tariff"> | $Enums.TariffPeriod
+    subtitle?: StringNullableFilter<"Tariff"> | string | null
+    link?: StringNullableFilter<"Tariff"> | string | null
+    domains?: IntNullableFilter<"Tariff"> | number | null
     diskSpace?: IntNullableFilter<"Tariff"> | number | null
+    sites?: IntNullableFilter<"Tariff"> | number | null
+    ftpAccounts?: IntNullableFilter<"Tariff"> | number | null
+    traffic?: IntNullableFilter<"Tariff"> | number | null
+    mailboxes?: IntNullableFilter<"Tariff"> | number | null
+    automaticCms?: BoolNullableFilter<"Tariff"> | boolean | null
+    ssl?: BoolNullableFilter<"Tariff"> | boolean | null
+    backup?: BoolNullableFilter<"Tariff"> | boolean | null
+    ssh?: BoolNullableFilter<"Tariff"> | boolean | null
+    additionalId?: BoolNullableFilter<"Tariff"> | boolean | null
+    priceMonth?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
+    priceYear?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
+    status?: IntFilter<"Tariff"> | number
+    countTestDays?: IntNullableFilter<"Tariff"> | number | null
+    isTemplate?: BoolNullableFilter<"Tariff"> | boolean | null
+    ddosDef?: BoolNullableFilter<"Tariff"> | boolean | null
+    diskType?: IntNullableFilter<"Tariff"> | number | null
+    antivirus?: BoolNullableFilter<"Tariff"> | boolean | null
+    countDb?: IntNullableFilter<"Tariff"> | number | null
+    infoDiskArea?: StringNullableFilter<"Tariff"> | string | null
+    infoPlatforms?: StringNullableFilter<"Tariff"> | string | null
+    infoPanels?: StringNullableFilter<"Tariff"> | string | null
+    infoPrice?: StringNullableFilter<"Tariff"> | string | null
+    infoOzu?: StringNullableFilter<"Tariff"> | string | null
+    infoCpu?: StringNullableFilter<"Tariff"> | string | null
+    infoCpuCore?: StringNullableFilter<"Tariff"> | string | null
+    infoDomains?: StringNullableFilter<"Tariff"> | string | null
+    price?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFilter<"Tariff"> | string
+    period?: EnumTariffPeriodNullableFilter<"Tariff"> | $Enums.TariffPeriod | null
     bandwidth?: IntNullableFilter<"Tariff"> | number | null
     domainsCount?: IntNullableFilter<"Tariff"> | number | null
     databasesCount?: IntNullableFilter<"Tariff"> | number | null
@@ -23996,11 +24494,41 @@ export namespace Prisma {
   export type TariffOrderByWithRelationInput = {
     id?: SortOrder
     hostingId?: SortOrder
+    type?: SortOrderInput | SortOrder
     name?: SortOrder
-    price?: SortOrder
-    currency?: SortOrder
-    period?: SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    link?: SortOrderInput | SortOrder
+    domains?: SortOrderInput | SortOrder
     diskSpace?: SortOrderInput | SortOrder
+    sites?: SortOrderInput | SortOrder
+    ftpAccounts?: SortOrderInput | SortOrder
+    traffic?: SortOrderInput | SortOrder
+    mailboxes?: SortOrderInput | SortOrder
+    automaticCms?: SortOrderInput | SortOrder
+    ssl?: SortOrderInput | SortOrder
+    backup?: SortOrderInput | SortOrder
+    ssh?: SortOrderInput | SortOrder
+    additionalId?: SortOrderInput | SortOrder
+    priceMonth?: SortOrderInput | SortOrder
+    priceYear?: SortOrderInput | SortOrder
+    status?: SortOrder
+    countTestDays?: SortOrderInput | SortOrder
+    isTemplate?: SortOrderInput | SortOrder
+    ddosDef?: SortOrderInput | SortOrder
+    diskType?: SortOrderInput | SortOrder
+    antivirus?: SortOrderInput | SortOrder
+    countDb?: SortOrderInput | SortOrder
+    infoDiskArea?: SortOrderInput | SortOrder
+    infoPlatforms?: SortOrderInput | SortOrder
+    infoPanels?: SortOrderInput | SortOrder
+    infoPrice?: SortOrderInput | SortOrder
+    infoOzu?: SortOrderInput | SortOrder
+    infoCpu?: SortOrderInput | SortOrder
+    infoCpuCore?: SortOrderInput | SortOrder
+    infoDomains?: SortOrderInput | SortOrder
+    price?: SortOrderInput | SortOrder
+    currency?: SortOrder
+    period?: SortOrderInput | SortOrder
     bandwidth?: SortOrderInput | SortOrder
     domainsCount?: SortOrderInput | SortOrder
     databasesCount?: SortOrderInput | SortOrder
@@ -24023,11 +24551,41 @@ export namespace Prisma {
     OR?: TariffWhereInput[]
     NOT?: TariffWhereInput | TariffWhereInput[]
     hostingId?: StringFilter<"Tariff"> | string
+    type?: IntNullableFilter<"Tariff"> | number | null
     name?: StringFilter<"Tariff"> | string
-    price?: DecimalFilter<"Tariff"> | Decimal | DecimalJsLike | number | string
-    currency?: StringFilter<"Tariff"> | string
-    period?: EnumTariffPeriodFilter<"Tariff"> | $Enums.TariffPeriod
+    subtitle?: StringNullableFilter<"Tariff"> | string | null
+    link?: StringNullableFilter<"Tariff"> | string | null
+    domains?: IntNullableFilter<"Tariff"> | number | null
     diskSpace?: IntNullableFilter<"Tariff"> | number | null
+    sites?: IntNullableFilter<"Tariff"> | number | null
+    ftpAccounts?: IntNullableFilter<"Tariff"> | number | null
+    traffic?: IntNullableFilter<"Tariff"> | number | null
+    mailboxes?: IntNullableFilter<"Tariff"> | number | null
+    automaticCms?: BoolNullableFilter<"Tariff"> | boolean | null
+    ssl?: BoolNullableFilter<"Tariff"> | boolean | null
+    backup?: BoolNullableFilter<"Tariff"> | boolean | null
+    ssh?: BoolNullableFilter<"Tariff"> | boolean | null
+    additionalId?: BoolNullableFilter<"Tariff"> | boolean | null
+    priceMonth?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
+    priceYear?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
+    status?: IntFilter<"Tariff"> | number
+    countTestDays?: IntNullableFilter<"Tariff"> | number | null
+    isTemplate?: BoolNullableFilter<"Tariff"> | boolean | null
+    ddosDef?: BoolNullableFilter<"Tariff"> | boolean | null
+    diskType?: IntNullableFilter<"Tariff"> | number | null
+    antivirus?: BoolNullableFilter<"Tariff"> | boolean | null
+    countDb?: IntNullableFilter<"Tariff"> | number | null
+    infoDiskArea?: StringNullableFilter<"Tariff"> | string | null
+    infoPlatforms?: StringNullableFilter<"Tariff"> | string | null
+    infoPanels?: StringNullableFilter<"Tariff"> | string | null
+    infoPrice?: StringNullableFilter<"Tariff"> | string | null
+    infoOzu?: StringNullableFilter<"Tariff"> | string | null
+    infoCpu?: StringNullableFilter<"Tariff"> | string | null
+    infoCpuCore?: StringNullableFilter<"Tariff"> | string | null
+    infoDomains?: StringNullableFilter<"Tariff"> | string | null
+    price?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFilter<"Tariff"> | string
+    period?: EnumTariffPeriodNullableFilter<"Tariff"> | $Enums.TariffPeriod | null
     bandwidth?: IntNullableFilter<"Tariff"> | number | null
     domainsCount?: IntNullableFilter<"Tariff"> | number | null
     databasesCount?: IntNullableFilter<"Tariff"> | number | null
@@ -24047,11 +24605,41 @@ export namespace Prisma {
   export type TariffOrderByWithAggregationInput = {
     id?: SortOrder
     hostingId?: SortOrder
+    type?: SortOrderInput | SortOrder
     name?: SortOrder
-    price?: SortOrder
-    currency?: SortOrder
-    period?: SortOrder
+    subtitle?: SortOrderInput | SortOrder
+    link?: SortOrderInput | SortOrder
+    domains?: SortOrderInput | SortOrder
     diskSpace?: SortOrderInput | SortOrder
+    sites?: SortOrderInput | SortOrder
+    ftpAccounts?: SortOrderInput | SortOrder
+    traffic?: SortOrderInput | SortOrder
+    mailboxes?: SortOrderInput | SortOrder
+    automaticCms?: SortOrderInput | SortOrder
+    ssl?: SortOrderInput | SortOrder
+    backup?: SortOrderInput | SortOrder
+    ssh?: SortOrderInput | SortOrder
+    additionalId?: SortOrderInput | SortOrder
+    priceMonth?: SortOrderInput | SortOrder
+    priceYear?: SortOrderInput | SortOrder
+    status?: SortOrder
+    countTestDays?: SortOrderInput | SortOrder
+    isTemplate?: SortOrderInput | SortOrder
+    ddosDef?: SortOrderInput | SortOrder
+    diskType?: SortOrderInput | SortOrder
+    antivirus?: SortOrderInput | SortOrder
+    countDb?: SortOrderInput | SortOrder
+    infoDiskArea?: SortOrderInput | SortOrder
+    infoPlatforms?: SortOrderInput | SortOrder
+    infoPanels?: SortOrderInput | SortOrder
+    infoPrice?: SortOrderInput | SortOrder
+    infoOzu?: SortOrderInput | SortOrder
+    infoCpu?: SortOrderInput | SortOrder
+    infoCpuCore?: SortOrderInput | SortOrder
+    infoDomains?: SortOrderInput | SortOrder
+    price?: SortOrderInput | SortOrder
+    currency?: SortOrder
+    period?: SortOrderInput | SortOrder
     bandwidth?: SortOrderInput | SortOrder
     domainsCount?: SortOrderInput | SortOrder
     databasesCount?: SortOrderInput | SortOrder
@@ -24072,11 +24660,41 @@ export namespace Prisma {
     NOT?: TariffScalarWhereWithAggregatesInput | TariffScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Tariff"> | string
     hostingId?: StringWithAggregatesFilter<"Tariff"> | string
+    type?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
     name?: StringWithAggregatesFilter<"Tariff"> | string
-    price?: DecimalWithAggregatesFilter<"Tariff"> | Decimal | DecimalJsLike | number | string
-    currency?: StringWithAggregatesFilter<"Tariff"> | string
-    period?: EnumTariffPeriodWithAggregatesFilter<"Tariff"> | $Enums.TariffPeriod
+    subtitle?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
+    link?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
+    domains?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
     diskSpace?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    sites?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    ftpAccounts?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    traffic?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    mailboxes?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    automaticCms?: BoolNullableWithAggregatesFilter<"Tariff"> | boolean | null
+    ssl?: BoolNullableWithAggregatesFilter<"Tariff"> | boolean | null
+    backup?: BoolNullableWithAggregatesFilter<"Tariff"> | boolean | null
+    ssh?: BoolNullableWithAggregatesFilter<"Tariff"> | boolean | null
+    additionalId?: BoolNullableWithAggregatesFilter<"Tariff"> | boolean | null
+    priceMonth?: DecimalNullableWithAggregatesFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
+    priceYear?: DecimalNullableWithAggregatesFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
+    status?: IntWithAggregatesFilter<"Tariff"> | number
+    countTestDays?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    isTemplate?: BoolNullableWithAggregatesFilter<"Tariff"> | boolean | null
+    ddosDef?: BoolNullableWithAggregatesFilter<"Tariff"> | boolean | null
+    diskType?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    antivirus?: BoolNullableWithAggregatesFilter<"Tariff"> | boolean | null
+    countDb?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
+    infoDiskArea?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
+    infoPlatforms?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
+    infoPanels?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
+    infoPrice?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
+    infoOzu?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
+    infoCpu?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
+    infoCpuCore?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
+    infoDomains?: StringNullableWithAggregatesFilter<"Tariff"> | string | null
+    price?: DecimalNullableWithAggregatesFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringWithAggregatesFilter<"Tariff"> | string
+    period?: EnumTariffPeriodNullableWithAggregatesFilter<"Tariff"> | $Enums.TariffPeriod | null
     bandwidth?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
     domainsCount?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
     databasesCount?: IntNullableWithAggregatesFilter<"Tariff"> | number | null
@@ -25093,11 +25711,41 @@ export namespace Prisma {
 
   export type TariffCreateInput = {
     id?: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -25117,11 +25765,41 @@ export namespace Prisma {
   export type TariffUncheckedCreateInput = {
     id?: string
     hostingId: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -25139,11 +25817,41 @@ export namespace Prisma {
 
   export type TariffUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -25163,11 +25871,41 @@ export namespace Prisma {
   export type TariffUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     hostingId?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -25186,11 +25924,41 @@ export namespace Prisma {
   export type TariffCreateManyInput = {
     id?: string
     hostingId: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -25202,11 +25970,41 @@ export namespace Prisma {
 
   export type TariffUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -25219,11 +26017,41 @@ export namespace Prisma {
   export type TariffUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     hostingId?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -26213,22 +27041,38 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
-  export type EnumTariffPeriodFilter<$PrismaModel = never> = {
-    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel>
-    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
-    not?: NestedEnumTariffPeriodFilter<$PrismaModel> | $Enums.TariffPeriod
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type EnumTariffPeriodNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTariffPeriodNullableFilter<$PrismaModel> | $Enums.TariffPeriod | null
   }
 
   export type HostingScalarRelationFilter = {
@@ -26299,11 +27143,41 @@ export namespace Prisma {
   export type TariffCountOrderByAggregateInput = {
     id?: SortOrder
     hostingId?: SortOrder
+    type?: SortOrder
     name?: SortOrder
+    subtitle?: SortOrder
+    link?: SortOrder
+    domains?: SortOrder
+    diskSpace?: SortOrder
+    sites?: SortOrder
+    ftpAccounts?: SortOrder
+    traffic?: SortOrder
+    mailboxes?: SortOrder
+    automaticCms?: SortOrder
+    ssl?: SortOrder
+    backup?: SortOrder
+    ssh?: SortOrder
+    additionalId?: SortOrder
+    priceMonth?: SortOrder
+    priceYear?: SortOrder
+    status?: SortOrder
+    countTestDays?: SortOrder
+    isTemplate?: SortOrder
+    ddosDef?: SortOrder
+    diskType?: SortOrder
+    antivirus?: SortOrder
+    countDb?: SortOrder
+    infoDiskArea?: SortOrder
+    infoPlatforms?: SortOrder
+    infoPanels?: SortOrder
+    infoPrice?: SortOrder
+    infoOzu?: SortOrder
+    infoCpu?: SortOrder
+    infoCpuCore?: SortOrder
+    infoDomains?: SortOrder
     price?: SortOrder
     currency?: SortOrder
     period?: SortOrder
-    diskSpace?: SortOrder
     bandwidth?: SortOrder
     domainsCount?: SortOrder
     databasesCount?: SortOrder
@@ -26314,8 +27188,20 @@ export namespace Prisma {
   }
 
   export type TariffAvgOrderByAggregateInput = {
-    price?: SortOrder
+    type?: SortOrder
+    domains?: SortOrder
     diskSpace?: SortOrder
+    sites?: SortOrder
+    ftpAccounts?: SortOrder
+    traffic?: SortOrder
+    mailboxes?: SortOrder
+    priceMonth?: SortOrder
+    priceYear?: SortOrder
+    status?: SortOrder
+    countTestDays?: SortOrder
+    diskType?: SortOrder
+    countDb?: SortOrder
+    price?: SortOrder
     bandwidth?: SortOrder
     domainsCount?: SortOrder
     databasesCount?: SortOrder
@@ -26325,11 +27211,41 @@ export namespace Prisma {
   export type TariffMaxOrderByAggregateInput = {
     id?: SortOrder
     hostingId?: SortOrder
+    type?: SortOrder
     name?: SortOrder
+    subtitle?: SortOrder
+    link?: SortOrder
+    domains?: SortOrder
+    diskSpace?: SortOrder
+    sites?: SortOrder
+    ftpAccounts?: SortOrder
+    traffic?: SortOrder
+    mailboxes?: SortOrder
+    automaticCms?: SortOrder
+    ssl?: SortOrder
+    backup?: SortOrder
+    ssh?: SortOrder
+    additionalId?: SortOrder
+    priceMonth?: SortOrder
+    priceYear?: SortOrder
+    status?: SortOrder
+    countTestDays?: SortOrder
+    isTemplate?: SortOrder
+    ddosDef?: SortOrder
+    diskType?: SortOrder
+    antivirus?: SortOrder
+    countDb?: SortOrder
+    infoDiskArea?: SortOrder
+    infoPlatforms?: SortOrder
+    infoPanels?: SortOrder
+    infoPrice?: SortOrder
+    infoOzu?: SortOrder
+    infoCpu?: SortOrder
+    infoCpuCore?: SortOrder
+    infoDomains?: SortOrder
     price?: SortOrder
     currency?: SortOrder
     period?: SortOrder
-    diskSpace?: SortOrder
     bandwidth?: SortOrder
     domainsCount?: SortOrder
     databasesCount?: SortOrder
@@ -26342,11 +27258,41 @@ export namespace Prisma {
   export type TariffMinOrderByAggregateInput = {
     id?: SortOrder
     hostingId?: SortOrder
+    type?: SortOrder
     name?: SortOrder
+    subtitle?: SortOrder
+    link?: SortOrder
+    domains?: SortOrder
+    diskSpace?: SortOrder
+    sites?: SortOrder
+    ftpAccounts?: SortOrder
+    traffic?: SortOrder
+    mailboxes?: SortOrder
+    automaticCms?: SortOrder
+    ssl?: SortOrder
+    backup?: SortOrder
+    ssh?: SortOrder
+    additionalId?: SortOrder
+    priceMonth?: SortOrder
+    priceYear?: SortOrder
+    status?: SortOrder
+    countTestDays?: SortOrder
+    isTemplate?: SortOrder
+    ddosDef?: SortOrder
+    diskType?: SortOrder
+    antivirus?: SortOrder
+    countDb?: SortOrder
+    infoDiskArea?: SortOrder
+    infoPlatforms?: SortOrder
+    infoPanels?: SortOrder
+    infoPrice?: SortOrder
+    infoOzu?: SortOrder
+    infoCpu?: SortOrder
+    infoCpuCore?: SortOrder
+    infoDomains?: SortOrder
     price?: SortOrder
     currency?: SortOrder
     period?: SortOrder
-    diskSpace?: SortOrder
     bandwidth?: SortOrder
     domainsCount?: SortOrder
     databasesCount?: SortOrder
@@ -26357,38 +27303,74 @@ export namespace Prisma {
   }
 
   export type TariffSumOrderByAggregateInput = {
-    price?: SortOrder
+    type?: SortOrder
+    domains?: SortOrder
     diskSpace?: SortOrder
+    sites?: SortOrder
+    ftpAccounts?: SortOrder
+    traffic?: SortOrder
+    mailboxes?: SortOrder
+    priceMonth?: SortOrder
+    priceYear?: SortOrder
+    status?: SortOrder
+    countTestDays?: SortOrder
+    diskType?: SortOrder
+    countDb?: SortOrder
+    price?: SortOrder
     bandwidth?: SortOrder
     domainsCount?: SortOrder
     databasesCount?: SortOrder
     emailAccounts?: SortOrder
   }
 
-  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
-  export type EnumTariffPeriodWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel>
-    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
-    not?: NestedEnumTariffPeriodWithAggregatesFilter<$PrismaModel> | $Enums.TariffPeriod
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumTariffPeriodFilter<$PrismaModel>
-    _max?: NestedEnumTariffPeriodFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type EnumTariffPeriodNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTariffPeriodNullableWithAggregatesFilter<$PrismaModel> | $Enums.TariffPeriod | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTariffPeriodNullableFilter<$PrismaModel>
+    _max?: NestedEnumTariffPeriodNullableFilter<$PrismaModel>
   }
 
   export type CMSCountOrderByAggregateInput = {
@@ -26981,16 +27963,28 @@ export namespace Prisma {
     connect?: TariffProgrammingLanguageWhereUniqueInput | TariffProgrammingLanguageWhereUniqueInput[]
   }
 
-  export type DecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
     increment?: Decimal | DecimalJsLike | number | string
     decrement?: Decimal | DecimalJsLike | number | string
     multiply?: Decimal | DecimalJsLike | number | string
     divide?: Decimal | DecimalJsLike | number | string
   }
 
-  export type EnumTariffPeriodFieldUpdateOperationsInput = {
-    set?: $Enums.TariffPeriod
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableEnumTariffPeriodFieldUpdateOperationsInput = {
+    set?: $Enums.TariffPeriod | null
   }
 
   export type HostingUpdateOneRequiredWithoutTariffsNestedInput = {
@@ -27780,48 +28774,88 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type NestedDecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
-  export type NestedEnumTariffPeriodFilter<$PrismaModel = never> = {
-    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel>
-    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
-    not?: NestedEnumTariffPeriodFilter<$PrismaModel> | $Enums.TariffPeriod
+  export type NestedEnumTariffPeriodNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTariffPeriodNullableFilter<$PrismaModel> | $Enums.TariffPeriod | null
   }
 
-  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
     lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
-  export type NestedEnumTariffPeriodWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel>
-    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
-    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel>
-    not?: NestedEnumTariffPeriodWithAggregatesFilter<$PrismaModel> | $Enums.TariffPeriod
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumTariffPeriodFilter<$PrismaModel>
-    _max?: NestedEnumTariffPeriodFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumTariffPeriodNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TariffPeriod | EnumTariffPeriodFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TariffPeriod[] | ListEnumTariffPeriodFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTariffPeriodNullableWithAggregatesFilter<$PrismaModel> | $Enums.TariffPeriod | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTariffPeriodNullableFilter<$PrismaModel>
+    _max?: NestedEnumTariffPeriodNullableFilter<$PrismaModel>
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -28082,11 +29116,41 @@ export namespace Prisma {
 
   export type TariffCreateWithoutHostingInput = {
     id?: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -28104,11 +29168,41 @@ export namespace Prisma {
 
   export type TariffUncheckedCreateWithoutHostingInput = {
     id?: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -28156,11 +29250,41 @@ export namespace Prisma {
     NOT?: TariffScalarWhereInput | TariffScalarWhereInput[]
     id?: StringFilter<"Tariff"> | string
     hostingId?: StringFilter<"Tariff"> | string
+    type?: IntNullableFilter<"Tariff"> | number | null
     name?: StringFilter<"Tariff"> | string
-    price?: DecimalFilter<"Tariff"> | Decimal | DecimalJsLike | number | string
-    currency?: StringFilter<"Tariff"> | string
-    period?: EnumTariffPeriodFilter<"Tariff"> | $Enums.TariffPeriod
+    subtitle?: StringNullableFilter<"Tariff"> | string | null
+    link?: StringNullableFilter<"Tariff"> | string | null
+    domains?: IntNullableFilter<"Tariff"> | number | null
     diskSpace?: IntNullableFilter<"Tariff"> | number | null
+    sites?: IntNullableFilter<"Tariff"> | number | null
+    ftpAccounts?: IntNullableFilter<"Tariff"> | number | null
+    traffic?: IntNullableFilter<"Tariff"> | number | null
+    mailboxes?: IntNullableFilter<"Tariff"> | number | null
+    automaticCms?: BoolNullableFilter<"Tariff"> | boolean | null
+    ssl?: BoolNullableFilter<"Tariff"> | boolean | null
+    backup?: BoolNullableFilter<"Tariff"> | boolean | null
+    ssh?: BoolNullableFilter<"Tariff"> | boolean | null
+    additionalId?: BoolNullableFilter<"Tariff"> | boolean | null
+    priceMonth?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
+    priceYear?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
+    status?: IntFilter<"Tariff"> | number
+    countTestDays?: IntNullableFilter<"Tariff"> | number | null
+    isTemplate?: BoolNullableFilter<"Tariff"> | boolean | null
+    ddosDef?: BoolNullableFilter<"Tariff"> | boolean | null
+    diskType?: IntNullableFilter<"Tariff"> | number | null
+    antivirus?: BoolNullableFilter<"Tariff"> | boolean | null
+    countDb?: IntNullableFilter<"Tariff"> | number | null
+    infoDiskArea?: StringNullableFilter<"Tariff"> | string | null
+    infoPlatforms?: StringNullableFilter<"Tariff"> | string | null
+    infoPanels?: StringNullableFilter<"Tariff"> | string | null
+    infoPrice?: StringNullableFilter<"Tariff"> | string | null
+    infoOzu?: StringNullableFilter<"Tariff"> | string | null
+    infoCpu?: StringNullableFilter<"Tariff"> | string | null
+    infoCpuCore?: StringNullableFilter<"Tariff"> | string | null
+    infoDomains?: StringNullableFilter<"Tariff"> | string | null
+    price?: DecimalNullableFilter<"Tariff"> | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFilter<"Tariff"> | string
+    period?: EnumTariffPeriodNullableFilter<"Tariff"> | $Enums.TariffPeriod | null
     bandwidth?: IntNullableFilter<"Tariff"> | number | null
     domainsCount?: IntNullableFilter<"Tariff"> | number | null
     databasesCount?: IntNullableFilter<"Tariff"> | number | null
@@ -28722,11 +29846,41 @@ export namespace Prisma {
 
   export type TariffCreateWithoutCmsInput = {
     id?: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -28745,11 +29899,41 @@ export namespace Prisma {
   export type TariffUncheckedCreateWithoutCmsInput = {
     id?: string
     hostingId: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -28799,11 +29983,41 @@ export namespace Prisma {
 
   export type TariffUpdateWithoutCmsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -28822,11 +30036,41 @@ export namespace Prisma {
   export type TariffUncheckedUpdateWithoutCmsInput = {
     id?: StringFieldUpdateOperationsInput | string
     hostingId?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -28866,11 +30110,41 @@ export namespace Prisma {
 
   export type TariffCreateWithoutControlPanelsInput = {
     id?: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -28889,11 +30163,41 @@ export namespace Prisma {
   export type TariffUncheckedCreateWithoutControlPanelsInput = {
     id?: string
     hostingId: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -28943,11 +30247,41 @@ export namespace Prisma {
 
   export type TariffUpdateWithoutControlPanelsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -28966,11 +30300,41 @@ export namespace Prisma {
   export type TariffUncheckedUpdateWithoutControlPanelsInput = {
     id?: StringFieldUpdateOperationsInput | string
     hostingId?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29010,11 +30374,41 @@ export namespace Prisma {
 
   export type TariffCreateWithoutCountriesInput = {
     id?: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -29033,11 +30427,41 @@ export namespace Prisma {
   export type TariffUncheckedCreateWithoutCountriesInput = {
     id?: string
     hostingId: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -29087,11 +30511,41 @@ export namespace Prisma {
 
   export type TariffUpdateWithoutCountriesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29110,11 +30564,41 @@ export namespace Prisma {
   export type TariffUncheckedUpdateWithoutCountriesInput = {
     id?: StringFieldUpdateOperationsInput | string
     hostingId?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29154,11 +30638,41 @@ export namespace Prisma {
 
   export type TariffCreateWithoutDataStoresInput = {
     id?: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -29177,11 +30691,41 @@ export namespace Prisma {
   export type TariffUncheckedCreateWithoutDataStoresInput = {
     id?: string
     hostingId: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -29231,11 +30775,41 @@ export namespace Prisma {
 
   export type TariffUpdateWithoutDataStoresInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29254,11 +30828,41 @@ export namespace Prisma {
   export type TariffUncheckedUpdateWithoutDataStoresInput = {
     id?: StringFieldUpdateOperationsInput | string
     hostingId?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29298,11 +30902,41 @@ export namespace Prisma {
 
   export type TariffCreateWithoutOperationSystemsInput = {
     id?: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -29321,11 +30955,41 @@ export namespace Prisma {
   export type TariffUncheckedCreateWithoutOperationSystemsInput = {
     id?: string
     hostingId: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -29375,11 +31039,41 @@ export namespace Prisma {
 
   export type TariffUpdateWithoutOperationSystemsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29398,11 +31092,41 @@ export namespace Prisma {
   export type TariffUncheckedUpdateWithoutOperationSystemsInput = {
     id?: StringFieldUpdateOperationsInput | string
     hostingId?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29442,11 +31166,41 @@ export namespace Prisma {
 
   export type TariffCreateWithoutProgrammingLanguagesInput = {
     id?: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -29465,11 +31219,41 @@ export namespace Prisma {
   export type TariffUncheckedCreateWithoutProgrammingLanguagesInput = {
     id?: string
     hostingId: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -29519,11 +31303,41 @@ export namespace Prisma {
 
   export type TariffUpdateWithoutProgrammingLanguagesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29542,11 +31356,41 @@ export namespace Prisma {
   export type TariffUncheckedUpdateWithoutProgrammingLanguagesInput = {
     id?: StringFieldUpdateOperationsInput | string
     hostingId?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29666,11 +31510,41 @@ export namespace Prisma {
 
   export type TariffCreateManyHostingInput = {
     id?: string
+    type?: number | null
     name: string
-    price: Decimal | DecimalJsLike | number | string
-    currency?: string
-    period: $Enums.TariffPeriod
+    subtitle?: string | null
+    link?: string | null
+    domains?: number | null
     diskSpace?: number | null
+    sites?: number | null
+    ftpAccounts?: number | null
+    traffic?: number | null
+    mailboxes?: number | null
+    automaticCms?: boolean | null
+    ssl?: boolean | null
+    backup?: boolean | null
+    ssh?: boolean | null
+    additionalId?: boolean | null
+    priceMonth?: Decimal | DecimalJsLike | number | string | null
+    priceYear?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    countTestDays?: number | null
+    isTemplate?: boolean | null
+    ddosDef?: boolean | null
+    diskType?: number | null
+    antivirus?: boolean | null
+    countDb?: number | null
+    infoDiskArea?: string | null
+    infoPlatforms?: string | null
+    infoPanels?: string | null
+    infoPrice?: string | null
+    infoOzu?: string | null
+    infoCpu?: string | null
+    infoCpuCore?: string | null
+    infoDomains?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string
+    period?: $Enums.TariffPeriod | null
     bandwidth?: number | null
     domainsCount?: number | null
     databasesCount?: number | null
@@ -29682,11 +31556,41 @@ export namespace Prisma {
 
   export type TariffUpdateWithoutHostingInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29704,11 +31608,41 @@ export namespace Prisma {
 
   export type TariffUncheckedUpdateWithoutHostingInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null
@@ -29726,11 +31660,41 @@ export namespace Prisma {
 
   export type TariffUncheckedUpdateManyWithoutHostingInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: NullableIntFieldUpdateOperationsInput | number | null
     name?: StringFieldUpdateOperationsInput | string
-    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    period?: EnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod
+    subtitle?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    domains?: NullableIntFieldUpdateOperationsInput | number | null
     diskSpace?: NullableIntFieldUpdateOperationsInput | number | null
+    sites?: NullableIntFieldUpdateOperationsInput | number | null
+    ftpAccounts?: NullableIntFieldUpdateOperationsInput | number | null
+    traffic?: NullableIntFieldUpdateOperationsInput | number | null
+    mailboxes?: NullableIntFieldUpdateOperationsInput | number | null
+    automaticCms?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssl?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    backup?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ssh?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    additionalId?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priceMonth?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    priceYear?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    countTestDays?: NullableIntFieldUpdateOperationsInput | number | null
+    isTemplate?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ddosDef?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    diskType?: NullableIntFieldUpdateOperationsInput | number | null
+    antivirus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    countDb?: NullableIntFieldUpdateOperationsInput | number | null
+    infoDiskArea?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPlatforms?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPanels?: NullableStringFieldUpdateOperationsInput | string | null
+    infoPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    infoOzu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpu?: NullableStringFieldUpdateOperationsInput | string | null
+    infoCpuCore?: NullableStringFieldUpdateOperationsInput | string | null
+    infoDomains?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: StringFieldUpdateOperationsInput | string
+    period?: NullableEnumTariffPeriodFieldUpdateOperationsInput | $Enums.TariffPeriod | null
     bandwidth?: NullableIntFieldUpdateOperationsInput | number | null
     domainsCount?: NullableIntFieldUpdateOperationsInput | number | null
     databasesCount?: NullableIntFieldUpdateOperationsInput | number | null

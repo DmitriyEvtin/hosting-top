@@ -42,14 +42,19 @@ function toBoolean(value: number | boolean | null | undefined): boolean {
 }
 
 /**
- * Преобразует строку или Date в Date объект
+ * Преобразует строку, Date или Unix timestamp в Date объект
  */
-function toDate(value: string | Date | null | undefined): Date {
+function toDate(value: string | Date | number | null | undefined): Date {
   if (!value) {
     return new Date();
   }
   if (value instanceof Date) {
     return value;
+  }
+  // Если это число, считаем его Unix timestamp (секунды)
+  if (typeof value === "number") {
+    // Если число меньше 10000000000, это секунды, иначе миллисекунды
+    return new Date(value < 10000000000 ? value * 1000 : value);
   }
   return new Date(value);
 }
@@ -138,6 +143,38 @@ export function mapHosting(mysqlHosting: MySQLHosting): PrismaHosting {
 }
 
 /**
+ * Преобразует значение цены в Decimal
+ */
+function toDecimal(
+  value: string | number | null | undefined
+): Decimal | null {
+  if (value === null || value === undefined) {
+    return null;
+  }
+
+  let priceValue: string;
+  if (typeof value === "string") {
+    priceValue = value.trim();
+    if (priceValue === "") {
+      return null;
+    }
+  } else {
+    priceValue = value.toString();
+  }
+
+  try {
+    const decimal = new Decimal(priceValue);
+    // Валидируем, что price не отрицательное число (0 разрешен)
+    if (decimal.lessThan(0)) {
+      return null;
+    }
+    return decimal;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Маппит данные тарифа из MySQL в Prisma формат
  */
 export function mapTariff(
@@ -148,50 +185,100 @@ export function mapTariff(
     throw new Error("Tariff name is required");
   }
 
-  // Проверяем price - может быть 0, null, undefined или пустой строкой
-  if (
-    mysqlTariff.price === null ||
-    mysqlTariff.price === undefined ||
-    mysqlTariff.price === ""
+  // Определяем period на основе price_month и price_year
+  let period: TariffPeriod | null = null;
+  if (mysqlTariff.price_month !== null && mysqlTariff.price_month !== undefined) {
+    period = TariffPeriod.MONTH;
+  } else if (
+    mysqlTariff.price_year !== null &&
+    mysqlTariff.price_year !== undefined
   ) {
-    throw new Error("Tariff price is required");
+    period = TariffPeriod.YEAR;
+  } else if (mysqlTariff.period) {
+    // Используем старое поле period, если оно есть
+    period = toTariffPeriod(mysqlTariff.period);
   }
 
-  if (!mysqlTariff.period) {
-    throw new Error("Tariff period is required");
-  }
-
-  // Преобразуем price в Decimal
-  const priceValue =
-    typeof mysqlTariff.price === "string"
-      ? mysqlTariff.price.trim()
-      : mysqlTariff.price.toString();
-  
-  // Проверяем, что priceValue не пустая строка после trim
-  if (!priceValue || priceValue === "") {
-    throw new Error("Tariff price is required");
-  }
-  
-  const price = new Decimal(priceValue);
-
-  // Валидируем, что price не отрицательное число (0 разрешен)
-  if (price.lessThan(0)) {
-    throw new Error("Tariff price cannot be negative");
+  // Определяем price на основе period
+  let price: Decimal | null = null;
+  if (period === TariffPeriod.MONTH && mysqlTariff.price_month) {
+    price = toDecimal(mysqlTariff.price_month);
+  } else if (period === TariffPeriod.YEAR && mysqlTariff.price_year) {
+    price = toDecimal(mysqlTariff.price_year);
+  } else if (mysqlTariff.price) {
+    // Используем старое поле price, если оно есть
+    price = toDecimal(mysqlTariff.price);
   }
 
   return {
     id: randomUUID(),
     hostingId,
+    type: mysqlTariff.type ?? null,
     name: mysqlTariff.name.trim(),
+    subtitle: mysqlTariff.subtitle?.trim() || null,
+    link: mysqlTariff.link?.trim() || null,
+    domains: mysqlTariff.domains ?? null,
+    diskSpace: mysqlTariff.disk_space ?? null,
+    sites: mysqlTariff.sites ?? null,
+    ftpAccounts: mysqlTariff.ftp_accounts ?? null,
+    traffic: mysqlTariff.traffic ?? null,
+    mailboxes: mysqlTariff.mailboxes ?? null,
+    automaticCms: mysqlTariff.automatic_cms !== null && mysqlTariff.automatic_cms !== undefined
+      ? toBoolean(mysqlTariff.automatic_cms)
+      : null,
+    ssl:
+      mysqlTariff.ssl !== null && mysqlTariff.ssl !== undefined
+        ? toBoolean(mysqlTariff.ssl)
+        : null,
+    backup:
+      mysqlTariff.backup !== null && mysqlTariff.backup !== undefined
+        ? toBoolean(mysqlTariff.backup)
+        : null,
+    ssh:
+      mysqlTariff.ssh !== null && mysqlTariff.ssh !== undefined
+        ? toBoolean(mysqlTariff.ssh)
+        : null,
+    additionalId:
+      mysqlTariff.additional_id !== null &&
+      mysqlTariff.additional_id !== undefined
+        ? toBoolean(mysqlTariff.additional_id)
+        : null,
+    priceMonth: toDecimal(mysqlTariff.price_month),
+    priceYear: toDecimal(mysqlTariff.price_year),
+    status: mysqlTariff.status ?? 1,
+    countTestDays: mysqlTariff.count_test_days ?? null,
+    isTemplate:
+      mysqlTariff.is_template !== null &&
+      mysqlTariff.is_template !== undefined
+        ? toBoolean(mysqlTariff.is_template)
+        : null,
+    ddosDef:
+      mysqlTariff.ddos_def !== null && mysqlTariff.ddos_def !== undefined
+        ? toBoolean(mysqlTariff.ddos_def)
+        : null,
+    diskType: mysqlTariff.disk_type ?? null,
+    antivirus:
+      mysqlTariff.antivirus !== null && mysqlTariff.antivirus !== undefined
+        ? toBoolean(mysqlTariff.antivirus)
+        : null,
+    countDb: mysqlTariff.count_db ?? null,
+    infoDiskArea: mysqlTariff.info_disk_area?.trim() || null,
+    infoPlatforms: mysqlTariff.info_platforms?.trim() || null,
+    infoPanels: mysqlTariff.info_panels?.trim() || null,
+    infoPrice: mysqlTariff.info_price?.trim() || null,
+    infoOzu: mysqlTariff.info_ozu?.trim() || null,
+    infoCpu: mysqlTariff.info_cpu?.trim() || null,
+    infoCpuCore: mysqlTariff.info_cpu_core?.trim() || null,
+    infoDomains: mysqlTariff.info_domains?.trim() || null,
+    // Старые поля для обратной совместимости
     price,
     currency: mysqlTariff.currency?.trim() || "RUB",
-    period: toTariffPeriod(mysqlTariff.period),
-    diskSpace: mysqlTariff.disk_space ?? null,
+    period,
     bandwidth: mysqlTariff.bandwidth ?? null,
     domainsCount: mysqlTariff.domains_count ?? null,
     databasesCount: mysqlTariff.databases_count ?? null,
     emailAccounts: mysqlTariff.email_accounts ?? null,
-    isActive: toBoolean(mysqlTariff.is_active),
+    isActive: toBoolean(mysqlTariff.is_active ?? 1),
     createdAt: toDate(mysqlTariff.created_at),
     updatedAt: toDate(mysqlTariff.updated_at),
   };
