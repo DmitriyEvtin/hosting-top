@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ReviewForm } from "@/shared/ui/ReviewForm";
+import { ReviewForm, ReviewFormData } from "@/shared/ui/ReviewForm";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/shared/lib/use-toast";
 
@@ -32,7 +32,7 @@ export function EditReviewModal({
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (data: any) => {
+  const handleSubmit = async (data: ReviewFormData) => {
     setIsSubmitting(true);
     
     try {

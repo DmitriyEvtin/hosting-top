@@ -8,12 +8,32 @@ import { useSession } from "next-auth/react";
 import { HostingBreadcrumbs } from "@/shared/ui/HostingBreadcrumbs";
 import { HostingNavigation } from "@/shared/ui/HostingNavigation";
 import { EditReviewModal } from "@/views/public/reviews/ui/EditReviewModal";
+import { CreateReviewSection } from "@/views/public/reviews/ui/CreateReviewSection";
+
+interface Review {
+  id: string;
+  content: string;
+  performanceRating: number;
+  supportRating: number;
+  priceQualityRating: number;
+  reliabilityRating: number;
+  easeOfUseRating: number;
+  status: "PENDING" | "APPROVED" | "REJECTED";
+  helpfulCount: number;
+  createdAt: string;
+  user: {
+    id: string;
+    name: string | null;
+    image: string | null;
+  };
+}
 
 interface HostingReviewsPageProps {
+  hostingId: string;
   hostingSlug: string;
   hostingName: string;
   initialData: {
-    reviews: any[];
+    reviews: Review[];
     pagination: {
       page: number;
       limit: number;
@@ -35,6 +55,7 @@ interface HostingReviewsPageProps {
 }
 
 export function HostingReviewsPage({
+  hostingId,
   hostingSlug,
   hostingName,
   initialData,
@@ -46,7 +67,7 @@ export function HostingReviewsPage({
   const [sort, setSort] = useState<"date" | "helpful" | "rating">("date");
   const [loading, setLoading] = useState(false);
   const [helpfulMarks, setHelpfulMarks] = useState<Set<string>>(new Set());
-  const [editingReview, setEditingReview] = useState<any>(null);
+  const [editingReview, setEditingReview] = useState<Review | null>(null);
 
   // Загрузить отметки полезности из localStorage
   useEffect(() => {
@@ -228,6 +249,15 @@ export function HostingReviewsPage({
               </div>
             </div>
           )}
+        </div>
+
+        {/* Секция создания отзыва */}
+        <div className="mb-8">
+          <CreateReviewSection
+            hostingId={hostingId}
+            hostingName={hostingName}
+            hostingSlug={hostingSlug}
+          />
         </div>
 
         {/* Сортировка */}

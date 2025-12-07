@@ -90,11 +90,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 2. Валидировать данные
+    // 2. Проверить существование пользователя в базе данных
+    const user = await prisma.user.findUnique({
+      where: { id: session.user.id },
+    });
+    if (!user) {
+      return NextResponse.json(
+        { error: "Пользователь не найден. Пожалуйста, войдите заново." },
+        { status: 401 }
+      );
+    }
+
+    // 3. Валидировать данные
     const body = await request.json();
     const validatedData = ReviewCreateSchema.parse(body);
 
-    // 3. Проверить существование хостинга
+    // 4. Проверить существование хостинга
     const hosting = await prisma.hosting.findUnique({
       where: { id: validatedData.hostingId },
     });
@@ -105,7 +116,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 4. Проверить на дубликаты
+    // 5. Проверить на дубликаты
     const duplicate = await prisma.review.findFirst({
       where: {
         userId: session.user.id,
@@ -121,7 +132,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 5. Создать отзыв
+    // 6. Создать отзыв
     const review = await prisma.review.create({
       data: {
         userId: session.user.id,
@@ -147,6 +158,33 @@ export async function POST(request: NextRequest) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Некорректные данные", details: error.issues },
+        { status: 400 }
+      );
+    }
+
+    // Обработка ошибок Prisma
+    if (
+      error &&
+      typeof error === "object" &&
+      "code" in error &&
+      error.code === "P2003"
+    ) {
+      // Ошибка внешнего ключа
+      const meta = error.meta as { field_name?: string } | undefined;
+      if (meta?.field_name?.includes("user_id")) {
+        return NextResponse.json(
+          { error: "Пользователь не найден. Пожалуйста, войдите заново." },
+          { status: 401 }
+        );
+      }
+      if (meta?.field_name?.includes("hosting_id")) {
+        return NextResponse.json(
+          { error: "Хостинг не найден" },
+          { status: 404 }
+        );
+      }
+      return NextResponse.json(
+        { error: "Ошибка валидации данных" },
         { status: 400 }
       );
     }

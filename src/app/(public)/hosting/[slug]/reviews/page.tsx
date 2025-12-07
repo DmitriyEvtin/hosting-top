@@ -59,6 +59,7 @@ export default async function HostingReviews({ params }: PageProps) {
 
   return (
     <HostingReviewsPage
+      hostingId={hosting.id}
       hostingSlug={slug}
       hostingName={hosting.name}
       initialData={reviewsData}

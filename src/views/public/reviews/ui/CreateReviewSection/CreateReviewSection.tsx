@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ReviewForm } from "@/shared/ui/ReviewForm";
+import { ReviewForm, ReviewFormData } from "@/shared/ui/ReviewForm";
 import { Button } from "@/shared/ui/Button";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -41,7 +41,7 @@ export function CreateReviewSection({
     );
   }
 
-  const handleSubmit = async (data: any) => {
+  const handleSubmit = async (data: ReviewFormData) => {
     setIsSubmitting(true);
     
     try {

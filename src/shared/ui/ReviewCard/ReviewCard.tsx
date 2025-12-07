@@ -1,4 +1,5 @@
 import * as React from "react";
+import Image from "next/image";
 import { Card } from "../Card";
 import { RatingStars } from "../RatingStars";
 import { ReviewStatusBadge } from "../ReviewStatusBadge";
@@ -65,11 +66,15 @@ export function ReviewCard({
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center flex-shrink-0">
             {review.user.image ? (
-              <img
-                src={review.user.image}
-                alt={review.user.name || "User"}
-                className="w-full h-full rounded-full object-cover"
-              />
+              <div className="relative w-full h-full rounded-full overflow-hidden">
+                <Image
+                  src={review.user.image}
+                  alt={review.user.name || "User"}
+                  fill
+                  className="object-cover"
+                  sizes="40px"
+                />
+              </div>
             ) : (
               <span className="text-lg font-semibold text-gray-600 dark:text-gray-300">
                 {(review.user.name || "U")[0].toUpperCase()}

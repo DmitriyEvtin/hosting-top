@@ -8,9 +8,33 @@ import Link from "next/link";
 import Image from "next/image";
 import { EditReviewModal } from "@/views/public/reviews/ui/EditReviewModal";
 
+interface Review {
+  id: string;
+  content: string;
+  performanceRating: number;
+  supportRating: number;
+  priceQualityRating: number;
+  reliabilityRating: number;
+  easeOfUseRating: number;
+  status: "PENDING" | "APPROVED" | "REJECTED";
+  helpfulCount: number;
+  createdAt: string;
+  user: {
+    id: string;
+    name: string | null;
+    image: string | null;
+  };
+  hosting?: {
+    id: string;
+    name: string;
+    slug: string;
+    logoUrl: string | null;
+  };
+}
+
 interface AllReviewsPageProps {
   initialData: {
-    reviews: any[];
+    reviews: Review[];
     pagination: {
       page: number;
       limit: number;
@@ -27,7 +51,7 @@ export function AllReviewsPage({ initialData }: AllReviewsPageProps) {
   const [sort, setSort] = useState<"date" | "helpful" | "rating">("date");
   const [loading, setLoading] = useState(false);
   const [helpfulMarks, setHelpfulMarks] = useState<Set<string>>(new Set());
-  const [editingReview, setEditingReview] = useState<any>(null);
+  const [editingReview, setEditingReview] = useState<Review | null>(null);
 
   // Загрузить отметки полезности из localStorage
   useEffect(() => {
