@@ -1,0 +1,2 @@
+export { HostingsTable } from "./HostingsTable";
+

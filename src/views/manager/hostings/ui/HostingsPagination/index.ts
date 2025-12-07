@@ -1,0 +1,2 @@
+export { HostingsPagination } from "./HostingsPagination";
+
