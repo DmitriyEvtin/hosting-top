@@ -130,13 +130,14 @@ async function getHostingWithTariffs(slug: string) {
     });
 
     // Трансформируем структуру связанных данных (убираем вложенность)
+    // Преобразуем Decimal объекты в числа для передачи в Client Component
     const transformedTariffs = tariffs.map((tariff) => ({
       id: tariff.id,
       name: tariff.name,
       subtitle: tariff.subtitle,
       link: tariff.link,
-      priceMonth: tariff.priceMonth,
-      priceYear: tariff.priceYear,
+      priceMonth: tariff.priceMonth ? tariff.priceMonth.toNumber() : null,
+      priceYear: tariff.priceYear ? tariff.priceYear.toNumber() : null,
       currency: tariff.currency,
       diskSpace: tariff.diskSpace,
       traffic: tariff.traffic,
