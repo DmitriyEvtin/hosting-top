@@ -13,13 +13,13 @@ import {
   DialogTitle,
 } from "@/shared/ui/Dialog";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/shared/ui/Table";
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/shared/ui/Card";
 import { Edit, Plus, RefreshCw, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ContentBlockModal } from "@/views/manager/content-blocks/ui/ContentBlockModal";
@@ -217,14 +217,20 @@ export function HostingContentBlocks({
         </div>
       )}
 
-      {/* Таблица блоков контента */}
-      <div className="bg-white rounded-lg border">
+      {/* Карточки блоков контента */}
+      <div className="space-y-4">
         {loading ? (
-          <div className="space-y-4 p-6">
+          <div className="space-y-4">
             {[...Array(5)].map((_, i) => (
-              <div key={i} className="animate-pulse">
-                <div className="h-16 bg-gray-200 rounded"></div>
-              </div>
+              <Card key={i} className="animate-pulse">
+                <CardHeader>
+                  <div className="h-6 bg-gray-200 rounded w-1/3"></div>
+                  <div className="h-4 bg-gray-200 rounded w-1/4"></div>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-20 bg-gray-200 rounded"></div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         ) : contentBlocks.length === 0 ? (
@@ -234,68 +240,69 @@ export function HostingContentBlocks({
             </p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Ключ</TableHead>
-                  <TableHead>Заголовок</TableHead>
-                  <TableHead>Контент</TableHead>
-                  <TableHead className="text-center">Статус</TableHead>
-                  <TableHead className="text-right">Действия</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {contentBlocks.map((block) => (
-                  <TableRow key={block.id}>
-                    <TableCell>
-                      <code className="text-sm font-mono bg-gray-100 px-2 py-1 rounded">
-                        {block.key}
-                      </code>
-                    </TableCell>
-                    <TableCell className="font-medium">
-                      {block.title || <span className="text-gray-400">—</span>}
-                    </TableCell>
-                    <TableCell>
-                      {block.content ? (
-                        <div className="max-w-md truncate text-sm text-gray-600">
-                          {block.content}
-                        </div>
-                      ) : (
-                        <span className="text-gray-400">—</span>
-                      )}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      <Badge variant={block.isActive ? "default" : "secondary"}>
+          <div className="space-y-4">
+            {contentBlocks.map((block) => (
+              <Card key={block.id}>
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <CardTitle>
+                        {block.title || (
+                          <span className="text-gray-400">Без заголовка</span>
+                        )}
+                      </CardTitle>
+                      <CardDescription className="mt-2">
+                        <code className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">
+                          {block.key}
+                        </code>
+                        {block.type && (
+                          <span className="ml-3 text-gray-500">
+                            Тип: {block.type}
+                          </span>
+                        )}
+                      </CardDescription>
+                    </div>
+                    <div className="flex items-center gap-2 ml-4">
+                      <Badge
+                        variant={block.isActive ? "default" : "secondary"}
+                      >
                         {block.isActive ? "Активен" : "Неактивен"}
                       </Badge>
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <div className="flex items-center justify-end gap-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handleEdit(block)}
-                          className="h-8 w-8 p-0"
-                          title="Редактировать"
-                        >
-                          <Edit className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handleDeleteClick(block)}
-                          className="h-8 w-8 p-0 text-red-600 hover:text-red-700 hover:bg-red-50"
-                          title="Удалить"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  {block.content ? (
+                    <div
+                      className="prose prose-sm max-w-none text-gray-700"
+                      dangerouslySetInnerHTML={{ __html: block.content }}
+                    />
+                  ) : (
+                    <p className="text-gray-400">Контент отсутствует</p>
+                  )}
+                </CardContent>
+                <CardFooter className="flex items-center justify-end gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handleEdit(block)}
+                    className="flex items-center gap-2"
+                  >
+                    <Edit className="h-4 w-4" />
+                    Редактировать
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handleDeleteClick(block)}
+                    className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                    Удалить
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
           </div>
         )}
       </div>
