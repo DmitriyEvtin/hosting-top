@@ -10,8 +10,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/shared/ui/Dialog";
+import { HostingBreadcrumbs } from "@/shared/ui/HostingBreadcrumbs";
 import { Plus, RefreshCw } from "lucide-react";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TariffModal } from "../TariffModal";
 import { TariffsTable } from "../TariffsTable";
@@ -186,24 +186,11 @@ export function TariffsPage({ hostingId }: TariffsPageProps) {
   return (
     <div className="space-y-6">
       {/* Breadcrumbs */}
-      <nav className="flex items-center gap-2 text-sm text-gray-600">
-        <Link href="/manager/hostings" className="hover:text-gray-900">
-          Хостинги
-        </Link>
-        <span>/</span>
-        {hosting && (
-          <>
-            <Link
-              href={`/manager/hostings/${hosting.id}/edit`}
-              className="hover:text-gray-900"
-            >
-              {hosting.name}
-            </Link>
-            <span>/</span>
-          </>
-        )}
-        <span className="text-gray-900 font-medium">Тарифы</span>
-      </nav>
+      <HostingBreadcrumbs
+        hostingId={hostingId}
+        currentPage="tariffs"
+        hostingName={hosting?.name}
+      />
 
       {/* Заголовок */}
       <div className="flex items-center justify-between">

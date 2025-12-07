@@ -5,6 +5,7 @@ export * from "./Card";
 export * from "./ChangePasswordForm";
 export * from "./Checkbox";
 export * from "./Dialog";
+export * from "./HostingBreadcrumbs";
 export * from "./Input";
 export * from "./Label";
 export * from "./Navigation";

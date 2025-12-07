@@ -3,6 +3,7 @@
 import { useToast } from "@/shared/lib/use-toast";
 import { Badge } from "@/shared/ui/Badge";
 import { Button } from "@/shared/ui/Button";
+import { HostingBreadcrumbs } from "@/shared/ui/HostingBreadcrumbs";
 import {
   Dialog,
   DialogContent,
@@ -164,6 +165,13 @@ export function HostingContentBlocks({
 
   return (
     <div className="space-y-6">
+      {/* Breadcrumbs */}
+      <HostingBreadcrumbs
+        hostingId={hostingId}
+        currentPage="content"
+        hostingName={hosting?.name}
+      />
+
       {/* Заголовок */}
       <div className="flex items-center justify-between">
         <div>

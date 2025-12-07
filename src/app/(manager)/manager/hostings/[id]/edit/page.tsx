@@ -1,6 +1,7 @@
 "use client";
 
 import { useToast } from "@/shared/lib/use-toast";
+import { HostingBreadcrumbs } from "@/shared/ui/HostingBreadcrumbs";
 import { HostingForm, HostingData } from "@/views/manager/hostings/ui/HostingForm";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -134,6 +135,12 @@ export default function EditHostingPage({ params }: EditHostingPageProps) {
   if (isLoading) {
     return (
       <div className="space-y-6">
+        {resolvedParams && (
+          <HostingBreadcrumbs
+            hostingId={resolvedParams.id}
+            currentPage="edit"
+          />
+        )}
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
             Редактирование хостинга
@@ -150,6 +157,12 @@ export default function EditHostingPage({ params }: EditHostingPageProps) {
   if (error || !hosting) {
     return (
       <div className="space-y-6">
+        {resolvedParams && (
+          <HostingBreadcrumbs
+            hostingId={resolvedParams.id}
+            currentPage="edit"
+          />
+        )}
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
             Редактирование хостинга
@@ -172,6 +185,13 @@ export default function EditHostingPage({ params }: EditHostingPageProps) {
 
   return (
     <div className="space-y-6">
+      {resolvedParams && (
+        <HostingBreadcrumbs
+          hostingId={resolvedParams.id}
+          currentPage="edit"
+          hostingName={hosting.name}
+        />
+      )}
       <div>
         <h1 className="text-3xl font-bold text-gray-900">
           Редактирование хостинга
