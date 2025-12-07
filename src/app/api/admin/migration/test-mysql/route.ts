@@ -7,6 +7,7 @@ import { withAdminAuth } from "@/shared/lib/admin-middleware";
 import { testMySQLConnection } from "@/shared/lib/mysql-test";
 import { NextRequest, NextResponse } from "next/server";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function handler(_request: NextRequest) {
   try {
     const result = await testMySQLConnection();
