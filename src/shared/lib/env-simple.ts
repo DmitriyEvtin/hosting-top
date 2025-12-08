@@ -42,6 +42,19 @@ export const env = {
   RATE_LIMIT_MAX: parseInt(process.env.RATE_LIMIT_MAX || "100"),
   RATE_LIMIT_WINDOW_MS: parseInt(process.env.RATE_LIMIT_WINDOW_MS || "900000"),
 
+  // Функция сравнения тарифов
+  COMPARISON_LINK_EXPIRY_DAYS: parseInt(
+    process.env.COMPARISON_LINK_EXPIRY_DAYS || "30"
+  ),
+  MAX_SAVED_COMPARISONS_PER_USER: parseInt(
+    process.env.MAX_SAVED_COMPARISONS_PER_USER || "10"
+  ),
+  MAX_TARIFFS_IN_COMPARISON: parseInt(
+    process.env.MAX_TARIFFS_IN_COMPARISON || "5"
+  ),
+  NEXT_PUBLIC_APP_URL:
+    process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+
   // Разработка
   DEBUG: process.env.DEBUG || "",
   VERBOSE_LOGGING: process.env.VERBOSE_LOGGING === "true",
