@@ -1,0 +1,2 @@
+export { SharedComparePage } from "./SharedComparePage";
+
