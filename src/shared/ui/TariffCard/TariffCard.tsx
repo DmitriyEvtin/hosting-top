@@ -10,6 +10,7 @@ import {
 } from "@/shared/ui/Card";
 import { Badge } from "@/shared/ui/Badge";
 import { Button } from "@/shared/ui/Button";
+import { ComparisonButton } from "@/shared/ui/ComparisonButton";
 import { Check, X, ExternalLink, HardDrive, Globe, Database, Mail, Shield, Server, Zap } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 
@@ -294,12 +295,19 @@ export function TariffCard({ tariff, className }: TariffCardProps) {
         </div>
       </CardContent>
 
-      {tariff.link && (
-        <CardFooter>
+      <CardFooter className="flex flex-col gap-3">
+        <ComparisonButton
+          tariffId={tariff.id}
+          tariffName={tariff.name}
+          variant="default"
+          size="md"
+          className="w-full"
+        />
+        {tariff.link && (
           <Button
             asChild
             className="w-full"
-            variant="default"
+            variant="outline"
           >
             <a
               href={tariff.link}
@@ -310,8 +318,8 @@ export function TariffCard({ tariff, className }: TariffCardProps) {
               <ExternalLink className="ml-2 h-4 w-4" />
             </a>
           </Button>
-        </CardFooter>
-      )}
+        )}
+      </CardFooter>
     </Card>
   );
 }
