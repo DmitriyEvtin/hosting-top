@@ -2,6 +2,7 @@
 
 import { ThemeToggle } from "@/shared/ui/ThemeToggle";
 import { UserMenu } from "@/shared/ui/UserMenu";
+import { ComparisonIndicator } from "@/shared/ui/ComparisonIndicator";
 import Link from "next/link";
 
 export function Navigation() {
@@ -19,6 +20,7 @@ export function Navigation() {
           </div>
           <div className="flex items-center space-x-4">
             <ThemeToggle />
+            <ComparisonIndicator />
             <UserMenu />
           </div>
         </div>
