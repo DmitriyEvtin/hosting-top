@@ -131,7 +131,7 @@ export function ShareComparisonModal({
         title: "Ссылка скопирована в буфер обмена",
         variant: "success",
       });
-    } catch (err) {
+    } catch {
       toast({
         title: "Ошибка при копировании",
         description: "Не удалось скопировать ссылку в буфер обмена",

@@ -6,8 +6,7 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params);
-  const { shareId } = resolvedParams;
+  await Promise.resolve(params);
 
   return {
     title: "Сравнение тарифов",

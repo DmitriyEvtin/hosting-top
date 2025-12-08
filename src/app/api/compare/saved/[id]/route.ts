@@ -35,7 +35,7 @@ export async function PUT(
     let body;
     try {
       body = await request.json();
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         { error: "Некорректный формат JSON" },
         { status: 400 }
