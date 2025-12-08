@@ -321,6 +321,23 @@ exports.Prisma.ReviewHelpfulScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.ComparisonScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  tariffIds: 'tariffIds',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SharedComparisonScalarFieldEnum = {
+  id: 'id',
+  shareId: 'shareId',
+  tariffIds: 'tariffIds',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -369,7 +386,9 @@ exports.Prisma.ModelName = {
   TariffProgrammingLanguage: 'TariffProgrammingLanguage',
   ContentBlock: 'ContentBlock',
   Review: 'Review',
-  ReviewHelpful: 'ReviewHelpful'
+  ReviewHelpful: 'ReviewHelpful',
+  Comparison: 'Comparison',
+  SharedComparison: 'SharedComparison'
 };
 
 /**

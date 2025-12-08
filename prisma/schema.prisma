@@ -22,6 +22,7 @@ model User {
   sessions      Session[]
   reviews       Review[]
   helpfulMarks  ReviewHelpful[]
+  comparisons   Comparison[]
 
   @@map("users")
 }
@@ -331,4 +332,30 @@ model ReviewHelpful {
   @@index([userId])
   @@index([fingerprint])
   @@map("review_helpful")
+}
+
+model Comparison {
+  id        String   @id @default(uuid())
+  name      String   @db.VarChar(100)
+  tariffIds String[] @map("tariff_ids")
+  userId    String   @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("comparisons")
+}
+
+model SharedComparison {
+  id        String   @id @default(uuid())
+  shareId   String   @unique @map("share_id") @db.VarChar(12)
+  tariffIds String[] @map("tariff_ids")
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([shareId])
+  @@index([expiresAt])
+  @@map("shared_comparisons")
 }

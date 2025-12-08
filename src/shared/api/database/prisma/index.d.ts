@@ -118,6 +118,16 @@ export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
  * 
  */
 export type ReviewHelpful = $Result.DefaultSelection<Prisma.$ReviewHelpfulPayload>
+/**
+ * Model Comparison
+ * 
+ */
+export type Comparison = $Result.DefaultSelection<Prisma.$ComparisonPayload>
+/**
+ * Model SharedComparison
+ * 
+ */
+export type SharedComparison = $Result.DefaultSelection<Prisma.$SharedComparisonPayload>
 
 /**
  * Enums
@@ -490,6 +500,26 @@ export class PrismaClient<
     * ```
     */
   get reviewHelpful(): Prisma.ReviewHelpfulDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.comparison`: Exposes CRUD operations for the **Comparison** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Comparisons
+    * const comparisons = await prisma.comparison.findMany()
+    * ```
+    */
+  get comparison(): Prisma.ComparisonDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.sharedComparison`: Exposes CRUD operations for the **SharedComparison** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SharedComparisons
+    * const sharedComparisons = await prisma.sharedComparison.findMany()
+    * ```
+    */
+  get sharedComparison(): Prisma.SharedComparisonDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -950,7 +980,9 @@ export namespace Prisma {
     TariffProgrammingLanguage: 'TariffProgrammingLanguage',
     ContentBlock: 'ContentBlock',
     Review: 'Review',
-    ReviewHelpful: 'ReviewHelpful'
+    ReviewHelpful: 'ReviewHelpful',
+    Comparison: 'Comparison',
+    SharedComparison: 'SharedComparison'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -969,7 +1001,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "verificationToken" | "hosting" | "tariff" | "cMS" | "controlPanel" | "country" | "dataStore" | "operationSystem" | "programmingLanguage" | "tariffCMS" | "tariffControlPanel" | "tariffCountry" | "tariffDataStore" | "tariffOperationSystem" | "tariffProgrammingLanguage" | "contentBlock" | "review" | "reviewHelpful"
+      modelProps: "user" | "account" | "session" | "verificationToken" | "hosting" | "tariff" | "cMS" | "controlPanel" | "country" | "dataStore" | "operationSystem" | "programmingLanguage" | "tariffCMS" | "tariffControlPanel" | "tariffCountry" | "tariffDataStore" | "tariffOperationSystem" | "tariffProgrammingLanguage" | "contentBlock" | "review" | "reviewHelpful" | "comparison" | "sharedComparison"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2527,6 +2559,154 @@ export namespace Prisma {
           }
         }
       }
+      Comparison: {
+        payload: Prisma.$ComparisonPayload<ExtArgs>
+        fields: Prisma.ComparisonFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ComparisonFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ComparisonFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>
+          }
+          findFirst: {
+            args: Prisma.ComparisonFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ComparisonFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>
+          }
+          findMany: {
+            args: Prisma.ComparisonFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>[]
+          }
+          create: {
+            args: Prisma.ComparisonCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>
+          }
+          createMany: {
+            args: Prisma.ComparisonCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ComparisonCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>[]
+          }
+          delete: {
+            args: Prisma.ComparisonDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>
+          }
+          update: {
+            args: Prisma.ComparisonUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>
+          }
+          deleteMany: {
+            args: Prisma.ComparisonDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ComparisonUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ComparisonUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>[]
+          }
+          upsert: {
+            args: Prisma.ComparisonUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>
+          }
+          aggregate: {
+            args: Prisma.ComparisonAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateComparison>
+          }
+          groupBy: {
+            args: Prisma.ComparisonGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ComparisonGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ComparisonCountArgs<ExtArgs>
+            result: $Utils.Optional<ComparisonCountAggregateOutputType> | number
+          }
+        }
+      }
+      SharedComparison: {
+        payload: Prisma.$SharedComparisonPayload<ExtArgs>
+        fields: Prisma.SharedComparisonFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SharedComparisonFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SharedComparisonPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SharedComparisonFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SharedComparisonPayload>
+          }
+          findFirst: {
+            args: Prisma.SharedComparisonFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SharedComparisonPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SharedComparisonFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SharedComparisonPayload>
+          }
+          findMany: {
+            args: Prisma.SharedComparisonFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SharedComparisonPayload>[]
+          }
+          create: {
+            args: Prisma.SharedComparisonCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SharedComparisonPayload>
+          }
+          createMany: {
+            args: Prisma.SharedComparisonCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SharedComparisonCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SharedComparisonPayload>[]
+          }
+          delete: {
+            args: Prisma.SharedComparisonDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SharedComparisonPayload>
+          }
+          update: {
+            args: Prisma.SharedComparisonUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SharedComparisonPayload>
+          }
+          deleteMany: {
+            args: Prisma.SharedComparisonDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SharedComparisonUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SharedComparisonUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SharedComparisonPayload>[]
+          }
+          upsert: {
+            args: Prisma.SharedComparisonUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SharedComparisonPayload>
+          }
+          aggregate: {
+            args: Prisma.SharedComparisonAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSharedComparison>
+          }
+          groupBy: {
+            args: Prisma.SharedComparisonGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SharedComparisonGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SharedComparisonCountArgs<ExtArgs>
+            result: $Utils.Optional<SharedComparisonCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2644,6 +2824,8 @@ export namespace Prisma {
     contentBlock?: ContentBlockOmit
     review?: ReviewOmit
     reviewHelpful?: ReviewHelpfulOmit
+    comparison?: ComparisonOmit
+    sharedComparison?: SharedComparisonOmit
   }
 
   /* Types for Logging */
@@ -2728,6 +2910,7 @@ export namespace Prisma {
     sessions: number
     reviews: number
     helpfulMarks: number
+    comparisons: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2735,6 +2918,7 @@ export namespace Prisma {
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
     reviews?: boolean | UserCountOutputTypeCountReviewsArgs
     helpfulMarks?: boolean | UserCountOutputTypeCountHelpfulMarksArgs
+    comparisons?: boolean | UserCountOutputTypeCountComparisonsArgs
   }
 
   // Custom InputTypes
@@ -2774,6 +2958,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountHelpfulMarksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ReviewHelpfulWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountComparisonsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComparisonWhereInput
   }
 
 
@@ -3323,6 +3514,7 @@ export namespace Prisma {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     reviews?: boolean | User$reviewsArgs<ExtArgs>
     helpfulMarks?: boolean | User$helpfulMarksArgs<ExtArgs>
+    comparisons?: boolean | User$comparisonsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3368,6 +3560,7 @@ export namespace Prisma {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     reviews?: boolean | User$reviewsArgs<ExtArgs>
     helpfulMarks?: boolean | User$helpfulMarksArgs<ExtArgs>
+    comparisons?: boolean | User$comparisonsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3380,6 +3573,7 @@ export namespace Prisma {
       sessions: Prisma.$SessionPayload<ExtArgs>[]
       reviews: Prisma.$ReviewPayload<ExtArgs>[]
       helpfulMarks: Prisma.$ReviewHelpfulPayload<ExtArgs>[]
+      comparisons: Prisma.$ComparisonPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3789,6 +3983,7 @@ export namespace Prisma {
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reviews<T extends User$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     helpfulMarks<T extends User$helpfulMarksArgs<ExtArgs> = {}>(args?: Subset<T, User$helpfulMarksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewHelpfulPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    comparisons<T extends User$comparisonsArgs<ExtArgs> = {}>(args?: Subset<T, User$comparisonsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4308,6 +4503,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ReviewHelpfulScalarFieldEnum | ReviewHelpfulScalarFieldEnum[]
+  }
+
+  /**
+   * User.comparisons
+   */
+  export type User$comparisonsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    where?: ComparisonWhereInput
+    orderBy?: ComparisonOrderByWithRelationInput | ComparisonOrderByWithRelationInput[]
+    cursor?: ComparisonWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ComparisonScalarFieldEnum | ComparisonScalarFieldEnum[]
   }
 
   /**
@@ -26470,6 +26689,2064 @@ export namespace Prisma {
 
 
   /**
+   * Model Comparison
+   */
+
+  export type AggregateComparison = {
+    _count: ComparisonCountAggregateOutputType | null
+    _min: ComparisonMinAggregateOutputType | null
+    _max: ComparisonMaxAggregateOutputType | null
+  }
+
+  export type ComparisonMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ComparisonMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ComparisonCountAggregateOutputType = {
+    id: number
+    name: number
+    tariffIds: number
+    userId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ComparisonMinAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ComparisonMaxAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ComparisonCountAggregateInputType = {
+    id?: true
+    name?: true
+    tariffIds?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ComparisonAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Comparison to aggregate.
+     */
+    where?: ComparisonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comparisons to fetch.
+     */
+    orderBy?: ComparisonOrderByWithRelationInput | ComparisonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ComparisonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comparisons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comparisons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Comparisons
+    **/
+    _count?: true | ComparisonCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ComparisonMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ComparisonMaxAggregateInputType
+  }
+
+  export type GetComparisonAggregateType<T extends ComparisonAggregateArgs> = {
+        [P in keyof T & keyof AggregateComparison]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateComparison[P]>
+      : GetScalarType<T[P], AggregateComparison[P]>
+  }
+
+
+
+
+  export type ComparisonGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComparisonWhereInput
+    orderBy?: ComparisonOrderByWithAggregationInput | ComparisonOrderByWithAggregationInput[]
+    by: ComparisonScalarFieldEnum[] | ComparisonScalarFieldEnum
+    having?: ComparisonScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ComparisonCountAggregateInputType | true
+    _min?: ComparisonMinAggregateInputType
+    _max?: ComparisonMaxAggregateInputType
+  }
+
+  export type ComparisonGroupByOutputType = {
+    id: string
+    name: string
+    tariffIds: string[]
+    userId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ComparisonCountAggregateOutputType | null
+    _min: ComparisonMinAggregateOutputType | null
+    _max: ComparisonMaxAggregateOutputType | null
+  }
+
+  type GetComparisonGroupByPayload<T extends ComparisonGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ComparisonGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ComparisonGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ComparisonGroupByOutputType[P]>
+            : GetScalarType<T[P], ComparisonGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ComparisonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    tariffIds?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comparison"]>
+
+  export type ComparisonSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    tariffIds?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comparison"]>
+
+  export type ComparisonSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    tariffIds?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comparison"]>
+
+  export type ComparisonSelectScalar = {
+    id?: boolean
+    name?: boolean
+    tariffIds?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ComparisonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "tariffIds" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["comparison"]>
+  export type ComparisonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ComparisonIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ComparisonIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ComparisonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Comparison"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      tariffIds: string[]
+      userId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["comparison"]>
+    composites: {}
+  }
+
+  type ComparisonGetPayload<S extends boolean | null | undefined | ComparisonDefaultArgs> = $Result.GetResult<Prisma.$ComparisonPayload, S>
+
+  type ComparisonCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ComparisonFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ComparisonCountAggregateInputType | true
+    }
+
+  export interface ComparisonDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Comparison'], meta: { name: 'Comparison' } }
+    /**
+     * Find zero or one Comparison that matches the filter.
+     * @param {ComparisonFindUniqueArgs} args - Arguments to find a Comparison
+     * @example
+     * // Get one Comparison
+     * const comparison = await prisma.comparison.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ComparisonFindUniqueArgs>(args: SelectSubset<T, ComparisonFindUniqueArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Comparison that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ComparisonFindUniqueOrThrowArgs} args - Arguments to find a Comparison
+     * @example
+     * // Get one Comparison
+     * const comparison = await prisma.comparison.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ComparisonFindUniqueOrThrowArgs>(args: SelectSubset<T, ComparisonFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Comparison that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonFindFirstArgs} args - Arguments to find a Comparison
+     * @example
+     * // Get one Comparison
+     * const comparison = await prisma.comparison.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ComparisonFindFirstArgs>(args?: SelectSubset<T, ComparisonFindFirstArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Comparison that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonFindFirstOrThrowArgs} args - Arguments to find a Comparison
+     * @example
+     * // Get one Comparison
+     * const comparison = await prisma.comparison.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ComparisonFindFirstOrThrowArgs>(args?: SelectSubset<T, ComparisonFindFirstOrThrowArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Comparisons that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Comparisons
+     * const comparisons = await prisma.comparison.findMany()
+     * 
+     * // Get first 10 Comparisons
+     * const comparisons = await prisma.comparison.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const comparisonWithIdOnly = await prisma.comparison.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ComparisonFindManyArgs>(args?: SelectSubset<T, ComparisonFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Comparison.
+     * @param {ComparisonCreateArgs} args - Arguments to create a Comparison.
+     * @example
+     * // Create one Comparison
+     * const Comparison = await prisma.comparison.create({
+     *   data: {
+     *     // ... data to create a Comparison
+     *   }
+     * })
+     * 
+     */
+    create<T extends ComparisonCreateArgs>(args: SelectSubset<T, ComparisonCreateArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Comparisons.
+     * @param {ComparisonCreateManyArgs} args - Arguments to create many Comparisons.
+     * @example
+     * // Create many Comparisons
+     * const comparison = await prisma.comparison.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ComparisonCreateManyArgs>(args?: SelectSubset<T, ComparisonCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Comparisons and returns the data saved in the database.
+     * @param {ComparisonCreateManyAndReturnArgs} args - Arguments to create many Comparisons.
+     * @example
+     * // Create many Comparisons
+     * const comparison = await prisma.comparison.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Comparisons and only return the `id`
+     * const comparisonWithIdOnly = await prisma.comparison.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ComparisonCreateManyAndReturnArgs>(args?: SelectSubset<T, ComparisonCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Comparison.
+     * @param {ComparisonDeleteArgs} args - Arguments to delete one Comparison.
+     * @example
+     * // Delete one Comparison
+     * const Comparison = await prisma.comparison.delete({
+     *   where: {
+     *     // ... filter to delete one Comparison
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ComparisonDeleteArgs>(args: SelectSubset<T, ComparisonDeleteArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Comparison.
+     * @param {ComparisonUpdateArgs} args - Arguments to update one Comparison.
+     * @example
+     * // Update one Comparison
+     * const comparison = await prisma.comparison.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ComparisonUpdateArgs>(args: SelectSubset<T, ComparisonUpdateArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Comparisons.
+     * @param {ComparisonDeleteManyArgs} args - Arguments to filter Comparisons to delete.
+     * @example
+     * // Delete a few Comparisons
+     * const { count } = await prisma.comparison.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ComparisonDeleteManyArgs>(args?: SelectSubset<T, ComparisonDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Comparisons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Comparisons
+     * const comparison = await prisma.comparison.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ComparisonUpdateManyArgs>(args: SelectSubset<T, ComparisonUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Comparisons and returns the data updated in the database.
+     * @param {ComparisonUpdateManyAndReturnArgs} args - Arguments to update many Comparisons.
+     * @example
+     * // Update many Comparisons
+     * const comparison = await prisma.comparison.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Comparisons and only return the `id`
+     * const comparisonWithIdOnly = await prisma.comparison.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ComparisonUpdateManyAndReturnArgs>(args: SelectSubset<T, ComparisonUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Comparison.
+     * @param {ComparisonUpsertArgs} args - Arguments to update or create a Comparison.
+     * @example
+     * // Update or create a Comparison
+     * const comparison = await prisma.comparison.upsert({
+     *   create: {
+     *     // ... data to create a Comparison
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Comparison we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ComparisonUpsertArgs>(args: SelectSubset<T, ComparisonUpsertArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Comparisons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonCountArgs} args - Arguments to filter Comparisons to count.
+     * @example
+     * // Count the number of Comparisons
+     * const count = await prisma.comparison.count({
+     *   where: {
+     *     // ... the filter for the Comparisons we want to count
+     *   }
+     * })
+    **/
+    count<T extends ComparisonCountArgs>(
+      args?: Subset<T, ComparisonCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ComparisonCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Comparison.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ComparisonAggregateArgs>(args: Subset<T, ComparisonAggregateArgs>): Prisma.PrismaPromise<GetComparisonAggregateType<T>>
+
+    /**
+     * Group by Comparison.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ComparisonGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ComparisonGroupByArgs['orderBy'] }
+        : { orderBy?: ComparisonGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ComparisonGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetComparisonGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Comparison model
+   */
+  readonly fields: ComparisonFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Comparison.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ComparisonClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Comparison model
+   */
+  interface ComparisonFieldRefs {
+    readonly id: FieldRef<"Comparison", 'String'>
+    readonly name: FieldRef<"Comparison", 'String'>
+    readonly tariffIds: FieldRef<"Comparison", 'String[]'>
+    readonly userId: FieldRef<"Comparison", 'String'>
+    readonly createdAt: FieldRef<"Comparison", 'DateTime'>
+    readonly updatedAt: FieldRef<"Comparison", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Comparison findUnique
+   */
+  export type ComparisonFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * Filter, which Comparison to fetch.
+     */
+    where: ComparisonWhereUniqueInput
+  }
+
+  /**
+   * Comparison findUniqueOrThrow
+   */
+  export type ComparisonFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * Filter, which Comparison to fetch.
+     */
+    where: ComparisonWhereUniqueInput
+  }
+
+  /**
+   * Comparison findFirst
+   */
+  export type ComparisonFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * Filter, which Comparison to fetch.
+     */
+    where?: ComparisonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comparisons to fetch.
+     */
+    orderBy?: ComparisonOrderByWithRelationInput | ComparisonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Comparisons.
+     */
+    cursor?: ComparisonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comparisons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comparisons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comparisons.
+     */
+    distinct?: ComparisonScalarFieldEnum | ComparisonScalarFieldEnum[]
+  }
+
+  /**
+   * Comparison findFirstOrThrow
+   */
+  export type ComparisonFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * Filter, which Comparison to fetch.
+     */
+    where?: ComparisonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comparisons to fetch.
+     */
+    orderBy?: ComparisonOrderByWithRelationInput | ComparisonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Comparisons.
+     */
+    cursor?: ComparisonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comparisons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comparisons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comparisons.
+     */
+    distinct?: ComparisonScalarFieldEnum | ComparisonScalarFieldEnum[]
+  }
+
+  /**
+   * Comparison findMany
+   */
+  export type ComparisonFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * Filter, which Comparisons to fetch.
+     */
+    where?: ComparisonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comparisons to fetch.
+     */
+    orderBy?: ComparisonOrderByWithRelationInput | ComparisonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Comparisons.
+     */
+    cursor?: ComparisonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comparisons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comparisons.
+     */
+    skip?: number
+    distinct?: ComparisonScalarFieldEnum | ComparisonScalarFieldEnum[]
+  }
+
+  /**
+   * Comparison create
+   */
+  export type ComparisonCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Comparison.
+     */
+    data: XOR<ComparisonCreateInput, ComparisonUncheckedCreateInput>
+  }
+
+  /**
+   * Comparison createMany
+   */
+  export type ComparisonCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Comparisons.
+     */
+    data: ComparisonCreateManyInput | ComparisonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Comparison createManyAndReturn
+   */
+  export type ComparisonCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * The data used to create many Comparisons.
+     */
+    data: ComparisonCreateManyInput | ComparisonCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Comparison update
+   */
+  export type ComparisonUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Comparison.
+     */
+    data: XOR<ComparisonUpdateInput, ComparisonUncheckedUpdateInput>
+    /**
+     * Choose, which Comparison to update.
+     */
+    where: ComparisonWhereUniqueInput
+  }
+
+  /**
+   * Comparison updateMany
+   */
+  export type ComparisonUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Comparisons.
+     */
+    data: XOR<ComparisonUpdateManyMutationInput, ComparisonUncheckedUpdateManyInput>
+    /**
+     * Filter which Comparisons to update
+     */
+    where?: ComparisonWhereInput
+    /**
+     * Limit how many Comparisons to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Comparison updateManyAndReturn
+   */
+  export type ComparisonUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * The data used to update Comparisons.
+     */
+    data: XOR<ComparisonUpdateManyMutationInput, ComparisonUncheckedUpdateManyInput>
+    /**
+     * Filter which Comparisons to update
+     */
+    where?: ComparisonWhereInput
+    /**
+     * Limit how many Comparisons to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Comparison upsert
+   */
+  export type ComparisonUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Comparison to update in case it exists.
+     */
+    where: ComparisonWhereUniqueInput
+    /**
+     * In case the Comparison found by the `where` argument doesn't exist, create a new Comparison with this data.
+     */
+    create: XOR<ComparisonCreateInput, ComparisonUncheckedCreateInput>
+    /**
+     * In case the Comparison was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ComparisonUpdateInput, ComparisonUncheckedUpdateInput>
+  }
+
+  /**
+   * Comparison delete
+   */
+  export type ComparisonDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * Filter which Comparison to delete.
+     */
+    where: ComparisonWhereUniqueInput
+  }
+
+  /**
+   * Comparison deleteMany
+   */
+  export type ComparisonDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Comparisons to delete
+     */
+    where?: ComparisonWhereInput
+    /**
+     * Limit how many Comparisons to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Comparison without action
+   */
+  export type ComparisonDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SharedComparison
+   */
+
+  export type AggregateSharedComparison = {
+    _count: SharedComparisonCountAggregateOutputType | null
+    _min: SharedComparisonMinAggregateOutputType | null
+    _max: SharedComparisonMaxAggregateOutputType | null
+  }
+
+  export type SharedComparisonMinAggregateOutputType = {
+    id: string | null
+    shareId: string | null
+    expiresAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type SharedComparisonMaxAggregateOutputType = {
+    id: string | null
+    shareId: string | null
+    expiresAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type SharedComparisonCountAggregateOutputType = {
+    id: number
+    shareId: number
+    tariffIds: number
+    expiresAt: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type SharedComparisonMinAggregateInputType = {
+    id?: true
+    shareId?: true
+    expiresAt?: true
+    createdAt?: true
+  }
+
+  export type SharedComparisonMaxAggregateInputType = {
+    id?: true
+    shareId?: true
+    expiresAt?: true
+    createdAt?: true
+  }
+
+  export type SharedComparisonCountAggregateInputType = {
+    id?: true
+    shareId?: true
+    tariffIds?: true
+    expiresAt?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type SharedComparisonAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SharedComparison to aggregate.
+     */
+    where?: SharedComparisonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SharedComparisons to fetch.
+     */
+    orderBy?: SharedComparisonOrderByWithRelationInput | SharedComparisonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SharedComparisonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SharedComparisons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SharedComparisons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SharedComparisons
+    **/
+    _count?: true | SharedComparisonCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SharedComparisonMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SharedComparisonMaxAggregateInputType
+  }
+
+  export type GetSharedComparisonAggregateType<T extends SharedComparisonAggregateArgs> = {
+        [P in keyof T & keyof AggregateSharedComparison]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSharedComparison[P]>
+      : GetScalarType<T[P], AggregateSharedComparison[P]>
+  }
+
+
+
+
+  export type SharedComparisonGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SharedComparisonWhereInput
+    orderBy?: SharedComparisonOrderByWithAggregationInput | SharedComparisonOrderByWithAggregationInput[]
+    by: SharedComparisonScalarFieldEnum[] | SharedComparisonScalarFieldEnum
+    having?: SharedComparisonScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SharedComparisonCountAggregateInputType | true
+    _min?: SharedComparisonMinAggregateInputType
+    _max?: SharedComparisonMaxAggregateInputType
+  }
+
+  export type SharedComparisonGroupByOutputType = {
+    id: string
+    shareId: string
+    tariffIds: string[]
+    expiresAt: Date
+    createdAt: Date
+    _count: SharedComparisonCountAggregateOutputType | null
+    _min: SharedComparisonMinAggregateOutputType | null
+    _max: SharedComparisonMaxAggregateOutputType | null
+  }
+
+  type GetSharedComparisonGroupByPayload<T extends SharedComparisonGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SharedComparisonGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SharedComparisonGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SharedComparisonGroupByOutputType[P]>
+            : GetScalarType<T[P], SharedComparisonGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SharedComparisonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    shareId?: boolean
+    tariffIds?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["sharedComparison"]>
+
+  export type SharedComparisonSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    shareId?: boolean
+    tariffIds?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["sharedComparison"]>
+
+  export type SharedComparisonSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    shareId?: boolean
+    tariffIds?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["sharedComparison"]>
+
+  export type SharedComparisonSelectScalar = {
+    id?: boolean
+    shareId?: boolean
+    tariffIds?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+  }
+
+  export type SharedComparisonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "shareId" | "tariffIds" | "expiresAt" | "createdAt", ExtArgs["result"]["sharedComparison"]>
+
+  export type $SharedComparisonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SharedComparison"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      shareId: string
+      tariffIds: string[]
+      expiresAt: Date
+      createdAt: Date
+    }, ExtArgs["result"]["sharedComparison"]>
+    composites: {}
+  }
+
+  type SharedComparisonGetPayload<S extends boolean | null | undefined | SharedComparisonDefaultArgs> = $Result.GetResult<Prisma.$SharedComparisonPayload, S>
+
+  type SharedComparisonCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SharedComparisonFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SharedComparisonCountAggregateInputType | true
+    }
+
+  export interface SharedComparisonDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SharedComparison'], meta: { name: 'SharedComparison' } }
+    /**
+     * Find zero or one SharedComparison that matches the filter.
+     * @param {SharedComparisonFindUniqueArgs} args - Arguments to find a SharedComparison
+     * @example
+     * // Get one SharedComparison
+     * const sharedComparison = await prisma.sharedComparison.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SharedComparisonFindUniqueArgs>(args: SelectSubset<T, SharedComparisonFindUniqueArgs<ExtArgs>>): Prisma__SharedComparisonClient<$Result.GetResult<Prisma.$SharedComparisonPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SharedComparison that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SharedComparisonFindUniqueOrThrowArgs} args - Arguments to find a SharedComparison
+     * @example
+     * // Get one SharedComparison
+     * const sharedComparison = await prisma.sharedComparison.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SharedComparisonFindUniqueOrThrowArgs>(args: SelectSubset<T, SharedComparisonFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SharedComparisonClient<$Result.GetResult<Prisma.$SharedComparisonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SharedComparison that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SharedComparisonFindFirstArgs} args - Arguments to find a SharedComparison
+     * @example
+     * // Get one SharedComparison
+     * const sharedComparison = await prisma.sharedComparison.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SharedComparisonFindFirstArgs>(args?: SelectSubset<T, SharedComparisonFindFirstArgs<ExtArgs>>): Prisma__SharedComparisonClient<$Result.GetResult<Prisma.$SharedComparisonPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SharedComparison that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SharedComparisonFindFirstOrThrowArgs} args - Arguments to find a SharedComparison
+     * @example
+     * // Get one SharedComparison
+     * const sharedComparison = await prisma.sharedComparison.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SharedComparisonFindFirstOrThrowArgs>(args?: SelectSubset<T, SharedComparisonFindFirstOrThrowArgs<ExtArgs>>): Prisma__SharedComparisonClient<$Result.GetResult<Prisma.$SharedComparisonPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SharedComparisons that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SharedComparisonFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SharedComparisons
+     * const sharedComparisons = await prisma.sharedComparison.findMany()
+     * 
+     * // Get first 10 SharedComparisons
+     * const sharedComparisons = await prisma.sharedComparison.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const sharedComparisonWithIdOnly = await prisma.sharedComparison.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SharedComparisonFindManyArgs>(args?: SelectSubset<T, SharedComparisonFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SharedComparisonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SharedComparison.
+     * @param {SharedComparisonCreateArgs} args - Arguments to create a SharedComparison.
+     * @example
+     * // Create one SharedComparison
+     * const SharedComparison = await prisma.sharedComparison.create({
+     *   data: {
+     *     // ... data to create a SharedComparison
+     *   }
+     * })
+     * 
+     */
+    create<T extends SharedComparisonCreateArgs>(args: SelectSubset<T, SharedComparisonCreateArgs<ExtArgs>>): Prisma__SharedComparisonClient<$Result.GetResult<Prisma.$SharedComparisonPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SharedComparisons.
+     * @param {SharedComparisonCreateManyArgs} args - Arguments to create many SharedComparisons.
+     * @example
+     * // Create many SharedComparisons
+     * const sharedComparison = await prisma.sharedComparison.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SharedComparisonCreateManyArgs>(args?: SelectSubset<T, SharedComparisonCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SharedComparisons and returns the data saved in the database.
+     * @param {SharedComparisonCreateManyAndReturnArgs} args - Arguments to create many SharedComparisons.
+     * @example
+     * // Create many SharedComparisons
+     * const sharedComparison = await prisma.sharedComparison.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SharedComparisons and only return the `id`
+     * const sharedComparisonWithIdOnly = await prisma.sharedComparison.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SharedComparisonCreateManyAndReturnArgs>(args?: SelectSubset<T, SharedComparisonCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SharedComparisonPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SharedComparison.
+     * @param {SharedComparisonDeleteArgs} args - Arguments to delete one SharedComparison.
+     * @example
+     * // Delete one SharedComparison
+     * const SharedComparison = await prisma.sharedComparison.delete({
+     *   where: {
+     *     // ... filter to delete one SharedComparison
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SharedComparisonDeleteArgs>(args: SelectSubset<T, SharedComparisonDeleteArgs<ExtArgs>>): Prisma__SharedComparisonClient<$Result.GetResult<Prisma.$SharedComparisonPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SharedComparison.
+     * @param {SharedComparisonUpdateArgs} args - Arguments to update one SharedComparison.
+     * @example
+     * // Update one SharedComparison
+     * const sharedComparison = await prisma.sharedComparison.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SharedComparisonUpdateArgs>(args: SelectSubset<T, SharedComparisonUpdateArgs<ExtArgs>>): Prisma__SharedComparisonClient<$Result.GetResult<Prisma.$SharedComparisonPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SharedComparisons.
+     * @param {SharedComparisonDeleteManyArgs} args - Arguments to filter SharedComparisons to delete.
+     * @example
+     * // Delete a few SharedComparisons
+     * const { count } = await prisma.sharedComparison.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SharedComparisonDeleteManyArgs>(args?: SelectSubset<T, SharedComparisonDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SharedComparisons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SharedComparisonUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SharedComparisons
+     * const sharedComparison = await prisma.sharedComparison.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SharedComparisonUpdateManyArgs>(args: SelectSubset<T, SharedComparisonUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SharedComparisons and returns the data updated in the database.
+     * @param {SharedComparisonUpdateManyAndReturnArgs} args - Arguments to update many SharedComparisons.
+     * @example
+     * // Update many SharedComparisons
+     * const sharedComparison = await prisma.sharedComparison.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SharedComparisons and only return the `id`
+     * const sharedComparisonWithIdOnly = await prisma.sharedComparison.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SharedComparisonUpdateManyAndReturnArgs>(args: SelectSubset<T, SharedComparisonUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SharedComparisonPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SharedComparison.
+     * @param {SharedComparisonUpsertArgs} args - Arguments to update or create a SharedComparison.
+     * @example
+     * // Update or create a SharedComparison
+     * const sharedComparison = await prisma.sharedComparison.upsert({
+     *   create: {
+     *     // ... data to create a SharedComparison
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SharedComparison we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SharedComparisonUpsertArgs>(args: SelectSubset<T, SharedComparisonUpsertArgs<ExtArgs>>): Prisma__SharedComparisonClient<$Result.GetResult<Prisma.$SharedComparisonPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SharedComparisons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SharedComparisonCountArgs} args - Arguments to filter SharedComparisons to count.
+     * @example
+     * // Count the number of SharedComparisons
+     * const count = await prisma.sharedComparison.count({
+     *   where: {
+     *     // ... the filter for the SharedComparisons we want to count
+     *   }
+     * })
+    **/
+    count<T extends SharedComparisonCountArgs>(
+      args?: Subset<T, SharedComparisonCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SharedComparisonCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SharedComparison.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SharedComparisonAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SharedComparisonAggregateArgs>(args: Subset<T, SharedComparisonAggregateArgs>): Prisma.PrismaPromise<GetSharedComparisonAggregateType<T>>
+
+    /**
+     * Group by SharedComparison.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SharedComparisonGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SharedComparisonGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SharedComparisonGroupByArgs['orderBy'] }
+        : { orderBy?: SharedComparisonGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SharedComparisonGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSharedComparisonGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SharedComparison model
+   */
+  readonly fields: SharedComparisonFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SharedComparison.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SharedComparisonClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SharedComparison model
+   */
+  interface SharedComparisonFieldRefs {
+    readonly id: FieldRef<"SharedComparison", 'String'>
+    readonly shareId: FieldRef<"SharedComparison", 'String'>
+    readonly tariffIds: FieldRef<"SharedComparison", 'String[]'>
+    readonly expiresAt: FieldRef<"SharedComparison", 'DateTime'>
+    readonly createdAt: FieldRef<"SharedComparison", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SharedComparison findUnique
+   */
+  export type SharedComparisonFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SharedComparison
+     */
+    select?: SharedComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SharedComparison
+     */
+    omit?: SharedComparisonOmit<ExtArgs> | null
+    /**
+     * Filter, which SharedComparison to fetch.
+     */
+    where: SharedComparisonWhereUniqueInput
+  }
+
+  /**
+   * SharedComparison findUniqueOrThrow
+   */
+  export type SharedComparisonFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SharedComparison
+     */
+    select?: SharedComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SharedComparison
+     */
+    omit?: SharedComparisonOmit<ExtArgs> | null
+    /**
+     * Filter, which SharedComparison to fetch.
+     */
+    where: SharedComparisonWhereUniqueInput
+  }
+
+  /**
+   * SharedComparison findFirst
+   */
+  export type SharedComparisonFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SharedComparison
+     */
+    select?: SharedComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SharedComparison
+     */
+    omit?: SharedComparisonOmit<ExtArgs> | null
+    /**
+     * Filter, which SharedComparison to fetch.
+     */
+    where?: SharedComparisonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SharedComparisons to fetch.
+     */
+    orderBy?: SharedComparisonOrderByWithRelationInput | SharedComparisonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SharedComparisons.
+     */
+    cursor?: SharedComparisonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SharedComparisons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SharedComparisons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SharedComparisons.
+     */
+    distinct?: SharedComparisonScalarFieldEnum | SharedComparisonScalarFieldEnum[]
+  }
+
+  /**
+   * SharedComparison findFirstOrThrow
+   */
+  export type SharedComparisonFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SharedComparison
+     */
+    select?: SharedComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SharedComparison
+     */
+    omit?: SharedComparisonOmit<ExtArgs> | null
+    /**
+     * Filter, which SharedComparison to fetch.
+     */
+    where?: SharedComparisonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SharedComparisons to fetch.
+     */
+    orderBy?: SharedComparisonOrderByWithRelationInput | SharedComparisonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SharedComparisons.
+     */
+    cursor?: SharedComparisonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SharedComparisons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SharedComparisons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SharedComparisons.
+     */
+    distinct?: SharedComparisonScalarFieldEnum | SharedComparisonScalarFieldEnum[]
+  }
+
+  /**
+   * SharedComparison findMany
+   */
+  export type SharedComparisonFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SharedComparison
+     */
+    select?: SharedComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SharedComparison
+     */
+    omit?: SharedComparisonOmit<ExtArgs> | null
+    /**
+     * Filter, which SharedComparisons to fetch.
+     */
+    where?: SharedComparisonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SharedComparisons to fetch.
+     */
+    orderBy?: SharedComparisonOrderByWithRelationInput | SharedComparisonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SharedComparisons.
+     */
+    cursor?: SharedComparisonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SharedComparisons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SharedComparisons.
+     */
+    skip?: number
+    distinct?: SharedComparisonScalarFieldEnum | SharedComparisonScalarFieldEnum[]
+  }
+
+  /**
+   * SharedComparison create
+   */
+  export type SharedComparisonCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SharedComparison
+     */
+    select?: SharedComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SharedComparison
+     */
+    omit?: SharedComparisonOmit<ExtArgs> | null
+    /**
+     * The data needed to create a SharedComparison.
+     */
+    data: XOR<SharedComparisonCreateInput, SharedComparisonUncheckedCreateInput>
+  }
+
+  /**
+   * SharedComparison createMany
+   */
+  export type SharedComparisonCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SharedComparisons.
+     */
+    data: SharedComparisonCreateManyInput | SharedComparisonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SharedComparison createManyAndReturn
+   */
+  export type SharedComparisonCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SharedComparison
+     */
+    select?: SharedComparisonSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SharedComparison
+     */
+    omit?: SharedComparisonOmit<ExtArgs> | null
+    /**
+     * The data used to create many SharedComparisons.
+     */
+    data: SharedComparisonCreateManyInput | SharedComparisonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SharedComparison update
+   */
+  export type SharedComparisonUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SharedComparison
+     */
+    select?: SharedComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SharedComparison
+     */
+    omit?: SharedComparisonOmit<ExtArgs> | null
+    /**
+     * The data needed to update a SharedComparison.
+     */
+    data: XOR<SharedComparisonUpdateInput, SharedComparisonUncheckedUpdateInput>
+    /**
+     * Choose, which SharedComparison to update.
+     */
+    where: SharedComparisonWhereUniqueInput
+  }
+
+  /**
+   * SharedComparison updateMany
+   */
+  export type SharedComparisonUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SharedComparisons.
+     */
+    data: XOR<SharedComparisonUpdateManyMutationInput, SharedComparisonUncheckedUpdateManyInput>
+    /**
+     * Filter which SharedComparisons to update
+     */
+    where?: SharedComparisonWhereInput
+    /**
+     * Limit how many SharedComparisons to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SharedComparison updateManyAndReturn
+   */
+  export type SharedComparisonUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SharedComparison
+     */
+    select?: SharedComparisonSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SharedComparison
+     */
+    omit?: SharedComparisonOmit<ExtArgs> | null
+    /**
+     * The data used to update SharedComparisons.
+     */
+    data: XOR<SharedComparisonUpdateManyMutationInput, SharedComparisonUncheckedUpdateManyInput>
+    /**
+     * Filter which SharedComparisons to update
+     */
+    where?: SharedComparisonWhereInput
+    /**
+     * Limit how many SharedComparisons to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SharedComparison upsert
+   */
+  export type SharedComparisonUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SharedComparison
+     */
+    select?: SharedComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SharedComparison
+     */
+    omit?: SharedComparisonOmit<ExtArgs> | null
+    /**
+     * The filter to search for the SharedComparison to update in case it exists.
+     */
+    where: SharedComparisonWhereUniqueInput
+    /**
+     * In case the SharedComparison found by the `where` argument doesn't exist, create a new SharedComparison with this data.
+     */
+    create: XOR<SharedComparisonCreateInput, SharedComparisonUncheckedCreateInput>
+    /**
+     * In case the SharedComparison was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SharedComparisonUpdateInput, SharedComparisonUncheckedUpdateInput>
+  }
+
+  /**
+   * SharedComparison delete
+   */
+  export type SharedComparisonDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SharedComparison
+     */
+    select?: SharedComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SharedComparison
+     */
+    omit?: SharedComparisonOmit<ExtArgs> | null
+    /**
+     * Filter which SharedComparison to delete.
+     */
+    where: SharedComparisonWhereUniqueInput
+  }
+
+  /**
+   * SharedComparison deleteMany
+   */
+  export type SharedComparisonDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SharedComparisons to delete
+     */
+    where?: SharedComparisonWhereInput
+    /**
+     * Limit how many SharedComparisons to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SharedComparison without action
+   */
+  export type SharedComparisonDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SharedComparison
+     */
+    select?: SharedComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SharedComparison
+     */
+    omit?: SharedComparisonOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -26747,6 +29024,29 @@ export namespace Prisma {
   export type ReviewHelpfulScalarFieldEnum = (typeof ReviewHelpfulScalarFieldEnum)[keyof typeof ReviewHelpfulScalarFieldEnum]
 
 
+  export const ComparisonScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    tariffIds: 'tariffIds',
+    userId: 'userId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ComparisonScalarFieldEnum = (typeof ComparisonScalarFieldEnum)[keyof typeof ComparisonScalarFieldEnum]
+
+
+  export const SharedComparisonScalarFieldEnum: {
+    id: 'id',
+    shareId: 'shareId',
+    tariffIds: 'tariffIds',
+    expiresAt: 'expiresAt',
+    createdAt: 'createdAt'
+  };
+
+  export type SharedComparisonScalarFieldEnum = (typeof SharedComparisonScalarFieldEnum)[keyof typeof SharedComparisonScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -26901,6 +29201,7 @@ export namespace Prisma {
     sessions?: SessionListRelationFilter
     reviews?: ReviewListRelationFilter
     helpfulMarks?: ReviewHelpfulListRelationFilter
+    comparisons?: ComparisonListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -26917,6 +29218,7 @@ export namespace Prisma {
     sessions?: SessionOrderByRelationAggregateInput
     reviews?: ReviewOrderByRelationAggregateInput
     helpfulMarks?: ReviewHelpfulOrderByRelationAggregateInput
+    comparisons?: ComparisonOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -26936,6 +29238,7 @@ export namespace Prisma {
     sessions?: SessionListRelationFilter
     reviews?: ReviewListRelationFilter
     helpfulMarks?: ReviewHelpfulListRelationFilter
+    comparisons?: ComparisonListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -28279,6 +30582,118 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"ReviewHelpful"> | Date | string
   }
 
+  export type ComparisonWhereInput = {
+    AND?: ComparisonWhereInput | ComparisonWhereInput[]
+    OR?: ComparisonWhereInput[]
+    NOT?: ComparisonWhereInput | ComparisonWhereInput[]
+    id?: StringFilter<"Comparison"> | string
+    name?: StringFilter<"Comparison"> | string
+    tariffIds?: StringNullableListFilter<"Comparison">
+    userId?: StringFilter<"Comparison"> | string
+    createdAt?: DateTimeFilter<"Comparison"> | Date | string
+    updatedAt?: DateTimeFilter<"Comparison"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type ComparisonOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    tariffIds?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type ComparisonWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ComparisonWhereInput | ComparisonWhereInput[]
+    OR?: ComparisonWhereInput[]
+    NOT?: ComparisonWhereInput | ComparisonWhereInput[]
+    name?: StringFilter<"Comparison"> | string
+    tariffIds?: StringNullableListFilter<"Comparison">
+    userId?: StringFilter<"Comparison"> | string
+    createdAt?: DateTimeFilter<"Comparison"> | Date | string
+    updatedAt?: DateTimeFilter<"Comparison"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type ComparisonOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    tariffIds?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ComparisonCountOrderByAggregateInput
+    _max?: ComparisonMaxOrderByAggregateInput
+    _min?: ComparisonMinOrderByAggregateInput
+  }
+
+  export type ComparisonScalarWhereWithAggregatesInput = {
+    AND?: ComparisonScalarWhereWithAggregatesInput | ComparisonScalarWhereWithAggregatesInput[]
+    OR?: ComparisonScalarWhereWithAggregatesInput[]
+    NOT?: ComparisonScalarWhereWithAggregatesInput | ComparisonScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Comparison"> | string
+    name?: StringWithAggregatesFilter<"Comparison"> | string
+    tariffIds?: StringNullableListFilter<"Comparison">
+    userId?: StringWithAggregatesFilter<"Comparison"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Comparison"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Comparison"> | Date | string
+  }
+
+  export type SharedComparisonWhereInput = {
+    AND?: SharedComparisonWhereInput | SharedComparisonWhereInput[]
+    OR?: SharedComparisonWhereInput[]
+    NOT?: SharedComparisonWhereInput | SharedComparisonWhereInput[]
+    id?: StringFilter<"SharedComparison"> | string
+    shareId?: StringFilter<"SharedComparison"> | string
+    tariffIds?: StringNullableListFilter<"SharedComparison">
+    expiresAt?: DateTimeFilter<"SharedComparison"> | Date | string
+    createdAt?: DateTimeFilter<"SharedComparison"> | Date | string
+  }
+
+  export type SharedComparisonOrderByWithRelationInput = {
+    id?: SortOrder
+    shareId?: SortOrder
+    tariffIds?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type SharedComparisonWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    shareId?: string
+    AND?: SharedComparisonWhereInput | SharedComparisonWhereInput[]
+    OR?: SharedComparisonWhereInput[]
+    NOT?: SharedComparisonWhereInput | SharedComparisonWhereInput[]
+    tariffIds?: StringNullableListFilter<"SharedComparison">
+    expiresAt?: DateTimeFilter<"SharedComparison"> | Date | string
+    createdAt?: DateTimeFilter<"SharedComparison"> | Date | string
+  }, "id" | "shareId">
+
+  export type SharedComparisonOrderByWithAggregationInput = {
+    id?: SortOrder
+    shareId?: SortOrder
+    tariffIds?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    _count?: SharedComparisonCountOrderByAggregateInput
+    _max?: SharedComparisonMaxOrderByAggregateInput
+    _min?: SharedComparisonMinOrderByAggregateInput
+  }
+
+  export type SharedComparisonScalarWhereWithAggregatesInput = {
+    AND?: SharedComparisonScalarWhereWithAggregatesInput | SharedComparisonScalarWhereWithAggregatesInput[]
+    OR?: SharedComparisonScalarWhereWithAggregatesInput[]
+    NOT?: SharedComparisonScalarWhereWithAggregatesInput | SharedComparisonScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SharedComparison"> | string
+    shareId?: StringWithAggregatesFilter<"SharedComparison"> | string
+    tariffIds?: StringNullableListFilter<"SharedComparison">
+    expiresAt?: DateTimeWithAggregatesFilter<"SharedComparison"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"SharedComparison"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -28293,6 +30708,7 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     helpfulMarks?: ReviewHelpfulCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -28309,6 +30725,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     helpfulMarks?: ReviewHelpfulUncheckedCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -28325,6 +30742,7 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     helpfulMarks?: ReviewHelpfulUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -28341,6 +30759,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     helpfulMarks?: ReviewHelpfulUncheckedUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -29746,6 +32165,124 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ComparisonCreateInput = {
+    id?: string
+    name: string
+    tariffIds?: ComparisonCreatetariffIdsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutComparisonsInput
+  }
+
+  export type ComparisonUncheckedCreateInput = {
+    id?: string
+    name: string
+    tariffIds?: ComparisonCreatetariffIdsInput | string[]
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ComparisonUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    tariffIds?: ComparisonUpdatetariffIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutComparisonsNestedInput
+  }
+
+  export type ComparisonUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    tariffIds?: ComparisonUpdatetariffIdsInput | string[]
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComparisonCreateManyInput = {
+    id?: string
+    name: string
+    tariffIds?: ComparisonCreatetariffIdsInput | string[]
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ComparisonUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    tariffIds?: ComparisonUpdatetariffIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComparisonUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    tariffIds?: ComparisonUpdatetariffIdsInput | string[]
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SharedComparisonCreateInput = {
+    id?: string
+    shareId: string
+    tariffIds?: SharedComparisonCreatetariffIdsInput | string[]
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type SharedComparisonUncheckedCreateInput = {
+    id?: string
+    shareId: string
+    tariffIds?: SharedComparisonCreatetariffIdsInput | string[]
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type SharedComparisonUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    shareId?: StringFieldUpdateOperationsInput | string
+    tariffIds?: SharedComparisonUpdatetariffIdsInput | string[]
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SharedComparisonUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    shareId?: StringFieldUpdateOperationsInput | string
+    tariffIds?: SharedComparisonUpdatetariffIdsInput | string[]
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SharedComparisonCreateManyInput = {
+    id?: string
+    shareId: string
+    tariffIds?: SharedComparisonCreatetariffIdsInput | string[]
+    expiresAt: Date | string
+    createdAt?: Date | string
+  }
+
+  export type SharedComparisonUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    shareId?: StringFieldUpdateOperationsInput | string
+    tariffIds?: SharedComparisonUpdatetariffIdsInput | string[]
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SharedComparisonUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    shareId?: StringFieldUpdateOperationsInput | string
+    tariffIds?: SharedComparisonUpdatetariffIdsInput | string[]
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -29829,6 +32366,12 @@ export namespace Prisma {
     none?: ReviewHelpfulWhereInput
   }
 
+  export type ComparisonListRelationFilter = {
+    every?: ComparisonWhereInput
+    some?: ComparisonWhereInput
+    none?: ComparisonWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -29847,6 +32390,10 @@ export namespace Prisma {
   }
 
   export type ReviewHelpfulOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ComparisonOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -30917,6 +33464,61 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type ComparisonCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    tariffIds?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ComparisonMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ComparisonMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SharedComparisonCountOrderByAggregateInput = {
+    id?: SortOrder
+    shareId?: SortOrder
+    tariffIds?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type SharedComparisonMaxOrderByAggregateInput = {
+    id?: SortOrder
+    shareId?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type SharedComparisonMinOrderByAggregateInput = {
+    id?: SortOrder
+    shareId?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -30945,6 +33547,13 @@ export namespace Prisma {
     connect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
   }
 
+  export type ComparisonCreateNestedManyWithoutUserInput = {
+    create?: XOR<ComparisonCreateWithoutUserInput, ComparisonUncheckedCreateWithoutUserInput> | ComparisonCreateWithoutUserInput[] | ComparisonUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ComparisonCreateOrConnectWithoutUserInput | ComparisonCreateOrConnectWithoutUserInput[]
+    createMany?: ComparisonCreateManyUserInputEnvelope
+    connect?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+  }
+
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -30971,6 +33580,13 @@ export namespace Prisma {
     connectOrCreate?: ReviewHelpfulCreateOrConnectWithoutUserInput | ReviewHelpfulCreateOrConnectWithoutUserInput[]
     createMany?: ReviewHelpfulCreateManyUserInputEnvelope
     connect?: ReviewHelpfulWhereUniqueInput | ReviewHelpfulWhereUniqueInput[]
+  }
+
+  export type ComparisonUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ComparisonCreateWithoutUserInput, ComparisonUncheckedCreateWithoutUserInput> | ComparisonCreateWithoutUserInput[] | ComparisonUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ComparisonCreateOrConnectWithoutUserInput | ComparisonCreateOrConnectWithoutUserInput[]
+    createMany?: ComparisonCreateManyUserInputEnvelope
+    connect?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -31049,6 +33665,20 @@ export namespace Prisma {
     deleteMany?: ReviewHelpfulScalarWhereInput | ReviewHelpfulScalarWhereInput[]
   }
 
+  export type ComparisonUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ComparisonCreateWithoutUserInput, ComparisonUncheckedCreateWithoutUserInput> | ComparisonCreateWithoutUserInput[] | ComparisonUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ComparisonCreateOrConnectWithoutUserInput | ComparisonCreateOrConnectWithoutUserInput[]
+    upsert?: ComparisonUpsertWithWhereUniqueWithoutUserInput | ComparisonUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ComparisonCreateManyUserInputEnvelope
+    set?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    disconnect?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    delete?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    connect?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    update?: ComparisonUpdateWithWhereUniqueWithoutUserInput | ComparisonUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ComparisonUpdateManyWithWhereWithoutUserInput | ComparisonUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ComparisonScalarWhereInput | ComparisonScalarWhereInput[]
+  }
+
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -31103,6 +33733,20 @@ export namespace Prisma {
     update?: ReviewHelpfulUpdateWithWhereUniqueWithoutUserInput | ReviewHelpfulUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ReviewHelpfulUpdateManyWithWhereWithoutUserInput | ReviewHelpfulUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ReviewHelpfulScalarWhereInput | ReviewHelpfulScalarWhereInput[]
+  }
+
+  export type ComparisonUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ComparisonCreateWithoutUserInput, ComparisonUncheckedCreateWithoutUserInput> | ComparisonCreateWithoutUserInput[] | ComparisonUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ComparisonCreateOrConnectWithoutUserInput | ComparisonCreateOrConnectWithoutUserInput[]
+    upsert?: ComparisonUpsertWithWhereUniqueWithoutUserInput | ComparisonUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ComparisonCreateManyUserInputEnvelope
+    set?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    disconnect?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    delete?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    connect?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    update?: ComparisonUpdateWithWhereUniqueWithoutUserInput | ComparisonUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ComparisonUpdateManyWithWhereWithoutUserInput | ComparisonUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ComparisonScalarWhereInput | ComparisonScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -32097,6 +34741,38 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutHelpfulMarksInput, UserUpdateWithoutHelpfulMarksInput>, UserUncheckedUpdateWithoutHelpfulMarksInput>
   }
 
+  export type ComparisonCreatetariffIdsInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutComparisonsInput = {
+    create?: XOR<UserCreateWithoutComparisonsInput, UserUncheckedCreateWithoutComparisonsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutComparisonsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ComparisonUpdatetariffIdsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type UserUpdateOneRequiredWithoutComparisonsNestedInput = {
+    create?: XOR<UserCreateWithoutComparisonsInput, UserUncheckedCreateWithoutComparisonsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutComparisonsInput
+    upsert?: UserUpsertWithoutComparisonsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutComparisonsInput, UserUpdateWithoutComparisonsInput>, UserUncheckedUpdateWithoutComparisonsInput>
+  }
+
+  export type SharedComparisonCreatetariffIdsInput = {
+    set: string[]
+  }
+
+  export type SharedComparisonUpdatetariffIdsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -32500,6 +35176,32 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ComparisonCreateWithoutUserInput = {
+    id?: string
+    name: string
+    tariffIds?: ComparisonCreatetariffIdsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ComparisonUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    tariffIds?: ComparisonCreatetariffIdsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ComparisonCreateOrConnectWithoutUserInput = {
+    where: ComparisonWhereUniqueInput
+    create: XOR<ComparisonCreateWithoutUserInput, ComparisonUncheckedCreateWithoutUserInput>
+  }
+
+  export type ComparisonCreateManyUserInputEnvelope = {
+    data: ComparisonCreateManyUserInput | ComparisonCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
     where: AccountWhereUniqueInput
     update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
@@ -32623,6 +35325,34 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"ReviewHelpful"> | Date | string
   }
 
+  export type ComparisonUpsertWithWhereUniqueWithoutUserInput = {
+    where: ComparisonWhereUniqueInput
+    update: XOR<ComparisonUpdateWithoutUserInput, ComparisonUncheckedUpdateWithoutUserInput>
+    create: XOR<ComparisonCreateWithoutUserInput, ComparisonUncheckedCreateWithoutUserInput>
+  }
+
+  export type ComparisonUpdateWithWhereUniqueWithoutUserInput = {
+    where: ComparisonWhereUniqueInput
+    data: XOR<ComparisonUpdateWithoutUserInput, ComparisonUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ComparisonUpdateManyWithWhereWithoutUserInput = {
+    where: ComparisonScalarWhereInput
+    data: XOR<ComparisonUpdateManyMutationInput, ComparisonUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ComparisonScalarWhereInput = {
+    AND?: ComparisonScalarWhereInput | ComparisonScalarWhereInput[]
+    OR?: ComparisonScalarWhereInput[]
+    NOT?: ComparisonScalarWhereInput | ComparisonScalarWhereInput[]
+    id?: StringFilter<"Comparison"> | string
+    name?: StringFilter<"Comparison"> | string
+    tariffIds?: StringNullableListFilter<"Comparison">
+    userId?: StringFilter<"Comparison"> | string
+    createdAt?: DateTimeFilter<"Comparison"> | Date | string
+    updatedAt?: DateTimeFilter<"Comparison"> | Date | string
+  }
+
   export type UserCreateWithoutAccountsInput = {
     id?: string
     email: string
@@ -32636,6 +35366,7 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     helpfulMarks?: ReviewHelpfulCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -32651,6 +35382,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     helpfulMarks?: ReviewHelpfulUncheckedCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -32682,6 +35414,7 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     helpfulMarks?: ReviewHelpfulUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -32697,6 +35430,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     helpfulMarks?: ReviewHelpfulUncheckedUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -32712,6 +35446,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     helpfulMarks?: ReviewHelpfulCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -32727,6 +35462,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     helpfulMarks?: ReviewHelpfulUncheckedCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -32758,6 +35494,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     helpfulMarks?: ReviewHelpfulUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -32773,6 +35510,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     helpfulMarks?: ReviewHelpfulUncheckedUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TariffCreateWithoutHostingInput = {
@@ -35059,6 +37797,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     helpfulMarks?: ReviewHelpfulCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutReviewsInput = {
@@ -35074,6 +37813,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     helpfulMarks?: ReviewHelpfulUncheckedCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutReviewsInput = {
@@ -35168,6 +37908,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     helpfulMarks?: ReviewHelpfulUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReviewsInput = {
@@ -35183,6 +37924,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     helpfulMarks?: ReviewHelpfulUncheckedUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type HostingUpsertWithoutReviewsInput = {
@@ -35298,6 +38040,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutHelpfulMarksInput = {
@@ -35313,6 +38056,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutHelpfulMarksInput = {
@@ -35389,6 +38133,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutHelpfulMarksInput = {
@@ -35404,6 +38149,87 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutComparisonsInput = {
+    id?: string
+    email: string
+    name?: string | null
+    role?: $Enums.UserRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+    helpfulMarks?: ReviewHelpfulCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutComparisonsInput = {
+    id?: string
+    email: string
+    name?: string | null
+    role?: $Enums.UserRole
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    image?: string | null
+    password?: string | null
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    helpfulMarks?: ReviewHelpfulUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutComparisonsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutComparisonsInput, UserUncheckedCreateWithoutComparisonsInput>
+  }
+
+  export type UserUpsertWithoutComparisonsInput = {
+    update: XOR<UserUpdateWithoutComparisonsInput, UserUncheckedUpdateWithoutComparisonsInput>
+    create: XOR<UserCreateWithoutComparisonsInput, UserUncheckedCreateWithoutComparisonsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutComparisonsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutComparisonsInput, UserUncheckedUpdateWithoutComparisonsInput>
+  }
+
+  export type UserUpdateWithoutComparisonsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+    helpfulMarks?: ReviewHelpfulUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutComparisonsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    helpfulMarks?: ReviewHelpfulUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -35447,6 +38273,14 @@ export namespace Prisma {
     reviewId: string
     fingerprint?: string | null
     createdAt?: Date | string
+  }
+
+  export type ComparisonCreateManyUserInput = {
+    id?: string
+    name: string
+    tariffIds?: ComparisonCreatetariffIdsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -35578,6 +38412,30 @@ export namespace Prisma {
     reviewId?: StringFieldUpdateOperationsInput | string
     fingerprint?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComparisonUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    tariffIds?: ComparisonUpdatetariffIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComparisonUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    tariffIds?: ComparisonUpdatetariffIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComparisonUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    tariffIds?: ComparisonUpdatetariffIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TariffCreateManyHostingInput = {
