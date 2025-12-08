@@ -26,6 +26,7 @@ const nextConfig: NextConfig = {
     domains: [
       "localhost", 
       "s3.ru1.storage.beget.cloud",
+      "hosting-top.online",
     ],
     remotePatterns: [
       {
@@ -49,6 +50,12 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "s3.ru1.storage.beget.cloud",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "hosting-top.online",
         port: "",
         pathname: "/**",
       },
