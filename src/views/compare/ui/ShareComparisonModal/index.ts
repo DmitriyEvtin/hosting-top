@@ -1,0 +1,2 @@
+export { ShareComparisonModal } from "./ShareComparisonModal";
+
